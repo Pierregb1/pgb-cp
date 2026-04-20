@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours",
+    "titre": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base",
+    "fichier": "pdfs/maths/premiere/cours/algebre-lin-chap-2-pratique-calculatoire-et-objets-algebriques-de-base.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algèbre lin chap 17 trigonalisation",
+    "fichier": "pdfs/maths/superieure/cours/algebre-lin-chap-17-trigonalisation.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "ds",
+    "titre": "DS COMPLEXE PcSI pgb CORR",
+    "fichier": "pdfs/maths/superieure/ds/ds-complexe-pcsi-pgb-corr.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds",
+    "titre": "DM ana fonction term corr",
+    "fichier": "pdfs/maths/terminale/ds/dm-ana-fonction-term-corr.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds",
+    "titre": "DM0 un peu de tout",
+    "fichier": "pdfs/maths/terminale/ds/dm0-un-peu-de-tout.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exos",
+    "titre": "Colle 1 hugo maths",
+    "fichier": "pdfs/maths/terminale/exos/colle-1-hugo-maths.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "troisieme",
+    "type": "ds",
+    "titre": "DS0 math 3eme",
+    "fichier": "pdfs/maths/troisieme/ds/ds0-math-3eme.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "terminale",
+    "type": "ds",
+    "titre": "DM0 Physique",
+    "fichier": "pdfs/physique-chimie/terminale/ds/dm0-physique.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "troisieme",
+    "type": "ds",
+    "titre": "DS0 physique 3eme",
+    "fichier": "pdfs/physique-chimie/troisieme/ds/ds0-physique-3eme.pdf"
+  }
+]
