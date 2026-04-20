@@ -30,11 +30,12 @@ SUBJECT_PATTERNS = {
             r"\bfonction\b", r"\bfonctions\b", r"\bsuite\b", r"\bsuites\b",
             r"\bapplication\s+lineaire\b", r"\bespace\s+vectoriel\b",
             r"\bvaleurs?\s+propres?\b", r"\bvecteurs?\s+propres?\b",
-            r"\banalyse\s+fonctionnelle\b", r"\bgeometrie\s+affine\b"
+            r"\banalyse\s+fonctionnelle\b", r"\bgeometrie\s+affine\b",
+            r"\balgebre\s+lineaire\b"
         ],
         "medium": [
-            r"\brang\b", r"\bbase\b", r"\bsev\b", r"\bev\b", r"\bgradient\b",
-            r"\bderivee\b", r"\bintegrale\b"
+            r"\brang\b", r"\bbase\b", r"\bsev\b", r"\bev\b",
+            r"\bderivee\b", r"\bintegrale\b", r"\bgradient\b"
         ]
     },
     "physique-chimie": {
@@ -47,8 +48,8 @@ SUBJECT_PATTERNS = {
             r"\btension\b", r"\bintensite\b"
         ],
         "medium": [
-            r"\bmolecule\b", r"\bsolide\b", r"\bsolution\b", r"\bacide\b",
-            r"\bbase\b", r"\btemperature\b"
+            r"\bmolecule\b", r"\bsolide\b", r"\bsolution\b",
+            r"\bacide\b", r"\bbase\b", r"\btemperature\b"
         ]
     }
 }
@@ -64,7 +65,7 @@ LEVEL_PATTERNS = {
     },
     "terminale": {
         "strong": [r"\bterminale\b", r"\bterm\b", r"\btle\b"],
-        "medium": [r"\bbac\b", r"\bgrand\s+oral\b"]
+        "medium": [r"\bbac\b", r"\bgrand\s+oral\b", r"\btype\s+bac\b"]
     },
     "superieure": {
         "strong": [r"\bsuperieure\b", r"\bprepa\b", r"\bpcsi\b", r"\bpsi\b", r"\bats\b", r"\bmid\b"],
@@ -92,7 +93,12 @@ CORRECTION_PATTERNS = [r"\bcorr\b", r"\bcorrige\b", r"\bcorrection\b"]
 SPECIAL_RULES = [
     {
         "name": "algèbre linéaire => maths supérieure",
-        "patterns": [r"\balg(?:ebre)?\s*lin", r"\bapp\s*lin\b", r"\bendomorph", r"\bmatric", r"\bdeterminant", r"\bvaleurs?\s*propres?", r"\bdiagonal", r"\btrigonal", r"\brang\b"],
+        "patterns": [
+            r"\balg(?:ebre)?\s*lin", r"\balgebre\s+lineaire\b",
+            r"\bapp\s*lin\b", r"\bendomorph", r"\bmatric",
+            r"\bdeterminant", r"\bvaleurs?\s*propres?",
+            r"\bdiagonal", r"\btrigonal", r"\brang\b"
+        ],
         "set": {"matiere": "maths", "niveau": "superieure"},
     },
     {
@@ -142,6 +148,8 @@ class TriResult:
     applied_rules: list | None = None
     chosen_tex: str | None = None
     compiled: bool = False
+    engine_used: str | None = None
+    compile_error: str | None = None
 
 
 def strip_accents(text: str) -> str:
@@ -240,60 +248,63 @@ def clean_generated_pdfs():
         old_pdf.unlink()
 
 
-def rank_tex_candidates(extract_dir: Path, inner_zip_name: str) -> list[Path]:
-    tex_files = sorted(extract_dir.rglob("*.tex"))
-    if not tex_files:
-        return []
-
-    zip_stem = normalize(Path(inner_zip_name).stem)
-
-    def score_tex(p: Path):
-        name = normalize(p.name)
-        parts = normalize(str(p.relative_to(extract_dir)))
-        score = 0
-        if p.name.lower() == "main.tex":
-            score += 100
-        if name in {"cours.tex", "document.tex"}:
-            score += 40
-        if normalize(p.stem) == zip_stem:
-            score += 35
-        if "main" in name:
-            score += 20
-        if "corr" in name:
-            score -= 5
-        if "old" in name or "backup" in name:
-            score -= 10
-        if "annexe" in name:
-            score -= 8
-        if "/." in parts:
-            score -= 20
-        return (-score, len(parts), p.name.lower())
-
-    return sorted(tex_files, key=score_tex)
+def choose_main_tex(extract_dir: Path) -> Path | None:
+    main_tex_candidates = sorted(extract_dir.rglob("main.tex"))
+    if main_tex_candidates:
+        return main_tex_candidates[0]
+    return None
 
 
-def compile_tex(tex_path: Path) -> Path | None:
+def run_command(cmd, cwd):
+    return subprocess.run(
+        cmd,
+        cwd=cwd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+
+
+def compile_tex(tex_path: Path):
     workdir = tex_path.parent
-    try:
-        for _ in range(2):
-            result = subprocess.run(
-                ["pdflatex", "-interaction=nonstopmode", tex_path.name],
-                cwd=workdir,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
-            print(f"\n--- Compilation de {tex_path.name} ---")
-            print(result.stdout)
-            if result.returncode != 0:
-                print(result.stderr)
-                return None
-    except Exception as e:
-        print(f"Erreur de compilation inattendue pour {tex_path}: {e}")
-        return None
 
-    pdf = tex_path.with_suffix(".pdf")
-    return pdf if pdf.exists() else None
+    commands = [
+        ("latexmk-pdf", ["latexmk", "-pdf", "-interaction=nonstopmode", tex_path.name]),
+        ("pdflatex", ["pdflatex", "-interaction=nonstopmode", tex_path.name]),
+        ("xelatex", ["xelatex", "-interaction=nonstopmode", tex_path.name]),
+    ]
+
+    last_error = ""
+
+    for engine_name, cmd in commands:
+        try:
+            if engine_name in {"pdflatex", "xelatex"}:
+                ok = True
+                combined_out = ""
+                for _ in range(2):
+                    result = run_command(cmd, workdir)
+                    combined_out += "\n" + result.stdout + "\n" + result.stderr
+                    if result.returncode != 0:
+                        ok = False
+                        last_error = combined_out[-4000:]
+                        break
+                if ok:
+                    pdf = tex_path.with_suffix(".pdf")
+                    if pdf.exists():
+                        return pdf, engine_name, None
+            else:
+                result = run_command(cmd, workdir)
+                combined_out = result.stdout + "\n" + result.stderr
+                if result.returncode == 0:
+                    pdf = tex_path.with_suffix(".pdf")
+                    if pdf.exists():
+                        return pdf, engine_name, None
+                else:
+                    last_error = combined_out[-4000:]
+        except Exception as e:
+            last_error = str(e)
+
+    return None, None, last_error
 
 
 def extract_title_from_tex(tex_content: str) -> str | None:
@@ -516,58 +527,48 @@ def build():
                     report.append(make_report_entry(inner_name, f"zip interne invalide: {e}"))
                     continue
 
-                tex_candidates = rank_tex_candidates(extract_dir, inner_name)
-                if not tex_candidates:
-                    report.append(make_report_entry(inner_name, "aucun fichier .tex trouvé"))
+                tex_path = choose_main_tex(extract_dir)
+                if tex_path is None:
+                    report.append(make_report_entry(inner_name, "aucun main.tex trouvé"))
                     continue
 
-                compiled_pdf = None
-                result = None
+                tex_content = tex_path.read_text(encoding="utf-8", errors="ignore")
+                result = decide_fields(Path(inner_name).name, tex_path, tex_content, overrides)
+                result.chosen_tex = tex_path.name
 
-                for tex_path in tex_candidates:
-                    tex_content = tex_path.read_text(encoding="utf-8", errors="ignore")
-                    candidate_result = decide_fields(Path(inner_name).name, tex_path, tex_content, overrides)
+                compiled_pdf, engine_used, compile_error = compile_tex(tex_path)
+                result.engine_used = engine_used
+                result.compile_error = compile_error
 
-                    print(f"Projet: {inner_name}")
-                    print(f"Essai avec: {tex_path.name}")
-                    print(f"Détection: matiere={candidate_result.detected_subject}, niveau={candidate_result.detected_level}, type={candidate_result.detected_type}, status={candidate_result.status}, confiance={candidate_result.confidence}")
-
-                    compiled_pdf = compile_tex(tex_path)
-                    if compiled_pdf is not None:
-                        result = candidate_result
-                        result.compiled = True
-                        break
-
-                if result is None:
-                    report.append(asdict(TriResult(
-                        source_inner_zip=Path(inner_name).name,
-                        detected_subject=None,
-                        detected_level=None,
-                        detected_type=None,
-                        is_correction=False,
-                        confidence="low",
-                        status="needs_review",
-                        reason="aucun .tex compilable trouvé dans le zip interne",
-                        output_pdf=None,
-                        title=Path(inner_name).stem
-                    )))
-                    continue
-
-                if result.status == "ok":
-                    out_dir = PDF_ROOT / result.detected_subject / result.detected_level / result.detected_type
+                if compiled_pdf is None:
+                    result.status = "needs_review"
+                    result.confidence = "low"
+                    result.reason += "; compilation échouée"
                 else:
-                    out_dir = PDF_ROOT / "a_verifier"
+                    result.compiled = True
+                    if result.status == "ok":
+                        out_dir = PDF_ROOT / result.detected_subject / result.detected_level / result.detected_type
+                        catalog_matiere = result.detected_subject
+                        catalog_niveau = result.detected_level
+                        catalog_type = result.detected_type
+                        catalog_titre = result.title
+                    else:
+                        out_dir = PDF_ROOT / "a_verifier"
+                        catalog_matiere = "a_verifier"
+                        catalog_niveau = "a_verifier"
+                        catalog_type = "a_verifier"
+                        catalog_titre = f"[À vérifier] {result.title}"
 
-                out_pdf = out_dir / f"{safe_slug(result.title)}.pdf"
-                shutil.copy2(compiled_pdf, out_pdf)
-                result.output_pdf = out_pdf.relative_to(ROOT).as_posix()
+                    out_pdf = out_dir / f"{safe_slug(result.title)}.pdf"
+                    shutil.copy2(compiled_pdf, out_pdf)
+                    result.output_pdf = out_pdf.relative_to(ROOT).as_posix()
 
-                if result.status == "ok":
+                    # On ajoute TOUS les PDF compilés au catalogue
                     catalog.append({
-                        "matiere": result.detected_subject,
-                        "niveau": result.detected_level,
-                        "type": result.detected_type,
-                        "titre": result.title,
+                        "matiere": catalog_matiere,
+                        "niveau": catalog_niveau,
+                        "type": catalog_type,
+                        "titre": catalog_titre,
                         "fichier": result.output_pdf
                     })
 
@@ -581,7 +582,7 @@ def build():
     with open(REPORT_PATH, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
-    print(f"{len(catalog)} PDF classés automatiquement.")
+    print(f"{len(catalog)} PDF ajoutés au catalogue.")
     print(f"{len(report)} entrées écrites dans le rapport.")
     print(f"Rapport écrit dans {REPORT_PATH}")
 
