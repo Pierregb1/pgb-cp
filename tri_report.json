@@ -11,7 +11,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-10-determinants.pdf",
     "title": "Algèbre lin chap 10 déterminants",
     "subject_scores": {
-      "maths": 1119.0,
+      "maths": 1139.0,
       "physique-chimie": 53.0
     },
     "level_scores": {
@@ -29,43 +29,78 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 11 red endomorphisme.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 72.0 contre 0.0; règles: algèbre linéaire => maths supérieure, complexe / pcsi => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 11 red endomorphisme",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 2555.0,
+      "physique-chimie": 51.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 10.0,
+      "terminale": 0.0,
+      "superieure": 23.0
+    },
+    "type_scores": {
+      "cours": 72.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure",
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[9]\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\n! Undefined control sequence.\nl.623 Soit \\(u\\in\\Lin\n                     (E,E)\\) et\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[11]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (14 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 12 espaces euclidiens.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 68.0 contre 0.0; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 12 espaces euclidiens",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 387.0,
+      "physique-chimie": 102.0
+    },
+    "level_scores": {
+      "troisieme": 10.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 28.0
+    },
+    "type_scores": {
+      "cours": 68.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[9]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[11]\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[15] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (15 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace.zip",
@@ -79,7 +114,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-13-geometrie-affine-et-euclidienne-du-plan-et-de-l-espace.pdf",
     "title": "Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace",
     "subject_scores": {
-      "maths": 220.5,
+      "maths": 230.5,
       "physique-chimie": 12.0
     },
     "level_scores": {
@@ -97,25 +132,44 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 14 Polynomes !.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 99.5 contre 0.0; règles: algèbre linéaire => maths supérieure, complexe / pcsi => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 14 Polynomes !",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 1650.0,
+      "physique-chimie": 5.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 99.5,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure",
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "1.59999pt}.\n\n[9]\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\n\nPackage hyperref Warning: Token not allowed in a PDF string (Unicode):\n(hyperref)                removing `math shift' on input line 623.\n\n\nPackage hyperref Warning: Token not allowed in a PDF string (Unicode):\n(hyperref)                removing `math shift' on input line 623.\n\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n! Undefined control sequence.\nl.669 Soit \\(u\\in\\Lin\n                     (E,E)\\) un endomorphisme.\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10]\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[11]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n! Undefined control sequence.\nl.890     u^2-3u+2\\id\n                     =0.\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (14 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 15 valeurs propres vecteurs propres.zip",
@@ -147,25 +201,44 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 16 diagonalisation.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
-    "output_pdf": null,
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 78.0 contre 0.0; règles: algèbre linéaire => maths supérieure, complexe / pcsi => maths supérieure",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-16-diagonalisation.pdf",
     "title": "Algèbre lin chap 16 diagonalisation",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 2105.5,
+      "physique-chimie": 68.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 27.5,
+      "terminale": 0.0,
+      "superieure": 18.0
+    },
+    "type_scores": {
+      "cours": 78.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure",
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": true,
+    "engine_used": "xelatex",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 17 trigonalisation.zip",
@@ -198,43 +271,78 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 18 red endo sym.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 115.5 contre 0.0; règles: algèbre linéaire => maths supérieure, complexe / pcsi => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 18 red endo sym",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 1464.0,
+      "physique-chimie": 109.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 2.5,
+      "terminale": 0.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 115.5,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure",
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "lambda_r}.\n! Undefined control sequence.\n<recently read> \\Orth \n                      \nl.409 E=E_{\\lambda_1}\\Orth \\cdots \\Orth\n                                        E_{\\lambda_r}.\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[7]\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[8]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[9]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[11]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13] (./main.aux)\n\nLaTeX Font Warning: Some font shapes were not available, defaults substituted.\n\n )\n(see the transcript file for additional information)\nOutput written on main.pdf (13 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 1Raisonnement et ensembles.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 138.0 contre 0.0; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 1Raisonnement et ensembles",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 241.5,
+      "physique-chimie": 30.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 40.0,
+      "terminale": 0.0,
+      "superieure": 128.5
+    },
+    "type_scores": {
+      "cours": 138.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": ".59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[15]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[16]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[17] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (17 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base.zip",
@@ -248,7 +356,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-2-pratique-calculatoire-et-objets-algebriques-de-base.pdf",
     "title": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base",
     "subject_scores": {
-      "maths": 211.5,
+      "maths": 251.5,
       "physique-chimie": 24.0
     },
     "level_scores": {
@@ -266,7 +374,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 3 Espaces vectoriels et sous-espaces.zip",
@@ -280,7 +390,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-3-espaces-vectoriels-et-sous-espaces.pdf",
     "title": "Algèbre lin chap 3 Espaces vectoriels et sous espaces",
     "subject_scores": {
-      "maths": 1011.5,
+      "maths": 1034.0,
       "physique-chimie": 0.0
     },
     "level_scores": {
@@ -298,7 +408,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 4 familles libres, génératrices, bases.zip",
@@ -312,7 +424,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-4-familles-libres-generatrices-bases.pdf",
     "title": "Algèbre lin chap 4 familles libres, génératrices, bases",
     "subject_scores": {
-      "maths": 410.0,
+      "maths": 430.0,
       "physique-chimie": 169.0
     },
     "level_scores": {
@@ -330,7 +442,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 5 EV dim finie.zip",
@@ -344,7 +458,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-5-ev-dim-finie.pdf",
     "title": "Algèbre lin chap 5 EV dim finie",
     "subject_scores": {
-      "maths": 814.5,
+      "maths": 824.5,
       "physique-chimie": 219.0
     },
     "level_scores": {
@@ -362,7 +476,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 6 syst lin.zip",
@@ -376,7 +492,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-6-syst-lin.pdf",
     "title": "Algèbre lin chap 6 syst lin",
     "subject_scores": {
-      "maths": 195.0,
+      "maths": 225.0,
       "physique-chimie": 86.0
     },
     "level_scores": {
@@ -394,25 +510,43 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 7 intro calc matr.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 80.5 contre 0.0; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Algèbre lin chap 7 intro calc matr",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 1549.0,
+      "physique-chimie": 10.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 28.0
+    },
+    "type_scores": {
+      "cours": 80.5,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "nt ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmri10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[15]\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[16]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[17] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (17 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Algèbre lin chap 8 app lin.zip",
@@ -426,7 +560,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-8-app-lin.pdf",
     "title": "Algèbre lin chap 8 app lin",
     "subject_scores": {
-      "maths": 913.0,
+      "maths": 923.0,
       "physique-chimie": 77.0
     },
     "level_scores": {
@@ -444,7 +578,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Algèbre lin chap 9 rang.zip",
@@ -458,7 +594,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-9-rang.pdf",
     "title": "Algèbre lin chap 9 rang",
     "subject_scores": {
-      "maths": 1041.0,
+      "maths": 1061.0,
       "physique-chimie": 63.0
     },
     "level_scores": {
@@ -476,7 +612,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Corr TD alg lin chap 1-5.zip",
@@ -490,7 +628,7 @@
     "output_pdf": "pdfs/maths/superieure/exos/corr-td-alg-lin-chap-1-5.pdf",
     "title": "Corr TD alg lin chap 1 5",
     "subject_scores": {
-      "maths": 248.0,
+      "maths": 268.0,
       "physique-chimie": 83.0
     },
     "level_scores": {
@@ -508,43 +646,77 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Cours analyse fonctionnelle pierre term.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 55.0 contre 9.0; règles: analyse fonctionnelle => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Cours analyse fonctionnelle pierre term",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 887.0,
+      "physique-chimie": 23.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 10.0,
+      "terminale": 30.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 55.0,
+      "exos": 9.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "analyse fonctionnelle => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "ht}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[9]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10]\n\n! LaTeX Error: Environment demonstration undefined.\n\nSee the LaTeX manual or LaTeX Companion for explanation.\nType  H <return>  for immediate help.\n ...                                              \n                                                  \nl.687 \\begin{demonstration}\n                           \n\n! LaTeX Error: \\begin{document} ended by \\end{theoreme}.\n\nSee the LaTeX manual or LaTeX Companion for explanation.\nType  H <return>  for immediate help.\n ...                                              \n                                                  \nl.704 \\end{theoreme}\n                    \n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[11]\n\n! LaTeX Error: \\begin{proof} on input line 706 ended by \\end{demonstration}.\n\nSee the LaTeX manual or LaTeX Companion for explanation.\nType  H <return>  for immediate help.\n ...                                              \n                                                  \nl.817 \\end{demonstration}\n                         \n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[12]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[13]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[14]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[15]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[16]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[17] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (17 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "DM 1 MATH ANALYSE FONCTIONNELLE HARR-.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "ds",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 50.0 contre 16.0; règles: analyse fonctionnelle => maths supérieure; compilation échouée",
     "output_pdf": null,
-    "title": "DM 1 MATH ANALYSE FONCTIONNELLE HARR-",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "title": "DM 1 MATH ANALYSE FONCTIONNELLE HARR",
+    "subject_scores": {
+      "maths": 320.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 10.0,
+      "terminale": 20.0,
+      "superieure": 12.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 16.0,
+      "ds": 50.0
+    },
+    "applied_rules": [
+      "analyse fonctionnelle => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "ex/latex/hyperref/hxetex.def\n(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)\n(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty\n(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))\n(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)\n(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)\n(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def)\n(./main.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)\n*geometry* driver: auto-detecting\n*geometry* detected driver: xetex\n(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty\n(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)\n(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)\n(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (./main.out)\n(./main.out)\n\nPackage hyperref Warning: Rerun to get /PageLabels entry.\n\n\nOverfull \\hbox (7.7387pt too wide) in paragraph at lines 50--53\n[]\\T1/lmr/m/n/10.95 Toujours pas de cal-cu-la-trice, Pas de CHATGPT ni au-cune \naide ex-té-rieure. IM-POR-TANTTTTTTTTT\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\n(/usr/share/texmf/tex/latex/lm/ot1lmr.fd)\n(/usr/share/texmf/tex/latex/lm/omllmm.fd)\n(/usr/share/texmf/tex/latex/lm/omslmsy.fd)\n(/usr/share/texmf/tex/latex/lm/omxlmex.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[1]\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[2]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmbx12!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n! Missing $ inserted.\n<inserted text> \n                $\nl.260 \\varepsilon\n                 \\) est une fonction réelle\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[3] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (3 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "DM PHYSIQUE PREMIERE GENERALE.zip",
@@ -574,7 +746,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM algèbre lin 1 facile +.zip",
@@ -588,7 +762,7 @@
     "output_pdf": "pdfs/maths/superieure/cours/dm-algebre-lin-1-facile-corrige.pdf",
     "title": "DM algèbre lin 1 facile + - corrigé",
     "subject_scores": {
-      "maths": 271.0,
+      "maths": 291.0,
       "physique-chimie": 71.0
     },
     "level_scores": {
@@ -607,7 +781,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM ana fonction term corr.zip",
@@ -637,7 +813,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM géométrie mid +.zip",
@@ -667,7 +845,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM phy elec term CORRR.zip",
@@ -699,7 +879,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM physique elec term.zip",
@@ -731,7 +913,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM0 Physique.zip",
@@ -763,7 +947,9 @@
       "spectro / cohésion => physique-chimie première"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DM0 un peu de tout.zip",
@@ -793,25 +979,43 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DS COMPLEXE PCSI pgb.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "ds",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 57.0 contre 30.0; règles: complexe / pcsi => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "DS COMPLEXE PCSI pgb",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 200.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 80.0
+    },
+    "type_scores": {
+      "cours": 7.0,
+      "exos": 30.0,
+      "ds": 57.0
+    },
+    "applied_rules": [
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "fter \n                                 \\endlist \\ifx \\enit@series \\relax \\else \\if...\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@endenumerate ...\\else \\ifnum \\enit@resuming \n                                                  =\\@ne \\enit@setresumekeys ...\nl.535 \\end{enumerate}\n                     \n! Missing number, treated as zero.\n<to be read again> \n                   =\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...xpandafter {\\enit@savekeys \n                                                  }\\xdef \\enit@afterlist {#2...\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...it@toks }\\ifnum \\enit@type \n                                                  =\\z@ #3\\def \\enit@noexcs {...\nl.535 \\end{enumerate}\n                     \n! Missing number, treated as zero.\n<to be read again> \n                   =\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n<argument> enit@resume@series@\\enit@series \n                                           \nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...me@#1}{\\csname c@\\@listctr \n                                                  \\endcsname \\the \\csname c@...\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...e \\the \\csname c@\\@listctr \n                                                  \\endcsname }\\fi }\nl.535 \\end{enumerate}\n                     \n! You can't use `\\relax' after \\the.\n<recently read> \\c@ \n                    \nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@endenumerate ...t \\fi \\ifnum \\enit@resuming \n                                                  =\\thr@@ \\enit@setresumekey...\nl.535 \\end{enumerate}\n                     \n! Missing number, treated as zero.\n<to be read again> \n                   =\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...xpandafter {\\enit@savekeys \n                                                  }\\xdef \\enit@afterlist {#2...\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...it@toks }\\ifnum \\enit@type \n                                                  =\\z@ #3\\def \\enit@noexcs {...\nl.535 \\end{enumerate}\n                     \n! Missing number, treated as zero.\n<to be read again> \n                   =\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...me@#1}{\\csname c@\\@listctr \n                                                  \\endcsname \\the \\csname c@...\nl.535 \\end{enumerate}\n                     \n! Undefined control sequence.\n\\enit@setresumekeys ...e \\the \\csname c@\\@listctr \n                                                  \\endcsname }\\fi }\nl.535 \\end{enumerate}\n                     \n! You can't use `\\relax' after \\the.\n<recently read> \\c@ \n                    \nl.535 \\end{enumerate}\n                     \n\n! LaTeX Error: \\begin{document} ended by \\end{enumerate}.\n\nSee the LaTeX manual or LaTeX Companion for explanation.\nType  H <return>  for immediate help.\n ...                                              \n                                                  \nl.535 \\end{enumerate}\n                     \n! Extra \\endgroup.\n<recently read> \\endgroup \n                          \nl.535 \\end{enumerate}\n                     \n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[8] \nenddocument/afterlastpage: lastpage setting LastPage.\n(./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (8 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "DS COMPLEXE PcSI pgb CORR.zip",
@@ -844,7 +1048,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DS0 math 3eme.zip",
@@ -874,7 +1080,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "DS0 physique 3eme.zip",
@@ -906,61 +1114,112 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "EXO TERM  MID +.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 118.0 contre 61.0; règles: algèbre linéaire => maths supérieure, complexe / pcsi => maths supérieure; compilation échouée",
     "output_pdf": null,
-    "title": "EXO TERM  MID +",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "title": "EXO TERM MID +",
+    "subject_scores": {
+      "maths": 112.5,
+      "physique-chimie": 11.0
+    },
+    "level_scores": {
+      "troisieme": 10.0,
+      "premiere": 4.0,
+      "terminale": 60.0,
+      "superieure": 30.0
+    },
+    "type_scores": {
+      "cours": 118.0,
+      "exos": 61.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure",
+      "complexe / pcsi => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "f-dist/tex/latex/base/atveryend-ltx.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))\n(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)\n(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def)\n(./main.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)\n*geometry* driver: auto-detecting\n*geometry* detected driver: xetex\n(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg) (./main.out)\n(./main.out)\n\nPackage hyperref Warning: Rerun to get /PageLabels entry.\n\n! Missing } inserted.\n<inserted text> \n                }\nl.76 \\end{center}\n                 \n(/usr/share/texmf/tex/latex/lm/ot1lmr.fd)\n(/usr/share/texmf/tex/latex/lm/omllmm.fd)\n(/usr/share/texmf/tex/latex/lm/omslmsy.fd)\n(/usr/share/texmf/tex/latex/lm/omxlmex.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)\n(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)\n(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)\n(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[1]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[2]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[3]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[4]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[5]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[6]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[7]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[8] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (8 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Exo TERM ANALYSE FONCTIONNELLE gradient.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
-    "output_pdf": null,
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 588.0 contre 0.0; règles: analyse fonctionnelle => maths supérieure",
+    "output_pdf": "pdfs/maths/superieure/exos/exo-term-analyse-fonctionnelle-gradient.pdf",
     "title": "Exo TERM ANALYSE FONCTIONNELLE gradient",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 694.0,
+      "physique-chimie": 20.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 40.0,
+      "superieure": 16.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 588.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "analyse fonctionnelle => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": true,
+    "engine_used": "xelatex",
+    "compile_error": null
   },
   {
     "source_inner_zip": "PROG LYCEE PHYSIQUE PROF.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: physique-chimie; niveau: forcé par règle: terminale; type: choisi avec score 44.0 contre 0.0; règles: électricité => physique-chimie terminale; compilation échouée",
     "output_pdf": null,
     "title": "PROG LYCEE PHYSIQUE PROF",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 37.5,
+      "physique-chimie": 963.5
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 119.0,
+      "terminale": 100.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 44.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "électricité => physique-chimie terminale"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "\n\n[22]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[23]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[24]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[25]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[26]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[27]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[28]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[29]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[30]\nMissing character: There is no œ (\"153) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[31]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[32]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[33] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (33 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "TD ALG LIN CHAP 4 BASES.zip",
@@ -974,7 +1233,7 @@
     "output_pdf": "pdfs/maths/superieure/exos/td-alg-lin-chap-4-bases.pdf",
     "title": "TD ALG LIN CHAP 4 BASES",
     "subject_scores": {
-      "maths": 465.0,
+      "maths": 485.0,
       "physique-chimie": 201.0
     },
     "level_scores": {
@@ -992,7 +1251,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "TD algèbre lin chap1 gradient corr.zip",
@@ -1006,7 +1267,7 @@
     "output_pdf": "pdfs/maths/superieure/exos/td-algebre-lin-chap1-gradient-corr.pdf",
     "title": "TD algèbre lin chap1 gradient corr",
     "subject_scores": {
-      "maths": 65.5,
+      "maths": 85.5,
       "physique-chimie": 27.0
     },
     "level_scores": {
@@ -1024,43 +1285,77 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "TD algèbre lin chap1 gradient.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 250.0 contre 25.0; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "TD algèbre lin chap1 gradient",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 122.0,
+      "physique-chimie": 8.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 48.0
+    },
+    "type_scores": {
+      "cours": 25.0,
+      "exos": 250.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "re is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[2]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[3]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[4]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[5]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[6]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[7]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[8] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (8 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Td alg lin chap 2 pratiques calculatoire.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 272.0 contre 55.0; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
     "title": "Td alg lin chap 2 pratiques calculatoire",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "subject_scores": {
+      "maths": 108.0,
+      "physique-chimie": 4.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 55.0,
+      "exos": 272.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "ancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[3]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[4]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[5]\nMissing character: There is no ’ (\"2019) in font ec-lmbx10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[6]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[7]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[8]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[9]\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\nMissing character: There is no ’ (\"2019) in font ec-lmr10!\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[10] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (10 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "Td alg lin chap 3 ev et sev.zip",
@@ -1074,7 +1369,7 @@
     "output_pdf": "pdfs/maths/superieure/exos/td-alg-lin-chap-3-ev-et-sev.pdf",
     "title": "Td alg lin chap 3 ev et sev",
     "subject_scores": {
-      "maths": 742.5,
+      "maths": 762.5,
       "physique-chimie": 0.0
     },
     "level_scores": {
@@ -1092,7 +1387,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Td alg lin chap 5 dim.zip",
@@ -1106,7 +1403,7 @@
     "output_pdf": "pdfs/maths/superieure/exos/td-alg-lin-chap-5-dim.pdf",
     "title": "Td alg lin chap 5 dim",
     "subject_scores": {
-      "maths": 434.5,
+      "maths": 464.5,
       "physique-chimie": 108.0
     },
     "level_scores": {
@@ -1124,7 +1421,9 @@
       "algèbre linéaire => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Td complexe pierre gradient corr.zip",
@@ -1156,7 +1455,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "Td complexe pierre gradient.zip",
@@ -1188,7 +1489,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "colle 1 hugo maths.zip",
@@ -1220,25 +1523,44 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "colle elec term.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
-    "is_correction": false,
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "exos",
+    "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: physique-chimie; niveau: forcé par règle: terminale; type: choisi avec score 114.5 contre 59.5; règles: complexe / pcsi => maths supérieure, électricité => physique-chimie terminale; compilation échouée",
     "output_pdf": null,
-    "title": "colle elec term",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "title": "Colle elec term - corrigé",
+    "subject_scores": {
+      "maths": 22.5,
+      "physique-chimie": 680.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 8.0,
+      "terminale": 40.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 59.5,
+      "exos": 114.5,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "complexe / pcsi => maths supérieure",
+      "électricité => physique-chimie terminale"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "e \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[2]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[3]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[4]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[5]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[6]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[7]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[8]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[9]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[10]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[11]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[12]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[13] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (13 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "corr DM géométrie mid +.zip",
@@ -1268,7 +1590,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "corr DM0 physique.zip",
@@ -1301,7 +1625,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "corr DM1 math analyse fonctionnelle HARR-.zip",
@@ -1333,25 +1659,43 @@
       "analyse fonctionnelle => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "corrigé exo term mid +.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
-    "is_correction": false,
+    "detected_subject": "maths",
+    "detected_level": "superieure",
+    "detected_type": "exos",
+    "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: maths; niveau: forcé par règle: superieure; type: choisi avec score 96.0 contre 46.5; règles: algèbre linéaire => maths supérieure; compilation échouée",
     "output_pdf": null,
-    "title": "corrigé exo term mid +",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "title": "Corrigé exo term mid +",
+    "subject_scores": {
+      "maths": 323.5,
+      "physique-chimie": 35.0
+    },
+    "level_scores": {
+      "troisieme": 2.5,
+      "premiere": 4.0,
+      "terminale": 40.0,
+      "superieure": 60.0
+    },
+    "type_scores": {
+      "cours": 46.5,
+      "exos": 96.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "algèbre linéaire => maths supérieure"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[24]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[25]\nOverfull \\hbox (32.36162pt too wide) detected at line 2010\n[]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[26]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[27]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[28] (/usr/share/texmf/tex/latex/lm/t1lmtt.fd)\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[29]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[30]\n! Undefined control sequence.\nl.2360 Si \\(n\\) est impair, il existe \\(k\\in\\Z\n                                              \\) tel que\n! Undefined control sequence.\n<argument> ...text { est pair pour tout } n\\in \\Z \n                                                  .$\nl.2387 ...n+1)\\text{ est pair pour tout } n\\in\\Z.}\n                                                  \n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[31]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[32]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 13.59999pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{13.59999pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-1.59999pt}.\n\n[33] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (33 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "cours complexe pierre.zip",
@@ -1383,25 +1727,43 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "cours elec term pgb.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
+    "reason": "matière: forcé par règle: physique-chimie; niveau: forcé par règle: terminale; type: choisi avec score 64.0 contre 0.0; règles: électricité => physique-chimie terminale; compilation échouée",
     "output_pdf": null,
-    "title": "cours elec term pgb",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "title": "Cours elec term pgb",
+    "subject_scores": {
+      "maths": 49.0,
+      "physique-chimie": 1324.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 13.0,
+      "terminale": 52.5,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 64.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "électricité => physique-chimie terminale"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": false,
+    "engine_used": null,
+    "compile_error": "cyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[7]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[8]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[9]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[10]\n! Undefined control sequence.\nl.623 ..., le condensateur a atteint environ \\(\\SI\n                                                  {63}{\\percent}\\) de sa ten...\n\n! Undefined control sequence.\nl.623 ...teur a atteint environ \\(\\SI{63}{\\percent\n                                                  }\\) de sa tension finale.\n! Undefined control sequence.\nl.630 ...ue, la tension est tombée à environ \\(\\SI\n                                                  {37}{\\percent}\\) de sa val...\n\n! Undefined control sequence.\nl.630 ...n est tombée à environ \\(\\SI{37}{\\percent\n                                                  }\\) de sa valeur initiale.\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[11]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[12]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[13]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[14]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[15]\n\nPackage fancyhdr Warning: \\headheight is too small (12.0pt): \n(fancyhdr)                Make it at least 14.1595pt, for example:\n(fancyhdr)                \\setlength{\\headheight}{14.1595pt}.\n(fancyhdr)                You might also make \\topmargin smaller to compensate:\n\n(fancyhdr)                \\addtolength{\\topmargin}{-2.1595pt}.\n\n[16] (./main.aux) )\n(see the transcript file for additional information)\nOutput written on main.pdf (16 pages).\nTranscript written on main.log.\n\n"
   },
   {
     "source_inner_zip": "cours géométrie collège-> term.zip",
@@ -1431,7 +1793,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "cours physiqechimie première.zip",
@@ -1464,25 +1828,44 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "cours spectro cohesion (chimie) prem spé.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
-    "output_pdf": null,
-    "title": "cours spectro cohesion (chimie) prem spé",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: forcé par règle: physique-chimie; niveau: forcé par règle: terminale; type: choisi avec score 73.0 contre 0.0; règles: spectro / cohésion => physique-chimie première, électricité => physique-chimie terminale",
+    "output_pdf": "pdfs/physique-chimie/terminale/cours/cours-spectro-cohesion-chimie-prem-spe.pdf",
+    "title": "Cours spectro cohesion (chimie) prem spé",
+    "subject_scores": {
+      "maths": 62.5,
+      "physique-chimie": 675.5
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 18.5,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 73.0,
+      "exos": 0.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "spectro / cohésion => physique-chimie première",
+      "électricité => physique-chimie terminale"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": true,
+    "engine_used": "xelatex",
+    "compile_error": null
   },
   {
     "source_inner_zip": "dm math term ana fonct.zip",
@@ -1512,7 +1895,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "ds blanc.zip",
@@ -1542,7 +1927,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "exo colle complexe term.zip",
@@ -1574,25 +1961,43 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "exo physique term.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
-    "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "aucun .tex compilable trouvé dans le zip interne",
-    "output_pdf": null,
-    "title": "exo physique term",
-    "subject_scores": null,
-    "level_scores": null,
-    "type_scores": null,
-    "applied_rules": null,
-    "chosen_tex": null,
-    "compiled": false
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "exos",
+    "is_correction": true,
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: forcé par règle: physique-chimie; niveau: forcé par règle: terminale; type: choisi avec score 112.0 contre 25.5; règles: électricité => physique-chimie terminale",
+    "output_pdf": "pdfs/physique-chimie/terminale/exos/exo-physique-term-corrige.pdf",
+    "title": "Exo physique term - corrigé",
+    "subject_scores": {
+      "maths": 2.5,
+      "physique-chimie": 658.5
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 19.5,
+      "terminale": 50.0,
+      "superieure": 5.0
+    },
+    "type_scores": {
+      "cours": 25.5,
+      "exos": 112.0,
+      "ds": 0.0
+    },
+    "applied_rules": [
+      "électricité => physique-chimie terminale"
+    ],
+    "chosen_tex": "main.tex",
+    "compiled": true,
+    "engine_used": "xelatex",
+    "compile_error": null
   },
   {
     "source_inner_zip": "exo prem phychim.zip",
@@ -1625,7 +2030,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "exo prem specto coh.zip",
@@ -1658,7 +2065,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "exo temr physique*chimie gradient.zip",
@@ -1678,7 +2087,7 @@
     "level_scores": {
       "troisieme": 10.0,
       "premiere": 0.0,
-      "terminale": 36.0,
+      "terminale": 40.0,
       "superieure": 24.0
     },
     "type_scores": {
@@ -1691,7 +2100,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "polytech math corr.zip",
@@ -1723,7 +2134,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "polytech math.zip",
@@ -1755,7 +2168,9 @@
       "complexe / pcsi => maths supérieure"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "polytech phy corr.zip",
@@ -1787,7 +2202,9 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "polytech phy.zip",
@@ -1817,7 +2234,9 @@
     },
     "applied_rules": [],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   },
   {
     "source_inner_zip": "type bac prem coh spectro.zip",
@@ -1837,7 +2256,7 @@
     "level_scores": {
       "troisieme": 0.0,
       "premiere": 26.5,
-      "terminale": 16.0,
+      "terminale": 32.0,
       "superieure": 0.0
     },
     "type_scores": {
@@ -1850,6 +2269,8 @@
       "électricité => physique-chimie terminale"
     ],
     "chosen_tex": "main.tex",
-    "compiled": true
+    "compiled": true,
+    "engine_used": "latexmk-pdf",
+    "compile_error": null
   }
 ]

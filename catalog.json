@@ -1,5 +1,12 @@
 [
   {
+    "matiere": "a_verifier",
+    "niveau": "a_verifier",
+    "type": "a_verifier",
+    "titre": "[À vérifier] Corr DM1 math analyse fonctionnelle HARR",
+    "fichier": "pdfs/a_verifier/corr-dm1-math-analyse-fonctionnelle-harr.pdf"
+  },
+  {
     "matiere": "maths",
     "niveau": "superieure",
     "type": "cours",
@@ -26,6 +33,13 @@
     "type": "cours",
     "titre": "Algèbre lin chap 15 valeurs propres vecteurs propres",
     "fichier": "pdfs/maths/superieure/cours/algebre-lin-chap-15-valeurs-propres-vecteurs-propres.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algèbre lin chap 16 diagonalisation",
+    "fichier": "pdfs/maths/superieure/cours/algebre-lin-chap-16-diagonalisation.pdf"
   },
   {
     "matiere": "maths",
@@ -143,6 +157,13 @@
     "matiere": "maths",
     "niveau": "superieure",
     "type": "exos",
+    "titre": "Exo TERM ANALYSE FONCTIONNELLE gradient",
+    "fichier": "pdfs/maths/superieure/exos/exo-term-analyse-fonctionnelle-gradient.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "exos",
     "titre": "Polytech math",
     "fichier": "pdfs/maths/superieure/exos/polytech-math.pdf"
   },
@@ -255,6 +276,13 @@
     "matiere": "physique-chimie",
     "niveau": "terminale",
     "type": "cours",
+    "titre": "Cours spectro cohesion (chimie) prem spé",
+    "fichier": "pdfs/physique-chimie/terminale/cours/cours-spectro-cohesion-chimie-prem-spe.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "terminale",
+    "type": "cours",
     "titre": "DM physique elec term",
     "fichier": "pdfs/physique-chimie/terminale/cours/dm-physique-elec-term.pdf"
   },
@@ -292,6 +320,13 @@
     "type": "exos",
     "titre": "DS0 physique 3eme",
     "fichier": "pdfs/physique-chimie/terminale/exos/ds0-physique-3eme.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "terminale",
+    "type": "exos",
+    "titre": "Exo physique term - corrigé",
+    "fichier": "pdfs/physique-chimie/terminale/exos/exo-physique-term-corrige.pdf"
   },
   {
     "matiere": "physique-chimie",
