@@ -25,13 +25,16 @@ SUBJECT_PATTERNS = {
         "strong": [
             r"\bmath\b", r"\bmaths\b", r"\bmathematique\b", r"\bmathematiques\b",
             r"\balgebre\b", r"\banalyse\b", r"\bgeometrie\b", r"\bcomplexe\b",
-            r"\bendomorphisme\b", r"\bdeterminants?\b", r"\bdiagonalisation\b",
-            r"\btrigonalisation\b", r"\bmatrices?\b", r"\bpolynomes?\b",
-            r"\bfonctions?\b", r"\bsuites?\b"
+            r"\bendomorph", r"\bdeterminant", r"\bdiagonal", r"\btrigonal",
+            r"\bmatrice", r"\bmatrices\b", r"\bpolynome", r"\bpolynomes\b",
+            r"\bfonction\b", r"\bfonctions\b", r"\bsuite\b", r"\bsuites\b",
+            r"\bapplication\s+lineaire\b", r"\bespace\s+vectoriel\b",
+            r"\bvaleurs?\s+propres?\b", r"\bvecteurs?\s+propres?\b",
+            r"\banalyse\s+fonctionnelle\b", r"\bgeometrie\s+affine\b"
         ],
         "medium": [
-            r"\bderivee\b", r"\bintegrale\b", r"\bvectoriel\b", r"\bapplication lineaire\b",
-            r"\bvaleurs propres\b", r"\bespaces?\b", r"\brang\b"
+            r"\brang\b", r"\bbase\b", r"\bsev\b", r"\bev\b", r"\bgradient\b",
+            r"\bderivee\b", r"\bintegrale\b"
         ]
     },
     "physique-chimie": {
@@ -39,12 +42,13 @@ SUBJECT_PATTERNS = {
             r"\bphy\b", r"\bphysique\b", r"\bchimie\b", r"\bphychim\b",
             r"\bspectro\b", r"\bcohesion\b", r"\belec\b", r"\belectricite\b",
             r"\bondes?\b", r"\bthermo\b", r"\bthermique\b", r"\boptique\b",
-            r"\benergie\b", r"\bsirene\b", r"\bir\b", r"\binfrarouge\b"
+            r"\benergie\b", r"\bir\b", r"\binfrarouge\b", r"\bcalorimetre\b",
+            r"\benthalpie\b", r"\breaction\b", r"\bresistance\b", r"\bcircuit\b",
+            r"\btension\b", r"\bintensite\b"
         ],
         "medium": [
-            r"\bmolecule\b", r"\bsolide\b", r"\breaction\b", r"\benthalpie\b",
-            r"\bcalorimetre\b", r"\bresistance\b", r"\bcircuit\b", r"\btension\b",
-            r"\bintensite\b"
+            r"\bmolecule\b", r"\bsolide\b", r"\bsolution\b", r"\bacide\b",
+            r"\bbase\b", r"\btemperature\b"
         ]
     }
 }
@@ -56,15 +60,15 @@ LEVEL_PATTERNS = {
     },
     "premiere": {
         "strong": [r"\bpremiere\b", r"\b1ere\b", r"\b1re\b"],
-        "medium": [r"\bspe\b", r"\bspecialite\b"]
+        "medium": [r"\bspecialite\b", r"\bspe\b"]
     },
     "terminale": {
         "strong": [r"\bterminale\b", r"\bterm\b", r"\btle\b"],
-        "medium": [r"\bbac\b", r"\bgrand oral\b"]
+        "medium": [r"\bbac\b", r"\bgrand\s+oral\b"]
     },
     "superieure": {
-        "strong": [r"\bsuperieure\b", r"\bprepa\b", r"\bpcsi\b", r"\bpsi\b", r"\bats\b"],
-        "medium": [r"\balgebre lineaire\b", r"\banalyse fonctionnelle\b", r"\bcentrale\b"]
+        "strong": [r"\bsuperieure\b", r"\bprepa\b", r"\bpcsi\b", r"\bpsi\b", r"\bats\b", r"\bmid\b"],
+        "medium": [r"\bcentrale\b", r"\banalyse\s+fonctionnelle\b", r"\balgebre\s+lin\b"]
     }
 }
 
@@ -74,21 +78,49 @@ TYPE_PATTERNS = {
         "medium": [r"\bresume\b", r"\bfiche\b", r"\bprogramme\b", r"\bnotions\b"]
     },
     "exos": {
-        "strong": [r"\bexo\b", r"\bexos\b", r"\btd\b", r"\bfeuille d exercices\b", r"\bcolle\b"],
+        "strong": [r"\bexo\b", r"\bexos\b", r"\btd\b", r"\bcolle\b", r"\bfeuille\b"],
         "medium": [r"\bproblemes?\b", r"\bexercices?\b"]
     },
     "ds": {
         "strong": [r"\bds\b", r"\bdm\b", r"\bdevoir\b", r"\bcontrole\b"],
-        "medium": [r"\btype bac\b", r"\bpolytech\b", r"\bsujet\b", r"\bepreuve\b"]
+        "medium": [r"\btype\s+bac\b", r"\bpolytech\b", r"\bsujet\b", r"\bepreuve\b"]
     }
 }
 
 CORRECTION_PATTERNS = [r"\bcorr\b", r"\bcorrige\b", r"\bcorrection\b"]
 
+SPECIAL_RULES = [
+    {
+        "name": "algèbre linéaire => maths supérieure",
+        "patterns": [r"\balg(?:ebre)?\s*lin", r"\bapp\s*lin\b", r"\bendomorph", r"\bmatric", r"\bdeterminant", r"\bvaleurs?\s*propres?", r"\bdiagonal", r"\btrigonal", r"\brang\b"],
+        "set": {"matiere": "maths", "niveau": "superieure"},
+    },
+    {
+        "name": "analyse fonctionnelle => maths supérieure",
+        "patterns": [r"\banalyse\s+fonctionnelle\b"],
+        "set": {"matiere": "maths", "niveau": "superieure"},
+    },
+    {
+        "name": "complexe / pcsi => maths supérieure",
+        "patterns": [r"\bcomplexe\b", r"\bpcsi\b", r"\bpsi\b"],
+        "set": {"matiere": "maths", "niveau": "superieure"},
+    },
+    {
+        "name": "spectro / cohésion => physique-chimie première",
+        "patterns": [r"\bspectro\b", r"\bcohesion\b", r"\binfrarouge\b", r"\bir\b"],
+        "set": {"matiere": "physique-chimie", "niveau": "premiere"},
+    },
+    {
+        "name": "électricité => physique-chimie terminale",
+        "patterns": [r"\belec\b", r"\belectricite\b", r"\bcircuit\b", r"\bresistance\b", r"\btension\b", r"\bintensite\b"],
+        "set": {"matiere": "physique-chimie", "niveau": "terminale"},
+    },
+]
+
 NEGATIVE_HINTS = {
-    "cours": [r"\bds\b", r"\bdm\b", r"\bcontrole\b", r"\bexo\b", r"\btd\b"],
+    "cours": [r"\bds\b", r"\bdm\b", r"\bcontrole\b", r"\bexo\b", r"\btd\b", r"\bcolle\b"],
     "exos": [r"\bcours\b", r"\bchapitre\b"],
-    "ds": [r"\bcours\b", r"\bchapitre\b", r"\bresume\b"]
+    "ds": [r"\bcours\b", r"\bchapitre\b", r"\bresume\b", r"\bfiche\b"]
 }
 
 
@@ -107,6 +139,9 @@ class TriResult:
     subject_scores: dict | None = None
     level_scores: dict | None = None
     type_scores: dict | None = None
+    applied_rules: list | None = None
+    chosen_tex: str | None = None
+    compiled: bool = False
 
 
 def strip_accents(text: str) -> str:
@@ -137,10 +172,10 @@ def compute_scores(text_blocks: dict[str, tuple[str, float]], pattern_map: dict)
     scores = {}
     for label, strengths in pattern_map.items():
         score = 0.0
-        for block_name, (text, weight) in text_blocks.items():
+        for _, (text, weight) in text_blocks.items():
             strong_hits = count_matches(text, strengths.get("strong", []))
             medium_hits = count_matches(text, strengths.get("medium", []))
-            score += weight * (4 * strong_hits + 2 * medium_hits)
+            score += weight * (5 * strong_hits + 2 * medium_hits)
         scores[label] = round(score, 2)
     return scores
 
@@ -205,22 +240,36 @@ def clean_generated_pdfs():
         old_pdf.unlink()
 
 
-def choose_tex_file(extract_dir: Path) -> Path | None:
-    main_tex_candidates = sorted(extract_dir.rglob("main.tex"))
-    if main_tex_candidates:
-        return main_tex_candidates[0]
-
+def rank_tex_candidates(extract_dir: Path, inner_zip_name: str) -> list[Path]:
     tex_files = sorted(extract_dir.rglob("*.tex"))
-    if len(tex_files) == 1:
-        return tex_files[0]
+    if not tex_files:
+        return []
 
-    if len(tex_files) > 1:
-        # priorité aux noms révélateurs
-        preferred = [p for p in tex_files if p.name.lower() in {"main.tex", "cours.tex", "document.tex"}]
-        if len(preferred) == 1:
-            return preferred[0]
+    zip_stem = normalize(Path(inner_zip_name).stem)
 
-    return None
+    def score_tex(p: Path):
+        name = normalize(p.name)
+        parts = normalize(str(p.relative_to(extract_dir)))
+        score = 0
+        if p.name.lower() == "main.tex":
+            score += 100
+        if name in {"cours.tex", "document.tex"}:
+            score += 40
+        if normalize(p.stem) == zip_stem:
+            score += 35
+        if "main" in name:
+            score += 20
+        if "corr" in name:
+            score -= 5
+        if "old" in name or "backup" in name:
+            score -= 10
+        if "annexe" in name:
+            score -= 8
+        if "/." in parts:
+            score -= 20
+        return (-score, len(parts), p.name.lower())
+
+    return sorted(tex_files, key=score_tex)
 
 
 def compile_tex(tex_path: Path) -> Path | None:
@@ -255,31 +304,97 @@ def extract_title_from_tex(tex_content: str) -> str | None:
     return None
 
 
+def extract_sections_from_tex(tex_content: str) -> str:
+    parts = []
+    for pattern in [r"\\section\{([^}]*)\}", r"\\subsection\{([^}]*)\}", r"\\chapter\{([^}]*)\}", r"\\part\{([^}]*)\}"]:
+        parts.extend(re.findall(pattern, tex_content, re.DOTALL))
+    return " ".join(parts)
+
+
+def extract_documentclass_from_tex(tex_content: str) -> str:
+    m = re.search(r"\\documentclass(?:\[[^\]]*\])?\{([^}]*)\}", tex_content)
+    return m.group(1).strip() if m else ""
+
+
+def extract_inputs(tex_content: str) -> str:
+    inputs = re.findall(r"\\(?:input|include)\{([^}]*)\}", tex_content)
+    return " ".join(inputs)
+
+
+def apply_special_rules(text: str):
+    forced = {}
+    applied = []
+    for rule in SPECIAL_RULES:
+        if any(re.search(p, text) for p in rule["patterns"]):
+            forced.update(rule["set"])
+            applied.append(rule["name"])
+    return forced, applied
+
+
 def decide_fields(inner_zip_name: str, tex_path: Path, tex_content: str, overrides: dict) -> TriResult:
     inner_basename = Path(inner_zip_name).name
     tex_name = tex_path.name
     tex_title = extract_title_from_tex(tex_content)
-    is_correction = any(re.search(p, normalize(inner_basename + " " + tex_name + " " + tex_content[:2000])) for p in CORRECTION_PATTERNS)
+    tex_sections = extract_sections_from_tex(tex_content)
+    tex_docclass = extract_documentclass_from_tex(tex_content)
+    tex_inputs = extract_inputs(tex_content)
 
+    merged = normalize(
+        inner_basename + " " +
+        tex_name + " " +
+        (tex_title or "") + " " +
+        tex_sections + " " +
+        tex_docclass + " " +
+        tex_inputs + " " +
+        tex_content
+    )
+
+    is_correction = any(re.search(p, merged) for p in CORRECTION_PATTERNS)
     title = tex_title or prettify_title(inner_basename, is_correction)
-
     override = overrides.get(inner_basename, {})
 
     text_blocks = {
-        "zip_name": (normalize(inner_basename), 3.0),
-        "tex_name": (normalize(tex_name), 2.0),
-        "title": (normalize(tex_title or ""), 2.5),
-        "content": (normalize(tex_content[:7000]), 1.0),
+        "zip_name": (normalize(inner_basename), 4.0),
+        "tex_name": (normalize(tex_name), 2.5),
+        "title": (normalize(tex_title or ""), 4.0),
+        "sections": (normalize(tex_sections), 3.5),
+        "inputs": (normalize(tex_inputs), 2.0),
+        "documentclass": (normalize(tex_docclass), 1.5),
+        "content_head": (normalize(tex_content[:15000]), 1.5),
+        "content_full": (normalize(tex_content), 0.5),
     }
 
     subject_scores = compute_scores(text_blocks, SUBJECT_PATTERNS)
     level_scores = compute_scores(text_blocks, LEVEL_PATTERNS)
-    type_scores = compute_scores(text_blocks, TYPE_PATTERNS)
-    type_scores = apply_negative_type_hints(type_scores, text_blocks)
+    type_scores = apply_negative_type_hints(compute_scores(text_blocks, TYPE_PATTERNS), text_blocks)
 
-    subject, subject_reason = choose_best(subject_scores, min_score=2.0, min_gap=1.5)
-    level, level_reason = choose_best(level_scores, min_score=2.0, min_gap=1.0)
-    type_doc, type_reason = choose_best(type_scores, min_score=2.0, min_gap=1.0)
+    forced, applied_rules = apply_special_rules(merged)
+
+    subject, subject_reason = choose_best(subject_scores, min_score=2.0, min_gap=1.0)
+    level, level_reason = choose_best(level_scores, min_score=2.0, min_gap=0.8)
+    type_doc, type_reason = choose_best(type_scores, min_score=2.0, min_gap=0.8)
+
+    if "matiere" in forced:
+        subject = forced["matiere"]
+        subject_reason = f"forcé par règle: {forced['matiere']}"
+    if "niveau" in forced:
+        level = forced["niveau"]
+        level_reason = f"forcé par règle: {forced['niveau']}"
+    if "type" in forced:
+        type_doc = forced["type"]
+        type_reason = f"forcé par règle: {forced['type']}"
+
+    if type_doc is None:
+        base_name = normalize(inner_basename)
+        if re.search(r"\bcours\b", base_name):
+            type_doc = "cours"
+            type_reason = "déduit du nom"
+        elif re.search(r"\b(td|exo|colle|feuille)\b", base_name):
+            type_doc = "exos"
+            type_reason = "déduit du nom"
+        elif re.search(r"\b(ds|dm|devoir|controle)\b", base_name):
+            type_doc = "ds"
+            type_reason = "déduit du nom"
 
     if override:
         subject = override.get("matiere", subject)
@@ -289,22 +404,22 @@ def decide_fields(inner_zip_name: str, tex_path: Path, tex_content: str, overrid
         confidence = "manual"
         status = "ok"
     else:
-        reasons = [
+        reason = "; ".join([
             f"matière: {subject_reason}",
             f"niveau: {level_reason}",
             f"type: {type_reason}"
-        ]
+        ])
+        if applied_rules:
+            reason += "; règles: " + ", ".join(applied_rules)
+
         status = "ok" if subject and level and type_doc else "needs_review"
 
-        top_values = [max(subject_scores.values(), default=0), max(level_scores.values(), default=0), max(type_scores.values(), default=0)]
-        if status == "ok" and min(top_values) >= 6:
-            confidence = "high"
-        elif status == "ok":
-            confidence = "medium"
-        else:
-            confidence = "low"
-
-        reason = "; ".join(reasons)
+        top_values = [
+            max(subject_scores.values(), default=0),
+            max(level_scores.values(), default=0),
+            max(type_scores.values(), default=0)
+        ]
+        confidence = "high" if status == "ok" and min(top_values) >= 6 else ("medium" if status == "ok" else "low")
 
     if subject and subject not in ALLOWED_SUBJECTS:
         status = "needs_review"
@@ -326,8 +441,25 @@ def decide_fields(inner_zip_name: str, tex_path: Path, tex_content: str, overrid
         title=title,
         subject_scores=subject_scores,
         level_scores=level_scores,
-        type_scores=type_scores
+        type_scores=type_scores,
+        applied_rules=applied_rules,
+        chosen_tex=tex_name
     )
+
+
+def make_report_entry(name: str, reason: str, title: str | None = None) -> dict:
+    return asdict(TriResult(
+        source_inner_zip=Path(name).name,
+        detected_subject=None,
+        detected_level=None,
+        detected_type=None,
+        is_correction=False,
+        confidence="low",
+        status="needs_review",
+        reason=reason,
+        output_pdf=None,
+        title=title or Path(name).stem
+    ))
 
 
 def build():
@@ -345,27 +477,32 @@ def build():
         return
 
     with zipfile.ZipFile(OUTER_ZIP) as outer:
-        inner_names = sorted(outer.namelist())
+        all_entries = sorted(outer.namelist())
 
-        for inner_name in inner_names:
-            if not inner_name.lower().endswith(".zip"):
+        inner_zip_entries = []
+        for name in all_entries:
+            normalized_name = name.strip()
+            if normalized_name.endswith("/"):
+                report.append(make_report_entry(name, "dossier dans le gros zip, ignoré"))
                 continue
+            if normalized_name.lower().endswith(".zip"):
+                inner_zip_entries.append(name)
+            else:
+                report.append(make_report_entry(name, "élément non-zip dans le gros zip, ignoré"))
+
+        seen_inner = set()
+
+        for inner_name in inner_zip_entries:
+            inner_key = inner_name.strip().lower()
+            if inner_key in seen_inner:
+                report.append(make_report_entry(inner_name, "zip interne dupliqué, ignoré"))
+                continue
+            seen_inner.add(inner_key)
 
             try:
                 inner_bytes = outer.read(inner_name)
             except Exception as e:
-                report.append(asdict(TriResult(
-                    source_inner_zip=inner_name,
-                    detected_subject=None,
-                    detected_level=None,
-                    detected_type=None,
-                    is_correction=False,
-                    confidence="low",
-                    status="needs_review",
-                    reason=f"lecture du zip interne impossible: {e}",
-                    output_pdf=None,
-                    title=inner_name
-                )))
+                report.append(make_report_entry(inner_name, f"lecture du zip interne impossible: {e}"))
                 continue
 
             with tempfile.TemporaryDirectory() as tmp:
@@ -376,22 +513,32 @@ def build():
                     with zipfile.ZipFile(io.BytesIO(inner_bytes)) as inner_zip:
                         inner_zip.extractall(extract_dir)
                 except Exception as e:
-                    report.append(asdict(TriResult(
-                        source_inner_zip=inner_name,
-                        detected_subject=None,
-                        detected_level=None,
-                        detected_type=None,
-                        is_correction=False,
-                        confidence="low",
-                        status="needs_review",
-                        reason=f"zip interne invalide: {e}",
-                        output_pdf=None,
-                        title=Path(inner_name).stem
-                    )))
+                    report.append(make_report_entry(inner_name, f"zip interne invalide: {e}"))
                     continue
 
-                tex_path = choose_tex_file(extract_dir)
-                if tex_path is None:
+                tex_candidates = rank_tex_candidates(extract_dir, inner_name)
+                if not tex_candidates:
+                    report.append(make_report_entry(inner_name, "aucun fichier .tex trouvé"))
+                    continue
+
+                compiled_pdf = None
+                result = None
+
+                for tex_path in tex_candidates:
+                    tex_content = tex_path.read_text(encoding="utf-8", errors="ignore")
+                    candidate_result = decide_fields(Path(inner_name).name, tex_path, tex_content, overrides)
+
+                    print(f"Projet: {inner_name}")
+                    print(f"Essai avec: {tex_path.name}")
+                    print(f"Détection: matiere={candidate_result.detected_subject}, niveau={candidate_result.detected_level}, type={candidate_result.detected_type}, status={candidate_result.status}, confiance={candidate_result.confidence}")
+
+                    compiled_pdf = compile_tex(tex_path)
+                    if compiled_pdf is not None:
+                        result = candidate_result
+                        result.compiled = True
+                        break
+
+                if result is None:
                     report.append(asdict(TriResult(
                         source_inner_zip=Path(inner_name).name,
                         detected_subject=None,
@@ -400,47 +547,29 @@ def build():
                         is_correction=False,
                         confidence="low",
                         status="needs_review",
-                        reason="aucun main.tex trouvé et pas de .tex suffisamment identifiable",
+                        reason="aucun .tex compilable trouvé dans le zip interne",
                         output_pdf=None,
                         title=Path(inner_name).stem
                     )))
                     continue
 
-                tex_content = tex_path.read_text(encoding="utf-8", errors="ignore")
-                result = decide_fields(Path(inner_name).name, tex_path, tex_content, overrides)
-
-                print(f"Projet: {inner_name}")
-                print(f"Détection: matiere={result.detected_subject}, niveau={result.detected_level}, type={result.detected_type}, status={result.status}, confiance={result.confidence}")
-                print(f"Scores matière: {result.subject_scores}")
-                print(f"Scores niveau: {result.level_scores}")
-                print(f"Scores type: {result.type_scores}")
-
-                compiled_pdf = compile_tex(tex_path)
-
-                if compiled_pdf is None:
-                    result.status = "needs_review"
-                    result.confidence = "low"
-                    result.reason += "; compilation échouée"
-
-                if result.status == "ok" and compiled_pdf is not None:
+                if result.status == "ok":
                     out_dir = PDF_ROOT / result.detected_subject / result.detected_level / result.detected_type
                 else:
                     out_dir = PDF_ROOT / "a_verifier"
 
                 out_pdf = out_dir / f"{safe_slug(result.title)}.pdf"
+                shutil.copy2(compiled_pdf, out_pdf)
+                result.output_pdf = out_pdf.relative_to(ROOT).as_posix()
 
-                if compiled_pdf is not None:
-                    shutil.copy2(compiled_pdf, out_pdf)
-                    result.output_pdf = out_pdf.relative_to(ROOT).as_posix()
-
-                    if result.status == "ok":
-                        catalog.append({
-                            "matiere": result.detected_subject,
-                            "niveau": result.detected_level,
-                            "type": result.detected_type,
-                            "titre": result.title,
-                            "fichier": result.output_pdf
-                        })
+                if result.status == "ok":
+                    catalog.append({
+                        "matiere": result.detected_subject,
+                        "niveau": result.detected_level,
+                        "type": result.detected_type,
+                        "titre": result.title,
+                        "fichier": result.output_pdf
+                    })
 
                 report.append(asdict(result))
 
@@ -453,6 +582,7 @@ def build():
         json.dump(report, f, ensure_ascii=False, indent=2)
 
     print(f"{len(catalog)} PDF classés automatiquement.")
+    print(f"{len(report)} entrées écrites dans le rapport.")
     print(f"Rapport écrit dans {REPORT_PATH}")
 
 
