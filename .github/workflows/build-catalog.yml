@@ -1,4 +1,4 @@
-name: Build catalog for GitHub Pages
+name: Build PDFs and catalog from nested zips
 
 on:
   push:
@@ -8,26 +8,42 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-catalog:
+  build-pdfs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-french \
+            texlive-pictures \
+            texlive-science \
+            texlive-plain-generic
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Generate catalog.json
-        run: python generate_catalog.py
+      - name: Build PDFs and catalog
+        run: python scripts/build_from_nested_zips.py
 
-      - name: Commit catalog.json if changed
+      - name: Commit generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog.json
-          git diff --cached --quiet || git commit -m "Auto-update catalog.json"
+          git add pdfs catalog.json tri_report.json
+          git diff --cached --quiet || git commit -m "Auto-build PDFs and catalog"
           git push
