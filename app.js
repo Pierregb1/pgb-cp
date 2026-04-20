@@ -1,5 +1,4 @@
 let catalog = [];
-let filteredDocs = [];
 
 const matiereSelect = document.getElementById("matiere");
 const niveauSelect = document.getElementById("niveau");
@@ -10,45 +9,50 @@ const pdfViewer = document.getElementById("pdf-viewer");
 const viewerTitle = document.getElementById("viewer-title");
 const downloadLink = document.getElementById("download-link");
 
-function capitalize(str) {
-  if (!str) return "";
-  return str.charAt(0).toUpperCase() + str.slice(1);
+function normalize(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function displayLabel(str) {
+  const map = {
+    "maths": "Maths",
+    "physique": "Physique",
+    "physique-chimie": "Physique-chimie",
+    "troisieme": "Troisième",
+    "premiere": "Première",
+    "terminale": "Terminale",
+    "superieure": "Supérieure",
+    "cours": "Cours",
+    "exos": "Exercices",
+    "ds": "DS"
+  };
+  return map[str] || (str ? str.charAt(0).toUpperCase() + str.slice(1) : "");
 }
 
 function uniqueValues(items, key, filters = {}) {
   return [...new Set(
     items
       .filter(item =>
-        Object.entries(filters).every(([k, v]) => !v || item[k] === v)
+        Object.entries(filters).every(([k, v]) => !v || normalize(item[k]) === normalize(v))
       )
-      .map(item => item[key])
+      .map(item => normalize(item[key]))
+      .filter(Boolean)
   )].sort();
 }
 
 function fillSelect(select, values, placeholder, selectedValue = "") {
+  const normalizedSelected = normalize(selectedValue);
   select.innerHTML = `<option value="">${placeholder}</option>`;
 
   values.forEach(value => {
     const option = document.createElement("option");
     option.value = value;
-    option.textContent = capitalize(value);
+    option.textContent = displayLabel(value);
     select.appendChild(option);
   });
 
-  if (selectedValue && values.includes(selectedValue)) {
-    select.value = selectedValue;
-  } else {
-    select.value = "";
-  }
-
+  select.value = values.includes(normalizedSelected) ? normalizedSelected : "";
   select.disabled = values.length === 0;
-}
-
-function openPdf(doc) {
-  viewerTitle.textContent = doc.titre;
-  pdfViewer.src = doc.fichier;
-  downloadLink.href = doc.fichier;
-  downloadLink.classList.remove("hidden");
 }
 
 function clearViewer() {
@@ -56,6 +60,13 @@ function clearViewer() {
   pdfViewer.src = "";
   downloadLink.href = "#";
   downloadLink.classList.add("hidden");
+}
+
+function openPdf(doc) {
+  viewerTitle.textContent = doc.titre || "Document";
+  pdfViewer.src = doc.fichier;
+  downloadLink.href = doc.fichier;
+  downloadLink.classList.remove("hidden");
 }
 
 function renderList(docs) {
@@ -72,7 +83,7 @@ function renderList(docs) {
     li.className = "document-item";
     li.innerHTML = `
       <div class="doc-title">${doc.titre}</div>
-      <div class="doc-meta">${capitalize(doc.matiere)} · ${capitalize(doc.niveau)} · ${doc.type.toUpperCase()}</div>
+      <div class="doc-meta">${displayLabel(doc.matiere)} · ${displayLabel(doc.niveau)} · ${displayLabel(doc.type)}</div>
     `;
 
     li.addEventListener("click", () => {
@@ -91,61 +102,59 @@ function renderList(docs) {
 }
 
 function applyFilters() {
-  const matiere = matiereSelect.value;
-  const niveau = niveauSelect.value;
-  const type = typeSelect.value;
-  const search = searchInput.value.trim().toLowerCase();
+  const matiere = normalize(matiereSelect.value);
+  const niveau = normalize(niveauSelect.value);
+  const type = normalize(typeSelect.value);
+  const search = normalize(searchInput.value);
 
-  filteredDocs = catalog.filter(doc => {
+  const docs = catalog.filter(doc => {
     return (
       (!matiere || doc.matiere === matiere) &&
       (!niveau || doc.niveau === niveau) &&
       (!type || doc.type === type) &&
-      (!search || doc.titre.toLowerCase().includes(search))
+      (!search || normalize(doc.titre).includes(search))
     );
   });
 
-  renderList(filteredDocs);
+  renderList(docs);
 }
 
-function updateNiveauxAndTypes(changedField = "") {
-  const selectedMatiere = matiereSelect.value;
-  let selectedNiveau = niveauSelect.value;
-  let selectedType = typeSelect.value;
+function updateFilters() {
+  const matiere = normalize(matiereSelect.value);
+  const niveau = normalize(niveauSelect.value);
+  const currentType = normalize(typeSelect.value);
 
-  const niveaux = uniqueValues(catalog, "niveau", {
-    matiere: selectedMatiere
-  });
-
-  if (!niveaux.includes(selectedNiveau)) {
-    selectedNiveau = "";
-  }
-
-  fillSelect(niveauSelect, niveaux, "-- Choisir --", selectedNiveau);
+  const niveaux = uniqueValues(catalog, "niveau", { matiere });
+  fillSelect(niveauSelect, niveaux, "-- Choisir --", niveau);
 
   const types = uniqueValues(catalog, "type", {
-    matiere: selectedMatiere,
-    niveau: niveauSelect.value
+    matiere,
+    niveau: normalize(niveauSelect.value)
   });
-
-  if (!types.includes(selectedType)) {
-    selectedType = "";
-  }
-
-  fillSelect(typeSelect, types, "-- Choisir --", selectedType);
+  fillSelect(typeSelect, types, "-- Choisir --", currentType);
 
   applyFilters();
 }
 
 async function init() {
   try {
-    const response = await fetch("catalog.json");
-
+    const response = await fetch(`catalog.json?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error(`Impossible de charger catalog.json (${response.status})`);
     }
 
-    catalog = await response.json();
+    const rawCatalog = await response.json();
+
+    catalog = rawCatalog
+      .map(doc => ({
+        ...doc,
+        matiere: normalize(doc.matiere),
+        niveau: normalize(doc.niveau),
+        type: normalize(doc.type),
+        titre: String(doc.titre || "").trim(),
+        fichier: String(doc.fichier || "").trim()
+      }))
+      .filter(doc => doc.matiere && doc.niveau && doc.type && doc.titre && doc.fichier);
 
     if (!Array.isArray(catalog) || catalog.length === 0) {
       documentList.innerHTML = `<li class="document-item">Aucun PDF détecté.</li>`;
@@ -155,25 +164,24 @@ async function init() {
 
     const matieres = uniqueValues(catalog, "matiere");
     fillSelect(matiereSelect, matieres, "-- Choisir --");
-    matiereSelect.disabled = false;
 
     matiereSelect.addEventListener("change", () => {
       niveauSelect.value = "";
       typeSelect.value = "";
-      updateNiveauxAndTypes("matiere");
+      updateFilters();
     });
 
     niveauSelect.addEventListener("change", () => {
       typeSelect.value = "";
-      updateNiveauxAndTypes("niveau");
+      updateFilters();
     });
 
     typeSelect.addEventListener("change", applyFilters);
     searchInput.addEventListener("input", applyFilters);
 
     applyFilters();
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
     documentList.innerHTML = `<li class="document-item">Erreur de chargement de catalog.json.</li>`;
     clearViewer();
   }
