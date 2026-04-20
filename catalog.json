@@ -168,24 +168,24 @@
     "fichier": "pdfs/maths/terminale/cours/cours_gýomýtrie_collýge___term.pdf"
   },
   {
-    "matiere": "physique-chimie",
+    "matiere": "physique",
     "niveau": "terminale",
     "type": "cours",
     "titre": "Cours elec term pgb",
-    "fichier": "pdfs/physique-chimie/terminale/cours/cours_elec_term_pgb.pdf"
+    "fichier": "pdfs/physique/terminale/cours/cours_elec_term_pgb.pdf"
   },
   {
-    "matiere": "physique-chimie",
+    "matiere": "physique",
     "niveau": "terminale",
     "type": "cours",
     "titre": "PROG LYCEE PHYSIQUE PROF 1",
-    "fichier": "pdfs/physique-chimie/terminale/cours/PROG_LYCEE_PHYSIQUE_PROF-1.pdf"
+    "fichier": "pdfs/physique/terminale/cours/PROG_LYCEE_PHYSIQUE_PROF-1.pdf"
   },
   {
-    "matiere": "physique-chimie",
+    "matiere": "physique",
     "niveau": "troisieme",
     "type": "ds",
     "titre": "DS0 physique 3eme",
-    "fichier": "pdfs/physique-chimie/troisieme/ds/DS0_physique_3eme.pdf"
+    "fichier": "pdfs/physique/troisieme/ds/DS0_physique_3eme.pdf"
   }
 ]
