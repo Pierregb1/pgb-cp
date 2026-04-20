@@ -25,7 +25,7 @@ function uniqueValues(items, key, filters = {}) {
   )].sort();
 }
 
-function fillSelect(select, values, placeholder, keepValue = "") {
+function fillSelect(select, values, placeholder, selectedValue = "") {
   select.innerHTML = `<option value="">${placeholder}</option>`;
 
   values.forEach(value => {
@@ -35,8 +35,8 @@ function fillSelect(select, values, placeholder, keepValue = "") {
     select.appendChild(option);
   });
 
-  if (keepValue && values.includes(keepValue)) {
-    select.value = keepValue;
+  if (selectedValue && values.includes(selectedValue)) {
+    select.value = selectedValue;
   } else {
     select.value = "";
   }
@@ -51,15 +51,19 @@ function openPdf(doc) {
   downloadLink.classList.remove("hidden");
 }
 
+function clearViewer() {
+  viewerTitle.textContent = "Aucun document sélectionné";
+  pdfViewer.src = "";
+  downloadLink.href = "#";
+  downloadLink.classList.add("hidden");
+}
+
 function renderList(docs) {
   documentList.innerHTML = "";
 
   if (docs.length === 0) {
     documentList.innerHTML = `<li class="document-item">Aucun document trouvé.</li>`;
-    viewerTitle.textContent = "Aucun document sélectionné";
-    pdfViewer.src = "";
-    downloadLink.href = "#";
-    downloadLink.classList.add("hidden");
+    clearViewer();
     return;
   }
 
@@ -104,21 +108,31 @@ function applyFilters() {
   renderList(filteredDocs);
 }
 
-function updateSelectors() {
-  const currentMatiere = matiereSelect.value;
-  const currentNiveau = niveauSelect.value;
-  const currentType = typeSelect.value;
+function updateNiveauxAndTypes(changedField = "") {
+  const selectedMatiere = matiereSelect.value;
+  let selectedNiveau = niveauSelect.value;
+  let selectedType = typeSelect.value;
 
   const niveaux = uniqueValues(catalog, "niveau", {
-    matiere: currentMatiere
+    matiere: selectedMatiere
   });
-  fillSelect(niveauSelect, niveaux, "-- Choisir --", currentNiveau);
+
+  if (!niveaux.includes(selectedNiveau)) {
+    selectedNiveau = "";
+  }
+
+  fillSelect(niveauSelect, niveaux, "-- Choisir --", selectedNiveau);
 
   const types = uniqueValues(catalog, "type", {
-    matiere: currentMatiere,
+    matiere: selectedMatiere,
     niveau: niveauSelect.value
   });
-  fillSelect(typeSelect, types, "-- Choisir --", currentType);
+
+  if (!types.includes(selectedType)) {
+    selectedType = "";
+  }
+
+  fillSelect(typeSelect, types, "-- Choisir --", selectedType);
 
   applyFilters();
 }
@@ -134,20 +148,34 @@ async function init() {
     catalog = await response.json();
 
     if (!Array.isArray(catalog) || catalog.length === 0) {
-      documentList.innerHTML = `<li class="document-item">Aucun PDF détecté dans catalog.json.</li>`;
+      documentList.innerHTML = `<li class="document-item">Aucun PDF détecté.</li>`;
+      clearViewer();
       return;
     }
 
-    fillSelect(matiereSelect, uniqueValues(catalog, "matiere"), "-- Choisir --");
+    const matieres = uniqueValues(catalog, "matiere");
+    fillSelect(matiereSelect, matieres, "-- Choisir --");
     matiereSelect.disabled = false;
 
-    matiereSelect.addEventListener("change", updateSelectors);
-    niveauSelect.addEventListener("change", updateSelectors);
+    matiereSelect.addEventListener("change", () => {
+      niveauSelect.value = "";
+      typeSelect.value = "";
+      updateNiveauxAndTypes("matiere");
+    });
+
+    niveauSelect.addEventListener("change", () => {
+      typeSelect.value = "";
+      updateNiveauxAndTypes("niveau");
+    });
+
     typeSelect.addEventListener("change", applyFilters);
     searchInput.addEventListener("input", applyFilters);
+
+    applyFilters();
   } catch (error) {
     console.error(error);
     documentList.innerHTML = `<li class="document-item">Erreur de chargement de catalog.json.</li>`;
+    clearViewer();
   }
 }
 
