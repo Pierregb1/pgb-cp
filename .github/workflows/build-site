@@ -1,4 +1,4 @@
-name: Build PDFs and catalog
+name: Build PDFs and catalog from LaTeX
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
           python-version: "3.11"
 
       - name: Build PDFs and catalog
-        run: python scripts/build_site_from_zips.py
+        run: python scripts/build_site_from_latex.py
 
       - name: Commit generated files
         run: |
