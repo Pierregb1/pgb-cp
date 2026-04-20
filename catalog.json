@@ -180,5 +180,12 @@
     "type": "cours",
     "titre": "PROG LYCEE PHYSIQUE PROF 1",
     "fichier": "pdfs/physique-chimie/terminale/cours/PROG_LYCEE_PHYSIQUE_PROF-1.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "troisieme",
+    "type": "ds",
+    "titre": "DS0 physique 3eme",
+    "fichier": "pdfs/physique-chimie/troisieme/ds/DS0_physique_3eme.pdf"
   }
 ]
