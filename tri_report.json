@@ -2,62 +2,137 @@
   {
     "source_inner_zip": "Algèbre lin chap 10 déterminants.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-10-determinants.pdf",
-    "title": "Algèbre lin chap 10 déterminants"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 142.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 20.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-10-determinants.pdf",
+    "title": "Algèbre lin chap 10 déterminants",
+    "subject_scores": {
+      "maths": 142.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 11 red endomorphisme.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "premiere",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 128.0 contre 0.0; niveau: choisi avec score 4.0 contre 2.0; type: choisi avec score 22.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 11 red endomorphisme"
+    "title": "Algèbre lin chap 11 red endomorphisme",
+    "subject_scores": {
+      "maths": 128.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 22.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 12 espaces euclidiens.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "troisieme",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 70.0 contre 0.0; niveau: choisi avec score 4.0 contre 2.0; type: choisi avec score 20.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 12 espaces euclidiens"
+    "title": "Algèbre lin chap 12 espaces euclidiens",
+    "subject_scores": {
+      "maths": 70.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 4.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-13-geometrie-affine-et-euclidienne-du-plan-et-de-l-espace.pdf",
-    "title": "Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 78.0 contre 0.0; niveau: choisi avec score 2.0 contre 0.0; type: choisi avec score 30.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-13-geometrie-affine-et-euclidienne-du-plan-et-de-l-espace.pdf",
+    "title": "Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace",
+    "subject_scores": {
+      "maths": 78.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 30.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 14 Polynomes !.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 186.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 26.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 14 Polynomes !"
+    "title": "Algèbre lin chap 14 Polynomes !",
+    "subject_scores": {
+      "maths": 186.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 26.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 15 valeurs propres vecteurs propres.zip",
@@ -67,9 +142,24 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable",
+    "reason": "matière: choisi avec score 120.0 contre 0.0; niveau: score trop faible (0.0); type: choisi avec score 24.0 contre 0.0",
     "output_pdf": "pdfs/a_verifier/algebre-lin-chap-15-valeurs-propres-vecteurs-propres.pdf",
-    "title": "Algèbre lin chap 15 valeurs propres vecteurs propres"
+    "title": "Algèbre lin chap 15 valeurs propres vecteurs propres",
+    "subject_scores": {
+      "maths": 120.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 24.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 16 diagonalisation.zip",
@@ -79,9 +169,24 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "détection claire; compilation échouée",
+    "reason": "matière: choisi avec score 156.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 20.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 16 diagonalisation"
+    "title": "Algèbre lin chap 16 diagonalisation",
+    "subject_scores": {
+      "maths": 156.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 17 trigonalisation.zip",
@@ -91,153 +196,348 @@
     "is_correction": false,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
+    "reason": "matière: choisi avec score 212.0 contre 0.0; niveau: choisi avec score 48.0 contre 0.0; type: choisi avec score 20.0 contre 0.0",
     "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-17-trigonalisation.pdf",
-    "title": "Algèbre lin chap 17 trigonalisation"
+    "title": "Algèbre lin chap 17 trigonalisation",
+    "subject_scores": {
+      "maths": 212.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 48.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 18 red endo sym.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 146.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 28.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 18 red endo sym"
+    "title": "Algèbre lin chap 18 red endo sym",
+    "subject_scores": {
+      "maths": 146.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 28.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 1Raisonnement et ensembles.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 50.0 contre 0.0; niveau: choisi avec score 8.0 contre 4.0; type: choisi avec score 40.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 1Raisonnement et ensembles"
+    "title": "Algèbre lin chap 1Raisonnement et ensembles",
+    "subject_scores": {
+      "maths": 50.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 0.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 40.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base.zip",
     "detected_subject": "maths",
-    "detected_level": "premiere",
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
-    "output_pdf": "pdfs/maths/premiere/cours/algebre-lin-chap-2-pratique-calculatoire-et-objets-algebriques-de-base.pdf",
-    "title": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base"
+    "reason": "matière: choisi avec score 32.0 contre 0.0; niveau: choisi avec score 6.0 contre 4.0; type: choisi avec score 28.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-2-pratique-calculatoire-et-objets-algebriques-de-base.pdf",
+    "title": "Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base",
+    "subject_scores": {
+      "maths": 32.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 0.0,
+      "superieure": 6.0
+    },
+    "type_scores": {
+      "cours": 28.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 3 Espaces vectoriels et sous-espaces.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-3-espaces-vectoriels-et-sous-espaces.pdf",
-    "title": "Algèbre lin chap 3 Espaces vectoriels et sous espaces"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 188.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 26.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-3-espaces-vectoriels-et-sous-espaces.pdf",
+    "title": "Algèbre lin chap 3 Espaces vectoriels et sous espaces",
+    "subject_scores": {
+      "maths": 188.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 26.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 4 familles libres, génératrices, bases.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-4-familles-libres-generatrices-bases.pdf",
-    "title": "Algèbre lin chap 4 familles libres, génératrices, bases"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 50.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 38.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-4-familles-libres-generatrices-bases.pdf",
+    "title": "Algèbre lin chap 4 familles libres, génératrices, bases",
+    "subject_scores": {
+      "maths": 50.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 38.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 5 EV dim finie.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-5-ev-dim-finie.pdf",
-    "title": "Algèbre lin chap 5 EV dim finie"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 102.0 contre 0.0; niveau: choisi avec score 2.0 contre 0.0; type: choisi avec score 26.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-5-ev-dim-finie.pdf",
+    "title": "Algèbre lin chap 5 EV dim finie",
+    "subject_scores": {
+      "maths": 102.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 26.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 6 syst lin.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-6-syst-lin.pdf",
-    "title": "Algèbre lin chap 6 syst lin"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 38.0 contre 0.0; niveau: choisi avec score 6.0 contre 0.0; type: choisi avec score 28.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-6-syst-lin.pdf",
+    "title": "Algèbre lin chap 6 syst lin",
+    "subject_scores": {
+      "maths": 38.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 6.0
+    },
+    "type_scores": {
+      "cours": 28.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 7 intro calc matr.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; compilation échouée",
+    "reason": "matière: choisi avec score 152.0 contre 0.0; niveau: choisi avec score 2.0 contre 0.0; type: choisi avec score 24.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Algèbre lin chap 7 intro calc matr"
+    "title": "Algèbre lin chap 7 intro calc matr",
+    "subject_scores": {
+      "maths": 152.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 24.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 8 app lin.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-8-app-lin.pdf",
-    "title": "Algèbre lin chap 8 app lin"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 84.0 contre 0.0; niveau: choisi avec score 2.0 contre 0.0; type: choisi avec score 24.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-8-app-lin.pdf",
+    "title": "Algèbre lin chap 8 app lin",
+    "subject_scores": {
+      "maths": 84.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 24.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Algèbre lin chap 9 rang.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "superieure",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable",
-    "output_pdf": "pdfs/a_verifier/algebre-lin-chap-9-rang.pdf",
-    "title": "Algèbre lin chap 9 rang"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 116.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 20.0 contre 0.0",
+    "output_pdf": "pdfs/maths/superieure/cours/algebre-lin-chap-9-rang.pdf",
+    "title": "Algèbre lin chap 9 rang",
+    "subject_scores": {
+      "maths": 116.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Corr TD alg lin chap 1-5.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/corr-td-alg-lin-chap-1-5.pdf",
-    "title": "Corr TD alg lin chap 1 5"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 8.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 76.0 contre 16.0",
+    "output_pdf": "pdfs/maths/superieure/exos/corr-td-alg-lin-chap-1-5.pdf",
+    "title": "Corr TD alg lin chap 1 5",
+    "subject_scores": {
+      "maths": 8.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 16.0,
+      "exos": 76.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Cours analyse fonctionnelle pierre term.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "terminale",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale']; compilation échouée",
+    "reason": "matière: choisi avec score 100.0 contre 0.0; niveau: choisi avec score 16.0 contre 6.0; type: choisi avec score 20.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Cours analyse fonctionnelle pierre term"
+    "title": "Cours analyse fonctionnelle pierre term",
+    "subject_scores": {
+      "maths": 100.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 16.0,
+      "superieure": 6.0
+    },
+    "type_scores": {
+      "cours": 20.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "DM 1 MATH ANALYSE FONCTIONNELLE HARR-.zip",
@@ -247,33 +547,78 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale']; compilation échouée",
+    "reason": "matière: choisi avec score 116.0 contre 0.0; niveau: écart trop faible (8.0 vs 8.0); type: choisi avec score 24.0 contre 6.0; compilation échouée",
     "output_pdf": null,
-    "title": "DM 1 MATH ANALYSE FONCTIONNELLE HARR"
+    "title": "DM 1 MATH ANALYSE FONCTIONNELLE HARR",
+    "subject_scores": {
+      "maths": 116.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 8.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 6.0,
+      "ds": 24.0
+    }
   },
   {
     "source_inner_zip": "DM PHYSIQUE PREMIERE GENERALE.zip",
     "detected_subject": "physique-chimie",
     "detected_level": "premiere",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/dm-physique-premiere-generale.pdf",
-    "title": "DM PHYSIQUE PREMIERE GENERALE"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 32.0 contre 4.0; niveau: choisi avec score 24.0 contre 0.0; type: choisi avec score 33.0 contre 5.0",
+    "output_pdf": "pdfs/physique-chimie/premiere/ds/dm-physique-premiere-generale.pdf",
+    "title": "DM PHYSIQUE PREMIERE GENERALE",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 32.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 24.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 2.0,
+      "exos": 5.0,
+      "ds": 33.0
+    }
   },
   {
     "source_inner_zip": "DM algèbre lin 1 facile +.zip",
     "detected_subject": "maths",
     "detected_level": "superieure",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/dm-algebre-lin-1-facile-corrige.pdf",
-    "title": "DM algèbre lin 1 facile + - corrigé"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 56.0 contre 0.0; niveau: choisi avec score 8.0 contre 0.0; type: choisi avec score 18.0 contre 8.0",
+    "output_pdf": "pdfs/maths/superieure/ds/dm-algebre-lin-1-facile-corrige.pdf",
+    "title": "DM algèbre lin 1 facile + - corrigé",
+    "subject_scores": {
+      "maths": 56.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 8.0,
+      "exos": 8.0,
+      "ds": 18.0
+    }
   },
   {
     "source_inner_zip": "DM ana fonction term corr.zip",
@@ -283,45 +628,105 @@
     "is_correction": true,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
+    "reason": "matière: choisi avec score 84.0 contre 0.0; niveau: choisi avec score 20.0 contre 4.0; type: choisi avec score 20.0 contre 6.0",
     "output_pdf": "pdfs/maths/terminale/ds/dm-ana-fonction-term-corr.pdf",
-    "title": "DM ana fonction term corr"
+    "title": "DM ana fonction term corr",
+    "subject_scores": {
+      "maths": 84.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 20.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 6.0,
+      "ds": 20.0
+    }
   },
   {
     "source_inner_zip": "DM géométrie mid +.zip",
     "detected_subject": "maths",
     "detected_level": null,
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'ds']",
+    "reason": "matière: choisi avec score 36.0 contre 0.0; niveau: score trop faible (0.0); type: choisi avec score 21.0 contre 12.0",
     "output_pdf": "pdfs/a_verifier/dm-geometrie-mid.pdf",
-    "title": "DM géométrie mid +"
+    "title": "DM géométrie mid +",
+    "subject_scores": {
+      "maths": 36.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 12.0,
+      "exos": 2.0,
+      "ds": 21.0
+    }
   },
   {
     "source_inner_zip": "DM phy elec term CORRR.zip",
-    "detected_subject": null,
+    "detected_subject": "physique-chimie",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/dm-phy-elec-term-corrr.pdf",
-    "title": "DM phy elec term CORRR"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 86.0 contre 8.0; niveau: choisi avec score 20.0 contre 4.0; type: choisi avec score 18.0 contre 6.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/ds/dm-phy-elec-term-corrr.pdf",
+    "title": "DM phy elec term CORRR",
+    "subject_scores": {
+      "maths": 8.0,
+      "physique-chimie": 86.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 20.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 6.0,
+      "exos": 2.0,
+      "ds": 18.0
+    }
   },
   {
     "source_inner_zip": "DM physique elec term.zip",
-    "detected_subject": null,
+    "detected_subject": "physique-chimie",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/dm-physique-elec-term.pdf",
-    "title": "DM physique elec term"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 106.0 contre 4.0; niveau: choisi avec score 20.0 contre 4.0; type: choisi avec score 18.0 contre 8.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/ds/dm-physique-elec-term.pdf",
+    "title": "DM physique elec term",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 106.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 20.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 6.0,
+      "exos": 8.0,
+      "ds": 18.0
+    }
   },
   {
     "source_inner_zip": "DM0 Physique.zip",
@@ -331,33 +736,78 @@
     "is_correction": false,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
+    "reason": "matière: choisi avec score 50.0 contre 0.0; niveau: choisi avec score 12.0 contre 0.0; type: choisi avec score 30.0 contre 6.0",
     "output_pdf": "pdfs/physique-chimie/terminale/ds/dm0-physique.pdf",
-    "title": "DM0 Physique"
+    "title": "DM0 Physique",
+    "subject_scores": {
+      "maths": 0.0,
+      "physique-chimie": 50.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 12.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 6.0,
+      "ds": 30.0
+    }
   },
   {
     "source_inner_zip": "DM0 un peu de tout.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": "ds",
+    "detected_type": null,
     "is_correction": false,
-    "confidence": "high",
-    "status": "ok",
-    "reason": "détection claire",
-    "output_pdf": "pdfs/maths/terminale/ds/dm0-un-peu-de-tout.pdf",
-    "title": "DM0 un peu de tout"
+    "confidence": "low",
+    "status": "needs_review",
+    "reason": "matière: choisi avec score 76.0 contre 0.0; niveau: choisi avec score 8.0 contre 6.0; type: écart trop faible (8.0 vs 8.0)",
+    "output_pdf": "pdfs/a_verifier/dm0-un-peu-de-tout.pdf",
+    "title": "DM0 un peu de tout",
+    "subject_scores": {
+      "maths": 76.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 6.0,
+      "terminale": 8.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 8.0,
+      "ds": 8.0
+    }
   },
   {
     "source_inner_zip": "DS COMPLEXE PCSI pgb.zip",
     "detected_subject": "maths",
     "detected_level": "superieure",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']; compilation échouée",
+    "reason": "matière: choisi avec score 52.0 contre 0.0; niveau: choisi avec score 20.0 contre 0.0; type: choisi avec score 27.0 contre 9.0; compilation échouée",
     "output_pdf": null,
-    "title": "DS COMPLEXE PCSI pgb"
+    "title": "DS COMPLEXE PCSI pgb",
+    "subject_scores": {
+      "maths": 52.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 20.0
+    },
+    "type_scores": {
+      "cours": 2.0,
+      "exos": 9.0,
+      "ds": 27.0
+    }
   },
   {
     "source_inner_zip": "DS COMPLEXE PcSI pgb CORR.zip",
@@ -367,33 +817,78 @@
     "is_correction": true,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
+    "reason": "matière: choisi avec score 20.0 contre 0.0; niveau: choisi avec score 16.0 contre 0.0; type: choisi avec score 24.0 contre 2.0",
     "output_pdf": "pdfs/maths/superieure/ds/ds-complexe-pcsi-pgb-corr.pdf",
-    "title": "DS COMPLEXE PcSI pgb CORR"
+    "title": "DS COMPLEXE PcSI pgb CORR",
+    "subject_scores": {
+      "maths": 20.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 16.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 2.0,
+      "ds": 24.0
+    }
   },
   {
     "source_inner_zip": "DS0 math 3eme.zip",
     "detected_subject": "maths",
     "detected_level": "troisieme",
-    "detected_type": "ds",
+    "detected_type": null,
     "is_correction": false,
-    "confidence": "high",
-    "status": "ok",
-    "reason": "détection claire",
-    "output_pdf": "pdfs/maths/troisieme/ds/ds0-math-3eme.pdf",
-    "title": "DS0 math 3eme"
+    "confidence": "low",
+    "status": "needs_review",
+    "reason": "matière: choisi avec score 40.0 contre 0.0; niveau: choisi avec score 12.0 contre 0.0; type: écart trop faible (20.0 vs 20.0)",
+    "output_pdf": "pdfs/a_verifier/ds0-math-3eme.pdf",
+    "title": "DS0 math 3eme",
+    "subject_scores": {
+      "maths": 40.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 12.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 20.0,
+      "ds": 20.0
+    }
   },
   {
     "source_inner_zip": "DS0 physique 3eme.zip",
     "detected_subject": "physique-chimie",
     "detected_level": "troisieme",
-    "detected_type": "ds",
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "high",
     "status": "ok",
-    "reason": "détection claire",
-    "output_pdf": "pdfs/physique-chimie/troisieme/ds/ds0-physique-3eme.pdf",
-    "title": "DS0 physique 3eme"
+    "reason": "matière: choisi avec score 46.0 contre 0.0; niveau: choisi avec score 12.0 contre 0.0; type: choisi avec score 20.0 contre 12.0",
+    "output_pdf": "pdfs/physique-chimie/troisieme/exos/ds0-physique-3eme.pdf",
+    "title": "DS0 physique 3eme",
+    "subject_scores": {
+      "maths": 0.0,
+      "physique-chimie": 46.0
+    },
+    "level_scores": {
+      "troisieme": 12.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 20.0,
+      "ds": 12.0
+    }
   },
   {
     "source_inner_zip": "EXO TERM  MID +.zip",
@@ -403,105 +898,240 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 30.0 contre 0.0; niveau: choisi avec score 28.0 contre 2.0; type: écart trop faible (21.0 vs 21.0); compilation échouée",
     "output_pdf": null,
-    "title": "EXO TERM MID +"
+    "title": "EXO TERM MID +",
+    "subject_scores": {
+      "maths": 30.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 2.0,
+      "terminale": 28.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 21.0,
+      "exos": 21.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Exo TERM ANALYSE FONCTIONNELLE gradient.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 130.0 contre 0.0; niveau: choisi avec score 20.0 contre 10.0; type: choisi avec score 136.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Exo TERM ANALYSE FONCTIONNELLE gradient"
+    "title": "Exo TERM ANALYSE FONCTIONNELLE gradient",
+    "subject_scores": {
+      "maths": 130.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 20.0,
+      "superieure": 10.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 136.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "PROG LYCEE PHYSIQUE PROF.zip",
-    "detected_subject": null,
-    "detected_level": null,
+    "detected_subject": "physique-chimie",
+    "detected_level": "premiere",
     "detected_type": "cours",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; niveau ambigu: ['premiere', 'terminale']; compilation échouée",
+    "reason": "matière: choisi avec score 60.0 contre 12.0; niveau: choisi avec score 14.0 contre 8.0; type: choisi avec score 16.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "PROG LYCEE PHYSIQUE PROF"
+    "title": "PROG LYCEE PHYSIQUE PROF",
+    "subject_scores": {
+      "maths": 12.0,
+      "physique-chimie": 60.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 14.0,
+      "terminale": 8.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 16.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "TD ALG LIN CHAP 4 BASES.zip",
     "detected_subject": "maths",
     "detected_level": "premiere",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/td-alg-lin-chap-4-bases.pdf",
-    "title": "TD ALG LIN CHAP 4 BASES"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 34.0 contre 0.0; niveau: choisi avec score 8.0 contre 4.0; type: choisi avec score 59.0 contre 26.0",
+    "output_pdf": "pdfs/maths/premiere/exos/td-alg-lin-chap-4-bases.pdf",
+    "title": "TD ALG LIN CHAP 4 BASES",
+    "subject_scores": {
+      "maths": 34.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 8.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 26.0,
+      "exos": 59.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "TD algèbre lin chap1 gradient corr.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/td-algebre-lin-chap1-gradient-corr.pdf",
-    "title": "TD algèbre lin chap1 gradient corr"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 20.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 44.0 contre 7.0",
+    "output_pdf": "pdfs/maths/superieure/exos/td-algebre-lin-chap1-gradient-corr.pdf",
+    "title": "TD algèbre lin chap1 gradient corr",
+    "subject_scores": {
+      "maths": 20.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 7.0,
+      "exos": 44.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "TD algèbre lin chap1 gradient.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 20.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 54.0 contre 10.0; compilation échouée",
     "output_pdf": null,
-    "title": "TD algèbre lin chap1 gradient"
+    "title": "TD algèbre lin chap1 gradient",
+    "subject_scores": {
+      "maths": 20.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 10.0,
+      "exos": 54.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Td alg lin chap 2 pratiques calculatoire.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 16.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 62.0 contre 22.0; compilation échouée",
     "output_pdf": null,
-    "title": "Td alg lin chap 2 pratiques calculatoire"
+    "title": "Td alg lin chap 2 pratiques calculatoire",
+    "subject_scores": {
+      "maths": 16.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 22.0,
+      "exos": 62.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Td alg lin chap 3 ev et sev.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/td-alg-lin-chap-3-ev-et-sev.pdf",
-    "title": "Td alg lin chap 3 ev et sev"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 132.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 60.0 contre 22.0",
+    "output_pdf": "pdfs/maths/superieure/exos/td-alg-lin-chap-3-ev-et-sev.pdf",
+    "title": "Td alg lin chap 3 ev et sev",
+    "subject_scores": {
+      "maths": 132.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 4.0
+    },
+    "type_scores": {
+      "cours": 22.0,
+      "exos": 60.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Td alg lin chap 5 dim.zip",
     "detected_subject": "maths",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/td-alg-lin-chap-5-dim.pdf",
-    "title": "Td alg lin chap 5 dim"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 60.0 contre 0.0; niveau: choisi avec score 6.0 contre 0.0; type: choisi avec score 97.0 contre 11.0",
+    "output_pdf": "pdfs/maths/superieure/exos/td-alg-lin-chap-5-dim.pdf",
+    "title": "Td alg lin chap 5 dim",
+    "subject_scores": {
+      "maths": 60.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 6.0
+    },
+    "type_scores": {
+      "cours": 11.0,
+      "exos": 97.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Td complexe pierre gradient corr.zip",
@@ -511,21 +1141,51 @@
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale', 'superieure']",
+    "reason": "matière: choisi avec score 12.0 contre 0.0; niveau: écart trop faible (8.0 vs 8.0); type: choisi avec score 56.0 contre 0.0",
     "output_pdf": "pdfs/a_verifier/td-complexe-pierre-gradient-corr.pdf",
-    "title": "Td complexe pierre gradient corr"
+    "title": "Td complexe pierre gradient corr",
+    "subject_scores": {
+      "maths": 12.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 8.0,
+      "terminale": 8.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 56.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "Td complexe pierre gradient.zip",
     "detected_subject": "maths",
     "detected_level": null,
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale', 'superieure']; type ambigu: ['cours', 'exos']",
+    "reason": "matière: choisi avec score 16.0 contre 0.0; niveau: écart trop faible (8.0 vs 8.0); type: choisi avec score 86.0 contre 3.0",
     "output_pdf": "pdfs/a_verifier/td-complexe-pierre-gradient.pdf",
-    "title": "Td complexe pierre gradient"
+    "title": "Td complexe pierre gradient",
+    "subject_scores": {
+      "maths": 16.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 8.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 3.0,
+      "exos": 86.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "colle 1 hugo maths.zip",
@@ -533,71 +1193,161 @@
     "detected_level": "terminale",
     "detected_type": "exos",
     "is_correction": false,
-    "confidence": "high",
+    "confidence": "medium",
     "status": "ok",
-    "reason": "détection claire",
+    "reason": "matière: choisi avec score 28.0 contre 0.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 20.0 contre 4.0",
     "output_pdf": "pdfs/maths/terminale/exos/colle-1-hugo-maths.pdf",
-    "title": "Colle 1 hugo maths"
+    "title": "Colle 1 hugo maths",
+    "subject_scores": {
+      "maths": 28.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 4.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 4.0,
+      "exos": 20.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "colle elec term.zip",
     "detected_subject": "physique-chimie",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 118.0 contre 4.0; niveau: choisi avec score 20.0 contre 4.0; type: choisi avec score 32.0 contre 8.0; compilation échouée",
     "output_pdf": null,
-    "title": "Colle elec term - corrigé"
+    "title": "Colle elec term - corrigé",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 118.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 20.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 8.0,
+      "exos": 32.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "corr DM géométrie mid +.zip",
     "detected_subject": "maths",
     "detected_level": null,
-    "detected_type": null,
-    "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau introuvable; type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/corr-dm-geometrie-mid.pdf",
-    "title": "Corr DM géométrie mid +"
-  },
-  {
-    "source_inner_zip": "corr DM0 physique.zip",
-    "detected_subject": null,
-    "detected_level": "terminale",
     "detected_type": "ds",
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']",
-    "output_pdf": "pdfs/a_verifier/corr-dm0-physique.pdf",
-    "title": "Corr DM0 physique"
+    "reason": "matière: choisi avec score 34.0 contre 0.0; niveau: score trop faible (0.0); type: choisi avec score 19.0 contre 2.0",
+    "output_pdf": "pdfs/a_verifier/corr-dm-geometrie-mid.pdf",
+    "title": "Corr DM géométrie mid +",
+    "subject_scores": {
+      "maths": 34.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 2.0,
+      "ds": 19.0
+    }
+  },
+  {
+    "source_inner_zip": "corr DM0 physique.zip",
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "exos",
+    "is_correction": true,
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 44.0 contre 4.0; niveau: choisi avec score 4.0 contre 0.0; type: choisi avec score 16.0 contre 6.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/exos/corr-dm0-physique.pdf",
+    "title": "Corr DM0 physique",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 44.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 4.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 16.0,
+      "ds": 6.0
+    }
   },
   {
     "source_inner_zip": "corr DM1 math analyse fonctionnelle HARR-.zip",
     "detected_subject": "maths",
-    "detected_level": "terminale",
+    "detected_level": "superieure",
     "detected_type": null,
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
+    "reason": "matière: choisi avec score 52.0 contre 0.0; niveau: choisi avec score 10.0 contre 8.0; type: écart trop faible (9.0 vs 9.0)",
     "output_pdf": "pdfs/a_verifier/corr-dm1-math-analyse-fonctionnelle-harr.pdf",
-    "title": "Corr DM1 math analyse fonctionnelle HARR"
+    "title": "Corr DM1 math analyse fonctionnelle HARR",
+    "subject_scores": {
+      "maths": 52.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 8.0,
+      "superieure": 10.0
+    },
+    "type_scores": {
+      "cours": 9.0,
+      "exos": 1.0,
+      "ds": 9.0
+    }
   },
   {
     "source_inner_zip": "corrigé exo term mid +.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 44.0 contre 0.0; niveau: choisi avec score 20.0 contre 2.0; type: choisi avec score 19.0 contre 3.0; compilation échouée",
     "output_pdf": null,
-    "title": "Corrigé exo term mid +"
+    "title": "Corrigé exo term mid +",
+    "subject_scores": {
+      "maths": 44.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 2.0,
+      "terminale": 20.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 3.0,
+      "exos": 19.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "cours complexe pierre.zip",
@@ -607,9 +1357,24 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale', 'superieure']",
-    "output_pdf": "pdfs/a_verifier/cours-complexe-pierre.pdf",
-    "title": "Cours complexe pierre"
+    "reason": "matière: choisi avec score 36.0 contre 0.0; niveau: écart trop faible (8.0 vs 8.0); type: choisi avec score 30.0 contre 0.0",
+    "output_pdf": "pdfs/a_verifier/textbf-cours-complet-sur-les-nombres-complexes.pdf",
+    "title": "\\textbf{Cours complet sur les nombres complexes",
+    "subject_scores": {
+      "maths": 36.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 8.0,
+      "terminale": 8.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 30.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "cours elec term pgb.zip",
@@ -619,33 +1384,78 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "détection claire; compilation échouée",
+    "reason": "matière: choisi avec score 120.0 contre 0.0; niveau: choisi avec score 24.0 contre 6.0; type: choisi avec score 24.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Cours elec term pgb"
+    "title": "Cours elec term pgb",
+    "subject_scores": {
+      "maths": 0.0,
+      "physique-chimie": 120.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 6.0,
+      "terminale": 24.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 24.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "cours géométrie collège-> term.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "terminale",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau ambigu: ['troisieme', 'premiere', 'terminale']",
-    "output_pdf": "pdfs/a_verifier/cours-geometrie-college-term.pdf",
-    "title": "Cours géométrie collège > term"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 68.0 contre 0.0; niveau: choisi avec score 38.0 contre 10.0; type: choisi avec score 40.0 contre 0.0",
+    "output_pdf": "pdfs/maths/terminale/cours/textbf-cours-complet-de-geometrie-jusqu-a-la-terminale.pdf",
+    "title": "\\textbf{Cours complet de géométrie jusqu'à la terminale",
+    "subject_scores": {
+      "maths": 68.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 10.0,
+      "premiere": 8.0,
+      "terminale": 38.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 40.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "cours physiqechimie première.zip",
     "detected_subject": "physique-chimie",
-    "detected_level": null,
+    "detected_level": "premiere",
     "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau ambigu: ['premiere', 'terminale']",
-    "output_pdf": "pdfs/a_verifier/cours-physiqechimie-premiere.pdf",
-    "title": "Cours physiqechimie première"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 72.0 contre 0.0; niveau: choisi avec score 24.0 contre 8.0; type: choisi avec score 30.0 contre 0.0",
+    "output_pdf": "pdfs/physique-chimie/premiere/cours/cours-physiqechimie-premiere.pdf",
+    "title": "Cours physiqechimie première",
+    "subject_scores": {
+      "maths": 0.0,
+      "physique-chimie": 72.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 24.0,
+      "terminale": 8.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 30.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "cours spectro cohesion (chimie) prem spé.zip",
@@ -655,152 +1465,347 @@
     "is_correction": false,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "détection claire; compilation échouée",
+    "reason": "matière: choisi avec score 118.0 contre 4.0; niveau: choisi avec score 10.0 contre 0.0; type: choisi avec score 28.0 contre 0.0; compilation échouée",
     "output_pdf": null,
-    "title": "Cours spectro cohesion (chimie) prem spé"
+    "title": "Cours spectro cohesion (chimie) prem spé",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 118.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 10.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 28.0,
+      "exos": 0.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "dm math term ana fonct.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "ds",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/dm-math-term-ana-fonct.pdf",
-    "title": "Dm math term ana fonct"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 86.0 contre 0.0; niveau: choisi avec score 22.0 contre 4.0; type: choisi avec score 19.0 contre 13.0",
+    "output_pdf": "pdfs/maths/terminale/ds/dm-math-term-ana-fonct.pdf",
+    "title": "Dm math term ana fonct",
+    "subject_scores": {
+      "maths": 86.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 22.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 2.0,
+      "exos": 13.0,
+      "ds": 19.0
+    }
   },
   {
     "source_inner_zip": "ds blanc.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['exos', 'ds']",
-    "output_pdf": "pdfs/a_verifier/ds-blanc.pdf",
-    "title": "Ds blanc"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 28.0 contre 0.0; niveau: choisi avec score 10.0 contre 0.0; type: choisi avec score 26.0 contre 18.0",
+    "output_pdf": "pdfs/maths/terminale/exos/ds-blanc.pdf",
+    "title": "Ds blanc",
+    "subject_scores": {
+      "maths": 28.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 10.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 26.0,
+      "ds": 18.0
+    }
   },
   {
     "source_inner_zip": "exo colle complexe term.zip",
     "detected_subject": "maths",
-    "detected_level": null,
+    "detected_level": "terminale",
     "detected_type": "exos",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau ambigu: ['terminale', 'superieure']",
-    "output_pdf": "pdfs/a_verifier/exo-colle-complexe-term-corrige.pdf",
-    "title": "Exo colle complexe term - corrigé"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 16.0 contre 2.0; niveau: choisi avec score 42.0 contre 34.0; type: choisi avec score 43.0 contre 0.0",
+    "output_pdf": "pdfs/maths/terminale/exos/huge-exercices-de-colles-sur-les-nombres-complexes-0-5em-large-niveau-terminale-vers-prepa-0-3em-large-avec-corriges-detailles.pdf",
+    "title": "\\Huge Exercices de colles sur les nombres complexes\\\\[0.5em] \\Large Niveau Terminale vers Prépa\\\\[0.3em] \\large Avec corrigés détaillés",
+    "subject_scores": {
+      "maths": 16.0,
+      "physique-chimie": 2.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 42.0,
+      "superieure": 34.0
+    },
+    "type_scores": {
+      "cours": 0.0,
+      "exos": 43.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "exo physique term.zip",
     "detected_subject": "physique-chimie",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": true,
     "confidence": "low",
     "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']; compilation échouée",
+    "reason": "matière: choisi avec score 98.0 contre 0.0; niveau: choisi avec score 24.0 contre 6.0; type: choisi avec score 44.0 contre 11.0; compilation échouée",
     "output_pdf": null,
-    "title": "Exo physique term - corrigé"
+    "title": "Exo physique term - corrigé",
+    "subject_scores": {
+      "maths": 0.0,
+      "physique-chimie": 98.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 6.0,
+      "terminale": 24.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 11.0,
+      "exos": 44.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "exo prem phychim.zip",
     "detected_subject": "physique-chimie",
     "detected_level": "premiere",
-    "detected_type": null,
-    "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/exo-prem-phychim-corrige.pdf",
-    "title": "Exo prem phychim - corrigé"
+    "detected_type": "exos",
+    "is_correction": false,
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 46.0 contre 16.0; niveau: choisi avec score 20.0 contre 0.0; type: choisi avec score 40.0 contre 9.0",
+    "output_pdf": "pdfs/physique-chimie/premiere/exos/exo-prem-phychim.pdf",
+    "title": "Exo prem phychim",
+    "subject_scores": {
+      "maths": 16.0,
+      "physique-chimie": 46.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 20.0,
+      "terminale": 0.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 9.0,
+      "exos": 40.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "exo prem specto coh.zip",
-    "detected_subject": null,
+    "detected_subject": "physique-chimie",
     "detected_level": "premiere",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; type ambigu: ['cours', 'exos']",
-    "output_pdf": "pdfs/a_verifier/exo-prem-specto-coh-corrige.pdf",
-    "title": "Exo prem specto coh - corrigé"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 76.0 contre 8.0; niveau: choisi avec score 4.0 contre 2.0; type: choisi avec score 20.0 contre 7.0",
+    "output_pdf": "pdfs/physique-chimie/premiere/exos/exo-prem-specto-coh-corrige.pdf",
+    "title": "Exo prem specto coh - corrigé",
+    "subject_scores": {
+      "maths": 8.0,
+      "physique-chimie": 76.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 0.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 7.0,
+      "exos": 20.0,
+      "ds": 0.0
+    }
   },
   {
     "source_inner_zip": "exo temr physique*chimie gradient.zip",
     "detected_subject": "physique-chimie",
-    "detected_level": null,
-    "detected_type": null,
+    "detected_level": "terminale",
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "niveau ambigu: ['terminale', 'superieure']; type ambigu: ['cours', 'exos', 'ds']",
-    "output_pdf": "pdfs/a_verifier/exo-temr-physique-chimie-gradient.pdf",
-    "title": "Exo temr physique*chimie gradient"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 78.0 contre 8.0; niveau: choisi avec score 16.0 contre 8.0; type: choisi avec score 42.0 contre 6.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/exos/exo-temr-physique-chimie-gradient.pdf",
+    "title": "Exo temr physique*chimie gradient",
+    "subject_scores": {
+      "maths": 8.0,
+      "physique-chimie": 78.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 0.0,
+      "terminale": 16.0,
+      "superieure": 8.0
+    },
+    "type_scores": {
+      "cours": 6.0,
+      "exos": 42.0,
+      "ds": 6.0
+    }
   },
   {
     "source_inner_zip": "polytech math corr.zip",
     "detected_subject": "maths",
-    "detected_level": "terminale",
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "ds",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/polytech-math-corr.pdf",
-    "title": "Polytech math corr"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 50.0 contre 0.0; niveau: choisi avec score 44.0 contre 8.0; type: choisi avec score 6.0 contre 4.0",
+    "output_pdf": "pdfs/maths/superieure/ds/polytech-math-corr.pdf",
+    "title": "Polytech math corr",
+    "subject_scores": {
+      "maths": 50.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 4.0,
+      "terminale": 8.0,
+      "superieure": 44.0
+    },
+    "type_scores": {
+      "cours": 4.0,
+      "exos": 2.0,
+      "ds": 6.0
+    }
   },
   {
     "source_inner_zip": "polytech math.zip",
     "detected_subject": "maths",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "exos",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/polytech-math.pdf",
-    "title": "Polytech math"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 84.0 contre 0.0; niveau: choisi avec score 8.0 contre 6.0; type: choisi avec score 16.0 contre 15.0",
+    "output_pdf": "pdfs/maths/terminale/exos/polytech-math.pdf",
+    "title": "Polytech math",
+    "subject_scores": {
+      "maths": 84.0,
+      "physique-chimie": 0.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 6.0,
+      "terminale": 8.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 9.0,
+      "exos": 16.0,
+      "ds": 15.0
+    }
   },
   {
     "source_inner_zip": "polytech phy corr.zip",
     "detected_subject": "physique-chimie",
-    "detected_level": "terminale",
-    "detected_type": null,
+    "detected_level": "superieure",
+    "detected_type": "ds",
     "is_correction": true,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/polytech-phy-corr.pdf",
-    "title": "Polytech phy corr"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 58.0 contre 4.0; niveau: choisi avec score 6.0 contre 4.0; type: choisi avec score 9.0 contre 8.0",
+    "output_pdf": "pdfs/physique-chimie/superieure/ds/polytech-phy-corr.pdf",
+    "title": "Polytech phy corr",
+    "subject_scores": {
+      "maths": 4.0,
+      "physique-chimie": 58.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 2.0,
+      "terminale": 4.0,
+      "superieure": 6.0
+    },
+    "type_scores": {
+      "cours": 6.0,
+      "exos": 8.0,
+      "ds": 9.0
+    }
   },
   {
     "source_inner_zip": "polytech phy.zip",
-    "detected_subject": null,
+    "detected_subject": "physique-chimie",
     "detected_level": "terminale",
-    "detected_type": null,
+    "detected_type": "cours",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/polytech-phy.pdf",
-    "title": "Polytech phy"
+    "confidence": "medium",
+    "status": "ok",
+    "reason": "matière: choisi avec score 48.0 contre 14.0; niveau: choisi avec score 4.0 contre 2.0; type: choisi avec score 19.0 contre 15.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/cours/polytech-phy.pdf",
+    "title": "Polytech phy",
+    "subject_scores": {
+      "maths": 14.0,
+      "physique-chimie": 48.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 2.0,
+      "terminale": 4.0,
+      "superieure": 2.0
+    },
+    "type_scores": {
+      "cours": 19.0,
+      "exos": 12.0,
+      "ds": 15.0
+    }
   },
   {
     "source_inner_zip": "type bac prem coh spectro.zip",
-    "detected_subject": null,
-    "detected_level": null,
-    "detected_type": null,
+    "detected_subject": "physique-chimie",
+    "detected_level": "terminale",
+    "detected_type": "ds",
     "is_correction": false,
-    "confidence": "low",
-    "status": "needs_review",
-    "reason": "matière ambiguë: ['maths', 'physique-chimie']; niveau ambigu: ['premiere', 'terminale']; type ambigu: ['cours', 'ds']",
-    "output_pdf": "pdfs/a_verifier/type-bac-prem-coh-spectro.pdf",
-    "title": "Type bac prem coh spectro"
+    "confidence": "high",
+    "status": "ok",
+    "reason": "matière: choisi avec score 72.0 contre 12.0; niveau: choisi avec score 8.0 contre 6.0; type: choisi avec score 9.0 contre 7.0",
+    "output_pdf": "pdfs/physique-chimie/terminale/ds/type-bac-prem-coh-spectro.pdf",
+    "title": "Type bac prem coh spectro",
+    "subject_scores": {
+      "maths": 12.0,
+      "physique-chimie": 72.0
+    },
+    "level_scores": {
+      "troisieme": 0.0,
+      "premiere": 6.0,
+      "terminale": 8.0,
+      "superieure": 0.0
+    },
+    "type_scores": {
+      "cours": 4.0,
+      "exos": 7.0,
+      "ds": 9.0
+    }
   }
 ]
