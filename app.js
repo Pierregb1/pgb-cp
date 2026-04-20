@@ -10,28 +10,45 @@ const pdfViewer = document.getElementById("pdf-viewer");
 const viewerTitle = document.getElementById("viewer-title");
 const downloadLink = document.getElementById("download-link");
 
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function uniqueValues(items, key, filters = {}) {
   return [...new Set(
     items
-      .filter(item => Object.entries(filters).every(([k, v]) => !v || item[k] === v))
+      .filter(item =>
+        Object.entries(filters).every(([k, v]) => !v || item[k] === v)
+      )
       .map(item => item[key])
   )].sort();
 }
 
-function fillSelect(select, values, placeholder) {
+function fillSelect(select, values, placeholder, keepValue = "") {
   select.innerHTML = `<option value="">${placeholder}</option>`;
+
   values.forEach(value => {
     const option = document.createElement("option");
     option.value = value;
     option.textContent = capitalize(value);
     select.appendChild(option);
   });
+
+  if (keepValue && values.includes(keepValue)) {
+    select.value = keepValue;
+  } else {
+    select.value = "";
+  }
+
   select.disabled = values.length === 0;
 }
 
-function capitalize(str) {
-  if (!str) return "";
-  return str.charAt(0).toUpperCase() + str.slice(1);
+function openPdf(doc) {
+  viewerTitle.textContent = doc.titre;
+  pdfViewer.src = doc.fichier;
+  downloadLink.href = doc.fichier;
+  downloadLink.classList.remove("hidden");
 }
 
 function renderList(docs) {
@@ -39,6 +56,10 @@ function renderList(docs) {
 
   if (docs.length === 0) {
     documentList.innerHTML = `<li class="document-item">Aucun document trouvé.</li>`;
+    viewerTitle.textContent = "Aucun document sélectionné";
+    pdfViewer.src = "";
+    downloadLink.href = "#";
+    downloadLink.classList.add("hidden");
     return;
   }
 
@@ -56,19 +77,13 @@ function renderList(docs) {
       openPdf(doc);
     });
 
-    if (index === 0) {
-      setTimeout(() => li.click(), 0);
-    }
-
     documentList.appendChild(li);
-  });
-}
 
-function openPdf(doc) {
-  viewerTitle.textContent = doc.titre;
-  pdfViewer.src = doc.fichier;
-  downloadLink.href = doc.fichier;
-  downloadLink.classList.remove("hidden");
+    if (index === 0) {
+      li.classList.add("active");
+      openPdf(doc);
+    }
+  });
 }
 
 function applyFilters() {
@@ -90,42 +105,50 @@ function applyFilters() {
 }
 
 function updateSelectors() {
-  const matiere = matiereSelect.value;
-  const niveau = niveauSelect.value;
+  const currentMatiere = matiereSelect.value;
+  const currentNiveau = niveauSelect.value;
+  const currentType = typeSelect.value;
 
-  fillSelect(
-    niveauSelect,
-    uniqueValues(catalog, "niveau", { matiere }),
-    "-- Choisir --"
-  );
+  const niveaux = uniqueValues(catalog, "niveau", {
+    matiere: currentMatiere
+  });
+  fillSelect(niveauSelect, niveaux, "-- Choisir --", currentNiveau);
 
-  if (niveau && !uniqueValues(catalog, "niveau", { matiere }).includes(niveau)) {
-    niveauSelect.value = "";
-  }
-
-  fillSelect(
-    typeSelect,
-    uniqueValues(catalog, "type", { matiere, niveau: niveauSelect.value }),
-    "-- Choisir --"
-  );
-
-  if (!uniqueValues(catalog, "type", { matiere, niveau: niveauSelect.value }).includes(typeSelect.value)) {
-    typeSelect.value = "";
-  }
+  const types = uniqueValues(catalog, "type", {
+    matiere: currentMatiere,
+    niveau: niveauSelect.value
+  });
+  fillSelect(typeSelect, types, "-- Choisir --", currentType);
 
   applyFilters();
 }
 
 async function init() {
-  const response = await fetch("catalog.json");
-  catalog = await response.json();
+  try {
+    const response = await fetch("catalog.json");
 
-  fillSelect(matiereSelect, uniqueValues(catalog, "matiere"), "-- Choisir --");
+    if (!response.ok) {
+      throw new Error(`Impossible de charger catalog.json (${response.status})`);
+    }
 
-  matiereSelect.addEventListener("change", updateSelectors);
-  niveauSelect.addEventListener("change", updateSelectors);
-  typeSelect.addEventListener("change", applyFilters);
-  searchInput.addEventListener("input", applyFilters);
+    catalog = await response.json();
+
+    if (!Array.isArray(catalog) || catalog.length === 0) {
+      documentList.innerHTML = `<li class="document-item">Aucun PDF détecté dans catalog.json.</li>`;
+      return;
+    }
+
+    fillSelect(matiereSelect, uniqueValues(catalog, "matiere"), "-- Choisir --");
+    matiereSelect.disabled = false;
+
+    matiereSelect.addEventListener("change", updateSelectors);
+    niveauSelect.addEventListener("change", updateSelectors);
+    typeSelect.addEventListener("change", applyFilters);
+    searchInput.addEventListener("input", applyFilters);
+  } catch (error) {
+    console.error(error);
+    documentList.innerHTML = `<li class="document-item">Erreur de chargement de catalog.json.</li>`;
+  }
 }
 
 init();
