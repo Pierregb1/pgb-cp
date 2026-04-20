@@ -1,0 +1,170 @@
+[
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algèbre lin chap 18 red endo sym",
+    "fichier": "pdfs/maths/superieure/cours/Algèbre_lin_chap_18_red_endo_sym.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algèbre lin chap 1Raisonnement et ensembles",
+    "fichier": "pdfs/maths/superieure/cours/Algèbre_lin_chap_1Raisonnement_et_ensembles.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algèbre lin chap 6 syst lin",
+    "fichier": "pdfs/maths/superieure/cours/Algèbre_lin_chap_6_syst_lin.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 10 dýterminants",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_10_dýterminants.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 11 red endomorphisme",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_11_red_endomorphisme.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 12 espaces euclidiens",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_12_espaces_euclidiens.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 13 Gýomýtrie affine et euclidienne du plan et de l espace",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_13_Gýomýtrie_affine_et_euclidienne_du_plan_et_de_l_espace.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 14 Polynomes  ",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_14_Polynomes__.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 15 valeurs propres vecteurs propres",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_15_valeurs_propres_vecteurs_propres.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 16 diagonalisation",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_16_diagonalisation.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 17 trigonalisation",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_17_trigonalisation.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 2 Pratique calculatoire et objets algýbriques de base",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_2_Pratique_calculatoire_et_objets_algýbriques_de_base.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 3 Espaces vectoriels et sous espaces",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_3_Espaces_vectoriels_et_sous_espaces.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 4 familles libres  gýnýratrices  bases",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_4_familles_libres__gýnýratrices__bases.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 5 EV dim finie",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_5_EV_dim_finie.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 6 syst lin",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_6_syst_lin.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 7 intro calc matr",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_7_intro_calc_matr.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 8 app lin",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_8_app_lin.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "cours",
+    "titre": "Algýbre lin chap 9 rang",
+    "fichier": "pdfs/maths/superieure/cours/Algýbre_lin_chap_9_rang.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "ds",
+    "titre": "DM algýbre lin 1 facile  ",
+    "fichier": "pdfs/maths/superieure/ds/DM_algýbre_lin_1_facile__.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "ds",
+    "titre": "DS COMPLEXE PCSI pgb 5",
+    "fichier": "pdfs/maths/superieure/ds/DS_COMPLEXE_PCSI_pgb-5.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "Cours analyse fonctionnelle pierre term 1",
+    "fichier": "pdfs/maths/terminale/cours/Cours_analyse_fonctionnelle_pierre_term-1.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "Cours complexe pierre 2",
+    "fichier": "pdfs/maths/terminale/cours/cours_complexe_pierre-2.pdf"
+  },
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "Cours gýomýtrie collýge   term",
+    "fichier": "pdfs/maths/terminale/cours/cours_gýomýtrie_collýge___term.pdf"
+  }
+]
