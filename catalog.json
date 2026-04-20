@@ -166,5 +166,19 @@
     "type": "cours",
     "titre": "Cours gýomýtrie collýge   term",
     "fichier": "pdfs/maths/terminale/cours/cours_gýomýtrie_collýge___term.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "Cours elec term pgb",
+    "fichier": "pdfs/physique-chimie/terminale/cours/cours_elec_term_pgb.pdf"
+  },
+  {
+    "matiere": "physique-chimie",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "PROG LYCEE PHYSIQUE PROF 1",
+    "fichier": "pdfs/physique-chimie/terminale/cours/PROG_LYCEE_PHYSIQUE_PROF-1.pdf"
   }
 ]
