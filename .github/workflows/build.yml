@@ -1,0 +1,65 @@
+name: Build Documents
+
+on:
+  push:
+    paths:
+      - 'uploads/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Build PDFs + JSON
+        run: |
+          mkdir -p docs data
+          echo "[" > data/documents.json
+          first=1
+
+          find uploads -type d | while read dir; do
+            if [ -f "$dir/main.tex" ]; then
+
+              name=$(basename "$dir")
+
+              cd "$dir"
+              pdflatex -interaction=nonstopmode main.tex || true
+              pdflatex -interaction=nonstopmode main.tex || true
+              cd -
+
+              if [ -f "$dir/main.pdf" ]; then
+                safe=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
+
+                out="docs"
+                mkdir -p "$out"
+                cp "$dir/main.pdf" "$out/$safe.pdf"
+
+                if [ $first -eq 0 ]; then echo "," >> data/documents.json; fi
+                first=0
+
+                echo "{
+                  \"titre\": \"$name\",
+                  \"fichier\": \"$out/$safe.pdf\"
+                }" >> data/documents.json
+              fi
+            fi
+          done
+
+          echo "]" >> data/documents.json
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs data/documents.json
+          git commit -m "auto build" || echo "no change"
+          git push

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plateforme Maths</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="login"></div>
+
+<div id="app" style="display:none">
+
+<header>
+<h1>📚 Plateforme Maths / Physique</h1>
+</header>
+
+<section class="grid">
+
+<div class="card">
+<h2>👨‍🔬 Mathématicien de la semaine</h2>
+<div id="math-week"></div>
+</div>
+
+<div class="card">
+<h2>🧠 Problème de la semaine</h2>
+<p id="problem"></p>
+<button onclick="toggleSolution()">Voir correction</button>
+<p id="solution" class="hidden"></p>
+</div>
+
+</section>
+
+<h2>📂 Documents</h2>
+
+<input type="text" id="search" placeholder="Rechercher...">
+
+<div id="docs"></div>
+
+<iframe id="viewer"></iframe>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
