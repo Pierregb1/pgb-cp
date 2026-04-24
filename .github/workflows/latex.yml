@@ -1,72 +1,41 @@
-- name: Build PDFs + Catalog
-  run: |
-    mkdir -p pdfs
-    mkdir -p data
+name: Build PDFs
 
-    echo "[" > data/catalog.json
-    first=1
+on:
+  push:
+    paths:
+      - 'latex/**'
 
-    # 🔥 parcours robuste (gère espaces)
-    find latex -mindepth 1 -maxdepth 1 -type d | while read dir; do
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      if [ -f "$dir/main.tex" ]; then
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-        name=$(basename "$dir")
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base
 
-        echo "Compiling $name"
+      - name: Build PDFs
+        run: |
+          mkdir -p pdfs
 
-        cd "$dir"
-        pdflatex -interaction=nonstopmode main.tex
-        cd -
+          for dir in latex/*; do
+            if [ -f "$dir/main.tex" ]; then
+              cd "$dir"
+              pdflatex main.tex
+              cd -
+              name=$(basename "$dir")
+              cp "$dir/main.pdf" "pdfs/$name.pdf"
+            fi
+          done
 
-        cp "$dir/main.pdf" "pdfs/$name.pdf"
-
-        # 🔥 NORMALISATION (clé du tri)
-        lower=$(echo "$name" \
-          | tr '[:upper:]' '[:lower:]' \
-          | tr ' ' '_' \
-          | sed 's/[éèê]/e/g' \
-          | sed 's/[àâ]/a/g' \
-          | sed 's/[îï]/i/g')
-
-        # =========================
-        # 🔥 TRI AMÉLIORÉ
-        # =========================
-
-        # MATIÈRE
-        matiere="math"
-        [[ "$lower" == *phys* || "$lower" == *meca* || "$lower" == *optique* ]] && matiere="physique"
-
-        # NIVEAU
-        niveau="autre"
-        [[ "$lower" == *trois* || "$lower" == *3e* ]] && niveau="troisième"
-        [[ "$lower" == *prem* || "$lower" == *1ere* ]] && niveau="première"
-        [[ "$lower" == *term* || "$lower" == *bac* ]] && niveau="terminale"
-        [[ "$lower" == *sup* || "$lower" == *prepa* || "$lower" == *cpge* ]] && niveau="supérieur"
-
-        # TYPE
-        type="cours"
-        [[ "$lower" == *exo* || "$lower" == *exercice* ]] && type="exo"
-        [[ "$lower" == *ds* || "$lower" == *devoir* || "$lower" == *controle* ]] && type="ds"
-        [[ "$lower" == *corr* || "$lower" == *solution* ]] && type="corrigé"
-        [[ "$lower" == *fiche* || "$lower" == *resume* ]] && type="fiche"
-
-        # =========================
-        # JSON
-        # =========================
-
-        if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
-        first=0
-
-        echo "{
-          \"titre\": \"$name\",
-          \"pdf\": \"pdfs/$name.pdf\",
-          \"matiere\": \"$matiere\",
-          \"niveau\": \"$niveau\",
-          \"type\": \"$type\"
-        }" >> data/catalog.json
-
-      fi
-    done
-
-    echo "]" >> data/catalog.json
+      - name: Commit PDFs
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@mail.com"
+          git add pdfs
+          git commit -m "build pdf" || echo "no change"
+          git push
