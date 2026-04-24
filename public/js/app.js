@@ -1,34 +1,34 @@
-console.log("JS LOADED");
-const listEl = document.getElementById('document-list');
-const viewer = document.getElementById('pdf-viewer');
-const selM = document.getElementById('matiere');
-const selN = document.getElementById('niveau');
-const selT = document.getElementById('type');
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("JS LOADED");
 
-function unique(arr){ return [...new Set(arr)]; }
+  fetch("/catalog.json")
+    .then(res => res.json())
+    .then(docs => {
+      console.log("DOCS:", docs);
 
-function fillSelect(sel, values){
-  sel.innerHTML = '<option value="">Tous</option>' + values.map(v=>`<option value="${v}">${v}</option>`).join('');
-}
+      const list = document.getElementById("document-list");
+      const viewer = document.getElementById("pdf-viewer");
 
-function render(){
-  const m = selM.value, n = selN.value, t = selT.value;
-  const filtered = docs.filter(d => (!m || d.matiere===m) && (!n || d.niveau===n) && (!t || d.type===t));
-  listEl.innerHTML = filtered.map((d,i)=>`<li data-i="${i}" class="item">${d.titre}</li>`).join('');
-  document.querySelectorAll('.item').forEach(li=>{
-    li.onclick = ()=>{
-      const d = filtered[li.dataset.i];
-      viewer.src = encodeURI('/'+d.fichier);
-    };
-  });
-}
+      if (!list) {
+        console.error("document-list not found");
+        return;
+      }
 
-function init(){
-  fillSelect(selM, unique(docs.map(d=>d.matiere)));
-  fillSelect(selN, unique(docs.map(d=>d.niveau)));
-  fillSelect(selT, unique(docs.map(d=>d.type)));
-  selM.onchange = selN.onchange = selT.onchange = render;
-  render();
-}
+      list.innerHTML = "";
 
-init();
+      docs.forEach(doc => {
+        const li = document.createElement("li");
+
+        li.textContent = doc.titre;
+        li.style.cursor = "pointer";
+        li.style.margin = "10px 0";
+
+        li.onclick = () => {
+          viewer.src = "/" + doc.fichier;
+        };
+
+        list.appendChild(li);
+      });
+    })
+    .catch(err => console.error("Erreur :", err));
+});
