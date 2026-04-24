@@ -1,34 +1,90 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS LOADED");
 
-  fetch("/catalog.json")
-    .then(res => res.json())
-    .then(docs => {
-      console.log("DOCS:", docs);
+  const list = document.getElementById("document-list");
+  const viewer = document.getElementById("pdf-viewer");
 
-      const list = document.getElementById("document-list");
-      const viewer = document.getElementById("pdf-viewer");
+  // ======================
+  // 🔥 CHARGER LES DOCS
+  // ======================
+  function loadDocuments() {
 
-      if (!list) {
-        console.error("document-list not found");
-        return;
-      }
+    fetch("/api/docs")
+      .then(res => {
+        if (!res.ok) throw new Error("Erreur API");
+        return res.json();
+      })
+      .then(docs => {
 
-      list.innerHTML = "";
+        list.innerHTML = "";
 
-      docs.forEach(doc => {
-        const li = document.createElement("li");
+        if (!docs || docs.length === 0) {
+          list.innerHTML = "<li>Aucun document</li>";
+          return;
+        }
 
-        li.textContent = doc.titre;
-        li.style.cursor = "pointer";
-        li.style.margin = "10px 0";
+        docs.forEach(doc => {
 
-        li.onclick = () => {
-          viewer.src = "/" + doc.fichier;
-        };
+          const li = document.createElement("li");
 
-        list.appendChild(li);
+          // 🔹 affichage propre
+          li.innerHTML = `
+            <strong>${doc.titre}</strong><br>
+            <small>
+              ${doc.matiere || ""} |
+              ${doc.niveau || ""} |
+              ${doc.type || ""}
+            </small>
+          `;
+
+          // 🔹 clic → ouvrir PDF
+          li.onclick = () => {
+            viewer.src = "/" + doc.pdf_path;
+          };
+
+          list.appendChild(li);
+        });
+
+      })
+      .catch(err => {
+        console.error("Erreur chargement docs :", err);
+        list.innerHTML = "<li>Erreur chargement</li>";
       });
-    })
-    .catch(err => console.error("Erreur :", err));
+  }
+
+  // ======================
+  // 🔥 GESTION UPLOAD (AUTO REFRESH)
+  // ======================
+  const form = document.querySelector("form");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch("/upload", {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.text())
+        .then(msg => {
+          alert(msg);
+
+          // 🔥 recharge les documents après upload
+          loadDocuments();
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Erreur upload");
+        });
+
+    });
+  }
+
+  // ======================
+  // INIT
+  // ======================
+  loadDocuments();
+
 });
