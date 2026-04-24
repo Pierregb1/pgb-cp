@@ -1,4 +1,4 @@
-
+console.log("JS LOADED");
 const listEl = document.getElementById('document-list');
 const viewer = document.getElementById('pdf-viewer');
 const selM = document.getElementById('matiere');
