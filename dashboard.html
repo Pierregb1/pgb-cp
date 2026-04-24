@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="checkAuth(); loadDocs();">
+
+<h2>Mes documents</h2>
+
+<button onclick="logout()">Déconnexion</button>
+
+<br><br>
+
+<select id="matiereFilter" onchange="loadDocs()">
+  <option value="">Matière</option>
+  <option value="math">Math</option>
+  <option value="physique">Physique</option>
+</select>
+
+<select id="niveauFilter" onchange="loadDocs()">
+  <option value="">Niveau</option>
+  <option value="troisième">Troisième</option>
+  <option value="première">Première</option>
+  <option value="terminale">Terminale</option>
+  <option value="supérieur">Supérieur</option>
+</select>
+
+<select id="typeFilter" onchange="loadDocs()">
+  <option value="">Type</option>
+  <option value="cours">Cours</option>
+  <option value="exo">Exo</option>
+  <option value="ds">DS</option>
+  <option value="corrigé">Corrigé</option>
+</select>
+
+<div id="docs"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
