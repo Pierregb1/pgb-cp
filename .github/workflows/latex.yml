@@ -1,49 +1,58 @@
-name: Build LaTeX + Catalog
+- run: |
+    mkdir -p pdfs
+    mkdir -p data
+    mkdir -p build
 
-on:
-  push:
-    paths:
-      - 'latex/**'
+    echo "[" > data/catalog.json
+    first=1
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    for file in latex/*; do
 
-    steps:
-      - uses: actions/checkout@v3
+      if [[ "$file" == *.zip ]]; then
 
-      - run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-french texlive-science
+        name=$(basename "$file" .zip)
+        echo "Unzipping $name"
 
-      - run: |
-          mkdir -p pdfs
-          mkdir -p data
+        mkdir -p build/$name
+        unzip -o "$file" -d build/$name
 
-          echo "[" > data/catalog.json
-          first=1
+        if [ -f "build/$name/main.tex" ]; then
 
-          for dir in latex/*; do
-            if [ -f "$dir/main.tex" ]; then
+          cd build/$name
+          pdflatex -interaction=nonstopmode main.tex
+          cd -
 
-              name=$(basename $dir)
+          cp build/$name/main.pdf pdfs/$name.pdf
 
-              cd $dir
-              pdflatex main.tex
-              cd -
+          # CLASSIFICATION
+          lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
 
-              cp $dir/main.pdf pdfs/$name.pdf
+          matiere="math"
+          [[ "$lower" == *phys* ]] && matiere="physique"
 
-              if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
-              first=0
+          niveau="troisième"
+          [[ "$lower" == *prem* ]] && niveau="première"
+          [[ "$lower" == *term* ]] && niveau="terminale"
+          [[ "$lower" == *sup* ]] && niveau="supérieur"
 
-              echo "{\"titre\":\"$name\",\"pdf\":\"pdfs/$name.pdf\"}" >> data/catalog.json
-            fi
-          done
+          type="cours"
+          [[ "$lower" == *exo* ]] && type="exo"
+          [[ "$lower" == *ds* ]] && type="ds"
+          [[ "$lower" == *corr* ]] && type="corrigé"
 
-          echo "]" >> data/catalog.json
+          if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
+          first=0
 
-      - run: |
-          git config user.name "bot"
-          git config user.email "bot@mail.com"
-          git add pdfs data/catalog.json
-          git commit -m "auto build" || echo "no change"
-          git push
+          echo "{
+            \"titre\": \"$name\",
+            \"pdf\": \"pdfs/$name.pdf\",
+            \"matiere\": \"$matiere\",
+            \"niveau\": \"$niveau\",
+            \"type\": \"$type\"
+          }" >> data/catalog.json
+
+        fi
+      fi
+    done
+
+    echo "]" >> data/catalog.json
