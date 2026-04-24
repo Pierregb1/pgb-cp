@@ -12,11 +12,13 @@ const { classify } = require("../services/classify");
 const router = express.Router();
 
 // ======================
-// DATABASE
+// DATABASE (SSL FORCÉ)
 // ======================
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // ======================
@@ -24,21 +26,21 @@ const pool = new Pool({
 // ======================
 const upload = multer({
   dest: "uploads/",
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }
 });
 
 // ======================
-// 🔍 TROUVER main.tex
+// FIND main.tex
 // ======================
 function findMainTex(dir) {
   const files = fs.readdirSync(dir);
 
   for (const file of files) {
-    const fullPath = path.join(dir, file);
+    const full = path.join(dir, file);
 
-    if (fs.statSync(fullPath).isDirectory()) {
-      const result = findMainTex(fullPath);
-      if (result) return result;
+    if (fs.statSync(full).isDirectory()) {
+      const res = findMainTex(full);
+      if (res) return res;
     }
 
     if (file === "main.tex") {
@@ -50,16 +52,14 @@ function findMainTex(dir) {
 }
 
 // ======================
-// ROUTE UPLOAD
+// UPLOAD ROUTE
 // ======================
 router.post("/", upload.single("zipfile"), async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).send("Aucun fichier envoyé");
-    }
+    if (!req.file) return res.status(400).send("Aucun fichier");
 
     if (!req.file.originalname.endsWith(".zip")) {
-      return res.status(400).send("Format invalide (zip uniquement)");
+      return res.status(400).send("Format invalide");
     }
 
     const id = uuidv4();
@@ -67,35 +67,24 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
 
     fs.mkdirSync(extractPath, { recursive: true });
 
-    console.log("📦 Extraction du zip...");
+    console.log("📦 Unzip...");
 
-    // ======================
-    // UNZIP
-    // ======================
     await fs.createReadStream(req.file.path)
       .pipe(unzipper.Extract({ path: extractPath }))
       .promise();
 
-    // ======================
-    // 🔍 TROUVER main.tex
-    // ======================
     const latexFolder = findMainTex(extractPath);
 
     if (!latexFolder) {
-      return res.status(400).send("main.tex introuvable dans le zip");
+      return res.status(400).send("main.tex introuvable");
     }
 
-    console.log("📄 main.tex trouvé dans :", latexFolder);
+    console.log("📄 main.tex trouvé :", latexFolder);
 
-    // ======================
-    // 🔥 COMPILATION LATEX
-    // ======================
-    console.log("🔥 Compilation LaTeX...");
-
-    let latexLogs = "";
+    let logs = "";
 
     try {
-      latexLogs = await compileLatex(latexFolder);
+      logs = await compileLatex(latexFolder);
     } catch (err) {
       console.error("💥 ERREUR LATEX :", err);
 
@@ -105,46 +94,28 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
       `);
     }
 
-    console.log("✅ Compilation terminée");
-
     const pdfSrc = path.join(latexFolder, "main.pdf");
 
     if (!fs.existsSync(pdfSrc)) {
       return res.status(500).send(`
         <h2>PDF non généré</h2>
-        <pre>${latexLogs}</pre>
+        <pre>${logs}</pre>
       `);
     }
 
     const pdfDest = path.join("pdfs", `${id}.pdf`);
-
     fs.copyFileSync(pdfSrc, pdfDest);
 
-    console.log("📄 PDF généré :", pdfDest);
+    console.log("📄 PDF OK :", pdfDest);
 
-    // ======================
-    // CLASSIFICATION
-    // ======================
     const { matiere, niveau, type } = classify(req.file.originalname);
 
-    // ======================
-    // DATABASE
-    // ======================
     await pool.query(
       `INSERT INTO documents (titre, matiere, niveau, type, pdf_path)
        VALUES ($1,$2,$3,$4,$5)`,
-      [
-        req.file.originalname,
-        matiere,
-        niveau,
-        type,
-        pdfDest
-      ]
+      [req.file.originalname, matiere, niveau, type, pdfDest]
     );
 
-    // ======================
-    // CLEAN TEMP
-    // ======================
     fs.unlinkSync(req.file.path);
 
     res.send("Upload + compilation OK 🚀");

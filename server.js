@@ -5,19 +5,18 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const { Pool } = require("pg");
 
-// 🔥 ROUTE UPLOAD
 const uploadRoute = require("./routes/upload");
 
 const app = express();
 
 // ======================
-// DATABASE
+// DATABASE (SSL FORCÉ)
 // ======================
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === "production"
-    ? { rejectUnauthorized: false }
-    : false
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // ======================
@@ -26,12 +25,10 @@ const pool = new Pool({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// fichiers statiques
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/pdfs", express.static(path.join(__dirname, "pdfs")));
 app.use(express.static(__dirname));
 
-// sessions
 app.use(session({
   secret: process.env.SESSION_SECRET || "dev_secret",
   resave: false,
@@ -45,7 +42,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // ======================
-// ROUTES AUTH
+// ROUTES
 // ======================
 app.get("/", (req, res) => {
   res.render("index");
@@ -83,9 +80,15 @@ app.post("/login", async (req, res) => {
     res.redirect("/dashboard");
 
   } catch (err) {
-    console.error(err);
+    console.error("💥 ERREUR LOGIN :", err);
     res.status(500).send("Erreur serveur");
   }
+});
+
+app.get("/dashboard", (req, res) => {
+  if (!req.session.user) return res.redirect("/login");
+
+  res.render("dashboard", { user: req.session.user });
 });
 
 app.get("/logout", (req, res) => {
@@ -93,23 +96,12 @@ app.get("/logout", (req, res) => {
 });
 
 // ======================
-// DASHBOARD
-// ======================
-app.get("/dashboard", (req, res) => {
-  if (!req.session.user) return res.redirect("/login");
-
-  res.render("dashboard", {
-    user: req.session.user
-  });
-});
-
-// ======================
-// 🔥 UPLOAD ZIP
+// UPLOAD
 // ======================
 app.use("/upload", uploadRoute);
 
 // ======================
-// 🔥 API DOCUMENTS
+// API DOCS
 // ======================
 app.get("/api/docs", async (req, res) => {
   try {
@@ -118,18 +110,18 @@ app.get("/api/docs", async (req, res) => {
     );
     res.json(result.rows);
   } catch (err) {
-    console.error(err);
+    console.error("💥 ERREUR API DOCS :", err);
     res.status(500).send("Erreur DB");
   }
 });
 
 // ======================
-// HEALTH CHECK
+// HEALTH
 // ======================
 app.get("/health", (req, res) => res.send("ok"));
 
 // ======================
-// START SERVER
+// START
 // ======================
 const PORT = process.env.PORT || 10000;
 
