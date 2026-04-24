@@ -1,10 +1,7 @@
 FROM node:18
 
 RUN apt-get update && apt-get install -y \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-fonts-recommended \
-    texlive-lang-french \
+    texlive-full \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
