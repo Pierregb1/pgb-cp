@@ -16,6 +16,7 @@ const pool = new Pool({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/pdfs", express.static("pdfs"));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || "dev_secret",
