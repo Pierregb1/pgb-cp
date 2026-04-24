@@ -2,44 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Plateforme Maths</title>
+<title>Connexion</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="center">
 
-<div id="login"></div>
+<div class="login-box">
+  <h2>Connexion</h2>
 
-<div id="app" style="display:none">
+  <input id="id" placeholder="Identifiant">
+  <input id="mdp" type="password" placeholder="Mot de passe">
 
-<header>
-<h1>📚 Plateforme Maths / Physique</h1>
-</header>
-
-<section class="grid">
-
-<div class="card">
-<h2>👨‍🔬 Mathématicien de la semaine</h2>
-<div id="math-week"></div>
-</div>
-
-<div class="card">
-<h2>🧠 Problème de la semaine</h2>
-<p id="problem"></p>
-<button onclick="toggleSolution()">Voir correction</button>
-<p id="solution" class="hidden"></p>
-</div>
-
-</section>
-
-<h2>📂 Documents</h2>
-
-<input type="text" id="search" placeholder="Rechercher...">
-
-<div id="docs"></div>
-
-<iframe id="viewer"></iframe>
-
+  <button onclick="login()">Connexion</button>
 </div>
 
 <script src="app.js"></script>

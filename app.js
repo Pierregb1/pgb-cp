@@ -1,54 +1,59 @@
 // ================= LOGIN =================
-if (localStorage.getItem("auth") !== "true") {
-  document.getElementById("login").innerHTML = `
-    <div class="login-box">
-      <h2>Connexion</h2>
-      <input id="mdp" type="password" placeholder="Mot de passe">
-      <button onclick="login()">Connexion</button>
-    </div>
-  `;
-} else {
-  document.getElementById("app").style.display = "block";
-}
-
 function login() {
-  if (document.getElementById("mdp").value === "admin123") {
+  const id = document.getElementById("id").value;
+  const mdp = document.getElementById("mdp").value;
+
+  if (id === "eleve" && mdp === "jadorelesmaths") {
     localStorage.setItem("auth", "true");
-    location.reload();
+    window.location.href = "home.html";
+  } else {
+    alert("Erreur");
   }
 }
 
-// ================= CHEMIN GITHUB PAGES =================
-function getBasePath() {
-  const path = window.location.pathname.split("/");
-  return "/" + path[1]; // nom du repo
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "index.html";
+}
+
+// ================= NAV =================
+function goCourses() {
+  window.location.href = "courses.html";
+}
+
+function goHome() {
+  window.location.href = "home.html";
+}
+
+// ================= SECURITE =================
+if (!window.location.pathname.includes("index.html")) {
+  if (localStorage.getItem("auth") !== "true") {
+    window.location.href = "index.html";
+  }
 }
 
 // ================= SEMAINE =================
-function getWeek() {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 1);
-  return Math.floor((now - start) / 604800000);
+function week() {
+  const d = new Date();
+  const start = new Date(d.getFullYear(), 0, 1);
+  return Math.floor((d - start) / 604800000);
 }
 
-// ================= MATH =================
-async function loadMath() {
+// ================= HOME =================
+async function loadHome() {
+  if (!document.getElementById("math-week")) return;
+
   const men = await fetch("data/mathematicians-men.json").then(r => r.json());
   const women = await fetch("data/mathematicians-women.json").then(r => r.json());
-
   const all = [...men, ...women];
-  const m = all[getWeek() % all.length];
 
-  document.getElementById("math-week").innerHTML = `
-    <h3>${m.name}</h3>
-    <p>${m.summary}</p>
-  `;
-}
+  const m = all[week() % all.length];
 
-// ================= PROBLEME =================
-async function loadProblem() {
+  document.getElementById("math-week").innerHTML =
+    `<h3>${m.name}</h3><p>${m.summary}</p>`;
+
   const probs = await fetch("data/fun-problems.json").then(r => r.json());
-  const p = probs[getWeek() % probs.length];
+  const p = probs[week() % probs.length];
 
   document.getElementById("problem").innerText = p.statement;
   document.getElementById("solution").innerText = p.solution;
@@ -58,40 +63,28 @@ function toggleSolution() {
   document.getElementById("solution").classList.toggle("hidden");
 }
 
-// ================= DOCS =================
-async function loadDocs() {
+// ================= COURS =================
+async function loadCourses() {
+  if (!document.getElementById("docs")) return;
+
+  const docs = await fetch("data/documents.json").then(r => r.json());
   const container = document.getElementById("docs");
 
-  try {
-    const docs = await fetch("data/documents.json").then(r => r.json());
+  container.innerHTML = "";
 
-    container.innerHTML = "";
+  docs.forEach(d => {
+    const div = document.createElement("div");
+    div.className = "doc";
+    div.innerText = d.titre;
 
-    docs.forEach(doc => {
-      const div = document.createElement("div");
-      div.className = "doc";
+    div.onclick = () => {
+      document.getElementById("viewer").src = d.fichier;
+    };
 
-      div.innerHTML = `
-        <h3>${doc.titre}</h3>
-        <p>${doc.matiere || ""} ${doc.niveau || ""} ${doc.type || ""}</p>
-      `;
-
-      div.onclick = () => {
-        const base = getBasePath();
-        const fullPath = window.location.origin + base + "/" + doc.fichier;
-
-        document.getElementById("viewer").src = fullPath;
-      };
-
-      container.appendChild(div);
-    });
-
-  } catch (e) {
-    container.innerHTML = "<p>Aucun document</p>";
-  }
+    container.appendChild(div);
+  });
 }
 
 // ================= INIT =================
-loadMath();
-loadProblem();
-loadDocs();
+loadHome();
+loadCourses();

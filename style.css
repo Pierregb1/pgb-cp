@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI';
+  font-family: Arial;
   margin: 0;
   background: #f5f7fa;
 }
@@ -8,7 +8,10 @@ header {
   background: #2c3e50;
   color: white;
   padding: 15px;
-  text-align: center;
+}
+
+nav button {
+  margin: 5px;
 }
 
 .grid {
@@ -18,33 +21,43 @@ header {
 }
 
 .card {
-  flex: 1;
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+.login-box {
+  width: 300px;
+  margin: auto;
+  margin-top: 150px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 #docs {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   padding: 20px;
 }
 
 .doc {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 10px;
   cursor: pointer;
-  width: 200px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
 }
 
 iframe {
   width: 100%;
   height: 600px;
-  margin-top: 20px;
 }
 
 .hidden {
