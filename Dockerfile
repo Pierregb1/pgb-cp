@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-fonts-recommended \
+    texlive-lang-french \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
