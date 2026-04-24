@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{siunitx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{DS de physique-chimie -- Niveau 3\ieme}
+\rhead{Nom : \hspace{4cm}}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{DS de physique-chimie}}\\[0.3em]
+    {\large \textbf{Niveau 3\ieme}}\\[0.5em]
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{6cm}|}
+\hline
+\textbf{Durée} & \textbf{Barème} & \textbf{Matériel autorisé} \\
+\hline
+1 h 30 à 2 h & 20 points & Stylo, règle, calculatrice \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Consignes générales}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Toute réponse doit être justifiée.
+    \item Les calculs doivent être rédigés avec les formules utilisées.
+    \item Les unités doivent apparaître sur les résultats.
+    \item Lorsqu’un document ou un rappel est donné, il peut être utilisé librement.
+    \item Pensez à noter le temps que vous avez mis pour faire le sujet.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|}
+\hline
+\textbf{Exercice 1} & \textbf{Exercice 2} & \textbf{Exercice 3} & \textbf{Exercice 4} & \textbf{Exercice 5} & \textbf{Total} \\
+\hline
+4 pts & 4 pts & 4 pts & 4 pts & 4 pts & 20 pts \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Exercice 1 -- Mouvement et vitesse \hfill /4}
+
+Un cycliste parcourt une distance de \SI{3,6}{km} en \SI{12}{min}.
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item La vitesse moyenne se calcule par :
+    \[
+    v=\frac{d}{t}
+    \]
+    \item Pour utiliser cette formule correctement, il faut exprimer les grandeurs dans des unités cohérentes.
+    \item \SI{1}{h} = \SI{60}{min}.
+\end{itemize}
+
+\begin{enumerate}
+    \item Convertir la durée du trajet en heure.
+    \item Calculer la vitesse moyenne du cycliste en \si{km.h^{-1}}.
+    \item Convertir cette vitesse en \si{m.s^{-1}}.
+    \item Le mouvement du cycliste est-il nécessairement uniforme ? Expliquer.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1,5 pt ; 1 pt ; 0,5 pt.
+
+\section*{Exercice 2 -- Électricité \hfill /4}
+
+On étudie un appareil électrique portant les indications suivantes :
+
+\begin{center}
+\framebox{
+\begin{minipage}{0.65\textwidth}
+\centering
+\textbf{Lampe LED}\\
+Tension nominale : \SI{6}{V}\\
+Intensité nominale : \SI{0,30}{A}
+\end{minipage}}
+\end{center}
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item La puissance électrique se calcule par :
+    \[
+    P=U\times I
+    \]
+    \item Avec \(P\) en watt (W), \(U\) en volt (V) et \(I\) en ampère (A).
+\end{itemize}
+
+\begin{enumerate}
+    \item Identifier la tension nominale et l’intensité nominale de la lampe.
+    \item Calculer la puissance électrique de cette lampe.
+    \item On alimente cette lampe pendant \SI{10}{min}. Calculer l’énergie consommée en watt-heure (\si{Wh}).
+    \item Citer un dipôle de protection que l’on trouve dans un circuit domestique et préciser son rôle.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 1,5 pt ; 0,5 pt.
+
+\section*{Exercice 3 -- Signaux et propagation du son \hfill /4}
+
+Lors d’un orage, une élève voit un éclair puis entend le tonnerre \SI{5}{s} plus tard.
+
+On donne la vitesse du son dans l’air :
+\[
+v_{\text{son}} \approx \SI{340}{m.s^{-1}}
+\]
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Le son met un certain temps à se propager.
+    \item La lumière se propage beaucoup plus vite que le son.
+    \item On peut utiliser la relation :
+    \[
+    d=v\times t
+    \]
+\end{itemize}
+
+\begin{enumerate}
+    \item Expliquer pourquoi on voit l’éclair avant d’entendre le tonnerre.
+    \item Calculer la distance approximative entre l’orage et l’élève.
+    \item Exprimer le résultat en kilomètre.
+    \item Dire si le son a besoin d’un milieu matériel pour se propager. Justifier brièvement.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1,5 pt ; 0,5 pt ; 1 pt.
+
+\section*{Exercice 4 -- Transformation chimique \hfill /4}
+
+On fait réagir du carbone avec du dioxygène. Il se forme du dioxyde de carbone.
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Lors d’une transformation chimique, les réactifs disparaissent et les produits apparaissent.
+    \item Les atomes se conservent.
+    \item Le dioxygène est noté \(O_2\), le dioxyde de carbone est noté \(CO_2\).
+\end{itemize}
+
+\begin{enumerate}
+    \item Nommer les réactifs et le produit de cette transformation chimique.
+    \item Écrire l’équation-bilan ajustée :
+    \[
+    \cdots + \cdots \rightarrow \cdots
+    \]
+    \item Expliquer pourquoi on dit qu’il y a conservation des atomes.
+    \item Citer un test permettant d’identifier le dioxyde de carbone.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 1 pt ; 1 pt.
+
+\section*{Exercice 5 -- Masse volumique et identification d’un matériau \hfill /4}
+
+On mesure la masse d’un objet métallique : 
+\[
+m=\SI{54}{g}
+\]
+et son volume :
+\[
+V=\SI{20}{cm^3}.
+\]
+
+On rappelle que la masse volumique se calcule par :
+\[
+\rho=\frac{m}{V}
+\]
+
+On donne le tableau suivant :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Matériau} & \textbf{Masse volumique (\si{g.cm^{-3}})} \\
+\hline
+Aluminium & 2,7 \\
+Fer & 7,8 \\
+Cuivre & 8,9 \\
+Plastique & 1,2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+    \item Calculer la masse volumique de l’objet.
+    \item En utilisant le tableau, proposer la nature la plus probable du matériau.
+    \item L’objet flotte-t-il dans l’eau ? On rappelle que la masse volumique de l’eau vaut environ \SI{1,0}{g.cm^{-3}}.
+    \item Expliquer pourquoi la masse volumique peut aider à identifier une substance.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1,5 pt ; 1 pt ; 0,5 pt ; 1 pt.
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{Fin du sujet -- Toute réponse doit être justifiée avec soin.}
+\end{center}
+
+\end{document}
