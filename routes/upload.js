@@ -59,12 +59,12 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
     if (!req.file) return res.status(400).send("Aucun fichier");
 
     if (!req.file.originalname.endsWith(".zip")) {
-      return res.status(400).send("Format invalide");
+      return res.status(400).send("Format invalide (zip uniquement)");
     }
 
     const id = uuidv4();
-    const extractPath = path.join("latex", id);
 
+    const extractPath = path.join(__dirname, "..", "latex", id);
     fs.mkdirSync(extractPath, { recursive: true });
 
     console.log("📦 Unzip...");
@@ -103,19 +103,44 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
       `);
     }
 
-    const pdfDest = path.join("pdfs", `${id}.pdf`);
+    // ======================
+    // 📄 DOSSIER PDF SAFE
+    // ======================
+    const pdfFolder = path.join(__dirname, "..", "pdfs");
+
+    if (!fs.existsSync(pdfFolder)) {
+      fs.mkdirSync(pdfFolder, { recursive: true });
+    }
+
+    const pdfDest = path.join(pdfFolder, `${id}.pdf`);
+
     fs.copyFileSync(pdfSrc, pdfDest);
 
-    console.log("📄 PDF OK :", pdfDest);
+    console.log("📄 PDF COPIÉ ICI :", pdfDest);
 
+    // ======================
+    // CLASSIFICATION
+    // ======================
     const { matiere, niveau, type } = classify(req.file.originalname);
 
+    // ======================
+    // DATABASE
+    // ======================
     await pool.query(
       `INSERT INTO documents (titre, matiere, niveau, type, pdf_path)
        VALUES ($1,$2,$3,$4,$5)`,
-      [req.file.originalname, matiere, niveau, type, pdfDest]
+      [
+        req.file.originalname,
+        matiere,
+        niveau,
+        type,
+        `pdfs/${id}.pdf`
+      ]
     );
 
+    // ======================
+    // CLEAN TEMP FILE
+    // ======================
     fs.unlinkSync(req.file.path);
 
     res.send("Upload + compilation OK 🚀");

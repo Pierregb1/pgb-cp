@@ -26,7 +26,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
+
+// 🔥 SERVIR LES PDF CORRECTEMENT
 app.use("/pdfs", express.static(path.join(__dirname, "pdfs")));
+
 app.use(express.static(__dirname));
 
 app.use(session({
@@ -48,10 +51,12 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// ----------------------
 app.get("/login", (req, res) => {
   res.render("login", { error: null });
 });
 
+// ----------------------
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -66,6 +71,7 @@ app.post("/login", async (req, res) => {
     }
 
     const user = result.rows[0];
+
     const valid = await bcrypt.compare(password, user.password);
 
     if (!valid) {
@@ -85,18 +91,33 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/dashboard", (req, res) => {
+// ----------------------
+app.get("/dashboard", async (req, res) => {
   if (!req.session.user) return res.redirect("/login");
 
-  res.render("dashboard", { user: req.session.user });
+  try {
+    const result = await pool.query(
+      "SELECT * FROM documents ORDER BY created_at DESC"
+    );
+
+    res.render("dashboard", {
+      user: req.session.user,
+      documents: result.rows
+    });
+
+  } catch (err) {
+    console.error("💥 ERREUR DASHBOARD :", err);
+    res.status(500).send("Erreur serveur");
+  }
 });
 
+// ----------------------
 app.get("/logout", (req, res) => {
   req.session.destroy(() => res.redirect("/"));
 });
 
 // ======================
-// UPLOAD
+// UPLOAD ROUTE
 // ======================
 app.use("/upload", uploadRoute);
 
@@ -116,6 +137,25 @@ app.get("/api/docs", async (req, res) => {
 });
 
 // ======================
+// DEBUG PDF (TEMPORAIRE)
+// ======================
+app.get("/debug-pdfs", (req, res) => {
+  const fs = require("fs");
+  const dir = path.join(__dirname, "pdfs");
+
+  if (!fs.existsSync(dir)) {
+    return res.send("❌ dossier pdfs introuvable");
+  }
+
+  const files = fs.readdirSync(dir);
+
+  res.send(`
+    <h2>PDFs sur le serveur :</h2>
+    <pre>${JSON.stringify(files, null, 2)}</pre>
+  `);
+});
+
+// ======================
 // HEALTH
 // ======================
 app.get("/health", (req, res) => res.send("ok"));
@@ -126,5 +166,5 @@ app.get("/health", (req, res) => res.send("ok"));
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-  console.log("Server running on " + PORT);
+  console.log("🚀 Server running on port " + PORT);
 });
