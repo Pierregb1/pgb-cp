@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: python generate_catalog.py
+      - run: python scripts/generate_catalog.py
 
       - name: Commit catalog
         run: |
