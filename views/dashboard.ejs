@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Dashboard</h1>
+    <div>
+      <span><%= user.email %></span>
+      <a href="/logout" class="btn">Déconnexion</a>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="filters">
+      <select id="matiere"></select>
+      <select id="niveau"></select>
+      <select id="type"></select>
+    </div>
+
+    <div class="layout">
+      <ul id="document-list" class="list"></ul>
+      <iframe id="pdf-viewer" class="viewer"></iframe>
+    </div>
+  </section>
+
+  <script>
+    const docs = <%- JSON.stringify(documents) %>;
+  </script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

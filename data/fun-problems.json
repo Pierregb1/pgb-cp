@@ -1,0 +1,2102 @@
+[
+  {
+    "title": "Jeu de chiffres #1",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #2",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #3",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #4",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #5",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #6",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #7",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #8",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #9",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #10",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #11",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #12",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #13",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #14",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #15",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #16",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #17",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #18",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #19",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #20",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #21",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #22",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #23",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #24",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #25",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #26",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #27",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #28",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #29",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #30",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #31",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #32",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #33",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #34",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #35",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #36",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #37",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #38",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #39",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #40",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #41",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #42",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #43",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #44",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #45",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #46",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #47",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #48",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #49",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #50",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #51",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #52",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #53",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #54",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #55",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #56",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #57",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #58",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #59",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #60",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #61",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #62",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #63",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #64",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #65",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #66",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #67",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #68",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #69",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #70",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #71",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #72",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #73",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #74",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #75",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #76",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #77",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #78",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #79",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #80",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #81",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #82",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #83",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #84",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #85",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #86",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #87",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #88",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #89",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #90",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #91",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #92",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #93",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #94",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #95",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #96",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #97",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #98",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #99",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #100",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #101",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #102",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #103",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #104",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #105",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #106",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #107",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #108",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #109",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #110",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #111",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #112",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #113",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 1
+  },
+  {
+    "title": "Jeu de chiffres #114",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #115",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #116",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #117",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #118",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Jeu de chiffres #119",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 3
+  },
+  {
+    "title": "Jeu de chiffres #120",
+    "statement": "Choisis un nombre à deux chiffres ab. Inverse-le (ba) puis additionne ab + ba. Étudie quand on obtient un palindrome.",
+    "hint": "Écris ab = 10a + b et ba = 10b + a, puis calcule la somme.",
+    "solution": "ab + ba = 11(a+b). La somme est un multiple de 11, donc souvent palindrome pour a+b<10 (ex: 34+43=77).",
+    "difficulty": 2
+  },
+  {
+    "title": "Somme magique #121",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #122",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #123",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #124",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #125",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #126",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #127",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #128",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #129",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #130",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #131",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #132",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #133",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #134",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #135",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #136",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #137",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #138",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #139",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #140",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #141",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #142",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #143",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #144",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #145",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #146",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #147",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #148",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #149",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #150",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #151",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #152",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #153",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #154",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #155",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #156",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #157",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #158",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #159",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #160",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #161",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #162",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #163",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #164",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #165",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #166",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #167",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #168",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #169",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #170",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #171",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #172",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #173",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #174",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #175",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #176",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #177",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #178",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #179",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #180",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #181",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #182",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #183",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #184",
+    "statement": "Peut-on écrire 64 comme somme de 8 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 64 est somme de 8 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #185",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #186",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #187",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #188",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #189",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #190",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #191",
+    "statement": "Peut-on écrire 36 comme somme de 6 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 36 est somme de 6 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #192",
+    "statement": "Peut-on écrire 9 comme somme de 3 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 9 est somme de 3 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #193",
+    "statement": "Peut-on écrire 81 comme somme de 9 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 81 est somme de 9 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #194",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #195",
+    "statement": "Peut-on écrire 25 comme somme de 5 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 25 est somme de 5 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #196",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #197",
+    "statement": "Peut-on écrire 16 comme somme de 4 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 16 est somme de 4 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #198",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #199",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Somme magique #200",
+    "statement": "Peut-on écrire 49 comme somme de 7 nombres impairs consécutifs ?",
+    "hint": "Regarde 1+3+5+... et compte combien de termes.",
+    "solution": "Oui: 1+3+...+(2n-1) = n^2. Donc 49 est somme de 7 impairs consécutifs.",
+    "difficulty": 1
+  },
+  {
+    "title": "Divisibilité #201",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #202",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #203",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #204",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #205",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #206",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #207",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #208",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #209",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #210",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #211",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #212",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #213",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #214",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #215",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #216",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #217",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #218",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #219",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #220",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #221",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #222",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #223",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #224",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #225",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #226",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #227",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #228",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #229",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #230",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #231",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #232",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #233",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #234",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #235",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #236",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #237",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #238",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #239",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #240",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #241",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #242",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #243",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #244",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #245",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #246",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #247",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #248",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #249",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #250",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #251",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 5.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #252",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 6.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #253",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #254",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #255",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 2.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #256",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #257",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 4.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #258",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #259",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Divisibilité #260",
+    "statement": "Montre que pour tout entier n, n^3 - n est divisible par 3.",
+    "hint": "Factorise n^3 - n.",
+    "solution": "n^3 - n = n(n-1)(n+1). Produit de 3 entiers consécutifs, divisible par 3 et 2 donc par 6.",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #261",
+    "statement": "Partant de 12, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #262",
+    "statement": "Partant de 67, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #263",
+    "statement": "Partant de 89, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #264",
+    "statement": "Partant de 83, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #265",
+    "statement": "Partant de 12, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #266",
+    "statement": "Partant de 29, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #267",
+    "statement": "Partant de 35, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #268",
+    "statement": "Partant de 85, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #269",
+    "statement": "Partant de 49, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #270",
+    "statement": "Partant de 52, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #271",
+    "statement": "Partant de 39, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #272",
+    "statement": "Partant de 35, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #273",
+    "statement": "Partant de 83, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #274",
+    "statement": "Partant de 12, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #275",
+    "statement": "Partant de 15, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #276",
+    "statement": "Partant de 38, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #277",
+    "statement": "Partant de 83, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #278",
+    "statement": "Partant de 41, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #279",
+    "statement": "Partant de 26, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #280",
+    "statement": "Partant de 79, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #281",
+    "statement": "Partant de 79, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #282",
+    "statement": "Partant de 17, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #283",
+    "statement": "Partant de 29, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #284",
+    "statement": "Partant de 54, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #285",
+    "statement": "Partant de 76, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #286",
+    "statement": "Partant de 76, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #287",
+    "statement": "Partant de 99, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #288",
+    "statement": "Partant de 92, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #289",
+    "statement": "Partant de 61, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #290",
+    "statement": "Partant de 52, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #291",
+    "statement": "Partant de 40, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #292",
+    "statement": "Partant de 38, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #293",
+    "statement": "Partant de 51, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #294",
+    "statement": "Partant de 35, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #295",
+    "statement": "Partant de 36, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #296",
+    "statement": "Partant de 63, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #297",
+    "statement": "Partant de 41, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #298",
+    "statement": "Partant de 49, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #299",
+    "statement": "Partant de 23, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  },
+  {
+    "title": "Nombre miroir #300",
+    "statement": "Partant de 84, on additionne le nombre avec son miroir jusqu'à obtenir un palindrome. Étudie le processus.",
+    "hint": "Teste plusieurs itérations.",
+    "solution": "Beaucoup de nombres convergent rapidement vers un palindrome (phénomène empirique).",
+    "difficulty": 2
+  }
+]
