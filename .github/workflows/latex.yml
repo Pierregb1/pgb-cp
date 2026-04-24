@@ -1,4 +1,4 @@
-name: Build PDFs
+name: Build PDFs + Catalog
 
 on:
   push:
@@ -16,25 +16,65 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-base
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-lang-french
 
-      - name: Compile
+      - name: Build PDFs + Catalog
         run: |
           mkdir -p pdfs
+          mkdir -p data
+
+          echo "[" > data/catalog.json
+          first=1
+
           for dir in latex/*; do
             if [ -f "$dir/main.tex" ]; then
-              cd $dir
-              pdflatex main.tex
-              cd -
+
               name=$(basename $dir)
+
+              echo "Compiling $name"
+
+              cd $dir
+              pdflatex -interaction=nonstopmode main.tex
+              cd -
+
               cp $dir/main.pdf pdfs/$name.pdf
+
+              # 🔥 TRI AUTOMATIQUE
+              lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+
+              matiere="math"
+              [[ "$lower" == *phys* ]] && matiere="physique"
+
+              niveau="troisième"
+              [[ "$lower" == *prem* ]] && niveau="première"
+              [[ "$lower" == *term* ]] && niveau="terminale"
+              [[ "$lower" == *sup* ]] && niveau="supérieur"
+
+              type="cours"
+              [[ "$lower" == *exo* ]] && type="exo"
+              [[ "$lower" == *ds* ]] && type="ds"
+              [[ "$lower" == *corr* ]] && type="corrigé"
+
+              if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
+              first=0
+
+              echo "{
+                \"titre\": \"$name\",
+                \"pdf\": \"pdfs/$name.pdf\",
+                \"matiere\": \"$matiere\",
+                \"niveau\": \"$niveau\",
+                \"type\": \"$type\"
+              }" >> data/catalog.json
+
             fi
           done
 
-      - name: Commit PDFs
+          echo "]" >> data/catalog.json
+
+      - name: Commit results
         run: |
-          git config user.name "bot"
-          git config user.email "bot@mail.com"
-          git add pdfs
-          git commit -m "build pdf" || echo "no change"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add pdfs data/catalog.json
+          git commit -m "auto build + catalog" || echo "no change"
           git push
