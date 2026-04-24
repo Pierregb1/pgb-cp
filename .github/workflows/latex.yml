@@ -2,40 +2,34 @@ name: Build PDFs
 
 on:
   push:
-    paths:
-      - 'latex/**'
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base
+      - run: sudo apt-get update && sudo apt-get install -y texlive-latex-base
 
-      - name: Build PDFs
-        run: |
+      - run: |
           mkdir -p pdfs
 
-          for dir in latex/*; do
-            if [ -f "$dir/main.tex" ]; then
-              cd "$dir"
-              pdflatex main.tex
-              cd -
-              name=$(basename "$dir")
-              cp "$dir/main.pdf" "pdfs/$name.pdf"
-            fi
-          done
+          mkdir -p latex/test
+          echo '\documentclass{article}\begin{document}Hello\end{document}' > latex/test/main.tex
 
-      - name: Commit PDFs
-        run: |
-          git config user.name "bot"
-          git config user.email "bot@mail.com"
+          cd latex/test
+          pdflatex main.tex
+          cd -
+
+          cp latex/test/main.pdf pdfs/test.pdf
+
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
           git add pdfs
-          git commit -m "build pdf" || echo "no change"
+          git commit -m "add pdf" || echo "no change"
           git push
