@@ -125,10 +125,14 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
 
     res.send("Upload + compilation OK 🚀");
 
-  } catch (err) {
-    console.error("Erreur upload :", err);
-    res.status(500).send("Erreur serveur lors de la compilation LaTeX");
-  }
+  } atch (err) {
+  console.error("💥 ERREUR LATEX :", err);
+
+  res.status(500).send(`
+    <h2>Erreur LaTeX</h2>
+    <pre>${err}</pre>
+  `);
+}
 });
 
 module.exports = router;
