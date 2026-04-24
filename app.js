@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  // LOGIN
+  const btn = document.getElementById("loginBtn");
+  if (btn) {
+    btn.addEventListener("click", login);
+  }
+
+  checkAuth();
+
+  loadHome();
+  loadCourses();
+
+});
+
 // ================= LOGIN =================
 function login() {
   const id = document.getElementById("id").value;
@@ -7,13 +22,25 @@ function login() {
     localStorage.setItem("auth", "true");
     window.location.href = "home.html";
   } else {
-    alert("Erreur");
+    alert("Identifiants incorrects");
   }
 }
 
+// ================= LOGOUT =================
 function logout() {
   localStorage.removeItem("auth");
   window.location.href = "index.html";
+}
+
+// ================= SECURITE =================
+function checkAuth() {
+  const page = window.location.pathname;
+
+  if (!page.includes("index.html")) {
+    if (localStorage.getItem("auth") !== "true") {
+      window.location.href = "index.html";
+    }
+  }
 }
 
 // ================= NAV =================
@@ -25,66 +52,68 @@ function goHome() {
   window.location.href = "home.html";
 }
 
-// ================= SECURITE =================
-if (!window.location.pathname.includes("index.html")) {
-  if (localStorage.getItem("auth") !== "true") {
-    window.location.href = "index.html";
-  }
-}
-
 // ================= SEMAINE =================
-function week() {
-  const d = new Date();
-  const start = new Date(d.getFullYear(), 0, 1);
-  return Math.floor((d - start) / 604800000);
+function getWeek() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1);
+  return Math.floor((now - start) / 604800000);
 }
 
 // ================= HOME =================
 async function loadHome() {
+
   if (!document.getElementById("math-week")) return;
 
-  const men = await fetch("data/mathematicians-men.json").then(r => r.json());
-  const women = await fetch("data/mathematicians-women.json").then(r => r.json());
-  const all = [...men, ...women];
+  try {
+    const men = await fetch("data/mathematicians-men.json").then(r => r.json());
+    const women = await fetch("data/mathematicians-women.json").then(r => r.json());
 
-  const m = all[week() % all.length];
+    const all = [...men, ...women];
+    const m = all[getWeek() % all.length];
 
-  document.getElementById("math-week").innerHTML =
-    `<h3>${m.name}</h3><p>${m.summary}</p>`;
+    document.getElementById("math-week").innerHTML =
+      `<h3>${m.name}</h3><p>${m.summary}</p>`;
+  } catch {}
 
-  const probs = await fetch("data/fun-problems.json").then(r => r.json());
-  const p = probs[week() % probs.length];
+  try {
+    const probs = await fetch("data/fun-problems.json").then(r => r.json());
+    const p = probs[getWeek() % probs.length];
 
-  document.getElementById("problem").innerText = p.statement;
-  document.getElementById("solution").innerText = p.solution;
+    document.getElementById("problem").innerText = p.statement;
+    document.getElementById("solution").innerText = p.solution;
+  } catch {}
 }
 
+// ================= PROBLEME =================
 function toggleSolution() {
-  document.getElementById("solution").classList.toggle("hidden");
+  const el = document.getElementById("solution");
+  if (el) el.classList.toggle("hidden");
 }
 
 // ================= COURS =================
 async function loadCourses() {
-  if (!document.getElementById("docs")) return;
 
-  const docs = await fetch("data/documents.json").then(r => r.json());
   const container = document.getElementById("docs");
+  if (!container) return;
 
-  container.innerHTML = "";
+  try {
+    const docs = await fetch("data/documents.json").then(r => r.json());
 
-  docs.forEach(d => {
-    const div = document.createElement("div");
-    div.className = "doc";
-    div.innerText = d.titre;
+    container.innerHTML = "";
 
-    div.onclick = () => {
-      document.getElementById("viewer").src = d.fichier;
-    };
+    docs.forEach(d => {
+      const div = document.createElement("div");
+      div.className = "doc";
+      div.innerHTML = `<h3>${d.titre}</h3>`;
 
-    container.appendChild(div);
-  });
+      div.onclick = () => {
+        document.getElementById("viewer").src = d.fichier;
+      };
+
+      container.appendChild(div);
+    });
+
+  } catch {
+    container.innerHTML = "Aucun document";
+  }
 }
-
-// ================= INIT =================
-loadHome();
-loadCourses();

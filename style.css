@@ -7,11 +7,7 @@ body {
 header {
   background: #2c3e50;
   color: white;
-  padding: 15px;
-}
-
-nav button {
-  margin: 5px;
+  padding: 10px;
 }
 
 .grid {
@@ -24,15 +20,14 @@ nav button {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  flex: 1;
 }
 
 .login-box {
   width: 300px;
   margin: auto;
   margin-top: 150px;
-  padding: 20px;
   background: white;
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -41,18 +36,11 @@ nav button {
   justify-content: center;
 }
 
-#docs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
-}
-
 .doc {
   background: white;
+  margin: 10px;
   padding: 10px;
   cursor: pointer;
-  border-radius: 10px;
 }
 
 iframe {
