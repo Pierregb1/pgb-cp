@@ -1,80 +1,72 @@
-name: Build PDFs + Catalog
+- name: Build PDFs + Catalog
+  run: |
+    mkdir -p pdfs
+    mkdir -p data
 
-on:
-  push:
-    paths:
-      - 'latex/**'
+    echo "[" > data/catalog.json
+    first=1
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    # 🔥 parcours robuste (gère espaces)
+    find latex -mindepth 1 -maxdepth 1 -type d | while read dir; do
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      if [ -f "$dir/main.tex" ]; then
 
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-lang-french
+        name=$(basename "$dir")
 
-      - name: Build PDFs + Catalog
-        run: |
-          mkdir -p pdfs
-          mkdir -p data
+        echo "Compiling $name"
 
-          echo "[" > data/catalog.json
-          first=1
+        cd "$dir"
+        pdflatex -interaction=nonstopmode main.tex
+        cd -
 
-          for dir in latex/*; do
-            if [ -f "$dir/main.tex" ]; then
+        cp "$dir/main.pdf" "pdfs/$name.pdf"
 
-              name=$(basename $dir)
+        # 🔥 NORMALISATION (clé du tri)
+        lower=$(echo "$name" \
+          | tr '[:upper:]' '[:lower:]' \
+          | tr ' ' '_' \
+          | sed 's/[éèê]/e/g' \
+          | sed 's/[àâ]/a/g' \
+          | sed 's/[îï]/i/g')
 
-              echo "Compiling $name"
+        # =========================
+        # 🔥 TRI AMÉLIORÉ
+        # =========================
 
-              cd $dir
-              pdflatex -interaction=nonstopmode main.tex
-              cd -
+        # MATIÈRE
+        matiere="math"
+        [[ "$lower" == *phys* || "$lower" == *meca* || "$lower" == *optique* ]] && matiere="physique"
 
-              cp $dir/main.pdf pdfs/$name.pdf
+        # NIVEAU
+        niveau="autre"
+        [[ "$lower" == *trois* || "$lower" == *3e* ]] && niveau="troisième"
+        [[ "$lower" == *prem* || "$lower" == *1ere* ]] && niveau="première"
+        [[ "$lower" == *term* || "$lower" == *bac* ]] && niveau="terminale"
+        [[ "$lower" == *sup* || "$lower" == *prepa* || "$lower" == *cpge* ]] && niveau="supérieur"
 
-              # 🔥 TRI AUTOMATIQUE
-              lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+        # TYPE
+        type="cours"
+        [[ "$lower" == *exo* || "$lower" == *exercice* ]] && type="exo"
+        [[ "$lower" == *ds* || "$lower" == *devoir* || "$lower" == *controle* ]] && type="ds"
+        [[ "$lower" == *corr* || "$lower" == *solution* ]] && type="corrigé"
+        [[ "$lower" == *fiche* || "$lower" == *resume* ]] && type="fiche"
 
-              matiere="math"
-              [[ "$lower" == *phys* ]] && matiere="physique"
+        # =========================
+        # JSON
+        # =========================
 
-              niveau="troisième"
-              [[ "$lower" == *prem* ]] && niveau="première"
-              [[ "$lower" == *term* ]] && niveau="terminale"
-              [[ "$lower" == *sup* ]] && niveau="supérieur"
+        if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
+        first=0
 
-              type="cours"
-              [[ "$lower" == *exo* ]] && type="exo"
-              [[ "$lower" == *ds* ]] && type="ds"
-              [[ "$lower" == *corr* ]] && type="corrigé"
+        echo "{
+          \"titre\": \"$name\",
+          \"pdf\": \"pdfs/$name.pdf\",
+          \"matiere\": \"$matiere\",
+          \"niveau\": \"$niveau\",
+          \"type\": \"$type\"
+        }" >> data/catalog.json
 
-              if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
-              first=0
+      fi
+    done
 
-              echo "{
-                \"titre\": \"$name\",
-                \"pdf\": \"pdfs/$name.pdf\",
-                \"matiere\": \"$matiere\",
-                \"niveau\": \"$niveau\",
-                \"type\": \"$type\"
-              }" >> data/catalog.json
-
-            fi
-          done
-
-          echo "]" >> data/catalog.json
-
-      - name: Commit results
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add pdfs data/catalog.json
-          git commit -m "auto build + catalog" || echo "no change"
-          git push
+    echo "]" >> data/catalog.json
