@@ -24,7 +24,7 @@ const pool = new Pool({
 // ======================
 const upload = multer({
   dest: "uploads/",
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB max
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
 });
 
 // ======================
@@ -58,18 +58,19 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
       return res.status(400).send("Aucun fichier envoyé");
     }
 
-    // 🔐 sécurité : vérifier extension
     if (!req.file.originalname.endsWith(".zip")) {
       return res.status(400).send("Format invalide (zip uniquement)");
     }
 
     const id = uuidv4();
-
     const extractPath = path.join("latex", id);
+
     fs.mkdirSync(extractPath, { recursive: true });
 
+    console.log("📦 Extraction du zip...");
+
     // ======================
-    // 📦 UNZIP
+    // UNZIP
     // ======================
     await fs.createReadStream(req.file.path)
       .pipe(unzipper.Extract({ path: extractPath }))
@@ -84,27 +85,50 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
       return res.status(400).send("main.tex introuvable dans le zip");
     }
 
+    console.log("📄 main.tex trouvé dans :", latexFolder);
+
     // ======================
     // 🔥 COMPILATION LATEX
     // ======================
-    await compileLatex(latexFolder);
+    console.log("🔥 Compilation LaTeX...");
+
+    let latexLogs = "";
+
+    try {
+      latexLogs = await compileLatex(latexFolder);
+    } catch (err) {
+      console.error("💥 ERREUR LATEX :", err);
+
+      return res.status(500).send(`
+        <h2>Erreur LaTeX</h2>
+        <pre>${err}</pre>
+      `);
+    }
+
+    console.log("✅ Compilation terminée");
 
     const pdfSrc = path.join(latexFolder, "main.pdf");
 
     if (!fs.existsSync(pdfSrc)) {
-      return res.status(500).send("Erreur : PDF non généré");
+      return res.status(500).send(`
+        <h2>PDF non généré</h2>
+        <pre>${latexLogs}</pre>
+      `);
     }
 
     const pdfDest = path.join("pdfs", `${id}.pdf`);
+
     fs.copyFileSync(pdfSrc, pdfDest);
 
+    console.log("📄 PDF généré :", pdfDest);
+
     // ======================
-    // 🧠 CLASSIFICATION
+    // CLASSIFICATION
     // ======================
     const { matiere, niveau, type } = classify(req.file.originalname);
 
     // ======================
-    // 💾 DATABASE
+    // DATABASE
     // ======================
     await pool.query(
       `INSERT INTO documents (titre, matiere, niveau, type, pdf_path)
@@ -119,20 +143,20 @@ router.post("/", upload.single("zipfile"), async (req, res) => {
     );
 
     // ======================
-    // 🧹 CLEAN TEMP FILE
+    // CLEAN TEMP
     // ======================
     fs.unlinkSync(req.file.path);
 
     res.send("Upload + compilation OK 🚀");
 
-  } atch (err) {
-  console.error("💥 ERREUR LATEX :", err);
+  } catch (err) {
+    console.error("💥 ERREUR SERVEUR :", err);
 
-  res.status(500).send(`
-    <h2>Erreur LaTeX</h2>
-    <pre>${err}</pre>
-  `);
-}
+    res.status(500).send(`
+      <h2>Erreur serveur</h2>
+      <pre>${err}</pre>
+    `);
+  }
 });
 
 module.exports = router;
