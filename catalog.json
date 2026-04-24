@@ -1,0 +1,9 @@
+[
+  {
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours",
+    "titre": "Test PDF",
+    "fichier": "pdfs/test.pdf"
+  }
+]
