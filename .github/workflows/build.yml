@@ -37,10 +37,28 @@ jobs:
               cd -
 
               if [ -f "$dir/main.pdf" ]; then
-                safe=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
 
-                out="docs"
+                safe=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
+                lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+
+                # CLASSIFICATION
+                matiere="math"
+                [[ "$lower" == *phys* ]] && matiere="physique"
+
+                niveau="autre"
+                [[ "$lower" == *3* ]] && niveau="troisième"
+                [[ "$lower" == *prem* ]] && niveau="première"
+                [[ "$lower" == *term* ]] && niveau="terminale"
+                [[ "$lower" == *sup* ]] && niveau="supérieur"
+
+                type="cours"
+                [[ "$lower" == *exo* ]] && type="exo"
+                [[ "$lower" == *ds* ]] && type="ds"
+                [[ "$lower" == *corr* ]] && type="corrigé"
+
+                out="docs/$matiere/$niveau/$type"
                 mkdir -p "$out"
+
                 cp "$dir/main.pdf" "$out/$safe.pdf"
 
                 if [ $first -eq 0 ]; then echo "," >> data/documents.json; fi
@@ -48,8 +66,12 @@ jobs:
 
                 echo "{
                   \"titre\": \"$name\",
+                  \"matiere\": \"$matiere\",
+                  \"niveau\": \"$niveau\",
+                  \"type\": \"$type\",
                   \"fichier\": \"$out/$safe.pdf\"
                 }" >> data/documents.json
+
               fi
             fi
           done
