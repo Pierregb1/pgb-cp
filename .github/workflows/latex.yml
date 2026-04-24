@@ -1,58 +1,40 @@
-- run: |
-    mkdir -p pdfs
-    mkdir -p data
-    mkdir -p build
+name: Build PDFs
 
-    echo "[" > data/catalog.json
-    first=1
+on:
+  push:
+    paths:
+      - 'latex/**'
 
-    for file in latex/*; do
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      if [[ "$file" == *.zip ]]; then
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-        name=$(basename "$file" .zip)
-        echo "Unzipping $name"
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base
 
-        mkdir -p build/$name
-        unzip -o "$file" -d build/$name
+      - name: Compile
+        run: |
+          mkdir -p pdfs
+          for dir in latex/*; do
+            if [ -f "$dir/main.tex" ]; then
+              cd $dir
+              pdflatex main.tex
+              cd -
+              name=$(basename $dir)
+              cp $dir/main.pdf pdfs/$name.pdf
+            fi
+          done
 
-        if [ -f "build/$name/main.tex" ]; then
-
-          cd build/$name
-          pdflatex -interaction=nonstopmode main.tex
-          cd -
-
-          cp build/$name/main.pdf pdfs/$name.pdf
-
-          # CLASSIFICATION
-          lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
-
-          matiere="math"
-          [[ "$lower" == *phys* ]] && matiere="physique"
-
-          niveau="troisième"
-          [[ "$lower" == *prem* ]] && niveau="première"
-          [[ "$lower" == *term* ]] && niveau="terminale"
-          [[ "$lower" == *sup* ]] && niveau="supérieur"
-
-          type="cours"
-          [[ "$lower" == *exo* ]] && type="exo"
-          [[ "$lower" == *ds* ]] && type="ds"
-          [[ "$lower" == *corr* ]] && type="corrigé"
-
-          if [ $first -eq 0 ]; then echo "," >> data/catalog.json; fi
-          first=0
-
-          echo "{
-            \"titre\": \"$name\",
-            \"pdf\": \"pdfs/$name.pdf\",
-            \"matiere\": \"$matiere\",
-            \"niveau\": \"$niveau\",
-            \"type\": \"$type\"
-          }" >> data/catalog.json
-
-        fi
-      fi
-    done
-
-    echo "]" >> data/catalog.json
+      - name: Commit PDFs
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@mail.com"
+          git add pdfs
+          git commit -m "build pdf" || echo "no change"
+          git push
