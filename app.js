@@ -1,22 +1,11 @@
 // ========================
-// 🚀 INIT GLOBAL
-// ========================
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("APP OK");
-
-  checkAuth();
-  loadHome();
-  loadCourses();
-});
-
-// ========================
 // 🔐 LOGIN
 // ========================
 function login() {
   const id = document.getElementById("id")?.value;
   const mdp = document.getElementById("mdp")?.value;
 
-  console.log("CLICK LOGIN");
+  console.log("LOGIN CLICK"); // debug
 
   if (id === "eleve" && mdp === "jadorelesmaths") {
     localStorage.setItem("auth", "true");
@@ -35,11 +24,12 @@ function logout() {
 }
 
 // ========================
-// 🔒 PROTECTION
+// 🔒 PROTECTION DES PAGES
 // ========================
 function checkAuth() {
   const path = window.location.pathname;
 
+  // autoriser index.html sans login
   if (!path.includes("index.html")) {
     if (localStorage.getItem("auth") !== "true") {
       window.location.href = "index.html";
@@ -68,10 +58,9 @@ function getWeek() {
 }
 
 // ========================
-// 🧠 HOME (VERSION ENRICHIE)
+// 🧠 PAGE ACCUEIL
 // ========================
 async function loadHome() {
-
   if (!document.getElementById("math-week")) return;
 
   try {
@@ -82,19 +71,11 @@ async function loadHome() {
     const m = all[getWeek() % all.length];
 
     document.getElementById("math-week").innerHTML = `
-      <h3>${m.name} (${m.era})</h3>
-
-      <p><strong>Résumé :</strong><br>${m.summary}</p>
-
-      <p><strong>Travaux :</strong><br>${m.research}</p>
-
-      <p><strong>Formules :</strong></p>
-      <ul>
-        ${m.formulas.map(f => `<li>${f}</li>`).join("")}
-      </ul>
+      <h3>${m.name}</h3>
+      <p>${m.summary}</p>
     `;
   } catch (e) {
-    console.log("Erreur mathématicien :", e);
+    console.log("Erreur chargement mathématiciens", e);
   }
 
   try {
@@ -104,7 +85,7 @@ async function loadHome() {
     document.getElementById("problem").innerText = p.statement;
     document.getElementById("solution").innerText = p.solution;
   } catch (e) {
-    console.log("Erreur problème :", e);
+    console.log("Erreur chargement problème", e);
   }
 }
 
@@ -117,10 +98,9 @@ function toggleSolution() {
 }
 
 // ========================
-// 📂 COURS (AMÉLIORÉ)
+// 📂 PAGE COURS
 // ========================
 async function loadCourses() {
-
   const container = document.getElementById("docs");
   if (!container) return;
 
@@ -135,12 +115,10 @@ async function loadCourses() {
 
       div.innerHTML = `
         <h3>${d.titre}</h3>
-        <p>${d.matiere || ""} ${d.niveau || ""}</p>
-        <p><em>${d.type || ""}</em></p>
+        <p>${d.matiere || ""} ${d.niveau || ""} ${d.type || ""}</p>
       `;
 
       div.onclick = () => {
-        console.log("OPEN PDF:", d.fichier);
         document.getElementById("viewer").src = d.fichier;
       };
 
@@ -148,7 +126,22 @@ async function loadCourses() {
     });
 
   } catch (e) {
-    console.log("Erreur chargement docs :", e);
+    console.log("Erreur chargement docs", e);
     container.innerHTML = "Aucun document";
   }
 }
+
+// ========================
+// 🚀 INIT GLOBAL
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+
+  checkAuth();
+
+  // HOME
+  loadHome();
+
+  // COURS
+  loadCourses();
+
+});
