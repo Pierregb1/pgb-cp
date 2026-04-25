@@ -1,49 +1,45 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-  // LOGIN
-  const btn = document.getElementById("loginBtn");
-  if (btn) {
-    btn.addEventListener("click", login);
-  }
-
-  checkAuth();
-
-  loadHome();
-  loadCourses();
-
-});
-
-// ================= LOGIN =================
+// ========================
+// 🔐 LOGIN
+// ========================
 function login() {
-  const id = document.getElementById("id").value;
-  const mdp = document.getElementById("mdp").value;
+  const id = document.getElementById("id")?.value;
+  const mdp = document.getElementById("mdp")?.value;
+
+  console.log("LOGIN CLICK"); // debug
 
   if (id === "eleve" && mdp === "jadorelesmaths") {
     localStorage.setItem("auth", "true");
     window.location.href = "home.html";
   } else {
-    alert("Identifiants incorrects");
+    alert("Identifiant ou mot de passe incorrect");
   }
 }
 
-// ================= LOGOUT =================
+// ========================
+// 🔓 LOGOUT
+// ========================
 function logout() {
   localStorage.removeItem("auth");
   window.location.href = "index.html";
 }
 
-// ================= SECURITE =================
+// ========================
+// 🔒 PROTECTION DES PAGES
+// ========================
 function checkAuth() {
-  const page = window.location.pathname;
+  const path = window.location.pathname;
 
-  if (!page.includes("index.html")) {
+  // autoriser index.html sans login
+  if (!path.includes("index.html")) {
     if (localStorage.getItem("auth") !== "true") {
       window.location.href = "index.html";
     }
   }
 }
 
-// ================= NAV =================
+// ========================
+// 🔁 NAVIGATION
+// ========================
 function goCourses() {
   window.location.href = "courses.html";
 }
@@ -52,16 +48,19 @@ function goHome() {
   window.location.href = "home.html";
 }
 
-// ================= SEMAINE =================
+// ========================
+// 📅 SEMAINE
+// ========================
 function getWeek() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 1);
   return Math.floor((now - start) / 604800000);
 }
 
-// ================= HOME =================
+// ========================
+// 🧠 PAGE ACCUEIL
+// ========================
 async function loadHome() {
-
   if (!document.getElementById("math-week")) return;
 
   try {
@@ -71,9 +70,13 @@ async function loadHome() {
     const all = [...men, ...women];
     const m = all[getWeek() % all.length];
 
-    document.getElementById("math-week").innerHTML =
-      `<h3>${m.name}</h3><p>${m.summary}</p>`;
-  } catch {}
+    document.getElementById("math-week").innerHTML = `
+      <h3>${m.name}</h3>
+      <p>${m.summary}</p>
+    `;
+  } catch (e) {
+    console.log("Erreur chargement mathématiciens", e);
+  }
 
   try {
     const probs = await fetch("data/fun-problems.json").then(r => r.json());
@@ -81,18 +84,23 @@ async function loadHome() {
 
     document.getElementById("problem").innerText = p.statement;
     document.getElementById("solution").innerText = p.solution;
-  } catch {}
+  } catch (e) {
+    console.log("Erreur chargement problème", e);
+  }
 }
 
-// ================= PROBLEME =================
+// ========================
+// 🧩 PROBLEME
+// ========================
 function toggleSolution() {
   const el = document.getElementById("solution");
   if (el) el.classList.toggle("hidden");
 }
 
-// ================= COURS =================
+// ========================
+// 📂 PAGE COURS
+// ========================
 async function loadCourses() {
-
   const container = document.getElementById("docs");
   if (!container) return;
 
@@ -104,7 +112,11 @@ async function loadCourses() {
     docs.forEach(d => {
       const div = document.createElement("div");
       div.className = "doc";
-      div.innerHTML = `<h3>${d.titre}</h3>`;
+
+      div.innerHTML = `
+        <h3>${d.titre}</h3>
+        <p>${d.matiere || ""} ${d.niveau || ""} ${d.type || ""}</p>
+      `;
 
       div.onclick = () => {
         document.getElementById("viewer").src = d.fichier;
@@ -113,7 +125,23 @@ async function loadCourses() {
       container.appendChild(div);
     });
 
-  } catch {
+  } catch (e) {
+    console.log("Erreur chargement docs", e);
     container.innerHTML = "Aucun document";
   }
 }
+
+// ========================
+// 🚀 INIT GLOBAL
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+
+  checkAuth();
+
+  // HOME
+  loadHome();
+
+  // COURS
+  loadCourses();
+
+});
