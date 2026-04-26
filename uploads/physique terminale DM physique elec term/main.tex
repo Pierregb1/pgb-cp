@@ -1,0 +1,341 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb,siunitx}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Terminale spécialité -- Physique-Chimie-pgb}
+\rhead{DM -- Électricité}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\setlist[itemize]{leftmargin=1.8em}
+\setlist[enumerate]{leftmargin=2em}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Devoir Maison -- Physique-Chimie}}\\[0.3em]
+    {\Large \textbf{Terminale spécialité}}\\[0.5em]
+    {\large \textbf{ Électricité}}\\[0.8em]
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\textbf{Consignes générales :}
+\begin{itemize}
+    \item La calculatrice est autorisée.
+    \item Les réponses doivent être \textbf{rédigées}, \textbf{justifiées} et accompagnées des \textbf{unités}.
+    \item La qualité des schémas, la rigueur des raisonnements et l'interprétation physique des résultats seront prises en compte.
+    \item Le barème valorise davantage les questions longues, les raisonnements fins et les prises de recul que les applications directes du cours.
+\end{itemize}
+
+\vspace{0.8em}
+
+\begin{center}
+    \fbox{\parbox{0.93\linewidth}{
+    \textbf{Répartition indicative du barème :} \\
+    Problème 1 : \textbf{24 points} \hfill
+    Problème 2 : \textbf{29 points} \hfill
+    Problème 3 : \textbf{31 points} \\[0.2em]
+    \hfill \textbf{Total : 84 points}
+    }}
+\end{center}
+
+\section*{Problème 1 -- Étude d'un circuit de charge d'un condensateur pour un flash électronique \hfill /24}
+
+On étudie le circuit simplifié d'un flash d'appareil photo. Un générateur idéal de tension de force électromotrice \(E\) charge un condensateur de capacité \(C\) à travers une résistance \(R\). À l'instant \(t=0\), on ferme l'interrupteur. Le condensateur est initialement déchargé.
+
+\medskip
+
+\noindent\textbf{Données :}
+\[
+E = \SI{12.0}{V}, \qquad R = 4.7\times 10^3\,\si{\ohm}, \qquad C = \SI{220}{\micro F}
+\]
+
+On note :
+\begin{itemize}
+    \item \(u_C(t)\) la tension aux bornes du condensateur ;
+    \item \(i(t)\) l'intensité du courant dans le circuit.
+\end{itemize}
+
+\subsection*{1. Analyse qualitative du montage}
+\begin{enumerate}
+    \item Faire un schéma du circuit en représentant le générateur, la résistance, le condensateur et l'interrupteur. \hfill \textbf{/1}
+    \item Indiquer le sens conventionnel du courant lors de la charge. \hfill \textbf{/1}
+    \item Préciser le comportement du condensateur :
+    \begin{enumerate}[label=\alph*)]
+        \item juste après la fermeture de l'interrupteur ; \hfill \textbf{/1}
+        \item au bout d'un temps très long. \hfill \textbf{/1}
+    \end{enumerate}
+    \item Expliquer qualitativement pourquoi le courant décroît au cours du temps. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{2. Équation différentielle}
+\begin{enumerate}
+    \item Établir la relation entre \(u_R(t)\), \(u_C(t)\) et \(E\). \hfill \textbf{/1}
+    \item Rappeler la relation entre la tension \(u_R(t)\) et l'intensité \(i(t)\) pour la résistance. \hfill \textbf{/1}
+    \item Rappeler la relation entre \(i(t)\) et \(u_C(t)\) pour le condensateur. \hfill \textbf{/2}
+    \item En déduire que \(u_C(t)\) vérifie l'équation différentielle :
+    \[
+    RC\,\frac{du_C}{dt}+u_C=E
+    \]
+    \hfill \textbf{/3}
+\end{enumerate}
+
+\subsection*{3. Solution et exploitation}
+On admet que la solution de cette équation, compatible avec la condition initiale, est :
+\[
+u_C(t)=E\left(1-e^{-t/RC}\right)
+\]
+
+\begin{enumerate}
+    \item Vérifier que cette expression satisfait bien la condition initiale. \hfill \textbf{/1}
+    \item Déterminer la valeur de la constante de temps \(\tau = RC\). \hfill \textbf{/2}
+    \item Calculer \(u_C(\tau)\). \hfill \textbf{/2}
+    \item Que représente physiquement la constante de temps \(\tau\) ? \hfill \textbf{/2}
+    \item Déterminer l'expression de \(i(t)\). \hfill \textbf{/2}
+    \item Calculer l'intensité initiale \(i(0)\). \hfill \textbf{/1}
+    \item Déterminer la valeur limite de \(i(t)\) lorsque \(t\to +\infty\). \hfill \textbf{/1}
+    \item Montrer que l'énergie stockée dans le condensateur à l'instant \(t\) vaut :
+    \[
+    E_C(t)=\frac12 C\,u_C^2(t)
+    \]
+    \hfill \textbf{/2}
+    \item Calculer l'énergie stockée lorsque le condensateur est totalement chargé. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{4. Regard critique}
+\begin{enumerate}
+    \item Un élève affirme : \og Au début de la charge, le condensateur empêche totalement le passage du courant. \fg \\
+    Dire si cette affirmation est vraie ou fausse et justifier précisément. \hfill \textbf{/2}
+    \item Un autre élève dit : \og Plus la résistance est grande, plus le condensateur se charge vite car cela protège le circuit. \fg \\
+    Discuter cette affirmation à l'aide de la constante de temps. \hfill \textbf{/2}
+    \item Proposer une modification simple du montage permettant une charge plus rapide sans changer la tension finale atteinte par le condensateur. \hfill \textbf{/1}
+\end{enumerate}
+
+\vspace{1em}
+
+\section*{Problème 2 -- Capteur de présence dans un siège : circuit RC et seuil de détection \hfill /29}
+
+Dans certains systèmes de sécurité, la présence d'une personne sur un siège modifie la capacité électrique d'un capteur. On modélise ce capteur par un condensateur dont la capacité dépend de l'état du siège.
+
+Le circuit de mesure est constitué :
+\begin{itemize}
+    \item d'un générateur idéal de tension \(E=\SI{5.0}{V}\),
+    \item d'une résistance \(R=\SI{100}{k\ohm}\),
+    \item d'un condensateur de capacité \(C\).
+\end{itemize}
+
+On mesure la tension \(u_C(t)\) aux bornes du condensateur pendant la charge.
+
+On considère deux situations :
+\begin{itemize}
+    \item \textbf{siège vide} : \(C_v = \SI{80}{nF}\),
+    \item \textbf{siège occupé} : \(C_o = \SI{140}{nF}\).
+\end{itemize}
+
+Le système électronique compare la tension \(u_C\) à un seuil fixé à \(u_s = \SI{3.0}{V}\).
+
+\subsection*{1. Compréhension du principe}
+\begin{enumerate}
+    \item Expliquer en quelques lignes pourquoi la présence d'une personne peut modifier la capacité d'un capteur. \hfill \textbf{/3}
+    \item Parmi les deux situations, laquelle conduit à une charge plus lente ? Justifier sans calcul. \hfill \textbf{/2}
+    \item Rappeler l'expression de la constante de temps d'un circuit RC. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{2. Temps de franchissement d'un seuil}
+On rappelle que lors de la charge :
+\[
+u_C(t)=E\left(1-e^{-t/RC}\right)
+\]
+
+\begin{enumerate}
+    \item Montrer que le temps \(t_s\) auquel la tension atteint le seuil \(u_s\) est donné par :
+    \[
+    t_s=-RC\ln\left(1-\frac{u_s}{E}\right)
+    \]
+    \hfill \textbf{/4}
+    \item Calculer \(t_s\) dans le cas du siège vide. \hfill \textbf{/2}
+    \item Calculer \(t_s\) dans le cas du siège occupé. \hfill \textbf{/2}
+    \item Lequel des deux temps est le plus grand ? Interpréter physiquement. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{3. Détection automatique}
+Le système décide que le siège est occupé si la tension \(u_C\) n'a pas encore atteint \(\SI{3.0}{V}\) au bout de \(\SI{9.0}{ms}\).
+
+\begin{enumerate}
+    \item Déterminer, dans chacun des deux cas, si la tension seuil est atteinte avant \(\SI{9.0}{ms}\). \hfill \textbf{/3}
+    \item Conclure : la règle de décision choisie permet-elle de distinguer correctement siège vide et siège occupé ? \hfill \textbf{/2}
+    \item Proposer une autre valeur de temps de test plus pertinente si nécessaire. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{4. Question de conception}
+On souhaite rendre le système \textbf{plus sensible}, c'est-à-dire augmenter l'écart entre les temps mesurés dans les deux situations.
+
+\begin{enumerate}
+    \item Expliquer l'effet d'une augmentation de \(R\) sur :
+    \begin{enumerate}[label=\alph*)]
+        \item le temps de mesure ; \hfill \textbf{/1}
+        \item l'écart entre les temps caractéristiques. \hfill \textbf{/2}
+    \end{enumerate}
+    \item Expliquer l'inconvénient pratique d'une valeur trop grande de \(R\). \hfill \textbf{/2}
+    \item On garde \(E\) et les capacités inchangées. Proposer une stratégie expérimentale pour choisir une bonne valeur de \(R\). \hfill \textbf{/3}
+\end{enumerate}
+
+\subsection*{5. Raisonnement approfondi}
+On suppose maintenant que le système ne mesure pas un temps, mais la tension \(u_C\) à un instant fixé \(t_m\).
+
+\begin{enumerate}
+    \item À temps fixé, la tension est-elle plus grande pour le siège vide ou pour le siège occupé ? Justifier. \hfill \textbf{/2}
+    \item Expliquer pourquoi cette autre méthode de détection peut être préférable. \hfill \textbf{/2}
+    \item Sans refaire tous les calculs, dire comment choisir \(t_m\) pour bien distinguer les deux situations. \hfill \textbf{/1}
+\end{enumerate}
+
+\vspace{1em}
+
+\section*{Problème 3 -- Déviation d'un électron dans un champ électrique uniforme \hfill /31}
+
+On étudie le mouvement d'un électron pénétrant entre deux plaques métalliques parallèles. Entre ces plaques règne un champ électrique uniforme vertical.
+
+Un électron entre en \(O\) entre les plaques avec une vitesse initiale horizontale de valeur :
+\[
+v_0 = 2{,}0\times 10^7\,\si{m.s^{-1}}
+\]
+Le champ électrique uniforme a pour valeur :
+\[
+E = 1{,}5\times 10^4\,\si{V.m^{-1}}
+\]
+La longueur des plaques est :
+\[
+L = \SI{8.0}{cm}
+\]
+
+On néglige le poids de l'électron devant la force électrique.
+
+L’écartement entre les plaques est suffisamment grand pour que l’électron ne touche pas les plaques. 
+
+\medskip
+
+\noindent\textbf{Données :}
+\[
+e = 1{,}60\times 10^{-19}\,\si{C}, \qquad m_e = 9{,}11\times 10^{-31}\,\si{kg}
+\]
+
+On choisit un repère :
+\begin{itemize}
+    \item axe \(Ox\) horizontal, dans le sens de la vitesse initiale ;
+    \item axe \(Oy\) vertical vers le haut.
+\end{itemize}
+
+Le champ électrique est dirigé vers le bas.
+
+\subsection*{1. Force subie par l'électron}
+\begin{enumerate}
+    \item Rappeler l'expression vectorielle de la force électrique subie par une charge \(q\) placée dans un champ électrique \(\vec{E}\). \hfill \textbf{/1}
+    \item Donner le signe de la charge de l'électron. \hfill \textbf{/1}
+    \item Déterminer le sens de la force électrique exercée sur l'électron. \hfill \textbf{/2}
+    \item Calculer la valeur de cette force. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{2. Mouvement de l'électron}
+\begin{enumerate}
+    \item En appliquant la deuxième loi de Newton, déterminer les composantes de l'accélération de l'électron. \hfill \textbf{/4}
+    \item Décrire la nature du mouvement selon l'axe \(Ox\). \hfill \textbf{/1}
+    \item Décrire la nature du mouvement selon l'axe \(Oy\). \hfill \textbf{/2}
+    \item Établir les équations horaires \(x(t)\) et \(y(t)\), en prenant :
+    \[
+    x(0)=0,\quad y(0)=0,\quad v_x(0)=v_0,\quad v_y(0)=0
+    \]
+    \hfill \textbf{/4}
+\end{enumerate}
+
+\subsection*{3. Trajectoire}
+\begin{enumerate}
+    \item Exprimer \(t\) en fonction de \(x\). \hfill \textbf{/1}
+    \item En déduire l'équation de la trajectoire \(y(x)\). \hfill \textbf{/3}
+    \item Montrer que la trajectoire est parabolique. \hfill \textbf{/2}
+    \item Calculer la durée de traversée entre l'entrée et la sortie des plaques. \hfill \textbf{/2}
+    \item Calculer la déviation verticale à la sortie des plaques. \hfill \textbf{/3}
+\end{enumerate}
+
+\subsection*{4. Interprétation physique}
+\begin{enumerate}
+    \item Expliquer pourquoi la vitesse horizontale reste constante. \hfill \textbf{/2}
+    \item Dire si l'énergie cinétique de l'électron varie au cours de la traversée. Justifier qualitativement. \hfill \textbf{/2}
+    \item On augmente la valeur du champ électrique tout en gardant \(v_0\) inchangée. Expliquer l'effet sur la déviation verticale. \hfill \textbf{/2}
+    \item On garde \(E\) constant mais on augmente fortement \(v_0\). Expliquer l'effet sur la déviation verticale. \hfill \textbf{/2}
+    \item Comparer les effets de \(E\) et de \(v_0\) sur la trajectoire, sans refaire tout le calcul. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{5. Ouverture}
+Un technicien souhaite dévier davantage les électrons mais sans modifier le champ électrique.
+
+\begin{enumerate}
+    \item Citer deux paramètres sur lesquels il pourrait agir. \hfill \textbf{/2}
+    \item Préciser pour chacun s'il faut l'augmenter ou le diminuer. \hfill \textbf{/2}
+    \item Indiquer une limite technologique ou physique possible de cette stratégie. \hfill \textbf{/1}
+\end{enumerate}
+
+\vspace{1em}
+
+\section*{Barème détaillé récapitulatif}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{|Y|c|}
+\hline
+\textbf{Éléments évalués} & \textbf{Points} \\
+\hline
+\textbf{Problème 1} : maîtrise du circuit RC classique, modélisation, lecture physique des résultats & \textbf{24} \\
+\hline
+\textbf{Problème 2} : compréhension fine d'un capteur, exploitation d'un seuil, conception expérimentale, comparaison de méthodes & \textbf{29} \\
+\hline
+\textbf{Problème 3} : mise en équation d'un mouvement de particule, trajectoire, interprétation énergétique et analyse de paramètres & \textbf{31} \\
+\hline
+\textbf{Total} & \textbf{84} \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\noindent\textbf{Remarque sur le barème :}
+\begin{itemize}
+    \item Les questions de \textbf{cours direct} rapportent peu.
+    \item Les questions demandant une \textbf{mise en équation}, une \textbf{interprétation physique}, une \textbf{prise de recul} ou une \textbf{proposition expérimentale} rapportent davantage.
+    \item Une réponse numériquement juste mais non justifiée ne rapporte qu'une partie des points.
+\end{itemize}
+
+\vspace{1em}
+
+\begin{center}
+    \fbox{\parbox{0.92\linewidth}{
+    \textbf{Conseil à l'élève :} Pour obtenir une très bonne note, il ne suffit pas de calculer. Il faut montrer que l'on comprend le sens physique des modèles, la cohérence des résultats et les limites des dispositifs étudiés.
+    }}
+\end{center}
+
+\end{document}

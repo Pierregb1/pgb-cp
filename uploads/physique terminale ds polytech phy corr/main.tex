@@ -1,0 +1,1018 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,siunitx}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{tabularx}
+
+\sisetup{locale=FR}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spécialité Physique-Chimie}
+\fancyhead[C]{Corrigé détaillé complet}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{\textit{Corrigé détaillé avec rappels, commentaires physiques et réponses attendues}}
+
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{remarque}{Remarque}
+\newtheorem*{reponseattendue}{Réponse attendue}
+\newtheorem*{commentaire}{Commentaire}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{CORRIGÉ DÉTAILLÉ -- PHYSIQUE}}\\[0.3em]
+    {\large \textbf{Sujet inspiré de GEIPI Polytech -- version approfondie corrigée}}\\[0.4em]
+    {\large \textbf{Avec rappels de formules, commentaires physiques et réponses aux questions ouvertes}}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\textbf{Corrections apportées au sujet :}
+\begin{itemize}[leftmargin=1.8em]
+    \item Dans l'exercice 1, on prend désormais l'interfrange
+    \[
+    i=\SI{2,5}{mm}
+    \]
+    afin d'obtenir une situation physiquement cohérente.
+    \item Dans l'exercice 3, partie C, la vitesse
+    \[
+    V_0=\SI{22,0}{m.s^{-1}}
+    \]
+    est prise indépendamment des résultats précédents.
+    \item Dans l'exercice 3, la portée est calculée dans un modèle simplifié où le skieur retombe à la même altitude que le point d'envol.
+\end{itemize}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 1 -- Optique ondulatoire : mesurer, interpréter, critiquer}
+
+\noindent\textbf{Données :}
+\[
+\lambda=\SI{532}{nm},\qquad
+D=\SI{2,50}{m},\qquad
+c=\SI{3,00e8}{m.s^{-1}}.
+\]
+
+\vspace{0.3em}
+
+\subsection*{Partie A -- Questions de base}
+
+\begin{enumerate}[label=\textbf{1.\arabic*}, leftmargin=1.6em]
+
+\item \textbf{Calcul de la fréquence du laser}
+
+\begin{rappel}
+Pour une onde lumineuse dans le vide :
+\[
+c=\lambda f
+\qquad\Longrightarrow\qquad
+f=\frac{c}{\lambda}.
+\]
+\end{rappel}
+
+On convertit la longueur d’onde :
+\[
+\lambda=\SI{532}{nm}=532\times 10^{-9}\ \si{m}=5{,}32\times 10^{-7}\ \si{m}.
+\]
+
+Donc :
+\[
+f=\frac{3{,}00\times 10^8}{5{,}32\times 10^{-7}}
+\simeq 5{,}64\times 10^{14}\ \si{Hz}.
+\]
+
+\[
+\boxed{f \simeq 5{,}6\times 10^{14}\ \si{Hz}}
+\]
+
+\item \textbf{Nature de la lumière mise en évidence}
+
+La diffraction met en évidence le \textbf{caractère ondulatoire} de la lumière.
+
+Les interférences mettent elles aussi en évidence le \textbf{caractère ondulatoire} de la lumière.
+
+\[
+\boxed{\text{Dans les deux cas, on met en évidence la nature ondulatoire de la lumière.}}
+\]
+
+\item \textbf{Pourquoi un modèle purement corpusculaire est insuffisant}
+
+Un modèle purement corpusculaire n’explique pas naturellement :
+\begin{itemize}
+    \item l’étalement d’un faisceau après passage dans une petite ouverture ;
+    \item l’apparition de franges brillantes et sombres régulières.
+\end{itemize}
+
+Ces phénomènes sont caractéristiques d’ondes qui se propagent, se superposent et interfèrent.
+
+\end{enumerate}
+
+\subsection*{Partie B -- Mesure d’un diamètre de trou}
+
+On observe une tache centrale de largeur :
+\[
+L=\SI{8,0}{mm}=8{,}0\times 10^{-3}\ \si{m}.
+\]
+
+\begin{enumerate}[label=\textbf{1.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Établissement de \(\theta \simeq \dfrac{L}{2D}\)}
+
+\begin{rappel}
+Pour les petits angles :
+\[
+\tan\theta \simeq \theta
+\qquad (\theta \text{ en radians}).
+\]
+\end{rappel}
+
+La demi-largeur de la tache vaut \(L/2\).  
+Géométriquement :
+\[
+\tan\theta=\frac{L/2}{D}.
+\]
+
+Comme l’angle est petit :
+\[
+\theta \simeq \tan\theta \simeq \frac{L}{2D}.
+\]
+
+\[
+\boxed{\theta \simeq \frac{L}{2D}}
+\]
+
+\item \textbf{Expression de \(a\)}
+
+\begin{rappel}
+Pour un trou circulaire :
+\[
+\theta \simeq \frac{1{,}22\,\lambda}{a}.
+\]
+\end{rappel}
+
+En identifiant :
+\[
+\frac{L}{2D}\simeq \frac{1{,}22\,\lambda}{a}.
+\]
+
+Donc :
+\[
+a \simeq \frac{2{,}44\,D\lambda}{L}.
+\]
+
+\[
+\boxed{a \simeq \frac{2{,}44\,D\lambda}{L}}
+\]
+
+\item \textbf{Calcul de \(a\)}
+
+\[
+a \simeq \frac{2{,}44\times 2{,}50\times 5{,}32\times 10^{-7}}{8{,}0\times 10^{-3}}.
+\]
+
+Numériquement :
+\[
+a \simeq 4{,}06\times 10^{-4}\ \si{m}.
+\]
+
+\[
+\boxed{a \simeq 4{,}1\times 10^{-4}\ \si{m}}
+\qquad\text{soit}\qquad
+\boxed{a \simeq \SI{0,41}{mm}}
+\]
+
+\item \textbf{Commentaire physique}
+
+On trouve un diamètre de l’ordre du dixième de millimètre.  
+Cela correspond bien à une ouverture très petite à l’échelle usuelle, même si ce n’est pas microscopique au sens du micromètre.
+
+\begin{commentaire}
+Un très bon élève peut remarquer que \(\SI{0,41}{mm}\) est petit, mais pas \og microscopique \fg{} au sens strict. Cette remarque est pertinente et valorisable.
+\end{commentaire}
+
+\end{enumerate}
+
+\subsection*{Partie C -- Mesure d’un espacement entre trous}
+
+On corrige l’énoncé et on prend :
+\[
+i=\SI{2,5}{mm}=2{,}5\times 10^{-3}\ \si{m}.
+\]
+
+\begin{enumerate}[label=\textbf{1.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Calcul de \(b\)}
+
+\begin{rappel}
+Pour deux ouvertures distantes de \(b\) :
+\[
+i=\frac{\lambda D}{b}
+\qquad\Longrightarrow\qquad
+b=\frac{\lambda D}{i}.
+\]
+\end{rappel}
+
+Donc :
+\[
+b=\frac{5{,}32\times 10^{-7}\times 2{,}50}{2{,}5\times 10^{-3}}
+=5{,}32\times 10^{-4}\ \si{m}.
+\]
+
+\[
+\boxed{b \simeq 5{,}3\times 10^{-4}\ \si{m}}
+\qquad\text{soit}\qquad
+\boxed{b \simeq \SI{0,53}{mm}}
+\]
+
+\item \textbf{Comparaison de \(a\) et \(b\)}
+
+Nous avons :
+\[
+a \simeq \SI{0,41}{mm},
+\qquad
+b \simeq \SI{0,53}{mm}.
+\]
+
+Donc :
+\[
+\boxed{b>a}
+\]
+
+La situation est maintenant cohérente : les trous sont distincts et séparés par une distance supérieure à leur diamètre.
+
+\item \textbf{Pourquoi les interférences sont modulées par une enveloppe de diffraction}
+
+Chaque trou ne donne pas un simple rayon, mais une onde diffractée qui s’étale.
+
+Les deux ondes issues des deux trous interfèrent entre elles : cela produit les franges.
+
+Mais comme chacune des deux ondes est elle-même diffractée, l’intensité globale est limitée par une enveloppe plus large de diffraction.
+
+\[
+\boxed{\text{La diffraction détermine l'enveloppe, les interférences déterminent les franges fines.}}
+\]
+
+\end{enumerate}
+
+\subsection*{Partie D -- Questions ouvertes}
+
+\begin{enumerate}[label=\textbf{1.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Améliorer la précision de la mesure de \(a\)}
+
+\begin{reponseattendue}
+On attendait par exemple :
+\begin{itemize}
+    \item augmenter la distance \(D\) pour agrandir la tache ;
+    \item utiliser un dispositif de mesure plus précis (caméra, capteur, analyse numérique) ;
+    \item stabiliser le montage pour éviter les vibrations ;
+    \item améliorer l’alignement du faisceau ;
+    \item réduire la lumière parasite ;
+    \item utiliser une source plus stable.
+\end{itemize}
+\end{reponseattendue}
+
+\begin{commentaire}
+Physiquement, une tache plus grande est souvent plus facile à mesurer, ce qui réduit l’incertitude relative sur \(L\).
+\end{commentaire}
+
+\item \textbf{Pourquoi ces modifications aident-elles ?}
+
+\begin{reponseattendue}
+Il fallait expliquer que :
+\begin{itemize}
+    \item une figure plus grande ou plus nette améliore la précision de lecture ;
+    \item un montage stable évite le flou ;
+    \item une meilleure source améliore le contraste ;
+    \item un meilleur alignement évite les déformations géométriques.
+\end{itemize}
+\end{reponseattendue}
+
+\item \textbf{Sens physique de la cohérence}
+
+\begin{reponseattendue}
+La cohérence signifie qu’il existe une relation de phase suffisamment stable entre les ondes pour former des interférences nettes et durables.  
+Si cette relation varie trop rapidement, les franges se brouillent ou disparaissent.
+\end{reponseattendue}
+
+\item \textbf{Pourquoi un laser est mieux adapté qu’une lampe ?}
+
+\begin{reponseattendue}
+Parce qu’un laser émet une lumière :
+\begin{itemize}
+    \item très monochromatique ;
+    \item très directive ;
+    \item généralement très cohérente.
+\end{itemize}
+Cela permet d’obtenir des figures d’interférences bien visibles.
+\end{reponseattendue}
+
+\item \textbf{Causes de dégradation expérimentale}
+
+\begin{reponseattendue}
+Exemples attendus :
+\begin{itemize}
+    \item vibrations du montage ;
+    \item turbulence de l’air ;
+    \item mauvais alignement ;
+    \item ouvertures mal usinées ;
+    \item lumière parasite ;
+    \item source insuffisamment monochromatique.
+\end{itemize}
+\end{reponseattendue}
+
+\end{enumerate}
+
+\vspace{0.6em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 2 -- Refroidissement d’une boisson : du modèle simple à sa critique}
+
+\noindent\textbf{Données :}
+\[
+\theta_{\mathrm{amb}}=\SI{20,0}{^\circ C},
+\qquad
+\theta(0)=\SI{85,0}{^\circ C},
+\qquad
+k=2{,}1\times 10^{-4}\ \si{s^{-1}}.
+\]
+
+Le modèle est :
+\[
+\frac{d\theta}{dt}=-k\big(\theta(t)-\theta_{\mathrm{amb}}\big).
+\]
+
+\subsection*{Partie A -- Lecture physique du modèle}
+
+\begin{enumerate}[label=\textbf{2.\arabic*}, leftmargin=1.6em]
+
+\item \textbf{Analyse d’unités}
+
+Le membre de gauche \(\dfrac{d\theta}{dt}\) s’exprime en \(\si{^\circ C.s^{-1}}\) ou \(\si{K.s^{-1}}\).
+
+Le terme \(\theta-\theta_{\mathrm{amb}}\) s’exprime en \(\si{^\circ C}\) ou \(\si{K}\).
+
+Donc :
+\[
+[k]=\si{s^{-1}}.
+\]
+
+\[
+\boxed{[k]=\si{s^{-1}}}
+\]
+
+\item \textbf{Signe de la dérivée au début}
+
+Au départ :
+\[
+\theta(0)-\theta_{\mathrm{amb}}=85-20=65>0.
+\]
+
+Donc :
+\[
+\frac{d\theta}{dt}<0.
+\]
+
+La température décroît : la boisson refroidit.
+
+\item \textbf{À l’équilibre}
+
+Si
+\[
+\theta(t)=\theta_{\mathrm{amb}},
+\]
+alors :
+\[
+\frac{d\theta}{dt}=0.
+\]
+
+\[
+\boxed{\text{À l’équilibre thermique, la température devient constante.}}
+\]
+
+\item \textbf{Pourquoi ce modèle est raisonnable}
+
+Plus l’écart de température avec l’air ambiant est grand, plus les échanges thermiques sont intenses.  
+Le modèle suppose que la vitesse de refroidissement est proportionnelle à cet écart, ce qui est une hypothèse très classique et raisonnable.
+
+\end{enumerate}
+
+\subsection*{Partie B -- Résolution}
+
+\begin{rappel}
+La solution admise est :
+\[
+\theta(t)=\theta_{\mathrm{amb}}+\big(\theta(0)-\theta_{\mathrm{amb}}\big)e^{-kt}.
+\]
+\end{rappel}
+
+Ici :
+\[
+\theta(t)=20+65\,e^{-kt}.
+\]
+
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Température au bout de 10 min}
+
+\[
+10\ \text{min} = 600\ \text{s}.
+\]
+
+Donc :
+\[
+\theta(600)=20+65e^{-2{,}1\times 10^{-4}\times 600}
+=20+65e^{-0{,}126}.
+\]
+
+Or :
+\[
+e^{-0{,}126}\simeq 0{,}882.
+\]
+
+Donc :
+\[
+\theta(600)\simeq 20+65\times 0{,}882 \simeq 77{,}3.
+\]
+
+\[
+\boxed{\theta(10\ \text{min})\simeq \SI{77,3}{^\circ C}}
+\]
+
+\item \textbf{Temps pour atteindre \(\SI{55}{^\circ C}\)}
+
+On résout :
+\[
+55=20+65e^{-kt}.
+\]
+
+Donc :
+\[
+35=65e^{-kt}
+\qquad\Longrightarrow\qquad
+e^{-kt}=\frac{7}{13}.
+\]
+
+En prenant le logarithme :
+\[
+-kt=\ln\left(\frac{7}{13}\right).
+\]
+
+Ainsi :
+\[
+t=-\frac{1}{k}\ln\left(\frac{7}{13}\right).
+\]
+
+Numériquement :
+\[
+t\simeq -\frac{1}{2{,}1\times 10^{-4}}\times \ln\left(\frac{7}{13}\right)
+\simeq 2{,}95\times 10^3\ \si{s}.
+\]
+
+\[
+\boxed{t\simeq \SI{2950}{s}\simeq \SI{49}{min}}
+\]
+
+\item \textbf{Limite quand \(t\to +\infty\)}
+
+Comme
+\[
+e^{-kt}\to 0,
+\]
+on obtient :
+\[
+\theta(t)\to \theta_{\mathrm{amb}}.
+\]
+
+\[
+\boxed{\lim_{t\to +\infty}\theta(t)=\SI{20,0}{^\circ C}}
+\]
+
+Interprétation : à long terme, la boisson prend la température ambiante.
+
+\end{enumerate}
+
+\subsection*{Partie C -- Constante de temps}
+
+On pose :
+\[
+\tau=\frac{1}{k}.
+\]
+
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Calcul de \(\tau\)}
+
+\[
+\tau=\frac{1}{2{,}1\times 10^{-4}}
+\simeq 4{,}76\times 10^3\ \si{s}.
+\]
+
+\[
+\boxed{\tau\simeq \SI{4,8e3}{s}}
+\qquad\text{soit environ}\qquad
+\boxed{\tau\simeq \SI{79}{min}}
+\]
+
+\item \textbf{Valeur de \(\theta(\tau)\)}
+
+\[
+\theta(\tau)=\theta_{\mathrm{amb}}+\big(\theta(0)-\theta_{\mathrm{amb}}\big)e^{-k\tau}.
+\]
+
+Or :
+\[
+k\tau=1.
+\]
+
+Donc :
+\[
+\theta(\tau)=\theta_{\mathrm{amb}}+\big(\theta(0)-\theta_{\mathrm{amb}}\big)e^{-1}.
+\]
+
+\[
+\boxed{
+\theta(\tau)=\theta_{\mathrm{amb}}+\frac{\theta(0)-\theta_{\mathrm{amb}}}{e}
+}
+\]
+
+\item \textbf{Interprétation physique}
+
+Au temps \(\tau\), l’écart à la température ambiante a été divisé par \(e\), c’est-à-dire environ par \(2{,}72\).
+
+\item \textbf{Effet d’une meilleure isolation}
+
+Une tasse mieux isolée ralentit les échanges thermiques.
+
+Donc le refroidissement est plus lent, ce qui correspond à un \(k\) plus petit, donc à une constante de temps plus grande.
+
+\[
+\boxed{\text{Meilleure isolation} \Longrightarrow \tau \text{ plus grande}}
+\]
+
+\end{enumerate}
+
+\subsection*{Partie D -- Questions ouvertes}
+
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Pourquoi l’évaporation accélère le refroidissement ?}
+
+\begin{reponseattendue}
+L’évaporation emporte de l’énergie thermique : les molécules qui quittent le liquide emportent de l’énergie.  
+Cela provoque une perte d’énergie supplémentaire et donc un refroidissement plus rapide.
+\end{reponseattendue}
+
+\item \textbf{Le coefficient \(k\) est-il vraiment constant ?}
+
+\begin{reponseattendue}
+Pas forcément. Le coefficient \(k\) modélise globalement les échanges thermiques, mais ceux-ci peuvent dépendre :
+\begin{itemize}
+    \item de la température ;
+    \item des mouvements d’air ;
+    \item de l’évaporation ;
+    \item de la géométrie de la tasse ;
+    \item de la surface libre du liquide.
+\end{itemize}
+Donc \(k\) constant est une approximation utile, mais simplificatrice.
+\end{reponseattendue}
+
+\item \textbf{« Si on met deux fois plus de boisson, le temps de refroidissement double exactement »}
+
+\begin{reponseattendue}
+Il fallait répondre que :
+\begin{itemize}
+    \item qualitativement, plus de liquide signifie plus d’énergie thermique à perdre, donc un refroidissement plus lent ;
+    \item mais quantitativement, le temps ne double pas forcément exactement.
+\end{itemize}
+
+En effet, si la masse de liquide change, l’inertie thermique change, mais la surface d’échange avec l’air ne double pas nécessairement. Les mécanismes de transfert thermique ne suivent donc pas une simple proportionnalité exacte.
+\end{reponseattendue}
+
+\[
+\boxed{\text{Affirmation plausible qualitativement, mais fausse si on dit “exactement”.}}
+\]
+
+\end{enumerate}
+
+\vspace{0.6em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 3 -- Mouvement d’un skieur : énergie, trajectoire, frottements}
+
+\noindent\textbf{Données :}
+\[
+m=\SI{60}{kg},
+\qquad
+g=\SI{9,81}{m.s^{-2}}.
+\]
+
+\subsection*{Partie A -- Descente sans frottements}
+
+On part du repos depuis une hauteur :
+\[
+h=\SI{35}{m}.
+\]
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, leftmargin=1.6em]
+
+\item \textbf{Expression de \(V_E\)}
+
+\begin{rappel}
+Sans frottements, l’énergie mécanique se conserve :
+\[
+E_{m,\text{initiale}}=E_{m,\text{finale}}.
+\]
+\end{rappel}
+
+Au départ :
+\[
+E_{c,D}=0,
+\qquad
+E_{p,D}=mgh.
+\]
+
+Au point \(E\), on prend l’énergie potentielle nulle :
+\[
+E_{c,E}=\frac12 mV_E^2.
+\]
+
+Donc :
+\[
+mgh=\frac12 mV_E^2.
+\]
+
+Ainsi :
+\[
+V_E=\sqrt{2gh}.
+\]
+
+\[
+\boxed{V_E=\sqrt{2gh}}
+\]
+
+\item \textbf{Calcul de la vitesse}
+
+\[
+V_E=\sqrt{2\times 9{,}81\times 35}
+=\sqrt{686{,}7}
+\simeq 26{,}2\ \si{m.s^{-1}}.
+\]
+
+\[
+\boxed{V_E\simeq \SI{26,2}{m.s^{-1}}}
+\]
+
+En km/h :
+\[
+26{,}2\times 3{,}6\simeq 94{,}3\ \si{km.h^{-1}}.
+\]
+
+\[
+\boxed{V_E\simeq \SI{94}{km.h^{-1}}}
+\]
+
+\item \textbf{Énergie cinétique au point \(E\)}
+
+\[
+E_c=\frac12 mV_E^2.
+\]
+
+Donc :
+\[
+E_c\simeq \frac12\times 60\times 686{,}7
+\simeq 2{,}06\times 10^4\ \si{J}.
+\]
+
+\[
+\boxed{E_c\simeq 2{,}1\times 10^4\ \si{J}}
+\]
+
+\item \textbf{Commentaire}
+
+La vitesse est très élevée, ce qui est cohérent avec un saut à ski.  
+L’énergie cinétique est importante : cela montre qu’un faible changement de vitesse ou d’orientation peut avoir un effet notable.
+
+\end{enumerate}
+
+\subsection*{Partie B -- Avec dissipation d’énergie}
+
+On suppose qu’une énergie mécanique
+\[
+E_f=\SI{3,5e3}{J}
+\]
+est dissipée.
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Bilan énergétique}
+
+\[
+mgh=\frac12 mV_E^2+E_f.
+\]
+
+\[
+\boxed{mgh=\frac12 mV_E^2+E_f}
+\]
+
+\item \textbf{Nouvelle vitesse}
+
+\[
+\frac12 mV_E^2=mgh-E_f.
+\]
+
+D’abord :
+\[
+mgh=60\times 9{,}81\times 35 \simeq 2{,}06\times 10^4\ \si{J}.
+\]
+
+Donc :
+\[
+mgh-E_f \simeq 2{,}06\times 10^4 - 3{,}5\times 10^3
+=1{,}71\times 10^4\ \si{J}.
+\]
+
+Puis :
+\[
+V_E^2=\frac{2\times 1{,}71\times 10^4}{60}\simeq 570.
+\]
+
+Ainsi :
+\[
+V_E\simeq \sqrt{570}\simeq 23{,}9\ \si{m.s^{-1}}.
+\]
+
+\[
+\boxed{V_E\simeq \SI{23,9}{m.s^{-1}}}
+\]
+
+\item \textbf{Comparaison}
+
+Sans pertes :
+\[
+V_E\simeq \SI{26,2}{m.s^{-1}}.
+\]
+
+Avec pertes :
+\[
+V_E\simeq \SI{23,9}{m.s^{-1}}.
+\]
+
+L’écart est d’environ :
+\[
+2{,}3\ \si{m.s^{-1}}.
+\]
+
+\item \textbf{Conséquences possibles}
+
+Oui, cet écart peut être très important car la portée, la hauteur maximale et la sécurité du saut dépendent fortement de la vitesse d’envol.
+
+\end{enumerate}
+
+\subsection*{Partie C -- Vol dans l’air}
+
+\noindent\textbf{Dans cette partie, on prend indépendamment des résultats précédents :}
+\[
+V_0=\SI{22,0}{m.s^{-1}},
+\qquad
+\alpha=11^\circ.
+\]
+
+On néglige l’action de l’air.
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Équations horaires}
+
+\begin{rappel}
+Sans frottements :
+\begin{itemize}
+    \item sur l’axe horizontal : mouvement uniforme ;
+    \item sur l’axe vertical : mouvement uniformément accéléré d’accélération \(-g\).
+\end{itemize}
+\end{rappel}
+
+Les composantes de la vitesse initiale sont :
+\[
+V_{0x}=V_0\cos\alpha,
+\qquad
+V_{0z}=V_0\sin\alpha.
+\]
+
+Donc :
+\[
+\boxed{x(t)=V_0\cos\alpha\, t}
+\]
+et
+\[
+\boxed{z(t)=V_0\sin\alpha\, t-\frac12 gt^2}
+\]
+
+\item \textbf{Équation de la trajectoire}
+
+On a :
+\[
+t=\frac{x}{V_0\cos\alpha}.
+\]
+
+En remplaçant dans \(z(t)\) :
+\[
+z=x\tan\alpha-\frac{g}{2V_0^2\cos^2\alpha}x^2.
+\]
+
+\[
+\boxed{
+z(x)=x\tan\alpha-\frac{g}{2V_0^2\cos^2\alpha}x^2
+}
+\]
+
+C’est donc une parabole.
+
+\item \textbf{Hauteur maximale}
+
+La vitesse verticale vaut :
+\[
+v_z(t)=V_0\sin\alpha-gt.
+\]
+
+Au sommet :
+\[
+v_z=0
+\qquad\Longrightarrow\qquad
+t_s=\frac{V_0\sin\alpha}{g}.
+\]
+
+La hauteur maximale vaut :
+\[
+z_{\max}=\frac{(V_0\sin\alpha)^2}{2g}.
+\]
+
+Or :
+\[
+\sin 11^\circ \simeq 0{,}191.
+\]
+
+Donc :
+\[
+V_0\sin\alpha \simeq 22\times 0{,}191 \simeq 4{,}20\ \si{m.s^{-1}}.
+\]
+
+Ainsi :
+\[
+z_{\max}\simeq \frac{4{,}20^2}{2\times 9{,}81}
+=\frac{17{,}6}{19{,}62}
+\simeq 0{,}90\ \si{m}.
+\]
+
+\[
+\boxed{z_{\max}\simeq \SI{0,90}{m}}
+\]
+
+\item \textbf{Durée du vol dans le modèle simplifié}
+
+On suppose ici que le skieur retombe à la même altitude que le point d’envol.
+
+Il faut résoudre :
+\[
+z(t)=0
+\]
+avec \(t\neq 0\), soit :
+\[
+V_0\sin\alpha\, t-\frac12 gt^2=0.
+\]
+
+Donc :
+\[
+t_f=\frac{2V_0\sin\alpha}{g}.
+\]
+
+Numériquement :
+\[
+t_f=\frac{2\times 4{,}20}{9{,}81}\simeq 0{,}86\ \si{s}.
+\]
+
+\[
+\boxed{t_f\simeq \SI{0,86}{s}}
+\]
+
+\item \textbf{Portée horizontale}
+
+\[
+x_f=V_0\cos\alpha\, t_f.
+\]
+
+Or :
+\[
+\cos 11^\circ \simeq 0{,}982,
+\qquad
+V_0\cos\alpha \simeq 22\times 0{,}982 \simeq 21{,}6\ \si{m.s^{-1}}.
+\]
+
+Donc :
+\[
+x_f\simeq 21{,}6\times 0{,}86 \simeq 18{,}6\ \si{m}.
+\]
+
+\[
+\boxed{x_f\simeq \SI{18,6}{m}}
+\]
+
+\end{enumerate}
+
+\subsection*{Partie D -- Frottement fluide simplifié}
+
+On admet un modèle très simplifié avec une force de frottement :
+\[
+f=kv
+\]
+opposée au mouvement.
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Pourquoi cette force diminue-t-elle la portée ?}
+
+\begin{reponseattendue}
+La force de frottement est opposée au mouvement : elle retire de l’énergie mécanique au système et fait diminuer la vitesse.  
+Comme la composante horizontale de la vitesse diminue elle aussi, la portée est plus faible.
+\end{reponseattendue}
+
+\item \textbf{Agit-elle sur la norme seulement ou aussi sur la direction ?}
+
+\begin{reponseattendue}
+Elle agit sur les deux.  
+Comme elle est opposée au vecteur vitesse, elle modifie sa norme, mais aussi la direction du mouvement au cours du temps.
+\end{reponseattendue}
+
+\item \textbf{Effet plus marqué au début ou à la fin ?}
+
+\begin{reponseattendue}
+Si \(f=kv\), alors plus la vitesse est grande, plus le frottement est fort.  
+L’effet de l’air est donc généralement plus marqué lorsque la vitesse est plus grande, souvent au début du vol.
+\end{reponseattendue}
+
+\item \textbf{Position aérodynamique}
+
+\begin{reponseattendue}
+Une posture plus aérodynamique réduit la résistance de l’air.  
+Le skieur conserve donc mieux sa vitesse, perd moins d’énergie et peut augmenter sa portée.
+\end{reponseattendue}
+
+\end{enumerate}
+
+\subsection*{Partie E -- Question ouverte de synthèse}
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+
+\item \textbf{Influence des paramètres}
+
+\begin{reponseattendue}
+On attendait une analyse structurée :
+\begin{itemize}
+    \item \textbf{hauteur de départ :} elle augmente l’énergie potentielle initiale, donc potentiellement la vitesse d’envol ;
+    \item \textbf{frottements sur le tremplin :} s’ils diminuent, moins d’énergie est dissipée ;
+    \item \textbf{angle d’envol :} il règle le compromis entre hauteur gagnée et portée ;
+    \item \textbf{aérodynamique :} elle conditionne les pertes en vol.
+\end{itemize}
+\end{reponseattendue}
+
+\item \textbf{Pourquoi il n’existe pas un “paramètre miracle”}
+
+\begin{reponseattendue}
+Parce que les paramètres agissent ensemble et parfois en sens opposés.  
+Par exemple :
+\begin{itemize}
+    \item un angle trop grand peut augmenter la hauteur mais réduire la portée ;
+    \item une grande vitesse sans bonne aérodynamique peut être mal exploitée ;
+    \item une bonne posture ne compense pas totalement une vitesse initiale insuffisante.
+\end{itemize}
+La performance résulte donc d’un compromis physique global.
+\end{reponseattendue}
+
+\[
+\boxed{\text{La performance dépend d’un équilibre entre plusieurs paramètres, pas d’un seul.}}
+\]
+
+\end{enumerate}
+
+\vspace{0.8em}
+\begin{center}
+\textbf{Fin du corrigé}
+\end{center}
+
+\end{document}

@@ -1,0 +1,895 @@
+\documentclass[11pt,a4paper]{article}
+
+%================================================
+% PACKAGES
+%================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{chemfig}
+
+%================================================
+% MISE EN PAGE
+%================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Physique-Chimie -- Spécialité}
+\fancyhead[R]{Exercices : cohésion de la matière et spectroscopie IR}
+\fancyfoot[C]{\thepage\ /\pageref{LastPage}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black,
+    pdftitle={Exercices corrigés - Cohésion de la matière et spectroscopie IR},
+    pdfauthor={},
+    pdfsubject={Physique-Chimie Spécialité}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\titleformat{\section}{\Large\bfseries\color{blue!60!black}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!45!black}}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{blue!30!black}}{\thesubsubsection.}{0.6em}{}
+
+%================================================
+% BOITES
+%================================================
+\newtcolorbox{objectifbox}{
+    colback=blue!5,
+    colframe=blue!60!black,
+    title=Objectif,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{enoncebox}{
+    colback=gray!4,
+    colframe=black!70,
+    title=Énoncé,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{corrigebox}{
+    colback=green!5,
+    colframe=green!50!black,
+    title=Corrigé,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{ideebox}{
+    colback=orange!8,
+    colframe=orange!70!black,
+    title=Idée essentielle,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{attentionbox}{
+    colback=red!5,
+    colframe=red!65!black,
+    title=Point de vigilance,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}{
+    colback=purple!5,
+    colframe=purple!60!black,
+    title=Méthode,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{bilanbox}{
+    colback=cyan!6,
+    colframe=cyan!55!black,
+    title=Bilan,
+    fonttitle=\bfseries
+}
+
+%================================================
+% COMMANDES
+%================================================
+\newcommand{\chapitreA}{cohésion de la matière}
+\newcommand{\chapitreB}{spectroscopie infrarouge}
+
+%================================================
+% DOCUMENT
+%================================================
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Feuille d'exercices approfondis}}\\[0.3em]
+    {\Large \textbf{Cohésion de la matière et spectroscopie IR}}\\[0.4em]
+    {\normalsize Avec corrigé détaillé sur le même document}\\[0.7em]
+    \rule{0.9\linewidth}{0.6pt}
+\end{center}
+
+\tableofcontents
+\vspace{1em}
+
+%================================================
+\section{Introduction}
+%================================================
+
+\begin{objectifbox}
+Cette feuille ne vise pas seulement à reconnaître mécaniquement une liaison, une molécule polaire ou une bande IR.  
+Elle cherche surtout à faire comprendre :
+\begin{itemize}
+    \item \textbf{pourquoi} certaines interactions existent ;
+    \item \textbf{comment} elles expliquent les propriétés observables ;
+    \item \textbf{pourquoi} une interprétation IR a du sens physiquement ;
+    \item \textbf{comment relier} structure, interactions, propriétés et analyse spectrale.
+\end{itemize}
+\end{objectifbox}
+
+%================================================
+\section{Questions de cours réfléchies}
+%================================================
+
+%------------------------------------------------
+\subsection{Question 1 -- Liaison et interaction}
+%------------------------------------------------
+
+\begin{enoncebox}
+On considère les affirmations suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item Une liaison covalente et une interaction de Van der Waals sont deux phénomènes de même nature, seule leur intensité change.
+    \item Dans une molécule, la liaison covalente intervient à l'intérieur de l'espèce, alors que les interactions de Van der Waals agissent entre espèces distinctes.
+    \item Une liaison hydrogène est une liaison covalente faible.
+    \item Une interaction intermoléculaire peut modifier des propriétés macroscopiques d'une substance.
+\end{enumerate}
+
+Pour chaque affirmation, indiquer si elle est vraie ou fausse, puis justifier soigneusement.
+\end{enoncebox}
+
+\begin{corrigebox}
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Faux.}  
+    Une liaison covalente est une liaison chimique intramoléculaire fondée sur un partage d'électrons.  
+    Une interaction de Van der Waals est une interaction intermoléculaire faible entre molécules distinctes.  
+    Ce n'est donc pas seulement une question d'intensité : la nature physique et le rôle structural ne sont pas les mêmes.
+    
+    \item \textbf{Vrai.}  
+    C'est précisément une distinction centrale du chapitre :
+    \begin{itemize}
+        \item la liaison covalente maintient ensemble les atomes dans une même molécule ;
+        \item les interactions de Van der Waals interviennent entre deux molécules distinctes.
+    \end{itemize}
+    
+    \item \textbf{Faux.}  
+    La liaison hydrogène n'est pas une liaison covalente.  
+    C'est une interaction intermoléculaire attractive particulière, plus forte que beaucoup d'interactions de Van der Waals, mais plus faible qu'une liaison covalente.
+    
+    \item \textbf{Vrai.}  
+    Les interactions intermoléculaires influencent de nombreuses propriétés :
+    \begin{itemize}
+        \item température d'ébullition ;
+        \item température de fusion ;
+        \item viscosité ;
+        \item solubilité ;
+        \item miscibilité.
+    \end{itemize}
+\end{enumerate}
+
+\begin{ideebox}
+La vraie frontière conceptuelle n'est pas seulement ``fort / faible'', mais surtout :
+\[
+\text{dans l'entité} \quad \text{ou} \quad \text{entre les entités.}
+\]
+\end{ideebox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Question 2 -- Polarité et géométrie}
+%------------------------------------------------
+
+\begin{enoncebox}
+Expliquer pourquoi la phrase suivante est incomplète :
+
+\begin{center}
+\textit{``Une molécule est polaire dès qu'elle contient une liaison polaire.''}
+\end{center}
+
+On demande :
+\begin{enumerate}[label=\arabic*)]
+    \item d'expliquer précisément ce qui manque dans cette phrase ;
+    \item de donner un exemple de molécule ayant des liaisons polaires mais étant globalement apolaire ;
+    \item de donner un exemple de molécule polaire ;
+    \item de formuler une version correcte de la phrase.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\begin{enumerate}[label=\arabic*)]
+    \item Cette phrase est incomplète car elle oublie le rôle de la \textbf{géométrie} de la molécule.  
+    Une liaison polaire crée un déséquilibre local de charge, mais les effets de plusieurs liaisons peuvent se compenser si la disposition spatiale est symétrique.
+    
+    \item L'exemple classique est le dioxyde de carbone \(\mathrm{CO_2}\).  
+    Chaque liaison C=O est polaire, car l'oxygène est plus électronégatif que le carbone.  
+    Mais la molécule est linéaire et symétrique ; les effets des deux liaisons se compensent.  
+    La molécule est donc globalement apolaire.
+    
+    \item L'eau \(\mathrm{H_2O}\) est un exemple de molécule polaire.  
+    Les liaisons O--H sont polaires et la molécule est coudée, donc les effets ne se compensent pas.
+    
+    \item Version correcte :
+    
+    \begin{center}
+    \textit{Une molécule peut être polaire si elle contient des liaisons polaires et si la géométrie de la molécule ne compense pas leurs effets.}
+    \end{center}
+\end{enumerate}
+
+\begin{attentionbox}
+Une liaison polaire ne suffit jamais à elle seule pour conclure sur la polarité globale d'une molécule.
+\end{attentionbox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Question 3 -- Le sens physique de la dissolution}
+%------------------------------------------------
+
+\begin{enoncebox}
+On lit souvent : \textit{« le sel se dissout dans l'eau »}.  
+
+Cette phrase peut donner l'impression que le sel ``disparaît''.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer pourquoi cette idée est fausse.
+    \item Décrire microscopiquement ce qui se passe lors de la dissolution d'un solide ionique dans l'eau.
+    \item Expliquer pourquoi la polarité de l'eau joue un rôle décisif.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\begin{enumerate}[label=\arabic*)]
+    \item Le sel ne disparaît pas.  
+    Il cesse d'être visible comme cristal macroscopique, mais ses constituants sont toujours présents dans la solution sous forme d'ions dispersés.
+    
+    \item Dans un cristal ionique comme \(\mathrm{NaCl}\), les ions \(\mathrm{Na^+}\) et \(\mathrm{Cl^-}\) sont organisés dans un réseau.  
+    Lorsqu'on met le cristal dans l'eau, les molécules d'eau entourent progressivement les ions, ce qui permet de les extraire du réseau cristallin.  
+    On obtient alors des ions hydratés dispersés dans tout le solvant.
+    
+    \item La polarité de l'eau est essentielle car :
+    \begin{itemize}
+        \item le côté partiellement négatif de l'eau attire les cations ;
+        \item le côté partiellement positif attire les anions.
+    \end{itemize}
+    Ces interactions eau--ions stabilisent les ions en solution et rendent la dissolution possible.
+\end{enumerate}
+
+\begin{ideebox}
+Se dissoudre, ce n'est pas s'anéantir : c'est passer d'un état ordonné collectif à un état dispersé, mais stabilisé par de nouvelles interactions.
+\end{ideebox}
+\end{corrigebox}
+
+%================================================
+\section{Exercices de compréhension fine}
+%================================================
+
+%------------------------------------------------
+\subsection{Exercice 1 -- Comparer trois substances}
+%------------------------------------------------
+
+\begin{enoncebox}
+On considère trois substances :
+\begin{itemize}
+    \item l'eau \(\mathrm{H_2O}\),
+    \item le diiode \(\mathrm{I_2}\),
+    \item le chlorure de sodium \(\mathrm{NaCl}\).
+\end{itemize}
+
+Pour chacune d'elles :
+\begin{enumerate}[label=\arabic*)]
+    \item préciser la nature des entités qui la constituent ;
+    \item indiquer le type principal de cohésion ;
+    \item dire si l'eau liquide peut dissoudre cette substance, et justifier qualitativement ;
+    \item expliquer pourquoi ces trois cas sont très différents du point de vue microscopique.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{1) Nature des entités}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : molécules d'eau.
+    \item \(\mathrm{I_2}\) : molécules de diiode.
+    \item \(\mathrm{NaCl}\) : ions \(\mathrm{Na^+}\) et \(\mathrm{Cl^-}\) organisés en réseau cristallin.
+\end{itemize}
+
+\textbf{2) Type principal de cohésion}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : interactions intermoléculaires, notamment liaisons hydrogène.
+    \item \(\mathrm{I_2}\) : interactions de Van der Waals entre molécules apolaires.
+    \item \(\mathrm{NaCl}\) : interaction électrostatique entre ions de charges opposées.
+\end{itemize}
+
+\textbf{3) Dissolution dans l'eau}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) se mélange évidemment avec lui-même.
+    \item \(\mathrm{I_2}\) est peu soluble dans l'eau, car il s'agit d'une molécule apolaire, alors que l'eau est polaire. Les nouvelles interactions créées sont peu favorables.
+    \item \(\mathrm{NaCl}\) se dissout bien dans l'eau, car l'eau peut hydrater les ions.
+\end{itemize}
+
+\textbf{4) Pourquoi ces cas sont-ils très différents ?}
+
+Ils correspondent à trois logiques microscopiques distinctes :
+\begin{itemize}
+    \item dans l'eau, ce sont des molécules polaires capables de faire des liaisons hydrogène ;
+    \item dans le diiode, ce sont des molécules apolaires attirées faiblement ;
+    \item dans le chlorure de sodium, il n'y a pas de molécules isolées mais un réseau ionique.
+\end{itemize}
+
+\begin{bilanbox}
+Cet exercice oblige à distinguer soigneusement :
+\begin{itemize}
+    \item molécule polaire,
+    \item molécule apolaire,
+    \item solide ionique.
+\end{itemize}
+C'est une distinction beaucoup plus profonde que la simple récitation d'une définition.
+\end{bilanbox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Exercice 2 -- Température d'ébullition et interactions}
+%------------------------------------------------
+
+\begin{enoncebox}
+On compare qualitativement les températures d'ébullition de quatre espèces :
+\[
+\mathrm{CH_4},\quad \mathrm{H_2O},\quad \mathrm{HCl},\quad \mathrm{NH_3}
+\]
+
+On rappelle seulement les idées suivantes :
+\begin{itemize}
+    \item \(\mathrm{CH_4}\) est une molécule apolaire ;
+    \item \(\mathrm{HCl}\) est une molécule polaire ;
+    \item \(\mathrm{NH_3}\) et \(\mathrm{H_2O}\) peuvent former des liaisons hydrogène, l'eau davantage.
+\end{itemize}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Classer qualitativement ces espèces selon la force croissante des interactions intermoléculaires.
+    \item En déduire un classement plausible de leurs températures d'ébullition.
+    \item Expliquer pourquoi une petite molécule comme l'eau peut avoir une température d'ébullition relativement élevée.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{1) Force croissante des interactions}
+
+\begin{itemize}
+    \item \(\mathrm{CH_4}\) : molécule apolaire \(\Rightarrow\) essentiellement interactions de Van der Waals faibles.
+    \item \(\mathrm{HCl}\) : molécule polaire \(\Rightarrow\) interactions dipôle-dipôle plus fortes.
+    \item \(\mathrm{NH_3}\) : possibilité de liaisons hydrogène.
+    \item \(\mathrm{H_2O}\) : liaisons hydrogène nombreuses et très marquées.
+\end{itemize}
+
+Un classement raisonnable est donc :
+\[
+\mathrm{CH_4} < \mathrm{HCl} < \mathrm{NH_3} < \mathrm{H_2O}
+\]
+
+\textbf{2) Températures d'ébullition}
+
+Plus les interactions intermoléculaires sont fortes, plus il faut fournir d'énergie pour séparer les molécules dans l'état gazeux.  
+On s'attend donc à :
+\[
+T_{\text{éb}}(\mathrm{CH_4}) < T_{\text{éb}}(\mathrm{HCl}) < T_{\text{éb}}(\mathrm{NH_3}) < T_{\text{éb}}(\mathrm{H_2O})
+\]
+
+\textbf{3) Pourquoi l'eau bout-elle ``haut'' ?}
+
+L'eau est petite, mais ce n'est pas la taille seule qui gouverne ici.  
+Sa forte polarité et surtout sa capacité à établir de nombreuses liaisons hydrogène renforcent fortement la cohésion du liquide.  
+Il faut donc fournir beaucoup d'énergie pour rompre cette organisation intermoléculaire.
+
+\begin{ideebox}
+Cet exercice montre qu'une propriété macroscopique comme la température d'ébullition n'est intelligible qu'en revenant aux interactions microscopiques.
+\end{ideebox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Exercice 3 -- Polarité ou non ?}
+%------------------------------------------------
+
+\begin{enoncebox}
+On considère les molécules suivantes :
+\[
+\mathrm{H_2O},\quad \mathrm{CO_2},\quad \mathrm{CH_4},\quad \mathrm{NH_3}
+\]
+
+On admet les géométries suivantes :
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : coudée,
+    \item \(\mathrm{CO_2}\) : linéaire,
+    \item \(\mathrm{CH_4}\) : tétraédrique symétrique,
+    \item \(\mathrm{NH_3}\) : pyramidale.
+\end{itemize}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Dire quelles molécules sont polaires.
+    \item Pour chaque molécule, expliquer le raisonnement au lieu de simplement donner la réponse.
+    \item Expliquer pourquoi \(\mathrm{CO_2}\) et \(\mathrm{H_2O}\), qui contiennent tous deux des liaisons avec l'oxygène, n'ont pas le même comportement global.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{1) Molécules polaires}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : polaire.
+    \item \(\mathrm{CO_2}\) : apolaire.
+    \item \(\mathrm{CH_4}\) : apolaire.
+    \item \(\mathrm{NH_3}\) : polaire.
+\end{itemize}
+
+\textbf{2) Raisonnement détaillé}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : les liaisons O--H sont polaires, et la géométrie coudée empêche la compensation \(\Rightarrow\) molécule polaire.
+    \item \(\mathrm{CO_2}\) : les liaisons C=O sont polaires, mais la géométrie linéaire place les deux effets en opposition parfaite \(\Rightarrow\) compensation \(\Rightarrow\) molécule apolaire.
+    \item \(\mathrm{CH_4}\) : géométrie tétraédrique symétrique ; l'ensemble est globalement équilibré \(\Rightarrow\) molécule apolaire.
+    \item \(\mathrm{NH_3}\) : les liaisons N--H sont polaires, et la géométrie pyramidale n'assure pas de compensation \(\Rightarrow\) molécule polaire.
+\end{itemize}
+
+\textbf{3) Comparaison entre \(\mathrm{CO_2}\) et \(\mathrm{H_2O}\)}
+
+La différence vient de la géométrie :
+\begin{itemize}
+    \item \(\mathrm{CO_2}\) est linéaire et symétrique ;
+    \item \(\mathrm{H_2O}\) est coudée.
+\end{itemize}
+Ainsi, la polarité des liaisons n'a pas le même effet global.
+
+\begin{attentionbox}
+Deux molécules peuvent contenir un même type de liaison polaire tout en ayant une polarité globale différente.  
+La géométrie reste indispensable.
+\end{attentionbox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Exercice 4 -- Solubilité : raisonnement plutôt que recette}
+%------------------------------------------------
+
+\begin{enoncebox}
+On souhaite prévoir qualitativement la solubilité dans l'eau des espèces suivantes :
+\[
+\mathrm{NaCl},\quad \mathrm{I_2},\quad \text{éthanol},\quad \text{huile}
+\]
+
+On rappelle que l'éthanol possède un groupe O--H.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Dire, pour chacune, si elle est très soluble, peu soluble ou non miscible / peu miscible avec l'eau.
+    \item Justifier à chaque fois en termes d'interactions microscopiques.
+    \item Expliquer pourquoi la règle ``le semblable dissout le semblable'' est utile, mais non suffisante si elle est récitéée sans réflexion.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{1) Prévision qualitative}
+
+\begin{itemize}
+    \item \(\mathrm{NaCl}\) : très soluble.
+    \item \(\mathrm{I_2}\) : peu soluble.
+    \item Éthanol : miscible ou très soluble.
+    \item Huile : non miscible ou très peu miscible.
+\end{itemize}
+
+\textbf{2) Justifications microscopiques}
+
+\begin{itemize}
+    \item \(\mathrm{NaCl}\) : l'eau, molécule polaire, hydrate les ions \(\mathrm{Na^+}\) et \(\mathrm{Cl^-}\).
+    \item \(\mathrm{I_2}\) : molécule apolaire ; les interactions avec l'eau sont peu favorables.
+    \item Éthanol : le groupe O--H rend possibles des interactions favorables avec l'eau, notamment des liaisons hydrogène.
+    \item Huile : constituée en grande partie d'espèces apolaires ; les interactions avec l'eau sont défavorables.
+\end{itemize}
+
+\textbf{3) Limite de la règle}
+
+La règle ``le semblable dissout le semblable'' est une bonne première idée directrice, mais elle doit être traduite en termes d'interactions :
+\begin{itemize}
+    \item quelles interactions faut-il rompre ?
+    \item quelles interactions nouvelles se forment ?
+    \item ces nouvelles interactions sont-elles assez stabilisantes ?
+\end{itemize}
+Sans cela, la règle devient un slogan sans contenu physique.
+
+\begin{ideebox}
+Une règle utile n'est vraiment comprise que lorsqu'on sait la relier à un mécanisme.
+\end{ideebox}
+\end{corrigebox}
+
+%================================================
+\section{Exercices sur la spectroscopie IR}
+%================================================
+
+%------------------------------------------------
+\subsection{Exercice 5 -- Lire un spectre sans image}
+%------------------------------------------------
+
+\begin{enoncebox}
+On décrit trois spectres IR fictifs :
+
+\begin{itemize}
+    \item \textbf{Spectre A} : une bande large vers \(3300\ \si{cm^{-1}}\), pas de bande forte vers \(1700\ \si{cm^{-1}}\).
+    \item \textbf{Spectre B} : une bande forte vers \(1710\ \si{cm^{-1}}\), pas de bande large entre \(3200\) et \(3600\ \si{cm^{-1}}\).
+    \item \textbf{Spectre C} : une bande forte vers \(1700\ \si{cm^{-1}}\) et une très large bande entre \(2500\) et \(3200\ \si{cm^{-1}}\).
+\end{itemize}
+
+Pour chacun :
+\begin{enumerate}[label=\arabic*)]
+    \item identifier la ou les fonctions probables ;
+    \item expliquer le raisonnement ;
+    \item dire pourquoi il serait excessif de prétendre identifier la molécule exacte avec ces seules données.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{Spectre A}
+
+La bande large vers \(3300\ \si{cm^{-1}}\) évoque un groupe O--H d'alcool.  
+L'absence de bande forte vers \(1700\ \si{cm^{-1}}\) indique qu'il n'y a probablement pas de groupe carbonyle.  
+La fonction probable est donc \textbf{alcool}.
+
+\textbf{Spectre B}
+
+La bande forte vers \(1710\ \si{cm^{-1}}\) indique un groupe C=O.  
+Comme il n'y a pas de grande bande O--H, on ne pense pas à un alcool ni à un acide carboxylique.  
+On peut envisager une \textbf{cétone} ou un \textbf{aldéhyde}.
+
+\textbf{Spectre C}
+
+La bande C=O vers \(1700\ \si{cm^{-1}}\) signale un carbonyle.  
+La très large bande entre \(2500\) et \(3200\ \si{cm^{-1}}\) est caractéristique d'un O--H acide.  
+On conclut à un \textbf{acide carboxylique}.
+
+\textbf{Pourquoi ne peut-on pas identifier la molécule exacte ?}
+
+Un spectre IR permet surtout d'identifier des \textbf{groupes caractéristiques}.  
+Plusieurs molécules différentes peuvent posséder la même fonction.  
+Par exemple, de nombreux alcools ont un spectre présentant une bande O--H.  
+On peut donc identifier une \textbf{famille} ou une \textbf{fonction probable}, mais pas nécessairement la structure exacte complète.
+
+\begin{attentionbox}
+Un spectre IR est un outil d'identification partielle, pas une carte d'identité unique dans tous les cas.
+\end{attentionbox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Exercice 6 -- Pourquoi une bande est-elle large ?}
+%------------------------------------------------
+
+\begin{enoncebox}
+Dans beaucoup d'exercices, on dit :
+\begin{center}
+\textit{« La bande O--H est large. »}
+\end{center}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer pourquoi cette largeur constitue déjà une information physique.
+    \item Relier cette largeur à la présence possible de liaisons hydrogène.
+    \item Expliquer pourquoi cette observation relie le chapitre de spectroscopie IR à celui de la cohésion de la matière.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\begin{enumerate}[label=\arabic*)]
+    \item La largeur d'une bande signifie que toutes les liaisons O--H observées ne vibrent pas exactement dans le même environnement.  
+    Cela montre qu'il existe une diversité de situations microscopiques.
+    
+    \item Lorsqu'un groupe O--H participe à des liaisons hydrogène, son environnement électronique est modifié.  
+    Les vibrations possibles sont alors affectées, ce qui élargit souvent la zone d'absorption.
+    
+    \item Cette observation relie directement les deux chapitres :
+    \begin{itemize}
+        \item en \chapitreB{}, on observe une bande caractéristique ;
+        \item en \chapitreA{}, on comprend que cette bande dépend des interactions intermoléculaires, ici les liaisons hydrogène.
+    \end{itemize}
+    Le spectre IR contient donc parfois une information indirecte sur la cohésion intermoléculaire.
+\end{enumerate}
+
+\begin{ideebox}
+Le spectre IR ne révèle pas seulement qu'une liaison existe ; il peut aussi renseigner sur son environnement.
+\end{ideebox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Exercice 7 -- Analyse critique d'une conclusion trop rapide}
+%------------------------------------------------
+
+\begin{enoncebox}
+Un élève affirme :
+
+\begin{center}
+\textit{« J'observe une bande vers \(1700\ \si{cm^{-1}}\), donc la molécule est forcément un acide carboxylique. »}
+\end{center}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer pourquoi ce raisonnement est faux.
+    \item Indiquer ce que signifie réellement une bande vers \(1700\ \si{cm^{-1}}\).
+    \item Donner des exemples de fonctions différentes pouvant contenir ce type de liaison.
+    \item Dire quelle information supplémentaire il faudrait rechercher pour conclure à un acide carboxylique.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\begin{enumerate}[label=\arabic*)]
+    \item Le raisonnement est faux car une bande vers \(1700\ \si{cm^{-1}}\) ne suffit pas à elle seule à identifier une fonction unique.
+    
+    \item Cette bande indique surtout la présence probable d'un \textbf{groupe carbonyle} C=O.
+    
+    \item On trouve un groupe carbonyle dans :
+    \begin{itemize}
+        \item les aldéhydes ;
+        \item les cétones ;
+        \item les acides carboxyliques ;
+        \item les esters.
+    \end{itemize}
+    
+    \item Pour conclure à un acide carboxylique, il faut rechercher en plus une très large bande O--H acide entre \(2500\) et \(3200\ \si{cm^{-1}}\).
+\end{enumerate}
+
+\begin{attentionbox}
+Une bande isolée conduit rarement à une conclusion certaine.  
+L'analyse IR est un croisement d'indices.
+\end{attentionbox}
+\end{corrigebox}
+
+%================================================
+\section{Problèmes approfondis}
+%================================================
+
+%------------------------------------------------
+\subsection{Problème 1 -- Pourquoi l'huile et l'eau se séparent-elles ?}
+%------------------------------------------------
+
+\begin{enoncebox}
+On mélange vigoureusement de l'eau et de l'huile dans un récipient transparent.  
+Pendant quelques instants, on observe une dispersion de fines gouttelettes, puis les deux phases se séparent à nouveau.
+
+On demande une explication qualitative et cohérente de ce phénomène.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer pourquoi l'agitation mécanique peut temporairement disperser l'une dans l'autre.
+    \item Expliquer pourquoi cette dispersion n'est pas stable.
+    \item Justifier pourquoi l'eau préfère interagir avec elle-même plutôt qu'avec l'huile.
+    \item Expliquer en quoi cette expérience illustre les notions de polarité, de cohésion et de miscibilité.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{a) Effet de l'agitation}
+
+L'agitation apporte de l'énergie mécanique et fragmente un liquide en fines gouttelettes dispersées dans l'autre.  
+On peut donc obtenir temporairement une apparence de mélange.
+
+\textbf{b) Pourquoi cette dispersion n'est-elle pas stable ?}
+
+La dispersion n'est pas favorable énergétiquement à long terme, car les interactions eau--huile sont moins favorables que les interactions eau--eau et huile--huile.  
+Le système évolue donc spontanément vers une séparation en deux phases.
+
+\textbf{c) Pourquoi l'eau préfère-t-elle interagir avec elle-même ?}
+
+L'eau est polaire et peut former des liaisons hydrogène entre ses molécules.  
+L'huile est globalement apolaire.  
+Les interactions entre eau et huile sont donc nettement moins favorables que les interactions internes à chaque liquide.
+
+\textbf{d) Lien avec les notions du chapitre}
+
+Cette expérience illustre :
+\begin{itemize}
+    \item la \textbf{polarité} : eau polaire, huile apolaire ;
+    \item la \textbf{cohésion} : chaque liquide garde une cohésion propre ;
+    \item la \textbf{miscibilité} : deux liquides ne sont miscibles que si les interactions croisées sont suffisamment favorables.
+\end{itemize}
+
+\begin{bilanbox}
+Ce problème montre qu'un mélange homogène ne dépend pas seulement de l'action de mélanger, mais surtout des interactions microscopiques réellement possibles.
+\end{bilanbox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Problème 2 -- Relier spectre IR et comportement d'une molécule}
+%------------------------------------------------
+
+\begin{enoncebox}
+On étudie une espèce organique liquide inconnue.
+
+On sait les choses suivantes :
+\begin{itemize}
+    \item son spectre IR présente une large bande vers \(3350\ \si{cm^{-1}}\) ;
+    \item aucune bande intense n'apparaît vers \(1700\ \si{cm^{-1}}\) ;
+    \item cette espèce est très soluble dans l'eau ;
+    \item sa température d'ébullition est relativement élevée pour une molécule de petite taille.
+\end{itemize}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Que suggère le spectre IR ?
+    \item Quelle famille de composés peut-on proposer raisonnablement ?
+    \item Expliquer pourquoi les deux autres informations expérimentales sont cohérentes avec cette interprétation.
+    \item Montrer que l'on relie ici directement analyse spectrale et cohésion de la matière.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{a) Interprétation du spectre IR}
+
+La large bande vers \(3350\ \si{cm^{-1}}\) suggère un groupe O--H.  
+L'absence de bande forte vers \(1700\ \si{cm^{-1}}\) indique l'absence probable de groupe carbonyle.
+
+\textbf{b) Famille proposée}
+
+On peut raisonnablement proposer un \textbf{alcool}.
+
+\textbf{c) Cohérence avec les autres informations}
+
+\begin{itemize}
+    \item \textbf{Forte solubilité dans l'eau :} un alcool possède un groupe O--H capable d'interagir favorablement avec l'eau, notamment via des liaisons hydrogène.
+    \item \textbf{Température d'ébullition relativement élevée :} les molécules d'alcool peuvent former des interactions intermoléculaires plus fortes que de simples interactions de Van der Waals, ce qui renforce la cohésion du liquide.
+\end{itemize}
+
+\textbf{d) Lien entre les deux chapitres}
+
+Le spectre IR révèle une information structurale : présence probable d'un groupe O--H.  
+Cette structure permet des liaisons hydrogène.  
+Ces interactions expliquent ensuite les propriétés macroscopiques observées : solubilité élevée dans l'eau et température d'ébullition relativement importante.
+
+\begin{ideebox}
+Le spectre IR n'est pas seulement une méthode de détection de groupes chimiques ; il devient un point d'entrée pour prédire des propriétés physiques.
+\end{ideebox}
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Problème 3 -- Deux molécules, deux comportements}
+%------------------------------------------------
+
+\begin{enoncebox}
+On compare deux espèces :
+\begin{itemize}
+    \item le dioxyde de carbone \(\mathrm{CO_2}\),
+    \item l'eau \(\mathrm{H_2O}\).
+\end{itemize}
+
+Toutes deux contiennent l'élément oxygène, mais leurs comportements sont très différents.
+
+On demande :
+\begin{enumerate}[label=\arabic*)]
+    \item d'expliquer pourquoi leurs liaisons avec l'oxygène sont polaires ;
+    \item d'expliquer pourquoi l'une des molécules est polaire et l'autre non ;
+    \item d'en déduire des différences attendues dans leurs interactions intermoléculaires ;
+    \item d'expliquer pourquoi ce simple changement de géométrie a de grandes conséquences physiques.
+\end{enumerate}
+\end{enoncebox}
+
+\begin{corrigebox}
+\textbf{a) Polarité des liaisons}
+
+L'oxygène est plus électronégatif que l'hydrogène et que le carbone.  
+Les liaisons O--H dans \(\mathrm{H_2O}\) et C=O dans \(\mathrm{CO_2}\) sont donc polaires.
+
+\textbf{b) Polarité globale des molécules}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) est coudée : les effets des liaisons polaires ne se compensent pas \(\Rightarrow\) molécule polaire.
+    \item \(\mathrm{CO_2}\) est linéaire : les deux effets se compensent \(\Rightarrow\) molécule apolaire.
+\end{itemize}
+
+\textbf{c) Interactions intermoléculaires attendues}
+
+\begin{itemize}
+    \item \(\mathrm{H_2O}\) : interactions fortes, notamment liaisons hydrogène.
+    \item \(\mathrm{CO_2}\) : interactions plus faibles, essentiellement de Van der Waals.
+\end{itemize}
+
+\textbf{d) Pourquoi la géométrie change-t-elle tant de choses ?}
+
+La géométrie détermine si les déséquilibres locaux de charge s'additionnent ou se compensent.  
+Or la polarité globale conditionne ensuite le type d'interactions intermoléculaires possibles.  
+Ces interactions gouvernent à leur tour des propriétés macroscopiques majeures.
+
+\begin{bilanbox}
+Ce problème montre que la géométrie d'une molécule n'est pas un détail géométrique : c'est une information physique structurante.
+\end{bilanbox}
+\end{corrigebox}
+
+%================================================
+\section{Questions plus ouvertes}
+%================================================
+
+%------------------------------------------------
+\subsection{Question ouverte 1}
+%------------------------------------------------
+
+\begin{enoncebox}
+Un élève dit :
+
+\begin{center}
+\textit{« En chimie, il suffit d'apprendre les tableaux de bandes IR et les règles de solubilité. »}
+\end{center}
+
+Rédiger une réponse argumentée montrant en quoi cette phrase passe à côté de l'essentiel.
+\end{enoncebox}
+
+\begin{corrigebox}
+Une telle phrase réduit le chapitre à un apprentissage mécanique, alors que l'essentiel est de comprendre les liens entre structure microscopique et propriétés observables.
+
+Apprendre un tableau de bandes IR sans comprendre le sens physique revient à reconnaître un signal sans savoir ce qu'il signifie.  
+Par exemple, une bande O--H large n'est pas juste ``une case à cocher'' : elle renseigne sur la présence d'une liaison et parfois sur l'existence de liaisons hydrogène.
+
+De même, la règle ``le semblable dissout le semblable'' n'a de valeur que si l'on comprend quelles interactions sont rompues et quelles interactions nouvelles sont créées.
+
+La vraie compréhension consiste donc à relier :
+\[
+\text{structure} \longrightarrow \text{polarité} \longrightarrow \text{interactions} \longrightarrow \text{propriétés} \longrightarrow \text{signatures spectrales}
+\]
+
+Les tableaux et les règles sont des outils ; ils ne remplacent pas le raisonnement.
+\end{corrigebox}
+
+%------------------------------------------------
+\subsection{Question ouverte 2}
+%------------------------------------------------
+
+\begin{enoncebox}
+Expliquer, avec un exemple précis, comment une seule et même propriété macroscopique peut dépendre de plusieurs idées du cours à la fois.
+\end{enoncebox}
+
+\begin{corrigebox}
+On peut prendre l'exemple de la solubilité d'un alcool dans l'eau.
+
+Cette propriété dépend simultanément :
+\begin{itemize}
+    \item de la \textbf{structure moléculaire} : présence d'un groupe O--H ;
+    \item de la \textbf{polarité} : ce groupe rend une partie de la molécule polaire ;
+    \item des \textbf{interactions intermoléculaires} : l'alcool peut former des liaisons hydrogène avec l'eau ;
+    \item de l'\textbf{analyse IR} : la présence du groupe O--H est repérable par une bande large vers \(3200-3600\ \si{cm^{-1}}\).
+\end{itemize}
+
+Ainsi, une simple observation macroscopique, ici ``cet alcool se dissout bien dans l'eau'', mobilise plusieurs étages du raisonnement physico-chimique.
+\end{corrigebox}
+
+%================================================
+\section{Synthèse finale}
+%================================================
+
+\begin{bilanbox}
+Dans ces deux chapitres, il faut toujours chercher à articuler cinq niveaux :
+
+\begin{enumerate}
+    \item la \textbf{nature des entités} : ions, molécules, atomes ;
+    \item la \textbf{répartition des charges} : polarité locale et globale ;
+    \item les \textbf{interactions possibles} : covalente, ionique, Van der Waals, liaison hydrogène ;
+    \item les \textbf{conséquences macroscopiques} : solubilité, miscibilité, température d'ébullition ;
+    \item les \textbf{indices expérimentaux} : bandes caractéristiques en spectroscopie IR.
+\end{enumerate}
+
+Un élève comprend vraiment le chapitre lorsqu'il est capable de passer de l'un à l'autre dans les deux sens.
+\end{bilanbox}
+
+\vfill
+
+\begin{center}
+\rule{0.82\linewidth}{0.5pt}\\
+\textit{Fin de la feuille d'exercices corrigés}
+\end{center}
+
+\end{document}

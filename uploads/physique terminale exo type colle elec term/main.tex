@@ -1,0 +1,784 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{lmodern}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Colle de Physique -- Électricité}
+\fancyhead[R]{Terminale spécialité}
+\fancyfoot[C]{\thepage}
+
+\titleformat{\section}{\large\bfseries\color{blue!60!black}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{blue!40!black}}{\thesubsection.}{0.6em}{}
+
+\newtcolorbox{importantbox}{
+colback=blue!5,
+colframe=blue!60!black,
+title=À lire,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{exercisebox}[1][]{
+colback=gray!3,
+colframe=black!60,
+title=#1,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{corrigebox}[1][]{
+colback=green!4,
+colframe=green!40!black,
+title=#1,
+fonttitle=\bfseries
+}
+
+\newcommand{\etoiles}[1]{\textbf{Difficulté :} #1}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Colle de Physique -- Électricité}}\\[0.2cm]
+    {\large Terminale spécialité}\\[0.3cm]
+    \rule{0.8\textwidth}{0.5pt}
+\end{center}
+
+\begin{importantbox}
+Cette colle est conçue pour tester :
+\begin{itemize}
+    \item la maîtrise du cours ;
+    \item la compréhension physique profonde ;
+    \item la capacité à démontrer et interpréter ;
+    \item la capacité à modéliser une situation concrète ;
+    \item l'aisance sur les circuits RC, la puissance, l'énergie, le rendement et les ordres de grandeur.
+\end{itemize}
+Le corrigé complet commence juste après l'énoncé.
+\end{importantbox}
+
+\tableofcontents
+
+\newpage
+
+\section{Énoncé}
+
+\subsection{Partie I -- Questions de cours et compréhension}
+
+\begin{exercisebox}[Question 1 -- Intensité et débit de charges]
+\etoiles{\(\star\)}
+
+Donner la définition de l'intensité du courant électrique. Expliquer précisément ce que signifie la relation
+\[
+I=\frac{dq}{dt}.
+\]
+Préciser les unités. Donner une interprétation physique concrète de cette formule.
+\end{exercisebox}
+
+\begin{exercisebox}[Question 2 -- Condensateur et relation fondamentale]
+\etoiles{\(\star\star\)}
+
+On considère un condensateur de capacité \(C\), de tension \(u_C(t)\) à ses bornes, portant la charge \(q(t)\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Donner la relation entre \(q\), \(C\) et \(u_C\).
+    \item En dérivant cette relation, établir la formule reliant l'intensité \(i(t)\) à la tension \(u_C(t)\).
+    \item Expliquer physiquement pourquoi un condensateur bloque le courant en régime permanent continu.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Question 3 -- Équation différentielle du circuit RC en charge]
+\etoiles{\(\star\star\star\)}
+
+On considère un circuit série constitué d'un générateur idéal de tension \(E\), d'une résistance \(R\) et d'un condensateur \(C\), initialement déchargé.
+
+\begin{enumerate}[label=\alph*)]
+    \item Établir l'équation différentielle vérifiée par la tension \(u_C(t)\).
+    \item Vérifier que la fonction
+    \[
+    u_C(t)=E\left(1-e^{-t/RC}\right)
+    \]
+    est solution de cette équation différentielle.
+    \item Donner l'expression de l'intensité \(i(t)\).
+    \item Interpréter physiquement le comportement de \(u_C(t)\) et de \(i(t)\).
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Question 4 -- Temps caractéristique]
+\etoiles{\(\star\star\)}
+
+Définir le temps caractéristique \(\tau\) d'un circuit RC. Expliquer son sens physique. Montrer qu'à la charge, au temps \(t=\tau\), la tension aux bornes du condensateur atteint environ \(63\%\) de sa valeur finale.
+\end{exercisebox}
+
+\begin{exercisebox}[Question 5 -- Puissance, énergie, rendement]
+\etoiles{\(\star\star\)}
+
+\begin{enumerate}[label=\alph*)]
+    \item Donner l'expression de la puissance électrique reçue par un dipôle.
+    \item En déduire l'expression de l'énergie transférée pendant une durée \(\Delta t\).
+    \item Définir le rendement d'un convertisseur.
+    \item Expliquer pourquoi un rendement ne peut pas dépasser \(1\).
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Question 6 -- Question ouverte de réflexion]
+\etoiles{\(\star\star\star\)}
+
+Sans faire de calcul détaillé, expliquer pourquoi :
+\begin{itemize}
+    \item augmenter \(R\) ralentit la charge d'un condensateur ;
+    \item augmenter \(C\) ralentit aussi la charge ;
+    \item un condensateur très petit se charge presque instantanément à l'échelle humaine.
+\end{itemize}
+On attend une réponse physique, pas seulement une citation de la formule \(\tau=RC\).
+\end{exercisebox}
+
+\subsection{Partie II -- Exercices}
+
+\begin{exercisebox}[Exercice 1 -- Exploitation directe d'un circuit RC]
+\etoiles{\(\star\star\)}
+
+Un condensateur de capacité \(C=\SI{220}{\micro F}\) est chargé à travers une résistance \(R=\SI{4.7}{k\Omega}\) par un générateur idéal de tension \(E=\SI{12}{V}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer le temps caractéristique \(\tau\).
+    \item Donner l'expression de \(u_C(t)\).
+    \item Calculer \(u_C(\tau)\).
+    \item Calculer l'intensité initiale \(i(0)\).
+    \item Déterminer la valeur limite de \(u_C(t)\) quand \(t\to +\infty\).
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 2 -- Lecture physique d'une courbe expérimentale]
+\etoiles{\(\star\star\star\)}
+
+Lors d'une expérience, on mesure la tension aux bornes d'un condensateur en charge. On observe que la tension finale vaut \(\SI{9.0}{V}\), et que la tension atteint \(\SI{5.7}{V}\) au temps \(t=\SI{0.80}{s}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que cette valeur est cohérente avec la définition du temps caractéristique.
+    \item En déduire une estimation de \(\tau\).
+    \item Si la résistance vaut \(R=\SI{10}{k\Omega}\), calculer la capacité \(C\).
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 3 -- Décharge d'un condensateur]
+\etoiles{\(\star\star\)}
+
+Un condensateur initialement chargé sous la tension \(U_0=\SI{15}{V}\) se décharge dans une résistance \(R=\SI{2.0}{k\Omega}\). Sa capacité vaut \(C=\SI{100}{\micro F}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire l'expression de \(u_C(t)\).
+    \item Calculer le temps caractéristique.
+    \item Calculer la tension au temps \(t=\SI{0.20}{s}\).
+    \item À partir de quel temps peut-on considérer la décharge comme pratiquement terminée ?
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 4 -- Énergie et rendement]
+\etoiles{\(\star\star\)}
+
+Une batterie délivre une tension \(U=\SI{36}{V}\) et alimente un moteur parcouru par un courant \(I=\SI{8.0}{A}\) pendant \(\SI{25}{min}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer la puissance électrique fournie.
+    \item Calculer l'énergie électrique transférée pendant cette durée.
+    \item Le moteur fournit finalement une énergie mécanique utile de \(\SI{3.6e5}{J}\). Calculer le rendement du système.
+    \item Interpréter ce résultat.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 5 -- Champ électrique uniforme]
+\etoiles{\(\star\star\star\)}
+
+Une particule de charge \(q=+2.0\times 10^{-19}\,\si{C}\) et de masse \(m=3.0\times 10^{-26}\,\si{kg}\) est placée dans un champ électrique uniforme de norme \(E=\SI{4.0e4}{V.m^{-1}}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Donner l'expression vectorielle de la force électrique subie par la particule.
+    \item Calculer la norme de cette force.
+    \item En déduire la norme de l'accélération.
+    \item Expliquer en quoi la situation est analogue à celle d'une masse dans le champ de pesanteur.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 6 -- Dimensionner une batterie pour un vélo électrique : Pujaut \(\rightarrow\) Mont Ventoux]
+\etoiles{\(\star\star\star\star\)}
+
+On souhaite faire un exercice de modélisation. Il ne s'agit pas de trouver \emph{la} réalité exacte, mais de proposer un modèle cohérent, d'expliciter les hypothèses et d'obtenir un ordre de grandeur raisonnable.
+
+On considère un cycliste en vélo électrique allant de Pujaut jusqu'au Mont Ventoux. On simplifie le problème de la manière suivante :
+
+\begin{itemize}
+    \item masse totale vélo + cycliste : \(m=\SI{100}{kg}\) ;
+    \item dénivelé positif total : \(h=\SI{1500}{m}\) ;
+    \item vitesse moyenne : \(v=\SI{15}{km.h^{-1}}\) ;
+    \item durée de l'effort : \(t=\SI{3.5}{h}\) ;
+    \item puissance mécanique moyenne nécessaire pour vaincre les frottements et rouler sur le plat : \(\SI{120}{W}\) ;
+    \item rendement global moteur + transmission : \(\eta=0.80\) ;
+    \item tension nominale de la batterie : \(\SI{36}{V}\).
+\end{itemize}
+
+On donne \(g=\SI{9.81}{m.s^{-2}}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer l'énergie potentielle gravitationnelle gagnée pendant l'ascension.
+    \item Calculer l'énergie mécanique nécessaire pour rouler pendant \(3.5\) h contre les frottements.
+    \item En déduire l'énergie mécanique totale à fournir.
+    \item En tenant compte du rendement, calculer l'énergie électrique que la batterie doit fournir.
+    \item En déduire une capacité minimale de batterie en \(\si{Wh}\), puis en \(\si{Ah}\).
+    \item Discuter le résultat : ce modèle sous-estime-t-il ou surestime-t-il probablement la batterie réellement nécessaire ?
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 7 -- Question ouverte : téléphone et charge rapide]
+\etoiles{\(\star\star\star\star\)}
+
+On entend souvent dire qu'un téléphone ``se charge vite au début puis plus lentement à la fin''.
+
+En t'appuyant sur le modèle du circuit RC :
+\begin{enumerate}[label=\alph*)]
+    \item expliquer qualitativement pourquoi cette phrase ressemble au comportement d'un condensateur en charge ;
+    \item expliquer pourquoi un vrai téléphone n'est pas un simple condensateur ;
+    \item proposer ce que le modèle RC permet de comprendre, et ce qu'il ne permet pas de comprendre.
+\end{enumerate}
+
+Aucune formule n'est obligatoire, mais on attend un raisonnement structuré et physiquement intelligent.
+\end{exercisebox}
+
+\begin{exercisebox}[Exercice 8 -- Exercice guidé de synthèse]
+\etoiles{\(\star\star\star\)}
+
+On considère un circuit RC série alimenté sous une tension constante \(E\). Le condensateur est initialement déchargé.
+
+\begin{enumerate}[label=\alph*)]
+    \item Rappeler la loi des mailles.
+    \item Établir l'équation différentielle vérifiée par \(u_C(t)\).
+    \item Montrer que
+    \[
+    u_C(t)=A+Be^{-t/RC}
+    \]
+    est une forme adaptée pour chercher la solution.
+    \item Déterminer \(A\) et \(B\) à l'aide de l'équation différentielle et de la condition initiale.
+    \item Retrouver l'expression finale de \(u_C(t)\).
+\end{enumerate}
+\end{exercisebox}
+
+\newpage
+
+\section{Corrigé}
+
+\subsection{Corrigé de la partie I -- Questions de cours}
+
+\begin{corrigebox}[Corrigé question 1]
+L'intensité du courant électrique mesure le débit de charges électriques à travers une section du circuit.
+
+La relation
+\[
+I=\frac{dq}{dt}
+\]
+signifie que, pendant une petite durée \(dt\), une petite charge \(dq\) traverse cette section. L'intensité est donc la quantité de charge qui passe par seconde.
+
+Unités :
+\[
+[q]=\si{C}, \qquad [t]=\si{s}, \qquad [I]=\si{A}
+\]
+avec
+\[
+1\,\si{A}=1\,\si{C.s^{-1}}.
+\]
+
+Interprétation physique : plus \(I\) est grande, plus les charges circulent rapidement dans le circuit au sens de débit.
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé question 2]
+\begin{enumerate}[label=\alph*)]
+    \item La relation fondamentale du condensateur est
+    \[
+    q=Cu_C.
+    \]
+
+    \item On dérive par rapport au temps :
+    \[
+    \frac{dq}{dt}=C\frac{du_C}{dt}
+    \]
+    car \(C\) est constante. Or
+    \[
+    i(t)=\frac{dq}{dt}.
+    \]
+    Donc
+    \[
+    i(t)=C\frac{du_C}{dt}.
+    \]
+
+    \item En régime permanent continu, la tension devient constante. Donc
+    \[
+    \frac{du_C}{dt}=0,
+    \]
+    et par conséquent
+    \[
+    i= C\frac{du_C}{dt}=0.
+    \]
+    Il n'y a donc plus de courant dans le condensateur une fois la charge terminée. Physiquement, le condensateur s'est rempli de charges opposées sur ses armatures, puis l'évolution s'arrête.
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé question 3]
+\begin{enumerate}[label=\alph*)]
+    \item Loi des mailles :
+    \[
+    E=u_R+u_C.
+    \]
+    Or
+    \[
+    u_R=Ri
+    \qquad \text{et} \qquad
+    i=C\frac{du_C}{dt}.
+    \]
+    Donc
+    \[
+    u_R=RC\frac{du_C}{dt}.
+    \]
+    Finalement :
+    \[
+    RC\frac{du_C}{dt}+u_C=E.
+    \]
+
+    \item On pose
+    \[
+    u_C(t)=E\left(1-e^{-t/RC}\right).
+    \]
+    Alors
+    \[
+    \frac{du_C}{dt}=E\frac{1}{RC}e^{-t/RC}.
+    \]
+    Donc
+    \[
+    RC\frac{du_C}{dt}=Ee^{-t/RC}.
+    \]
+    Ainsi
+    \[
+    RC\frac{du_C}{dt}+u_C
+    =
+    Ee^{-t/RC}+E\left(1-e^{-t/RC}\right)=E.
+    \]
+    La fonction est bien solution.
+
+    \item On a
+    \[
+    i=C\frac{du_C}{dt}
+    =C\times E\frac{1}{RC}e^{-t/RC}
+    =\frac{E}{R}e^{-t/RC}.
+    \]
+
+    \item Interprétation :
+    \begin{itemize}
+        \item \(u_C(t)\) augmente progressivement de \(0\) vers \(E\) ;
+        \item \(i(t)\) décroît de \(\dfrac{E}{R}\) vers \(0\) ;
+        \item au début le condensateur est vide, donc le courant est maximal ;
+        \item à la fin, le condensateur est chargé, donc le courant s'annule.
+    \end{itemize}
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé question 4]
+Le temps caractéristique vaut
+\[
+\tau=RC.
+\]
+
+Il représente l'échelle de temps sur laquelle le système évolue. Plus \(\tau\) est grande, plus la charge est lente.
+
+À la charge :
+\[
+u_C(t)=E\left(1-e^{-t/\tau}\right).
+\]
+Au temps \(t=\tau\),
+\[
+u_C(\tau)=E\left(1-e^{-1}\right).
+\]
+Or
+\[
+e^{-1}\approx 0.37,
+\]
+donc
+\[
+u_C(\tau)\approx E(1-0.37)=0.63E.
+\]
+Le condensateur a donc atteint environ \(63\%\) de sa tension finale.
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé question 5]
+\begin{enumerate}[label=\alph*)]
+    \item La puissance électrique reçue par un dipôle est
+    \[
+    P=UI.
+    \]
+
+    \item L'énergie transférée pendant une durée \(\Delta t\) vaut
+    \[
+    E=P\Delta t=UI\Delta t.
+    \]
+
+    \item Le rendement d'un convertisseur est
+    \[
+    \eta=\frac{P_{\text{utile}}}{P_{\text{reçue}}}
+    \quad \text{ou} \quad
+    \eta=\frac{E_{\text{utile}}}{E_{\text{reçue}}}.
+    \]
+
+    \item Un rendement ne peut pas dépasser \(1\), car on ne peut pas récupérer plus d'énergie utile que l'énergie reçue. Cela contredirait le principe de conservation de l'énergie.
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé question 6]
+\begin{itemize}
+    \item Si \(R\) augmente, le courant circule plus difficilement dans le circuit. Or charger un condensateur, c'est y amener des charges sur ses armatures. Si les charges arrivent moins vite, la charge est plus lente.
+    \item Si \(C\) augmente, il faut davantage de charge pour atteindre une même tension, puisque \(q=Cu\). Donc le réservoir électrique à remplir est plus grand : la charge prend plus de temps.
+    \item Si le condensateur est très petit, une faible quantité de charge suffit à faire monter sa tension. Il atteint donc rapidement son état final.
+\end{itemize}
+
+On retrouve bien cela dans \(\tau=RC\), mais l'essentiel ici est le sens physique.
+\end{corrigebox}
+
+\subsection{Corrigé de la partie II -- Exercices}
+
+\begin{corrigebox}[Corrigé exercice 1]
+Données :
+\[
+C=\SI{220}{\micro F}=220\times 10^{-6}\,\si{F},
+\qquad
+R=\SI{4.7}{k\Omega}=4.7\times 10^3\,\si{\Omega},
+\qquad
+E=\SI{12}{V}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    \tau=RC=(4.7\times 10^3)(220\times 10^{-6})\approx 1.03\,\si{s}.
+    \]
+
+    \item
+    \[
+    u_C(t)=12\left(1-e^{-t/1.03}\right).
+    \]
+
+    \item
+    \[
+    u_C(\tau)=12(1-e^{-1})\approx 12\times 0.63\approx 7.6\,\si{V}.
+    \]
+
+    \item
+    \[
+    i(0)=\frac{E}{R}=\frac{12}{4700}\approx 2.55\times 10^{-3}\,\si{A}=2.55\,\si{mA}.
+    \]
+
+    \item
+    \[
+    \lim_{t\to+\infty}u_C(t)=12\,\si{V}.
+    \]
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 2]
+\begin{enumerate}[label=\alph*)]
+    \item \(63\%\) de la tension finale vaut
+    \[
+    0.63\times 9.0 = 5.67\,\si{V}.
+    \]
+    Or la tension mesurée à \(t=\SI{0.80}{s}\) vaut \(\SI{5.7}{V}\), ce qui est cohérent.
+
+    \item Donc
+    \[
+    \tau \approx \SI{0.80}{s}.
+    \]
+
+    \item
+    \[
+    C=\frac{\tau}{R}=\frac{0.80}{10\,000}=8.0\times 10^{-5}\,\si{F}=80\,\si{\micro F}.
+    \]
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 3]
+Données :
+\[
+U_0=\SI{15}{V}, \quad R=\SI{2.0}{k\Omega}=2000\,\si{\Omega}, \quad C=\SI{100}{\micro F}=1.0\times 10^{-4}\,\si{F}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    u_C(t)=15e^{-t/RC}.
+    \]
+
+    \item
+    \[
+    \tau=RC=2000\times 1.0\times 10^{-4}=0.20\,\si{s}.
+    \]
+
+    \item Au temps \(t=0.20\,\si{s}=\tau\),
+    \[
+    u_C(\tau)=15e^{-1}\approx 15\times 0.37\approx 5.6\,\si{V}.
+    \]
+
+    \item En pratique, on considère qu'après environ \(5\tau\), la décharge est terminée :
+    \[
+    5\tau = 1.0\,\si{s}.
+    \]
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 4]
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    P=UI=36\times 8.0=288\,\si{W}.
+    \]
+
+    \item
+    \[
+    \Delta t = 25\,\si{min}=1500\,\si{s}.
+    \]
+    Donc
+    \[
+    E=P\Delta t = 288\times 1500 = 432\,000\,\si{J}.
+    \]
+
+    \item
+    \[
+    \eta=\frac{E_{\text{utile}}}{E_{\text{reçue}}}
+    =\frac{3.6\times 10^5}{4.32\times 10^5}
+    \approx 0.833.
+    \]
+    Donc
+    \[
+    \eta \approx 83\%.
+    \]
+
+    \item Environ \(83\%\) de l'énergie reçue est convertie en énergie mécanique utile. Le reste est perdu, notamment sous forme de chaleur.
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 5]
+\begin{enumerate}[label=\alph*)]
+    \item La force électrique vaut
+    \[
+    \vec{F}=q\vec{E}.
+    \]
+
+    \item Sa norme vaut
+    \[
+    F=qE=(2.0\times 10^{-19})(4.0\times 10^4)=8.0\times 10^{-15}\,\si{N}.
+    \]
+
+    \item
+    \[
+    a=\frac{F}{m}
+    =\frac{8.0\times 10^{-15}}{3.0\times 10^{-26}}
+    \approx 2.7\times 10^{11}\,\si{m.s^{-2}}.
+    \]
+
+    \item L'analogie avec la pesanteur est :
+    \[
+    \vec{P}=m\vec{g}
+    \qquad \text{et} \qquad
+    \vec{F}=q\vec{E}.
+    \]
+    Dans les deux cas, la force est proportionnelle à une propriété de l'objet (la masse ou la charge) et à un champ extérieur.
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 6]
+On cherche un ordre de grandeur.
+
+\begin{enumerate}[label=\alph*)]
+    \item Énergie potentielle gravitationnelle gagnée :
+    \[
+    E_p = mgh = 100\times 9.81\times 1500.
+    \]
+    Donc
+    \[
+    E_p = 1.47\times 10^6\,\si{J}.
+    \]
+
+    \item Énergie mécanique contre les frottements :
+    \[
+    E_f = P\times t.
+    \]
+    Or
+    \[
+    t=3.5\,\si{h}=3.5\times 3600 = 12600\,\si{s}.
+    \]
+    Donc
+    \[
+    E_f = 120\times 12600 = 1.512\times 10^6\,\si{J}.
+    \]
+
+    \item Énergie mécanique totale :
+    \[
+    E_{\text{méc}}=E_p+E_f
+    =1.47\times 10^6 +1.512\times 10^6
+    =2.982\times 10^6\,\si{J}.
+    \]
+
+    \item Avec le rendement \(\eta=0.80\),
+    \[
+    E_{\text{élec}}=\frac{E_{\text{méc}}}{\eta}
+    =\frac{2.982\times 10^6}{0.80}
+    \approx 3.73\times 10^6\,\si{J}.
+    \]
+
+    \item Conversion en \(\si{Wh}\) :
+    \[
+    1\,\si{Wh}=3600\,\si{J}.
+    \]
+    Donc
+    \[
+    E_{\text{élec}}=\frac{3.73\times 10^6}{3600}\approx 1036\,\si{Wh}.
+    \]
+    Il faut donc environ
+    \[
+    \boxed{1.0\,\si{kWh}}
+    \]
+    de batterie.
+
+    En ampère-heures, avec \(U=\SI{36}{V}\),
+    \[
+    E=UQ \quad \Rightarrow \quad Q=\frac{E}{U}.
+    \]
+    Donc
+    \[
+    Q=\frac{1036}{36}\approx 28.8\,\si{Ah}.
+    \]
+
+    \item Discussion :
+    \begin{itemize}
+        \item ce modèle reste simplifié ;
+        \item il suppose une assistance fournissant toute l'énergie mécanique calculée ;
+        \item en réalité, le cycliste fournit aussi une partie de l'effort ;
+        \item inversement, les phases d'accélération, les irrégularités de pente, le vent et les pertes supplémentaires peuvent augmenter la consommation.
+    \end{itemize}
+    Donc ce calcul donne un ordre de grandeur raisonnable, mais la batterie réellement nécessaire dépend fortement du partage d'effort entre le moteur et le cycliste.
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 7]
+\begin{enumerate}[label=\alph*)]
+    \item Dans un circuit RC, au début de la charge, le courant est maximal, puis il diminue progressivement. La tension du condensateur augmente rapidement au début puis de plus en plus lentement. Cela ressemble qualitativement à ce qu'on observe souvent pour un téléphone.
+
+    \item Un vrai téléphone n'est pas un simple condensateur :
+    \begin{itemize}
+        \item la batterie est un système électrochimique complexe ;
+        \item la puissance de charge est pilotée électroniquement ;
+        \item la température, la chimie interne et la sécurité imposent des lois de charge spécifiques.
+    \end{itemize}
+
+    \item Le modèle RC permet de comprendre :
+    \begin{itemize}
+        \item l'idée d'une charge rapide au début puis plus lente ensuite ;
+        \item l'existence d'un temps caractéristique ;
+        \item une montée progressive vers un état final.
+    \end{itemize}
+    Il ne permet pas de comprendre :
+    \begin{itemize}
+        \item les mécanismes électrochimiques d'une batterie réelle ;
+        \item les protocoles de charge rapide ;
+        \item la gestion électronique et thermique.
+    \end{itemize}
+\end{enumerate}
+\end{corrigebox}
+
+\begin{corrigebox}[Corrigé exercice 8]
+\begin{enumerate}[label=\alph*)]
+    \item Loi des mailles :
+    \[
+    E=u_R+u_C.
+    \]
+
+    \item Avec
+    \[
+    u_R=Ri
+    \qquad \text{et} \qquad
+    i=C\frac{du_C}{dt},
+    \]
+    on obtient
+    \[
+    E=RC\frac{du_C}{dt}+u_C.
+    \]
+    Donc
+    \[
+    RC\frac{du_C}{dt}+u_C=E.
+    \]
+
+    \item Comme l'équation différentielle est linéaire du premier ordre à coefficients constants, on cherche une solution de la forme
+    \[
+    u_C(t)=A+Be^{-t/RC}.
+    \]
+
+    \item On calcule :
+    \[
+    \frac{du_C}{dt}=-\frac{B}{RC}e^{-t/RC}.
+    \]
+    Donc
+    \[
+    RC\frac{du_C}{dt}+u_C
+    =
+    -Be^{-t/RC}+A+Be^{-t/RC}=A.
+    \]
+    Pour satisfaire l'équation différentielle, il faut
+    \[
+    A=E.
+    \]
+    Comme le condensateur est initialement déchargé,
+    \[
+    u_C(0)=0.
+    \]
+    Donc
+    \[
+    0=A+B=E+B
+    \quad \Rightarrow \quad
+    B=-E.
+    \]
+
+    \item Finalement
+    \[
+    u_C(t)=E-Ee^{-t/RC}
+    =E\left(1-e^{-t/RC}\right).
+    \]
+\end{enumerate}
+\end{corrigebox}
+
+\section{Bilan rapide}
+
+\begin{importantbox}
+Compétences travaillées dans cette colle :
+\begin{itemize}
+    \item connaître et expliquer les relations du cours ;
+    \item établir une équation différentielle ;
+    \item vérifier une solution ;
+    \item interpréter physiquement une loi exponentielle ;
+    \item calculer une puissance, une énergie, un rendement ;
+    \item raisonner sur des ordres de grandeur ;
+    \item modéliser une situation réelle.
+\end{itemize}
+\end{importantbox}
+
+\end{document}

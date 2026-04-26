@@ -1,0 +1,1202 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{siunitx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Spécialité Physique-Chimie -- Première générale}
+\fancyhead[R]{Fiche de synthèse complète}
+\fancyfoot[C]{\thepage}
+
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.}{0.5em}{}
+
+\newtcolorbox{definitionbox}{
+colback=blue!5!white,
+colframe=blue!60!black,
+title=\textbf{Définition},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{proprbox}{
+colback=green!5!white,
+colframe=green!50!black,
+title=\textbf{Propriété / Résultat},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{sensbox}{
+colback=orange!6!white,
+colframe=orange!70!black,
+title=\textbf{Sens physique},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{attentionbox}{
+colback=red!4!white,
+colframe=red!65!black,
+title=\textbf{Attention / Erreur classique},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{terminalebox}{
+colback=purple!5!white,
+colframe=purple!60!black,
+title=\textbf{Ouverture vers la Terminale},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}{
+colback=gray!8!white,
+colframe=black!70,
+title=\textbf{Méthode},
+fonttitle=\bfseries
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Fiche de synthèse complète}}\\[0.3em]
+    {\Large \textbf{Physique-Chimie -- Spécialité Première générale}}\\[0.5em]
+    {\large Notions, sens physique, liens entre chapitres, préparation à la Terminale}
+\end{center}
+
+\vspace{0.7em}
+
+\tableofcontents
+
+\newpage
+
+\section{Comment lire un cours de physique-chimie}
+
+\subsection{Pourquoi ce cours ne doit pas être appris comme une simple liste de formules}
+
+En physique-chimie, une formule n'a de sens que si l'on comprend :
+\begin{itemize}
+    \item ce que représentent les grandeurs ;
+    \item dans quelle situation on peut utiliser le modèle ;
+    \item ce qu'on néglige ;
+    \item ce que le résultat signifie physiquement.
+\end{itemize}
+
+Le but n'est donc pas seulement de \emph{savoir calculer}, mais surtout de \emph{comprendre le phénomène}.
+
+\begin{sensbox}
+La physique-chimie relie toujours :
+\[
+\text{observation} \longrightarrow \text{mesure} \longrightarrow \text{modèle} \longrightarrow \text{calcul} \longrightarrow \text{interprétation}
+\]
+\end{sensbox}
+
+\subsection{Qu'est-ce qu'une définition ?}
+
+\begin{definitionbox}
+Une \textbf{définition} dit précisément ce qu'est une notion.  
+Elle fixe le sens exact d'un mot scientifique.
+
+Une définition ne se discute pas : elle sert de base au raisonnement.
+\end{definitionbox}
+
+\textbf{Exemples :}
+\begin{itemize}
+    \item La \textbf{concentration en quantité de matière} d'un soluté est le quotient de la quantité de matière de soluté par le volume de solution.
+    \[
+    c=\frac{n}{V}
+    \]
+    \item Une \textbf{onde mécanique progressive} est la propagation d'une perturbation dans un milieu matériel.
+    \item Un \textbf{oxydant} est une espèce chimique capable de capter un ou plusieurs électrons.
+\end{itemize}
+
+\subsection{Qu'est-ce qu'une propriété ?}
+
+\begin{proprbox}
+Une \textbf{propriété} est un résultat vrai dans un certain cadre.  
+Elle découle soit d'une définition, soit d'une expérience, soit d'un modèle admis.
+\end{proprbox}
+
+\textbf{Exemples :}
+\begin{itemize}
+    \item Si une onde périodique a pour période \(T\) et pour célérité \(v\), alors sa longueur d'onde vaut
+    \[
+    \lambda=vT.
+    \]
+    \item Si une transformation est totale, alors l'état final est déterminé par le réactif limitant.
+    \item Dans le cas d'une force constante, le travail s'écrit
+    \[
+    W_{A\to B}(\vec F)=\vec F\cdot \overrightarrow{AB}.
+    \]
+\end{itemize}
+
+\subsection{Qu'est-ce qu'une loi ?}
+
+\begin{definitionbox}
+Une \textbf{loi} est une relation générale utilisée pour modéliser un phénomène.
+\end{definitionbox}
+
+\textbf{Exemples :}
+\begin{itemize}
+    \item loi de Coulomb ;
+    \item loi de Mariotte ;
+    \item loi de Beer-Lambert ;
+    \item relation entre débit de charges et intensité.
+\end{itemize}
+
+\subsection{Qu'est-ce qu'un modèle ?}
+
+\begin{definitionbox}
+Un \textbf{modèle} est une représentation simplifiée de la réalité qui permet d'expliquer, de prévoir ou de calculer.
+\end{definitionbox}
+
+\begin{sensbox}
+Un modèle n'est pas la réalité entière.  
+Il est choisi parce qu'il est assez simple pour travailler, mais assez fidèle pour répondre à la question posée.
+\end{sensbox}
+
+\textbf{Exemples :}
+\begin{itemize}
+    \item modéliser un objet par un point matériel ;
+    \item modéliser une source réelle de tension par une source idéale et une résistance en série ;
+    \item modéliser une transformation chimique par une équation de réaction ;
+    \item modéliser la lumière tantôt comme onde, tantôt comme ensemble de photons.
+\end{itemize}
+
+\subsection{Grande idée du programme}
+
+Tout le programme est construit autour de quelques idées transversales :
+\begin{itemize}
+    \item décrire un système ;
+    \item suivre son évolution ;
+    \item relier le microscopique et le macroscopique ;
+    \item faire des bilans ;
+    \item comprendre qu'un changement s'explique par une interaction, un transfert ou une conversion.
+\end{itemize}
+
+\newpage
+
+\section{Constitution et transformations de la matière}
+
+\subsection{Quantité de matière, masse molaire, concentration}
+
+\subsubsection{La quantité de matière}
+
+\begin{definitionbox}
+La \textbf{quantité de matière} \(n\) mesure le nombre d'entités chimiques à l'échelle macroscopique.  
+Elle s'exprime en mole (\(\si{mol}\)).
+\end{definitionbox}
+
+\begin{proprbox}
+Pour un échantillon pur :
+\[
+n=\frac{m}{M}
+\]
+où \(m\) est la masse de l'échantillon et \(M\) la masse molaire.
+\end{proprbox}
+
+\begin{sensbox}
+La mole est un outil de comptage.  
+Comme les atomes et molécules sont beaucoup trop petits pour être comptés un par un, on les compte par ``paquets'' de très grande taille : les moles.
+\end{sensbox}
+
+\begin{attentionbox}
+Ne pas confondre :
+\begin{itemize}
+    \item \textbf{masse} : grandeur mesurée en grammes ou kilogrammes ;
+    \item \textbf{quantité de matière} : grandeur mesurée en moles.
+\end{itemize}
+Deux échantillons de même masse peuvent correspondre à des quantités de matière différentes.
+\end{attentionbox}
+
+\subsubsection{Masse molaire}
+
+\begin{definitionbox}
+La \textbf{masse molaire} \(M\) d'une espèce chimique est la masse d'une mole de cette espèce.
+\end{definitionbox}
+
+Pour une molécule, on l'obtient en additionnant les masses molaires atomiques des atomes qui la composent.
+
+\textbf{Exemple :}
+\[
+M(\mathrm{H_2O})=2M(\mathrm H)+M(\mathrm O)
+\]
+
+\subsubsection{Concentration en quantité de matière}
+
+\begin{definitionbox}
+La \textbf{concentration molaire} d'un soluté en solution est
+\[
+c=\frac{n}{V}
+\]
+où \(n\) est la quantité de matière de soluté dissous et \(V\) le volume de solution.
+\end{definitionbox}
+
+\begin{sensbox}
+La concentration mesure ``combien de soluté il y a par unité de volume''.  
+Plus \(c\) est grande, plus la solution est riche en espèce dissoute.
+\end{sensbox}
+
+\begin{attentionbox}
+Une solution n'est pas dite concentrée parce qu'elle contient ``beaucoup'' de matière en valeur absolue, mais parce qu'elle en contient beaucoup \emph{par litre}.
+\end{attentionbox}
+
+\subsubsection{Lien avec la Terminale}
+
+\begin{terminalebox}
+En Terminale, ces notions serviront partout :
+\begin{itemize}
+    \item en cinétique chimique ;
+    \item en titrages plus avancés ;
+    \item en chimie acide-base ;
+    \item en électrochimie.
+\end{itemize}
+Si la notion de quantité de matière n'est pas solide, toute la chimie quantitative devient fragile.
+\end{terminalebox}
+
+\subsection{Absorbance, couleur, loi de Beer-Lambert}
+
+\begin{definitionbox}
+L'\textbf{absorbance} d'une solution mesure sa capacité à absorber une partie de la lumière qui la traverse.
+\end{definitionbox}
+
+\begin{sensbox}
+Une solution colorée n'absorbe pas toutes les couleurs de la même façon.  
+La couleur perçue correspond aux radiations transmises ou diffusées, et non à celles absorbées.
+\end{sensbox}
+
+\begin{proprbox}
+Dans le domaine de validité du modèle de Beer-Lambert :
+\[
+A=k\,c
+\]
+où \(A\) est l'absorbance et \(c\) la concentration.
+\end{proprbox}
+
+\begin{methodebox}
+Pour déterminer une concentration par étalonnage :
+\begin{enumerate}
+    \item on prépare une gamme étalon ;
+    \item on mesure l'absorbance des solutions de référence ;
+    \item on trace \(A=f(c)\) ;
+    \item on mesure l'absorbance de la solution inconnue ;
+    \item on lit ou calcule sa concentration.
+\end{enumerate}
+\end{methodebox}
+
+\begin{terminalebox}
+En Terminale, l'idée de relier un signal mesuré à une grandeur physique réapparaît dans beaucoup d'autres contextes : suivi cinétique, électricité, optique, radioactivité.
+\end{terminalebox}
+
+\subsection{Oxydants, réducteurs et réactions d'oxydo-réduction}
+
+\begin{definitionbox}
+Un \textbf{oxydant} est une espèce capable de capter un ou plusieurs électrons.  
+Un \textbf{réducteur} est une espèce capable de céder un ou plusieurs électrons.
+\end{definitionbox}
+
+\begin{definitionbox}
+Un \textbf{couple oxydant/réducteur} est l'association de deux formes chimiques reliées par gain ou perte d'électrons.
+\end{definitionbox}
+
+\begin{sensbox}
+Une réaction d'oxydo-réduction est un échange d'électrons.  
+C'est l'équivalent, pour les électrons, de ce que la réaction acide-base sera pour les protons.
+\end{sensbox}
+
+\textbf{Exemple de demi-équation :}
+\[
+\mathrm{Cu^{2+}+2e^- \rightarrow Cu}
+\]
+
+\begin{attentionbox}
+Erreur classique : dire ``l'oxydant s'oxyde''.  
+C'est faux. Un oxydant \textbf{oxyde l'autre espèce} et \textbf{se réduit lui-même}.
+\end{attentionbox}
+
+\subsection{Avancement et tableau d'avancement}
+
+\begin{definitionbox}
+L'\textbf{avancement} \(x\) d'une transformation chimique mesure son état de progression.
+\end{definitionbox}
+
+Pour une réaction
+\[
+aA+bB \rightarrow cC+dD,
+\]
+les quantités de matière évoluent selon :
+\[
+n_A=n_{A,0}-ax,\qquad
+n_B=n_{B,0}-bx,\qquad
+n_C=n_{C,0}+cx,\qquad
+n_D=n_{D,0}+dx.
+\]
+
+\begin{sensbox}
+L'avancement est un compteur de réaction.  
+Il ne représente pas une espèce chimique en plus, mais la progression globale de la transformation.
+\end{sensbox}
+
+\begin{methodebox}
+Pour construire un tableau d'avancement :
+\begin{enumerate}
+    \item écrire l'équation chimique ajustée ;
+    \item déterminer les quantités initiales ;
+    \item écrire l'évolution en fonction de \(x\) ;
+    \item écrire l'état final ;
+    \item utiliser le réactif limitant ou une donnée expérimentale pour trouver \(x_f\).
+\end{enumerate}
+\end{methodebox}
+
+\begin{proprbox}
+Dans le cas d'une transformation totale, l'état final est piloté par le réactif limitant.
+\end{proprbox}
+
+\begin{terminalebox}
+En Terminale, l'idée d'avancement reviendra dans les bilans de matière, les suivis temporels, les titrages, et sera articulée avec des notions plus fines comme la cinétique et les évolutions non instantanées.
+\end{terminalebox}
+
+\subsection{Transformation totale, non totale, mélange stœchiométrique}
+
+\begin{definitionbox}
+Une transformation est dite \textbf{totale} si le réactif limitant est entièrement consommé.
+\end{definitionbox}
+
+\begin{definitionbox}
+Un \textbf{mélange stœchiométrique} est un mélange dans lequel les réactifs sont introduits dans les proportions exactes imposées par les coefficients de l'équation chimique.
+\end{definitionbox}
+
+\begin{sensbox}
+Un mélange stœchiométrique correspond à une situation idéale où aucun réactif n'est en excès si la transformation est totale.
+\end{sensbox}
+
+\subsection{Titrage colorimétrique}
+
+\begin{definitionbox}
+Un \textbf{titrage} permet de déterminer la quantité de matière ou la concentration d'une espèce chimique en la faisant réagir avec une espèce de concentration connue.
+\end{definitionbox}
+
+\begin{definitionbox}
+L'\textbf{équivalence} est l'instant où les réactifs ont été introduits dans les proportions stœchiométriques.
+\end{definitionbox}
+
+\begin{proprbox}
+À l'équivalence :
+\[
+\frac{n_A}{a}=\frac{n_B}{b}
+\]
+si \(a\) et \(b\) sont les coefficients stœchiométriques.
+\end{proprbox}
+
+\begin{sensbox}
+Avant l'équivalence, un réactif titré est encore présent en excès.  
+Après l'équivalence, c'est le titrant qui devient en excès.  
+L'équivalence marque donc un \textbf{changement de réactif limitant}.
+\end{sensbox}
+
+\begin{attentionbox}
+Il ne faut jamais utiliser la relation à l'équivalence sans avoir écrit d'abord la réaction support du titrage.
+\end{attentionbox}
+
+\subsection{Structure des entités, schémas de Lewis et géométrie}
+
+\begin{definitionbox}
+Le \textbf{schéma de Lewis} représente les doublets liants et non liants autour des atomes.
+\end{definitionbox}
+
+\begin{sensbox}
+Le schéma de Lewis permet de relier la structure électronique à la forme de la molécule.  
+On passe ainsi du microscopique (électrons, liaisons) au visible ou au mesurable (géométrie, polarité, solubilité).
+\end{sensbox}
+
+\textbf{Exemples de géométries :}
+\begin{itemize}
+    \item \(\mathrm{CO_2}\) : linéaire ;
+    \item \(\mathrm{H_2O}\) : coudée ;
+    \item \(\mathrm{CH_4}\) : tétraédrique.
+\end{itemize}
+
+\subsection{Électronégativité, polarité des liaisons et des molécules}
+
+\begin{definitionbox}
+L'\textbf{électronégativité} d'un atome mesure sa capacité à attirer vers lui les électrons d'une liaison.
+\end{definitionbox}
+
+\begin{definitionbox}
+Une liaison covalente est \textbf{polarisée} si les deux atomes n'attirent pas les électrons de la même manière.
+\end{definitionbox}
+
+\begin{definitionbox}
+Une molécule est \textbf{polaire} si la répartition des charges n'y est pas symétrique.
+\end{definitionbox}
+
+\begin{sensbox}
+La polarité relie directement :
+\[
+\text{structure électronique} \longrightarrow \text{géométrie} \longrightarrow \text{propriétés macroscopiques}
+\]
+Elle explique la solubilité, les interactions entre molécules et donc beaucoup de propriétés physiques.
+\end{sensbox}
+
+\begin{attentionbox}
+Une molécule peut posséder des liaisons polaires mais être globalement apolaire si la géométrie compense les polarités.
+\end{attentionbox}
+
+\subsection{Interactions entre entités, cohésion, solubilité, miscibilité}
+
+\begin{definitionbox}
+La \textbf{cohésion} d'une substance s'explique par les interactions entre ses entités microscopiques.
+\end{definitionbox}
+
+Types d'interactions à connaître :
+\begin{itemize}
+    \item interaction ion-ion ;
+    \item interaction entre entités polaires ;
+    \item interaction entre entités apolaires ;
+    \item pont hydrogène.
+\end{itemize}
+
+\begin{sensbox}
+La matière tient ensemble parce que ses entités interagissent.  
+Comprendre les interactions, c'est comprendre pourquoi une substance est solide, liquide, soluble, peu soluble, miscible ou non miscible.
+\end{sensbox}
+
+\subsubsection{Dissolution d'un solide ionique}
+
+\begin{definitionbox}
+La dissolution d'un solide ionique dans l'eau correspond à la dissociation du cristal en ions hydratés.
+\end{definitionbox}
+
+\textbf{Exemple :}
+\[
+\mathrm{NaCl_{(s)} \rightarrow Na^+_{(aq)} + Cl^-_{(aq)}}
+\]
+
+\begin{sensbox}
+L'eau stabilise les ions grâce à sa polarité.  
+Elle arrache les ions au cristal et les entoure : c'est la \textbf{solvatation}.
+\end{sensbox}
+
+\subsubsection{Extraction par solvant}
+
+\begin{definitionbox}
+L'\textbf{extraction liquide-liquide} consiste à transférer une espèce chimique d'un solvant vers un autre dans lequel elle est plus soluble.
+\end{definitionbox}
+
+\begin{sensbox}
+``Le semblable dissout le semblable'' : une espèce polaire se dissout mieux dans un solvant polaire, une espèce peu polaire dans un solvant peu polaire.
+\end{sensbox}
+
+\subsubsection{Savons et amphiphilie}
+
+\begin{definitionbox}
+Une espèce \textbf{amphiphile} possède à la fois une partie hydrophile et une partie lipophile.
+\end{definitionbox}
+
+\begin{sensbox}
+Le savon peut interagir à la fois avec l'eau et avec les graisses.  
+C'est cette double affinité qui explique ses propriétés lavantes.
+\end{sensbox}
+
+\subsection{Premières notions de chimie organique}
+
+\subsubsection{Groupes caractéristiques}
+
+\begin{definitionbox}
+Un \textbf{groupe caractéristique} est un assemblage d'atomes responsable des propriétés chimiques principales d'une molécule organique.
+\end{definitionbox}
+
+Familles à connaître :
+\begin{itemize}
+    \item alcool ;
+    \item aldéhyde ;
+    \item cétone ;
+    \item acide carboxylique.
+\end{itemize}
+
+\begin{sensbox}
+En chimie organique, la chaîne carbonée donne une partie de l'identité de la molécule, mais c'est souvent le groupe caractéristique qui commande son comportement chimique.
+\end{sensbox}
+
+\subsubsection{Spectroscopie infrarouge}
+
+\begin{definitionbox}
+La spectroscopie infrarouge permet d'identifier des liaisons chimiques à partir des absorptions du rayonnement infrarouge.
+\end{definitionbox}
+
+\begin{sensbox}
+Une liaison peut vibrer comme un ressort.  
+Certaines fréquences lumineuses excitent ces vibrations : on observe alors des bandes caractéristiques dans le spectre.
+\end{sensbox}
+
+\subsubsection{Synthèse organique et rendement}
+
+\begin{definitionbox}
+Le \textbf{rendement} d'une synthèse est le rapport entre la quantité de produit réellement obtenue et la quantité maximale théorique.
+\end{definitionbox}
+
+\[
+r=\frac{n_{\text{obtenu}}}{n_{\text{théorique}}}\times 100
+\]
+
+\begin{sensbox}
+Le rendement mesure l'efficacité d'une synthèse.  
+Il permet de comparer ce qu'on espérait obtenir à ce qu'on a réellement obtenu.
+\end{sensbox}
+
+\begin{attentionbox}
+Un rendement inférieur à \(100\%\) peut venir :
+\begin{itemize}
+    \item d'une transformation incomplète ;
+    \item de pertes lors de l'isolement ou de la purification ;
+    \item de réactions parasites.
+\end{itemize}
+\end{attentionbox}
+
+\subsubsection{Combustions et énergie de liaison}
+
+\begin{definitionbox}
+Une combustion est une transformation chimique exothermique au cours de laquelle un combustible réagit avec un comburant, généralement le dioxygène.
+\end{definitionbox}
+
+\begin{sensbox}
+Au niveau microscopique, une réaction chimique correspond à des ruptures et formations de liaisons.  
+L'énergie libérée ou absorbée vient du bilan entre ces ruptures et ces formations.
+\end{sensbox}
+
+\begin{terminalebox}
+Cette idée prépare la Terminale en installant une manière énergétique de lire les transformations : on ne regarde plus seulement \emph{ce qui réagit}, mais aussi \emph{ce que cela coûte ou rapporte énergétiquement}.
+\end{terminalebox}
+
+\newpage
+
+\section{Mouvement et interactions}
+
+\subsection{Interactions fondamentales et champ}
+
+\subsubsection{Charge électrique}
+
+\begin{definitionbox}
+La \textbf{charge électrique} est une propriété de certaines particules qui rend compte des interactions électrostatiques.
+\end{definitionbox}
+
+\begin{sensbox}
+La charge joue, en électrostatique, un rôle analogue à celui de la masse en gravitation : c'est ce qui rend possible l'interaction.
+\end{sensbox}
+
+\subsubsection{Loi de Coulomb}
+
+\begin{proprbox}
+Deux charges ponctuelles exercent l'une sur l'autre des forces électrostatiques dont l'intensité dépend de leurs charges et de leur distance.
+\end{proprbox}
+
+\begin{sensbox}
+Plus les charges sont grandes, plus l'interaction est forte.  
+Plus elles sont éloignées, plus l'interaction s'affaiblit.
+\end{sensbox}
+
+\subsubsection{Gravitation}
+
+\begin{proprbox}
+Deux masses s'attirent mutuellement : c'est l'interaction gravitationnelle.
+\end{proprbox}
+
+\begin{sensbox}
+L'intérêt pédagogique est de comparer gravitation et électrostatique : ce sont deux interactions à distance, décrites par des lois de forme voisine.
+\end{sensbox}
+
+\subsubsection{Champ}
+
+\begin{definitionbox}
+Un \textbf{champ} décrit en chaque point de l'espace l'influence qu'exercerait une source sur un objet-test placé en ce point.
+\end{definitionbox}
+
+\begin{sensbox}
+Le champ permet de passer d'une vision ``objet contre objet'' à une vision plus locale : l'espace lui-même est décrit comme porteur d'une influence.
+\end{sensbox}
+
+\begin{terminalebox}
+La notion de champ est fondamentale pour la Terminale.  
+Elle réapparaît en gravitation, en électrostatique, dans les mouvements orbitaux, et plus largement dans toute la physique moderne.
+\end{terminalebox}
+
+\subsection{Fluide au repos}
+
+\subsubsection{Grandeurs macroscopiques}
+
+\begin{definitionbox}
+Un fluide au repos est décrit macroscopiquement par des grandeurs comme :
+\begin{itemize}
+    \item la masse volumique ;
+    \item la pression ;
+    \item la température.
+\end{itemize}
+\end{definitionbox}
+
+\begin{sensbox}
+Le niveau microscopique parle de molécules en agitation ; le niveau macroscopique parle de grandeurs mesurables comme la pression ou la température.
+\end{sensbox}
+
+\subsubsection{Loi de Mariotte}
+
+\begin{proprbox}
+À température constante pour une quantité fixée de gaz :
+\[
+P\times V=\text{constante}
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Si l'on diminue le volume disponible pour les particules d'un gaz, elles frappent plus souvent les parois : la pression augmente.
+\end{sensbox}
+
+\subsubsection{Forces pressantes}
+
+\begin{proprbox}
+Pour une surface plane \(S\) soumise à une pression \(P\), la valeur de la force pressante est :
+\[
+F=P\times S
+\]
+\end{proprbox}
+
+\begin{sensbox}
+La pression mesure une action répartie sur une surface.  
+La force pressante traduit donc une action globale obtenue en combinant pression et surface.
+\end{sensbox}
+
+\subsubsection{Statique des fluides}
+
+\begin{proprbox}
+Dans un fluide incompressible au repos :
+\[
+P_2-P_1=\rho g(z_1-z_2)
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Plus on descend dans un liquide, plus la pression augmente car le fluide situé au-dessus ``pèse'' sur les couches inférieures.
+\end{sensbox}
+
+\subsection{Mouvement d'un système}
+
+\subsubsection{Vecteur vitesse et variation du vecteur vitesse}
+
+\begin{definitionbox}
+Le \textbf{vecteur vitesse} décrit à la fois la rapidité, la direction et le sens du mouvement.
+\end{definitionbox}
+
+\begin{definitionbox}
+La \textbf{variation du vecteur vitesse} traduit comment le mouvement change entre deux instants.
+\end{definitionbox}
+
+\begin{sensbox}
+Changer de vitesse ne signifie pas seulement aller plus vite ou moins vite : changer de direction, c'est déjà changer de vitesse au sens vectoriel.
+\end{sensbox}
+
+\subsubsection{Lien entre forces et variation de vitesse}
+
+\begin{proprbox}
+La somme des forces appliquées à un système est liée à la variation de son vecteur vitesse.
+\end{proprbox}
+
+\begin{sensbox}
+Les forces ne commandent pas directement la vitesse, mais sa variation.  
+C'est une idée centrale de toute la mécanique newtonienne.
+\end{sensbox}
+
+\begin{attentionbox}
+Erreur fréquente : penser qu'une force est nécessaire pour maintenir un mouvement uniforme.  
+En réalité, dans le cadre du principe d'inertie, une vitesse constante correspond à une résultante des forces nulle.
+\end{attentionbox}
+
+\begin{terminalebox}
+En Terminale, ce lien sera reformulé de façon plus aboutie avec la deuxième loi de Newton dans sa forme différentielle et dans des mouvements plus riches, notamment circulaires et orbitaux.
+\end{terminalebox}
+
+\newpage
+
+\section{Énergie : conversions et transferts}
+
+\subsection{Aspects énergétiques des phénomènes électriques}
+
+\subsubsection{Courant électrique et débit de charges}
+
+\begin{definitionbox}
+L'intensité du courant électrique mesure le débit de charges traversant une section de circuit.
+\end{definitionbox}
+
+\begin{proprbox}
+\[
+I=\frac{\Delta Q}{\Delta t}
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Le courant n'est pas une réserve stockée : c'est un flux.  
+Comme pour un débit d'eau, il dit combien de charge passe par seconde.
+\end{sensbox}
+
+\begin{attentionbox}
+Ne pas confondre :
+\begin{itemize}
+    \item \textbf{charge} : quantité électrique ;
+    \item \textbf{courant} : débit de charge.
+\end{itemize}
+\end{attentionbox}
+
+\subsubsection{Source idéale et source réelle}
+
+\begin{definitionbox}
+Une source réelle de tension continue se modélise par une source idéale en série avec une résistance.
+\end{definitionbox}
+
+\begin{sensbox}
+Aucun générateur réel n'est parfait.  
+Le modèle de la source réelle rappelle qu'une partie de l'énergie fournie peut être perdue dans le générateur lui-même.
+\end{sensbox}
+
+\subsubsection{Puissance électrique, énergie, rendement}
+
+\begin{definitionbox}
+La \textbf{puissance} est la vitesse de transfert ou de conversion de l'énergie.
+\end{definitionbox}
+
+\begin{definitionbox}
+Le \textbf{rendement} d'un convertisseur est le rapport entre la puissance utile et la puissance reçue.
+\end{definitionbox}
+
+\[
+\eta=\frac{P_{\text{utile}}}{P_{\text{reçue}}}
+\]
+
+\begin{sensbox}
+Un rendement mesure l'efficacité.  
+Un rendement inférieur à \(1\) signifie qu'une partie de l'énergie reçue est dissipée, souvent par effet Joule.
+\end{sensbox}
+
+\begin{attentionbox}
+Énergie et puissance sont souvent confondues :
+\begin{itemize}
+    \item l'énergie est une quantité ;
+    \item la puissance est un rythme.
+\end{itemize}
+\end{attentionbox}
+
+\subsection{Aspects énergétiques des phénomènes mécaniques}
+
+\subsubsection{Énergie cinétique}
+
+\begin{definitionbox}
+L'\textbf{énergie cinétique} d'un système modélisé par un point matériel est l'énergie liée à son mouvement :
+\[
+E_c=\frac12 mv^2
+\]
+\end{definitionbox}
+
+\begin{sensbox}
+Plus un système est massif et rapide, plus son mouvement peut produire d'effet : choc, déformation, échauffement, freinage.
+\end{sensbox}
+
+\subsubsection{Travail d'une force}
+
+\begin{definitionbox}
+Le \textbf{travail} d'une force mesure le transfert d'énergie associé à cette force lors d'un déplacement.
+\end{definitionbox}
+
+\begin{proprbox}
+Pour une force constante :
+\[
+W_{A\to B}(\vec F)=\vec F\cdot \overrightarrow{AB}
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Le travail est la part de l'action de la force qui accompagne effectivement le déplacement.
+\end{sensbox}
+
+\subsubsection{Théorème de l'énergie cinétique}
+
+\begin{proprbox}
+La variation d'énergie cinétique d'un système est égale à la somme des travaux des forces appliquées :
+\[
+\Delta E_c=\sum W(\vec F)
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Ce théorème donne une autre manière de relier forces et mouvement : non plus par l'accélération, mais par un bilan énergétique.
+\end{sensbox}
+
+\begin{terminalebox}
+En Terminale, cette lecture énergétique devient encore plus puissante car elle permet d'étudier des systèmes complexes sans toujours revenir aux équations vectorielles du mouvement.
+\end{terminalebox}
+
+\subsubsection{Énergie potentielle de pesanteur}
+
+\begin{definitionbox}
+L'énergie potentielle de pesanteur d'un système près de la surface de la Terre s'écrit :
+\[
+E_p=mgz
+\]
+à une constante de référence près.
+\end{definitionbox}
+
+\begin{sensbox}
+Elle mesure une réserve d'énergie liée à la position verticale.  
+Mettre un objet plus haut, c'est lui donner la possibilité de redescendre en transformant cette énergie en autre chose, souvent en énergie cinétique.
+\end{sensbox}
+
+\subsubsection{Énergie mécanique}
+
+\begin{definitionbox}
+L'énergie mécanique est la somme de l'énergie cinétique et de l'énergie potentielle :
+\[
+E_m=E_c+E_p
+\]
+\end{definitionbox}
+
+\begin{proprbox}
+Si les forces non conservatives sont négligeables, l'énergie mécanique se conserve.
+\end{proprbox}
+
+\begin{sensbox}
+L'énergie mécanique est le budget lié au mouvement et à la position.  
+Quand il n'y a pas de dissipation, ce budget se redistribue mais ne change pas.
+\end{sensbox}
+
+\begin{attentionbox}
+La conservation de l'énergie mécanique ne vaut pas toujours.  
+Les frottements font généralement diminuer l'énergie mécanique : une partie est dissipée, souvent sous forme thermique.
+\end{attentionbox}
+
+\newpage
+
+\section{Ondes et signaux}
+
+\subsection{Ondes mécaniques}
+
+\begin{definitionbox}
+Une \textbf{onde mécanique progressive} est la propagation d'une perturbation dans un milieu matériel, sans transport global de matière.
+\end{definitionbox}
+
+\begin{sensbox}
+Ce qui se propage, ce n'est pas la matière elle-même, mais une déformation, une vibration, une perturbation.
+\end{sensbox}
+
+\textbf{Exemples :}
+\begin{itemize}
+    \item onde sur une corde ;
+    \item onde sonore ;
+    \item houle ;
+    \item ondes sismiques.
+\end{itemize}
+
+\begin{attentionbox}
+Erreur classique : croire que la matière voyage avec l'onde.  
+Sur une corde, la corde oscille localement ; elle ne part pas toute entière avec la perturbation.
+\end{attentionbox}
+
+\subsubsection{Célérité et retard}
+
+\begin{definitionbox}
+La \textbf{célérité} d'une onde est la vitesse de propagation de la perturbation.
+\end{definitionbox}
+
+\begin{proprbox}
+\[
+v=\frac{d}{\Delta t}
+\]
+\end{proprbox}
+
+\begin{sensbox}
+La célérité dépend du milieu.  
+La même source peut produire une onde dont la célérité change si le milieu change.
+\end{sensbox}
+
+\subsubsection{Ondes périodiques, période, longueur d'onde}
+
+\begin{definitionbox}
+La \textbf{période} \(T\) est la durée d'un motif élémentaire.
+\end{definitionbox}
+
+\begin{definitionbox}
+La \textbf{longueur d'onde} \(\lambda\) est la distance parcourue par l'onde pendant une période.
+\end{definitionbox}
+
+\begin{proprbox}
+\[
+\lambda=vT
+\qquad \text{et} \qquad
+f=\frac1T
+\]
+donc
+\[
+\lambda=\frac{v}{f}
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Il faut distinguer :
+\begin{itemize}
+    \item la périodicité temporelle : ce qui se répète dans le temps en un point ;
+    \item la périodicité spatiale : ce qui se répète dans l'espace à un instant donné.
+\end{itemize}
+\end{sensbox}
+
+\begin{terminalebox}
+Cette double lecture, temporelle et spatiale, prépare les chapitres plus riches de Terminale sur les ondes, les phénomènes de propagation et les interprétations fines des signaux.
+\end{terminalebox}
+
+\subsection{Optique géométrique : lentilles et images}
+
+\subsubsection{Image par une lentille convergente}
+
+\begin{definitionbox}
+Une lentille mince convergente peut former l'image d'un objet en faisant converger ou diverger les rayons lumineux selon la position de l'objet.
+\end{definitionbox}
+
+\begin{sensbox}
+L'optique géométrique est un modèle simple qui remplace la lumière par des rayons.  
+Ce modèle est très utile pour comprendre la formation des images, même s'il ne décrit pas tout.
+\end{sensbox}
+
+\textbf{Notions à connaître :}
+\begin{itemize}
+    \item image réelle ;
+    \item image virtuelle ;
+    \item image droite ;
+    \item image renversée ;
+    \item distance focale ;
+    \item grandissement.
+\end{itemize}
+
+\begin{proprbox}
+On exploite les relations de conjugaison et de grandissement fournies par le cours.
+\end{proprbox}
+
+\begin{terminalebox}
+En Terminale, l'optique sera enrichie par une lecture plus ondulatoire de la lumière.  
+La Première installe donc un double regard : la lumière peut être modélisée géométriquement, mais aussi ondulatoirement et particulairement.
+\end{terminalebox}
+
+\subsection{Couleurs, synthèse additive et soustractive}
+
+\begin{definitionbox}
+La \textbf{synthèse additive} correspond à la superposition de lumières colorées.
+\end{definitionbox}
+
+\begin{definitionbox}
+La \textbf{synthèse soustractive} correspond à la sélection de certaines couleurs par absorption, par exemple avec des filtres ou des pigments.
+\end{definitionbox}
+
+\begin{sensbox}
+La couleur perçue dépend :
+\begin{itemize}
+    \item de la lumière reçue par l'objet ;
+    \item de ce que l'objet absorbe ;
+    \item de ce qu'il diffuse ou transmet.
+\end{itemize}
+La couleur n'est donc pas une propriété totalement indépendante de l'éclairage.
+\end{sensbox}
+
+\subsection{Lumière : modèles ondulatoire et particulaire}
+
+\subsubsection{Onde électromagnétique}
+
+\begin{definitionbox}
+La lumière est une onde électromagnétique.
+\end{definitionbox}
+
+\begin{proprbox}
+\[
+\lambda=\frac{c}{\nu}
+\]
+où \(\lambda\) est la longueur d'onde, \(c\) la célérité de la lumière dans le vide, et \(\nu\) la fréquence.
+\end{proprbox}
+
+\begin{sensbox}
+Cette relation montre qu'une même lumière peut être décrite par sa fréquence ou par sa longueur d'onde.
+\end{sensbox}
+
+\subsubsection{Photon}
+
+\begin{definitionbox}
+Le \textbf{photon} est le quantum d'énergie associé à la lumière.
+\end{definitionbox}
+
+\begin{proprbox}
+\[
+E=h\nu
+\]
+\end{proprbox}
+
+\begin{sensbox}
+Le modèle particulaire rappelle que la lumière échange son énergie de manière discrète avec la matière.
+\end{sensbox}
+
+\subsubsection{Spectres et niveaux d'énergie}
+
+\begin{definitionbox}
+Les atomes possèdent des niveaux d'énergie quantifiés.
+\end{definitionbox}
+
+\begin{sensbox}
+Quand un atome absorbe ou émet de la lumière, il change de niveau d'énergie.  
+La lumière échangée porte exactement la différence d'énergie entre ces niveaux.
+\end{sensbox}
+
+\begin{proprbox}
+\[
+\Delta E=h\nu
+\qquad \text{et} \qquad
+\lambda=\frac{c}{\nu}
+\]
+\end{proprbox}
+
+\begin{terminalebox}
+C'est une préparation directe à la Terminale : spectres, photons, interaction lumière-matière, quantification de l'énergie sont des idées centrales pour la suite.
+\end{terminalebox}
+
+\newpage
+
+\section{Mesures, incertitudes et démarche scientifique}
+
+\subsection{Pourquoi une mesure n'est jamais parfaite}
+
+\begin{definitionbox}
+Une \textbf{mesure} n'est jamais la valeur vraie absolue d'une grandeur : c'est une estimation.
+\end{definitionbox}
+
+\begin{sensbox}
+Mesurer, ce n'est pas atteindre une exactitude parfaite ; c'est produire une valeur raisonnable assortie d'un degré de confiance.
+\end{sensbox}
+
+\subsection{Incertitude-type}
+
+\begin{definitionbox}
+L'\textbf{incertitude-type} traduit la dispersion ou l'imprécision associée à une mesure.
+\end{definitionbox}
+
+Deux approches :
+\begin{itemize}
+    \item \textbf{type A} : approche statistique à partir d'une série de mesures ;
+    \item \textbf{type B} : approche à partir des caractéristiques de l'instrument ou du protocole.
+\end{itemize}
+
+\begin{attentionbox}
+Donner une incertitude ne signifie pas que la mesure est mauvaise.  
+Au contraire, c'est ce qui la rend scientifiquement exploitable.
+\end{attentionbox}
+
+\subsection{Chiffres significatifs}
+
+\begin{definitionbox}
+Le nombre de chiffres significatifs doit être cohérent avec la précision de la mesure.
+\end{definitionbox}
+
+\begin{sensbox}
+Écrire trop de chiffres donne une illusion de précision.  
+Un bon scientifique n'écrit pas plus de chiffres qu'il n'en connaît réellement.
+\end{sensbox}
+
+\subsection{Compétences de la démarche scientifique}
+
+Les grandes compétences à travailler sont :
+\begin{itemize}
+    \item \textbf{s'approprier} ;
+    \item \textbf{analyser / raisonner} ;
+    \item \textbf{réaliser} ;
+    \item \textbf{valider} ;
+    \item \textbf{communiquer}.
+\end{itemize}
+
+\begin{sensbox}
+Ces compétences ne sont pas séparées du cours : elles sont la manière concrète de faire de la physique-chimie.
+\end{sensbox}
+
+\newpage
+
+\section{Grandes liaisons entre les notions}
+
+\subsection{Le programme forme un tout}
+
+Voici quelques liens fondamentaux :
+
+\begin{itemize}
+    \item \textbf{Structure microscopique \(\rightarrow\) propriétés macroscopiques} : polarité, solubilité, cohésion, couleur.
+    \item \textbf{Forces \(\rightarrow\) mouvement} : interaction, champ, variation de vitesse.
+    \item \textbf{Forces \(\rightarrow\) énergie} : travail, théorème de l'énergie cinétique.
+    \item \textbf{Position \(\rightarrow\) énergie potentielle} : hauteur, champ de pesanteur, conservation.
+    \item \textbf{Signal mesuré \(\rightarrow\) grandeur recherchée} : absorbance, titrage, intensité, spectre.
+    \item \textbf{Périodicité temporelle \(\leftrightarrow\) périodicité spatiale} : onde, fréquence, longueur d'onde.
+    \item \textbf{Modèle choisi \(\rightarrow\) résultat obtenu} : point matériel, source réelle, optique géométrique, photon.
+\end{itemize}
+
+\begin{sensbox}
+Ce qu'il faut retenir, ce n'est pas une collection de chapitres isolés, mais une manière de penser :
+\begin{center}
+\textbf{décrire un système, choisir un modèle, relier les grandeurs, faire un bilan, interpréter.}
+\end{center}
+\end{sensbox}
+
+\section{Ouvertures générales vers la Terminale}
+
+\begin{terminalebox}
+La classe de Première prépare la Terminale de plusieurs façons :
+
+\begin{itemize}
+    \item \textbf{en chimie} : bilans de matière, oxydoréduction, titrages, structure et énergie des transformations ;
+    \item \textbf{en mécanique} : champ, forces, variation de vitesse, lecture énergétique ;
+    \item \textbf{en électricité} : puissance, rendement, modèles de dipôles, transfert d'énergie ;
+    \item \textbf{en ondes et en optique} : périodicité, longueur d'onde, spectres, photons, interaction lumière-matière ;
+    \item \textbf{en méthode} : modéliser, mesurer, critiquer, comparer, raisonner avec cohérence.
+\end{itemize}
+
+Autrement dit, la Première installe les \textbf{idées fondatrices}, et la Terminale les \textbf{approfondit}, les \textbf{raffine} et les \textbf{généralise}.
+\end{terminalebox}
+
+\section{Résumé final : ce qu'il faut avoir compris}
+
+\begin{itemize}
+    \item Une \textbf{définition} dit ce qu'est une notion.
+    \item Une \textbf{propriété} donne un résultat valable dans un cadre donné.
+    \item Une \textbf{loi} modélise quantitativement un phénomène.
+    \item Un \textbf{modèle} simplifie la réalité pour pouvoir raisonner.
+    \item La physique-chimie ne consiste pas à réciter des formules, mais à comprendre :
+    \[
+    \text{quoi décrire, avec quelles grandeurs, dans quel modèle, et pour dire quoi du réel.}
+    \]
+\end{itemize}
+
+\begin{center}
+\Large \textbf{Fin de la fiche}
+\end{center}
+
+\end{document}

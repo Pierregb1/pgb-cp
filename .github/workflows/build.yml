@@ -1,87 +1,127 @@
-name: Build Documents
+name: Build LaTeX + JSON
 
 on:
   push:
     paths:
-      - 'uploads/**'
-
-permissions:
-  contents: write
+      - "uploads/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write   # 🔥 autorise le push automatique
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
+        run: sudo apt-get update && sudo apt-get install -y texlive-full
 
-      - name: Build PDFs + JSON
+      - name: Create folders
         run: |
-          mkdir -p docs data
+          mkdir -p docs
+          mkdir -p data
+
+      # =========================
+      # COMPILATION LATEX
+      # =========================
+      - name: Compile LaTeX
+        run: |
+          for dir in uploads/*; do
+            if [ -f "$dir/main.tex" ]; then
+              cd "$dir"
+              pdflatex main.tex
+              cd -
+
+              name=$(basename "$dir")
+              mv "$dir/main.pdf" "docs/$name.pdf"
+            fi
+          done
+
+      # =========================
+      # GENERATION JSON
+      # =========================
+      - name: Generate documents.json
+        run: |
           echo "[" > data/documents.json
           first=1
 
-          find uploads -type d | while read dir; do
-            if [ -f "$dir/main.tex" ]; then
+          for file in docs/*.pdf; do
+            name=$(basename "$file" .pdf)
 
-              name=$(basename "$dir")
+            # =========================
+            # NORMALISATION
+            # =========================
+            name=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
 
-              cd "$dir"
-              pdflatex -interaction=nonstopmode main.tex || true
-              pdflatex -interaction=nonstopmode main.tex || true
-              cd -
+            IFS='_' read -r matiere niveau type reste <<< "$name"
 
-              if [ -f "$dir/main.pdf" ]; then
-
-                safe=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
-                lower=$(echo "$name" | tr '[:upper:]' '[:lower:]')
-
-                # CLASSIFICATION
-                matiere="math"
-                [[ "$lower" == *phys* ]] && matiere="physique"
-
-                niveau="autre"
-                [[ "$lower" == *3* ]] && niveau="troisième"
-                [[ "$lower" == *prem* ]] && niveau="première"
-                [[ "$lower" == *term* ]] && niveau="terminale"
-                [[ "$lower" == *sup* ]] && niveau="supérieur"
-
-                type="cours"
-                [[ "$lower" == *exo* ]] && type="exo"
-                [[ "$lower" == *ds* ]] && type="ds"
-                [[ "$lower" == *corr* ]] && type="corrigé"
-
-                out="docs/$matiere/$niveau/$type"
-                mkdir -p "$out"
-
-                cp "$dir/main.pdf" "$out/$safe.pdf"
-
-                if [ $first -eq 0 ]; then echo "," >> data/documents.json; fi
-                first=0
-
-                echo "{
-                  \"titre\": \"$name\",
-                  \"matiere\": \"$matiere\",
-                  \"niveau\": \"$niveau\",
-                  \"type\": \"$type\",
-                  \"fichier\": \"$out/$safe.pdf\"
-                }" >> data/documents.json
-
-              fi
+            # =====================
+            # MATIERE
+            # =====================
+            if [[ "$matiere" =~ ^(math|maths|mathematique|mathematiques)$ ]]; then
+              matiere="maths"
+            elif [[ "$matiere" =~ ^(phy|physique|physiquechimie|physique-chimie|pc)$ ]]; then
+              matiere="physique"
             fi
+
+            # =====================
+            # NIVEAU
+            # =====================
+            if [[ "$niveau" =~ ^(term|terminale|tle)$ ]]; then
+              niveau="terminale"
+            elif [[ "$niveau" =~ ^(premiere|prem|1ere)$ ]]; then
+              niveau="premiere"
+            elif [[ "$niveau" =~ ^(troisieme|3eme|3ieme)$ ]]; then
+              niveau="3eme"
+            elif [[ "$niveau" =~ ^(sup|superieur)$ ]]; then
+              niveau="superieur"
+            fi
+
+            # =====================
+            # TYPE
+            # =====================
+            if [[ "$type" =~ ^(exo|exos|td|exercice|exercices)$ ]]; then
+              type="exercice"
+            elif [[ "$type" =~ ^(ds|devoir)$ ]]; then
+              type="ds"
+            elif [[ "$type" =~ ^(cours)$ ]]; then
+              type="cours"
+            elif [[ "$type" =~ ^(corr|corrige|correction)$ ]]; then
+              type="corrige"
+            fi
+
+            # =====================
+            # TITRE
+            # =====================
+            titre=$(echo "$reste" | sed 's/_/ /g')
+
+            # =====================
+            # JSON
+            # =====================
+            if [ $first -eq 0 ]; then echo "," >> data/documents.json; fi
+
+            echo "  {" >> data/documents.json
+            echo "    \"titre\": \"$titre\"," >> data/documents.json
+            echo "    \"fichier\": \"$file\"," >> data/documents.json
+            echo "    \"matiere\": \"$matiere\"," >> data/documents.json
+            echo "    \"niveau\": \"$niveau\"," >> data/documents.json
+            echo "    \"type\": \"$type\"" >> data/documents.json
+            echo "  }" >> data/documents.json
+
+            first=0
           done
 
           echo "]" >> data/documents.json
 
-      - name: Commit
+      # =========================
+      # COMMIT AUTO
+      # =========================
+      - name: Commit results
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add docs data/documents.json
-          git commit -m "auto build" || echo "no change"
+          git commit -m "auto build pdf + json" || echo "no changes"
           git push

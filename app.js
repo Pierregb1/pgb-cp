@@ -97,38 +97,75 @@ function toggleSolution() {
   if (el) el.classList.toggle("hidden");
 }
 
-// ========================
-// 📂 PAGE COURS
-// ========================
-async function loadCourses() {
+// ====== PARTIE COURS ======
+
+async function loadDocs() {
+  const res = await fetch("data/documents.json");
+  const docs = await res.json();
+
+  const matieres = [...new Set(docs.map(d => d.matiere))];
+  const niveaux = [...new Set(docs.map(d => d.niveau))];
+  const types = [...new Set(docs.map(d => d.type))];
+
+  fillSelect("matiere", matieres);
+  fillSelect("niveau", niveaux);
+  fillSelect("type", types);
+
+  displayDocs(docs);
+
+  document.getElementById("matiere").onchange = () => filterDocs(docs);
+  document.getElementById("niveau").onchange = () => filterDocs(docs);
+  document.getElementById("type").onchange = () => filterDocs(docs);
+}
+
+function fillSelect(id, values) {
+  const select = document.getElementById(id);
+  select.innerHTML = `<option value="">Tous</option>`;
+  values.forEach(v => {
+    select.innerHTML += `<option value="${v}">${v}</option>`;
+  });
+}
+
+function filterDocs(docs) {
+  const m = document.getElementById("matiere").value;
+  const n = document.getElementById("niveau").value;
+  const t = document.getElementById("type").value;
+
+  const filtered = docs.filter(d =>
+    (!m || d.matiere === m) &&
+    (!n || d.niveau === n) &&
+    (!t || d.type === t)
+  );
+
+  displayDocs(filtered);
+}
+
+function displayDocs(docs) {
   const container = document.getElementById("docs");
   if (!container) return;
 
-  try {
-    const docs = await fetch("data/documents.json").then(r => r.json());
+  container.innerHTML = "";
 
-    container.innerHTML = "";
+  docs.forEach(doc => {
+    const div = document.createElement("div");
+    div.className = "doc";
 
-    docs.forEach(d => {
-      const div = document.createElement("div");
-      div.className = "doc";
+    div.innerHTML = `
+      <h3>${doc.titre}</h3>
+      <p>${doc.matiere} • ${doc.niveau} • ${doc.type}</p>
+    `;
 
-      div.innerHTML = `
-        <h3>${d.titre}</h3>
-        <p>${d.matiere || ""} ${d.niveau || ""} ${d.type || ""}</p>
-      `;
+    div.onclick = () => {
+      document.getElementById("viewer").src = doc.fichier;
+    };
 
-      div.onclick = () => {
-        document.getElementById("viewer").src = d.fichier;
-      };
+    container.appendChild(div);
+  });
+}
 
-      container.appendChild(div);
-    });
-
-  } catch (e) {
-    console.log("Erreur chargement docs", e);
-    container.innerHTML = "Aucun document";
-  }
+// lancer uniquement sur la page cours
+if (document.getElementById("docs")) {
+  loadDocs();
 }
 
 // ========================

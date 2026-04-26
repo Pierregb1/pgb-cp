@@ -1,0 +1,402 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{physics}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{TD-problème --- Physique-Chimie Terminale}
+\fancyhead[R]{Niveau bac renforcé / transition supérieur}
+\fancyfoot[C]{\thepage}
+
+\newcommand{\etoile}{\ensuremath{\star}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Fiche de gros problèmes --- Physique-Chimie Terminale}}\\[0.4em]
+    {\large Sujets de type bac, plus exigeants, centrés sur la compréhension profonde des notions}
+\end{center}
+
+\textbf{Objectif de la fiche.} Cette fiche ne cherche pas à multiplier les applications directes. Elle propose au contraire de \textbf{gros exercices structurés}, en plusieurs parties, dans l'esprit des sujets de bac, mais avec un niveau de réflexion plus élevé : interprétation physique, critique des modèles, discussion des hypothèses, exploitation de documents, liens entre plusieurs chapitres.
+
+\textbf{Niveaux de difficulté.}
+\begin{itemize}[leftmargin=1.5em]
+    \item [\etoile\etoile\etoile] problème exigeant de niveau bac solide ;
+    \item [\etoile\etoile\etoile\etoile] problème difficile demandant une bonne autonomie ;
+    \item [\etoile\etoile\etoile\etoile\etoile] problème très difficile, de synthèse, proche d'une transition vers le supérieur.
+\end{itemize}
+
+\textbf{Mode d'emploi.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Chaque problème doit être rédigé proprement, comme en devoir surveillé.
+    \item On attend de l'élève qu'il justifie les modèles utilisés, pas seulement qu'il applique des formules.
+    \item Certains résultats numériques ne sont pas le but principal : le sens physique et chimique compte autant que le calcul.
+\end{itemize}
+
+\hrule
+
+\section*{Problème 1 --- Freinage d'une trottinette électrique en ville \hfill [\etoile\etoile\etoile]}
+
+Une trottinette de masse totale $m=95\ \si{kg}$ (conducteur compris) roule en ligne droite sur une route horizontale à la vitesse de $\SI{25}{km.h^{-1}}$.
+Le conducteur freine pour s'arrêter avant un feu rouge.
+On suppose dans un premier temps que la force de freinage est constante et opposée au mouvement.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Convertir la vitesse initiale en unités SI.
+    \item Rappeler la relation fondamentale de la dynamique dans le référentiel terrestre supposé galiléen.
+    \item Montrer que l'accélération du système est constante si la force de freinage est constante.
+    \item On estime la valeur de la force de freinage à $\SI{190}{N}$. Déterminer l'accélération.
+    \item En déduire la durée du freinage puis la distance de freinage.
+    \item Expliquer pourquoi la distance d'arrêt réelle du véhicule est supérieure à la distance de freinage calculée.
+    \item Dans la réalité, la force de freinage n'est pas strictement constante. Expliquer qualitativement comment cela modifie le modèle précédent.
+    \item Discuter les hypothèses du modèle : route horizontale, absence de vent, système assimilé à un point matériel, frottements regroupés dans une seule force.
+\end{enumerate}
+
+\section*{Problème 2 --- Chute d'une balle : modèle idéal et modèle réel \hfill [\etoile\etoile\etoile\etoile]}
+
+On lâche sans vitesse initiale une balle de tennis depuis un balcon situé à $\SI{12,0}{m}$ au-dessus du sol.
+
+\textbf{Partie A --- Modèle de chute libre}
+\begin{enumerate}[label=\arabic*)]
+    \item Définir la chute libre.
+    \item Établir l'expression de la vitesse en fonction du temps dans ce modèle.
+    \item Établir l'expression de l'altitude en fonction du temps.
+    \item Déterminer la durée théorique de la chute.
+    \item Déterminer la vitesse juste avant l'impact.
+\end{enumerate}
+
+\textbf{Partie B --- Discussion du modèle}
+\begin{enumerate}[label=\arabic*)]
+    \setcounter{enumi}{5}
+    \item Expliquer pourquoi le modèle précédent n'est qu'une approximation.
+    \item Quel est le rôle des frottements de l'air ?
+    \item Expliquer qualitativement la notion de vitesse limite.
+    \item Dans quel cas l'erreur commise en négligeant l'air est-elle faible ? importante ?
+\end{enumerate}
+
+\textbf{Partie C --- Comparaison avec une autre balle}
+\begin{enumerate}[label=\arabic*)]
+    \setcounter{enumi}{9}
+    \item On recommence avec une feuille de papier froissée puis non froissée. Expliquer les différences observées.
+    \item Montrer que la masse n'est pas le seul paramètre pertinent pour décrire l'effet de l'air.
+\end{enumerate}
+
+\section*{Problème 3 --- Saut à ski et conservation de l'énergie \hfill [\etoile\etoile\etoile]}
+
+Un skieur part sans vitesse initiale d'un point A situé à une altitude supérieure de $\SI{18}{m}$ au point B. On néglige dans un premier temps les frottements.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Écrire l'expression de l'énergie mécanique du système skieur-Terre.
+    \item Expliquer pourquoi cette énergie se conserve dans le modèle proposé.
+    \item Déterminer la vitesse du skieur au point B.
+    \item La vitesse réelle mesurée est plus faible que celle obtenue. Que peut-on en conclure ?
+    \item En supposant que la perte d'énergie mécanique vaut $\SI{2,5e3}{J}$, déterminer la vitesse réelle du skieur de masse $m=\SI{75}{kg}$ au point B.
+    \item Expliquer sous quelles formes peut être dissipée l'énergie mécanique perdue.
+    \item Pourquoi dire que l'énergie « disparaît » serait physiquement faux ?
+\end{enumerate}
+
+\section*{Problème 4 --- Étude critique d'un airbag \hfill [\etoile\etoile\etoile\etoile]}
+
+Lors d'un choc, un passager passe d'une vitesse de $\SI{50}{km.h^{-1}}$ à zéro.
+Sans airbag, l'arrêt se produit sur une distance très courte de l'ordre de quelques millimètres ; avec airbag, la distance d'arrêt est beaucoup plus grande.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Convertir $\SI{50}{km.h^{-1}}$ en m\,s$^{-1}$.
+    \item Expliquer pourquoi augmenter la durée ou la distance d'arrêt diminue la valeur de la force moyenne subie.
+    \item En utilisant un modèle à accélération constante, comparer qualitativement les cas « avec airbag » et « sans airbag ».
+    \item Pourquoi un raisonnement uniquement énergétique ne suffit-il pas à rendre compte du danger pour le passager ?
+    \item Expliquer en quoi ce problème fait intervenir simultanément la quantité de mouvement, l'énergie et la durée du choc.
+    \item Discuter les limites d'un modèle où le passager serait assimilé à un point matériel.
+\end{enumerate}
+
+\section*{Problème 5 --- Mesurer la célérité du son \hfill [\etoile\etoile\etoile]}
+
+On veut mesurer la célérité du son dans l'air par une méthode expérimentale simple. On dispose de deux microphones séparés d'une distance connue $d=\SI{2,50}{m}$, d'un système d'acquisition, et d'une source sonore brève.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Proposer un protocole expérimental.
+    \item Expliquer quelle grandeur doit être mesurée.
+    \item Établir la relation permettant de calculer la célérité du son.
+    \item Si le retard mesuré vaut $\Delta t = \SI{7,3e-3}{s}$, calculer la célérité du son.
+    \item Discuter la précision du résultat.
+    \item Citer au moins trois sources d'incertitudes expérimentales.
+    \item Expliquer pourquoi il faut veiller à l'alignement correct des microphones et de la source.
+\end{enumerate}
+
+\section*{Problème 6 --- Diffraction par une fente et validité du modèle ondulatoire \hfill [\etoile\etoile\etoile\etoile]}
+
+Un laser de longueur d'onde $\lambda = \SI{650}{nm}$ éclaire une fente fine de largeur $a$. L'écran d'observation est placé à une distance $D=\SI{2,0}{m}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Décrire qualitativement la figure observée.
+    \item Expliquer pourquoi la diffraction met en évidence le caractère ondulatoire de la lumière.
+    \item On admet que la largeur $L$ de la tache centrale vérifie approximativement $L \propto \dfrac{\lambda D}{a}$. Comment évolue $L$ si $a$ diminue ? interpréter physiquement.
+    \item Pourquoi la diffraction est-elle peu visible avec des objets de grande taille devant de la lumière visible ?
+    \item On remplace le laser par une lumière blanche. Expliquer qualitativement ce qui change.
+    \item Discuter l'intérêt d'utiliser une source monochromatique.
+\end{enumerate}
+
+\section*{Problème 7 --- Lunette astronomique et limites d'observation \hfill [\etoile\etoile\etoile\etoile]}
+
+Une lunette astronomique est utilisée pour observer une planète. L'instrument permet de grossir l'image, mais l'observation reste limitée.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer la différence entre « grossir » et « mieux voir ». 
+    \item Pourquoi augmenter le diamètre de l'objectif améliore-t-il généralement le pouvoir séparateur ?
+    \item Quel lien peut-on faire avec la diffraction ?
+    \item Pourquoi l'atmosphère terrestre peut-elle limiter la qualité de l'observation ?
+    \item Expliquer pourquoi une image plus grande n'est pas forcément une image plus détaillée.
+\end{enumerate}
+
+\section*{Problème 8 --- Circuit de charge d'un condensateur \hfill [\etoile\etoile\etoile]}
+
+On réalise un circuit RC série alimenté par un générateur idéal de tension continue $E=\SI{6,0}{V}$. On utilise une résistance $R=\SI{47}{k\Omega}$ et un condensateur de capacité $C=\SI{10}{\micro F}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Définir la constante de temps du dipôle RC.
+    \item Calculer sa valeur numérique.
+    \item Expliquer ce que représente physiquement cette grandeur.
+    \item Décrire qualitativement l'évolution de la tension aux bornes du condensateur au cours de la charge.
+    \item Pourquoi cette tension ne peut-elle pas varier brutalement ?
+    \item Au bout de combien de constantes de temps peut-on considérer la charge comme pratiquement terminée ?
+    \item Si l'on double la résistance, quel est l'effet sur la durée de charge ?
+    \item Si l'on observe le phénomène à l'oscilloscope, quel réglage doit-on adapter pour visualiser correctement toute la charge ?
+\end{enumerate}
+
+\section*{Problème 9 --- Choisir un fusible pour protéger une installation \hfill [\etoile\etoile\etoile\etoile]}
+
+On souhaite protéger un circuit alimentant successivement plusieurs appareils domestiques.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Appareil & Puissance nominale \\
+\hline
+Bouilloire & \SI{1800}{W} \\
+Grille-pain & \SI{900}{W} \\
+Lampe & \SI{60}{W} \\
+Chargeur & \SI{40}{W} \\
+\hline
+\end{tabular}
+\end{center}
+
+La tension du secteur est prise égale à $U=\SI{230}{V}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Déterminer l'intensité appelée par chaque appareil lorsqu'il fonctionne seul.
+    \item Déterminer l'intensité totale si tous les appareils fonctionnent en même temps.
+    \item Expliquer le rôle d'un fusible ou d'un disjoncteur.
+    \item Pourquoi protéger une installation en se basant sur la seule puissance d'un appareil isolé serait-il insuffisant ?
+    \item Discuter le danger d'une multiprise surchargée.
+    \item Pourquoi un court-circuit provoque-t-il un courant très intense ?
+\end{enumerate}
+
+\section*{Problème 10 --- Dosage d'un vinaigre commercial \hfill [\etoile\etoile\etoile]}
+
+On veut déterminer la concentration en acide éthanoïque d'un vinaigre commercial. On prélève un volume $V_A=\SI{10,0}{mL}$ de vinaigre dilué, que l'on dose par une solution d'hydroxyde de sodium de concentration $C_B=\SI{0,100}{mol.L^{-1}}$. L'équivalence est obtenue pour $V_E=\SI{13,6}{mL}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Écrire l'équation de la réaction support du dosage.
+    \item Définir l'équivalence.
+    \item Établir la relation entre les quantités de matière à l'équivalence.
+    \item Déterminer la concentration du vinaigre dilué.
+    \item Si le vinaigre commercial a été dilué 10 fois avant dosage, déterminer la concentration initiale.
+    \item Expliquer pourquoi il est souvent préférable de diluer le vinaigre avant le dosage.
+    \item Décrire l'allure générale de la courbe de dosage pH-métrique.
+    \item Pourquoi un dosage d'un acide faible par une base forte ne donne-t-il pas exactement la même courbe qu'un dosage acide fort/base forte ?
+\end{enumerate}
+
+\section*{Problème 11 --- pH et échelle logarithmique \hfill [\etoile\etoile\etoile\etoile]}
+
+Deux solutions $S_1$ et $S_2$ ont respectivement des pH égaux à 3,0 et 5,0.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Rappeler la définition du pH.
+    \item Calculer les concentrations en ions oxonium correspondantes.
+    \item Comparer quantitativement les acidités des deux solutions.
+    \item Expliquer pourquoi dire « la solution de pH 3 est deux fois plus acide que celle de pH 5 » est faux.
+    \item Une dilution par 10 d'une solution acide modifie-t-elle fortement ou faiblement son pH ? justifier.
+    \item Pourquoi l'échelle de pH est-elle particulièrement adaptée à la chimie des solutions aqueuses ?
+\end{enumerate}
+
+\section*{Problème 12 --- Réactif limitant et vision microscopique \hfill [\etoile\etoile\etoile]}
+
+On mélange $n_0(\ce{Ag^+}) = \SI{3,0e-2}{mol}$ et $n_0(\ce{Cl^-}) = \SI{2,0e-2}{mol}$.
+La transformation est modélisée par :
+\[
+\ce{Ag^+ (aq) + Cl^- (aq) -> AgCl(s)}.
+\]
+
+\begin{enumerate}[label=\arabic*)]
+    \item Dresser le tableau d'avancement.
+    \item Déterminer le réactif limitant.
+    \item Déterminer l'avancement maximal.
+    \item Déterminer les quantités finales des espèces en solution et du précipité.
+    \item Expliquer microscopiquement ce que signifie le fait qu'un réactif soit limitant.
+    \item Pourquoi le réactif limitant n'est-il pas nécessairement celui introduit en plus petite quantité de matière dans l'absolu ?
+\end{enumerate}
+
+\section*{Problème 13 --- Suivi conductimétrique d'une transformation \hfill [\etoile\etoile\etoile\etoile]}
+
+On suit la réaction entre une solution d'acide chlorhydrique et une solution d'hydroxyde de sodium en mesurant la conductivité du mélange.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Pourquoi la conductivité d'une solution dépend-elle de la présence d'ions ?
+    \item Expliquer qualitativement l'évolution de la conductivité avant l'équivalence.
+    \item Expliquer qualitativement l'évolution de la conductivité après l'équivalence.
+    \item Pourquoi l'équivalence peut-elle être repérée à partir d'un changement de comportement de la courbe ?
+    \item Comparer l'intérêt d'un suivi conductimétrique et d'un suivi pH-métrique selon le contexte.
+\end{enumerate}
+
+\section*{Problème 14 --- Pile Daniell : fonctionnement et interprétation \hfill [\etoile\etoile\etoile\etoile]}
+
+On réalise une pile Daniell à partir des couples $\ce{Zn^{2+}/Zn}$ et $\ce{Cu^{2+}/Cu}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Écrire les demi-équations électroniques associées aux deux couples.
+    \item En déduire l'équation de la réaction globale spontanée.
+    \item Identifier l'anode et la cathode.
+    \item Indiquer le sens de circulation des électrons dans le circuit extérieur.
+    \item Expliquer le rôle du pont salin.
+    \item Pourquoi les électrons ne circulent-ils pas dans les solutions ?
+    \item Expliquer en quoi la pile réalise une conversion énergétique.
+    \item Décrire l'évolution des masses des électrodes au cours du fonctionnement.
+\end{enumerate}
+
+\section*{Problème 15 --- Corrosion du fer et protection \hfill [\etoile\etoile\etoile\etoile]}
+
+Une barrière métallique en acier est exposée à l'air humide pendant plusieurs années.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Expliquer pourquoi la corrosion du fer est un phénomène d'oxydoréduction.
+    \item Citer les conditions favorisant la corrosion.
+    \item Pourquoi l'eau salée accélère-t-elle généralement la corrosion ?
+    \item Expliquer le principe d'une protection par peinture.
+    \item Expliquer le principe d'une galvanisation au zinc.
+    \item Pourquoi une couche protectrice rayée n'a-t-elle pas les mêmes conséquences selon qu'il s'agit d'un dépôt de zinc ou d'une simple peinture ?
+\end{enumerate}
+
+\section*{Problème 16 --- Identifier une espèce organique par spectroscopie IR \hfill [\etoile\etoile\etoile]}
+
+On étudie une molécule organique de formule brute $\ce{C3H6O2}$. Son spectre IR présente une bande intense vers $\SI{1700}{cm^{-1}}$, et une bande très large dans la zone $2500-3200\ \si{cm^{-1}}$.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Que suggère la bande vers $\SI{1700}{cm^{-1}}$ ?
+    \item Que suggère la large bande entre $2500$ et $3200\ \si{cm^{-1}}$ ?
+    \item Quelle famille chimique peut-on envisager en priorité ?
+    \item Proposer une molécule cohérente avec l'ensemble de ces informations.
+    \item Expliquer pourquoi la formule brute seule ne suffit pas à identifier la molécule.
+    \item Expliquer pourquoi le spectre IR permet d'identifier des groupes caractéristiques mais pas toujours de lever toute ambiguïté.
+\end{enumerate}
+
+\section*{Problème 17 --- Synthèse d'un ester et rendement \hfill [\etoile\etoile\etoile\etoile]}
+
+On réalise la synthèse d'un ester à partir d'un alcool et d'un acide carboxylique. Après purification, on obtient une masse de produit inférieure à celle espérée.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Écrire l'équation générale d'une estérification.
+    \item Pourquoi cette transformation est-elle souvent lente ?
+    \item Pourquoi dit-on qu'elle est limitée ?
+    \item Définir le rendement de synthèse.
+    \item Citer plusieurs raisons expliquant qu'un rendement expérimental soit inférieur à 100\,\%.
+    \item Pourquoi le chauffage à reflux est-il souvent utilisé ?
+    \item Pourquoi une odeur agréable du produit n'est-elle pas une preuve suffisante de pureté ?
+\end{enumerate}
+
+\section*{Problème 18 --- Boisson énergisante et caféine : lecture critique de données \hfill [\etoile\etoile\etoile\etoile\etoile]}
+
+Une boisson énergétique indique sur son étiquette : « 32 mg de caféine pour 100 mL ». La canette contient 250 mL.
+Une publicité suggère qu'elle « améliore immédiatement la performance physique et intellectuelle ».
+
+\begin{enumerate}[label=\arabic*)]
+    \item Calculer la masse totale de caféine contenue dans une canette.
+    \item Expliquer la différence entre une donnée mesurée et une affirmation publicitaire.
+    \item Proposer des questions scientifiques permettant d'évaluer expérimentalement l'effet annoncé.
+    \item Pourquoi une corrélation éventuelle entre consommation et performance ne suffit-elle pas toujours à établir une causalité ?
+    \item Citer des paramètres expérimentaux qu'il faudrait contrôler dans une étude sérieuse.
+    \item Expliquer en quoi cet exercice mobilise non seulement des connaissances scientifiques, mais aussi une lecture critique de l'information.
+\end{enumerate}
+
+\section*{Problème 19 --- Panneaux photovoltaïques et bilan énergétique \hfill [\etoile\etoile\etoile\etoile]}
+
+On considère une installation photovoltaïque recevant, à midi, une puissance radiative moyenne de $\SI{800}{W.m^{-2}}$ sur une surface de $\SI{12}{m^2}$. Le rendement des panneaux est estimé à 18\,\%.
+
+\begin{enumerate}[label=\arabic*)]
+    \item Calculer la puissance radiative reçue par les panneaux.
+    \item En déduire la puissance électrique théorique fournie.
+    \item Expliquer ce que signifie physiquement un rendement de 18\,\%.
+    \item Où « part » le reste de l'énergie reçue ?
+    \item Citer des facteurs réels pouvant faire varier la puissance effectivement produite.
+    \item Pourquoi la puissance maximale annoncée pour un panneau ne correspond-elle pas à une production constante au cours d'une journée ?
+\end{enumerate}
+
+\section*{Problème 20 --- Sujet de synthèse : quel modèle choisir ? \hfill [\etoile\etoile\etoile\etoile\etoile]}
+
+Pour chacune des situations suivantes, on demande de choisir un modèle pertinent, d'en discuter les hypothèses, puis de préciser quelle grandeur physique ou chimique on chercherait à déterminer en priorité.
+
+\begin{enumerate}[label=\alph*)]
+    \item Estimer la durée de chute d'une bille d'acier dans l'air.
+    \item Déterminer la concentration d'un détartrant acide du commerce.
+    \item Expliquer le fonctionnement d'une pile présente dans une télécommande.
+    \item Identifier une molécule organique à partir d'un spectre IR et d'une formule brute.
+    \item Étudier l'intérêt d'un casque de vélo lors d'un choc.
+    \item Expliquer pourquoi deux étoiles très proches peuvent ne pas être distinguées à l'œil nu.
+\end{enumerate}
+
+Pour chaque cas, on attend :
+\begin{itemize}[leftmargin=1.5em]
+    \item le choix d'un modèle ;
+    \item les hypothèses ;
+    \item les limites du modèle ;
+    \item la ou les grandeurs à mesurer ou calculer ;
+    \item une courte conclusion scientifique.
+\end{itemize}
+
+\hrule
+
+\section*{Conseils de progression}
+
+On peut utiliser les niveaux de difficulté pour organiser le travail :
+\begin{itemize}[leftmargin=1.5em]
+    \item commencer par les problèmes à \etoile\etoile\etoile{} pour consolider les notions et les modèles classiques ;
+    \item poursuivre avec les problèmes à \etoile\etoile\etoile\etoile{} pour travailler l'autonomie, la discussion des hypothèses et les liens entre chapitres ;
+    \item terminer par les problèmes à \etoile\etoile\etoile\etoile\etoile{} pour s'entraîner à la synthèse, à la critique scientifique et à la rédaction longue.
+\end{itemize}
+
+\section*{Remarques pédagogiques}
+
+Cette fiche est volontairement plus proche de \textbf{gros problèmes de réflexion} que d'une banque de calculs rapides. Elle vise à faire travailler :
+\begin{itemize}[leftmargin=1.5em]
+    \item l'identification du bon chapitre à mobiliser ;
+    \item le choix du bon modèle ;
+    \item la lecture critique des hypothèses ;
+    \item la capacité à relier plusieurs notions dans un même exercice ;
+    \item la rédaction scientifique claire.
+\end{itemize}
+
+\end{document}

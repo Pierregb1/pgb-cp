@@ -1,0 +1,906 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{physics}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black,
+    citecolor=blue!60!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Physique-Chimie -- Terminale spécialité}
+\fancyhead[R]{Chapitre : Électricité}
+\fancyfoot[C]{\thepage}
+
+\titleformat{\section}{\large\bfseries\color{blue!60!black}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{blue!40!black}}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.}{0.6em}{}
+
+\newtcolorbox{definitionbox}{
+colback=blue!5,
+colframe=blue!60!black,
+title=Définition,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{propriete}{
+colback=green!5,
+colframe=green!40!black,
+title=Propriété,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{methode}{
+colback=orange!8,
+colframe=orange!60!black,
+title=Méthode,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{interpretation}{
+colback=purple!5,
+colframe=purple!50!black,
+title=Interprétation physique,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{analogie}{
+colback=red!5,
+colframe=red!50!black,
+title=Analogie utile,
+fonttitle=\bfseries
+}
+
+\newtcolorbox{important}{
+colback=yellow!10,
+colframe=yellow!50!black,
+title=À retenir,
+fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Cours complet : Électricité en Terminale spécialité}}\\[0.4cm]
+    {\large Intensité, condensateur, circuit RC, puissance, énergie, effet Joule, rendement, champ électrique, piles et cellule photovoltaïque}
+\end{center}
+
+\vspace{0.4cm}
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction générale : que cherche-t-on à décrire en électricité ?}
+
+L'électricité étudie les phénomènes liés aux \textbf{charges électriques} et à leur mouvement. Dans un circuit, les charges se déplacent sous l'effet d'une différence de potentiel électrique, ce qui crée un \textbf{courant électrique}. 
+
+En Terminale spécialité, on ne se limite plus à des circuits simples en régime permanent. On étudie aussi des situations où les grandeurs évoluent au cours du temps : c'est le cas lorsqu'un \textbf{condensateur} se charge ou se décharge.
+
+\begin{analogie}
+On peut comparer un circuit électrique à une circulation d'eau :
+\begin{itemize}
+    \item la \textbf{tension} joue un rôle analogue à une différence de pression ;
+    \item l'\textbf{intensité} correspond au débit ;
+    \item la \textbf{résistance} freine l'écoulement ;
+    \item le \textbf{condensateur} agit un peu comme un réservoir souple capable de stocker momentanément de l'eau.
+\end{itemize}
+Cette analogie a des limites, mais elle aide beaucoup à comprendre l'intuition physique.
+\end{analogie}
+
+\section{Le courant électrique et l'intensité}
+
+\subsection{Qu'est-ce qu'un courant électrique ?}
+
+Un courant électrique correspond à un \textbf{déplacement ordonné de charges électriques} dans un matériau conducteur.
+
+Dans les métaux, ce sont les électrons qui se déplacent réellement. Historiquement, on a défini le \textbf{sens conventionnel du courant} comme allant du pôle positif vers le pôle négatif du générateur, donc dans le sens opposé au déplacement réel des électrons.
+
+\begin{definitionbox}
+L'\textbf{intensité du courant électrique}, notée \(I\), mesure le débit de charges électriques traversant une section de conducteur par unité de temps.
+\end{definitionbox}
+
+\subsection{Expression de l'intensité}
+
+Si une charge \(dq\) traverse une section du circuit pendant une durée \(dt\), alors :
+
+\[
+I = \frac{dq}{dt}
+\]
+
+\begin{interpretation}
+Cette formule signifie que l'intensité indique \og combien de charge passe par seconde \fg. 
+
+Ainsi :
+\begin{itemize}
+    \item une grande intensité signifie qu'une grande quantité de charges circule chaque seconde ;
+    \item une faible intensité signifie que le débit de charges est plus petit.
+\end{itemize}
+\end{interpretation}
+
+\subsection{Unités}
+
+\begin{itemize}
+    \item \(q\) s'exprime en \textbf{coulombs} (\(\text{C}\)) ;
+    \item \(t\) s'exprime en \textbf{secondes} (\(\text{s}\)) ;
+    \item \(I\) s'exprime en \textbf{ampères} (\(\text{A}\)).
+\end{itemize}
+
+Comme :
+\[
+I = \frac{q}{t}
+\]
+on a :
+\[
+1\,\text{A} = 1\,\text{C}\cdot \text{s}^{-1}
+\]
+
+\subsection{Charge transportée pendant une durée donnée}
+
+Si l'intensité est constante pendant une durée \(\Delta t\), alors la charge transportée vaut :
+
+\[
+q = I \Delta t
+\]
+
+\begin{methode}
+Quand on te demande une charge transférée :
+\begin{enumerate}
+    \item identifier l'intensité \(I\) ;
+    \item identifier la durée \(\Delta t\) ;
+    \item appliquer \(q = I\Delta t\).
+\end{enumerate}
+\end{methode}
+
+\section{La tension électrique}
+
+\subsection{Définition qualitative}
+
+La tension électrique, notée \(U\), traduit la différence d'état électrique entre deux points d'un circuit.
+
+\begin{definitionbox}
+La \textbf{tension électrique} entre deux points \(A\) et \(B\), notée \(U_{AB}\), représente la différence de potentiel électrique entre ces deux points.
+\end{definitionbox}
+
+\begin{interpretation}
+La tension est ce qui \og pousse \fg{} les charges à se déplacer. Sans différence de potentiel, il n'y a pas de raison pour qu'un courant s'établisse dans un circuit passif.
+\end{interpretation}
+
+Son unité est le \textbf{volt} (\(\text{V}\)).
+
+\section{Puissance et énergie électriques}
+
+\subsection{Puissance électrique reçue par un dipôle}
+
+\begin{definitionbox}
+La puissance électrique reçue par un dipôle est donnée par :
+\[
+P = UI
+\]
+\end{definitionbox}
+
+où :
+\begin{itemize}
+    \item \(P\) est la puissance en watts (\(\text{W}\)) ;
+    \item \(U\) est la tension en volts (\(\text{V}\)) ;
+    \item \(I\) est l'intensité en ampères (\(\text{A}\)).
+\end{itemize}
+
+\begin{interpretation}
+La puissance représente la vitesse à laquelle l'énergie électrique est transférée.
+\end{interpretation}
+
+\subsection{Énergie électrique transférée}
+
+Pendant une durée \(\Delta t\), l'énergie transférée vaut :
+
+\[
+E = P\Delta t
+\]
+
+donc :
+\[
+E = UI\Delta t
+\]
+
+avec \(E\) en joules (\(\text{J}\)).
+
+\subsection{Effet Joule}
+
+Lorsque le courant traverse un conducteur, une partie de l'énergie électrique peut être transformée en chaleur : c'est l'\textbf{effet Joule}.
+
+\begin{analogie}
+Quand de l'eau circule dans un tuyau étroit, il y a des frottements et une perte d'énergie mécanique. De façon analogue, dans un conducteur, la circulation des charges rencontre des obstacles microscopiques, ce qui entraîne un échauffement.
+\end{analogie}
+
+\section{Le condensateur}
+
+\subsection{Présentation}
+
+Le condensateur est un dipôle capable de \textbf{stocker temporairement des charges électriques}.
+
+Il est constitué de deux conducteurs appelés \textbf{armatures}, séparés par un isolant.
+
+\begin{definitionbox}
+Un \textbf{condensateur} est un dipôle formé de deux armatures conductrices séparées par un isolant, capable d'emmagasiner des charges opposées sur ses deux armatures.
+\end{definitionbox}
+
+\subsection{Description physique}
+
+Quand on relie un condensateur à un générateur :
+\begin{itemize}
+    \item des électrons s'accumulent sur une armature ;
+    \item l'autre armature perd des électrons ;
+    \item les deux armatures portent donc des charges opposées.
+\end{itemize}
+
+Ainsi, le condensateur ne stocke pas seulement des charges : il stocke aussi de l'\textbf{énergie électrique}.
+
+\begin{analogie}
+On peut voir le condensateur comme un petit réservoir d'énergie électrique. Il ne produit pas de courant par lui-même de façon durable, mais il peut en absorber puis en restituer.
+\end{analogie}
+
+\subsection{Capacité d'un condensateur}
+
+\begin{definitionbox}
+La \textbf{capacité} d'un condensateur, notée \(C\), est définie par la relation :
+\[
+q = Cu
+\]
+où :
+\begin{itemize}
+    \item \(q\) est la charge portée par une armature ;
+    \item \(u\) est la tension aux bornes du condensateur ;
+    \item \(C\) est la capacité.
+\end{itemize}
+\end{definitionbox}
+
+L'unité de la capacité est le \textbf{farad} (\(\text{F}\)).
+
+\subsection{Interprétation de la capacité}
+
+\begin{interpretation}
+La capacité mesure l'aptitude du condensateur à stocker de la charge pour une tension donnée.
+
+Plus \(C\) est grande, plus le condensateur peut stocker de charge pour une même tension.
+\end{interpretation}
+
+\subsection{Influence de la géométrie}
+
+La capacité dépend de la géométrie du condensateur :
+\begin{itemize}
+    \item plus la surface des armatures est grande, plus la capacité est grande ;
+    \item plus la distance entre les armatures est petite, plus la capacité est grande ;
+    \item le matériau isolant entre les armatures joue aussi un rôle.
+\end{itemize}
+
+\begin{analogie}
+Deux grandes plaques très proches \og se font davantage face \fg{}, ce qui facilite le stockage de charges opposées. À l'inverse, si elles sont petites ou très éloignées, le stockage est moins efficace.
+\end{analogie}
+
+\section{Relation entre courant et tension pour un condensateur}
+
+On part de la relation fondamentale :
+\[
+q = Cu
+\]
+
+Si la capacité \(C\) est constante, on dérive par rapport au temps :
+
+\[
+\frac{dq}{dt} = C \frac{du}{dt}
+\]
+
+Or :
+\[
+I = \frac{dq}{dt}
+\]
+
+donc :
+
+\[
+I = C \frac{du}{dt}
+\]
+
+\begin{propriete}
+Pour un condensateur, l'intensité du courant est reliée à la variation temporelle de la tension par :
+\[
+I = C \frac{du}{dt}
+\]
+\end{propriete}
+
+\begin{interpretation}
+Cette relation est fondamentale :
+\begin{itemize}
+    \item si la tension aux bornes du condensateur varie vite, alors le courant est important ;
+    \item si la tension ne varie plus, alors \(du/dt=0\), donc \(I=0\).
+\end{itemize}
+Cela explique pourquoi, une fois complètement chargé en régime permanent continu, le condensateur se comporte comme un interrupteur ouvert : il ne laisse plus passer de courant.
+\end{interpretation}
+
+\section{Le circuit RC série}
+
+\subsection{Présentation du montage}
+
+Un circuit RC série est constitué :
+\begin{itemize}
+    \item d'une résistance \(R\),
+    \item d'un condensateur \(C\),
+    \item éventuellement d'un générateur idéal de tension \(E\),
+    \item le tout monté en série.
+\end{itemize}
+
+C'est le circuit modèle pour étudier les phénomènes transitoires.
+
+\subsection{Pourquoi ce circuit est-il important ?}
+
+Il permet de comprendre :
+\begin{itemize}
+    \item comment un système réagit lorsqu'on l'alimente brusquement ;
+    \item comment une grandeur évolue progressivement vers un état final ;
+    \item comment modéliser cette évolution avec une équation différentielle.
+\end{itemize}
+
+\begin{analogie}
+Le circuit RC ne répond pas instantanément, un peu comme un seau qu'on remplit à travers un petit tuyau : le niveau d'eau monte progressivement, pas d'un coup. Le condensateur se charge progressivement de la même façon.
+\end{analogie}
+
+\section{Étude de la charge d'un condensateur}
+
+\subsection{Situation physique}
+
+On considère un générateur idéal de tension \(E\), une résistance \(R\) et un condensateur \(C\) en série. À \(t=0\), on ferme l'interrupteur et le condensateur est initialement déchargé.
+
+\subsection{Loi des mailles}
+
+La loi des mailles donne :
+
+\[
+E = u_R + u_C
+\]
+
+Or, pour la résistance :
+\[
+u_R = Ri
+\]
+
+et pour le condensateur :
+\[
+i = C \frac{du_C}{dt}
+\]
+
+Donc :
+\[
+u_R = RC \frac{du_C}{dt}
+\]
+
+En remplaçant dans la loi des mailles :
+
+\[
+E = RC \frac{du_C}{dt} + u_C
+\]
+
+\begin{propriete}
+L'équation différentielle vérifiée par la tension \(u_C(t)\) lors de la charge est :
+\[
+RC \frac{du_C}{dt} + u_C = E
+\]
+\end{propriete}
+
+\subsection{Sens physique de l'équation}
+
+Cette équation dit que la tension du générateur se répartit entre :
+\begin{itemize}
+    \item la résistance, où il y a chute de tension liée au courant ;
+    \item le condensateur, dont la tension augmente au fur et à mesure de la charge.
+\end{itemize}
+
+Au début, le condensateur est vide : sa tension est nulle et le courant est maximal. Ensuite, sa tension augmente, donc le courant diminue.
+
+\subsection{Résolution de l'équation différentielle}
+
+On admet ou on vérifie que la solution de :
+\[
+RC \frac{du_C}{dt} + u_C = E
+\]
+avec la condition initiale \(u_C(0)=0\), est :
+
+\[
+u_C(t)=E\left(1-e^{-t/RC}\right)
+\]
+
+\subsection{Vérification}
+
+Calculons la dérivée :
+
+\[
+\frac{du_C}{dt} = E \cdot \frac{1}{RC} e^{-t/RC}
+\]
+
+Alors :
+
+\[
+RC\frac{du_C}{dt} = E e^{-t/RC}
+\]
+
+et :
+\[
+RC\frac{du_C}{dt} + u_C = E e^{-t/RC} + E(1-e^{-t/RC}) = E
+\]
+
+L'équation différentielle est bien vérifiée.
+
+De plus :
+\[
+u_C(0)=E(1-1)=0
+\]
+
+La condition initiale est bien satisfaite.
+
+\subsection{Étude qualitative de la solution}
+
+\begin{itemize}
+    \item à \(t=0\), \(u_C(0)=0\) ;
+    \item quand \(t\to +\infty\), \(e^{-t/RC}\to 0\), donc \(u_C(t)\to E\).
+\end{itemize}
+
+Ainsi, la tension aux bornes du condensateur augmente progressivement de \(0\) vers \(E\).
+
+\subsection{Intensité pendant la charge}
+
+On a :
+\[
+i = C \frac{du_C}{dt}
+\]
+
+Donc :
+
+\[
+i(t)= C \times E\frac{1}{RC}e^{-t/RC}
+\]
+
+soit :
+
+\[
+i(t)=\frac{E}{R}e^{-t/RC}
+\]
+
+\begin{propriete}
+Pendant la charge d'un condensateur dans un circuit RC :
+\[
+u_C(t)=E\left(1-e^{-t/RC}\right)
+\qquad \text{et} \qquad
+i(t)=\frac{E}{R}e^{-t/RC}
+\]
+\end{propriete}
+
+\begin{interpretation}
+Au début, le courant vaut :
+\[
+i(0)=\frac{E}{R}
+\]
+il est maximal.
+
+Puis il décroît vers \(0\). Cela signifie qu'au fur et à mesure que le condensateur se remplit, il devient de plus en plus difficile de continuer à y accumuler des charges.
+\end{interpretation}
+
+\section{Étude de la décharge d'un condensateur}
+
+\subsection{Situation physique}
+
+On charge d'abord le condensateur, puis on retire le générateur et on le laisse se décharger à travers la résistance.
+
+\subsection{Loi des mailles}
+
+Dans la boucle sans générateur :
+\[
+u_R + u_C = 0
+\]
+
+avec :
+\[
+u_R = Ri
+\qquad \text{et} \qquad
+i = C \frac{du_C}{dt}
+\]
+
+Attention : selon l'orientation choisie, on obtient une intensité algébrique négative si le condensateur se décharge. Le résultat final pour la tension est :
+
+\[
+RC \frac{du_C}{dt} + u_C = 0
+\]
+
+\begin{propriete}
+Lors de la décharge d'un condensateur dans un circuit RC, la tension \(u_C(t)\) vérifie :
+\[
+RC \frac{du_C}{dt} + u_C = 0
+\]
+\end{propriete}
+
+\subsection{Résolution}
+
+Avec la condition initiale \(u_C(0)=U_0\), la solution est :
+
+\[
+u_C(t)=U_0 e^{-t/RC}
+\]
+
+\subsection{Vérification}
+
+\[
+\frac{du_C}{dt} = -\frac{U_0}{RC}e^{-t/RC}
+\]
+
+donc :
+
+\[
+RC\frac{du_C}{dt} + u_C = -U_0e^{-t/RC}+U_0e^{-t/RC}=0
+\]
+
+C'est correct.
+
+\subsection{Intensité pendant la décharge}
+
+On a :
+\[
+i = C\frac{du_C}{dt}
+\]
+
+donc :
+\[
+i(t)= -\frac{U_0}{R}e^{-t/RC}
+\]
+
+Le signe négatif traduit que le courant réel circule dans le sens opposé au sens choisi pour la tension.
+
+\begin{propriete}
+Pendant la décharge :
+\[
+u_C(t)=U_0 e^{-t/RC}
+\qquad \text{et} \qquad
+i(t)= -\frac{U_0}{R}e^{-t/RC}
+\]
+\end{propriete}
+
+\section{Temps caractéristique du dipôle RC}
+
+\subsection{Définition}
+
+\begin{definitionbox}
+Le \textbf{temps caractéristique} du circuit RC est :
+\[
+\tau = RC
+\]
+\end{definitionbox}
+
+\subsection{Sens physique}
+
+\(\tau\) mesure la rapidité d'évolution du système.
+
+\begin{itemize}
+    \item Si \(R\) est grande, le courant circule moins facilement : la charge est plus lente.
+    \item Si \(C\) est grande, il faut stocker plus de charge pour atteindre une même tension : la charge est plus lente.
+\end{itemize}
+
+Donc :
+\[
+\tau = RC
+\]
+est cohérent physiquement.
+
+\subsection{Valeurs remarquables}
+
+Pour la charge :
+\[
+u_C(t)=E\left(1-e^{-t/\tau}\right)
+\]
+
+À \(t=\tau\), on a :
+\[
+u_C(\tau)=E(1-e^{-1}) \approx 0{,}63E
+\]
+
+Donc au bout d'un temps caractéristique, le condensateur a atteint environ \(\SI{63}{\percent}\) de sa tension finale.
+
+Pour la décharge :
+\[
+u_C(\tau)=U_0e^{-1}\approx 0{,}37U_0
+\]
+
+Donc au bout d'un temps caractéristique, la tension est tombée à environ \(\SI{37}{\percent}\) de sa valeur initiale.
+
+\begin{important}
+En pratique :
+\begin{itemize}
+    \item charge : à \(t=\tau\), on atteint environ \(63\%\) de la valeur finale ;
+    \item décharge : à \(t=\tau\), il reste environ \(37\%\) de la valeur initiale ;
+    \item au bout de \(5\tau\), le régime transitoire est pratiquement terminé.
+\end{itemize}
+\end{important}
+
+\section{Régime transitoire et régime permanent}
+
+\begin{definitionbox}
+Le \textbf{régime transitoire} est la phase pendant laquelle les grandeurs électriques évoluent dans le temps pour rejoindre leur état final.
+\end{definitionbox}
+
+\begin{definitionbox}
+Le \textbf{régime permanent} ou \textbf{stationnaire} est l'état atteint lorsque les grandeurs ne varient plus.
+\end{definitionbox}
+
+\begin{interpretation}
+Dans un circuit RC alimenté en continu :
+\begin{itemize}
+    \item pendant le régime transitoire, le condensateur se charge ;
+    \item en régime permanent, le condensateur est chargé, la tension à ses bornes est constante et le courant est nul.
+\end{itemize}
+\end{interpretation}
+
+\section{Méthodes expérimentales liées au circuit RC}
+
+\subsection{Mesure du temps caractéristique}
+
+Sur une courbe de charge :
+\begin{itemize}
+    \item on repère la valeur finale \(E\) ;
+    \item on calcule \(0{,}63E\) ;
+    \item on lit l'instant correspondant : c'est \(\tau\).
+\end{itemize}
+
+Sur une courbe de décharge :
+\begin{itemize}
+    \item on repère la valeur initiale \(U_0\) ;
+    \item on calcule \(0{,}37U_0\) ;
+    \item on lit l'instant correspondant : c'est \(\tau\).
+\end{itemize}
+
+\subsection{Rôle de l'oscilloscope}
+
+L'oscilloscope permet de visualiser la tension \(u_C(t)\) et donc d'étudier expérimentalement :
+\begin{itemize}
+    \item la forme exponentielle ;
+    \item la rapidité du phénomène ;
+    \item le temps caractéristique.
+\end{itemize}
+
+\section{Puissance, énergie et rendement dans un système électrique}
+
+\subsection{Bilan de puissance}
+
+Dans un circuit, la puissance fournie par le générateur est répartie entre les différents dipôles.
+
+\begin{definitionbox}
+Le \textbf{rendement} d'un convertisseur est :
+\[
+\eta = \frac{P_{\text{utile}}}{P_{\text{reçue}}}
+\qquad \text{ou} \qquad
+\eta = \frac{E_{\text{utile}}}{E_{\text{reçue}}}
+\]
+\end{definitionbox}
+
+\begin{interpretation}
+Le rendement mesure l'efficacité d'un dispositif :
+\begin{itemize}
+    \item s'il vaut \(1\), aucune perte ;
+    \item s'il est inférieur à \(1\), une partie de l'énergie est dissipée, souvent sous forme thermique.
+\end{itemize}
+\end{interpretation}
+
+\section{Champ électrique uniforme}
+
+\subsection{Création d'un champ électrique uniforme}
+
+Entre les armatures planes et parallèles d'un condensateur, on peut créer un \textbf{champ électrique uniforme}.
+
+\begin{definitionbox}
+Un \textbf{champ électrique uniforme} est un champ dont la direction, le sens et la valeur sont identiques en tout point d'une région de l'espace.
+\end{definitionbox}
+
+\subsection{Force exercée sur une charge}
+
+Une particule de charge \(q\) placée dans un champ électrique \(\vec{E}\) subit une force :
+
+\[
+\vec{F} = q\vec{E}
+\]
+
+\begin{interpretation}
+Le champ électrique agit sur une charge un peu comme un champ de pesanteur agit sur une masse :
+\begin{itemize}
+    \item le poids vaut \(\vec{P}=m\vec{g}\) ;
+    \item la force électrique vaut \(\vec{F}=q\vec{E}\).
+\end{itemize}
+\end{interpretation}
+
+\begin{analogie}
+On peut comparer :
+\[
+m \longleftrightarrow q
+\qquad \text{et} \qquad
+\vec{g} \longleftrightarrow \vec{E}
+\]
+Cette analogie permet de retrouver plus facilement les raisonnements sur le mouvement d'une particule chargée.
+\end{analogie}
+
+\section{Mouvement d'une particule chargée dans un champ électrique uniforme}
+
+Si une particule de masse \(m\) et de charge \(q\) est placée dans un champ uniforme \(\vec{E}\), alors la deuxième loi de Newton donne :
+
+\[
+m\vec{a} = q\vec{E}
+\]
+
+donc :
+
+\[
+\vec{a} = \frac{q}{m}\vec{E}
+\]
+
+\begin{propriete}
+Dans un champ électrique uniforme, une particule chargée a une accélération constante.
+\end{propriete}
+
+Cela conduit à un mouvement uniformément accéléré dans la direction du champ.
+
+\section{Les piles et la conversion chimie-électricité}
+
+\subsection{Principe général}
+
+Une pile transforme de l'énergie chimique en énergie électrique grâce à une réaction d'oxydoréduction.
+
+\begin{definitionbox}
+Une \textbf{pile} est un dispositif électrochimique qui convertit l'énergie chimique d'une réaction spontanée en énergie électrique.
+\end{definitionbox}
+
+\subsection{Constitution d'une pile}
+
+Une pile est formée :
+\begin{itemize}
+    \item de deux demi-piles ;
+    \item d'un conducteur extérieur permettant la circulation des électrons ;
+    \item d'un pont salin ou d'une membrane assurant la continuité ionique.
+\end{itemize}
+
+\subsection{Sens physique}
+
+\begin{interpretation}
+Dans une pile :
+\begin{itemize}
+    \item les électrons circulent dans le circuit extérieur ;
+    \item les ions se déplacent dans les solutions ;
+    \item l'ensemble permet de convertir l'énergie chimique en courant électrique exploitable.
+\end{itemize}
+\end{interpretation}
+
+\section{Cellule photovoltaïque}
+
+\subsection{Principe}
+
+Une cellule photovoltaïque transforme une partie de l'énergie lumineuse reçue en énergie électrique.
+
+\begin{definitionbox}
+Le \textbf{rendement} d'une cellule photovoltaïque mesure la fraction de l'énergie lumineuse incidente convertie en énergie électrique utile.
+\end{definitionbox}
+
+\subsection{Sens physique}
+
+\begin{interpretation}
+Une cellule photovoltaïque n'invente pas de l'énergie : elle convertit une partie du rayonnement reçu en énergie électrique. Le reste est perdu, réfléchi ou dissipé.
+\end{interpretation}
+
+\section{Résumé des formules essentielles}
+
+\begin{important}
+\[
+I = \frac{dq}{dt}
+\]
+
+\[
+q = I\Delta t \quad \text{(si } I \text{ est constante)}
+\]
+
+\[
+P = UI
+\]
+
+\[
+E = P\Delta t = UI\Delta t
+\]
+
+\[
+q = Cu
+\]
+
+\[
+I = C\frac{du}{dt}
+\]
+
+Charge d'un condensateur :
+\[
+RC\frac{du_C}{dt}+u_C=E
+\]
+
+\[
+u_C(t)=E\left(1-e^{-t/RC}\right)
+\]
+
+\[
+i(t)=\frac{E}{R}e^{-t/RC}
+\]
+
+Décharge :
+\[
+RC\frac{du_C}{dt}+u_C=0
+\]
+
+\[
+u_C(t)=U_0e^{-t/RC}
+\]
+
+\[
+i(t)=-\frac{U_0}{R}e^{-t/RC}
+\]
+
+Temps caractéristique :
+\[
+\tau = RC
+\]
+
+Force électrique :
+\[
+\vec{F}=q\vec{E}
+\]
+
+Deuxième loi de Newton dans un champ uniforme :
+\[
+\vec{a}=\frac{q}{m}\vec{E}
+\]
+\end{important}
+
+\section{Erreurs classiques à éviter}
+
+\begin{itemize}
+    \item Confondre \textbf{charge} \(q\) et \textbf{capacité} \(C\).
+    \item Oublier que dans \(q=Cu\), \(q\) dépend de la tension.
+    \item Croire qu'un condensateur laisse passer un courant permanent en régime continu.
+    \item Oublier le signe de l'intensité pendant la décharge.
+    \item Confondre le temps caractéristique \(\tau\) avec la durée totale du phénomène.
+    \item Ne pas distinguer régime transitoire et régime permanent.
+    \item Utiliser \(P=UI\) sans cohérence d'unités.
+\end{itemize}
+
+\section{Conclusion générale}
+
+Le programme d'électricité de Terminale spécialité introduit une idée essentielle en physique : de nombreux systèmes ne réagissent pas instantanément. Le circuit RC en est un excellent exemple. Lorsqu'on applique une tension, le condensateur se charge progressivement, selon une loi exponentielle, avec une vitesse caractérisée par le temps \(\tau = RC\).
+
+Ce chapitre permet donc de relier :
+\begin{itemize}
+    \item le sens physique des grandeurs électriques ;
+    \item la modélisation mathématique par équation différentielle ;
+    \item l'analyse expérimentale de courbes ;
+    \item les conversions d'énergie dans les systèmes électriques.
+\end{itemize}
+
+C'est un chapitre central, car il fait le lien entre physique concrète, raisonnement mathématique et interprétation expérimentale.
+
+\end{document}

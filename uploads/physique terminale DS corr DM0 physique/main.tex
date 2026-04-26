@@ -1,0 +1,882 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{longtable}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Corrigé détaillé --- DM0 de Physique-Chimie}
+\fancyhead[R]{Terminale générale}
+\fancyfoot[C]{\thepage}
+
+\newtheorem{remark}{Remarque}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé détaillé du DM de Physique-Chimie}}\\[0.5em]
+    {\large \textbf{Avec barème pondéré}}\\[0.5em]
+\end{center}
+
+\section*{Barème }
+
+Le sujet est noté sur \textbf{52 points}, avec un barème valorisant davantage les questions longues, ouvertes ou demandant une rédaction approfondie.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Exercice} & \textbf{Barème} & \textbf{Type de compétences valorisées} \\
+\hline
+Exercice 1 & 9 points & Titrage, raisonnement, protocole \\
+\hline
+Exercice 2 & 10 points & Analyse de spectre, interprétation \\
+\hline
+Exercice 3 & 10 points & Modélisation, diffraction, protocole \\
+\hline
+Exercice 4 & 17 points & Mécanique, démonstrations, discussion ouverte \\
+\hline
+Exercice 5 & 6 points & Ondes, fréquence, interprétation qualitative \\
+\hline
+Total & 52 points &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Exercice 1 --- Titrage et validité d'un protocole \hfill /9}
+
+La réaction support du titrage est :
+\[
+\mathrm{AH_{(aq)} + HO^-_{(aq)} \rightarrow A^-_{(aq)} + H_2O_{(l)}}.
+\]
+
+\subsection*{1. Définir précisément l'équivalence dans un titrage. \hfill /1}
+
+L'équivalence d'un titrage est atteinte lorsque les réactifs ont été introduits dans les \textbf{proportions stœchiométriques} de la réaction support.
+
+Ici, l'acide AH est monoprotique et réagit avec les ions hydroxyde selon un rapport stœchiométrique \(1:1\). À l'équivalence, on a donc :
+\[
+n(\mathrm{AH})_{\text{initial}} = n(\mathrm{HO^-})_{\text{versés}}.
+\]
+
+Autrement dit, la quantité de base versée est exactement celle qu'il faut pour consommer toute la quantité initiale d'acide.
+
+\subsection*{2. Montrer qu'à l'équivalence, \(C_A = \dfrac{C_BV_E}{V_A}\). \hfill /1{,}5}
+
+On note :
+\begin{itemize}
+    \item \(C_A\) la concentration de la solution acide,
+    \item \(V_A\) le volume prélevé de solution acide,
+    \item \(C_B\) la concentration de la solution basique,
+    \item \(V_E\) le volume de base versé à l'équivalence.
+\end{itemize}
+
+La quantité de matière initiale d'acide vaut :
+\[
+n(\mathrm{AH}) = C_A V_A.
+\]
+
+La quantité de matière d'ions hydroxyde versée à l'équivalence vaut :
+\[
+n(\mathrm{HO^-}) = C_B V_E.
+\]
+
+À l'équivalence, les réactifs sont dans les proportions stœchiométriques \(1:1\), donc :
+\[
+C_A V_A = C_B V_E.
+\]
+
+On en déduit :
+\[
+\boxed{C_A = \frac{C_BV_E}{V_A}}.
+\]
+
+\subsection*{3. « Si on double le volume prélevé \(V_A\), alors le volume équivalent double nécessairement. » \hfill /1{,}5}
+
+Cette affirmation est \textbf{vraie}, à condition que :
+\begin{itemize}
+    \item la solution acide soit la même, donc de concentration \(C_A\) inchangée ;
+    \item la solution basique utilisée soit la même, donc de concentration \(C_B\) inchangée.
+\end{itemize}
+
+En effet, d'après la relation précédente :
+\[
+V_E = \frac{C_A V_A}{C_B}.
+\]
+
+Si l'on remplace \(V_A\) par \(2V_A\), alors :
+\[
+V_E' = \frac{C_A(2V_A)}{C_B} = 2V_E.
+\]
+
+Donc \textbf{si on double le volume prélevé, alors le volume à l'équivalence double aussi}.
+
+\subsection*{4. Effet des deux choix proposés sur \(V_E\) et sur la précision du titrage. \hfill /2}
+
+\textbf{Proposition de l'élève 1 : diluer la solution acide avant prélèvement}
+
+Si la solution acide est diluée, sa concentration \(C_A\) diminue. Or :
+\[
+V_E = \frac{C_A V_A}{C_B}.
+\]
+Donc si \(C_A\) diminue, alors \(V_E\) diminue aussi.
+
+Un volume équivalent plus petit est généralement \textbf{moins favorable à la précision}, car l'incertitude de lecture à la burette représente alors une part plus importante du volume total versé.
+
+\medskip
+
+\textbf{Proposition de l'élève 2 : utiliser une solution basique moins concentrée}
+
+Si \(C_B\) diminue, alors :
+\[
+V_E = \frac{C_A V_A}{C_B}
+\]
+augmente.
+
+Un volume équivalent plus grand est souvent \textbf{plus favorable à la précision}, car l'incertitude absolue de lecture sur la burette devient relativement moins importante.
+
+\medskip
+
+\textbf{Conclusion :} pour obtenir un dosage plus précis, il est en général préférable d'utiliser une \textbf{solution titrante moins concentrée} plutôt que de diluer la solution à doser avant prélèvement.
+
+\subsection*{5. Proposer un protocole réaliste pour préparer une dilution au dixième. \hfill /3}
+
+Une dilution par un facteur 10 signifie que la concentration finale est dix fois plus faible que la concentration initiale :
+\[
+C_f = \frac{C_m}{10}.
+\]
+
+On peut procéder ainsi :
+
+\begin{enumerate}[label=\arabic*.]
+    \item Prélever \(\,10{,}0\,\mathrm{mL}\,\) de solution mère à l'aide d'une \textbf{pipette jaugée de \(10{,}0\,\mathrm{mL}\)} et d'une propipette.
+    \item Introduire ce volume dans une \textbf{fiole jaugée de \(100{,}0\,\mathrm{mL}\)}.
+    \item Ajouter un peu d'eau distillée.
+    \item Agiter légèrement pour homogénéiser.
+    \item Compléter à l'eau distillée jusqu'au \textbf{trait de jauge}.
+    \item Boucher la fiole puis homogénéiser par retournements.
+\end{enumerate}
+
+\textbf{Précautions expérimentales :}
+\begin{itemize}
+    \item rincer la pipette avec un peu de solution mère avant prélèvement ;
+    \item lire le bas du ménisque à hauteur d'œil ;
+    \item ne pas dépasser le trait de jauge ;
+    \item homogénéiser soigneusement la solution finale.
+\end{itemize}
+
+\textbf{Conclusion :} ce protocole permet bien d'obtenir une dilution au dixième.
+
+\newpage
+\section*{Exercice 2 --- Lecture graphique d'un spectre IR et interprétation \hfill /10}
+
+On observe sur le spectre simplifié :
+\begin{itemize}
+    \item une \textbf{bande large} ;
+    \item un \textbf{pic vers \(1700\ \mathrm{cm}^{-1}\)}.
+\end{itemize}
+
+Les familles proposées sont :
+\begin{itemize}
+    \item alcool ;
+    \item acide carboxylique ;
+    \item ester ;
+    \item cétone.
+\end{itemize}
+
+\subsection*{1. Relever les deux zones les plus remarquables. \hfill /1}
+
+Les deux zones les plus remarquables sont :
+\begin{itemize}
+    \item une \textbf{bande large} dans la zone des grands nombres d'onde ;
+    \item une \textbf{bande forte vers \(1700\ \mathrm{cm}^{-1}\)}.
+\end{itemize}
+
+\subsection*{2. Associer à chacune de ces zones un groupe caractéristique probable. \hfill /1{,}5}
+
+La bande large est caractéristique d'une liaison \(\mathrm{O-H}\).
+
+La bande forte vers \(1700\ \mathrm{cm}^{-1}\) est caractéristique d'un groupe \(\mathrm{C=O}\), appelé \textbf{groupe carbonyle}.
+
+\subsection*{3. Pourquoi la présence d'une bande vers \(1700\ \mathrm{cm}^{-1}\) ne suffit-elle pas à conclure à une cétone ? \hfill /1{,}5}
+
+Une bande vers \(1700\ \mathrm{cm}^{-1}\) indique la présence d'un groupe carbonyle \(\mathrm{C=O}\), mais ce groupe n'est pas spécifique aux cétones.
+
+En effet, un groupe carbonyle est aussi présent dans :
+\begin{itemize}
+    \item les acides carboxyliques ;
+    \item les esters ;
+    \item les aldéhydes.
+\end{itemize}
+
+Ainsi, \textbf{la seule présence d'une bande vers \(1700\ \mathrm{cm}^{-1}\) ne permet pas d'identifier la famille exacte}. Il faut utiliser d'autres bandes du spectre.
+
+\subsection*{4. Éliminer, en justifiant, les familles incompatibles avec le spectre. \hfill /2}
+
+\textbf{Alcool :} un alcool possède une liaison \(\mathrm{O-H}\), donc peut présenter une bande large, mais il ne possède pas de groupe carbonyle \(\mathrm{C=O}\). Or le spectre présente un pic vers \(1700\ \mathrm{cm}^{-1}\). L'alcool est donc incompatible.
+
+\textbf{Ester :} un ester possède un groupe carbonyle \(\mathrm{C=O}\), mais pas de liaison \(\mathrm{O-H}\) responsable d'une large bande comme celle observée. L'ester est donc incompatible.
+
+\textbf{Cétone :} une cétone possède bien un groupe \(\mathrm{C=O}\), mais pas de liaison \(\mathrm{O-H}\). La présence de la bande large rend donc la cétone incompatible.
+
+\textbf{Acide carboxylique :} un acide carboxylique possède à la fois :
+\begin{itemize}
+    \item un groupe \(\mathrm{C=O}\) ;
+    \item une liaison \(\mathrm{O-H}\) donnant une large bande.
+\end{itemize}
+Cette famille est donc compatible avec le spectre.
+
+\subsection*{5. Déterminer la famille fonctionnelle la plus probable pour le composé \(X\). \hfill /1}
+
+La famille fonctionnelle la plus probable est celle des \textbf{acides carboxyliques}.
+
+\[
+\boxed{\text{Le composé }X\text{ est très probablement un acide carboxylique.}}
+\]
+
+\subsection*{6. Pourquoi ce spectre ne permet-il pas forcément d'identifier de manière unique la molécule exacte ? \hfill /1}
+
+Un spectre IR permet surtout d'identifier des \textbf{groupes fonctionnels}. Or plusieurs molécules différentes peuvent posséder les mêmes groupes caractéristiques.
+
+Ainsi :
+\begin{itemize}
+    \item plusieurs acides carboxyliques auraient un spectre globalement compatible ;
+    \item le spectre fourni est simplifié ;
+    \item on ne dispose ni de la formule brute, ni de la masse molaire, ni d'un autre spectre complémentaire.
+\end{itemize}
+
+Donc ce spectre permet de proposer une \textbf{famille fonctionnelle}, mais pas forcément la molécule exacte.
+
+\subsection*{7. Distinguer expérimentalement un alcool et un acide carboxylique. \hfill /2}
+
+Une stratégie simple consiste à utiliser un \textbf{test acido-basique}.
+
+\textbf{Étape 1 : mesurer le pH}
+
+On mesure le pH des solutions.
+\begin{itemize}
+    \item Un \textbf{acide carboxylique} donne une solution acide, donc un pH inférieur à \(7\).
+    \item Un \textbf{alcool} donne en général une solution de pH voisin de \(7\).
+\end{itemize}
+
+\textbf{Étape 2 : ajouter de l'hydrogénocarbonate de sodium}
+
+On ajoute un peu d'hydrogénocarbonate de sodium.
+\begin{itemize}
+    \item Avec un acide carboxylique, on observe un \textbf{dégagement gazeux} de \(\mathrm{CO_2}\), donc une effervescence.
+    \item Avec un alcool, il n'y a pas cette réaction.
+\end{itemize}
+
+\textbf{Conclusion :} le liquide qui provoque une effervescence avec l'hydrogénocarbonate et présente un caractère acide est l'acide carboxylique. L'autre liquide est l'alcool.
+
+\section*{Exercice 3 --- Diffraction : établir un modèle puis l'exploiter \hfill /10}
+
+On admet que, pour le premier minimum de diffraction :
+\[
+\theta \approx \frac{\lambda}{a}.
+\]
+
+\subsection*{1. À l'aide du schéma, expliquer pourquoi on peut relier \(L\), \(D\) et \(\theta\). \hfill /1}
+
+La tache centrale s'étend entre les deux premiers minima de diffraction, placés symétriquement par rapport à l'axe central.
+
+Si \(y\) désigne la demi-largeur de la tache centrale, alors :
+\[
+\tan \theta = \frac{y}{D}.
+\]
+
+Comme la largeur totale de la tache centrale vaut \(L = 2y\), on obtient :
+\[
+L = 2D \tan \theta.
+\]
+
+\subsection*{2. Montrer que, pour les petits angles, \(L \approx \dfrac{2\lambda D}{a}\). \hfill /2}
+
+On a :
+\[
+L = 2D \tan \theta.
+\]
+
+Pour les petits angles :
+\[
+\tan \theta \approx \theta.
+\]
+
+Donc :
+\[
+L \approx 2D\theta.
+\]
+
+Or l'énoncé donne :
+\[
+\theta \approx \frac{\lambda}{a}.
+\]
+
+En remplaçant \(\theta\), on obtient :
+\[
+L \approx 2D \times \frac{\lambda}{a}.
+\]
+
+Finalement :
+\[
+\boxed{L \approx \frac{2\lambda D}{a}}.
+\]
+
+\subsection*{3. Sans calcul numérique, indiquer comment varie \(L\). \hfill /1{,}5}
+
+On utilise :
+\[
+L \approx \frac{2\lambda D}{a}.
+\]
+
+\begin{itemize}
+    \item Si la largeur \(a\) de la fente augmente, alors \(L\) \textbf{diminue}.
+    \item Si la distance \(D\) à l'écran augmente, alors \(L\) \textbf{augmente}.
+    \item Si la longueur d'onde \(\lambda\) augmente, alors \(L\) \textbf{augmente}.
+\end{itemize}
+
+\subsection*{4. Un élève affirme : « si on divise la largeur de la fente par 2, la figure de diffraction est deux fois moins large ». \hfill /1{,}5}
+
+Cette affirmation est \textbf{fausse}.
+
+En effet :
+\[
+L \approx \frac{2\lambda D}{a}.
+\]
+
+Si on remplace \(a\) par \(\dfrac{a}{2}\), alors :
+\[
+L' = \frac{2\lambda D}{a/2} = 2 \times \frac{2\lambda D}{a} = 2L.
+\]
+
+La tache centrale devient donc \textbf{deux fois plus large}, et non deux fois moins large.
+
+L'argument de l'élève, fondé sur l'idée que ``moins de lumière passe'', ne permet pas de conclure sur la largeur de la figure : cela concerne plutôt l'intensité lumineuse, pas l'extension de la diffraction.
+
+\subsection*{5. Comparer les largeurs des taches centrales. \hfill /1{,}5}
+
+\textbf{Expérience A :} laser rouge et fente de largeur \(a\)
+\[
+L_A \approx \frac{2\lambda_r D}{a}.
+\]
+
+\textbf{Expérience B :} laser vert et fente de largeur \(2a\)
+\[
+L_B \approx \frac{2\lambda_v D}{2a} = \frac{\lambda_v D}{a}.
+\]
+
+On compare :
+\[
+\frac{L_B}{L_A} = \frac{\lambda_v D/a}{2\lambda_r D/a} = \frac{\lambda_v}{2\lambda_r}.
+\]
+
+Or la longueur d'onde du vert est plus petite que celle du rouge, donc :
+\[
+\lambda_v < \lambda_r \quad \Rightarrow \quad \frac{\lambda_v}{2\lambda_r} < \frac{1}{2}.
+\]
+
+Ainsi :
+\[
+L_B < L_A.
+\]
+
+\textbf{Conclusion :} la tache centrale de l'expérience B est plus étroite que celle de l'expérience A.
+
+\subsection*{6. Mesurer expérimentalement la largeur d'un cheveu à l'aide d'un laser. \hfill /2{,}5}
+
+\textbf{Principe physique :}
+
+Un cheveu diffracte la lumière. Au niveau du programme, on peut exploiter une relation du même type que pour une fente :
+\[
+L \approx \frac{2\lambda D}{a},
+\]
+où \(a\) désigne ici le diamètre du cheveu.
+
+\textbf{Protocole :}
+\begin{enumerate}[label=\arabic*.]
+    \item Placer un cheveu verticalement devant un faisceau laser monochromatique.
+    \item Placer un écran à une distance \(D\) connue du cheveu.
+    \item Observer la figure de diffraction.
+    \item Mesurer la largeur \(L\) de la tache centrale.
+    \item Utiliser la longueur d'onde \(\lambda\) du laser.
+\end{enumerate}
+
+\textbf{Mesures à effectuer :}
+\begin{itemize}
+    \item la distance \(D\) entre le cheveu et l'écran ;
+    \item la largeur \(L\) de la tache centrale ;
+    \item la longueur d'onde \(\lambda\) du laser.
+\end{itemize}
+
+\textbf{Exploitation :}
+
+À partir de
+\[
+L \approx \frac{2\lambda D}{a},
+\]
+on obtient :
+\[
+\boxed{a \approx \frac{2\lambda D}{L}}.
+\]
+
+\textbf{Remarque :} pour améliorer la précision, on peut effectuer plusieurs mesures et faire une moyenne.
+
+\newpage
+\section*{Exercice 4 --- Projectile : modèle, trajectoire et discussion des hypothèses \hfill /17}
+
+On étudie le mouvement d'un projectile lancé depuis le point \(A(0,h)\) avec une vitesse initiale de norme \(v_0\), faisant un angle \(\alpha\) avec l'horizontale.  
+Dans un premier temps, on néglige les frottements de l'air.
+
+\subsection*{1. Donner les coordonnées du vecteur vitesse initiale. \hfill /1}
+
+La vitesse initiale se décompose en :
+\[
+\boxed{\vec v_0=
+\begin{pmatrix}
+v_0\cos\alpha\\
+v_0\sin\alpha
+\end{pmatrix}}
+\]
+
+Ainsi :
+\[
+v_{0x}=v_0\cos\alpha
+\qquad \text{et} \qquad
+v_{0z}=v_0\sin\alpha.
+\]
+
+\subsection*{2. Montrer que l'accélération du projectile est constante et déterminer ses coordonnées. \hfill /1{,}5}
+
+En négligeant les frottements de l'air, la seule force exercée sur le projectile est son poids :
+\[
+\vec P = m\vec g.
+\]
+
+Dans le repère choisi, avec l'axe vertical vers le haut :
+\[
+\vec g=
+\begin{pmatrix}
+0\\
+-g
+\end{pmatrix}.
+\]
+
+La deuxième loi de Newton donne :
+\[
+m\vec a = \sum \vec F = \vec P = m\vec g.
+\]
+
+Donc :
+\[
+\vec a = \vec g =
+\begin{pmatrix}
+0\\
+-g
+\end{pmatrix}.
+\]
+
+L'accélération est donc \textbf{constante}.
+
+\subsection*{3. En déduire les expressions de \(x(t)\) et \(z(t)\). \hfill /2}
+
+\textbf{Sur l'axe horizontal :}
+\[
+a_x=0 \quad \Rightarrow \quad v_x(t)=v_0\cos\alpha.
+\]
+Comme \(x(0)=0\), on obtient :
+\[
+\boxed{x(t)=v_0\cos\alpha \, t.}
+\]
+
+\textbf{Sur l'axe vertical :}
+\[
+a_z=-g \quad \Rightarrow \quad v_z(t)=v_0\sin\alpha - gt.
+\]
+Comme \(z(0)=h\), on obtient :
+\[
+\boxed{z(t)=h+v_0\sin\alpha \, t - \frac12 gt^2.}
+\]
+
+\subsection*{4. Donner l'équation de la trajectoire. Quel est le type de cette trajectoire ? \hfill /2}
+
+On part de :
+\[
+x(t)=v_0\cos\alpha \, t
+\quad \Rightarrow \quad
+t=\frac{x}{v_0\cos\alpha}.
+\]
+
+On remplace \(t\) dans l'expression de \(z(t)\) :
+\[
+z(x)=h+v_0\sin\alpha \cdot \frac{x}{v_0\cos\alpha}
+-\frac12 g\left(\frac{x}{v_0\cos\alpha}\right)^2.
+\]
+
+Donc :
+\[
+z(x)=h+x\tan\alpha-\frac{g}{2v_0^2\cos^2\alpha}x^2.
+\]
+
+Ainsi :
+\[
+\boxed{z(x)=h+x\tan\alpha-\frac{g}{2v_0^2\cos^2\alpha}x^2.}
+\]
+
+Cette expression est un polynôme du second degré en \(x\), donc la trajectoire est une \textbf{parabole}.
+
+\subsection*{5. Expliquer pourquoi le mouvement horizontal est uniforme alors que le mouvement vertical ne l'est pas. \hfill /1{,}5}
+
+Le mouvement horizontal est uniforme parce que :
+\begin{itemize}
+    \item aucune force n'agit horizontalement ;
+    \item donc \(a_x=0\) ;
+    \item la vitesse horizontale \(v_x\) est constante.
+\end{itemize}
+
+Le mouvement vertical n'est pas uniforme parce que :
+\begin{itemize}
+    \item le poids agit verticalement ;
+    \item donc \(a_z=-g\neq 0\) ;
+    \item la vitesse verticale varie au cours du temps.
+\end{itemize}
+
+\subsection*{6. « Au point le plus haut, la vitesse du projectile est nulle. » \hfill /1{,}5}
+
+Cette affirmation est \textbf{fausse}.
+
+Au point le plus haut, seule la composante verticale de la vitesse s'annule :
+\[
+v_z=0.
+\]
+
+Mais la composante horizontale reste constante :
+\[
+v_x=v_0\cos\alpha.
+\]
+
+Donc le vecteur vitesse au sommet est :
+\[
+\vec v_{\text{sommet}}=
+\begin{pmatrix}
+v_0\cos\alpha\\
+0
+\end{pmatrix}.
+\]
+
+La vitesse n'est donc pas nulle, sauf dans le cas particulier d'un lancer strictement vertical.
+
+\subsection*{7. Déterminer littéralement l'instant auquel l'altitude est maximale. \hfill /1{,}5}
+
+L'altitude est maximale lorsque la vitesse verticale s'annule :
+\[
+v_z(t)=v_0\sin\alpha - gt = 0.
+\]
+
+On obtient :
+\[
+\boxed{t_{\max}=\frac{v_0\sin\alpha}{g}.}
+\]
+
+\subsection*{8. En déduire littéralement la hauteur maximale atteinte. \hfill /2}
+
+On remplace \(t_{\max}\) dans l'expression de \(z(t)\) :
+\[
+z_{\max}=h+v_0\sin\alpha \cdot \frac{v_0\sin\alpha}{g}
+-\frac12 g\left(\frac{v_0\sin\alpha}{g}\right)^2.
+\]
+
+D'où :
+\[
+z_{\max}=h+\frac{v_0^2\sin^2\alpha}{g}
+-\frac12\frac{v_0^2\sin^2\alpha}{g}.
+\]
+
+Finalement :
+\[
+\boxed{z_{\max}=h+\frac{v_0^2\sin^2\alpha}{2g}.}
+\]
+
+\subsection*{9. Méthode générale pour savoir si le projectile franchit un obstacle. \hfill /1{,}5}
+
+Supposons qu'un obstacle soit situé à l'abscisse \(x=x_{\text{obs}}\) et ait une hauteur \(H\).
+
+La méthode consiste à :
+\begin{enumerate}[label=\arabic*.]
+    \item établir l'équation de la trajectoire
+    \[
+    z(x)=h+x\tan\alpha-\frac{g}{2v_0^2\cos^2\alpha}x^2 ;
+    \]
+    \item calculer la hauteur du projectile au niveau de l'obstacle :
+    \[
+    z(x_{\text{obs}}) ;
+    \]
+    \item comparer cette valeur à la hauteur \(H\).
+\end{enumerate}
+
+\begin{itemize}
+    \item Si \(z(x_{\text{obs}})>H\), le projectile franchit l'obstacle.
+    \item Si \(z(x_{\text{obs}})=H\), il le touche exactement.
+    \item Si \(z(x_{\text{obs}})<H\), il ne le franchit pas.
+\end{itemize}
+
+Il faut en outre vérifier que l'obstacle se situe bien dans une zone effectivement atteinte pendant le vol.
+
+\subsection*{10. Discussion argumentée : dans quelles situations le modèle sans frottements est-il acceptable ? \hfill /3}
+
+\textbf{Sens physique de l'hypothèse}
+
+Négliger les frottements de l'air signifie que l'on suppose que l'air n'exerce pas de force significative sur le projectile. La seule force prise en compte est alors le poids.
+
+\medskip
+
+\textbf{Situations où cette hypothèse peut paraître raisonnable}
+
+Cette hypothèse peut être acceptable :
+\begin{itemize}
+    \item pour des objets assez massifs ;
+    \item pour des vitesses modérées ;
+    \item pour des trajectoires courtes ;
+    \item lorsque l'on cherche seulement une première modélisation.
+\end{itemize}
+
+Exemples :
+\begin{itemize}
+    \item lancer d'une balle dense sur une courte distance ;
+    \item expérience de laboratoire simplifiée ;
+    \item exercice théorique destiné à comprendre les lois du mouvement.
+\end{itemize}
+
+\medskip
+
+\textbf{Situations où cette hypothèse devient discutable}
+
+Elle devient discutable lorsque :
+\begin{itemize}
+    \item la vitesse est élevée ;
+    \item la durée du vol est longue ;
+    \item l'objet est léger ;
+    \item la surface de contact avec l'air est importante ;
+    \item il y a du vent.
+\end{itemize}
+
+Exemples :
+\begin{itemize}
+    \item balle de ping-pong ;
+    \item plume ;
+    \item feuille de papier ;
+    \item ballon ralenti par l'air ;
+    \item jet d'eau fin.
+\end{itemize}
+
+\medskip
+
+\textbf{Grandeurs modifiées par les frottements}
+
+La présence de frottements peut modifier :
+\begin{itemize}
+    \item la portée ;
+    \item la durée du vol ;
+    \item la hauteur maximale ;
+    \item la valeur de la vitesse au cours du mouvement ;
+    \item la forme de la trajectoire, qui n'est plus exactement parabolique.
+\end{itemize}
+
+\medskip
+
+\textbf{Conclusion}
+
+Le modèle sans frottements est \textbf{utile} car il permet une description simple, claire et souvent suffisante pour une première étude. Mais il possède des \textbf{limites} : dans de nombreuses situations réelles, les frottements de l'air jouent un rôle non négligeable, et un modèle plus élaboré devient alors nécessaire.
+
+\newpage
+\section*{Exercice 5 --- Pourquoi une sirène paraît-elle différente quand elle s'éloigne ? \hfill /6}
+
+On étudie qualitativement le son émis par une sirène de véhicule en mouvement.  
+Un observateur immobile perçoit un son \textbf{plus aigu} lorsque le véhicule s'approche, puis \textbf{plus grave} lorsqu'il s'éloigne.
+
+\subsection*{Corrigé détaillé}
+
+Le phénomène décrit correspond à l'\textbf{effet Doppler}.
+
+\medskip
+
+\textbf{Idée générale :} lorsqu'une source sonore est en mouvement par rapport à un observateur, la fréquence du son \textbf{perçue} par l'observateur n'est pas la même que la fréquence \textbf{émise} par la source.
+
+\medskip
+
+\textbf{Quand la sirène s'approche :}
+
+La source se rapproche de l'observateur. Les fronts d'onde successifs arrivent alors plus rapprochés dans l'espace au niveau de l'observateur.  
+Autrement dit, l'intervalle de temps entre l'arrivée de deux signaux identiques successifs devient plus petit.
+
+La période perçue diminue donc :
+\[
+T_{\text{perçue}} < T_{\text{émise}}.
+\]
+
+Or la fréquence est l'inverse de la période :
+\[
+f=\frac{1}{T}.
+\]
+
+Donc la fréquence perçue augmente :
+\[
+f_{\text{perçue}} > f_{\text{émise}}.
+\]
+
+Comme un son plus aigu correspond à une fréquence plus élevée, l'observateur entend donc une sirène \textbf{plus aiguë} lorsque le véhicule s'approche.
+
+\medskip
+
+\textbf{Quand la sirène s'éloigne :}
+
+La source s'éloigne de l'observateur. Les fronts d'onde successifs arrivent alors plus espacés.
+
+L'intervalle de temps entre deux motifs identiques successifs augmente. La période perçue devient donc plus grande :
+\[
+T_{\text{perçue}} > T_{\text{émise}}.
+\]
+
+Par conséquent, la fréquence perçue diminue :
+\[
+f_{\text{perçue}} < f_{\text{émise}}.
+\]
+
+Le son paraît alors \textbf{plus grave}.
+
+\medskip
+
+\textbf{Interprétation en termes de signal périodique :}
+
+Un son musical ou une sirène peuvent être modélisés par un signal périodique.  
+Lorsque la source est immobile par rapport à l'observateur, la fréquence perçue est la même que la fréquence émise.
+
+En revanche, si la source se déplace :
+\begin{itemize}
+    \item vers l'observateur, le signal reçu semble plus \og resserré \fg{} dans le temps ;
+    \item en s'éloignant, le signal reçu semble plus \og étiré \fg{} dans le temps.
+\end{itemize}
+
+Cela se traduit par une modification de la période et donc de la fréquence perçue.
+
+\medskip
+
+\textbf{Conclusion :}
+
+La sirène paraît plus aiguë quand elle s'approche et plus grave quand elle s'éloigne parce que le mouvement de la source modifie la fréquence perçue par l'observateur.  
+Ce phénomène est appelé \textbf{effet Doppler}.
+
+\subsection*{Éléments attendus dans une bonne réponse}
+
+Une réponse bien rédigée devait faire apparaître :
+\begin{itemize}
+    \item la notion de \textbf{signal périodique} ;
+    \item le lien entre \textbf{période} et \textbf{fréquence} :
+    \[
+    f=\frac{1}{T} ;
+    \]
+    \item l'idée que lorsque la source s'approche, les ondes sont reçues plus rapprochées ;
+    \item l'idée que lorsque la source s'éloigne, les ondes sont reçues plus espacées ;
+    \item la conclusion : \textbf{son plus aigu à l'approche, plus grave à l'éloignement}.
+\end{itemize}
+
+\section*{Barème détaillé question par question}
+
+\begin{longtable}{|p{9cm}|c|}
+\hline
+\textbf{Question} & \textbf{Points} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Question} & \textbf{Points} \\
+\hline
+\endhead
+
+Exercice 1, question 1 & 1 \\
+\hline
+Exercice 1, question 2 & 1{,}5 \\
+\hline
+Exercice 1, question 3 & 1{,}5 \\
+\hline
+Exercice 1, question 4 & 2 \\
+\hline
+Exercice 1, question 5 & 3 \\
+\hline
+
+Exercice 2, question 1 & 1 \\
+\hline
+Exercice 2, question 2 & 1{,}5 \\
+\hline
+Exercice 2, question 3 & 1{,}5 \\
+\hline
+Exercice 2, question 4 & 2 \\
+\hline
+Exercice 2, question 5 & 1 \\
+\hline
+Exercice 2, question 6 & 1 \\
+\hline
+Exercice 2, question 7 & 2 \\
+\hline
+
+Exercice 3, question 1 & 1 \\
+\hline
+Exercice 3, question 2 & 2 \\
+\hline
+Exercice 3, question 3 & 1{,}5 \\
+\hline
+Exercice 3, question 4 & 1{,}5 \\
+\hline
+Exercice 3, question 5 & 1{,}5 \\
+\hline
+Exercice 3, question 6 & 2{,}5 \\
+\hline
+
+Exercice 4, question 1 & 1 \\
+\hline
+Exercice 4, question 2 & 1{,}5 \\
+\hline
+Exercice 4, question 3 & 2 \\
+\hline
+Exercice 4, question 4 & 2 \\
+\hline
+Exercice 4, question 5 & 1{,}5 \\
+\hline
+Exercice 4, question 6 & 1{,}5 \\
+\hline
+Exercice 4, question 7 & 1{,}5 \\
+\hline
+Exercice 4, question 8 & 2 \\
+\hline
+Exercice 4, question 9 & 1{,}5 \\
+\hline
+Exercice 4, question 10 & 3 \\
+\hline
+
+Exercice 5 --- explication qualitative complète de l'effet Doppler & 6 \\
+\hline
+
+\textbf{Total} & \textbf{52} \\
+\hline
+\end{longtable}
+
+\end{document}

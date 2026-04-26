@@ -1,0 +1,1233 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.7cm]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{stmaryrd}
+
+\pgfplotsset{compat=1.18}
+\sisetup{locale=FR}
+
+\definecolor{bleu}{RGB}{20,60,130}
+\definecolor{gris}{RGB}{245,245,245}
+\definecolor{vert}{RGB}{20,120,70}
+\definecolor{rouge}{RGB}{170,40,40}
+\definecolor{corrige}{RGB}{120,20,20}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Spécialité Physique-Chimie -- Terminale}}
+\fancyhead[R]{\textbf{Fiche d'exercices approfondis avec corrigé}}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+
+\newtcolorbox{objectifbox}{
+colback=gris,
+colframe=bleu,
+title=\textbf{Objectif du document},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}{
+colback=white,
+colframe=vert,
+title=\textbf{Esprit de la fiche},
+fonttitle=\bfseries
+}
+
+\newtcolorbox{corrigebox}{
+colback=white,
+colframe=corrige,
+title=\textbf{Corrigé},
+fonttitle=\bfseries
+}
+
+\newcommand{\etoiles}[1]{%
+\textcolor{orange!90!black}{%
+\ifnum#1=1 ★\fi
+\ifnum#1=2 ★★\fi
+\ifnum#1=3 ★★★\fi
+\ifnum#1=4 ★★★★\fi
+\ifnum#1=5 ★★★★★\fi}}
+
+\newcommand{\exercice}[3]{
+\begin{tcolorbox}[colback=white,colframe=bleu,title={\textbf{Exercice #1 -- #2 \hfill Niveau : \etoiles{#3}}}]
+}
+
+\newcommand{\finexercice}{
+\end{tcolorbox}
+}
+
+\newcommand{\corrigeexo}[1]{
+\begin{corrigebox}[title={\textbf{Corrigé de l'exercice #1}}]
+}
+
+\newcommand{\fincorrige}{
+\end{corrigebox}
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Fiche d'exercices approfondis de Physique}}\\[0.3em]
+{\large \textbf{Programme de spécialité Physique-Chimie de Terminale}}\\[0.4em]
+{\large \textbf{avec corrigé détaillé dans le même document}}\\[0.5em]
+\rule{0.92\linewidth}{0.7pt}
+\end{center}
+
+\begin{objectifbox}
+Ce document propose une série d'exercices de physique de niveau Terminale spécialité, mais traités dans un esprit exigeant :
+\begin{itemize}[itemsep=0.2em]
+    \item exercices de modélisation ;
+    \item problèmes plus difficiles et moins guidés ;
+    \item questions demandant une interprétation physique ;
+    \item synthèses mêlant plusieurs notions du programme ;
+    \item corrigés détaillés rédigés avec méthode.
+\end{itemize}
+\end{objectifbox}
+
+\begin{methodebox}
+Dans les exercices de physique, on attend toujours :
+\begin{itemize}[itemsep=0.2em]
+    \item l'identification du système étudié ;
+    \item le choix d'un référentiel ;
+    \item le bilan des forces ou des échanges d'énergie ;
+    \item la mise en équation correcte du phénomène ;
+    \item une vérification de l'unité et du sens physique du résultat ;
+    \item une conclusion claire.
+\end{itemize}
+\end{methodebox}
+
+\tableofcontents
+
+\newpage
+
+\section{Énoncés}
+
+\section{Mouvement, forces et énergie}
+
+\exercice{1}{Projectile et franchissement d'une zone interdite}{4}
+
+Un ballon est lancé depuis le point $O$ situé au niveau du sol avec une vitesse initiale de norme $v_0$. Le vecteur vitesse initiale fait un angle $\alpha$ avec l'horizontale. On néglige l'action de l'air. Une zone interdite commence à la distance horizontale $d$ du point de lancer ; elle est matérialisée par une barrière verticale de hauteur $h$.
+
+On se place dans un repère orthonormé $(O,x,y)$, l'axe $y$ vertical vers le haut.
+
+Données numériques :
+\[
+v_0=\SI{16.0}{m.s^{-1}}, \qquad \alpha=38^\circ,\qquad d=\SI{18.0}{m},\qquad h=\SI{2.80}{m}.
+\]
+
+Déterminer si le ballon passe au-dessus de la barrière. On donnera une conclusion physique argumentée. On déterminera également, dans les mêmes conditions, la valeur minimale de la vitesse initiale nécessaire pour franchir la barrière.
+\finexercice
+
+\exercice{2}{Freinage réel d'un véhicule}{4}
+
+Une voiture de masse $m=\SI{1.10e3}{kg}$ roule sur une route horizontale à la vitesse $v_0=\SI{90}{km.h^{-1}}$. Le conducteur freine brutalement. On modélise l'action de la route sur les pneus par une force de frottement tangente à la route, opposée au mouvement, de valeur constante égale à $f=\mu m g$, avec $\mu=0.72$.
+
+Déterminer la distance minimale de freinage. Puis discuter qualitativement l'influence d'une vitesse initiale plus grande et d'une diminution de l'adhérence. On attend une interprétation physique du résultat et pas seulement un calcul.
+\finexercice
+
+\exercice{3}{Dimensionnement énergétique d'une montée à vélo électrique}{5}
+
+Un cycliste et son vélo électrique, de masse totale $m=\SI{105}{kg}$, réalisent l'ascension d'un col. Le trajet a une longueur de \SI{19.0}{km} et un dénivelé positif de \SI{1250}{m}. On suppose que la force moyenne de résistance à l'avancement vaut \SI{32}{N}. Le rendement global du système de motorisation est estimé à $78\,\%$.
+
+On souhaite estimer l'énergie minimale que doit pouvoir stocker la batterie pour permettre l'ascension complète. On exprimera le résultat en joules puis en wattheures. On commentera les hypothèses du modèle.
+\finexercice
+
+\exercice{4}{Satellite et chute libre orbitale}{4}
+
+On considère un satellite en orbite circulaire autour de la Terre à l'altitude $h=\SI{700}{km}$. On note :
+\[
+R_T=\SI{6.37e6}{m},\qquad M_T=\SI{5.97e24}{kg},\qquad G=\SI{6.67e-11}{SI}.
+\]
+
+Déterminer la vitesse orbitale du satellite et sa période de révolution. Expliquer ensuite, avec rigueur, pourquoi on peut dire qu'un satellite en orbite est en chute libre bien qu'il ne s'écrase pas sur la Terre.
+\finexercice
+
+\section{Électricité : circuits RC et oscillateurs}
+
+\exercice{5}{Étude complète d'une charge de condensateur}{4}
+
+Un condensateur de capacité $C=\SI{220}{\micro F}$ est chargé à travers une résistance $R=\SI{12.0}{k\Omega}$ par un générateur idéal de tension continue $E=\SI{9.0}{V}$. À l'instant $t=0$, le condensateur est supposé déchargé.
+
+Établir le modèle différentiel du circuit, en déduire l'expression de la tension $u_C(t)$, puis déterminer le temps au bout duquel la tension aux bornes du condensateur atteint $99\,\%$ de sa valeur finale.
+\finexercice
+
+\exercice{6}{Exploitation inverse d'un montage RC expérimental}{5}
+
+Lors d'une expérience, on enregistre la tension aux bornes d'un condensateur en charge :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$t$ (s) & $u_C$ (V) \\
+\hline
+0.0 & 0.0 \\
+0.4 & 1.54 \\
+0.8 & 2.69 \\
+1.2 & 3.54 \\
+1.6 & 4.18 \\
+2.0 & 4.65 \\
+2.4 & 5.00 \\
+2.8 & 5.26 \\
+\hline
+\end{tabular}
+\end{center}
+
+On sait que le générateur délivre une tension continue de \SI{6.0}{V} et que la résistance utilisée vaut \SI{8.2}{k\Omega}.
+
+Estimer la constante de temps du circuit, puis la capacité du condensateur. Discuter la qualité du modèle exponentiel.
+\finexercice
+
+\exercice{7}{Oscillateur électrique amorti : interprétation physique}{4}
+
+Un circuit RLC série, sans générateur, comporte un condensateur initialement chargé. Selon la valeur de la résistance, on observe soit des oscillations amorties, soit un retour monotone vers l'équilibre.
+
+Expliquer précisément, en termes énergétiques et dynamiques, pourquoi ces comportements sont possibles. On fera un parallèle avec un oscillateur mécanique amorti.
+\finexercice
+
+\section{Ondes, lumière et effet Doppler}
+
+\exercice{8}{Diffraction : quand l'optique géométrique cesse d'être valable}{4}
+
+Une lumière monochromatique de longueur d'onde $\lambda=\SI{650}{nm}$ éclaire une fente de largeur $a=\SI{0.18}{mm}$. L'écran est placé à la distance $D=\SI{2.50}{m}$.
+
+Déterminer la largeur de la tache centrale de diffraction. Expliquer ensuite, sur cet exemple, en quoi la diffraction montre les limites du modèle du rayon lumineux. Enfin, discuter l'influence de la longueur d'onde et de la largeur de la fente.
+\finexercice
+
+\exercice{9}{Interférences de Young et cohérence du modèle}{4}
+
+On réalise une expérience d'interférences avec deux fentes distantes de $a=\SI{0.45}{mm}$, un écran situé à $D=\SI{2.20}{m}$ et une lumière monochromatique de longueur d'onde $\lambda=\SI{532}{nm}$.
+
+Déterminer l'interfrange. Une mesure expérimentale fournit \SI{2.7}{mm}. Dire si la mesure est cohérente avec le modèle théorique. Expliquer aussi pourquoi l'utilisation d'une source non monochromatique dégrade la figure observée.
+\finexercice
+
+\exercice{10}{Effet Doppler : mesure de la vitesse d'une voiture}{4}
+
+Une voiture munie d'une sirène émet un son de fréquence $f_0=\SI{780}{Hz}$. Elle s'approche d'un observateur immobile. La fréquence reçue est $f_r=\SI{835}{Hz}$. On prendra pour célérité du son dans l'air $c=\SI{340}{m.s^{-1}}$ et on utilisera le modèle :
+\[
+f_r = f_0 \frac{c}{c-v}.
+\]
+
+Déterminer la vitesse de la voiture. Interpréter physiquement la variation de fréquence perçue avant puis après le passage de la voiture.
+\finexercice
+
+\section{Nucléaire}
+
+\exercice{11}{Datation radioactive}{4}
+
+Le carbone 14 est un isotope radioactif de demi-vie égale à $5730$ ans. Un échantillon organique ancien présente une activité égale à $28\,\%$ de celle d'un organisme vivant comparable.
+
+Estimer l'âge de cet échantillon. On rédigera soigneusement la modélisation utilisée et on commentera les limites de cette méthode de datation.
+\finexercice
+
+\exercice{12}{Défaut de masse et stabilité nucléaire}{5}
+
+On considère le noyau d'hélium \(^4_2\mathrm{He}\).
+
+Données :
+\[
+m_p=\SI{1.00728}{u},\qquad m_n=\SI{1.00866}{u},\qquad m_{\mathrm{noyau}}=\SI{4.00151}{u},
+\]
+\[
+1\,u\,c^2=\SI{931.5}{MeV}.
+\]
+
+Déterminer l'énergie de liaison du noyau d'hélium puis l'énergie de liaison par nucléon. Expliquer le lien entre cette grandeur et la stabilité du noyau.
+\finexercice
+
+\section{Mesures, modélisation et incertitudes}
+
+\exercice{13}{Mesure d'une célérité et estimation d'incertitude}{4}
+
+On mesure la célérité d'une onde le long d'une corde en relevant une distance $d=\SI{5.00}{m}$ et une durée $\Delta t=\SI{0.410}{s}$. Les incertitudes-types sont :
+\[
+u(d)=\SI{0.03}{m},\qquad u(\Delta t)=\SI{0.015}{s}.
+\]
+
+Déterminer la célérité mesurée, estimer l'incertitude relative sur le résultat par addition des incertitudes relatives, puis donner un résultat final cohérent. Proposer enfin des améliorations expérimentales.
+\finexercice
+
+\exercice{14}{Choix d'un modèle physique : réflexion de synthèse}{5}
+
+Pour chacune des situations suivantes, proposer un modèle physique raisonnable, préciser les hypothèses retenues, justifier ces choix et signaler les limites du modèle :
+\begin{enumerate}[label=\alph*)]
+    \item chute d'une balle de tennis ;
+    \item mouvement d'un satellite ;
+    \item charge d'un condensateur réel ;
+    \item propagation d'un son dans une salle ;
+    \item freinage d'un véhicule sur route mouillée.
+\end{enumerate}
+
+On attend ici une réponse structurée et argumentée.
+\finexercice
+
+\newpage
+
+\section{Corrigés}
+
+\corrigeexo{1}
+
+On modélise le ballon par un point matériel soumis uniquement à son poids. Dans le référentiel terrestre supposé galiléen, la deuxième loi de Newton donne :
+\[
+m\vec a = m\vec g.
+\]
+Donc :
+\[
+\vec a = \vec g = -g\,\vec j.
+\]
+
+Les coordonnées du vecteur position s'obtiennent par intégration avec les conditions initiales :
+\[
+x(0)=0,\qquad y(0)=0,\qquad v_x(0)=v_0\cos\alpha,\qquad v_y(0)=v_0\sin\alpha.
+\]
+
+On obtient :
+\[
+x(t)=v_0\cos\alpha \, t,
+\qquad
+y(t)=v_0\sin\alpha \, t - \frac12 gt^2.
+\]
+
+Pour tester le franchissement de la barrière, on cherche la hauteur du ballon lorsqu'il se trouve à l'abscisse $x=d$.
+
+Comme
+\[
+x(t)=v_0\cos\alpha\, t,
+\]
+on a
+\[
+t_d=\frac{d}{v_0\cos\alpha}.
+\]
+
+Numériquement :
+\[
+\cos 38^\circ \approx 0.788,\qquad \sin 38^\circ \approx 0.616.
+\]
+Ainsi,
+\[
+v_0\cos\alpha \approx 16.0\times 0.788 \approx \SI{12.6}{m.s^{-1}},
+\]
+donc
+\[
+t_d \approx \frac{18.0}{12.6}\approx \SI{1.43}{s}.
+\]
+
+La hauteur correspondante vaut :
+\[
+y(t_d)=16.0\times 0.616\times 1.43 - \frac12\times 9.81\times (1.43)^2.
+\]
+
+Calculons :
+\[
+16.0\times 0.616 \approx 9.86,
+\qquad
+9.86\times 1.43 \approx 14.10,
+\]
+et
+\[
+\frac12\times 9.81\times (1.43)^2 \approx 4.905\times 2.04 \approx 10.00.
+\]
+
+Donc
+\[
+y(t_d)\approx 14.10-10.00=\SI{4.10}{m}.
+\]
+
+La barrière a pour hauteur \SI{2.80}{m}. Or
+\[
+\SI{4.10}{m}>\SI{2.80}{m}.
+\]
+Le ballon franchit donc la barrière.
+
+\medskip
+
+Pour déterminer la vitesse minimale de franchissement, on impose que la trajectoire passe exactement par le sommet de la barrière :
+\[
+y(d)=h.
+\]
+
+L'équation cartésienne de la trajectoire est :
+\[
+y(x)=x\tan\alpha-\frac{g x^2}{2v_0^2\cos^2\alpha}.
+\]
+
+On impose donc :
+\[
+h=d\tan\alpha-\frac{g d^2}{2v_0^2\cos^2\alpha}.
+\]
+
+On isole $v_0^2$ :
+\[
+\frac{g d^2}{2v_0^2\cos^2\alpha}=d\tan\alpha-h,
+\]
+puis
+\[
+v_0^2=\frac{g d^2}{2\cos^2\alpha\,(d\tan\alpha-h)}.
+\]
+
+Numériquement :
+\[
+\tan 38^\circ \approx 0.781,
+\qquad
+d\tan\alpha-h \approx 18.0\times 0.781-2.80 \approx 14.06-2.80=11.26.
+\]
+De plus,
+\[
+\cos^2 38^\circ \approx (0.788)^2\approx 0.621.
+\]
+Donc
+\[
+v_0^2 \approx \frac{9.81\times 18.0^2}{2\times 0.621\times 11.26}.
+\]
+Or
+\[
+18.0^2=324,
+\qquad
+9.81\times 324\approx 3178,
+\qquad
+2\times 0.621\times 11.26\approx 13.98.
+\]
+Ainsi
+\[
+v_0^2\approx \frac{3178}{13.98}\approx 227,
+\qquad
+v_0\approx \sqrt{227}\approx \SI{15.1}{m.s^{-1}}.
+\]
+
+La vitesse minimale pour franchir la barrière à cet angle est donc environ :
+\[
+\boxed{v_{0,\min}\approx \SI{15.1}{m.s^{-1}}.}
+\]
+
+Comme la vitesse réelle vaut \SI{16.0}{m.s^{-1}}, elle est bien suffisante.
+
+\fincorrige
+
+\corrigeexo{2}
+
+La voiture est étudiée dans le référentiel terrestre supposé galiléen. Sur route horizontale, les forces verticales se compensent : le poids et la réaction normale n'interviennent pas dans le freinage longitudinal. La force utile pour ralentir la voiture est la force de frottement :
+\[
+f=\mu m g.
+\]
+
+Le mouvement étant rectiligne horizontal, on peut utiliser soit la dynamique, soit l'énergie. La méthode énergétique est ici très efficace.
+
+L'énergie cinétique initiale vaut :
+\[
+E_{c,i}=\frac12 m v_0^2.
+\]
+
+À l'arrêt, l'énergie cinétique finale est nulle. Le travail de la force de frottement sur la distance de freinage $d$ vaut :
+\[
+W_f=-fd=-\mu m g d.
+\]
+
+D'après le théorème de l'énergie cinétique :
+\[
+E_{c,f}-E_{c,i}=W_f.
+\]
+Donc
+\[
+0-\frac12 mv_0^2=-\mu m g d.
+\]
+Ainsi
+\[
+d=\frac{v_0^2}{2\mu g}.
+\]
+
+Convertissons d'abord la vitesse :
+\[
+v_0=\SI{90}{km.h^{-1}}=\frac{90}{3.6}=\SI{25.0}{m.s^{-1}}.
+\]
+
+On obtient :
+\[
+d=\frac{25.0^2}{2\times 0.72\times 9.81}
+=\frac{625}{14.1264}\approx \SI{44.2}{m}.
+\]
+
+Donc la distance minimale de freinage vaut :
+\[
+\boxed{d\approx \SI{44}{m}.}
+\]
+
+\medskip
+
+\textbf{Interprétation physique.}
+
+La formule
+\[
+d=\frac{v_0^2}{2\mu g}
+\]
+montre que la distance de freinage dépend du carré de la vitesse. Cela signifie qu'une augmentation modérée de la vitesse initiale entraîne une augmentation beaucoup plus forte de la distance nécessaire pour s'arrêter. Par exemple, si la vitesse est multipliée par 2, la distance de freinage est multipliée par 4.
+
+La formule montre aussi que plus l'adhérence diminue, plus la distance augmente. Une chaussée mouillée correspond à une valeur plus faible de $\mu$, donc à une force de freinage maximale plus faible. Le véhicule met alors plus de temps et plus de distance à s'arrêter.
+
+C'est précisément la raison pour laquelle la sécurité routière impose des distances plus grandes sur route mouillée : à vitesse égale, l'arrêt est moins efficace.
+
+\fincorrige
+
+\corrigeexo{3}
+
+L'énergie minimale à fournir correspond ici à deux contributions :
+\begin{itemize}[itemsep=0.2em]
+    \item l'augmentation d'énergie potentielle de pesanteur ;
+    \item le travail contre les forces résistantes.
+\end{itemize}
+
+\textbf{1) Gain d'énergie potentielle.}
+
+On a
+\[
+\Delta E_p = mgh.
+\]
+Avec
+\[
+m=\SI{105}{kg},\qquad g=\SI{9.81}{m.s^{-2}},\qquad h=\SI{1250}{m},
+\]
+on obtient
+\[
+\Delta E_p = 105\times 9.81\times 1250.
+\]
+Or
+\[
+105\times 9.81=1030.05,
+\]
+donc
+\[
+\Delta E_p \approx 1030.05\times 1250 \approx \SI{1.29e6}{J}.
+\]
+
+\textbf{2) Travail contre les résistances.}
+
+La force résistante moyenne vaut \SI{32}{N} sur une longueur de \SI{19.0}{km}, soit
+\[
+L=\SI{19000}{m}.
+\]
+Le travail à fournir contre ces forces vaut :
+\[
+W_r = fL = 32\times 19000 = \SI{6.08e5}{J}.
+\]
+
+\textbf{3) Énergie mécanique minimale.}
+
+L'énergie mécanique minimale à produire est donc
+\[
+E_{\mathrm{mec}}=\Delta E_p+W_r.
+\]
+Ainsi
+\[
+E_{\mathrm{mec}}\approx 1.29\times 10^6 + 6.08\times 10^5
+= \SI{1.90e6}{J}.
+\]
+
+\textbf{4) Prise en compte du rendement.}
+
+Si le rendement global est
+\[
+\eta=0.78,
+\]
+alors l'énergie électrique à fournir par la batterie vaut
+\[
+E_{\mathrm{elec}}=\frac{E_{\mathrm{mec}}}{\eta}.
+\]
+Donc
+\[
+E_{\mathrm{elec}}\approx \frac{1.90\times 10^6}{0.78}
+\approx \SI{2.44e6}{J}.
+\]
+
+\textbf{5) Conversion en wattheures.}
+
+On utilise
+\[
+1\ \mathrm{Wh}=3600\ \mathrm{J}.
+\]
+Donc
+\[
+E_{\mathrm{elec}} \approx \frac{2.44\times 10^6}{3600}\approx \SI{678}{Wh}.
+\]
+
+On peut conclure :
+\[
+\boxed{E_{\mathrm{elec}}\approx \SI{2.4e6}{J}\approx \SI{680}{Wh}.}
+\]
+
+\textbf{Commentaire.}
+
+Cette valeur est une estimation minimale. En pratique, il faudrait souvent une batterie plus grande car :
+\begin{itemize}[itemsep=0.2em]
+    \item la force de résistance n'est pas constante ;
+    \item le rendement varie avec la vitesse, la pente, l'échauffement et l'état de charge ;
+    \item le cycliste peut fournir une partie de l'énergie ;
+    \item il existe des pertes supplémentaires non modélisées.
+\end{itemize}
+
+\fincorrige
+
+\corrigeexo{4}
+
+Le satellite, de masse $m$, est soumis essentiellement à la force gravitationnelle terrestre :
+\[
+F_g = \frac{GM_T m}{r^2},
+\]
+où
+\[
+r=R_T+h.
+\]
+
+Pour une orbite circulaire, cette force fournit l'accélération centripète :
+\[
+\frac{mv^2}{r}=\frac{GM_T m}{r^2}.
+\]
+Après simplification par $m$ :
+\[
+v^2=\frac{GM_T}{r},
+\qquad
+v=\sqrt{\frac{GM_T}{r}}.
+\]
+
+Ici
+\[
+r=6.37\times 10^6 + 7.00\times 10^5 = \SI{7.07e6}{m}.
+\]
+
+Donc
+\[
+v=\sqrt{\frac{6.67\times 10^{-11}\times 5.97\times 10^{24}}{7.07\times 10^6}}.
+\]
+
+Calculons le numérateur :
+\[
+6.67\times 5.97 \approx 39.8,
+\]
+donc
+\[
+GM_T \approx 3.98\times 10^{14}.
+\]
+
+Ainsi
+\[
+\frac{GM_T}{r}\approx \frac{3.98\times 10^{14}}{7.07\times 10^6}\approx 5.63\times 10^7.
+\]
+Donc
+\[
+v\approx \sqrt{5.63\times 10^7}\approx \SI{7.5e3}{m.s^{-1}}.
+\]
+
+Ainsi
+\[
+\boxed{v\approx \SI{7.5}{km.s^{-1}}.}
+\]
+
+\medskip
+
+La période vaut
+\[
+T=\frac{2\pi r}{v}.
+\]
+Donc
+\[
+T\approx \frac{2\pi\times 7.07\times 10^6}{7.5\times 10^3}.
+\]
+On obtient :
+\[
+T\approx \SI{5.9e3}{s}.
+\]
+
+En minutes :
+\[
+T\approx \frac{5900}{60}\approx \SI{98}{min}.
+\]
+
+Ainsi
+\[
+\boxed{T\approx \SI{5.9e3}{s}\approx \SI{98}{min}.}
+\]
+
+\textbf{Pourquoi parler de chute libre ?}
+
+Un satellite en orbite n'est soumis qu'à la gravitation terrestre, comme un objet en chute. Il est donc bien en chute libre. Mais il possède une vitesse tangentielle suffisamment grande pour que, pendant qu'il tombe vers la Terre, la courbure de sa trajectoire épouse la courbure terrestre. Il ``manque'' sans cesse le sol. Autrement dit, il tombe en permanence autour de la Terre sans jamais l'atteindre.
+
+\fincorrige
+
+\corrigeexo{5}
+
+Dans le circuit RC en série, on applique la loi des mailles :
+\[
+E=u_R+u_C.
+\]
+
+Or
+\[
+u_R=Ri
+\qquad\text{et}\qquad
+i=C\dv{u_C}{t}.
+\]
+
+Donc
+\[
+E=RC\dv{u_C}{t}+u_C.
+\]
+
+L'équation différentielle vérifiée par $u_C$ est donc :
+\[
+\boxed{RC\dv{u_C}{t}+u_C=E.}
+\]
+
+La condition initiale est
+\[
+u_C(0)=0,
+\]
+car le condensateur est initialement déchargé.
+
+La solution classique de cette équation est :
+\[
+\boxed{u_C(t)=E\left(1-e^{-t/RC}\right).}
+\]
+
+Ici
+\[
+R=\SI{12.0}{k\Omega}=1.20\times 10^4\ \Omega,
+\qquad
+C=\SI{220}{\micro F}=2.20\times 10^{-4}\ \mathrm{F}.
+\]
+
+La constante de temps vaut :
+\[
+\tau=RC=1.20\times 10^4\times 2.20\times 10^{-4}=\SI{2.64}{s}.
+\]
+
+On cherche le temps $t$ tel que
+\[
+u_C(t)=0.99E.
+\]
+Donc
+\[
+E(1-e^{-t/\tau})=0.99E.
+\]
+Après simplification :
+\[
+1-e^{-t/\tau}=0.99
+\quad\Longrightarrow\quad
+e^{-t/\tau}=0.01.
+\]
+
+En prenant le logarithme :
+\[
+-\frac{t}{\tau}=\ln(0.01)=-\ln(100).
+\]
+Ainsi
+\[
+t=\tau\ln(100)\approx 2.64\times 4.605.
+\]
+Donc
+\[
+t\approx \SI{12.2}{s}.
+\]
+
+Conclusion :
+\[
+\boxed{u_C(t)=9.0\left(1-e^{-t/2.64}\right)\ \text{(en volts)}}
+\]
+et
+\[
+\boxed{t_{99\%}\approx \SI{12.2}{s}.}
+\]
+
+\fincorrige
+
+\corrigeexo{6}
+
+Le modèle théorique d'une charge RC est
+\[
+u_C(t)=E\left(1-e^{-t/\tau}\right),
+\]
+avec ici
+\[
+E=\SI{6.0}{V}.
+\]
+
+Pour estimer $\tau$, on peut utiliser le fait que
+\[
+u_C(\tau)\approx 0.63E.
+\]
+Or
+\[
+0.63E=0.63\times 6.0=\SI{3.78}{V}.
+\]
+
+On cherche dans le tableau quand la tension est proche de \SI{3.78}{V}. On lit :
+\[
+u_C(1.2\,\mathrm{s})=\SI{3.54}{V},
+\qquad
+u_C(1.6\,\mathrm{s})=\SI{4.18}{V}.
+\]
+
+La valeur \SI{3.78}{V} est située entre les deux. Une interpolation linéaire grossière donne une constante de temps proche de
+\[
+\tau \approx \SI{1.35}{s}.
+\]
+
+On peut donc estimer :
+\[
+\boxed{\tau \approx \SI{1.3}{s}\text{ à }\SI{1.4}{s}.}
+\]
+
+Prenons
+\[
+\tau\approx \SI{1.35}{s}.
+\]
+
+Comme
+\[
+\tau=RC,
+\]
+on en déduit
+\[
+C=\frac{\tau}{R}=\frac{1.35}{8.2\times 10^3}\approx 1.65\times 10^{-4}\ \mathrm{F}.
+\]
+
+Ainsi
+\[
+\boxed{C\approx \SI{1.6e-4}{F}\approx \SI{160}{\micro F}.}
+\]
+
+\textbf{Discussion du modèle.}
+
+Le tableau montre une croissance rapide au début puis plus lente ensuite : c'est compatible avec une évolution exponentielle vers une valeur limite. Le modèle RC paraît donc raisonnable.
+
+Cependant, en expérience réelle, on peut observer de petits écarts dus à :
+\begin{itemize}[itemsep=0.2em]
+    \item l'incertitude de lecture des temps et tensions ;
+    \item une tension du générateur pas parfaitement constante ;
+    \item une résistance ou une capacité légèrement différentes des valeurs nominales ;
+    \item une résistance interne des appareils de mesure.
+\end{itemize}
+
+\fincorrige
+
+\corrigeexo{7}
+
+Dans un circuit RLC série sans générateur, un condensateur initialement chargé possède initialement une énergie électrique :
+\[
+E_e=\frac12 C u_C^2.
+\]
+
+Lorsque le circuit évolue, cette énergie peut se transformer en énergie magnétique dans la bobine :
+\[
+E_m=\frac12 Li^2.
+\]
+
+Il y a donc un échange d'énergie entre le condensateur et la bobine, exactement comme dans un oscillateur mécanique où l'énergie passe alternativement de l'énergie potentielle à l'énergie cinétique.
+
+\medskip
+
+\textbf{Rôle de la résistance.}
+
+La résistance dissipe de l'énergie par effet Joule. Cela signifie qu'à chaque échange d'énergie entre le condensateur et la bobine, une partie de l'énergie totale est perdue sous forme thermique. L'amplitude des oscillations diminue donc au cours du temps.
+
+Si la résistance est assez faible, les échanges d'énergie restent visibles sur plusieurs périodes : on observe des oscillations amorties.
+
+Si la résistance est trop grande, la dissipation est tellement forte que le système ne peut plus osciller : le retour à l'équilibre devient monotone.
+
+\medskip
+
+\textbf{Parallèle mécanique.}
+
+Le circuit RLC joue le même rôle qu'un système masse-ressort-amortisseur :
+\begin{itemize}[itemsep=0.2em]
+    \item le condensateur joue un rôle analogue à l'énergie potentielle élastique ;
+    \item la bobine joue un rôle analogue à l'inertie de la masse ;
+    \item la résistance joue le rôle du frottement visqueux.
+\end{itemize}
+
+On retrouve donc les mêmes régimes : oscillatoire amorti ou apériodique.
+
+\fincorrige
+
+\corrigeexo{8}
+
+La largeur de la tache centrale de diffraction est donnée, pour une fente unique, par :
+\[
+L \approx \frac{2\lambda D}{a}.
+\]
+
+Données :
+\[
+\lambda=\SI{650}{nm}=6.50\times 10^{-7}\ \mathrm{m},
+\qquad
+D=\SI{2.50}{m},
+\qquad
+a=\SI{0.18}{mm}=1.8\times 10^{-4}\ \mathrm{m}.
+\]
+
+Donc
+\[
+L\approx \frac{2\times 6.50\times 10^{-7}\times 2.50}{1.8\times 10^{-4}}.
+\]
+
+Au numérateur :
+\[
+2\times 6.50\times 10^{-7}\times 2.50=3.25\times 10^{-6}.
+\]
+
+Ainsi
+\[
+L\approx \frac{3.25\times 10^{-6}}{1.8\times 10^{-4}}
+\approx 1.81\times 10^{-2}\ \mathrm{m}.
+\]
+
+Donc
+\[
+\boxed{L\approx \SI{1.8}{cm}.}
+\]
+
+\textbf{Interprétation physique.}
+
+En optique géométrique, on modélise la lumière par des rayons rectilignes. Si ce modèle était toujours valable, la lumière passant par une fente formerait simplement sur l'écran une zone correspondant à l'ouverture géométrique. Or on observe un étalement. La lumière ne se comporte donc pas seulement comme un ensemble de rayons : son caractère ondulatoire devient visible.
+
+\textbf{Influence des paramètres.}
+
+La formule
+\[
+L\propto \frac{\lambda}{a}
+\]
+montre que :
+\begin{itemize}[itemsep=0.2em]
+    \item si la longueur d'onde augmente, la diffraction est plus marquée ;
+    \item si la largeur de la fente diminue, la diffraction augmente.
+\end{itemize}
+
+C'est lorsque la taille de l'ouverture devient du même ordre de grandeur que la longueur d'onde que l'effet devient important.
+
+\fincorrige
+
+\corrigeexo{9}
+
+L'interfrange dans l'expérience de Young vaut :
+\[
+i=\frac{\lambda D}{a}.
+\]
+
+Données :
+\[
+\lambda=\SI{532}{nm}=5.32\times 10^{-7}\ \mathrm{m},
+\qquad
+D=\SI{2.20}{m},
+\qquad
+a=\SI{0.45}{mm}=4.5\times 10^{-4}\ \mathrm{m}.
+\]
+
+Donc
+\[
+i=\frac{5.32\times 10^{-7}\times 2.20}{4.5\times 10^{-4}}.
+\]
+
+Le numérateur vaut
+\[
+5.32\times 10^{-7}\times 2.20 = 1.1704\times 10^{-6}.
+\]
+
+Ainsi
+\[
+i\approx \frac{1.1704\times 10^{-6}}{4.5\times 10^{-4}}
+\approx 2.60\times 10^{-3}\ \mathrm{m}.
+\]
+
+Donc
+\[
+\boxed{i\approx \SI{2.60}{mm}.}
+\]
+
+La mesure expérimentale est \SI{2.7}{mm}. L'écart vaut \SI{0.1}{mm}, soit environ \SI{4}{\%}. Cette mesure est donc cohérente avec le modèle théorique, compte tenu des imprécisions expérimentales possibles.
+
+\textbf{Pourquoi une source non monochromatique dégrade-t-elle la figure ?}
+
+L'interfrange dépend de la longueur d'onde. Si la source émet plusieurs longueurs d'onde, chaque couleur produit sa propre figure d'interférences. Les maxima ne coïncident plus tous exactement, ce qui brouille la figure globale, sauf éventuellement près du centre.
+
+\fincorrige
+
+\corrigeexo{10}
+
+On utilise la relation donnée :
+\[
+f_r=f_0\frac{c}{c-v}.
+\]
+
+On résout pour $v$ :
+\[
+f_r(c-v)=f_0c,
+\]
+donc
+\[
+f_rc-f_rv=f_0c,
+\]
+puis
+\[
+f_rv=c(f_r-f_0).
+\]
+Ainsi
+\[
+v=c\frac{f_r-f_0}{f_r}.
+\]
+
+Numériquement :
+\[
+v=340\times \frac{835-780}{835}
+=340\times \frac{55}{835}.
+\]
+
+Or
+\[
+\frac{55}{835}\approx 0.0659,
+\]
+donc
+\[
+v\approx 340\times 0.0659\approx \SI{22.4}{m.s^{-1}}.
+\]
+
+En km/h :
+\[
+v\approx 22.4\times 3.6 \approx \SI{80.6}{km.h^{-1}}.
+\]
+
+Conclusion :
+\[
+\boxed{v\approx \SI{22.4}{m.s^{-1}}\approx \SI{81}{km.h^{-1}}.}
+\]
+
+\textbf{Interprétation physique.}
+
+Quand la voiture s'approche, les fronts d'onde successifs sont émis depuis des positions de plus en plus proches de l'observateur. Ils arrivent donc plus rapprochés dans le temps : la fréquence perçue augmente, le son paraît plus aigu.
+
+Quand la voiture s'éloigne, les fronts d'onde sont au contraire plus espacés pour l'observateur : la fréquence reçue diminue, le son paraît plus grave.
+
+\fincorrige
+
+\corrigeexo{11}
+
+La décroissance radioactive est modélisée par :
+\[
+A(t)=A_0 e^{-\lambda t},
+\]
+où $A_0$ est l'activité initiale et $\lambda$ la constante radioactive.
+
+On peut aussi utiliser la forme liée à la demi-vie $T_{1/2}$ :
+\[
+A(t)=A_0\left(\frac12\right)^{t/T_{1/2}}.
+\]
+
+Ici on sait que
+\[
+\frac{A(t)}{A_0}=0.28.
+\]
+Donc
+\[
+0.28=\left(\frac12\right)^{t/5730}.
+\]
+
+On prend le logarithme :
+\[
+\ln(0.28)=\frac{t}{5730}\ln\left(\frac12\right).
+\]
+Donc
+\[
+t=5730\frac{\ln(0.28)}{\ln(1/2)}.
+\]
+
+Numériquement :
+\[
+\ln(0.28)\approx -1.273,
+\qquad
+\ln(1/2)\approx -0.693.
+\]
+Ainsi
+\[
+t\approx 5730\times \frac{1.273}{0.693}\approx 5730\times 1.84\approx \SI{1.05e4}{ans}.
+\]
+
+Donc
+\[
+\boxed{t\approx \SI{1.1e4}{ans}.}
+\]
+
+\textbf{Commentaire.}
+
+Cette méthode repose sur plusieurs hypothèses : on suppose que l'échantillon n'a pas été contaminé, que la quantité de carbone 14 initiale est connue par comparaison avec le vivant, et que l'objet est suffisamment récent pour que l'activité ne soit pas trop faible. Elle n'est donc pas universelle.
+
+\fincorrige
+
+\corrigeexo{12}
+
+La masse totale des nucléons séparés vaut :
+\[
+m_{\mathrm{sep}}=2m_p+2m_n.
+\]
+
+Numériquement :
+\[
+m_{\mathrm{sep}}=2\times 1.00728+2\times 1.00866.
+\]
+Donc
+\[
+m_{\mathrm{sep}}=2.01456+2.01732=4.03188\ u.
+\]
+
+Le défaut de masse vaut :
+\[
+\Delta m = m_{\mathrm{sep}}-m_{\mathrm{noyau}}
+=4.03188-4.00151=0.03037\ u.
+\]
+
+L'énergie de liaison vaut :
+\[
+E_\ell=\Delta m\,c^2.
+\]
+Comme
+\[
+1u\,c^2=\SI{931.5}{MeV},
+\]
+on obtient
+\[
+E_\ell=0.03037\times 931.5 \approx \SI{28.3}{MeV}.
+\]
+
+Donc
+\[
+\boxed{E_\ell\approx \SI{28.3}{MeV}.}
+\]
+
+L'énergie de liaison par nucléon vaut :
+\[
+\frac{E_\ell}{A}=\frac{28.3}{4}\approx \SI{7.1}{MeV}.
+\]
+
+Ainsi
+\[
+\boxed{\frac{E_\ell}{A}\approx \SI{7.1}{MeV\ par\ nucléon}.}
+\]
+
+\textbf{Interprétation.}
+
+L'énergie de liaison mesure l'énergie qu'il faudrait fournir pour séparer complètement les nucléons. Plus elle est grande, plus le noyau est stable. L'énergie de liaison par nucléon permet de comparer la stabilité de noyaux de tailles différentes.
+
+\fincorrige
+
+\corrigeexo{13}
+
+La célérité mesurée vaut :
+\[
+v=\frac{d}{\Delta t}=\frac{5.00}{0.410}\approx \SI{12.2}{m.s^{-1}}.
+\]
+
+On estime l'incertitude relative par addition :
+\[
+\frac{u(v)}{v}\approx \frac{u(d)}{d}+\frac{u(\Delta t)}{\Delta t}.
+\]
+
+Or
+\[
+\frac{u(d)}{d}=\frac{0.03}{5.00}=0.006,
+\]
+et
+\[
+\frac{u(\Delta t)}{\Delta t}=\frac{0.015}{0.410}\approx 0.0366.
+\]
+
+Donc
+\[
+\frac{u(v)}{v}\approx 0.006+0.0366=0.0426.
+\]
+
+L'incertitude absolue vaut alors :
+\[
+u(v)\approx 12.2\times 0.0426\approx \SI{0.52}{m.s^{-1}}.
+\]
+
+On peut donc écrire :
+\[
+\boxed{v=(12.2\pm 0.5)\ \si{m.s^{-1}}.}
+\]
+
+\textbf{Analyse.}
+
+L'incertitude sur le temps contribue beaucoup plus que celle sur la distance. Pour améliorer la mesure, on peut :
+\begin{itemize}[itemsep=0.2em]
+    \item mesurer sur une plus grande distance ;
+    \item réduire l'incertitude sur le temps avec des capteurs automatiques ;
+    \item répéter les mesures et moyenner ;
+    \item améliorer le repérage du passage de l'onde.
+\end{itemize}
+
+\fincorrige
+
+\corrigeexo{14}
+
+Il s'agit ici d'un exercice de réflexion scientifique. Il n'existe pas une unique rédaction possible, mais on attend une argumentation claire.
+
+\medskip
+
+\textbf{a) Chute d'une balle de tennis.}
+
+On peut commencer par un modèle simple : point matériel soumis uniquement au poids. Ce modèle est pertinent si la vitesse est modérée et si l'on veut une première estimation.
+
+Limites : une balle de tennis subit souvent des frottements de l'air non négligeables, et éventuellement un effet dû à la rotation. Le modèle du point matériel sans frottement devient alors insuffisant.
+
+\medskip
+
+\textbf{b) Mouvement d'un satellite.}
+
+Le modèle pertinent est celui d'un point matériel en interaction gravitationnelle avec la Terre, souvent supposée sphérique. Pour une première étude, on néglige les autres astres et les frottements résiduels.
+
+Limites : champ non parfaitement uniforme, perturbations d'autres corps, atmosphère résiduelle en orbite basse, non-sphéricité terrestre.
+
+\medskip
+
+\textbf{c) Charge d'un condensateur réel.}
+
+Le modèle simple est le circuit RC idéal : générateur idéal, résistance idéale, condensateur idéal. Cela permet d'obtenir une loi exponentielle.
+
+Limites : résistance interne du générateur, fuite éventuelle du condensateur, tolérance sur les composants, influence des appareils de mesure.
+
+\medskip
+
+\textbf{d) Propagation d'un son dans une salle.}
+
+On peut modéliser le son comme une onde mécanique se propageant dans l'air à célérité approximativement constante. Pour une première approche, on suppose une propagation directe.
+
+Limites : réflexions sur les murs, réverbération, absorption, interférences, dépendance à la fréquence.
+
+\medskip
+
+\textbf{e) Freinage d'un véhicule sur route mouillée.}
+
+Un premier modèle consiste à supposer une force de frottement constante maximale égale à $\mu mg$. Cela permet d'estimer une distance minimale de freinage.
+
+Limites : $\mu$ n'est pas réellement constant, le système de freinage n'agit pas instantanément, le transfert de charge modifie l'adhérence, les pneus et l'état de la route jouent un rôle majeur.
+
+\medskip
+
+\textbf{Conclusion générale.}
+
+Un bon modèle n'est pas ``vrai'' absolument : il est adapté à un objectif donné et à un niveau de précision donné. La physique consiste souvent à choisir le modèle le plus simple possible, mais pas plus simple que nécessaire.
+
+\fincorrige
+
+\end{document}
