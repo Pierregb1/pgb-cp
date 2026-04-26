@@ -2,8 +2,7 @@ name: Build LaTeX + JSON
 
 on:
   push:
-    paths:
-      - "uploads/**"
+
 
 jobs:
   build:
