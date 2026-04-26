@@ -1,30 +1,278 @@
-[
+
   {
     "title": "Nombre miroir",
-    "statement": "On prend un entier n, on inverse ses chiffres et on additionne les deux.",
-    "hint": "Écris n = 10a + b.",
-    "solution": "n + miroir(n) = 11(a + b), souvent un palindrome.",
-    "formula": "n = 10a + b"
+    "statement": "On prend un entier n, on inverse ses chiffres et on additionne les deux trouver des conditions pour qu'il soit un nombre palindrome",
+    "hint": "Écris n avec le système décimale décomposer.",
+    "solution": "n + miroir(n) = premier coeff*dernier coeff +... , si produit coeef > 10 alors pas palindrome sinon palimdrome ssi chaque produit de coeff <10 et si on répète l'opération?.",
+    "formula": "il y a une majorité de nombres qui à partir d'une certaine itération vont être palimdrome mais il existent certains qui ne le seront jamais cf : nombre de Lychrel"
   },
-  {
-    "title": "Somme des impairs",
-    "statement": "Montrer que 1 + 3 + 5 + ... + (2n-1) = n².",
-    "hint": "Regarde les carrés.",
-    "solution": "La somme des n premiers impairs donne un carré parfait.",
-    "formula": "\\sum_{k=1}^{n} (2k-1) = n^2"
-  },
-  {
-    "title": "Divisibilité",
-    "statement": "Montrer que n(n-1)(n+1) est divisible par 6.",
-    "hint": "Trois entiers consécutifs.",
-    "solution": "Produit divisible par 2 et 3.",
-    "formula": "n(n-1)(n+1)"
-  },
-  {
-    "title": "Exponentielle complexe",
-    "statement": "Montrer que e^{i\\pi} + 1 = 0.",
-    "hint": "Utilise Euler.",
-    "solution": "e^{i\\pi} = -1",
-    "formula": "e^{ix} = \\cos x + i\\sin x"
-  }
-]
+ {
+"title": "Somme des impairs",
+"statement": "On additionne les n premiers nombres impairs trouver une expression simple de cette somme",
+"hint": "Regarde les premiers cas et dessine des carrés",
+"solution": "1+3+5+...+(2n-1)=n^2 on peut le voir géométriquement ou par récurrence",
+"formula": "ce résultat est lié aux nombres carrés et à la construction géométrique des entiers"
+},
+
+{
+"title": "Divisibilité par 9",
+"statement": "Trouver une condition simple pour savoir si un nombre est divisible par 9 à partir de ses chiffres",
+"hint": "Écris le nombre en base 10",
+"solution": "comme 10≡1 mod 9 alors un nombre est congru à la somme de ses chiffres modulo 9",
+"formula": "n ≡ somme des chiffres mod 9 propriété utilisée en arithmétique modulaire"
+},
+
+{
+"title": "Carrés modulo 4",
+"statement": "Quels sont les restes possibles d’un carré modulo 4",
+"hint": "Tester les cas n pair et n impair",
+"solution": "n pair donne 0 mod 4 et n impair donne 1 mod 4 donc un carré est toujours 0 ou 1 mod 4",
+"formula": "n^2 ≡ 0 ou 1 mod 4 utilisé en théorie des nombres"
+},
+
+{
+"title": "Produit de trois entiers",
+"statement": "Montrer que le produit de trois entiers consécutifs est toujours divisible par 6",
+"hint": "Parmi trois entiers consécutifs regarde la divisibilité par 2 et 3",
+"solution": "un est pair donc divisible par 2 et un est multiple de 3 donc produit divisible par 6",
+"formula": "n(n+1)(n+2) divisible par 6 propriété classique en arithmétique"
+},
+
+{
+"title": "Forme des nombres premiers",
+"statement": "Montrer que tout nombre premier supérieur à 3 est de la forme 6k±1",
+"hint": "Regarder les restes modulo 6",
+"solution": "les autres formes sont divisibles par 2 ou 3 donc seuls 6k±1 peuvent être premiers",
+"formula": "p=6k±1 propriété fondamentale en théorie des nombres"
+},
+
+{
+"title": "Somme des cubes",
+"statement": "Trouver une formule pour la somme des cubes des n premiers entiers",
+"hint": "Comparer avec la somme des entiers",
+"solution": "1^3+2^3+...+n^3=(n(n+1)/2)^2",
+"formula": "identité remarquable liant somme des cubes et nombres triangulaires"
+},
+
+{
+"title": "Suite de Syracuse",
+"statement": "On définit une suite en divisant par 2 si pair et en faisant 3n+1 si impair que peut-on conjecturer",
+"hint": "Tester plusieurs valeurs",
+"solution": "toutes les suites semblent atteindre 1 mais cela n’est toujours pas démontré",
+"formula": "problème ouvert célèbre appelé conjecture de Collatz"
+},
+
+{
+"title": "Nombre triangulaire carré",
+"statement": "Existe-t-il des nombres qui sont à la fois triangulaires et carrés",
+"hint": "Résoudre une équation",
+"solution": "il faut résoudre n(n+1)/2=m^2 ce qui donne une équation de Pell",
+"formula": "équation de Pell classique en théorie des nombres"
+},
+
+{
+"title": "Parité des puissances",
+"statement": "Étudier la parité de n^k",
+"hint": "Regarder n pair ou impair",
+"solution": "si n est pair alors n^k est pair sinon il est impair",
+"formula": "structure de Z/2Z en arithmétique modulaire"
+},
+
+{
+"title": "PGCD consécutif",
+"statement": "Quel est le PGCD de deux entiers consécutifs",
+"hint": "Utiliser Bézout",
+"solution": "pgcd(n,n+1)=1 car ils n’ont pas de diviseur commun",
+"formula": "théorème de Bézout en arithmétique"
+},
+
+{
+"title": "Carré parfait",
+"statement": "Quand un nombre est-il un carré parfait modulo 3",
+"hint": "Tester les cas",
+"solution": "un carré vaut 0 ou 1 modulo 3",
+"formula": "n^2 ≡ 0 ou 1 mod 3 utilisé dans les preuves d’irrationalité"
+},
+
+{
+"title": "Nombre parfait",
+"statement": "Trouver un exemple de nombre égal à la somme de ses diviseurs propres",
+"hint": "Tester 6",
+"solution": "6=1+2+3 donc c’est un nombre parfait",
+"formula": "liens avec les nombres parfaits étudiés depuis Euclide"
+},
+
+{
+"title": "Exponentielle complexe",
+"statement": "Montrer que e^{iπ}+1=0",
+"hint": "Utiliser la formule d’Euler",
+"solution": "e^{iπ}=-1 donc somme nulle",
+"formula": "identité d’Euler reliant analyse et nombres complexes"
+},
+
+{
+"title": "Suite géométrique",
+"statement": "Étudier la limite de q^n",
+"hint": "Comparer |q| à 1",
+"solution": "tend vers 0 si |q|<1 diverge sinon",
+"formula": "analyse des suites géométriques"
+},
+{
+"title": "Suite de Conway (look-and-say)",
+"statement": "On part de 1 et on décrit les chiffres du terme précédent combien de temps la suite peut-elle croître",
+"hint": "1 → 11 → 21 → 1211 → ...",
+"solution": "la suite converge vers une structure stable et croît exponentiellement avec une constante universelle",
+"formula": "constante de Conway ≈ 1.303577 liée à la théorie des mots"
+},
+
+{
+"title": "Théorème des anniversaires",
+"statement": "Combien de personnes faut-il pour avoir une probabilité > 50% que deux aient le même anniversaire",
+"hint": "raisonner par complémentaire",
+"solution": "23 personnes suffisent ce qui est contre-intuitif",
+"formula": "problème de probabilité classique appelé birthday paradox"
+},
+
+{
+"title": "Nombre de partitions",
+"statement": "De combien de façons peut-on écrire un entier comme somme d’entiers",
+"hint": "tester pour n=4 ou 5",
+"solution": "croissance très rapide sans formule simple explicite",
+"formula": "fonction de partition étudiée par Hardy et Ramanujan"
+},
+
+{
+"title": "Constante de Kaprekar",
+"statement": "Prendre un nombre à 4 chiffres réarranger ses chiffres et soustraire combien d’itérations pour atteindre un point fixe",
+"hint": "tester avec 6174",
+"solution": "tous les nombres convergent vers 6174 en quelques étapes",
+"formula": "processus de Kaprekar fascinant en arithmétique"
+},
+
+{
+"title": "Suite de Golomb",
+"statement": "Suite où chaque entier apparaît un nombre de fois égal à sa valeur quelle est sa croissance",
+"hint": "regarder les premiers termes",
+"solution": "croissance lente et structure auto-référente",
+"formula": "suite définie par g(n)=1+g(n−g(g(n−1)))"
+},
+
+{
+"title": "Paradoxe de Banach-Tarski",
+"statement": "Peut-on découper une boule et la reconstituer en deux boules identiques",
+"hint": "utiliser des ensembles non mesurables",
+"solution": "oui en théorie mais nécessite l’axiome du choix",
+"formula": "résultat fondamental en théorie des ensembles"
+},
+
+{
+"title": "Problème du cavalier",
+"statement": "Peut-on parcourir un échiquier en passant une seule fois par chaque case avec un cavalier",
+"hint": "chercher un cycle hamiltonien",
+"solution": "oui il existe des solutions mais elles sont complexes",
+"formula": "problème classique en théorie des graphes"
+},
+
+{
+"title": "Constante de Feigenbaum",
+"statement": "Dans les bifurcations chaotiques existe-t-il une constante universelle",
+"hint": "regarder les systèmes dynamiques",
+"solution": "oui environ 4.669 et apparaît dans de nombreux systèmes",
+"formula": "constante universelle du chaos"
+},
+
+{
+"title": "Paradoxe de Monty Hall",
+"statement": "Faut-il changer de porte dans le jeu des 3 portes",
+"hint": "calculer les probabilités",
+"solution": "oui la probabilité passe de 1/3 à 2/3",
+"formula": "problème célèbre de probabilité conditionnelle"
+},
+
+{
+"title": "Suite de Recamán",
+"statement": "Suite définie par soustraction puis addition si négatif quelle est sa structure",
+"hint": "dessiner les arcs",
+"solution": "suite non périodique avec structure complexe",
+"formula": "suite a(n)=a(n−1)−n si possible sinon +n"
+},
+
+{
+"title": "Problème des ponts de Königsberg",
+"statement": "Peut-on traverser chaque pont une seule fois",
+"hint": "modéliser par un graphe",
+"solution": "non car trop de sommets de degré impair",
+"formula": "naissance de la théorie des graphes avec Euler"
+},
+
+{
+"title": "Nombre de Catalan",
+"statement": "Combien de façons d’associer des parenthèses correctement",
+"hint": "petits cas",
+"solution": "nombre donné par une formule combinatoire",
+"formula": "C_n=(2n)!/(n!(n+1)!)"
+},
+
+{
+"title": "Suite logistique",
+"statement": "Étudier la dynamique de x_{n+1}=rx_n(1−x_n)",
+"hint": "faire varier r",
+"solution": "comportement chaotique pour certaines valeurs",
+"formula": "modèle fondamental du chaos"
+},
+
+{
+"title": "Problème des 100 prisonniers",
+"statement": "100 prisonniers doivent trouver leur numéro stratégie optimale",
+"hint": "utiliser des cycles",
+"solution": "probabilité de survie ≈ 31%",
+"formula": "problème célèbre de stratégie et permutations"
+},
+
+{
+"title": "Constante de Champernowne",
+"statement": "Construire un nombre en concaténant les entiers est-il normal",
+"hint": "écrire 0.123456...",
+"solution": "oui il est normal en base 10",
+"formula": "nombre normal introduit par Champernowne"
+},
+
+{
+"title": "Suite de Collatz accélérée",
+"statement": "Peut-on simplifier la suite de Syracuse",
+"hint": "regrouper les étapes",
+"solution": "on peut étudier uniquement les impairs",
+"formula": "forme optimisée de la conjecture de Collatz"
+},
+
+{
+"title": "Problème du carré magique",
+"statement": "Remplir une grille avec des nombres pour avoir des sommes égales",
+"hint": "tester 3x3",
+"solution": "il existe une structure unique à symétrie près",
+"formula": "liens avec algèbre et combinatoire"
+},
+
+{
+"title": "Nombre de Graham",
+"statement": "Quel est le plus grand nombre utilisé en mathématiques",
+"hint": "penser aux puissances itérées",
+"solution": "nombre immense utilisé en combinatoire",
+"formula": "lié à la théorie de Ramsey"
+},
+
+{
+"title": "Paradoxe du menteur",
+"statement": "Cette phrase est fausse vrai ou faux",
+"hint": "raisonner logiquement",
+"solution": "contradiction logique",
+"formula": "problème fondamental en logique"
+},
+
+{
+"title": "Suite de Thue-Morse",
+"statement": "Suite binaire construite par inversion quelle est sa structure",
+"hint": "0→01→0110...",
+"solution": "suite sans répétition triviale",
+"formula": "liens avec combinatoire et fractales"
+}
