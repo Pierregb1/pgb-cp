@@ -1,6 +1,145 @@
 [
-{
-        "titre": "physique troisieme ds 0",
-        "fichier": "docs/physique_troisieme_ds_0.pdf"
-      }
+  {
+    "titre": "00",
+    "fichier": "docs/Physique terminale ds 00.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "0",
+    "fichier": "docs/physique 3eme ds 0.pdf",
+    "matiere": "physique",
+    "niveau": "3eme",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "ds 0",
+    "fichier": "docs/physique PREMIERE GENERALE DS 0.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "generale"
+  }
+,
+  {
+    "titre": "type bac prem coh spectro",
+    "fichier": "docs/physique premiere DS type bac prem coh spectro.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "physiqechimie première",
+    "fichier": "docs/physique premiere cours physiqechimie première.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "spectro cohesion (chimie) prem spé",
+    "fichier": "docs/physique premiere cours spectro cohesion (chimie) prem spé.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "prem phychim",
+    "fichier": "docs/physique premiere exo prem phychim.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "prem specto coh",
+    "fichier": "docs/physique premiere exo prem specto coh.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "physique elec term",
+    "fichier": "docs/physique terminale DM physique elec term.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "dm"
+  }
+,
+  {
+    "titre": "corr dm0 physique",
+    "fichier": "docs/physique terminale DS corr DM0 physique.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "phy elec term corrr",
+    "fichier": "docs/physique terminale DS phy elec term CORRR.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "elec term pgb",
+    "fichier": "docs/physique terminale cours elec term pgb.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "total",
+    "fichier": "docs/physique terminale cours total.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "polytech phy corr",
+    "fichier": "docs/physique terminale ds polytech phy corr.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "polytech phy",
+    "fichier": "docs/physique terminale ds polytech phy.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "physique chimie gradient",
+    "fichier": "docs/physique terminale exercice physique_chimie gradient.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "physique term",
+    "fichier": "docs/physique terminale exo physique term.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "type colle elec term",
+    "fichier": "docs/physique terminale exo type colle elec term.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
 ]
