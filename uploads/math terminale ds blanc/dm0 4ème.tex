@@ -1,0 +1,183 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{DM0 de mathématiques -- Niveau 4e}}
+\rhead{\textbf{Nom : \hspace{4cm}}}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\definecolor{bleufonce}{RGB}{25,60,120}
+\definecolor{bleuclair}{RGB}{235,242,255}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{bleufonce}}{}{0em}{}
+
+\tcbset{
+    colback=bleuclair,
+    colframe=bleufonce,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{DM0 de mathématiques}}\\[0.4em]
+    {\large Niveau 4e}\\[0.8em]
+    \rule{0.9\textwidth}{0.8pt}
+\end{center}
+
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}X|}
+\hline
+\textbf{Durée} & \textbf{Barème} & \textbf{Matériel autorisé} \\
+\hline
+1 h 30 & 20 points & Calculatrice autorisée \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\begin{tcolorbox}[title=Consignes générales]
+\begin{itemize}[leftmargin=1.2cm]
+    \item La rédaction compte dans tous les exercices.
+    \item Chaque réponse doit être justifiée.
+    \item Il faut écrire les calculs et faire des phrases de conclusion.
+    \item Tout résultat non évident doit pouvoir être expliqué clairement à l'oral.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{1em}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Exercice 1} & \textbf{Exercice 2} & \textbf{Exercice 3} & \textbf{Exercice 4} & \textbf{Total} \\
+\hline
+5 pts & 5 pts & 5 pts & 5 pts & 20 pts \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\section*{Exercice 1 -- Calcul littéral et raisonnement \hfill /5}
+
+On considère l'expression :
+\[
+A = 3x + 5 - (2x - 1)
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Réduire l'expression \(A\).
+    \item Calculer \(A\) pour \(x=4\).
+    \item Lina affirme que \(A = x+4\). A-t-elle raison ? Justifier.
+    \item Déterminer la valeur de \(x\) pour laquelle \(A=10\).
+\end{enumerate}
+
+\begin{tcolorbox}[title=Rappel utile]
+Réduire une expression signifie regrouper les termes de même nature.
+\end{tcolorbox}
+
+\textbf{Barème indicatif :} 1,5 pt ; 1 pt ; 1 pt ; 1,5 pt.
+
+\section*{Exercice 2 -- Démonstration avec des triangles \hfill /5}
+
+On considère un triangle \(ABC\) isocèle en \(A\), c'est-à-dire tel que :
+\[
+AB = AC.
+\]
+On note \(M\) le milieu du segment \([BC]\).
+
+On veut démontrer que la droite \((AM)\) partage le triangle en deux triangles égaux.
+
+\begin{tcolorbox}[title=Rappels utiles]
+\begin{itemize}[leftmargin=1.2cm]
+    \item Dire que \(M\) est le milieu de \([BC]\), c'est dire que \(BM = MC\).
+    \item Deux triangles sont égaux s'ils ont leurs trois côtés de même longueur.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Expliquer pourquoi \(BM = MC\).
+    \item Comparer les triangles \(ABM\) et \(ACM\).
+    \item Montrer que les triangles \(ABM\) et \(ACM\) sont égaux.
+    \item Écrire une phrase de conclusion expliquant ce que représente la droite \((AM)\) dans ce triangle.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 2 pts ; 1 pt.
+
+\section*{Exercice 3 -- Angles et schéma \hfill /5}
+
+\textbf{Consigne :} \emph{À l'aide d'un schéma, démontrer que la somme des angles d'un triangle est égale à \(180^\circ\).}
+
+On considère un triangle \(ABC\).
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Faire un schéma propre du triangle \(ABC\).
+    \item Par le point \(A\), tracer une droite parallèle à la droite \((BC)\).
+    \item En utilisant le schéma, expliquer pourquoi la somme des trois angles du triangle vaut \(180^\circ\).
+\end{enumerate}
+
+\begin{tcolorbox}[title=Attendus]
+On attend :
+\begin{itemize}[leftmargin=1.2cm]
+    \item un schéma clair ;
+    \item des angles nommés correctement ;
+    \item une explication rédigée avec le mot \textbf{parallèle} ;
+    \item une conclusion complète.
+\end{itemize}
+\end{tcolorbox}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 3 pts.
+
+\section*{Exercice 4 -- Théorème de Pythagore et raisonnement \hfill /5}
+
+On considère un triangle \(ABC\) rectangle en \(A\) tel que :
+\[
+AB = 6\ \text{cm} \qquad AC = 8\ \text{cm}
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Calculer \(AB^2\) et \(AC^2\).
+    \item En utilisant le théorème de Pythagore, calculer \(BC^2\).
+    \item En déduire la longueur \(BC\).
+    \item Sami affirme : \og Le triangle a pour côtés 6 cm, 8 cm et 10 cm \fg. A-t-il raison ? Justifier.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Rappel utile]
+Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés :
+\[
+BC^2 = AB^2 + AC^2
+\]
+si le triangle est rectangle en \(A\).
+\end{tcolorbox}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 2 pts ; 1 pt.
+
+\vfill
+
+\begin{center}
+\rule{0.8\textwidth}{0.6pt}\\[0.4em]
+\textit{Fin du sujet -- La qualité du raisonnement est prise en compte.}
+\end{center}
+
+\end{document}

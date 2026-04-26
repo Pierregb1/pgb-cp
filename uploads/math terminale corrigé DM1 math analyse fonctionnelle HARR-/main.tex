@@ -1,0 +1,1390 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Corrigé détaillé --- DM Analyse fonctionnelle}
+\fancyhead[R]{Terminale générale}
+\fancyfoot[C]{\thepage}
+
+\newtheorem*{remarque}{Remarque}
+\newtheorem*{idee}{Idée}
+\newtheorem*{rappel}{Rappel de cours}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ppf}{p_f}
+\newcommand{\iif}{i_f}
+\newcommand{\ppg}{p_g}
+\newcommand{\iig}{i_g}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé détaillé --- DM de mathématiques}}\\[0.4em]
+    {\large \textbf{Analyse fonctionnelle --- Niveau Terminale}}\\[0.8em]
+\end{center}
+
+\hrule
+\vspace{0.8em}
+
+
+
+\section*{Problème 1 --- Étude d'une fonction définie par ses propriétés locales}
+
+On considère une fonction \(f\) définie sur \(\R\), continue sur \(\R\), dérivable sur \(\R\), vérifiant :
+\[
+f(0)=0,
+\]
+\[
+\forall x\in\R,\ \forall h\in\R^\ast,\qquad
+\frac{f(x+h)-f(x)}{h}\ge 1-\frac{h^2}{1+h^2},
+\]
+\[
+\forall x\in\R,\qquad f(-x)=-f(x).
+\]
+
+On peut réécrire l'inégalité de la façon suivante :
+\[
+1-\frac{h^2}{1+h^2}=\frac{1+h^2-h^2}{1+h^2}=\frac{1}{1+h^2}.
+\]
+Ainsi, l'hypothèse essentielle devient
+\[
+\forall x\in\R,\ \forall h\neq 0,\qquad
+\frac{f(x+h)-f(x)}{h}\ge \frac{1}{1+h^2}.
+\]
+
+\subsection*{Partie A --- Premiers résultats}
+
+\textbf{1. Déterminer la parité de \(f'\), lorsqu'elle existe.}
+
+Comme \(f\) est impaire, on a pour tout \(x\in\R\),
+\[
+f(-x)=-f(x).
+\]
+
+\begin{rappel}
+D'après le cours, dérivée d'une composée.
+\end{rappel}
+
+On dérive l'identité \(f(-x)=-f(x)\). En utilisant la dérivation d'une composée, on obtient :
+\[
+-f'(-x)=-f'(x).
+\]
+Donc
+\[
+f'(-x)=f'(x).
+\]
+
+\[
+\boxed{f' \text{ est paire.}}
+\]
+
+\bigskip
+
+\textbf{2. Montrer que, pour tout réel \(x\), on a \(f'(x)\ge 1\).}
+
+Fixons un réel \(x\in\R\). Pour tout \(h\neq 0\), on a
+\[
+\frac{f(x+h)-f(x)}{h}\ge \frac{1}{1+h^2}.
+\]
+
+Or, comme \(f\) est dérivable en \(x\), lorsque \(h\to 0\),
+\[
+\frac{f(x+h)-f(x)}{h}\longrightarrow f'(x).
+\]
+Et d'autre part,
+\[
+\frac{1}{1+h^2}\longrightarrow 1.
+\]
+
+En passant à la limite dans l'inégalité, on obtient :
+\[
+f'(x)\ge 1.
+\]
+
+Comme \(x\) était quelconque,
+\[
+\boxed{\forall x\in\R,\quad f'(x)\ge 1.}
+\]
+
+\bigskip
+
+\textbf{3. En déduire les variations de \(f\) sur \(\R\).}
+
+\begin{rappel}
+Le cours affirme que si \(f'\ge 0\) sur un intervalle, alors \(f\) est croissante sur cet intervalle.
+Mieux encore, si \(f'>0\) sur un intervalle, alors \(f\) est strictement croissante.
+\end{rappel}
+
+Ici, pour tout \(x\in\R\), on a
+\[
+f'(x)\ge 1>0.
+\]
+Donc la dérivée est strictement positive sur \(\R\). Par conséquent,
+\[
+\boxed{f \text{ est strictement croissante sur } \R.}
+\]
+
+\bigskip
+
+\textbf{4. Montrer que, pour tout \(x\ge 0\), on a \(f(x)\ge x\).}
+
+Posons
+\[
+\varphi(x)=f(x)-x.
+\]
+La fonction \(\varphi\) est dérivable sur \(\R\), et
+\[
+\varphi'(x)=f'(x)-1.
+\]
+Or, d'après la question précédente,
+\[
+f'(x)\ge 1,
+\]
+donc
+\[
+\varphi'(x)\ge 0.
+\]
+Ainsi, \(\varphi\) est croissante sur \(\R\).
+
+Comme
+\[
+\varphi(0)=f(0)-0=0,
+\]
+on déduit que pour tout \(x\ge 0\),
+\[
+\varphi(x)\ge \varphi(0)=0.
+\]
+Autrement dit,
+\[
+f(x)-x\ge 0,
+\]
+soit
+\[
+\boxed{\forall x\ge 0,\quad f(x)\ge x.}
+\]
+
+\bigskip
+
+\textbf{5. Que peut-on en déduire pour \(x\le 0\) ?}
+
+Soit \(x\le 0\). Alors \(-x\ge 0\). D'après la question 4,
+\[
+f(-x)\ge -x.
+\]
+Or \(f\) est impaire, donc
+\[
+f(-x)=-f(x).
+\]
+Ainsi,
+\[
+-f(x)\ge -x.
+\]
+En multipliant par \(-1\), ce qui renverse le sens de l'inégalité, on obtient :
+\[
+f(x)\le x.
+\]
+
+Donc
+\[
+\boxed{\forall x\le 0,\quad f(x)\le x.}
+\]
+
+\bigskip
+
+\subsection*{Partie B --- Encadrement, convexité intuitive, comparaison de taux de variation}
+
+On suppose dans cette partie que, pour tous réels \(x<y<z\),
+\[
+\frac{f(y)-f(x)}{y-x}\le \frac{f(z)-f(y)}{z-y}.
+\]
+
+\textbf{1. Montrer que pour tous réels \(a<b\),}
+\[
+f\!\left(\frac{a+b}{2}\right)\le \frac{f(a)+f(b)}{2}.
+\]
+
+Posons
+\[
+m=\frac{a+b}{2}.
+\]
+Comme \(a<b\), on a bien
+\[
+a<m<b.
+\]
+On peut donc appliquer l'hypothèse avec \(x=a\), \(y=m\), \(z=b\), ce qui donne :
+\[
+\frac{f(m)-f(a)}{m-a}\le \frac{f(b)-f(m)}{b-m}.
+\]
+
+Or
+\[
+m-a=\frac{a+b}{2}-a=\frac{b-a}{2},
+\qquad
+b-m=b-\frac{a+b}{2}=\frac{b-a}{2}.
+\]
+Les dénominateurs sont donc égaux et strictement positifs. On en déduit :
+\[
+f(m)-f(a)\le f(b)-f(m).
+\]
+Donc
+\[
+2f(m)\le f(a)+f(b).
+\]
+Finalement,
+\[
+\boxed{f\!\left(\frac{a+b}{2}\right)\le \frac{f(a)+f(b)}{2}.}
+\]
+
+\bigskip
+
+\textbf{2. Montrer que pour tout réel \(x\),}
+\[
+f(x)+f(-x)\ge 2f(0).
+\]
+
+On applique la question précédente avec \(a=-x\) et \(b=x\). On obtient :
+\[
+f\!\left(\frac{-x+x}{2}\right)\le \frac{f(-x)+f(x)}{2}.
+\]
+Comme
+\[
+\frac{-x+x}{2}=0,
+\]
+cela donne
+\[
+f(0)\le \frac{f(-x)+f(x)}{2}.
+\]
+En multipliant par \(2\),
+\[
+\boxed{f(x)+f(-x)\ge 2f(0).}
+\]
+
+\bigskip
+
+\textbf{3. Confronter ce résultat à la propriété de parité de \(f\).}
+
+Comme \(f\) est impaire,
+\[
+f(-x)=-f(x).
+\]
+Donc, pour tout \(x\in\R\),
+\[
+f(x)+f(-x)=f(x)-f(x)=0.
+\]
+L'inégalité précédente devient alors
+\[
+0\ge 2f(0).
+\]
+Ainsi,
+\[
+\boxed{f(0)\le 0.}
+\]
+
+\bigskip
+
+\textbf{4. Que peut-on conclure sur \(f(0)\) ? Ce résultat était-il déjà connu ?}
+
+On vient d'obtenir
+\[
+f(0)\le 0.
+\]
+Mais, dans les hypothèses de départ, on savait déjà que
+\[
+f(0)=0.
+\]
+Donc le résultat est compatible avec les hypothèses, mais il n'apporte pas d'information nouvelle.
+
+\[
+\boxed{f(0)=0,\ \text{et ce résultat était déjà donné dans l'énoncé.}}
+\]
+
+\bigskip
+
+\subsection*{Partie D --- Comportement aux bornes et limites}
+
+On conserve toutes les hypothèses des parties précédentes.
+
+\textbf{1. Montrer que}
+\[
+\lim_{x\to +\infty} f(x)=+\infty.
+\]
+
+D'après la partie A, pour tout \(x\ge 0\),
+\[
+f(x)\ge x.
+\]
+Or
+\[
+x\longrightarrow +\infty \quad \text{quand } x\to +\infty.
+\]
+Par comparaison, on obtient
+\[
+f(x)\longrightarrow +\infty.
+\]
+
+Ainsi,
+\[
+\boxed{\lim_{x\to +\infty} f(x)=+\infty.}
+\]
+
+\bigskip
+
+\textbf{2. Montrer aussi que}
+\[
+\lim_{x\to -\infty} f(x)=-\infty.
+\]
+
+Soit \(x\to -\infty\). Alors \(-x\to +\infty\). D'après la question précédente,
+\[
+f(-x)\to +\infty.
+\]
+Mais \(f\) est impaire, donc
+\[
+f(x)=-f(-x).
+\]
+Ainsi,
+\[
+f(x)\to -\infty.
+\]
+
+Donc
+\[
+\boxed{\lim_{x\to -\infty} f(x)=-\infty.}
+\]
+
+\bigskip
+
+On pose maintenant
+\[
+\varphi(x)=f(x)-x.
+\]
+
+\textbf{3. Étudier la parité de \(\varphi\).}
+
+Pour tout \(x\in\R\),
+\[
+\varphi(-x)=f(-x)-(-x)=f(-x)+x.
+\]
+Comme \(f\) est impaire,
+\[
+f(-x)=-f(x),
+\]
+donc
+\[
+\varphi(-x)=-f(x)+x=-(f(x)-x)=-\varphi(x).
+\]
+
+Ainsi,
+\[
+\boxed{\varphi \text{ est impaire.}}
+\]
+
+\bigskip
+
+\section*{Problème 2 --- Décomposition paire/impaire et structure de l'ensemble des fonctions continues}
+
+On note \(\mathcal C(\R)\) l'ensemble des fonctions continues de \(\R\) dans \(\R\).
+
+Pour toute fonction \(f\in \mathcal C(\R)\), on définit
+\[
+p_f(x)=\frac{f(x)+f(-x)}{2},
+\qquad
+i_f(x)=\frac{f(x)-f(-x)}{2}.
+\]
+
+\subsection*{Partie A --- Mise en place}
+
+\textbf{1. Montrer que \(p_f\) et \(i_f\) appartiennent à \(\mathcal C(\R)\).}
+
+Comme \(f\) est continue sur \(\R\), la fonction \(x\mapsto f(-x)\) est également continue sur \(\R\), car elle est obtenue par composition de la fonction continue \(f\) avec la fonction \(x\mapsto -x\), elle-même continue.
+
+Ainsi, les fonctions
+\[
+x\mapsto f(x)+f(-x)
+\quad \text{et} \quad
+x\mapsto f(x)-f(-x)
+\]
+sont continues sur \(\R\), en tant que somme et différence de fonctions continues.
+
+En divisant par \(2\), on en déduit que \(p_f\) et \(i_f\) sont continues sur \(\R\).
+
+\[
+\boxed{p_f\in \mathcal C(\R)\quad \text{et}\quad i_f\in \mathcal C(\R).}
+\]
+
+\bigskip
+
+\textbf{2. Montrer que \(p_f\) est paire et que \(i_f\) est impaire.}
+
+Calculons \(p_f(-x)\) :
+\[
+p_f(-x)=\frac{f(-x)+f(-(-x))}{2}
+=\frac{f(-x)+f(x)}{2}
+=\frac{f(x)+f(-x)}{2}
+=p_f(x).
+\]
+Donc \(p_f\) est paire.
+
+Calculons ensuite \(i_f(-x)\) :
+\[
+i_f(-x)=\frac{f(-x)-f(-(-x))}{2}
+=\frac{f(-x)-f(x)}{2}
+=-\frac{f(x)-f(-x)}{2}
+=-i_f(x).
+\]
+Donc \(i_f\) est impaire.
+
+\[
+\boxed{p_f \text{ est paire et } i_f \text{ est impaire.}}
+\]
+
+\bigskip
+
+\textbf{3. Montrer que}
+\[
+f=p_f+i_f.
+\]
+
+Pour tout \(x\in\R\),
+\[
+p_f(x)+i_f(x)
+=\frac{f(x)+f(-x)}{2}+\frac{f(x)-f(-x)}{2}.
+\]
+En regroupant,
+\[
+p_f(x)+i_f(x)=\frac{2f(x)}{2}=f(x).
+\]
+Ainsi, pour tout \(x\),
+\[
+f(x)=p_f(x)+i_f(x).
+\]
+
+Donc
+\[
+\boxed{f=p_f+i_f.}
+\]
+
+\bigskip
+
+\subsection*{Partie B --- Unicité de la décomposition}
+
+\textbf{1. Soient \(u\) une fonction paire et \(v\) une fonction impaire telles que \(f=u+v\). Montrer que \(u=p_f\) et \(v=i_f\).}
+
+On suppose que
+\[
+f=u+v,
+\]
+avec \(u\) paire et \(v\) impaire.
+
+Alors, pour tout \(x\in\R\),
+\[
+f(x)=u(x)+v(x).
+\]
+De plus,
+\[
+f(-x)=u(-x)+v(-x).
+\]
+Comme \(u\) est paire et \(v\) impaire,
+\[
+u(-x)=u(x),\qquad v(-x)=-v(x).
+\]
+Ainsi,
+\[
+f(-x)=u(x)-v(x).
+\]
+
+Additionnons les deux égalités :
+\[
+f(x)+f(-x)=2u(x).
+\]
+Donc
+\[
+u(x)=\frac{f(x)+f(-x)}{2}=p_f(x).
+\]
+
+Soustrayons maintenant :
+\[
+f(x)-f(-x)=2v(x).
+\]
+Donc
+\[
+v(x)=\frac{f(x)-f(-x)}{2}=i_f(x).
+\]
+
+Ainsi,
+\[
+\boxed{u=p_f \quad \text{et} \quad v=i_f.}
+\]
+
+\bigskip
+
+\textbf{2. En déduire que toute fonction continue sur \(\R\) s'écrit d'une et une seule manière comme somme d'une fonction paire et d'une fonction impaire.}
+
+D'après la partie A, toute fonction \(f\in \mathcal C(\R)\) s'écrit
+\[
+f=p_f+i_f,
+\]
+avec \(p_f\) paire et \(i_f\) impaire.
+
+Cela prouve \textbf{l'existence} d'une telle décomposition.
+
+La question précédente montre que si \(f=u+v\), avec \(u\) paire et \(v\) impaire, alors nécessairement
+\[
+u=p_f,\qquad v=i_f.
+\]
+Il n'y a donc pas deux décompositions différentes possibles.
+
+On a donc montré à la fois l'existence et l'unicité :
+\[
+\boxed{\text{Toute fonction continue sur }\R\text{ s'écrit d'une et une seule manière comme somme d'une fonction paire et d'une fonction impaire.}}
+\]
+
+\bigskip
+
+\textbf{3. Montrer qu'une fonction à la fois paire et impaire est nécessairement nulle.}
+
+Soit \(h\) une fonction à la fois paire et impaire. Alors, pour tout \(x\in\R\),
+\[
+h(-x)=h(x)
+\quad \text{et} \quad
+h(-x)=-h(x).
+\]
+En identifiant les deux expressions,
+\[
+h(x)=-h(x).
+\]
+Donc
+\[
+2h(x)=0,
+\]
+puis
+\[
+h(x)=0.
+\]
+Comme cela vaut pour tout \(x\in\R\), la fonction \(h\) est la fonction nulle.
+
+\[
+\boxed{\text{Une fonction à la fois paire et impaire est nécessairement nulle.}}
+\]
+
+\bigskip
+
+\textbf{4. Expliquer en quoi ce résultat est lié à l'unicité précédente.}
+
+Supposons qu'une fonction \(f\) admette deux décompositions :
+\[
+f=u_1+v_1=u_2+v_2,
+\]
+où \(u_1,u_2\) sont paires et \(v_1,v_2\) impaires.
+
+Alors
+\[
+u_1-u_2=v_2-v_1.
+\]
+Le membre de gauche est une fonction paire, car différence de fonctions paires.
+Le membre de droite est une fonction impaire, car différence de fonctions impaires.
+
+Ainsi, la fonction
+\[
+u_1-u_2
+\]
+est à la fois paire et impaire. D'après la question précédente, elle est donc nulle. Ainsi
+\[
+u_1-u_2=0 \quad \Longrightarrow \quad u_1=u_2.
+\]
+Puis
+\[
+v_1=v_2.
+\]
+
+C'est exactement ce qui prouve l'unicité de la décomposition.
+
+\bigskip
+
+\subsection*{Partie C --- Applications analytiques}
+
+On considère désormais une fonction \(f\) continue sur \(\R\).
+
+\textbf{1. Montrer que si \(f\) est dérivable en \(0\) et paire, alors \(f'(0)=0\).}
+
+Comme \(f\) est paire,
+\[
+f(-x)=f(x)
+\qquad \text{pour tout } x.
+\]
+En particulier, pour tout \(h\),
+\[
+f(-h)=f(h).
+\]
+
+Considérons le taux d'accroissement en \(0\) :
+\[
+\frac{f(h)-f(0)}{h}.
+\]
+En remplaçant \(h\) par \(-h\), on obtient
+\[
+\frac{f(-h)-f(0)}{-h}=\frac{f(h)-f(0)}{-h}=-\frac{f(h)-f(0)}{h}.
+\]
+
+Comme \(f\) est dérivable en \(0\), lorsque \(h\to 0\), les deux expressions convergent vers \(f'(0)\).
+On obtient donc
+\[
+f'(0)=-f'(0).
+\]
+Ainsi,
+\[
+2f'(0)=0,
+\]
+d'où
+\[
+\boxed{f'(0)=0.}
+\]
+
+\bigskip
+
+\textbf{2. Montrer que si \(f\) est dérivable et impaire, alors \(f'\) est paire.}
+
+Si \(f\) est impaire, alors
+\[
+f(-x)=-f(x).
+\]
+En dérivant cette relation, on obtient :
+\[
+-f'(-x)=-f'(x).
+\]
+Donc
+\[
+f'(-x)=f'(x).
+\]
+Ainsi,
+\[
+\boxed{f' \text{ est paire.}}
+\]
+
+\bigskip
+
+\textbf{3. Montrer que si \(f\) est dérivable et paire, alors \(f'\) est impaire.}
+
+Si \(f\) est paire, alors
+\[
+f(-x)=f(x).
+\]
+En dérivant,
+\[
+-f'(-x)=f'(x).
+\]
+Donc
+\[
+f'(-x)=-f'(x).
+\]
+Ainsi,
+\[
+\boxed{f' \text{ est impaire.}}
+\]
+
+\bigskip
+
+\textbf{4. Soit \(f\) dérivable sur \(\R\). Exprimer \(p_f'\) et \(i_f'\) à l'aide de \(f'\).}
+
+On rappelle que
+\[
+p_f(x)=\frac{f(x)+f(-x)}{2},
+\qquad
+i_f(x)=\frac{f(x)-f(-x)}{2}.
+\]
+
+On dérive :
+\[
+p_f'(x)=\frac{f'(x)-f'(-x)}{2}.
+\]
+En effet, la dérivée de \(f(-x)\) vaut \(-f'(-x)\).
+
+De même,
+\[
+i_f'(x)=\frac{f'(x)+f'(-x)}{2}.
+\]
+
+Autrement dit,
+\[
+\boxed{p_f'(x)=\frac{f'(x)-f'(-x)}{2}=i_{f'}(x)}
+\]
+et
+\[
+\boxed{i_f'(x)=\frac{f'(x)+f'(-x)}{2}=p_{f'}(x).}
+\]
+
+\bigskip
+
+\textbf{5. On suppose maintenant \(f\) deux fois dérivable. Discuter la parité de \(f''\) selon celle de \(f\).}
+
+\begin{itemize}[label=\(\bullet\)]
+    \item Si \(f\) est paire, alors d'après la question 3, \(f'\) est impaire. En dérivant encore, la dérivée d'une fonction impaire est paire. Donc \(f''\) est paire.
+    
+    \item Si \(f\) est impaire, alors d'après la question 2, \(f'\) est paire. En dérivant encore, la dérivée d'une fonction paire est impaire. Donc \(f''\) est impaire.
+\end{itemize}
+
+On peut résumer par
+\[
+\boxed{
+\begin{cases}
+f \text{ paire } \Longrightarrow f'' \text{ paire},\\[0.3em]
+f \text{ impaire } \Longrightarrow f'' \text{ impaire}.
+\end{cases}}
+\]
+
+\bigskip
+
+\subsection*{Partie D --- Application directe}
+
+On considère la fonction \(g\) définie sur \(\R\) par
+\[
+g(x)=x^3-3x^2+4x.
+\]
+
+\textbf{1. Calculer \(g(-x)\). La fonction \(g\) est-elle paire, impaire, ou ni paire ni impaire ?}
+
+On calcule :
+\[
+g(-x)=(-x)^3-3(-x)^2+4(-x)=-x^3-3x^2-4x.
+\]
+
+Comparons avec \(g(x)\) et \(-g(x)\) :
+\[
+g(x)=x^3-3x^2+4x,
+\]
+\[
+-g(x)=-x^3+3x^2-4x.
+\]
+
+On voit que
+\[
+g(-x)\neq g(x)
+\quad \text{et} \quad
+g(-x)\neq -g(x).
+\]
+Donc
+\[
+\boxed{g \text{ n'est ni paire ni impaire.}}
+\]
+
+\bigskip
+
+\textbf{2. Déterminer la partie paire \(p_g\) et la partie impaire \(i_g\) de \(g\).}
+
+Par définition,
+\[
+p_g(x)=\frac{g(x)+g(-x)}{2},
+\qquad
+i_g(x)=\frac{g(x)-g(-x)}{2}.
+\]
+
+Calculons d'abord \(p_g\) :
+\[
+g(x)+g(-x)
+=(x^3-3x^2+4x)+(-x^3-3x^2-4x)
+=-6x^2.
+\]
+Donc
+\[
+p_g(x)=\frac{-6x^2}{2}=-3x^2.
+\]
+
+Calculons ensuite \(i_g\) :
+\[
+g(x)-g(-x)
+=(x^3-3x^2+4x)-(-x^3-3x^2-4x)
+=2x^3+8x.
+\]
+Donc
+\[
+i_g(x)=\frac{2x^3+8x}{2}=x^3+4x.
+\]
+
+Ainsi,
+\[
+\boxed{p_g(x)=-3x^2,\qquad i_g(x)=x^3+4x.}
+\]
+
+\bigskip
+
+\textbf{3. Vérifier que \(g=p_g+i_g\).}
+
+On additionne :
+\[
+p_g(x)+i_g(x)=-3x^2+(x^3+4x)=x^3-3x^2+4x=g(x).
+\]
+Donc
+\[
+\boxed{g=p_g+i_g.}
+\]
+
+\bigskip
+
+\textbf{4. Montrer que \(p_g\) est paire et que \(i_g\) est impaire.}
+
+On a
+\[
+p_g(x)=-3x^2.
+\]
+Alors
+\[
+p_g(-x)=-3(-x)^2=-3x^2=p_g(x).
+\]
+Donc \(p_g\) est paire.
+
+D'autre part,
+\[
+i_g(x)=x^3+4x.
+\]
+Alors
+\[
+i_g(-x)=(-x)^3+4(-x)=-x^3-4x=-(x^3+4x)=-i_g(x).
+\]
+Donc \(i_g\) est impaire.
+
+Ainsi,
+\[
+\boxed{p_g \text{ est paire et } i_g \text{ est impaire.}}
+\]
+
+\bigskip
+
+\textbf{5. Calculer \(g'(x)\).}
+
+Comme
+\[
+g(x)=x^3-3x^2+4x,
+\]
+on dérive terme à terme :
+\[
+g'(x)=3x^2-6x+4.
+\]
+
+\[
+\boxed{g'(x)=3x^2-6x+4.}
+\]
+
+\bigskip
+
+\textbf{6. Étudier le signe de \(g'(x)\).}
+
+On considère le trinôme
+\[
+g'(x)=3x^2-6x+4.
+\]
+Calculons son discriminant :
+\[
+\Delta=(-6)^2-4\times 3\times 4=36-48=-12.
+\]
+On a donc
+\[
+\Delta<0.
+\]
+Comme le coefficient dominant vaut \(3>0\), le trinôme est strictement positif sur \(\R\).
+
+Ainsi,
+\[
+\boxed{\forall x\in\R,\quad g'(x)>0.}
+\]
+
+\bigskip
+
+\textbf{7. En déduire les variations de \(g\) sur \(\R\).}
+
+Comme \(g'(x)>0\) pour tout \(x\in\R\), la fonction \(g\) est strictement croissante sur \(\R\).
+
+\[
+\boxed{g \text{ est strictement croissante sur } \R.}
+\]
+
+\bigskip
+
+\textbf{8. Dresser le tableau de variation de \(g\).}
+
+Comme \(g\) est un polynôme de degré \(3\) dont le coefficient dominant est positif, on sait que
+\[
+\lim_{x\to -\infty} g(x)=-\infty,
+\qquad
+\lim_{x\to +\infty} g(x)=+\infty.
+\]
+
+Et comme \(g\) est strictement croissante sur \(\R\), son tableau de variation est :
+
+\[
+\begin{array}{c|ccc}
+x & -\infty & & +\infty\\
+\hline
+g'(x) & & + & \\
+\hline
+g(x) & -\infty & \nearrow & +\infty
+\end{array}
+\]
+
+\bigskip
+
+\textbf{9. Déterminer les extremums éventuels de \(g\).}
+
+Une fonction strictement croissante sur \(\R\) n'admet ni maximum ni minimum sur \(\R\).
+
+Donc
+\[
+\boxed{g \text{ n'admet aucun extremum sur } \R.}
+\]
+
+\bigskip
+
+\textbf{10. Déterminer les limites de \(g\) en \(+\infty\) et en \(-\infty\).}
+
+Le terme dominant de \(g(x)\) est \(x^3\). Ainsi,
+\[
+\lim_{x\to +\infty} g(x)=+\infty,
+\qquad
+\lim_{x\to -\infty} g(x)=-\infty.
+\]
+
+\[
+\boxed{\lim_{x\to +\infty} g(x)=+\infty \quad \text{et} \quad \lim_{x\to -\infty} g(x)=-\infty.}
+\]
+
+\bigskip
+
+\textbf{11. Calculer \(p_g'(x)\) et \(i_g'(x)\).}
+
+Comme
+\[
+p_g(x)=-3x^2,
+\qquad
+i_g(x)=x^3+4x,
+\]
+on obtient
+\[
+p_g'(x)=-6x,
+\qquad
+i_g'(x)=3x^2+4.
+\]
+
+Ainsi,
+\[
+\boxed{p_g'(x)=-6x,\qquad i_g'(x)=3x^2+4.}
+\]
+
+\bigskip
+
+\textbf{12. Étudier les variations de \(p_g\) sur \([0,+\infty[\).}
+
+Sur \([0,+\infty[\), on a
+\[
+p_g'(x)=-6x\le 0.
+\]
+Donc \(p_g\) est décroissante sur \([0,+\infty[\).
+
+\[
+\boxed{p_g \text{ est décroissante sur } [0,+\infty[.}
+\]
+
+\bigskip
+
+\textbf{13. Étudier les variations de \(i_g\) sur \(\R\).}
+
+Pour tout \(x\in\R\),
+\[
+i_g'(x)=3x^2+4>0.
+\]
+Donc \(i_g\) est strictement croissante sur \(\R\).
+
+\[
+\boxed{i_g \text{ est strictement croissante sur } \R.}
+\]
+
+\bigskip
+
+\textbf{14. Comparer l’allure des courbes représentatives de $g$, $p_g$ et $i_g$.}
+
+On rappelle que
+\[
+g(x)=x^3-3x^2+4x,\qquad p_g(x)=-3x^2,\qquad i_g(x)=x^3+4x.
+\]
+
+On commence par comparer les fonctions deux à deux.
+
+\medskip
+
+\textbf{Comparaison de $g$ et $p_g$.}  
+On a
+\[
+g(x)-p_g(x)=\bigl(x^3-3x^2+4x\bigr)-(-3x^2)=x^3+4x=i_g(x).
+\]
+Or
+\[
+i_g(x)=x(x^2+4).
+\]
+Comme $x^2+4>0$ pour tout réel $x$, le signe de $i_g(x)$ est celui de $x$.
+
+Donc :
+\[
+\begin{cases}
+x<0 \Rightarrow g(x)<p_g(x),\\
+x=0 \Rightarrow g(x)=p_g(x),\\
+x>0 \Rightarrow g(x)>p_g(x).
+\end{cases}
+\]
+
+\medskip
+
+\textbf{Comparaison de $g$ et $i_g$.}  
+On a
+\[
+g(x)-i_g(x)=\bigl(x^3-3x^2+4x\bigr)-(x^3+4x)=-3x^2.
+\]
+Ainsi, pour tout $x\in\mathbb{R}$,
+\[
+g(x)-i_g(x)\le 0,
+\]
+avec égalité seulement pour $x=0$.
+
+Donc :
+\[
+\begin{cases}
+x\neq 0 \Rightarrow g(x)<i_g(x),\\
+x=0 \Rightarrow g(x)=i_g(x).
+\end{cases}
+\]
+
+\medskip
+
+\textbf{Comparaison de $i_g$ et $p_g$.}  
+On a
+\[
+i_g(x)-p_g(x)=\bigl(x^3+4x\bigr)-(-3x^2)=x^3+3x^2+4x=g(x).
+\]
+Or on a montré plus haut que $g$ est strictement croissante sur $\mathbb{R}$ et que
+\[
+g(0)=0.
+\]
+On en déduit :
+\[
+\begin{cases}
+x<0 \Rightarrow g(x)<0 \Rightarrow i_g(x)<p_g(x),\\
+x=0 \Rightarrow g(x)=0 \Rightarrow i_g(x)=p_g(x),\\
+x>0 \Rightarrow g(x)>0 \Rightarrow i_g(x)>p_g(x).
+\end{cases}
+\]
+
+\medskip
+
+\textbf{Conclusion graphique.}  
+Les trois courbes passent par l’origine $O(0,0)$.
+
+\begin{itemize}
+    \item Sur $]-\infty,0[$ :
+    \[
+    g(x)<i_g(x)<p_g(x).
+    \]
+    Donc la courbe de $g$ est en dessous de celle de $i_g$, elle-même en dessous de celle de $p_g$.
+
+    \item En $x=0$ :
+    \[
+    g(0)=i_g(0)=p_g(0)=0.
+    \]
+    Les trois courbes se coupent à l’origine.
+
+    \item Sur $]0,+\infty[$ :
+    \[
+    p_g(x)<g(x)<i_g(x).
+    \]
+    Donc la courbe de $p_g$ est en dessous de celle de $g$, elle-même en dessous de celle de $i_g$.
+\end{itemize}
+
+Ainsi, la position relative des trois courbes est complètement déterminée par :
+\[
+\boxed{
+\begin{cases}
+x<0 : & g(x)<i_g(x)<p_g(x),\\[0.2cm]
+x=0 : & g(x)=i_g(x)=p_g(x),\\[0.2cm]
+x>0 : & p_g(x)<g(x)<i_g(x).
+\end{cases}}
+\]
+
+\bigskip
+
+\subsection*{Partie E --- Étude d'une condition fonctionnelle}
+
+On cherche les fonctions continues \(f\) sur \(\R\) telles que, pour tout réel \(x\),
+\[
+f(x)+f(-x)=2x^2.
+\]
+
+\textbf{1. Montrer qu'une telle fonction ne peut pas être impaire.}
+
+Si \(f\) était impaire, alors pour tout \(x\),
+\[
+f(-x)=-f(x).
+\]
+Ainsi,
+\[
+f(x)+f(-x)=f(x)-f(x)=0.
+\]
+Mais l'équation imposée par l'énoncé est
+\[
+f(x)+f(-x)=2x^2.
+\]
+On obtiendrait donc
+\[
+0=2x^2 \quad \text{pour tout } x,
+\]
+ce qui est impossible dès que \(x\neq 0\).
+
+Donc
+\[
+\boxed{\text{une telle fonction ne peut pas être impaire.}}
+\]
+
+\bigskip
+
+\textbf{2. Déterminer sa partie paire.}
+
+Par définition,
+\[
+p_f(x)=\frac{f(x)+f(-x)}{2}.
+\]
+Or, l'énoncé donne précisément
+\[
+f(x)+f(-x)=2x^2.
+\]
+Donc
+\[
+p_f(x)=\frac{2x^2}{2}=x^2.
+\]
+
+Ainsi,
+\[
+\boxed{p_f(x)=x^2.}
+\]
+
+\bigskip
+
+\textbf{3. Montrer que l'ensemble des solutions peut s'écrire à l'aide d'une fonction impaire arbitraire.}
+
+Toute fonction continue \(f\) s'écrit
+\[
+f=p_f+i_f.
+\]
+Comme on vient de montrer que
+\[
+p_f(x)=x^2,
+\]
+on obtient
+\[
+f(x)=x^2+i_f(x).
+\]
+Or \(i_f\) est une fonction impaire continue.
+
+Réciproquement, si \(u\) est une fonction impaire continue et si l'on pose
+\[
+f(x)=x^2+u(x),
+\]
+alors
+\[
+f(-x)=(-x)^2+u(-x)=x^2-u(x),
+\]
+d'où
+\[
+f(x)+f(-x)=x^2+u(x)+x^2-u(x)=2x^2.
+\]
+La condition est donc bien satisfaite.
+
+Ainsi, l'ensemble des solutions est :
+\[
+\boxed{f(x)=x^2+u(x),\quad \text{où } u \text{ est une fonction continue impaire arbitraire.}}
+\]
+
+\bigskip
+
+\textbf{4. Donner trois exemples distincts de telles fonctions.}
+
+Il suffit de choisir trois fonctions impaires continues \(u\).
+
+\begin{itemize}[label=\(\bullet\)]
+    \item Si \(u(x)=0\), alors \(f_1(x)=x^2\).
+    \item Si \(u(x)=x\), alors \(f_2(x)=x^2+x\).
+    \item Si \(u(x)=x^3\), alors \(f_3(x)=x^2+x^3\).
+\end{itemize}
+
+Donc, par exemple,
+\[
+\boxed{f_1(x)=x^2,\qquad f_2(x)=x^2+x,\qquad f_3(x)=x^2+x^3.}
+\]
+
+\bigskip
+
+\textbf{5. Parmi elles, déterminer celles qui sont dérivables sur \(\R\).}
+
+Une solution s'écrit
+\[
+f(x)=x^2+u(x),
+\]
+où \(u\) est impaire continue.
+
+La fonction \(x\mapsto x^2\) est dérivable sur \(\R\). Ainsi, \(f\) est dérivable sur \(\R\) si et seulement si \(u\) est dérivable sur \(\R\).
+
+Donc les solutions dérivables sont exactement les fonctions de la forme
+\[
+\boxed{f(x)=x^2+u(x),\quad \text{où } u \text{ est impaire et dérivable sur } \R.}
+\]
+
+\bigskip
+
+\textbf{6. Parmi elles, déterminer celles qui sont monotones sur \([0,+\infty[\).}
+
+Une solution s'écrit
+\[
+f(x)=x^2+u(x),
+\]
+où \(u\) est une fonction impaire continue.
+
+Il n'existe pas, sous cette seule forme générale, de caractérisation simple de toutes les solutions monotones sur \([0,+\infty[\), car cela dépend du choix de \(u\).
+
+On peut toutefois préciser :
+\begin{itemize}[label=\(\bullet\)]
+    \item certaines sont monotones, par exemple \(f(x)=x^2\), qui est croissante sur \([0,+\infty[\) ;
+    \item d'autres ne le sont pas, par exemple \(f(x)=x^2-x\), car
+    \[
+    f'(x)=2x-1,
+    \]
+    qui est négatif sur \(\left[0,\frac12\right[\) et positif sur \(\left]\frac12,+\infty\right[\).
+\end{itemize}
+
+Donc on peut dire que les solutions monotones sont celles pour lesquelles la fonction
+\[
+x\longmapsto x^2+u(x)
+\]
+est monotone sur \([0,+\infty[\). Si \(u\) est dérivable, cela revient à étudier le signe de
+\[
+f'(x)=2x+u'(x).
+\]
+
+\bigskip
+
+\section*{Exercice bonus --- Taux de variation sans expression explicite}
+
+Soit \(f\) une fonction définie sur \(\R\), et soit \(a\in\R\). On suppose que, pour tout \(h\neq 0\),
+\[
+\frac{f(a+h)-f(a)}{h}=2a+h+\varepsilon(h),
+\]
+où \(\varepsilon(h)\to 0\) quand \(h\to 0\).
+
+\textbf{1. Montrer que \(f\) est dérivable en \(a\).}
+
+\begin{rappel}
+Par définition, \(f\) est dérivable en \(a\) si le quotient
+\[
+\frac{f(a+h)-f(a)}{h}
+\]
+admet une limite finie lorsque \(h\to 0\).
+\end{rappel}
+
+Or, par hypothèse,
+\[
+\frac{f(a+h)-f(a)}{h}=2a+h+\varepsilon(h).
+\]
+Quand \(h\to 0\),
+\[
+2a+h+\varepsilon(h)\longrightarrow 2a+0+0=2a.
+\]
+Le quotient de différence admet donc une limite finie en \(0\). Par définition,
+\[
+\boxed{f \text{ est dérivable en } a.}
+\]
+
+\bigskip
+
+\textbf{2. Déterminer \(f'(a)\).}
+
+Par définition de la dérivée,
+\[
+f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}.
+\]
+Or on vient de voir que cette limite vaut \(2a\). Ainsi,
+\[
+\boxed{f'(a)=2a.}
+\]
+
+\bigskip
+
+\textbf{3. Interpréter précisément le rôle du terme \(2a+h+\varepsilon(h)\).}
+
+L'expression
+\[
+2a+h+\varepsilon(h)
+\]
+est une écriture précise du taux d'accroissement de \(f\) en \(a\).
+
+\begin{itemize}[label=\(\bullet\)]
+    \item Le terme principal est \(2a\) : c'est la valeur vers laquelle tend le taux d'accroissement, donc c'est la dérivée \(f'(a)\).
+    \item Le terme \(h\) est un terme correctif qui tend vers \(0\) quand \(h\to 0\).
+    \item Le terme \(\varepsilon(h)\) représente un reste, lui aussi négligeable devant \(1\), puisqu'il tend vers \(0\).
+\end{itemize}
+
+Ainsi, l'égalité dit que le quotient de différence est \emph{presque égal} à \(2a\) lorsque \(h\) est petit, ce qui justifie la dérivabilité en \(a\).
+
+\bigskip
+
+\textbf{4. Cette information permet-elle de connaître l'expression de \(f\) ? Justifier soigneusement.}
+
+Non, cette information ne permet pas de connaître l'expression complète de \(f\).
+
+En effet, elle décrit seulement le comportement \textbf{local} de \(f\) au voisinage du point \(a\). Elle nous permet de connaître la dérivée de \(f\) en ce point, mais pas l'expression de \(f\) sur tout \(\R\).
+
+Par exemple, si \(a=0\), les fonctions
+\[
+f_1(x)=x^2
+\qquad \text{et} \qquad
+f_2(x)=x^2+x^3
+\]
+ont toutes deux
+\[
+f_1'(0)=0
+\qquad \text{et} \qquad
+f_2'(0)=0,
+\]
+mais ce ne sont pas les mêmes fonctions.
+
+Donc une information sur le seul taux de variation en un point ne suffit pas à reconstituer la fonction entière.
+
+\[
+\boxed{\text{Non, on ne peut pas déterminer l'expression de } f \text{ à partir de cette seule donnée locale.}}
+\]
+
+\bigskip
+\hrule
+\bigskip
+
+                        Fin du corrigé 
+
+\end{document}

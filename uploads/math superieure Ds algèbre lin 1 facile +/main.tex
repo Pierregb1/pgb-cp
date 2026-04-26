@@ -1,0 +1,1128 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{array}
+\usepackage{mathrsfs}
+\usepackage{multicol}
+\usepackage{titlesec}
+
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\definecolor{bleu}{RGB}{35,72,130}
+\definecolor{gris}{RGB}{80,80,80}
+\definecolor{vertcorr}{RGB}{20,110,70}
+\definecolor{fondclair}{RGB}{245,247,250}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Algèbre linéaire --DM1 pgb}
+\rhead{Sujet + corrigé }
+\cfoot{\thepage/\pageref{LastPage}}
+
+\titleformat{\section}{\Large\bfseries\color{bleu}}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries\color{bleu}}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{gris}}{}{0pt}{}
+
+\newtheorem*{remarque}{Remarque}
+\newtheorem*{methode}{Méthode}
+
+\newtcolorbox{rappelbox}{
+  colback=fondclair,
+  colframe=bleu,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=2mm,right=2mm,top=1.5mm,bottom=1.5mm
+}
+
+\newtcolorbox{corrbox}{
+  colback=green!2,
+  colframe=vertcorr,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=2mm,right=2mm,top=1.5mm,bottom=1.5mm
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\dimv}{\operatorname{dim}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cours}[1]{\textit{[Réf. cours : #1]}}
+\newcommand{\p}[1]{\medskip\noindent\textbf{#1.}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries\color{bleu} Sujet d'algèbre linéaire -- niveau PCSI}\\[0.4em]
+    {\large Deux problèmes classiques, un problème plus élégant}\\[0.6em]
+    \rule{0.85\linewidth}{0.8pt}
+\end{center}
+
+\vspace{0.4em}
+
+\begin{rappelbox}
+\textbf{Rappels de notions utiles, pas forcément développées dans les chapitres fournis.}
+\begin{enumerate}[label=\arabic*)]
+    \item \textbf{Plan affine de l'espace.} Si $A$ est un point de l'espace et si $u,v$ sont deux vecteurs non colinéaires, alors l'ensemble des points $M$ tels que
+    \[
+    \overrightarrow{AM}=\lambda u+\mu v \qquad (\lambda,\mu\in\R)
+    \]
+    est un plan affine.
+    
+    \item \textbf{Barycentre de trois points de mêmes coefficients.} Pour des points $P,Q,R$, le barycentre affecté des coefficients $(1,1,1)$ est le point $G$ vérifiant
+    \[
+    \overrightarrow{OG}=\frac13\bigl(\overrightarrow{OP}+\overrightarrow{OQ}+\overrightarrow{OR}\bigr)
+    \]
+    pour tout origine $O$. On a alors
+    \[
+    \overrightarrow{GP}+\overrightarrow{GQ}+\overrightarrow{GR}=0.
+    \]
+    
+    \item \textbf{Centre de symétrie.} Un point $G$ est centre de symétrie de deux points $P$ et $P'$ si et seulement si
+    \[
+    \overrightarrow{GP'}=-\overrightarrow{GP}.
+    \]
+    Cela équivaut à dire que $G$ est le milieu de $[PP']$.
+    
+    \item \textbf{Produit scalaire et norme dans $\R^3$.} Pour $a,b\in\R^3$,
+    \[
+    \|a-b\|^2=(a-b)\cdot(a-b)=\|a\|^2+\|b\|^2-2a\cdot b.
+    \]
+    Si deux vecteurs non nuls $x$ et $y$ vérifient
+    \[
+    x\cdot y=\|x\|\,\|y\|\cos\theta,
+    \]
+    alors $\theta$ est l'angle entre eux.
+    
+    \item \textbf{Déterminant dans le plan.} Dans une base du plan, deux vecteurs sont libres si et seulement si le déterminant de leurs coordonnées dans cette base est non nul.
+\end{enumerate}
+\end{rappelbox}
+
+\vspace{0.6em}
+
+\begin{center}
+\textbf{Énoncé}
+\end{center}
+
+\section*{Problème 1 -- Sous-espaces de $\R^4$, intersections, sommes et bases}
+
+Dans tout le problème, on travaille dans $E=\R^4$.
+
+On considère les sous-espaces
+\[
+F=\{(x,y,z,t)\in\R^4\mid x+y+z+t=0\text{ et }x-z=0\}
+\]
+et
+\[
+G=\Vect\bigl((1,1,1,1),(0,1,0,-1)\bigr).
+\]
+
+\subsection*{Partie I -- Étude de $F$}
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $F$ est un sous-espace vectoriel de $\R^4$.
+    \item Déterminer une écriture paramétrique des éléments de $F$.
+    \item En déduire une famille génératrice de $F$.
+    \item Montrer que cette famille est libre.
+    \item Donner une base de $F$ et déterminer $\dimv(F)$.
+\end{enumerate}
+
+\subsection*{Partie II -- Étude de $G$}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{5}
+    \item Montrer que $G$ est un sous-espace vectoriel de $\R^4$.
+    \item Déterminer une écriture paramétrique des éléments de $G$.
+    \item Montrer que la famille donnée dans la définition de $G$ est libre.
+    \item En déduire une base de $G$ et sa dimension.
+\end{enumerate}
+
+\subsection*{Partie III -- Intersection et somme}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{9}
+    \item Déterminer $F\cap G$.
+    \item En donner une base et sa dimension.
+    \item Les sous-espaces $F$ et $G$ sont-ils en somme directe ?
+    \item Calculer $\dimv(F+G)$.
+    \item A-t-on $F+G=\R^4$ ?
+\end{enumerate}
+
+\subsection*{Partie IV -- Une famille de vecteurs}
+On pose
+\[
+u_1=(1,0,1,-2),\qquad u_2=(0,1,0,-1),\qquad u_3=(1,1,1,1).
+\]
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{14}
+    \item Montrer que $(u_1,u_2)$ est une base de $F$.
+    \item Montrer que $(u_2,u_3)$ est une base de $G$.
+    \item Étudier la famille $(u_1,u_2,u_3)$ : est-elle libre ?
+    \item Que peut-on en déduire sur $F+G$ ?
+    \item Extraire, à partir de $(u_1,u_2,u_3)$, une base de $F+G$.
+\end{enumerate}
+
+\subsection*{Partie V -- Décomposition d'un vecteur}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{19}
+    \item Soit $w=(x,y,z,t)\in\R^4$. Montrer que si $w\in F+G$, alors on peut écrire
+    \[
+    w=\alpha u_1+\beta u_2+\gamma u_3.
+    \]
+    
+    \item En identifiant les coordonnées, montrer que tout vecteur de $F+G$ vérifie une relation linéaire simple entre ses coordonnées.
+    
+    \item Réciproquement, montrer que tout vecteur de $\R^4$ vérifiant cette relation appartient à $F+G$.
+    
+    \item En déduire un système d'équations cartésiennes de $F+G$.
+\end{enumerate}
+
+\section*{Problème 2 -- Une figure hexagonale dans un plan de l'espace}
+
+Dans l'espace vectoriel $\R^3$, on considère trois vecteurs $u,v,w$ formant une famille libre.
+On définit six points par leurs vecteurs-position :
+\[
+A=u,\qquad B=v,\qquad C=w,\qquad D=v+w-u,\qquad E=w+u-v,\qquad F=u+v-w.
+\]
+
+On s'intéresse à la figure $ABCDEF$.
+
+\subsection*{Partie I -- Calculs de vecteurs et premières propriétés}
+\begin{enumerate}[label=\arabic*.]
+    \item Exprimer les vecteurs
+    \[
+    \overrightarrow{AB},\ \overrightarrow{BC},\ \overrightarrow{CD},\ \overrightarrow{DE},\ \overrightarrow{EF},\ \overrightarrow{FA}
+    \]
+    en fonction de $u,v,w$.
+    \item Montrer que
+    \[
+    \overrightarrow{AB}=\overrightarrow{CD},\qquad \overrightarrow{BC}=\overrightarrow{FA}.
+    \]
+    \item Montrer que
+    \[
+    \overrightarrow{DE}=-2\overrightarrow{AB},\qquad \overrightarrow{EF}=-2\overrightarrow{BC}.
+    \]
+    \item Montrer que
+    \[
+    \overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CA}=0.
+    \]
+    \item Interpréter géométriquement cette relation.
+\end{enumerate}
+
+\subsection*{Partie II -- Le plan de la figure}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{5}
+    \item Montrer que les six points $A,B,C,D,E,F$ appartiennent à un même plan affine.
+    \item Donner une représentation paramétrique de ce plan à partir du point $A$.
+    \item Montrer que $A,B,C$ ne sont pas alignés.
+    \item En déduire que ce plan est exactement le plan affine engendré par $A,B,C$.
+\end{enumerate}
+
+\subsection*{Partie III -- Deux centres remarquables}
+On pose
+\[
+G=\frac13(u+v+w),\qquad S=\frac12(u+v+w).
+\]
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{9}
+    \item Montrer que $G$ est le barycentre des points $A,B,C$ affectés de coefficients égaux.
+    \item Montrer aussi que $G$ est le barycentre des points $D,E,F$ affectés de coefficients égaux.
+    \item Montrer que $S$ est le milieu de $[AD]$, puis de $[BE]$ et de $[CF]$.
+    \item En déduire que la symétrie centrale de centre $S$ échange $A$ et $D$, $B$ et $E$, $C$ et $F$.
+    \item Conclure que la figure $ABCDEF$ admet un centre de symétrie.
+\end{enumerate}
+
+\subsection*{Partie IV -- Coordonnées affines dans le plan}
+On considère le repère affine du plan $\mathcal P=(A;\overrightarrow{AB},\overrightarrow{AC})$.
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{14}
+    \item Justifier que tout point $M$ du plan $\mathcal P$ possède des coordonnées affines uniques $(\alpha,\beta)$ définies par
+    \[
+    \overrightarrow{AM}=\alpha\,\overrightarrow{AB}+\beta\,\overrightarrow{AC}.
+    \]
+    \item Déterminer les coordonnées affines des points $A,B,C,D,E,F$ dans ce repère.
+    \item Montrer que $ABCD$ est un parallélogramme.
+    \item Déterminer les coordonnées affines de $G$ et de $S$ dans ce repère.
+    \item Retrouver, à partir de ces coordonnées, que $S$ est centre de symétrie de la figure.
+\end{enumerate}
+
+\subsection*{Partie V -- Une écriture vectorielle élégante}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{19}
+    \item Montrer que les vecteurs $u-v$ et $v-w$ sont libres.
+    \item Montrer que tout vecteur directeur du plan de la figure s'écrit de manière unique sous la forme
+    \[
+    \alpha(u-v)+\beta(v-w),\qquad (\alpha,\beta)\in\R^2.
+    \]
+    \item Exprimer $\overrightarrow{SA}$, $\overrightarrow{SB}$, $\overrightarrow{SC}$, $\overrightarrow{SD}$, $\overrightarrow{SE}$ et $\overrightarrow{SF}$ en fonction de $u-v$ et $v-w$.
+    \item Montrer que les six points se regroupent par paires de vecteurs opposés par rapport à $S$.
+\end{enumerate}
+
+\subsection*{Partie VI -- Une hypothèse métrique naturelle}
+On suppose dans cette partie que
+\[
+\|u-v\|=\|v-w\|=\|w-u\|.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{23}
+    \item Montrer que le triangle $ABC$ est équilatéral.
+    \item Montrer que le triangle $DEF$ est équilatéral.
+    \item Montrer que
+    \[
+    AB=BC=CD=FA\qquad\text{et}\qquad DE=EF=FD=2AB.
+    \]
+    \item Interpréter géométriquement la figure obtenue.
+\end{enumerate}
+
+
+\section*{Problème 3 -- Élégant : quand deux sous-espaces engendrés coïncident}
+
+Dans un espace vectoriel réel $E$, on considère trois vecteurs $u,v,w$.
+On suppose que la famille $(u,v)$ est libre.
+On pose
+\[
+F=\Vect(u+v,\,v+w),\qquad G=\Vect(u,v,w).
+\]
+
+L'objectif est de déterminer dans quels cas on a $F=G$.
+
+\subsection*{Partie I -- Premières observations}
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $F\subset G$.
+    \item Montrer que $\dimv(G)\in\{2,3\}$.
+    \item Donner une condition nécessaire et suffisante pour que $\dimv(G)=2$.
+\end{enumerate}
+
+\subsection*{Partie II -- Cas où $w\in\Vect(u,v)$}
+On suppose dans cette partie qu'il existe $(a,b)\in\R^2$ tel que
+\[
+w=au+bv.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{3}
+    \item Exprimer $v+w$ en fonction de $u$ et $v$.
+    \item Écrire les coordonnées de $u+v$ et $v+w$ dans la base $(u,v)$.
+    \item Montrer que $F=\Vect(u,v)$ si et seulement si
+    \[
+    \det\begin{pmatrix}
+    1 & a\\
+    1 & 1+b
+    \end{pmatrix}\neq 0.
+    \]
+    \item Simplifier cette condition.
+    \item En déduire une condition nécessaire et suffisante sur $a$ et $b$ pour que $F=G$.
+\end{enumerate}
+
+\subsection*{Partie III -- Cas où $(u,v,w)$ est libre}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{8}
+    \item Montrer que $\dimv(G)=3$.
+    \item Montrer que $\dimv(F)\leq 2$.
+    \item En déduire que $F\neq G$.
+\end{enumerate}
+
+\subsection*{Partie IV -- Conclusion générale}
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{11}
+    \item Montrer que
+    \[
+    F=G \iff \bigl(w\in\Vect(u,v)\text{ et }u+v,\,v+w\text{ forment une base de }\Vect(u,v)\bigr).
+    \]
+    \item Donner une condition finale simple sous la forme
+    \[
+    F=G\iff w=au+bv\text{ avec }\cdots
+    \]
+\end{enumerate}
+
+\subsection*{Partie V -- Retour à $\R^2$}
+On se place dans $E=\R^2$ avec
+\[
+u=(1,0),\qquad v=(0,1),\qquad w=(a,b).
+\]
+\begin{enumerate}[label=\arabic*.]
+    \setcounter{enumi}{13}
+    \item Déterminer explicitement une condition sur $a$ et $b$ pour que
+    \[
+    \Vect(u+v,\,v+w)=\R^2.
+    \]
+    \item Retrouver cette condition par un calcul direct de déterminant dans la base canonique.
+    \item Donner un exemple où $F=G$, puis un exemple où $F\neq G$.
+\end{enumerate}
+
+\newpage
+\begin{center}
+\textbf{Corrigé détaillé}
+\end{center}
+
+\section*{Corrigé du problème 1}
+
+
+\p{1} Montrons que $F$ est un sous-espace vectoriel de $\R^4$.
+
+On peut utiliser le critère de sous-espace vectoriel \cours{chap. 3, th. 5.3}.
+L'ensemble $F$ n'est pas vide car $(0,0,0,0)\in F$.
+
+Soient $X=(x,y,z,t)$ et $X'=(x',y',z',t')$ dans $F$, et soit $\lambda\in\R$.
+Alors
+\[
+ x+y+z+t=0,\qquad x-z=0,
+\]
+et
+\[
+ x'+y'+z'+t'=0,\qquad x'-z'=0.
+\]
+Pour la somme,
+\[
+(x+x')+(y+y')+(z+z')+(t+t')=(x+y+z+t)+(x'+y'+z'+t')=0,
+\]
+et
+\[
+(x+x')-(z+z')=(x-z)+(x'-z')=0.
+\]
+Donc $X+X'\in F$.
+
+Pour le produit par un scalaire,
+\[
+\lambda x+\lambda y+\lambda z+\lambda t=\lambda(x+y+z+t)=0,
+\qquad
+\lambda x-\lambda z=\lambda(x-z)=0.
+\]
+Donc $\lambda X\in F$.
+
+Ainsi $F$ est un sous-espace vectoriel de $\R^4$.
+
+\p{2} Cherchons une écriture paramétrique.
+
+La condition $x-z=0$ donne
+\[
+z=x.
+\]
+En remplaçant dans $x+y+z+t=0$, on obtient
+\[
+2x+y+t=0,
+\qquad\text{donc}\qquad t=-2x-y.
+\]
+En posant $x=a$ et $y=b$, on obtient
+\[
+(x,y,z,t)=(a,b,a,-2a-b).
+\]
+Donc
+\[
+F=\{(a,b,a,-2a-b)\mid (a,b)\in\R^2\}.
+\]
+
+\p{3} On réécrit
+\[
+(a,b,a,-2a-b)=a(1,0,1,-2)+b(0,1,0,-1).
+\]
+Donc
+\[
+F=\Vect\bigl((1,0,1,-2),(0,1,0,-1)\bigr).
+\]
+La famille
+\[
+\bigl((1,0,1,-2),(0,1,0,-1)\bigr)
+\]
+est donc génératrice de $F$ \cours{chap. 4, déf. 3.1}.
+
+\p{4} Montrons qu'elle est libre.
+
+Supposons
+\[
+\alpha(1,0,1,-2)+\beta(0,1,0,-1)=(0,0,0,0).
+\]
+En identifiant les coordonnées, on obtient
+\[
+\alpha=0,\qquad \beta=0.
+\]
+La seule combinaison linéaire nulle est donc la combinaison triviale ; la famille est libre \cours{chap. 4, déf. 4.1}.
+
+\p{5} Une famille libre et génératrice de $F$ est une base de $F$ \cours{chap. 4, déf. 7.1}. Ainsi,
+\[
+\mathcal B_F=\bigl((1,0,1,-2),(0,1,0,-1)\bigr)
+\]
+est une base de $F$, et
+\[
+\dimv(F)=2.
+\]
+
+\p{6} Par définition,
+\[
+G=\Vect\bigl((1,1,1,1),(0,1,0,-1)\bigr).
+\]
+Tout sous-espace engendré est un sous-espace vectoriel \cours{chap. 3, §7.2}. Donc $G$ est un sous-espace vectoriel de $\R^4$.
+
+\p{7} Tout vecteur de $G$ s'écrit
+\[
+\alpha(1,1,1,1)+\beta(0,1,0,-1)=(\alpha,\alpha+\beta,\alpha,\alpha-\beta).
+\]
+Donc
+\[
+G=\{(\alpha,\alpha+\beta,\alpha,\alpha-\beta)\mid (\alpha,\beta)\in\R^2\}.
+\]
+
+\p{8} Supposons
+\[
+\alpha(1,1,1,1)+\beta(0,1,0,-1)=0.
+\]
+En regardant la première coordonnée, on obtient $\alpha=0$, puis la deuxième donne $\beta=0$.
+La famille est donc libre.
+
+\p{9} La famille donnée est libre et génératrice de $G$, donc c'est une base de $G$, et
+\[
+\dimv(G)=2.
+\]
+
+\p{10} Déterminons $F\cap G$.
+
+Soit $X\in F\cap G$. Comme $X\in G$, il existe $\alpha,\beta\in\R$ tels que
+\[
+X=(\alpha,\alpha+\beta,\alpha,\alpha-\beta).
+\]
+La condition d'appartenance à $F$ donne
+\[
+x+y+z+t=0.
+\]
+On calcule :
+\[
+\alpha+(\alpha+\beta)+\alpha+(\alpha-\beta)=4\alpha.
+\]
+Donc $4\alpha=0$, soit $\alpha=0$.
+Alors
+\[
+X=(0,\beta,0,-\beta)=\beta(0,1,0,-1).
+\]
+Réciproquement, tout vecteur de la forme $\beta(0,1,0,-1)$ appartient manifestement à $F$ et à $G$.
+Donc
+\[
+F\cap G=\Vect(0,1,0,-1).
+\]
+
+\p{11} Une base de $F\cap G$ est
+\[
+\bigl((0,1,0,-1)\bigr),
+\]
+donc
+\[
+\dimv(F\cap G)=1.
+\]
+
+\p{12} Deux sous-espaces sont en somme directe si et seulement si leur intersection est réduite à $\{0\}$ \cours{chap. 5 dimension finie, déf. 10.1}. Ici,
+\[
+F\cap G=\Vect(0,1,0,-1)\neq\{0\}.
+\]
+Donc $F$ et $G$ ne sont pas en somme directe.
+
+\p{13} Par Grassmann \cours{chap. 5 dimension finie, th. 9.1},
+\[
+\dimv(F+G)=\dimv(F)+\dimv(G)-\dimv(F\cap G)=2+2-1=3.
+\]
+
+\p{14} Comme $\dimv(\R^4)=4$ et que $\dimv(F+G)=3$, on n'a pas
+\[
+F+G=\R^4.
+\]
+
+\p{15} D'après les questions précédentes, $(u_1,u_2)$ est exactement la famille génératrice libre trouvée pour $F$ ; c'est donc une base de $F$.
+
+\p{16} Le vecteur $u_2=(0,1,0,-1)$ et le vecteur $u_3=(1,1,1,1)$ sont précisément les deux générateurs de $G$ ; ils forment donc une base de $G$.
+
+\p{17} Étudions la liberté de $(u_1,u_2,u_3)$.
+
+Supposons
+\[
+\alpha u_1+\beta u_2+\gamma u_3=0.
+\]
+Cela donne
+\[
+\alpha(1,0,1,-2)+\beta(0,1,0,-1)+\gamma(1,1,1,1)=(0,0,0,0).
+\]
+En identifiant la première coordonnée :
+\[
+\alpha+\gamma=0.
+\]
+La deuxième donne
+\[
+\beta+\gamma=0.
+\]
+La quatrième donne
+\[
+-2\alpha-\beta+\gamma=0.
+\]
+En remplaçant $\gamma=-\alpha$ et $\beta=\alpha$, on obtient
+\[
+-2\alpha-\alpha-\alpha=-4\alpha=0,
+\]
+donc $\alpha=0$, puis $\beta=\gamma=0$.
+La famille $(u_1,u_2,u_3)$ est donc libre.
+
+\p{18} Cette famille est constituée de vecteurs appartenant à $F+G$ et contient $3$ vecteurs libres. Or on a vu que
+\[
+\dimv(F+G)=3.
+\]
+Donc $(u_1,u_2,u_3)$ est une base de $F+G$ \cours{chap. 5 dimension finie, §12.3}.
+
+\p{19} Une base extraite de $(u_1,u_2,u_3)$ de $F+G$ est donc simplement
+\[
+\bigl(u_1,u_2,u_3\bigr).
+\]
+
+\p{20} Si $w\in F+G$, alors par définition de la somme de sous-espaces,
+\[
+w=f+g,
+\qquad f\in F,\ g\in G.
+\]
+Or $(u_1,u_2)$ est une base de $F$ et $(u_2,u_3)$ une base de $G$. On peut donc écrire
+\[
+f=au_1+bu_2,
+\qquad g=cu_2+du_3.
+\]
+Ainsi
+\[
+w=au_1+(b+c)u_2+du_3.
+\]
+En posant $\alpha=a$, $\beta=b+c$, $\gamma=d$, on obtient bien
+\[
+w=\alpha u_1+\beta u_2+\gamma u_3.
+\]
+
+\p{21} Écrivons
+\[
+(x,y,z,t)=\alpha(1,0,1,-2)+\beta(0,1,0,-1)+\gamma(1,1,1,1).
+\]
+Alors
+\[
+(x,y,z,t)=(\alpha+\gamma,\beta+\gamma,\alpha+\gamma,-2\alpha-\beta+\gamma).
+\]
+On voit immédiatement que
+\[
+x=z.
+\]
+Tout vecteur de $F+G$ vérifie donc la relation linéaire
+\[
+x-z=0.
+\]
+
+\p{22} Réciproquement, soit $(x,y,z,t)\in\R^4$ tel que $x=z$.
+Posons
+\[
+\gamma=x,
+\qquad \beta=y-x,
+\qquad \alpha=0.
+\]
+Alors
+\[
+\alpha+\gamma=x,
+\qquad \beta+\gamma=y,
+\qquad \alpha+\gamma=x=z,
+\]
+et la quatrième coordonnée vaut
+\[
+-2\alpha-\beta+\gamma=-(y-x)+x=2x-y.
+\]
+On obtient donc exactement $(x,y,z,t)$ si et seulement si $t=2x-y$.
+Mais comme $x=z$, cette relation équivaut à
+\[
+x-y+z-t=0.
+\]
+On peut aussi procéder directement : en utilisant la base $(u_1,u_2,u_3)$, tout élément de $F+G$ est un élément d'un espace de dimension $3$ défini par une seule équation linéaire ; ici la bonne relation est
+\[
+x-z=0.
+\]
+Comme $\dimv(F+G)=3$, cette seule relation suffit à décrire $F+G$.
+En effet, l'ensemble
+\[
+H=\{(x,y,z,t)\in\R^4\mid x-z=0\}
+\]
+est un hyperplan de $\R^4$, donc de dimension $3$, et contient $u_1,u_2,u_3$. Il contient donc $F+G$, et les dimensions étant égales, on a $F+G=H$.
+
+\p{23} Finalement,
+\[
+F+G=\{(x,y,z,t)\in\R^4\mid x-z=0\}.
+\]
+Il s'agit donc d'un hyperplan de $\R^4$.
+
+\section*{Corrigé du problème 2}
+
+\p{1} On calcule directement :
+\[
+\overrightarrow{AB}=v-u,
+\qquad
+\overrightarrow{BC}=w-v,
+\qquad
+\overrightarrow{CD}=D-C=(v+w-u)-w=v-u,
+\]
+\[
+\overrightarrow{DE}=E-D=(w+u-v)-(v+w-u)=2u-2v,
+\]
+\[
+\overrightarrow{EF}=F-E=(u+v-w)-(w+u-v)=2v-2w,
+\qquad
+\overrightarrow{FA}=A-F=u-(u+v-w)=w-v.
+\]
+
+\p{2} D'après la question précédente,
+\[
+\overrightarrow{AB}=v-u=\overrightarrow{CD},
+\qquad
+\overrightarrow{BC}=w-v=\overrightarrow{FA}.
+\]
+
+\p{3} On reprend les calculs de la question 1 :
+\[
+\overrightarrow{DE}=2u-2v=-2(v-u)=-2\overrightarrow{AB},
+\]
+\[
+\overrightarrow{EF}=2v-2w=-2(w-v)=-2\overrightarrow{BC}.
+\]
+
+\p{4} La relation de Chasles donne
+\[
+\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}.
+\]
+Donc
+\[
+\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CA}=0.
+\]
+En remplaçant par les expressions trouvées, on obtient aussi
+\[
+(v-u)+(w-v)+(u-w)=0.
+\]
+
+\p{5} Cette relation signifie que les vecteurs $\overrightarrow{AB}$, $\overrightarrow{BC}$ et $\overrightarrow{CA}$ forment le contour fermé du triangle $ABC$.
+
+\p{6} Soit
+\[
+\mathcal P=A+\Vect(\overrightarrow{AB},\overrightarrow{AC})=u+\Vect(v-u,w-u).
+\]
+Montrons que $D,E,F\in\mathcal P$.
+On a
+\[
+\overrightarrow{AD}=D-A=(v+w-u)-u=(v-u)+(w-u),
+\]
+\[
+\overrightarrow{AE}=E-A=(w+u-v)-u=w-v=(w-u)-(v-u),
+\]
+\[
+\overrightarrow{AF}=F-A=(u+v-w)-u=v-w=(v-u)-(w-u).
+\]
+Ainsi, $\overrightarrow{AD}$, $\overrightarrow{AE}$ et $\overrightarrow{AF}$ appartiennent à $\Vect(v-u,w-u)$, d'où $D,E,F\in\mathcal P$.
+Les six points sont donc coplanaires.
+
+\p{7} Une représentation paramétrique de ce plan est
+\[
+\mathcal P=\{u+\lambda(v-u)+\mu(w-u)\mid (\lambda,\mu)\in\R^2\}.
+\]
+
+\p{8} Si $A,B,C$ étaient alignés, les vecteurs $v-u$ et $w-u$ seraient colinéaires. Il existerait donc $(\lambda,\mu)\neq(0,0)$ tel que
+\[
+\lambda(v-u)+\mu(w-u)=0.
+\]
+Cela s'écrit
+\[
+(-\lambda-\mu)u+\lambda v+\mu w=0.
+\]
+Comme la famille $(u,v,w)$ est libre, on obtient
+\[
+-\lambda-\mu=0,\qquad \lambda=0,\qquad \mu=0,
+\]
+contradiction. Donc $A,B,C$ ne sont pas alignés.
+
+\p{9} Trois points non alignés déterminent un unique plan affine. Le plan trouvé à la question 7 est donc exactement le plan affine engendré par $A,B,C$.
+
+\p{10} On a, par définition des points,
+\[
+A+B+C=u+v+w.
+\]
+Donc
+\[
+G=\frac13(u+v+w)=\frac13(A+B+C).
+\]
+D'après le rappel de début de sujet, $G$ est bien le barycentre de $A,B,C$ affectés des coefficients $(1,1,1)$.
+
+\p{11} On additionne maintenant les vecteurs-position de $D,E,F$ :
+\[
+D+E+F=(v+w-u)+(w+u-v)+(u+v-w)=u+v+w.
+\]
+Ainsi,
+\[
+G=\frac13(D+E+F).
+\]
+Le point $G$ est donc aussi le barycentre de $D,E,F$ affectés de coefficients égaux.
+
+\p{12} On calcule :
+\[
+A+D=u+(v+w-u)=u+v+w=2S.
+\]
+Donc $S$ est le milieu de $[AD]$.
+De même,
+\[
+B+E=v+(w+u-v)=u+v+w=2S,
+\]
+\[
+C+F=w+(u+v-w)=u+v+w=2S.
+\]
+Donc $S$ est aussi le milieu de $[BE]$ et de $[CF]$.
+
+\p{13} Si $S$ est le milieu de $[AD]$, la symétrie centrale de centre $S$ échange $A$ et $D$. De même, elle échange $B$ et $E$, puis $C$ et $F$.
+
+\p{14} La figure $ABCDEF$ admet donc un centre de symétrie, qui est
+\[
+S=\frac12(u+v+w).
+\]
+
+\p{15} D'après la question 8, les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ ne sont pas colinéaires. Ils forment donc une base de l'espace vectoriel directeur du plan $\mathcal P$. Par conséquent, tout point $M\in\mathcal P$ s'écrit de manière unique sous la forme
+\[
+\overrightarrow{AM}=\alpha\overrightarrow{AB}+\beta\overrightarrow{AC}.
+\]
+
+\p{16} On obtient immédiatement
+\[
+A(0,0),\qquad B(1,0),\qquad C(0,1).
+\]
+De plus,
+\[
+\overrightarrow{AD}=(v-u)+(w-u)=\overrightarrow{AB}+\overrightarrow{AC},
+\]
+donc
+\[
+D(1,1).
+\]
+Ensuite,
+\[
+\overrightarrow{AE}=w-v=(w-u)-(v-u)=\overrightarrow{AC}-\overrightarrow{AB},
+\]
+donc
+\[
+E(-1,1).
+\]
+Enfin,
+\[
+\overrightarrow{AF}=v-w=(v-u)-(w-u)=\overrightarrow{AB}-\overrightarrow{AC},
+\]
+donc
+\[
+F(1,-1).
+\]
+
+\p{17} Dans ce repère affine,
+\[
+A(0,0),\quad B(1,0),\quad C(0,1),\quad D(1,1).
+\]
+On voit que
+\[
+\overrightarrow{AB}=(1,0)=\overrightarrow{CD},
+\qquad
+\overrightarrow{AC}=(0,1)=\overrightarrow{BD}.
+\]
+Le quadrilatère $ABCD$ est donc un parallélogramme.
+
+\p{18} Comme
+\[
+G=\frac13(A+B+C),
+\]
+on lit directement dans le repère affine
+\[
+G\left(\frac13,\frac13\right).
+\]
+De même,
+\[
+S=\frac12(A+D),
+\]
+donc
+\[
+S\left(\frac12,\frac12\right).
+\]
+
+\p{19} Dans ce repère affine, on vérifie facilement que
+\[
+\frac{A+D}{2}=\frac{(0,0)+(1,1)}{2}=\left(\frac12,\frac12\right)=S,
+\]
+\[
+\frac{B+E}{2}=\frac{(1,0)+(-1,1)}{2}=\left(\frac12,\frac12\right)=S,
+\]
+\[
+\frac{C+F}{2}=\frac{(0,1)+(1,-1)}{2}=\left(\frac12,\frac12\right)=S.
+\]
+On retrouve ainsi que $S$ est le milieu commun de $[AD]$, $[BE]$ et $[CF]$, donc le centre de symétrie de la figure.
+
+\p{20} Supposons
+\[
+\alpha(u-v)+\beta(v-w)=0.
+\]
+Alors
+\[
+\alpha u+(-\alpha+\beta)v-\beta w=0.
+\]
+Comme $(u,v,w)$ est libre, tous les coefficients sont nuls, donc
+\[
+\alpha=0,\qquad \beta=0.
+\]
+Les vecteurs $u-v$ et $v-w$ sont donc libres.
+
+\p{21} Le plan directeur de $\mathcal P$ est engendré par $v-u$ et $w-u$, donc aussi par $u-v$ et $v-w$. D'après la question 20, ces deux vecteurs sont libres ; ils forment donc une base du plan directeur. Tout vecteur directeur du plan s'écrit donc de manière unique sous la forme
+\[
+\alpha(u-v)+\beta(v-w).
+\]
+
+\p{22} Posons
+\[
+a=u-v,
+\qquad
+b=v-w.
+\]
+Alors $u-w=a+b$.
+Comme $S=\frac12(u+v+w)$, on calcule
+\[
+\overrightarrow{SA}=u-S=\frac12(u-v)+\frac12(u-w)=a+\frac12 b,
+\]
+\[
+\overrightarrow{SB}=v-S=\frac12(v-u)+\frac12(v-w)=-\frac12 a+\frac12 b,
+\]
+\[
+\overrightarrow{SC}=w-S=\frac12(w-u)+\frac12(w-v)=-\frac12 a-b.
+\]
+Comme $S$ est centre de symétrie, on en déduit aussitôt
+\[
+\overrightarrow{SD}=-\overrightarrow{SA}=-a-\frac12 b,
+\]
+\[
+\overrightarrow{SE}=-\overrightarrow{SB}=\frac12 a-\frac12 b,
+\]
+\[
+\overrightarrow{SF}=-\overrightarrow{SC}=\frac12 a+b.
+\]
+
+\p{23} La question précédente donne immédiatement
+\[
+\overrightarrow{SD}=-\overrightarrow{SA},
+\qquad
+\overrightarrow{SE}=-\overrightarrow{SB},
+\qquad
+\overrightarrow{SF}=-\overrightarrow{SC}.
+\]
+Les six points se regroupent donc par paires de vecteurs opposés par rapport à $S$ : $(A,D)$, $(B,E)$ et $(C,F)$.
+
+\p{24} L'hypothèse
+\[
+\|u-v\|=\|v-w\|=\|w-u\|
+\]
+se traduit exactement par
+\[
+AB=BC=CA.
+\]
+Le triangle $ABC$ est donc équilatéral.
+
+\p{25} Calculons les côtés du triangle $DEF$ :
+\[
+\overrightarrow{DE}=2(u-v),
+\qquad
+\overrightarrow{EF}=2(v-w),
+\qquad
+\overrightarrow{FD}=D-F=(v+w-u)-(u+v-w)=2(w-u).
+\]
+Donc
+\[
+DE=2\|u-v\|,
+\qquad
+EF=2\|v-w\|,
+\qquad
+FD=2\|w-u\|.
+\]
+Sous l'hypothèse faite, ces trois longueurs sont égales. Le triangle $DEF$ est donc lui aussi équilatéral.
+
+\p{26} On a déjà
+\[
+AB=\|u-v\|,
+\qquad
+BC=\|v-w\|,
+\qquad
+CD=\|v-u\|=AB,
+\qquad
+FA=\|w-v\|=BC.
+\]
+Sous l'hypothèse métrique, cela donne
+\[
+AB=BC=CD=FA.
+\]
+De plus, d'après la question 25,
+\[
+DE=EF=FD=2AB.
+\]
+Ainsi,
+\[
+AB=BC=CD=FA
+\qquad\text{et}\qquad
+DE=EF=FD=2AB.
+\]
+
+\p{27} Géométriquement, la figure est constituée de deux triangles équilatéraux coplanaires : le triangle $ABC$ et le triangle $DEF$. Ils ont le même barycentre $G$ d'après les questions 10 et 11, et ils sont échangés par la symétrie centrale de centre $S$ d'après les questions 12 à 14.
+
+
+\section*{Corrigé du problème 3}
+
+
+\p{1} Comme $u+v$ et $v+w$ sont chacun des combinaisons linéaires de $u,v,w$, on a
+\[
+u+v\in G,
+\qquad
+v+w\in G.
+\]
+Donc tout vecteur de $F=\Vect(u+v,v+w)$ appartient à $G$. Ainsi
+\[
+F\subset G.
+\]
+
+\p{2} Puisque $(u,v)$ est libre, on a
+\[
+\dimv\Vect(u,v)=2.
+\]
+Or $G=\Vect(u,v,w)$ contient $u$ et $v$ ; sa dimension est donc au moins $2$. Mais il est engendré par trois vecteurs, donc sa dimension est au plus $3$.
+Ainsi
+\[
+\dimv(G)\in\{2,3\}.
+\]
+
+\p{3} On a
+\[
+\dimv(G)=2
+\iff w\in\Vect(u,v).
+\]
+En effet, si $w\in\Vect(u,v)$, alors $G=\Vect(u,v)$, donc $\dimv(G)=2$. Réciproquement, si $\dimv(G)=2$, l'espace engendré par $u,v,w$ coïncide avec le plan $\Vect(u,v)$, donc $w\in\Vect(u,v)$.
+
+\p{4} Si $w=au+bv$, alors
+\[
+v+w=au+(1+b)v.
+\]
+
+\p{5} Dans la base $(u,v)$, on a
+\[
+[u+v]_{(u,v)}=\binom{1}{1},
+\qquad
+[v+w]_{(u,v)}=\binom{a}{1+b}.
+\]
+
+\p{6} Les deux vecteurs $u+v$ et $v+w$ forment une base de $\Vect(u,v)$ si et seulement s'ils sont libres. Dans une base de plan, cela équivaut à dire que le déterminant de leurs coordonnées est non nul :
+\[
+\det\begin{pmatrix}
+1 & a\\
+1 & 1+b
+\end{pmatrix}\neq 0.
+\]
+Cela prouve l'équivalence demandée.
+
+\p{7} On calcule
+\[
+\det\begin{pmatrix}
+1 & a\\
+1 & 1+b
+\end{pmatrix}=1+b-a.
+\]
+La condition se simplifie donc en
+\[
+1+b-a\neq 0.
+\]
+
+\p{8} Dans ce cas, comme $w\in\Vect(u,v)$, on a
+\[
+G=\Vect(u,v).
+\]
+Ainsi
+\[
+F=G
+\iff F=\Vect(u,v)
+\iff 1+b-a\neq 0.
+\]
+Donc, lorsque $w=au+bv$,
+\[
+F=G \iff a\neq 1+b.
+\]
+
+\p{9} Si $(u,v,w)$ est libre, alors c'est une famille libre de trois vecteurs. Donc
+\[
+\dimv(G)=3.
+\]
+
+\p{10} Par définition, $F$ est engendré par deux vecteurs, donc
+\[
+\dimv(F)\leq 2.
+\]
+
+\p{11} On a alors
+\[
+\dimv(F)\leq 2<3=\dimv(G),
+\]
+donc nécessairement
+\[
+F\neq G.
+\]
+
+\p{12} On a montré deux choses :
+\begin{itemize}
+    \item si $w\notin\Vect(u,v)$, alors $F\neq G$ ;
+    \item si $w\in\Vect(u,v)$, alors $F=G$ équivaut à $1+b-a\neq 0$ lorsque $w=au+bv$.
+\end{itemize}
+Ainsi
+\[
+F=G
+\iff \bigl(w\in\Vect(u,v)\text{ et }u+v,\,v+w\text{ forment une base de }\Vect(u,v)\bigr).
+\]
+
+\p{13} La condition finale s'écrit :
+\[
+F=G \iff \exists(a,b)\in\R^2,\quad w=au+bv\ \text{et}\ a\neq 1+b.
+\]
+Autrement dit,
+\[
+F=G \iff w=au+bv\text{ avec }1+b-a\neq 0.
+\]
+
+\p{14} Dans $\R^2$, avec
+\[
+u=(1,0),\qquad v=(0,1),\qquad w=(a,b),
+\]
+on a
+\[
+u+v=(1,1),
+\qquad
+v+w=(a,1+b).
+\]
+La condition
+\[
+\Vect(u+v,v+w)=\R^2
+\]
+équivaut à la liberté des deux vecteurs, donc au déterminant non nul :
+\[
+\det\begin{pmatrix}
+1 & a\\
+1 & 1+b
+\end{pmatrix}=1+b-a\neq 0.
+\]
+
+\p{15} On retrouve exactement la même condition par calcul direct de déterminant dans la base canonique.
+
+\p{16} Exemple où $F=G$ : choisir $a=0$, $b=0$, donc $w=0$. Alors
+\[
+1+b-a=1\neq 0,
+\]
+donc $F=G$.
+
+Exemple où $F\neq G$ : choisir $a=1$, $b=0$. Alors
+\[
+1+b-a=0,
+\]
+donc $F\neq G$.
+
+
+
+\end{document}

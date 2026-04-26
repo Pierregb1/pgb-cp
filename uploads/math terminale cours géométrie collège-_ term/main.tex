@@ -1,0 +1,1337 @@
+\documentclass[11pt,a4paper]{article}
+
+%================================================
+% PACKAGES
+%================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,angles,quotes,intersections}
+
+%================================================
+% HYPERREF
+%================================================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Cours complet de géométrie jusqu'à la terminale},
+  pdfauthor={}
+}
+
+%================================================
+% MISE EN PAGE
+%================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Cours complet de géométrie}
+\fancyhead[R]{Collège $\to$ Terminale}
+\fancyfoot[C]{\thepage}
+
+%================================================
+% COMMANDES
+%================================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\norme}[1]{\left\|#1\right\|}
+\newcommand{\ps}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\uu}{\overrightarrow{u}}
+\newcommand{\vv}{\overrightarrow{v}}
+\newcommand{\ww}{\overrightarrow{w}}
+\newcommand{\AB}{\overrightarrow{AB}}
+\newcommand{\AC}{\overrightarrow{AC}}
+\newcommand{\BC}{\overrightarrow{BC}}
+
+%================================================
+% ENVIRONNEMENTS
+%================================================
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[section]
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{methode}[definition]{Méthode}
+
+\theoremstyle{plain}
+\newtheorem{propriete}[definition]{Propriété}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+
+%================================================
+% TITRE
+%================================================
+\title{\textbf{Cours complet de géométrie jusqu'à la terminale}\\
+\large Géométrie plane et géométrie de l'espace\\
+\large Définitions, propriétés, propositions, démonstrations, exemples}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%================================================
+\section*{Introduction}
+%================================================
+
+Ce cours rassemble les principales notions de géométrie rencontrées :
+\begin{itemize}
+    \item au \textbf{collège} : figures usuelles, triangles, cercle, symétries, parallélisme, perpendicularité, Thalès, Pythagore, trigonométrie ;
+    \item en \textbf{seconde} : géométrie repérée et vecteurs du plan ;
+    \item en \textbf{première spécialité} : produit scalaire et géométrie métrique du plan ;
+    \item en \textbf{terminale spécialité} : géométrie dans l'espace.
+\end{itemize}
+
+L'objectif est de maîtriser :
+\begin{itemize}
+    \item les définitions ;
+    \item les propriétés essentielles ;
+    \item les démonstrations classiques ;
+    \item les méthodes de résolution.
+\end{itemize}
+
+\newpage
+
+%================================================
+\section{Cycle 4 : espace et géométrie}
+%================================================
+
+\subsection{Objets géométriques de base}
+
+\begin{definition}
+Un \textbf{point} est un objet géométrique sans dimension.
+\end{definition}
+
+\begin{definition}
+Une \textbf{droite} est un ensemble infini de points alignés.
+\end{definition}
+
+\begin{definition}
+Si $A$ et $B$ sont deux points distincts :
+\begin{itemize}
+    \item la droite passant par $A$ et $B$ se note $(AB)$ ;
+    \item le segment d'extrémités $A$ et $B$ se note $[AB]$ ;
+    \item la demi-droite d'origine $A$ passant par $B$ se note $[AB)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Trois points sont \textbf{alignés} s'ils appartiennent à une même droite.
+\end{definition}
+
+\begin{propriete}
+Par deux points distincts passe une unique droite.
+\end{propriete}
+
+\begin{definition}
+La \textbf{distance} entre deux points $A$ et $B$ est la longueur du segment $[AB]$, notée $AB$.
+\end{definition}
+
+\begin{definition}
+Le \textbf{milieu} du segment $[AB]$ est le point $M$ du segment tel que
+\[
+AM=MB.
+\]
+\end{definition}
+
+\begin{proposition}
+Un segment possède un unique milieu.
+\end{proposition}
+
+\begin{proof}
+Supposons que deux points distincts $M$ et $N$ soient tous deux milieux de $[AB]$.
+Alors ils appartiennent tous les deux au segment $[AB]$ et vérifient
+\[
+AM=MB \qquad \text{et} \qquad AN=NB.
+\]
+Or il ne peut exister qu'un seul point situé exactement à mi-distance de $A$ et de $B$ sur le segment $[AB]$.
+Donc $M=N$.
+\end{proof}
+
+\begin{exemple}
+Si $AB=10$ cm et si $M$ est le milieu de $[AB]$, alors
+\[
+AM=MB=5 \text{ cm}.
+\]
+\end{exemple}
+
+%------------------------------------------------
+\subsection{Angles, parallélisme et perpendicularité}
+
+\begin{definition}
+Un \textbf{angle} est formé par deux demi-droites de même origine.
+\end{definition}
+
+\begin{definition}
+Un \textbf{angle droit} est un angle mesurant $90^\circ$.
+\end{definition}
+
+\begin{definition}
+Deux droites sont :
+\begin{itemize}
+    \item \textbf{perpendiculaires} si elles se coupent en formant un angle droit ;
+    \item \textbf{parallèles} si elles ont la même direction.
+\end{itemize}
+\end{definition}
+
+\begin{propriete}
+Si deux droites sont perpendiculaires à une même droite, alors elles sont parallèles.
+\end{propriete}
+
+\begin{proof}
+Soient $d_1$ et $d_2$ deux droites perpendiculaires à une même droite $d$.
+Chacune forme un angle de $90^\circ$ avec $d$.
+Elles ont donc la même direction, donc elles sont parallèles.
+\end{proof}
+
+\begin{propriete}
+Si deux droites sont parallèles, toute droite perpendiculaire à l'une est perpendiculaire à l'autre.
+\end{propriete}
+
+\begin{proof}
+Deux droites parallèles ont la même direction.
+Une droite qui forme un angle droit avec l'une forme donc aussi un angle droit avec l'autre.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Triangles}
+
+\begin{definition}
+Un \textbf{triangle} est une figure formée par trois points non alignés $A$, $B$, $C$ et par les segments $[AB]$, $[BC]$ et $[CA]$.
+\end{definition}
+
+\begin{definition}
+Un triangle est :
+\begin{itemize}
+    \item \textbf{isocèle} s'il possède deux côtés de même longueur ;
+    \item \textbf{équilatéral} si ses trois côtés sont de même longueur ;
+    \item \textbf{rectangle} s'il possède un angle droit.
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}
+Dans tout triangle, la somme des angles vaut $180^\circ$.
+\end{theoreme}
+
+\begin{proof}
+Soit un triangle $ABC$.
+Par le point $A$, traçons la droite $d$ parallèle à $(BC)$.
+Les angles formés avec cette droite sont égaux aux angles en $B$ et en $C$ par la propriété des angles alternes-internes.
+Or sur une droite, la somme des angles adjacents vaut $180^\circ$.
+Donc
+\[
+\widehat{ABC}+\widehat{BAC}+\widehat{BCA}=180^\circ.
+\]
+\end{proof}
+
+\begin{corollaire}
+Dans un triangle rectangle, la somme des deux angles aigus vaut $90^\circ$.
+\end{corollaire}
+
+\begin{propriete}
+Dans un triangle isocèle, les angles à la base sont égaux.
+\end{propriete}
+
+\begin{proof}
+Soit $ABC$ isocèle en $A$, donc $AB=AC$.
+Le triangle est symétrique par rapport à la droite passant par $A$ et le milieu de $[BC]$.
+Les angles en $B$ et en $C$ sont donc égaux.
+\end{proof}
+
+\begin{propriete}
+Dans un triangle équilatéral, chaque angle mesure $60^\circ$.
+\end{propriete}
+
+\begin{proof}
+Les trois angles sont égaux et leur somme vaut $180^\circ$.
+Chacun vaut donc
+\[
+\frac{180^\circ}{3}=60^\circ.
+\]
+\end{proof}
+
+%------------------------------------------------
+\subsection{Médiatrice, bissectrice, hauteur, médiane}
+
+\begin{definition}
+La \textbf{médiatrice} d'un segment $[AB]$ est la droite perpendiculaire à $(AB)$ passant par le milieu de $[AB]$.
+\end{definition}
+
+\begin{theoreme}
+Un point appartient à la médiatrice de $[AB]$ si et seulement s'il est à égale distance de $A$ et de $B$.
+\end{theoreme}
+
+\begin{proof}
+\textbf{Sens direct :} si $M$ appartient à la médiatrice de $[AB]$, alors la figure est symétrique par rapport à cette médiatrice, donc
+\[
+MA=MB.
+\]
+
+\textbf{Sens réciproque :} si $MA=MB$, alors $M$ est un point équidistant de $A$ et de $B$.
+L'ensemble des points équidistants de $A$ et de $B$ est précisément la médiatrice de $[AB]$.
+\end{proof}
+
+\begin{corollaire}
+Les médiatrices des côtés d'un triangle sont concourantes en un point, centre du cercle circonscrit.
+\end{corollaire}
+
+\begin{definition}
+La \textbf{bissectrice} d'un angle est la demi-droite qui partage cet angle en deux angles égaux.
+\end{definition}
+
+\begin{definition}
+Dans un triangle :
+\begin{itemize}
+    \item une \textbf{hauteur} est une droite passant par un sommet et perpendiculaire au côté opposé ;
+    \item une \textbf{médiane} est une droite passant par un sommet et par le milieu du côté opposé.
+\end{itemize}
+\end{definition}
+
+%------------------------------------------------
+\subsection{Cercle}
+
+\begin{definition}
+Le \textbf{cercle} de centre $O$ et de rayon $r$ est l'ensemble des points $M$ du plan tels que
+\[
+OM=r.
+\]
+\end{definition}
+
+\begin{definition}
+Une \textbf{corde} est un segment joignant deux points du cercle.
+
+Un \textbf{diamètre} est une corde passant par le centre.
+\end{definition}
+
+\begin{theoreme}[Angle inscrit dans un demi-cercle]
+Si $A$, $B$, $C$ sont trois points d'un cercle et si $[AC]$ est un diamètre, alors l'angle $\widehat{ABC}$ est droit.
+\end{theoreme}
+
+\begin{proof}
+Soit $O$ le centre du cercle.
+On a
+\[
+OA=OB=OC.
+\]
+Les triangles $AOB$ et $BOC$ sont isocèles.
+En additionnant les angles à la base convenablement, on obtient
+\[
+\widehat{ABC}=90^\circ.
+\]
+\end{proof}
+
+%------------------------------------------------
+\subsection{Transformations du plan}
+
+\begin{definition}
+La \textbf{symétrie axiale} d'axe $(d)$ envoie un point $M$ sur un point $M'$ tel que $(d)$ soit la médiatrice de $[MM']$.
+\end{definition}
+
+\begin{definition}
+La \textbf{symétrie centrale} de centre $O$ envoie un point $M$ sur un point $M'$ tel que $O$ soit le milieu de $[MM']$.
+\end{definition}
+
+\begin{definition}
+Une \textbf{translation} de vecteur $\uu$ déplace tout point $M$ vers un point $M'$ tel que
+\[
+\overrightarrow{MM'}=\uu.
+\]
+\end{definition}
+
+\begin{definition}
+Une \textbf{rotation} de centre $O$ et d'angle $\theta$ transforme un point $M$ en un point $M'$ tel que
+\[
+OM=OM'
+\]
+et que l'angle orienté de $\overrightarrow{OM}$ vers $\overrightarrow{OM'}$ soit $\theta$.
+\end{definition}
+
+\begin{definition}
+Une \textbf{homothétie} de centre $O$ et de rapport $k$ transforme un point $M$ en un point $M'$ tel que
+\[
+\overrightarrow{OM'}=k\,\overrightarrow{OM}.
+\]
+\end{definition}
+
+\begin{propriete}
+Les symétries, translations et rotations conservent les longueurs et les angles.
+\end{propriete}
+
+\begin{propriete}
+Une homothétie conserve l'alignement et le parallélisme, et multiplie les longueurs par $|k|$.
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Théorème de Thalès}
+
+\begin{theoreme}[Thalès]
+Soient $A$, $B$, $M$ alignés dans cet ordre, et $A$, $C$, $N$ alignés dans cet ordre.
+Si
+\[
+(MN)\parallel(BC),
+\]
+alors
+\[
+\frac{AM}{AB}=\frac{AN}{AC}=\frac{MN}{BC}.
+\]
+\end{theoreme}
+
+\begin{proof}
+Les triangles $AMN$ et $ABC$ ont leurs angles correspondants égaux grâce au parallélisme.
+Ils sont donc semblables.
+Les côtés homologues sont alors proportionnels.
+\end{proof}
+
+\begin{theoreme}[Réciproque de Thalès]
+Soient $A$, $B$, $M$ alignés et $A$, $C$, $N$ alignés.
+Si
+\[
+\frac{AM}{AB}=\frac{AN}{AC},
+\]
+alors
+\[
+(MN)\parallel(BC).
+\]
+\end{theoreme}
+
+\begin{proof}
+On trace par $M$ la parallèle à $(BC)$, qui coupe $(AC)$ en un point $N'$.
+Par le théorème de Thalès,
+\[
+\frac{AM}{AB}=\frac{AN'}{AC}.
+\]
+Or, par hypothèse,
+\[
+\frac{AM}{AB}=\frac{AN}{AC}.
+\]
+Donc $AN'=AN$, d'où $N'=N$.
+Ainsi $(MN)\parallel(BC)$.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Théorème de Pythagore}
+
+\begin{theoreme}[Pythagore]
+Si le triangle $ABC$ est rectangle en $A$, alors
+\[
+BC^2=AB^2+AC^2.
+\]
+\end{theoreme}
+
+\begin{proof}
+Plaçons le triangle dans un repère :
+\[
+A(0,0),\quad B(b,0),\quad C(0,c).
+\]
+Alors
+\[
+AB=b,\qquad AC=c.
+\]
+La distance $BC$ vaut
+\[
+BC=\sqrt{(b-0)^2+(0-c)^2}=\sqrt{b^2+c^2}.
+\]
+Donc
+\[
+BC^2=b^2+c^2=AB^2+AC^2.
+\]
+\end{proof}
+
+\begin{theoreme}[Réciproque de Pythagore]
+Si dans un triangle $ABC$,
+\[
+BC^2=AB^2+AC^2,
+\]
+alors le triangle est rectangle en $A$.
+\end{theoreme}
+
+\begin{proof}
+On construit un triangle rectangle en $A'$ tel que
+\[
+A'B=AB,\qquad A'C=AC.
+\]
+Dans ce triangle,
+\[
+BC^2=A'B^2+A'C^2=AB^2+AC^2.
+\]
+Le triangle $ABC$ a donc les mêmes trois côtés que le triangle rectangle construit.
+Ils sont isométriques, donc $ABC$ est rectangle en $A$.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Trigonométrie dans le triangle rectangle}
+
+\begin{definition}
+Dans un triangle rectangle, pour un angle aigu $\theta$ :
+\[
+\cos\theta=\frac{\text{adjacent}}{\text{hypoténuse}},\qquad
+\sin\theta=\frac{\text{opposé}}{\text{hypoténuse}},\qquad
+\tan\theta=\frac{\text{opposé}}{\text{adjacent}}.
+\]
+\end{definition}
+
+\begin{propriete}
+Pour tout angle aigu $\theta$,
+\[
+\tan\theta=\frac{\sin\theta}{\cos\theta}.
+\]
+\end{propriete}
+
+\begin{proof}
+On a
+\[
+\frac{\sin\theta}{\cos\theta}
+=
+\frac{\frac{\text{opposé}}{\text{hypoténuse}}}{\frac{\text{adjacent}}{\text{hypoténuse}}}
+=
+\frac{\text{opposé}}{\text{adjacent}}
+=
+\tan\theta.
+\]
+\end{proof}
+
+\newpage
+
+%================================================
+\section{Seconde : géométrie repérée et vecteurs du plan}
+%================================================
+
+\subsection{Repère du plan}
+
+\begin{definition}
+Un \textbf{repère} du plan est constitué d'une origine $O$ et de deux axes.
+
+Un point $M$ est repéré par ses coordonnées $(x_M,y_M)$.
+\end{definition}
+
+\begin{definition}
+Un repère est \textbf{orthonormé} si les axes sont perpendiculaires et si l'unité est la même sur les deux axes.
+\end{definition}
+
+%------------------------------------------------
+\subsection{Distance et milieu}
+
+\begin{theoreme}
+Dans un repère orthonormé, si
+\[
+A(x_A,y_A),\qquad B(x_B,y_B),
+\]
+alors
+\[
+AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}.
+\]
+\end{theoreme}
+
+\begin{proof}
+Le déplacement de $A$ à $B$ se décompose en un déplacement horizontal de longueur $|x_B-x_A|$ et un déplacement vertical de longueur $|y_B-y_A|$.
+Ces deux déplacements sont perpendiculaires.
+On applique donc le théorème de Pythagore.
+\end{proof}
+
+\begin{proposition}
+Le milieu du segment $[AB]$ a pour coordonnées
+\[
+\left(\frac{x_A+x_B}{2},\frac{y_A+y_B}{2}\right).
+\]
+\end{proposition}
+
+\begin{proof}
+Le milieu partage le segment en deux parties égales : ses coordonnées sont donc les moyennes des coordonnées des extrémités.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Vecteurs du plan}
+
+\begin{definition}
+Un \textbf{vecteur} représente un déplacement.
+Le vecteur allant de $A$ à $B$ se note $\overrightarrow{AB}$.
+\end{definition}
+
+\begin{definition}
+Deux vecteurs sont égaux s'ils ont même direction, même sens et même longueur.
+\end{definition}
+
+\begin{definition}
+Le vecteur nul se note $\overrightarrow{0}$.
+\end{definition}
+
+\begin{propriete}[Relation de Chasles]
+Pour tous points $A$, $B$, $C$,
+\[
+\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}.
+\]
+\end{propriete}
+
+\begin{proof}
+Aller de $A$ à $B$, puis de $B$ à $C$, revient à aller directement de $A$ à $C$.
+\end{proof}
+
+\begin{propriete}
+Pour tout point $A$,
+\[
+\overrightarrow{AA}=\overrightarrow{0},
+\qquad
+\overrightarrow{AB}=-\overrightarrow{BA}.
+\]
+\end{propriete}
+
+\begin{proposition}
+Si
+\[
+A(x_A,y_A),\qquad B(x_B,y_B),
+\]
+alors
+\[
+\overrightarrow{AB}=(x_B-x_A,\ y_B-y_A).
+\]
+\end{proposition}
+
+\begin{definition}
+La \textbf{norme} d'un vecteur $\uu$ est sa longueur, notée $\norme{\uu}$.
+\end{definition}
+
+\begin{propriete}
+Si $\uu=(x,y)$, alors
+\[
+\norme{\uu}=\sqrt{x^2+y^2}.
+\]
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Colinéarité et alignement}
+
+\begin{definition}
+Deux vecteurs $\uu$ et $\vv$ sont \textbf{colinéaires} s'il existe un réel $\lambda$ tel que
+\[
+\uu=\lambda\vv.
+\]
+\end{definition}
+
+\begin{proposition}
+Si
+\[
+\uu=(x,y),\qquad \vv=(x',y'),
+\]
+alors $\uu$ et $\vv$ sont colinéaires si et seulement si
+\[
+xy'-yx'=0.
+\]
+\end{proposition}
+
+\begin{proof}
+Si $\uu=\lambda\vv$, alors
+\[
+x=\lambda x',\qquad y=\lambda y',
+\]
+donc
+\[
+xy'-yx'=\lambda x'y'-\lambda y'x'=0.
+\]
+
+Réciproquement, si $xy'-yx'=0$, on montre qu'il existe un réel $\lambda$ tel que $\uu=\lambda\vv$.
+\end{proof}
+
+\begin{corollaire}
+Les points $A$, $B$, $C$ sont alignés si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+\end{corollaire}
+
+%------------------------------------------------
+\subsection{Équation de droite}
+
+\begin{definition}
+Une droite non verticale du plan admet une équation de la forme
+\[
+y=mx+p,
+\]
+où $m$ est le coefficient directeur et $p$ l'ordonnée à l'origine.
+\end{definition}
+
+\begin{propriete}
+Si $A(x_A,y_A)$ et $B(x_B,y_B)$ avec $x_A\neq x_B$, alors le coefficient directeur de la droite $(AB)$ est
+\[
+m=\frac{y_B-y_A}{x_B-x_A}.
+\]
+\end{propriete}
+
+\begin{propriete}
+Deux droites non verticales sont parallèles si et seulement si elles ont le même coefficient directeur.
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Équation d'un cercle}
+
+\begin{definition}
+Le cercle de centre $O(x_0,y_0)$ et de rayon $r$ a pour équation
+\[
+(x-x_0)^2+(y-y_0)^2=r^2.
+\]
+\end{definition}
+
+\begin{proof}
+Un point $M(x,y)$ appartient au cercle si et seulement si
+\[
+OM=r.
+\]
+En élevant au carré,
+\[
+(x-x_0)^2+(y-y_0)^2=r^2.
+\]
+\end{proof}
+
+\newpage
+
+%================================================
+\section{Première spécialité : produit scalaire et géométrie du plan}
+%================================================
+
+\subsection{Définition du produit scalaire}
+
+\begin{definition}
+Le \textbf{produit scalaire} de deux vecteurs $\uu$ et $\vv$ est défini par
+\[
+\ps{\uu}{\vv}=\norme{\uu}\,\norme{\vv}\cos\theta,
+\]
+où $\theta$ est l'angle entre les deux vecteurs.
+\end{definition}
+
+\begin{propriete}
+Le produit scalaire est symétrique :
+\[
+\ps{\uu}{\vv}=\ps{\vv}{\uu}.
+\]
+\end{propriete}
+
+\begin{propriete}
+Pour tout vecteur $\uu$,
+\[
+\ps{\uu}{\uu}=\norme{\uu}^2.
+\]
+\end{propriete}
+
+\begin{proof}
+L'angle entre $\uu$ et lui-même vaut $0$, donc
+\[
+\ps{\uu}{\uu}=\norme{\uu}\,\norme{\uu}\cos 0=\norme{\uu}^2.
+\]
+\end{proof}
+
+%------------------------------------------------
+\subsection{Orthogonalité}
+
+\begin{theoreme}
+Deux vecteurs non nuls sont orthogonaux si et seulement si leur produit scalaire est nul.
+\end{theoreme}
+
+\begin{proof}
+On a
+\[
+\ps{\uu}{\vv}=\norme{\uu}\,\norme{\vv}\cos\theta.
+\]
+Comme les normes sont non nulles, ce produit est nul si et seulement si
+\[
+\cos\theta=0,
+\]
+c'est-à-dire si et seulement si $\theta=90^\circ$.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Expression coordonnée du produit scalaire}
+
+\begin{theoreme}
+Dans un repère orthonormé, si
+\[
+\uu=(x,y),\qquad \vv=(x',y'),
+\]
+alors
+\[
+\ps{\uu}{\vv}=xx'+yy'.
+\]
+\end{theoreme}
+
+\begin{proof}
+Dans une base orthonormée $(\overrightarrow{i},\overrightarrow{j})$,
+\[
+\uu=x\overrightarrow{i}+y\overrightarrow{j},
+\qquad
+\vv=x'\overrightarrow{i}+y'\overrightarrow{j}.
+\]
+En développant le produit scalaire, on obtient
+\[
+\ps{\uu}{\vv}=xx'+yy',
+\]
+car
+\[
+\ps{\overrightarrow{i}}{\overrightarrow{i}}=1,\quad
+\ps{\overrightarrow{j}}{\overrightarrow{j}}=1,\quad
+\ps{\overrightarrow{i}}{\overrightarrow{j}}=0.
+\]
+\end{proof}
+
+\begin{corollaire}
+Dans un repère orthonormé,
+\[
+\norme{(x,y)}=\sqrt{x^2+y^2}.
+\]
+\end{corollaire}
+
+\begin{proof}
+On écrit
+\[
+\norme{(x,y)}^2=\ps{(x,y)}{(x,y)}=x^2+y^2.
+\]
+\end{proof}
+
+%------------------------------------------------
+\subsection{Applications}
+
+\begin{propriete}
+Deux vecteurs $\uu=(x,y)$ et $\vv=(x',y')$ sont orthogonaux si et seulement si
+\[
+xx'+yy'=0.
+\]
+\end{propriete}
+
+\begin{propriete}
+Dans un repère orthonormé, deux droites non verticales de coefficients directeurs $m$ et $m'$ sont perpendiculaires si et seulement si
+\[
+mm'=-1.
+\]
+\end{propriete}
+
+\begin{proof}
+Un vecteur directeur de la première droite est $(1,m)$ et de la seconde $(1,m')$.
+La perpendicularité équivaut à
+\[
+\ps{(1,m)}{(1,m')}=0,
+\]
+soit
+\[
+1+mm'=0.
+\]
+\end{proof}
+
+\begin{theoreme}[Formule d'Al-Kashi]
+Dans tout triangle $ABC$,
+\[
+BC^2=AB^2+AC^2-2AB\cdot AC\cos(\widehat{BAC}).
+\]
+\end{theoreme}
+
+\begin{proof}
+On a
+\[
+\overrightarrow{BC}=\overrightarrow{BA}+\overrightarrow{AC}.
+\]
+Donc
+\[
+BC^2=\ps{\overrightarrow{BC}}{\overrightarrow{BC}}
+=\ps{\overrightarrow{BA}+\overrightarrow{AC}}{\overrightarrow{BA}+\overrightarrow{AC}}.
+\]
+En développant :
+\[
+BC^2=BA^2+AC^2+2\ps{\overrightarrow{BA}}{\overrightarrow{AC}}.
+\]
+Or l'angle entre $\overrightarrow{BA}$ et $\overrightarrow{AC}$ vaut $\pi-\widehat{BAC}$, donc
+\[
+\ps{\overrightarrow{BA}}{\overrightarrow{AC}}
+=
+-AB\cdot AC\cos(\widehat{BAC}).
+\]
+D'où
+\[
+BC^2=AB^2+AC^2-2AB\cdot AC\cos(\widehat{BAC}).
+\]
+\end{proof}
+
+%------------------------------------------------
+\subsection{Centre de gravité}
+
+\begin{theoreme}
+Dans un triangle, les trois médianes sont concourantes.
+\end{theoreme}
+
+\begin{proof}
+Soit $I$ le milieu de $[BC]$.
+Alors
+\[
+\overrightarrow{AI}=\frac12(\overrightarrow{AB}+\overrightarrow{AC}).
+\]
+Définissons $G$ par
+\[
+\overrightarrow{AG}=\frac13(\overrightarrow{AB}+\overrightarrow{AC}).
+\]
+Alors
+\[
+\overrightarrow{AG}=\frac23\,\overrightarrow{AI},
+\]
+donc $G$ appartient à la médiane issue de $A$.
+De même, on montre qu'il appartient aux deux autres médianes.
+\end{proof}
+
+\begin{corollaire}
+Le centre de gravité partage chaque médiane dans le rapport
+\[
+AG=\frac23\,AI.
+\]
+\end{corollaire}
+
+%------------------------------------------------
+\subsection{Cercle trigonométrique}
+
+\begin{definition}
+Le \textbf{cercle trigonométrique} est le cercle de centre $O$ et de rayon $1$ dans un repère orthonormé.
+\end{definition}
+
+\begin{definition}
+À tout réel $x$, on associe sur le cercle trigonométrique le point de coordonnées
+\[
+(\cos x,\sin x).
+\]
+\end{definition}
+
+\begin{propriete}
+Pour tout réel $x$,
+\[
+\cos^2 x+\sin^2 x=1.
+\]
+\end{propriete}
+
+\begin{proof}
+Le point de coordonnées $(\cos x,\sin x)$ appartient au cercle trigonométrique, donc sa distance à l'origine vaut $1$.
+\end{proof}
+
+\newpage
+
+%================================================
+\section{Terminale spécialité : géométrie dans l'espace}
+%================================================
+
+\subsection{Repère de l'espace}
+
+\begin{definition}
+Un repère de l'espace est constitué d'une origine $O$ et de trois axes non coplanaires.
+Un point $M$ est repéré par ses coordonnées
+\[
+M(x,y,z).
+\]
+\end{definition}
+
+\begin{definition}
+Un repère est \textbf{orthonormé} si les trois axes sont deux à deux perpendiculaires et si l'unité est la même sur chacun.
+\end{definition}
+
+%------------------------------------------------
+\subsection{Vecteurs et distance dans l'espace}
+
+\begin{proposition}
+Si
+\[
+A(x_A,y_A,z_A),\qquad B(x_B,y_B,z_B),
+\]
+alors
+\[
+\overrightarrow{AB}=(x_B-x_A,\ y_B-y_A,\ z_B-z_A).
+\]
+\end{proposition}
+
+\begin{propriete}
+Pour tous points $A$, $B$, $C$,
+\[
+\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}.
+\]
+\end{propriete}
+
+\begin{theoreme}
+Dans un repère orthonormé de l'espace,
+\[
+AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}.
+\]
+\end{theoreme}
+
+\begin{proof}
+On applique la formule de la norme au vecteur $\overrightarrow{AB}$.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Produit scalaire dans l'espace}
+
+\begin{theoreme}
+Si
+\[
+\uu=(x,y,z),\qquad \vv=(x',y',z'),
+\]
+dans une base orthonormée de l'espace, alors
+\[
+\ps{\uu}{\vv}=xx'+yy'+zz'.
+\]
+\end{theoreme}
+
+\begin{corollaire}
+On a
+\[
+\norme{(x,y,z)}=\sqrt{x^2+y^2+z^2}.
+\]
+\end{corollaire}
+
+\begin{propriete}
+Deux vecteurs non nuls de l'espace sont orthogonaux si et seulement si leur produit scalaire est nul.
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Droites de l'espace}
+
+\begin{definition}
+Une droite passant par $A(x_A,y_A,z_A)$ et de vecteur directeur $\uu=(a,b,c)$ admet une représentation paramétrique
+\[
+\left\{
+\begin{array}{l}
+x=x_A+ta\\
+y=y_A+tb\\
+z=z_A+tc
+\end{array}
+\right.
+\qquad (t\in\R).
+\]
+\end{definition}
+
+\begin{propriete}
+Deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont colinéaires.
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Plans de l'espace}
+
+\begin{definition}
+Un plan de l'espace admet une équation cartésienne de la forme
+\[
+ax+by+cz+d=0,
+\]
+avec
+\[
+(a,b,c)\neq(0,0,0).
+\]
+\end{definition}
+
+\begin{definition}
+Le vecteur
+\[
+\overrightarrow{n}=(a,b,c)
+\]
+est appelé \textbf{vecteur normal} au plan.
+\end{definition}
+
+\begin{proposition}
+Le plan passant par $A(x_A,y_A,z_A)$ et de vecteur normal $\overrightarrow{n}=(a,b,c)$ a pour équation
+\[
+a(x-x_A)+b(y-y_A)+c(z-z_A)=0.
+\]
+\end{proposition}
+
+\begin{proof}
+Un point $M(x,y,z)$ appartient au plan si et seulement si le vecteur $\overrightarrow{AM}$ est orthogonal au vecteur normal :
+\[
+\ps{\overrightarrow{AM}}{\overrightarrow{n}}=0.
+\]
+Cela donne
+\[
+a(x-x_A)+b(y-y_A)+c(z-z_A)=0.
+\]
+\end{proof}
+
+\begin{propriete}
+Deux plans sont parallèles si et seulement si leurs vecteurs normaux sont colinéaires.
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Orthogonalité dans l'espace}
+
+\begin{definition}
+Une droite est perpendiculaire à un plan si elle est perpendiculaire à toute droite du plan passant par son pied.
+\end{definition}
+
+\begin{propriete}
+Une droite de vecteur directeur $\uu$ est perpendiculaire à un plan de vecteur normal $\overrightarrow{n}$ si et seulement si $\uu$ et $\overrightarrow{n}$ sont colinéaires.
+\end{propriete}
+
+\begin{propriete}
+Une droite de vecteur directeur $\uu$ est parallèle à un plan de vecteur normal $\overrightarrow{n}$ si et seulement si
+\[
+\ps{\uu}{\overrightarrow{n}}=0.
+\]
+\end{propriete}
+
+%------------------------------------------------
+\subsection{Sphère}
+
+\begin{definition}
+Une \textbf{sphère} de centre $O(x_0,y_0,z_0)$ et de rayon $r$ est l'ensemble des points $M(x,y,z)$ tels que
+\[
+OM=r.
+\]
+\end{definition}
+
+\begin{propriete}
+L'équation cartésienne d'une sphère de centre $O(x_0,y_0,z_0)$ et de rayon $r$ est
+\[
+(x-x_0)^2+(y-y_0)^2+(z-z_0)^2=r^2.
+\]
+\end{propriete}
+
+\begin{proof}
+C'est la traduction analytique de la condition
+\[
+OM=r
+\]
+à l'aide de la formule de distance dans l'espace.
+\end{proof}
+
+%------------------------------------------------
+\subsection{Projeté orthogonal}
+
+\begin{definition}
+Le \textbf{projeté orthogonal} d'un point $M$ sur un plan $\mathcal P$ est le point $H$ du plan tel que la droite $(MH)$ soit perpendiculaire au plan.
+\end{definition}
+
+\begin{theoreme}
+Le projeté orthogonal d'un point sur un plan est le point du plan le plus proche de ce point.
+\end{theoreme}
+
+\begin{proof}
+Soit $H$ le projeté orthogonal de $M$ sur le plan $\mathcal P$, et soit $N$ un point quelconque du plan.
+Le triangle $MHN$ est rectangle en $H$.
+Par le théorème de Pythagore,
+\[
+MN^2=MH^2+HN^2\ge MH^2.
+\]
+Donc
+\[
+MN\ge MH.
+\]
+Ainsi, $H$ est le point du plan le plus proche de $M$.
+\end{proof}
+
+\newpage
+
+%================================================
+\section{Méthodes classiques de démonstration}
+%================================================
+
+\begin{methode}
+Pour montrer que des points sont alignés :
+\begin{itemize}
+    \item exhiber une droite commune ;
+    \item montrer que deux vecteurs sont colinéaires ;
+    \item montrer qu'ils vérifient une même équation de droite.
+\end{itemize}
+\end{methode}
+
+\begin{methode}
+Pour montrer que deux droites sont parallèles :
+\begin{itemize}
+    \item utiliser les propriétés d'angles avec des parallèles ;
+    \item utiliser la réciproque de Thalès ;
+    \item montrer que des vecteurs directeurs sont colinéaires ;
+    \item comparer les coefficients directeurs.
+\end{itemize}
+\end{methode}
+
+\begin{methode}
+Pour montrer qu'il y a perpendicularité :
+\begin{itemize}
+    \item repérer un angle droit ;
+    \item utiliser Pythagore ou sa réciproque ;
+    \item montrer que le produit scalaire est nul.
+\end{itemize}
+\end{methode}
+
+\begin{methode}
+Pour calculer une longueur :
+\begin{itemize}
+    \item utiliser les égalités géométriques connues ;
+    \item appliquer Pythagore ;
+    \item utiliser la formule de distance ;
+    \item utiliser le produit scalaire ou Al-Kashi.
+\end{itemize}
+\end{methode}
+
+%================================================
+\section{Exemples de synthèse}
+%================================================
+
+\begin{exemple}[Alignement dans le plan]
+Soient
+\[
+A(1,2),\quad B(3,5),\quad C(5,8).
+\]
+On calcule
+\[
+\overrightarrow{AB}=(2,3),\qquad \overrightarrow{AC}=(4,6)=2(2,3).
+\]
+Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+Donc les points $A$, $B$, $C$ sont alignés.
+\end{exemple}
+
+\begin{exemple}[Milieu]
+Soient
+\[
+A(-1,4),\qquad B(5,2).
+\]
+Le milieu de $[AB]$ est
+\[
+M\left(\frac{-1+5}{2},\frac{4+2}{2}\right)=(2,3).
+\]
+\end{exemple}
+
+\begin{exemple}[Orthogonalité dans le plan]
+Soient
+\[
+\uu=(2,-3),\qquad \vv=(3,2).
+\]
+Alors
+\[
+\ps{\uu}{\vv}=2\cdot 3+(-3)\cdot 2=6-6=0.
+\]
+Donc les vecteurs sont orthogonaux.
+\end{exemple}
+
+\begin{exemple}[Droite dans l'espace]
+La droite passant par
+\[
+A(1,0,2)
+\]
+et de vecteur directeur
+\[
+(2,-1,3)
+\]
+admet pour représentation paramétrique
+\[
+\left\{
+\begin{array}{l}
+x=1+2t\\
+y=-t\\
+z=2+3t
+\end{array}
+\right.
+\]
+\end{exemple}
+
+\begin{exemple}[Plan dans l'espace]
+Déterminons une équation du plan passant par
+\[
+A(1,2,3)
+\]
+et de vecteur normal
+\[
+(2,-1,4).
+\]
+On écrit
+\[
+2(x-1)-(y-2)+4(z-3)=0.
+\]
+Après développement :
+\[
+2x-y+4z-8=0.
+\]
+\end{exemple}
+
+%================================================
+\section{Formulaire récapitulatif}
+%================================================
+
+\subsection*{Dans le plan}
+\[
+AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}
+\]
+\[
+M_{[AB]}=\left(\frac{x_A+x_B}{2},\frac{y_A+y_B}{2}\right)
+\]
+\[
+\overrightarrow{AB}=(x_B-x_A,\ y_B-y_A)
+\]
+\[
+\ps{(x,y)}{(x',y')}=xx'+yy'
+\]
+\[
+\norme{(x,y)}=\sqrt{x^2+y^2}
+\]
+\[
+\text{colinéarité : } xy'-yx'=0
+\]
+\[
+\text{droite non verticale : } y=mx+p
+\]
+\[
+\text{cercle : } (x-x_0)^2+(y-y_0)^2=r^2
+\]
+
+\subsection*{Dans l'espace}
+\[
+AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}
+\]
+\[
+\overrightarrow{AB}=(x_B-x_A,\ y_B-y_A,\ z_B-z_A)
+\]
+\[
+\ps{(x,y,z)}{(x',y',z')}=xx'+yy'+zz'
+\]
+\[
+\norme{(x,y,z)}=\sqrt{x^2+y^2+z^2}
+\]
+\[
+\text{droite : }
+\left\{
+\begin{array}{l}
+x=x_A+ta\\
+y=y_A+tb\\
+z=z_A+tc
+\end{array}
+\right.
+\]
+\[
+\text{plan : } ax+by+cz+d=0
+\]
+\[
+\text{sphère : } (x-x_0)^2+(y-y_0)^2+(z-z_0)^2=r^2
+\]
+
+%================================================
+\section*{Conclusion}
+%================================================
+
+Ce cours regroupe l'essentiel de la géométrie jusqu'à la terminale :
+\begin{itemize}
+    \item géométrie plane classique ;
+    \item transformations ;
+    \item Thalès, Pythagore, trigonométrie ;
+    \item géométrie repérée et vectorielle ;
+    \item produit scalaire ;
+    \item géométrie de l'espace.
+\end{itemize}
+
+Pour bien réviser, il faut :
+\begin{itemize}
+    \item apprendre précisément les définitions ;
+    \item connaître les hypothèses des théorèmes ;
+    \item refaire les démonstrations ;
+    \item s'entraîner sur des exercices variés.
+\end{itemize}
+
+\end{document}

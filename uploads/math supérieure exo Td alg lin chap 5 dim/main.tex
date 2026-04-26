@@ -1,0 +1,476 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{stmaryrd}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{mathrsfs}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue!50!black,
+  pdftitle={Fiche d'exercices - Algèbre linéaire Chapitre 5},
+  pdfauthor={OpenAI}
+}
+
+\definecolor{titleblue}{RGB}{25,70,140}
+\definecolor{lightblue}{RGB}{235,242,252}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{darkred}{RGB}{120,20,20}
+\definecolor{darkgreen}{RGB}{20,100,40}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Algèbre linéaire}
+\chead{Chapitre 5 - Dimension finie}
+\rhead{Fiche d'exercices}
+\cfoot{\thepage/\pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\titleformat{\section}{\Large\bfseries\color{titleblue}}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries\color{titleblue}}{}{0em}{}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\dimv}{\mathrm{dim}}
+
+\newcounter{exo}
+\newcommand{\exo}[2]{%
+  \refstepcounter{exo}
+  \vspace{0.6em}
+  \noindent\textbf{Exercice \theexo\ [#1]}\\[-0.2em]
+  \textbf{#2}\par
+}
+
+\newcommand{\app}{APP}
+\newcommand{\meth}{METH}
+\newcommand{\dem}{DEM}
+\newcommand{\prep}{PREP}
+
+\newcommand{\etoile}{\ensuremath{\star}}
+\newcommand{\etoiles}[1]{%
+  \ifcase#1\or $\star$\or $\star\star$\or $\star\star\star$\or $\star\star\star\star$\or $\star\star\star\star\star$\fi}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{titleblue} Fiche d'exercices -- Chapitre 5}\\[0.4em]
+  {\Large\bfseries Espaces vectoriels de dimension finie}\\[0.4em]
+  {\large Algèbre linéaire}
+\end{center}
+
+\begin{tcolorbox}[colback=lightblue,colframe=titleblue,title=AIDE de lecture]
+Type d'exo : \textbf{APP} = application directe, \textbf{METH} = méthode, \textbf{DEM} = démonstration, \textbf{PREP} = réflexion plus poussée.\newline
+Les étoiles représentent un gradient de difficulté de 1 à 5.
+\end{tcolorbox}
+
+\tableofcontents
+
+\newpage
+\section*{Exercices d'application directe}
+\addcontentsline{toc}{section}{Exercices d'application directe}
+
+\exo{APP \etoiles{1}}{Dimensions usuelles}
+Donner la dimension des espaces suivants :
+\begin{enumerate}[label=\alph*)]
+  \item $\R^2$,
+  \item $\R^5$,
+  \item $\mathcal M_{2,3}(\R)$,
+  \item $\R_3[X]$,
+  \item le sous-espace nul $\{0\}$.
+\end{enumerate}
+
+\exo{APP \etoiles{1}}{Cardinal possible d'une famille libre}
+Dans chacun des espaces suivants, dire si une famille de $p$ vecteurs peut être libre :
+\begin{enumerate}[label=\alph*)]
+  \item $p=3$ dans $\R^2$,
+  \item $p=4$ dans $\R^4$,
+  \item $p=5$ dans $\mathcal M_{2,2}(\R)$,
+  \item $p=2$ dans une droite vectorielle.
+\end{enumerate}
+
+\exo{APP \etoiles{1}}{Cardinal possible d'une famille génératrice}
+Dans chacun des cas suivants, dire si une famille de $p$ vecteurs peut engendrer l'espace :
+\begin{enumerate}[label=\alph*)]
+  \item $p=1$ dans $\R^3$,
+  \item $p=3$ dans $\R^3$,
+  \item $p=2$ dans un plan vectoriel,
+  \item $p=3$ dans $\mathcal M_{1,4}(\R)$.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Famille libre ou génératrice dans un espace de dimension connue}
+Dans $\R^3$, étudier les familles suivantes :
+\begin{enumerate}[label=\alph*)]
+  \item $((1,0,0),(0,1,0),(0,0,1))$,
+  \item $((1,0,0),(0,1,0),(1,1,0))$,
+  \item $((1,0,0),(0,1,0))$,
+  \item $((1,0,0),(0,1,0),(0,0,1),(1,1,1))$.
+\end{enumerate}
+Dire pour chacune si elle est libre, génératrice, puis si c'est une base.
+
+\exo{APP \etoiles{2}}{Critère de base par le cardinal}
+Dans chacun des cas suivants, dire rapidement si la famille donnée est une base de l'espace indiqué :
+\begin{enumerate}[label=\alph*)]
+  \item deux vecteurs libres dans $\R^2$ ;
+  \item trois vecteurs générateurs dans $\R^3$ ;
+  \item quatre vecteurs libres dans $\mathcal M_{2,2}(\R)$ ;
+  \item quatre vecteurs générateurs dans $\R_3[X]$.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Dimension d'un sous-espace très simple}
+Déterminer la dimension des sous-espaces suivants :
+\begin{enumerate}[label=\alph*)]
+  \item $F=\{(x,y,z)\in\R^3\mid z=0\}$,
+  \item $G=\{(x,y,z,t)\in\R^4\mid x=y=z=t\}$,
+  \item $H=\Vect((1,2,3),(2,4,6))$,
+  \item $K=\Vect(1,X,X^2)\subset \R_3[X]$.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Plan, droite, hyperplan}
+Dans chacun des cas suivants, préciser si le sous-espace est une droite vectorielle, un plan vectoriel ou un hyperplan :
+\begin{enumerate}[label=\alph*)]
+  \item $\Vect((1,2,3))\subset \R^3$,
+  \item $\{(x,y,z)\in\R^3\mid x+y+z=0\}$,
+  \item $\{(x,y,z,t)\in\R^4\mid x-y+z-t=0\}$,
+  \item $\Vect((1,0,0),(0,1,0))\subset\R^3$.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Dimensions classiques}
+Donner la dimension des espaces suivants, puis proposer une base naturelle :
+\begin{enumerate}[label=\alph*)]
+  \item $\mathcal M_{3,2}(\R)$,
+  \item $\R_4[X]$,
+  \item $\R^n$,
+  \item $\mathcal M_{1,p}(\R)$.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Intersection et somme directe élémentaires}
+Dans $\R^3$, on considère
+\[
+F=\Vect((1,0,0),(0,1,0)),\qquad G=\Vect((0,0,1)).
+\]
+Déterminer :
+\begin{enumerate}[label=\alph*)]
+  \item $\dim(F)$,
+  \item $\dim(G)$,
+  \item $F\cap G$,
+  \item $F+G$,
+  \item dire si la somme est directe.
+\end{enumerate}
+
+\exo{APP \etoiles{2}}{Application immédiate de Grassmann}
+Dans $\R^3$, on considère deux plans vectoriels distincts $F$ et $G$.
+\begin{enumerate}[label=\alph*)]
+  \item Que vaut $\dim(F)$ ?
+  \item Pourquoi $F\cap G\neq\{0\}$ ?
+  \item Quelle est la dimension possible de $F\cap G$ ?
+  \item En déduire $\dim(F+G)$.
+\end{enumerate}
+
+\section*{Exercices de méthode}
+\addcontentsline{toc}{section}{Exercices de méthode}
+
+\exo{METH \etoiles{2}}{Calculer une dimension à partir d'une description paramétrique}
+Déterminer une base et la dimension de
+\[
+F=\{(x,y,z,t)\in\R^4\mid x+y-z=0\text{ et }t=2x-y\}.
+\]
+
+\exo{METH \etoiles{2}}{Sous-espace de matrices}
+Dans $\mathcal M_{2,2}(\R)$, on considère
+\[
+F=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}\ ;\ a+d=0\right\}.
+\]
+Montrer que $F$ est un sous-espace, puis en déterminer une base et sa dimension.
+
+\exo{METH \etoiles{3}}{Sous-espace de polynômes}
+Dans $\R_3[X]$, on considère
+\[
+F=\{P\in\R_3[X]\mid P(1)=0\}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $F$ est un sous-espace vectoriel.
+  \item Écrire tout polynôme de $F$ sous une forme adaptée.
+  \item En déduire une base de $F$ et sa dimension.
+\end{enumerate}
+
+\exo{METH \etoiles{3}}{Utiliser le critère de base par le cardinal}
+Dans $\R^4$, on considère la famille
+\[
+\mathcal F=((1,0,0,0),(1,1,0,0),(1,1,1,0),(1,1,1,1)).
+\]
+Montrer que c'est une base de $\R^4$ en utilisant seulement un raisonnement sur la liberté.
+
+\exo{METH \etoiles{3}}{Compléter une famille libre}
+Dans $\R^4$, on considère
+\[
+u_1=(1,0,1,0),\qquad u_2=(0,1,0,1).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $(u_1,u_2)$ est libre.
+  \item Compléter cette famille en une base de $\R^4$.
+  \item Proposer une autre complétion possible.
+\end{enumerate}
+
+\exo{METH \etoiles{3}}{Extraire une base d'une famille génératrice}
+Dans $\R^4$, on considère la famille
+\[
+\mathcal G=((1,0,0,0),(0,1,0,0),(1,1,0,0),(0,0,1,0),(0,0,0,1)).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $\mathcal G$ est génératrice de $\R^4$.
+  \item Montrer qu'elle est liée.
+  \item En extraire une base de $\R^4$.
+\end{enumerate}
+
+\exo{METH \etoiles{3}}{Dimension d'une somme de sous-espaces}
+Dans $\R^4$, on considère
+\[
+F=\Vect((1,0,0,0),(0,1,0,0)),\qquad G=\Vect((1,0,1,0),(0,1,0,1)).
+\]
+Déterminer $\dim(F)$, $\dim(G)$, $F\cap G$, puis $\dim(F+G)$.
+
+\exo{METH \etoiles{3}}{Montrer qu'un sous-espace est tout l'espace}
+Soit $F$ un sous-espace vectoriel de $\R^3$ contenant les vecteurs
+\[
+(1,0,0),\quad (0,1,0),\quad (0,0,1).
+\]
+Montrer que $F=\R^3$ de deux manières différentes :
+\begin{enumerate}[label=\alph*)]
+  \item par un argument de génération ;
+  \item par un argument de dimension.
+\end{enumerate}
+
+\exo{METH \etoiles{3}}{Hyperplan de $\R^4$}
+On considère
+\[
+H=\{(x,y,z,t)\in\R^4\mid x+2y-z+t=0\}.
+\]
+Déterminer une base de $H$ et montrer que c'est un hyperplan de $\R^4$.
+
+\exo{METH \etoiles{4}}{Somme directe et décomposition}
+Dans $\R^3$, on pose
+\[
+F=\Vect((1,0,0),(0,1,0)),\qquad G=\Vect((0,0,1)).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $\R^3=F\oplus G$.
+  \item Écrire tout vecteur $(x,y,z)$ sous la forme $u+v$ avec $u\in F$ et $v\in G$.
+  \item Montrer que cette écriture est unique.
+\end{enumerate}
+
+\exo{METH \etoiles{4}}{Sous-espace de dimension 2 dans $\R^4$}
+Déterminer une base de
+\[
+F=\{(x,y,z,t)\in\R^4\mid x+y=0\text{ et }z-t=0\}
+\]
+puis compléter cette base en une base de $\R^4$.
+
+\exo{METH \etoiles{4}}{Grassmann avec calcul explicite}
+Dans $\R^3$, on considère
+\[
+F=\{(x,y,z)\in\R^3\mid x+y+z=0\},\qquad G=\{(x,y,z)\in\R^3\mid x-y=0\}.
+\]
+Déterminer une base de $F$, une base de $G$, puis calculer $\dim(F\cap G)$ et $\dim(F+G)$.
+
+\section*{Exercices de démonstration}
+\addcontentsline{toc}{section}{Exercices de démonstration}
+
+\exo{DEM \etoiles{2}}{Une famille libre ne peut pas être trop grande}
+Montrer que dans un espace vectoriel $E$ de dimension $n$, toute famille libre contient au plus $n$ vecteurs.
+
+\exo{DEM \etoiles{2}}{Une famille génératrice ne peut pas être trop petite}
+Montrer que dans un espace vectoriel $E$ de dimension $n$, toute famille génératrice contient au moins $n$ vecteurs.
+
+\exo{DEM \etoiles{3}}{Famille libre de cardinal maximal}
+Montrer que dans un espace vectoriel de dimension $n$, toute famille libre de $n$ vecteurs est une base.
+
+\exo{DEM \etoiles{3}}{Famille génératrice de cardinal minimal}
+Montrer que dans un espace vectoriel de dimension $n$, toute famille génératrice de $n$ vecteurs est une base.
+
+\exo{DEM \etoiles{3}}{Sous-espace de même dimension que l'espace ambiant}
+Soit $F$ un sous-espace vectoriel d'un espace vectoriel $E$ de dimension finie. Montrer que si $\dim(F)=\dim(E)$, alors $F=E$.
+
+\exo{DEM \etoiles{3}}{Dimension d'une droite vectorielle}
+Montrer qu'un sous-espace de la forme $\Vect(u)$ avec $u\neq 0$ est de dimension 1.
+
+\exo{DEM \etoiles{3}}{Dimension d'un plan vectoriel engendré par deux vecteurs libres}
+Soient $u,v\in E$ deux vecteurs libres. Montrer que $\Vect(u,v)$ est de dimension 2.
+
+\exo{DEM \etoiles{4}}{Complétion d'une famille libre}
+Montrer que dans un espace vectoriel de dimension finie, toute famille libre peut être complétée en une base.
+
+\exo{DEM \etoiles{4}}{Extraction d'une base d'un sous-espace}
+Montrer que toute famille génératrice finie d'un sous-espace vectoriel contient une base de ce sous-espace.
+
+\exo{DEM \etoiles{4}}{Formule de Grassmann dans un cas simple}
+Soient $F$ et $G$ deux sous-espaces d'un espace vectoriel de dimension finie. On suppose que $\dim(F)=2$, $\dim(G)=2$ et $\dim(F\cap G)=1$. Montrer que $\dim(F+G)=3$.
+
+\exo{DEM \etoiles{4}}{Somme directe et dimensions}
+Soient $F$ et $G$ deux sous-espaces vectoriels de dimension finie.
+Montrer que si $F\cap G=\{0\}$, alors
+\[
+\dim(F\oplus G)=\dim(F)+\dim(G).
+\]
+
+\exo{DEM \etoiles{4}}{Hyperplan et équation linéaire}
+Dans $\R^n$, on considère
+\[
+H=\{(x_1,\dots,x_n)\in\R^n\mid a_1x_1+\cdots+a_nx_n=0\},
+\]
+où $(a_1,\dots,a_n)\neq (0,\dots,0)$.
+Montrer que $H$ est un hyperplan de $\R^n$.
+
+\section*{Exercices de réflexion}
+\addcontentsline{toc}{section}{Exercices de réflexion}
+
+\exo{PREP \etoiles{3}}{Peut-on ?}
+Répondre aux questions suivantes en justifiant précisément :
+\begin{enumerate}[label=\alph*)]
+  \item Peut-on trouver cinq vecteurs libres dans $\R^4$ ?
+  \item Peut-on trouver trois vecteurs générateurs de $\R^4$ ?
+  \item Peut-on trouver quatre vecteurs liés et générateurs de $\R^3$ ?
+  \item Peut-on trouver deux sous-espaces de dimension 2 dans $\R^3$ en somme directe ?
+\end{enumerate}
+
+\exo{PREP \etoiles{3}}{Panorama dans $\R^3$}
+Donner un exemple :
+\begin{enumerate}[label=\alph*)]
+  \item d'une famille libre non génératrice de $\R^3$ ;
+  \item d'une famille génératrice liée de $\R^3$ ;
+  \item d'un sous-espace de dimension 2 de $\R^3$ ;
+  \item d'un hyperplan de $\R^4$.
+\end{enumerate}
+
+\exo{PREP \etoiles{3}}{Peut-on avoir même dimension ?}
+Dans $\R^4$, on considère deux sous-espaces $F$ et $G$ tels que
+\[
+\dim(F)=\dim(G)=2.
+\]
+Étudier les valeurs possibles de $\dim(F\cap G)$ puis celles de $\dim(F+G)$.
+
+\exo{PREP \etoiles{4}}{Sous-espace strict de grande dimension}
+Dans $\R^5$, peut-on trouver un sous-espace strict de dimension 4 ? de dimension 5 ? de dimension 6 ?
+Justifier chaque réponse.
+
+\exo{PREP \etoiles{4}}{Deux droites et un plan}
+Dans $\R^3$, on considère
+\[
+D_1=\Vect((1,0,0)),\qquad D_2=\Vect((0,1,0)),\qquad P=\Vect((1,0,0),(0,1,0)).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $P=D_1\oplus D_2$.
+  \item Peut-on écrire $\R^3$ comme somme directe de trois droites vectorielles ?
+  \item Donner un exemple explicite.
+\end{enumerate}
+
+\exo{PREP \etoiles{4}}{Un sous-espace de matrices triangulaires}
+Dans $\mathcal M_3(\R)$, on considère le sous-espace $T$ des matrices triangulaires supérieures.
+Déterminer $\dim(T)$ puis proposer une base naturelle.
+
+\exo{PREP \etoiles{4}}{Matrices symétriques}
+Dans $\mathcal M_2(\R)$, on considère le sous-espace $S$ des matrices symétriques.
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $S$ est un sous-espace vectoriel.
+  \item Déterminer sa dimension.
+  \item Comparer avec la dimension de $\mathcal M_2(\R)$.
+\end{enumerate}
+
+\exo{PREP \etoiles{4}}{Polynômes pairs et impairs bornés en degré}
+Dans $\R_5[X]$, on note
+\[
+P=\{Q\in\R_5[X]\mid Q(-X)=Q(X)\},\qquad I=\{Q\in\R_5[X]\mid Q(-X)=-Q(X)\}.
+\]
+Déterminer une base de $P$, une base de $I$, puis montrer que
+\[
+\R_5[X]=P\oplus I.
+\]
+
+\exo{PREP \etoiles{4}}{Une somme qui n'est pas directe}
+Dans $\R^3$, on considère
+\[
+F=\Vect((1,0,0),(0,1,0)),\qquad G=\Vect((1,0,0),(0,0,1)).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Déterminer $F\cap G$.
+  \item Déterminer $F+G$.
+  \item Expliquer pourquoi la somme n'est pas directe.
+  \item Vérifier la formule de Grassmann.
+\end{enumerate}
+
+\exo{PREP \etoiles{5}}{Dimension et équations linéaires}
+Dans $\R^n$, on considère $r$ équations linéaires homogènes indépendantes.
+On admet que l'ensemble des solutions est un sous-espace vectoriel.
+Quelle dimension peut-on raisonnablement attendre pour cet espace ?
+Tester la réponse sur des exemples simples dans $\R^2$, $\R^3$ et $\R^4$.
+
+\exo{PREP \etoiles{5}}{Quand deux sous-espaces engendrent-ils tout l'espace ?}
+Dans $\R^4$, on considère deux sous-espaces $F$ et $G$ tels que
+\[
+\dim(F)=2,\qquad \dim(G)=3.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Quelles sont les valeurs possibles de $\dim(F\cap G)$ ?
+  \item En déduire les valeurs possibles de $\dim(F+G)$.
+  \item À quelle condition a-t-on $F+G=\R^4$ ?
+\end{enumerate}
+
+\exo{PREP \etoiles{5}}{Base adaptée à une décomposition}
+Dans $\R^4$, on considère
+\[
+F=\Vect((1,0,0,0),(0,1,0,0)),\qquad G=\Vect((0,0,1,0),(0,0,0,1)).
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que $\R^4=F\oplus G$.
+  \item Construire une base de $\R^4$ adaptée à cette décomposition.
+  \item Écrire les coordonnées d'un vecteur $(x,y,z,t)$ dans cette base.
+\end{enumerate}
+
+\section*{Pour aller plus loin}
+\addcontentsline{toc}{section}{Pour aller plus loin}
+
+\exo{PREP \etoiles{5}}{Dimension d'un espace de suites récurrentes}
+On considère l'ensemble $E$ des suites réelles $(u_n)_{n\in\N}$ vérifiant pour tout $n$,
+\[
+u_{n+2}=u_{n+1}+u_n.
+\]
+On admet que $E$ est un espace vectoriel.
+\begin{enumerate}[label=\alph*)]
+  \item Montrer qu'une suite de $E$ est entièrement déterminée par $u_0$ et $u_1$.
+  \item En déduire que $E$ est de dimension finie.
+  \item Déterminer sa dimension.
+  \item Proposer une base explicite de $E$.
+\end{enumerate}
+
+\exo{PREP \etoiles{5}}{Sous-espaces de mêmes dimensions dans un espace plus grand}
+Dans un espace vectoriel $E$ de dimension $n$, on considère deux sous-espaces $F$ et $G$ de même dimension $p$.
+\begin{enumerate}[label=\alph*)]
+  \item Encadrer $\dim(F\cap G)$.
+  \item En déduire un encadrement de $\dim(F+G)$.
+  \item Discuter les cas limites.
+\end{enumerate}
+
+\exo{PREP \etoiles{5}}{Un problème de classification en petite dimension}
+Décrire, à isomorphisme près et dans le langage du cours, tous les sous-espaces vectoriels de $\R^2$ puis de $\R^3$ selon leur dimension.
+
+\end{document}

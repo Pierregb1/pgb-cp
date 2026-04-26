@@ -1,0 +1,491 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.7cm]{geometry}
+\usepackage{amsmath,amssymb,siunitx}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\sisetup{locale=FR}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spécialité Physique-Chimie}
+\fancyhead[C]{Devoir surveillé -- Mécanique}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{\textit{Sujet original long avec barème détaillé}}
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\e}[1]{\vec{e}_{#1}}
+\newcommand{\bareme}[1]{\hfill{\color{blue!70!black}\textbf{(#1 pts)}}}
+\newcommand{\important}[1]{\textbf{#1}}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Devoir surveillé de Physique-Chimie}}\\[0.2cm]
+    {\large Terminale générale -- Spécialité}\\[0.2cm]
+    \textbf{Chapitre : Mouvement et interactions -- Mécanique}\\[0.3cm]
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Consignes générales}
+\begin{itemize}[leftmargin=0.7cm]
+    \item La calculatrice est autorisée.
+    \item Toute réponse doit être justifiée. Les résultats numériques doivent être donnés avec une unité cohérente.
+    \item Le soin, la rigueur du raisonnement, la qualité des schémas, des bilans de forces et des projections seront valorisés.
+    \item Le barème est détaillé question par question. Les questions demandant une vraie modélisation, une démarche longue ou une interprétation fine rapportent davantage que les questions d’application immédiate du cours.
+    \item On pourra admettre un résultat démontré précédemment pour poursuivre.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Données utiles}
+\[
+g=\SI{9.81}{m.s^{-2}}
+\qquad
+1~\text{km.h}^{-1}=\frac{1000}{3600}~\text{m.s}^{-1}
+\]
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+\begin{center}
+\textbf{\large Exercice 1 -- Problème type bac métropole contextualisé}\\
+\textbf{Sécurisation d’une piste de saut à ski nautique}
+\end{center}
+
+Une base de loisirs souhaite étudier la sécurité d’une rampe de saut utilisée pour le ski nautique. Un skieur quitte la rampe au point $O$ avec une vitesse initiale supposée horizontale. On étudie le mouvement du centre d’inertie $G$ du skieur après qu’il a quitté la rampe.
+
+Le référentiel terrestre est supposé galiléen.
+
+Le point $O$ est choisi comme origine des positions. On travaille dans un repère orthonormé $(O;\e{x},\e{z})$ où :
+\begin{itemize}[leftmargin=0.7cm]
+    \item l’axe $(Ox)$ est horizontal, orienté dans le sens du mouvement ;
+    \item l’axe $(Oz)$ est vertical, orienté vers le haut.
+\end{itemize}
+
+À l’instant $t=0$, le skieur quitte la rampe depuis la hauteur
+\[
+h=\SI{2.40}{m}
+\]
+avec une vitesse de valeur
+\[
+v_0=\SI{54}{km.h^{-1}}.
+\]
+
+On néglige dans un premier temps les frottements de l’air.
+
+\medskip
+
+\textbf{Partie A -- Mise en équation du mouvement}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Définir précisément le système étudié et le référentiel choisi. \bareme{1}
+    \item Faire le bilan des forces exercées sur le skieur après son départ de la rampe. \bareme{2}
+    \item En appliquant la deuxième loi de Newton, établir les coordonnées du vecteur accélération. \bareme{3}
+    \item Déterminer les équations horaires $x(t)$ et $z(t)$ du mouvement. \bareme{4}
+    \item Montrer que la trajectoire est parabolique et donner son équation cartésienne. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Exploitation numérique}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Convertir la vitesse initiale en \si{m.s^{-1}}. \bareme{1}
+    \item Déterminer la durée du vol jusqu’au contact avec l’eau, c’est-à-dire l’instant $t_f$ tel que $z(t_f)=0$. \bareme{3}
+    \item En déduire la portée horizontale du saut. \bareme{2}
+    \item Déterminer les coordonnées du vecteur vitesse à l’instant d’impact. \bareme{3}
+    \item Calculer la valeur de la vitesse à l’impact. Comparer à la vitesse initiale et commenter physiquement. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Sécurité du bassin de réception}
+
+Le bassin de réception commence à \SI{5.0}{m} horizontalement après l’extrémité de la rampe et s’étend sur une longueur de \SI{18.0}{m}.
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Le skieur tombe-t-il dans la zone prévue ? \bareme{2}
+    \item On souhaite que le point d’impact soit situé entre \SI{8.0}{m} et \SI{15.0}{m} de la rampe. La vitesse initiale fixée à \SI{54}{km.h^{-1}} est-elle adaptée ? \bareme{2}
+    \item Déterminer la valeur minimale de la vitesse initiale horizontale nécessaire pour atteindre \SI{8.0}{m}. \bareme{4}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Prise en compte simplifiée de l’air}
+
+Dans cette partie seulement, on modélise l’action de l’air par une force horizontale constante opposée au mouvement :
+\[
+\vect{F}_{\text{air}}=-f\,\e{x}
+\qquad \text{avec} \qquad
+f=\SI{60}{N}.
+\]
+La masse du skieur équipé est
+\[
+m=\SI{75}{kg}.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Donner les nouvelles coordonnées du vecteur accélération. \bareme{2}
+    \item Établir la nouvelle expression de $x(t)$. \bareme{3}
+    \item Sans refaire toute l’étude verticale, expliquer pourquoi le temps de chute reste inchangé. \bareme{1}
+    \item Estimer alors la nouvelle portée horizontale. \bareme{2}
+    \item Comment l’introduction de cette force modifie-t-elle la sécurité du saut ? \bareme{1.5}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+
+\begin{center}
+\textbf{\large Exercice 2 -- Exercice type bac centres étrangers, plus ambitieux}\\
+\textbf{Virage d’une voiture sur route circulaire}
+\end{center}
+
+Une voiture de masse
+\[
+m=\SI{1.20e3}{kg}
+\]
+aborde un virage plan que l’on modélise par un arc de cercle de rayon
+\[
+R=\SI{45}{m}.
+\]
+
+On suppose que la voiture roule à vitesse constante sur la trajectoire circulaire. On étudie le mouvement dans le référentiel terrestre supposé galiléen.
+
+On note $v$ la valeur de la vitesse de la voiture.
+
+\medskip
+
+\textbf{Partie A -- Analyse qualitative}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Le mouvement de la voiture est-il uniforme ? Est-il accéléré ? Justifier soigneusement. \bareme{2}
+    \item Représenter, sur un schéma, le vecteur vitesse et le vecteur accélération en un point du virage. \bareme{1.5}
+    \item Donner l’expression de la valeur de l’accélération dans un mouvement circulaire uniforme. \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Bilan des forces et condition dynamique}
+
+On suppose dans un premier temps que la route est horizontale.
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Faire le bilan des forces extérieures exercées sur la voiture. \bareme{2}
+    \item Expliquer pourquoi la résultante verticale des forces est nulle. \bareme{1}
+    \item Identifier la force responsable de la courbure de la trajectoire. \bareme{1}
+    \item Établir la relation entre la valeur $F_{\text{adh}}$ de la force latérale d’adhérence et la vitesse $v$. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Vitesse maximale sans glisser}
+
+On admet que la valeur maximale de la force latérale d’adhérence vaut
+\[
+F_{\max}=\mu m g
+\]
+avec
+\[
+\mu=0.65.
+\]
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Déterminer la vitesse maximale $v_{\max}$ permettant à la voiture de suivre le virage sans glisser. \bareme{4}
+    \item Exprimer le résultat en \si{km.h^{-1}}. \bareme{1}
+    \item Une voiture entre dans ce virage à \SI{80}{km.h^{-1}}. Le virage est-il théoriquement franchissable dans ces conditions ? \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Influence de la pluie}
+
+Sous la pluie, le coefficient devient
+\[
+\mu'=0.35.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Déterminer la nouvelle vitesse maximale. \bareme{2}
+    \item Comparer les deux vitesses maximales et commenter le risque routier. \bareme{1.5}
+    \item Montrer que le rapport des vitesses maximales vaut
+    \[
+    \frac{v'_{\max}}{v_{\max}}=\sqrt{\frac{\mu'}{\mu}}.
+    \]
+    \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Question plus fine de modélisation}
+
+Le conducteur affirme : \emph{« Si je garde la même valeur de vitesse, je n’accélère pas. »}
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+    \item Expliquer précisément pourquoi cette phrase est fausse du point de vue de la mécanique. \bareme{2}
+    \item Indiquer ce que mesure réellement l’accélération dans cette situation. \bareme{2}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+
+\begin{center}
+\textbf{\large Exercice 3 -- Problème plus difficile et plus théorique}\\
+\textbf{Comment viser le plus loin possible ?}
+\end{center}
+
+On étudie le tir d’une balle dans un champ de pesanteur uniforme, sans frottements. La balle est lancée depuis le point $O$ situé au niveau du sol, avec une vitesse initiale de valeur $v_0$ faisant un angle $\alpha$ avec l’horizontale.
+
+On travaille dans le repère orthonormé $(O;\e{x},\e{z})$, avec $\e{x}$ horizontal et $\e{z}$ vertical vers le haut.
+
+Dans tout l’exercice,
+\[
+v_0=\SI{18.0}{m.s^{-1}}
+\qquad \text{et} \qquad
+g=\SI{9.81}{m.s^{-2}}.
+\]
+
+\medskip
+
+\textbf{Partie A -- Équations horaires}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Donner les coordonnées initiales du vecteur vitesse en fonction de $v_0$ et $\alpha$. \bareme{1}
+    \item Établir les équations horaires :
+    \[
+    x(t)=v_0\cos\alpha\, t
+    \qquad \text{et} \qquad
+    z(t)=v_0\sin\alpha\, t-\frac12gt^2.
+    \]
+    \bareme{3}
+    \item Retrouver l’équation cartésienne de la trajectoire. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Temps de vol et portée}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Déterminer l’instant non nul auquel la balle revient au sol. \bareme{3}
+    \item En déduire la portée horizontale :
+    \[
+    D(\alpha)=\frac{v_0^2}{g}\sin(2\alpha).
+    \]
+    \bareme{4}
+    \item Vérifier l’homogénéité de cette expression. \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Quel angle donne la portée maximale ?}
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item À quelle condition sur $\sin(2\alpha)$ la portée est-elle maximale ? \bareme{1}
+    \item En déduire l’angle $\alpha_{\max}$ donnant la portée maximale. \bareme{2}
+    \item Déterminer la portée maximale correspondante. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Un résultat rigolo et symétrique}
+
+On considère deux angles de tir $\alpha$ et $\beta$ tels que
+\[
+\alpha+\beta=90^\circ.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que les tirs d’angles $\alpha$ et $\beta$ ont la même portée. \bareme{2}
+    \item Interpréter physiquement ce résultat. \bareme{1.5}
+    \item Calculer les deux angles différents qui permettent d’atteindre une cible située à \SI{20.0}{m}. \bareme{4}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Une vraie réflexion physique}
+
+On cherche maintenant non plus à aller le plus loin, mais à atteindre une cible placée à l’abscisse
+\[
+x_c=\SI{12.0}{m}
+\]
+et à la hauteur
+\[
+z_c=\SI{3.00}{m}.
+\]
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+    \item Écrire l’équation que doit vérifier $\alpha$ pour que la balle passe par le point $(x_c,z_c)$. \bareme{3}
+    \item Expliquer pourquoi il peut y avoir, suivant les données, zéro, une ou deux trajectoires possibles. \bareme{2.5}
+    \item Sans résoudre complètement l’équation, interpréter les deux solutions éventuelles du point de vue de la physique du tir. \bareme{2}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+
+\begin{center}
+\textbf{\large Exercice 4 -- Découverte d’une nouvelle notion}\\
+\textbf{La force de recentrage dynamique}
+\end{center}
+
+Dans tout cet exercice, on introduit un modèle fictif, inspiré des forces de rappel, appelé \important{force de recentrage dynamique}. Cette force est définie, pour un mobile se déplaçant sur un axe horizontal $(Ox)$, par :
+\[
+\vect{F}_r=-k\,x\,\e{x}
+\]
+où :
+\begin{itemize}[leftmargin=0.7cm]
+    \item $x$ est l’abscisse du mobile ;
+    \item $k$ est une constante strictement positive, appelée \important{raideur de recentrage}.
+\end{itemize}
+
+Cette force n’est pas au programme comme notion officielle : on l’introduit ici pour travailler la modélisation, le sens d’une force et l’interprétation des équations de Newton.
+
+On considère un mobile de masse $m$ se déplaçant sur un rail horizontal sans frottement.
+
+\medskip
+
+\textbf{Partie A -- Compréhension de la nouvelle force}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Donner la dimension physique du coefficient $k$ à partir de la relation
+    \[
+    F=kx.
+    \]
+    \bareme{1.5}
+    \item Quel est le sens de la force si $x>0$ ? si $x<0$ ? \bareme{2}
+    \item Que vaut la force lorsque le mobile passe par l’origine ? \bareme{1}
+    \item Expliquer pourquoi le nom \emph{force de recentrage} est pertinent. \bareme{1.5}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Conséquence dynamique}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Appliquer la deuxième loi de Newton sur l’axe $(Ox)$ et établir une relation entre $a_x$ et $x$. \bareme{3}
+    \item Si $x>0$, quel est le signe de l’accélération ? Interpréter physiquement. \bareme{2}
+    \item Si $x<0$, quel est le signe de l’accélération ? Interpréter physiquement. \bareme{2}
+    \item Montrer que l’accélération est toujours dirigée vers l’origine. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Étude qualitative du mouvement}
+
+On écarte le mobile vers la droite puis on le lâche sans vitesse initiale.
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Décrire qualitativement l’évolution du mouvement juste après le lâcher. \bareme{2}
+    \item Que se passe-t-il lorsque le mobile arrive à l’origine ? \bareme{2}
+    \item Pourquoi peut-on s’attendre, qualitativement, à un mouvement d’aller-retour autour de l’origine ? \bareme{2.5}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Étude quantitative sur quelques situations}
+
+On prend dans cette partie :
+\[
+m=\SI{0.400}{kg}
+\qquad \text{et} \qquad
+k=\SI{5.0}{N.m^{-1}}.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Calculer la valeur de la force lorsque $x=\SI{0.10}{m}$. \bareme{1}
+    \item Calculer la valeur de l’accélération correspondante. \bareme{2}
+    \item Même question pour $x=\SI{0.25}{m}$. \bareme{2}
+    \item Comparer les deux accélérations et commenter. \bareme{1.5}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Comparaison avec le cours}
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+    \item Expliquer en quoi cette force diffère du poids. \bareme{1.5}
+    \item Expliquer en quoi elle diffère d’une force de frottement. \bareme{1.5}
+    \item Citer une situation réelle de physique où une force de rappel vers une position d’équilibre existe effectivement. \bareme{1.5}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie F -- Réflexion plus fine}
+
+On ajoute maintenant une force de frottement modélisée par :
+\[
+\vect{f}=-\lambda \vect{v}
+\]
+avec $\lambda>0$.
+
+\begin{enumerate}[label=\textbf{F.\arabic*.}, leftmargin=0.9cm]
+    \item Quel est l’effet qualitatif de cette force sur le mouvement d’aller-retour décrit plus haut ? \bareme{2}
+    \item Peut-on s’attendre à ce que le mobile finisse par s’arrêter ? Si oui, où ? \bareme{2}
+    \item Pourquoi cette version du modèle est-elle plus réaliste qu’un modèle sans frottements ? \bareme{1.5}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+
+\begin{center}
+\textbf{\large Barème global indicatif}
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{9.8cm}|c|}
+\hline
+\textbf{Compétence évaluée} & \textbf{Valorisation} \\
+\hline
+Identifier correctement système, référentiel, forces usuelles, donner une formule du cours & Faible à modérée \\
+\hline
+Projeter correctement la deuxième loi de Newton, établir une équation horaire, exploiter un modèle simple & Modérée \\
+\hline
+Mener une étude complète avec modélisation, interprétation, cohérence physique et calculs longs & Forte \\
+\hline
+Justifier finement un résultat qualitatif, discuter un modèle, commenter les limites d’une hypothèse & Forte \\
+\hline
+Réussir les questions ouvertes de réflexion physique et d’analyse critique & Très valorisé \\
+\hline
+\end{tabular}
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{Fin du sujet}
+\end{center}
+
+\end{document}

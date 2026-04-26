@@ -1,0 +1,860 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Corrigé --- Nombres complexes}
+\fancyhead[R]{Terminale $\to$ 1re année de prépa}
+\fancyfoot[C]{\thepage}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé complet --- Nombres complexes}}\\[0.3em]
+    {\large De la terminale à la première année de prépa}
+\end{center}
+
+\hrule
+\vspace{0.8em}
+
+\tableofcontents
+
+\newpage
+
+\section*{I. Forme algébrique et calculs}
+\addcontentsline{toc}{section}{I. Forme algébrique et calculs}
+
+\textbf{Exercice 1}
+
+\[
+z_1=3+2i \Rightarrow \Re(z_1)=3,\ \Im(z_1)=2.
+\]
+\[
+z_2=-5i \Rightarrow \Re(z_2)=0,\ \Im(z_2)=-5.
+\]
+\[
+z_3=7 \Rightarrow \Re(z_3)=7,\ \Im(z_3)=0.
+\]
+\[
+z_4=-2+4i \Rightarrow \Re(z_4)=-2,\ \Im(z_4)=4.
+\]
+
+\textbf{Exercice 2}
+
+\begin{itemize}
+    \item \(2\) est réel.
+    \item \(-3i\) est imaginaire pur.
+    \item \(4+0i\) est réel.
+    \item \(i\sqrt{5}\) est imaginaire pur.
+    \item \(1-i\) n’est ni réel ni imaginaire pur.
+\end{itemize}
+
+\textbf{Exercice 3}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    (2+3i)+(4-5i)=6-2i.
+    \]
+
+    \item
+    \[
+    (1-2i)(3+i)=3+i-6i-2i^2=3-5i+2=5-5i.
+    \]
+
+    \item
+    \[
+    (2+i)^2=4+4i+i^2=3+4i.
+    \]
+
+    \item
+    \[
+    (1+i)^2=1+2i+i^2=2i,
+    \quad \text{donc} \quad
+    (1+i)^3=(1+i)\cdot 2i=2i+2i^2=-2+2i.
+    \]
+\end{enumerate}
+
+\textbf{Exercice 4}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    \frac{1}{2+i}=\frac{2-i}{(2+i)(2-i)}=\frac{2-i}{5}.
+    \]
+
+    \item
+    \[
+    \frac{3-2i}{1+i}
+    =\frac{(3-2i)(1-i)}{(1+i)(1-i)}
+    =\frac{3-3i-2i+2i^2}{2}
+    =\frac{1-5i}{2}.
+    \]
+
+    \item
+    \[
+    \frac{2+3i}{1-2i}
+    =\frac{(2+3i)(1+2i)}{(1-2i)(1+2i)}
+    =\frac{2+4i+3i+6i^2}{5}
+    =\frac{-4+7i}{5}.
+    \]
+\end{enumerate}
+
+\textbf{Exercice 5}
+
+\[
+z+2i=3-5i \Longrightarrow z=3-7i.
+\]
+
+\[
+(1-i)z=4+2i \Longrightarrow z=\frac{4+2i}{1-i}
+=\frac{(4+2i)(1+i)}{2}
+=\frac{2+6i}{1}=1+3i? 
+\]
+
+Correction :
+\[
+(4+2i)(1+i)=4+4i+2i+2i^2=2+6i.
+\]
+Donc
+\[
+z=\frac{2+6i}{2}=1+3i.
+\]
+
+\textbf{Exercice 6}
+
+Si
+\[
+z_1=a+ib,\qquad z_2=c+id,
+\]
+alors
+\[
+z_1z_2=(a+ib)(c+id)=ac+i(ad+bc)+i^2bd=(ac-bd)+i(ad+bc).
+\]
+Donc
+\[
+\Re(z_1z_2)=ac-bd=\Re(z_1)\Re(z_2)-\Im(z_1)\Im(z_2),
+\]
+\[
+\Im(z_1z_2)=ad+bc=\Re(z_1)\Im(z_2)+\Im(z_1)\Re(z_2).
+\]
+
+\section*{II. Conjugué, module et propriétés}
+\addcontentsline{toc}{section}{II. Conjugué, module et propriétés}
+
+\textbf{Exercice 7}
+
+\[
+\overline{3+2i}=3-2i,\qquad \overline{-1+4i}=-1-4i,
+\qquad \overline{5}=5,\qquad \overline{-7i}=7i.
+\]
+
+\textbf{Exercice 8}
+
+Si \(z=a+ib\), alors \(\overline z=a-ib\).
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    z=\overline z
+    \Longleftrightarrow a+ib=a-ib
+    \Longleftrightarrow 2ib=0
+    \Longleftrightarrow b=0.
+    \]
+    Donc \(z\in\R\).
+
+    \item
+    \[
+    z=-\overline z
+    \Longleftrightarrow a+ib=-a+ib
+    \Longleftrightarrow 2a=0
+    \Longleftrightarrow a=0.
+    \]
+    Donc \(z\in i\R\).
+\end{enumerate}
+
+\textbf{Exercice 9}
+
+\[
+|1+i|=\sqrt{1^2+1^2}=\sqrt{2},
+\qquad
+|-3+4i|=\sqrt{9+16}=5,
+\]
+\[
+|2|=2,
+\qquad
+|-i\sqrt3|=\sqrt3.
+\]
+
+\textbf{Exercice 10}
+
+Pour \(z=1+i\),
+\[
+z\overline z=(1+i)(1-i)=2=|z|^2.
+\]
+
+Pour \(z=-3+4i\),
+\[
+z\overline z=(-3+4i)(-3-4i)=9+16=25=|z|^2.
+\]
+
+\textbf{Exercice 11}
+
+Si \(z=a+ib\), alors
+\[
+|z|=\sqrt{a^2+b^2}.
+\]
+Comme
+\[
+a^2\le a^2+b^2 \quad \text{et} \quad b^2\le a^2+b^2,
+\]
+on obtient
+\[
+|a|\le \sqrt{a^2+b^2}=|z|,
+\qquad
+|b|\le \sqrt{a^2+b^2}=|z|.
+\]
+Donc
+\[
+|\Re(z)|\le |z|,
+\qquad
+|\Im(z)|\le |z|.
+\]
+
+\textbf{Exercice 12}
+
+Si \(z\neq 0\), alors
+\[
+z\overline z=|z|^2.
+\]
+Donc
+\[
+z\cdot \frac{\overline z}{|z|^2}=1,
+\]
+ce qui prouve que
+\[
+\frac{1}{z}=\frac{\overline z}{|z|^2}.
+\]
+
+\textbf{Exercice 13}
+
+On calcule :
+\[
+|zz'|^2=(zz')(\overline{zz'})=zz'\overline z\,\overline{z'}
+=(z\overline z)(z'\overline{z'})=|z|^2|z'|^2.
+\]
+Les deux membres étant positifs :
+\[
+|zz'|=|z||z'|.
+\]
+
+Si \(z'\neq 0\),
+\[
+\left|\frac{z}{z'}\right|
+=\left|z\cdot \frac{1}{z'}\right|
+=|z|\cdot \left|\frac{1}{z'}\right|
+=|z|\cdot \frac{1}{|z'|}
+=\frac{|z|}{|z'|}.
+\]
+
+\section*{III. Interprétation géométrique}
+\addcontentsline{toc}{section}{III. Interprétation géométrique}
+
+\textbf{Exercice 14}
+
+\[
+A(2,3)\longleftrightarrow z_A=2+3i,
+\qquad
+B(-1,4)\longleftrightarrow z_B=-1+4i,
+\qquad
+C(0,-2)\longleftrightarrow z_C=-2i.
+\]
+
+\textbf{Exercice 15}
+
+\[
+z_{\overrightarrow{AB}}=z_B-z_A=(4-i)-(1+2i)=3-3i.
+\]
+
+\textbf{Exercice 16}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    z_I=\frac{z_A+z_B}{2}
+    =\frac{(2+i)+(4-3i)}{2}
+    =\frac{6-2i}{2}=3-i.
+    \]
+
+    \item
+    \[
+    z_I=\frac{(-1+5i)+(3+i)}{2}
+    =\frac{2+6i}{2}=1+3i.
+    \]
+\end{enumerate}
+
+\textbf{Exercice 17}
+
+Le vecteur \(\overrightarrow{AB}\) a pour affixe
+\[
+z_B-z_A.
+\]
+Sa norme vaut donc
+\[
+|z_B-z_A|.
+\]
+Or la longueur \(AB\) est la norme du vecteur \(\overrightarrow{AB}\). Donc
+\[
+AB=|z_B-z_A|.
+\]
+
+\section*{IV. Inégalité triangulaire}
+\addcontentsline{toc}{section}{IV. Inégalité triangulaire}
+
+\textbf{Exercice 18}
+
+\[
+z+z'=(1+i)+(1-i)=2,
+\quad \text{donc} \quad |z+z'|=2.
+\]
+\[
+|z|=\sqrt2,\qquad |z'|=\sqrt2,
+\quad \text{donc} \quad |z|+|z'|=2\sqrt2.
+\]
+On a bien
+\[
+|z+z'|\le |z|+|z'|.
+\]
+
+\textbf{Exercice 19}
+
+On calcule :
+\[
+|z+z'|^2=(z+z')(\overline z+\overline{z'})
+=|z|^2+|z'|^2+z\overline{z'}+\overline z z'.
+\]
+Or
+\[
+z\overline{z'}+\overline z z'=2\Re(z\overline{z'}),
+\]
+donc
+\[
+|z+z'|^2=|z|^2+|z'|^2+2\Re(z\overline{z'}).
+\]
+Comme
+\[
+\Re(w)\le |w|,
+\]
+on obtient
+\[
+|z+z'|^2\le |z|^2+|z'|^2+2|z\overline{z'}|.
+\]
+Mais
+\[
+|z\overline{z'}|=|z||z'|.
+\]
+Ainsi
+\[
+|z+z'|^2\le |z|^2+|z'|^2+2|z||z'|=(|z|+|z'|)^2.
+\]
+Comme les modules sont positifs,
+\[
+|z+z'|\le |z|+|z'|.
+\]
+
+\textbf{Exercice 20}
+
+On écrit
+\[
+z=(z-z')+z'.
+\]
+Par l’inégalité triangulaire,
+\[
+|z|\le |z-z'|+|z'|,
+\]
+donc
+\[
+|z|-|z'|\le |z-z'|.
+\]
+En échangeant \(z\) et \(z'\), on obtient
+\[
+|z'|-|z|\le |z-z'|.
+\]
+D’où
+\[
+\big||z|-|z'|\big|\le |z-z'|.
+\]
+
+\section*{V. Forme exponentielle et trigonométrique}
+\addcontentsline{toc}{section}{V. Forme exponentielle et trigonométrique}
+
+\textbf{Exercice 21}
+
+\[
+1=e^{i0},
+\qquad
+-1=e^{i\pi},
+\qquad
+i=e^{i\pi/2},
+\qquad
+-i=e^{-i\pi/2}.
+\]
+
+\textbf{Exercice 22}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \[
+    z_1=1+i,\quad |z_1|=\sqrt2,\quad \arg(z_1)=\frac{\pi}{4}\ [2\pi].
+    \]
+
+    \item
+    \[
+    z_2=-1+i,\quad |z_2|=\sqrt2,\quad \arg(z_2)=\frac{3\pi}{4}\ [2\pi].
+    \]
+
+    \item
+    \[
+    z_3=-\sqrt3+i,\quad |z_3|=2.
+    \]
+    On a
+    \[
+    \cos\theta=-\frac{\sqrt3}{2},\qquad \sin\theta=\frac12,
+    \]
+    donc
+    \[
+    \arg(z_3)=\frac{5\pi}{6}\ [2\pi].
+    \]
+
+    \item
+    \[
+    z_4=2e^{i\pi/3},\quad |z_4|=2,\quad \arg(z_4)=\frac{\pi}{3}\ [2\pi].
+    \]
+\end{enumerate}
+
+\textbf{Exercice 23}
+
+\[
+z=-1+i\sqrt3.
+\]
+Son module vaut
+\[
+|z|=\sqrt{1+3}=2.
+\]
+On cherche \(\theta\) tel que
+\[
+\cos\theta=-\frac12,\qquad \sin\theta=\frac{\sqrt3}{2}.
+\]
+Donc
+\[
+\theta=\frac{2\pi}{3}\ [2\pi].
+\]
+Ainsi
+\[
+z=2\left(\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}\right)=2e^{i2\pi/3}.
+\]
+
+\textbf{Exercice 24}
+
+\[
+e^{ia}e^{ib}=(\cos a+i\sin a)(\cos b+i\sin b).
+\]
+En développant :
+\[
+e^{ia}e^{ib}=(\cos a\cos b-\sin a\sin b)+i(\sin a\cos b+\cos a\sin b).
+\]
+Par les formules d’addition,
+\[
+e^{ia}e^{ib}=\cos(a+b)+i\sin(a+b)=e^{i(a+b)}.
+\]
+
+\textbf{Exercice 25}
+
+On a
+\[
+e^{i\theta}=\cos\theta+i\sin\theta,
+\qquad
+e^{-i\theta}=\cos\theta-i\sin\theta.
+\]
+En additionnant :
+\[
+e^{i\theta}+e^{-i\theta}=2\cos\theta
+\Longrightarrow
+\cos\theta=\frac{e^{i\theta}+e^{-i\theta}}{2}.
+\]
+En soustrayant :
+\[
+e^{i\theta}-e^{-i\theta}=2i\sin\theta
+\Longrightarrow
+\sin\theta=\frac{e^{i\theta}-e^{-i\theta}}{2i}.
+\]
+
+\textbf{Exercice 26}
+
+\begin{enumerate}[label=\alph*)]
+    \item Par Moivre,
+    \[
+    (\cos\theta+i\sin\theta)^4=\cos(4\theta)+i\sin(4\theta).
+    \]
+
+    \item
+    \[
+    1+i=\sqrt2\,e^{i\pi/4},
+    \]
+    donc
+    \[
+    (1+i)^5=(\sqrt2)^5 e^{i5\pi/4}=4\sqrt2\,e^{i5\pi/4}.
+    \]
+    Sous forme algébrique :
+    \[
+    (1+i)^5=4\sqrt2\left(-\frac{\sqrt2}{2}-i\frac{\sqrt2}{2}\right)=-4-4i.
+    \]
+\end{enumerate}
+
+\section*{VI. Équations, racines carrées et racines \(n\)-ièmes}
+\addcontentsline{toc}{section}{VI. Équations, racines carrées et racines n-ièmes}
+
+\textbf{Exercice 27}
+
+\[
+z^2=-4 \Longrightarrow z=\pm 2i.
+\]
+\[
+z^2=-9 \Longrightarrow z=\pm 3i.
+\]
+\[
+z^2=-16 \Longrightarrow z=\pm 4i.
+\]
+
+\textbf{Exercice 28}
+
+\begin{enumerate}
+    \item
+    \[
+    z^2+1=0 \Longrightarrow z^2=-1 \Longrightarrow z=\pm i.
+    \]
+
+    \item
+    \[
+    z^2-2z+5=0.
+    \]
+    Discriminant :
+    \[
+    \Delta=(-2)^2-4\cdot 1\cdot 5=4-20=-16.
+    \]
+    Donc
+    \[
+    \sqrt{\Delta}=\pm 4i.
+    \]
+    Les solutions sont
+    \[
+    z=\frac{2\pm 4i}{2}=1\pm 2i.
+    \]
+\end{enumerate}
+
+\textbf{Exercice 29}
+
+On résout
+\[
+z^2-(1+4i)z+(3i-3)=0.
+\]
+Ici
+\[
+a=1,\quad b=-(1+4i),\quad c=3i-3.
+\]
+Le discriminant vaut
+\[
+\Delta=b^2-4ac=( -1-4i)^2-4(3i-3).
+\]
+Or
+\[
+(-1-4i)^2=1+8i+16i^2=-15+8i.
+\]
+Donc
+\[
+\Delta=(-15+8i)-12i+12=-3-4i.
+\]
+On cherche \(\delta\) tel que \(\delta^2=-3-4i\). On reconnaît
+\[
+(1-2i)^2=1-4i-4=-3-4i.
+\]
+Donc \(\delta=\pm(1-2i)\).
+
+Les solutions sont alors
+\[
+z=\frac{1+4i\pm (1-2i)}{2}.
+\]
+Ainsi :
+\[
+z_1=\frac{2+2i}{2}=1+i,
+\qquad
+z_2=\frac{6i}{2}=3i.
+\]
+
+\textbf{Exercice 30}
+
+Les racines cubiques de l’unité sont les solutions de
+\[
+z^3=1=e^{i0}.
+\]
+Donc
+\[
+z_k=e^{2ik\pi/3},\qquad k=0,1,2.
+\]
+Ainsi :
+\[
+1,\qquad e^{2i\pi/3}=-\frac12+i\frac{\sqrt3}{2},\qquad
+e^{4i\pi/3}=-\frac12-i\frac{\sqrt3}{2}.
+\]
+
+\textbf{Exercice 31}
+
+On écrit
+\[
+-16=16e^{i\pi}.
+\]
+Les racines quatrièmes sont
+\[
+z_k=\sqrt[4]{16}\,e^{i(\pi+2k\pi)/4}=2e^{i(\pi/4+k\pi/2)},
+\qquad k=0,1,2,3.
+\]
+Donc
+\[
+2e^{i\pi/4},\quad 2e^{i3\pi/4},\quad 2e^{i5\pi/4},\quad 2e^{i7\pi/4}.
+\]
+
+\textbf{Exercice 32}
+
+Si
+\[
+Z=\rho e^{i\theta}\quad (\rho>0),
+\]
+alors les solutions de
+\[
+z^n=Z
+\]
+sont
+\[
+z_k=\sqrt[n]{\rho}\,e^{i(\theta+2k\pi)/n},\qquad k=0,1,\dots,n-1.
+\]
+
+\section*{VII. Transformations trigonométriques}
+\addcontentsline{toc}{section}{VII. Transformations trigonométriques}
+
+\textbf{Exercice 33}
+
+On veut écrire
+\[
+2\cos t+\sqrt3\sin t=R\cos(t-\varphi).
+\]
+Or
+\[
+R\cos(t-\varphi)=R(\cos t\cos\varphi+\sin t\sin\varphi).
+\]
+On identifie :
+\[
+R\cos\varphi=2,\qquad R\sin\varphi=\sqrt3.
+\]
+Donc
+\[
+R=\sqrt{4+3}=\sqrt7.
+\]
+Puis
+\[
+\cos\varphi=\frac{2}{\sqrt7},\qquad \sin\varphi=\frac{\sqrt3}{\sqrt7}.
+\]
+Ainsi
+\[
+2\cos t+\sqrt3\sin t=\sqrt7\,\cos(t-\varphi),
+\]
+avec
+\[
+\varphi=\arctan\left(\frac{\sqrt3}{2}\right)
+\]
+ou, plus rigoureusement, \(\varphi\) défini par les deux relations ci-dessus.
+
+\textbf{Exercice 34}
+
+On écrit
+\[
+-\cos t+2\sin t=R\cos(t-\varphi).
+\]
+En identifiant :
+\[
+R\cos\varphi=-1,\qquad R\sin\varphi=2.
+\]
+Donc
+\[
+R=\sqrt{1+4}=\sqrt5.
+\]
+On choisit \(\varphi\) tel que
+\[
+\cos\varphi=-\frac{1}{\sqrt5},\qquad \sin\varphi=\frac{2}{\sqrt5}.
+\]
+Donc
+\[
+-\cos t+2\sin t=\sqrt5\,\cos(t-\varphi).
+\]
+
+On peut aussi écrire
+\[
+-\cos t+2\sin t=R\sin(t+\psi)
+=R(\sin t\cos\psi+\cos t\sin\psi).
+\]
+On identifie :
+\[
+R\cos\psi=2,\qquad R\sin\psi=-1.
+\]
+Donc
+\[
+R=\sqrt5,
+\qquad
+\cos\psi=\frac{2}{\sqrt5},\qquad \sin\psi=-\frac{1}{\sqrt5}.
+\]
+Ainsi
+\[
+-\cos t+2\sin t=\sqrt5\,\sin(t+\psi).
+\]
+
+\section*{VIII. Exercices de synthèse}
+\addcontentsline{toc}{section}{VIII. Exercices de synthèse}
+
+\textbf{Exercice 35}
+
+Si \(|z|=1\), alors
+\[
+z\overline z=|z|^2=1.
+\]
+Donc \(\overline z\) est l’inverse de \(z\), d’où
+\[
+\overline z=\frac{1}{z}.
+\]
+
+\textbf{Exercice 36}
+
+On a
+\[
+\left|\frac{z}{\overline z}\right|=\frac{|z|}{|\overline z|}.
+\]
+Or
+\[
+|\overline z|=|z|.
+\]
+Donc
+\[
+\left|\frac{z}{\overline z}\right|=1.
+\]
+
+\textbf{Exercice 37}
+
+Posons
+\[
+z=x+iy.
+\]
+Alors
+\[
+z+\overline z=(x+iy)+(x-iy)=2x.
+\]
+La condition
+\[
+z+\overline z=4
+\]
+donne
+\[
+2x=4 \Longrightarrow x=2.
+\]
+De plus
+\[
+|z|=3 \Longrightarrow x^2+y^2=9.
+\]
+Donc
+\[
+4+y^2=9 \Longrightarrow y^2=5 \Longrightarrow y=\pm \sqrt5.
+\]
+Les solutions sont donc
+\[
+z=2+i\sqrt5
+\qquad \text{ou} \qquad
+z=2-i\sqrt5.
+\]
+
+\textbf{Exercice 38}
+
+Résoudre
+\[
+z^4=1.
+\]
+Les solutions sont les racines quatrièmes de l’unité :
+\[
+z_k=e^{2ik\pi/4}=e^{ik\pi/2},\qquad k=0,1,2,3.
+\]
+Donc
+\[
+1,\quad i,\quad -1,\quad -i.
+\]
+Elles sont situées sur le cercle unité aux angles
+\[
+0,\ \frac{\pi}{2},\ \pi,\ \frac{3\pi}{2}.
+\]
+
+\textbf{Exercice 39}
+
+On écrit
+\[
+-64=64e^{i(\pi+2m\pi)}.
+\]
+Les solutions de
+\[
+z^6=-64
+\]
+sont donc
+\[
+z_k=\sqrt[6]{64}\,e^{i(\pi+2k\pi)/6}=2e^{i(\pi+2k\pi)/6},
+\qquad k=0,1,2,3,4,5.
+\]
+Autrement dit
+\[
+z_k=2e^{i(\pi/6+k\pi/3)},\qquad k=0,\dots,5.
+\]
+
+\textbf{Exercice 40}
+
+Les racines \(n\)-ièmes de l’unité sont
+\[
+\omega_k=e^{2ik\pi/n},\qquad k=0,1,\dots,n-1.
+\]
+Elles ont toutes pour module \(1\), donc elles appartiennent au cercle unité.
+
+Leurs arguments sont régulièrement espacés :
+\[
+0,\ \frac{2\pi}{n},\ \frac{4\pi}{n},\ \dots,\ \frac{2(n-1)\pi}{n}.
+\]
+L’écart angulaire entre deux racines consécutives est constant et vaut
+\[
+\frac{2\pi}{n}.
+\]
+Elles sont donc les sommets d’un polygone régulier à \(n\) côtés inscrit dans le cercle unité.
+
+\end{document}

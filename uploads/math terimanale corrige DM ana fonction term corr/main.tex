@@ -1,0 +1,637 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{tcolorbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Terminale spécialité -- Mathématiques}
+\rhead{Corrigé détaillé du DM -- Analyse de fonctions}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\setlist[itemize]{leftmargin=1.8em}
+\setlist[enumerate]{leftmargin=2em}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé détaillé du Devoir Maison -- Mathématiques}}\\[0.3em]
+    {\Large \textbf{Terminale spécialité}}\\[0.5em]
+    {\large \textbf{Thème : Analyse de fonctions}}\\[0.8em]
+\end{center}
+
+
+
+\section*{Corrigé du Problème 1 -- Étude complète d'une fonction logarithmique \hfill /25}
+
+On considère la fonction \(f\) définie sur \(]0,+\infty[\) par
+\[
+f(x)=x-1-\ln(x).
+\]
+
+\subsection*{1. Premières observations}
+
+\begin{enumerate}
+    \item La fonction logarithme népérien est définie uniquement pour \(x>0\). Donc
+    \[
+    D_f=]0,+\infty[.
+    \]
+
+    \item On calcule :
+    \[
+    f(1)=1-1-\ln(1)=0-0=0.
+    \]
+
+    \item Lorsque \(x\to 0^+\), on sait que
+    \[
+    \ln(x)\to -\infty.
+    \]
+    Ainsi
+    \[
+    -\ln(x)\to +\infty.
+    \]
+    Comme \(x-1\to -1\), on obtient
+    \[
+    f(x)=x-1-\ln(x)\to +\infty.
+    \]
+
+    \item Lorsque \(x\to +\infty\), on sait que \(x\) domine très largement \(\ln(x)\), donc
+    \[
+    x-1-\ln(x)\to +\infty.
+    \]
+    Ainsi
+    \[
+    \lim_{x\to+\infty}f(x)=+\infty.
+    \]
+\end{enumerate}
+
+\subsection*{2. Variations de la fonction}
+
+\begin{enumerate}
+    \item Pour \(x>0\),
+    \[
+    f'(x)=1-\frac{1}{x}=\frac{x-1}{x}.
+    \]
+
+    \item Sur \(]0,+\infty[\), on a toujours \(x>0\), donc le signe de \(f'(x)\) est celui de \(x-1\).
+
+    Ainsi :
+    \[
+    f'(x)<0 \quad \text{si } 0<x<1,
+    \]
+    \[
+    f'(1)=0,
+    \]
+    \[
+    f'(x)>0 \quad \text{si } x>1.
+    \]
+
+    \item On en déduit que \(f\) est décroissante sur \(]0,1]\), puis croissante sur \([1,+\infty[\).
+
+    Comme \(f(1)=0\), on obtient le tableau de variations :
+
+    \[
+    \begin{array}{c|ccc}
+    x & 0^+ & 1 & +\infty \\
+    \hline
+    f'(x) & - & 0 & + \\
+    \hline
+    f(x) & +\infty & \searrow & \\
+         &         & 0 & \nearrow +\infty
+    \end{array}
+    \]
+
+    \item Le minimum de \(f\) sur \(]0,+\infty[\) est atteint en \(x=1\) et vaut \(0\). Donc, pour tout \(x>0\),
+    \[
+    f(x)\geq 0.
+    \]
+\end{enumerate}
+
+\subsection*{3. Étude de la convexité}
+
+\begin{enumerate}
+    \item Pour \(x>0\),
+    \[
+    f''(x)=\frac{1}{x^2}.
+    \]
+
+    \item Comme \(x^2>0\) pour tout \(x>0\), on a
+    \[
+    f''(x)>0 \quad \text{pour tout } x>0.
+    \]
+
+    \item La fonction \(f\) est donc convexe sur \(]0,+\infty[\).
+
+    \item Graphiquement, cela signifie que la courbe de \(f\) est tournée vers le haut et qu'elle est située au-dessus de chacune de ses tangentes.
+\end{enumerate}
+
+\subsection*{4. Tangente et comparaison locale}
+
+\begin{enumerate}
+    \item Une équation de la tangente en \(x=1\) est
+    \[
+    y=f'(1)(x-1)+f(1).
+    \]
+    Or
+    \[
+    f'(1)=0 \quad \text{et} \quad f(1)=0.
+    \]
+    Donc l'équation de la tangente est
+    \[
+    y=0.
+    \]
+
+    \item Étudier la position relative de la courbe et de cette tangente revient à étudier le signe de
+    \[
+    f(x)-0=f(x).
+    \]
+    Or on a montré que, pour tout \(x>0\),
+    \[
+    f(x)\geq 0.
+    \]
+    La courbe est donc au-dessus de sa tangente en \(x=1\), avec contact au point \((1,0)\).
+
+    \item Comme
+    \[
+    f(x)=x-1-\ln(x)\geq 0,
+    \]
+    on obtient
+    \[
+    \ln(x)\leq x-1 \quad \text{pour tout } x>0.
+    \]
+\end{enumerate}
+
+\subsection*{5. Regard critique}
+
+\begin{enumerate}
+    \item L'affirmation \og comme \(f(1)=0\), la fonction change forcément de signe en \(1\) \fg\ est fausse.
+
+    En effet, le fait qu'une fonction s'annule en un point ne suffit pas à garantir un changement de signe. Ici, au contraire, on a montré que
+    \[
+    f(x)\geq 0 \quad \text{pour tout } x>0,
+    \]
+    donc la fonction ne change pas de signe en \(1\). Elle y atteint simplement un minimum nul.
+
+    \item Ce problème montre géométriquement que la courbe du logarithme est en dessous de la droite d'équation
+    \[
+    y=x-1.
+    \]
+    Comme cette droite intervient via
+    \[
+    \ln(x)\leq x-1,
+    \]
+    on comprend que certaines tangentes ou droites d'appui permettent d'encadrer la fonction logarithme.
+\end{enumerate}
+
+\newpage
+
+\section*{Corrigé du Problème 2 -- Une fonction rationnelle-exponentielle pour modéliser un rendement \hfill /29}
+
+On considère la fonction \(g\) définie sur \([0,+\infty[\) par
+\[
+g(x)=\frac{x}{x+1}e^{-x}.
+\]
+
+\subsection*{1. Étude préliminaire}
+
+\begin{enumerate}
+    \item Pour \(x\geq 0\), on a \(x+1\neq 0\). Donc la fonction est bien définie sur
+    \[
+    [0,+\infty[.
+    \]
+
+    \item En \(x=0\),
+    \[
+    g(0)=\frac{0}{0+1}e^0=0.
+    \]
+
+    \item Lorsque \(x\to +\infty\), on a
+    \[
+    \frac{x}{x+1}\to 1
+    \quad \text{et} \quad
+    e^{-x}\to 0.
+    \]
+    Donc
+    \[
+    g(x)\to 0.
+    \]
+
+    \item Graphiquement, la courbe part de l'origine, monte d'abord, puis finit par redescendre vers \(0\). L'axe des abscisses est asymptote horizontale à droite.
+\end{enumerate}
+
+\subsection*{2. Dérivation et variations}
+
+\begin{enumerate}
+    \item On dérive par produit :
+    \[
+    g(x)=\left(\frac{x}{x+1}\right)e^{-x}.
+    \]
+    Or
+    \[
+    \left(\frac{x}{x+1}\right)'=\frac{(x+1)-x}{(x+1)^2}=\frac{1}{(x+1)^2}.
+    \]
+    Et
+    \[
+    (e^{-x})'=-e^{-x}.
+    \]
+    Donc
+    \[
+    g'(x)=\frac{1}{(x+1)^2}e^{-x}+\frac{x}{x+1}(-e^{-x}).
+    \]
+    On factorise par \(e^{-x}\) :
+    \[
+    g'(x)=e^{-x}\left(\frac{1}{(x+1)^2}-\frac{x}{x+1}\right).
+    \]
+    On met au même dénominateur :
+    \[
+    \frac{1}{(x+1)^2}-\frac{x(x+1)}{(x+1)^2}
+    =\frac{1-x(x+1)}{(x+1)^2}.
+    \]
+    Donc
+    \[
+    g'(x)=\frac{e^{-x}}{(x+1)^2}\bigl(1-x-x^2\bigr).
+    \]
+
+    \item Pour \(x\geq 0\), on a
+    \[
+    e^{-x}>0 \quad \text{et} \quad (x+1)^2>0.
+    \]
+    Le signe de \(g'(x)\) est donc celui de
+    \[
+    1-x-x^2.
+    \]
+    Résolvons
+    \[
+    1-x-x^2=0 \iff x^2+x-1=0.
+    \]
+    Les racines sont
+    \[
+    x=\frac{-1\pm \sqrt{5}}{2}.
+    \]
+    La seule racine positive est
+    \[
+    \alpha=\frac{-1+\sqrt{5}}{2}.
+    \]
+    Comme le trinôme \(1-x-x^2\) est positif entre ses racines et négatif à l'extérieur, sur \([0,+\infty[\) on a :
+    \[
+    g'(x)>0 \quad \text{sur } [0,\alpha[,
+    \]
+    \[
+    g'(\alpha)=0,
+    \]
+    \[
+    g'(x)<0 \quad \text{sur } ]\alpha,+\infty[.
+    \]
+
+    \item Donc \(g\) est croissante sur \([0,\alpha]\), puis décroissante sur \([\alpha,+\infty[\).
+
+    \item L'équation
+    \[
+    1-x-x^2=0
+    \]
+    admet bien une unique solution positive :
+    \[
+    \alpha=\frac{-1+\sqrt{5}}{2}.
+    \]
+
+    \item On en déduit que \(g\) admet un maximum sur \([0,+\infty[\), atteint en \(x=\alpha\).
+\end{enumerate}
+
+\subsection*{3. Exploitation du maximum}
+
+\begin{enumerate}
+    \item La valeur exacte est
+    \[
+    \alpha=\frac{-1+\sqrt{5}}{2}.
+    \]
+
+    \item Une valeur approchée au centième est
+    \[
+    \alpha\approx \frac{-1+2{,}236}{2}\approx 0{,}62.
+    \]
+
+    \item Calculons une valeur approchée de \(g(\alpha)\).
+
+    Avec \(\alpha\approx 0{,}62\),
+    \[
+    \frac{\alpha}{\alpha+1}\approx \frac{0{,}62}{1{,}62}\approx 0{,}383,
+    \]
+    et
+    \[
+    e^{-0{,}62}\approx 0{,}538.
+    \]
+    Donc
+    \[
+    g(\alpha)\approx 0{,}383\times 0{,}538\approx 0{,}206.
+    \]
+    Ainsi
+    \[
+    g(\alpha)\approx 0{,}21.
+    \]
+
+    \item Dans le modèle, \(\alpha\) représente la valeur du paramètre \(x\) pour laquelle le rendement est maximal.
+\end{enumerate}
+
+\subsection*{4. Une équation associée}
+
+On considère l'équation
+\[
+g(x)=0{,}1
+\]
+sur \([0,+\infty[\).
+
+\begin{enumerate}
+    \item Comme \(g\) est continue, croissante puis décroissante, et que son maximum est supérieur à \(0{,}1\), une droite horizontale peut couper la courbe en zéro, une ou deux fois selon sa hauteur.
+
+    \item Ici :
+    \[
+    g(0)=0<0{,}1, \qquad g(\alpha)\approx 0{,}21>0{,}1, \qquad \lim_{x\to+\infty}g(x)=0<0{,}1.
+    \]
+    La courbe monte au-dessus de \(0{,}1\), puis redescend en dessous. Il y a donc deux solutions.
+
+    \item Cherchons des encadrements simples.
+
+    \textbf{Première solution :}
+
+    \[
+    g(0{,}1)=\frac{0{,}1}{1{,}1}e^{-0{,}1}\approx 0{,}091\times 0{,}905\approx 0{,}082,
+    \]
+    \[
+    g(0{,}2)=\frac{0{,}2}{1{,}2}e^{-0{,}2}\approx 0{,}167\times 0{,}819\approx 0{,}137.
+    \]
+    Donc une première solution appartient à
+    \[
+    [0{,}1;0{,}2].
+    \]
+
+    \textbf{Deuxième solution :}
+
+    \[
+    g(2)=\frac{2}{3}e^{-2}\approx 0{,}667\times 0{,}135\approx 0{,}090,
+    \]
+    \[
+    g(1{,}5)=\frac{1{,}5}{2{,}5}e^{-1{,}5}\approx 0{,}6\times 0{,}223\approx 0{,}134.
+    \]
+    Donc une seconde solution appartient à
+    \[
+    [1{,}5;2].
+    \]
+\end{enumerate}
+
+\subsection*{5. Prise de recul}
+
+\begin{enumerate}
+    \item La fonction \(\dfrac{x}{x+1}\) seule tend vers \(1\), alors que le facteur \(e^{-x}\) tend vers \(0\) très rapidement. Ce facteur exponentiel force la fonction entière à redescendre vers \(0\), ce qui change complètement le comportement global.
+
+    \item Si on remplaçait \(e^{-x}\) par \(e^{-2x}\), la décroissance serait plus rapide. Le maximum serait sans doute atteint plus tôt, et les valeurs de la fonction deviendraient plus petites pour les grandes valeurs de \(x\).
+\end{enumerate}
+
+\newpage
+
+\section*{Corrigé du Problème 3 -- Une équation fonctionnelle autour des symétries d'une courbe \hfill /30}
+
+On considère la fonction \(f\) définie sur \(\mathbb{R}\) par :
+\[
+f(x)=\frac{1}{1+e^{-x}}.
+\]
+
+\subsection*{1. Premières propriétés}
+
+\begin{enumerate}
+    \item Pour tout réel \(x\), on a \(e^{-x}>0\). Donc
+    \[
+    1+e^{-x}>0.
+    \]
+    Le dénominateur n'est donc jamais nul. La fonction \(f\) est définie sur \(\mathbb{R}\).
+
+    \item En \(x=0\),
+    \[
+    f(0)=\frac{1}{1+e^0}=\frac{1}{2}.
+    \]
+
+    \item Lorsque \(x\to -\infty\), on a \(-x\to +\infty\), donc
+    \[
+    e^{-x}\to +\infty.
+    \]
+    Ainsi
+    \[
+    f(x)=\frac{1}{1+e^{-x}}\to 0.
+    \]
+
+    Lorsque \(x\to +\infty\), on a \(-x\to -\infty\), donc
+    \[
+    e^{-x}\to 0.
+    \]
+    Ainsi
+    \[
+    f(x)=\frac{1}{1+e^{-x}}\to 1.
+    \]
+
+    \item Graphiquement, la courbe admet deux asymptotes horizontales :
+    \[
+    y=0 \quad \text{à gauche}, \qquad y=1 \quad \text{à droite}.
+    \]
+\end{enumerate}
+
+\subsection*{2. Variations de la fonction}
+
+\begin{enumerate}
+    \item On écrit
+    \[
+    f(x)=\bigl(1+e^{-x}\bigr)^{-1}.
+    \]
+    Donc
+    \[
+    f'(x)=-\bigl(1+e^{-x}\bigr)^{-2}\times(-e^{-x})
+    =\frac{e^{-x}}{(1+e^{-x})^2}.
+    \]
+
+    \item Pour tout réel \(x\),
+    \[
+    e^{-x}>0 \quad \text{et} \quad (1+e^{-x})^2>0.
+    \]
+    Donc
+    \[
+    f'(x)>0 \quad \text{pour tout } x\in\mathbb{R}.
+    \]
+
+    \item La fonction \(f\) est donc strictement croissante sur \(\mathbb{R}\).
+
+    Son tableau de variations est :
+    \[
+    \begin{array}{c|ccc}
+    x & -\infty & & +\infty \\
+    \hline
+    f'(x) & & + & \\
+    \hline
+    f(x) & 0 & \nearrow & 1
+    \end{array}
+    \]
+\end{enumerate}
+
+\subsection*{3. Une équation fonctionnelle}
+
+\begin{enumerate}
+    \item Calculons
+    \[
+    f(-x)=\frac{1}{1+e^{-(-x)}}=\frac{1}{1+e^x}.
+    \]
+
+    \item Montrons que
+    \[
+    f(x)+f(-x)=1.
+    \]
+    On a
+    \[
+    f(x)=\frac{1}{1+e^{-x}}=\frac{e^x}{1+e^x}.
+    \]
+    Donc
+    \[
+    f(x)+f(-x)=\frac{e^x}{1+e^x}+\frac{1}{1+e^x}
+    =\frac{e^x+1}{1+e^x}=1.
+    \]
+
+    \item C'est une équation fonctionnelle car elle relie les valeurs de la fonction en deux points liés, ici \(x\) et \(-x\).
+\end{enumerate}
+
+\subsection*{4. Interprétation graphique}
+
+\begin{enumerate}
+    \item Si \(M(x,f(x))\) appartient à la courbe, alors
+    \[
+    f(-x)=1-f(x).
+    \]
+    Donc le point
+    \[
+    M'(-x,1-f(x))=(-x,f(-x))
+    \]
+    appartient aussi à la courbe.
+
+    \item Le milieu du segment \([MM']\) a pour coordonnées :
+    \[
+    \left(\frac{x+(-x)}{2},\frac{f(x)+1-f(x)}{2}\right)
+    =
+    \left(0,\frac12\right).
+    \]
+    Ce milieu est fixe. La courbe admet donc un centre de symétrie en
+    \[
+    \left(0,\frac12\right).
+    \]
+
+    \item Pour \(x=0\), on retrouve le point
+    \[
+    \left(0,\frac12\right),
+    \]
+    ce qui confirme bien le résultat.
+\end{enumerate}
+
+\subsection*{5. Une autre écriture utile}
+
+\begin{enumerate}
+    \item On calcule :
+    \[
+    1-f(x)=1-\frac{1}{1+e^{-x}}
+    =\frac{1+e^{-x}-1}{1+e^{-x}}
+    =\frac{e^{-x}}{1+e^{-x}}.
+    \]
+
+    \item Alors
+    \[
+    f(x)\bigl(1-f(x)\bigr)
+    =\frac{1}{1+e^{-x}}\times \frac{e^{-x}}{1+e^{-x}}
+    =\frac{e^{-x}}{(1+e^{-x})^2}.
+    \]
+    Or on a montré que
+    \[
+    f'(x)=\frac{e^{-x}}{(1+e^{-x})^2}.
+    \]
+    Donc
+    \[
+    f'(x)=f(x)\bigl(1-f(x)\bigr).
+    \]
+
+    \item Comme \(0<f(x)<1\), les deux facteurs \(f(x)\) et \(1-f(x)\) sont positifs, donc
+    \[
+    f'(x)>0.
+    \]
+    Cette écriture permet donc de comprendre simplement pourquoi la fonction est croissante.
+\end{enumerate}
+
+\subsection*{6. Question de recul}
+
+\begin{enumerate}
+    \item L'affirmation \og comme \(f(x)+f(-x)=1\), la fonction \(f\) est paire \fg\ est fausse.
+
+    Une fonction paire vérifie
+    \[
+    f(-x)=f(x).
+    \]
+    Ici, on a au contraire
+    \[
+    f(-x)=1-f(x),
+    \]
+    ce qui est très différent.
+
+    \item Il faut distinguer :
+    \begin{itemize}
+        \item la symétrie par rapport à l'axe des ordonnées, qui correspond à une fonction paire ;
+        \item la symétrie centrale, qui signifie ici que la courbe est inchangée par une rotation de \(180^\circ\) autour du point
+        \[
+        \left(0,\frac12\right).
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Conclusion}
+
+La fonction
+\[
+f(x)=\frac{1}{1+e^{-x}}
+\]
+est définie et strictement croissante sur \(\mathbb{R}\), avec
+\[
+\lim_{x\to-\infty}f(x)=0
+\qquad \text{et} \qquad
+\lim_{x\to+\infty}f(x)=1.
+\]
+Elle vérifie l'équation fonctionnelle remarquable
+\[
+f(x)+f(-x)=1,
+\]
+ce qui montre que sa courbe admet un centre de symétrie en
+\[
+\left(0,\frac12\right).
+\]
+Enfin, l'identité
+\[
+f'(x)=f(x)\bigl(1-f(x)\bigr)
+\]
+fournit une autre lecture très intéressante de sa croissance.
+
+\end{document}

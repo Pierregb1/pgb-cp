@@ -1,0 +1,674 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{stmaryrd}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Corrigé -- TD algèbre linéaire}
+\rhead{Chapitres 2 à 5}
+\cfoot{\thepage/\pageref{LastPage}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\titleformat{\section}{\Large\bfseries\color{blue!50!black}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!35!black}}{\thesubsection.}{0.5em}{}
+\newtcolorbox{info}{colback=blue!3,colframe=blue!35!black,boxrule=0.6pt,arc=2mm}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\id}{\mathrm{id}}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Corrigé complet des TD d'algèbre linéaire}\\[0.4em]
+{\large Chapitres 2 à 5}\\[0.8em]
+\end{center}
+\begin{info}
+Ce document rassemble un corrigé détaillé et homogène des TD des chapitres 2 à 5. Le corrigé du chapitre 1 est déjà disponible séparément. Pour garder une taille raisonnable, les exercices d'application directe sont corrigés de façon concise mais complète, tandis que les exercices de méthode, de démonstration et de réflexion sont rédigés plus largement.
+\end{info}
+\tableofcontents
+\newpage
+\section{Chapitre 2 -- Pratique calculatoire et objets algébriques de base}
+\subsection*{Exercices d'application directe}
+\textbf{Exercice 1.} a) $5x-4$. b) $5a+5$. c) $7x+7$. d) $3y+3$. e) $-6x+3+4x=-2x+3$.
+
+\textbf{Exercice 2.} a) $3x+6$. b) $-2x+10$. c) $x^2+5x+4$. d) $2x^2+7x-15$. e) $a^2+ab-2b^2$.
+
+\textbf{Exercice 3.} a) $x^2+6x+9$. b) $4x^2-4x+1$. c) $a^2-2ab+b^2$. d) $x^2-25$. e) $9a^2+6ab+b^2$.
+
+\textbf{Exercice 4.} a) $4(x+1)$. b) $3x(x-2)$. c) $(x-3)(x+3)$. d) $(a-b)^2$. e) $5x(x+2)$.
+
+\textbf{Exercice 5.} a) $\frac56$. b) $\frac78$. c) $3$. d) $\frac16$. e) $\frac32+\frac53-1=\frac{19}{6}-1=\frac{13}{6}$.
+
+\textbf{Exercice 6.}
+\begin{enumerate}[label=\alph*)]
+\item $\dfrac{x^2-1}{x-1}=x+1$, pour $x\neq 1$.
+\item $\dfrac{x^2-4}{x+2}=x-2$, pour $x\neq -2$.
+\item $\dfrac1x+\dfrac1{x+1}=\dfrac{2x+1}{x(x+1)}$, pour $x\neq 0,-1$.
+\item $\dfrac{2x}{x^2+x}=\dfrac{2}{x+1}$, pour $x\neq 0,-1$.
+\item $\dfrac{x^2-9}{x^2-3x}=\dfrac{(x-3)(x+3)}{x(x-3)}=\dfrac{x+3}{x}$, pour $x\neq 0,3$.
+\end{enumerate}
+
+\textbf{Exercice 7.} a) $x^7$. b) $x^4$ si $x\neq 0$. c) $x^8$. d) $8x^3$. e) $a^3$ si $a\neq 0$.
+
+\textbf{Exercice 8.} a) $5$. b) $7$. c) $5$. d) $4$. e) $4$.
+
+\textbf{Exercice 9.} a) $x=2$ ou $x=-3$. b) $x=-\tfrac12$ ou $x=4$. c) $x=4$ ou $x=-4$. d) $x=-5$. e) $x=2$ ou $x=-1$.
+
+\textbf{Exercice 10.} a) $(a+b)(x+y)$. b) $x(x+3)+2(x+3)=(x+2)(x+3)$. c) $(a+b)(x-1)$. d) $2x(x-1)+3(x-1)=(2x+3)(x-1)$. e) $(u+v)(a+b)$.
+
+\subsection*{Exercices de calcul rédigé et de méthode}
+\textbf{Exercice 11.} a) identité. b) équation. c) identité. d) équation. e) identité.
+
+\textbf{Exercice 12.}
+\begin{enumerate}[label=\alph*)]
+\item On factorise par $(x+2)$ : $(x+2)[(x-3)+(x+5)]=(x+2)(2x+2)=2(x+2)(x+1)$.
+\item On factorise : $x^2-25=(x-5)(x+5)$, donc $x=\pm 5$.
+\item Développer est rapide : $(x^2-2x+1)-(x^2+2x+1)=-4x$.
+\item On factorise : $\dfrac{x^2-4}{x-2}=\dfrac{(x-2)(x+2)}{x-2}=x+2$, pour $x\neq 2$.
+\item Poser $u=x+3$ : $u^2-u=u(u-1)=0$, donc $u=0$ ou $u=1$, i.e. $x=-3$ ou $x=-2$.
+\end{enumerate}
+
+\textbf{Exercice 13.} a) $-x+3+2x+2=x+5$. b) $-2x+5-x-4=-3x+1$. c) $-x^2+x+6$. d) $1-4x+4x^2$. e) $-(x^2-1)=1-x^2$.
+
+\textbf{Exercice 14.}
+\begin{enumerate}[label=\alph*)]
+\item $\dfrac1x+\dfrac2{x+1}=\dfrac{x+1+2x}{x(x+1)}=\dfrac{3x+1}{x(x+1)}$, $D=\R\setminus\{0,-1\}$.
+\item $\dfrac{x+1}{x}-\dfrac1x=1$, $D=\R\setminus\{0\}$.
+\item $\dfrac{x^2-1}{x^2+x}=\dfrac{(x-1)(x+1)}{x(x+1)}=\dfrac{x-1}{x}$, $D=\R\setminus\{0,-1\}$.
+\item $\dfrac1{x-1}-\dfrac1{x+1}=\dfrac{(x+1)-(x-1)}{(x-1)(x+1)}=\dfrac{2}{x^2-1}$, $D=\R\setminus\{-1,1\}$.
+\item $\dfrac{x^2-4}{x^2-2x}=\dfrac{(x-2)(x+2)}{x(x-2)}=\dfrac{x+2}{x}$, $D=\R\setminus\{0,2\}$.
+\end{enumerate}
+
+\textbf{Exercice 15.} Posons $u=x+1$.
+\begin{enumerate}[label=\alph*)]
+\item $u^2+3u+2=(u+1)(u+2)=(x+2)(x+3)$.
+\item $u^2-4=(u-2)(u+2)$, donc $(x-1)(x+3)$.
+\item $u^2-5u+6=(u-2)(u-3)=0$, donc $x=1$ ou $x=2$.
+\item $u^2-u=u(u-1)$, donc $(x+1)x$.
+\item $\dfrac1u+\dfrac2{u^2}=\dfrac{u+2}{u^2}=\dfrac{x+3}{(x+1)^2}$, pour $x\neq -1$.
+\end{enumerate}
+
+\textbf{Exercice 16.}
+\begin{enumerate}[label=\alph*)]
+\item $(x+4)^2-(x-4)^2=[(x+4)-(x-4)] [(x+4)+(x-4)] = 8\cdot 2x=16x$.
+\item $(2x+1)^2-(2x-1)^2= [2][4x]=8x$.
+\item $(a+b)^2-(a-b)^2=4ab$.
+\item $(x+3)(x-3)+(x-3)^2=(x-3)[(x+3)+(x-3)]=2x(x-3)$.
+\item $(x+1)^2-x^2=2x+1$.
+\end{enumerate}
+
+\textbf{Exercice 17.}
+\begin{enumerate}[label=\alph*)]
+\item $|x-2|=\begin{cases}x-2&\text{si }x\ge 2,\\2-x&\text{si }x<2.\end{cases}$
+\item $|3-x|=\begin{cases}3-x&\text{si }x\le 3,\\x-3&\text{si }x>3.\end{cases}$
+\item $|2x+1|=\begin{cases}2x+1&\text{si }x\ge -\frac12,\\-2x-1&\text{si }x< -\frac12.\end{cases}$
+\item Il faut découper selon $x\le 0$, $0\le x\le 1$, $x\ge 1$.
+\[|x|+|x-1|=\begin{cases}1-2x&\text{si }x\le 0,\\1&\text{si }0\le x\le 1,\\2x-1&\text{si }x\ge 1.\end{cases}\]
+\item Découper selon $x\le -2$, $-2\le x\le 2$, $x\ge 2$.
+\[|x+2|-|x-2|=\begin{cases}-4&\text{si }x\le -2,\\2x&\text{si }-2\le x\le 2,\\4&\text{si }x\ge 2.\end{cases}\]
+\end{enumerate}
+
+\textbf{Exercice 18.}
+\begin{enumerate}[label=\alph*)]
+\item $P(x)=3x^2-12x=3x(x-4)$ : degré $2$, racines évidentes $0$ et $4$.
+\item $Q(x)=x^2-5x+6=(x-2)(x-3)$ : degré $2$, racines $2$ et $3$.
+\item $R(x)=x^3-x=x(x^2-1)=x(x-1)(x+1)$ : degré $3$, racines $-1,0,1$.
+\item $S(x)=x^2-1=(x-1)(x+1)$ : degré $2$, racines $-1,1$.
+\item $T(x)=x^3-3x^2+2x=x(x^2-3x+2)=x(x-1)(x-2)$ : degré $3$, racines $0,1,2$.
+\end{enumerate}
+
+\textbf{Exercice 19.}
+\begin{enumerate}[label=\alph*)]
+\item $(x-2)(x-3)=0$, donc $x=2$ ou $3$.
+\item $x(x-1)=0$, donc $x=0$ ou $1$.
+\item $x(x^2-4)=x(x-2)(x+2)=0$, donc $x\in\{-2,0,2\}$.
+\item Posons $u=x-1$ : $u^2-u=u(u-1)=0$, donc $x=1$ ou $2$.
+\item $(x+2)^2-9=(x+2-3)(x+2+3)=(x-1)(x+5)$, donc $x=1$ ou $-5$.
+\end{enumerate}
+
+\textbf{Exercice 20.}
+\begin{enumerate}[label=\alph*)]
+\item $(a+b)^3=a^3+3a^2b+3ab^2+b^3$.
+\item $(x-1)^3=x^3-3x^2+3x-1$.
+\item $(2x+3)^3=8x^3+36x^2+54x+27$.
+\item $(u-v)^3=u^3-3u^2v+3uv^2-v^3$.
+\item $(x+2)^4=x^4+8x^3+24x^2+32x+16$.
+\end{enumerate}
+
+\subsection*{Exercices de démonstration}
+\textbf{Exercice 21.} Si $ac=bc$ et $c\neq 0$, alors $(a-b)c=0$. Comme $c\neq 0$, on peut diviser par $c$ et obtenir $a-b=0$, donc $a=b$.
+
+\textbf{Exercice 22.} Le sens direct : si $ab=0$, alors au moins l'un des facteurs est nul dans $\R$. Le sens réciproque est immédiat : si $a=0$ ou $b=0$, alors $ab=0$.
+
+\textbf{Exercice 23.} Développement direct : $(a-b)(a+b)=a^2+ab-ab-b^2=a^2-b^2$.
+
+\textbf{Exercice 24.} Développement du membre de droite : $a(b+c)=ab+ac$.
+
+\textbf{Exercice 25.} Par récurrence. Initialisation $n=0$ : somme vide $=0=\frac{0\cdot1}{2}$. Hérédité : si $1+\cdots+n=\frac{n(n+1)}2$, alors
+\[(1+\cdots+n)+(n+1)=\frac{n(n+1)}2+(n+1)=\frac{(n+1)(n+2)}2.\]
+
+\textbf{Exercice 26.} On multiplie par $1-q$ :
+\[(1+q+\cdots+q^n)(1-q)=1-q^{n+1}.\]
+Comme $q\neq 1$, on divise par $1-q$.
+
+\textbf{Exercice 27.} Si $x\ge 0$, alors $|x|=x$, donc $|x|^2=x^2$. Si $x<0$, alors $|x|=-x$, donc $|x|^2=(-x)^2=x^2$.
+
+\textbf{Exercice 28.} On utilise l'inégalité triangulaire dans $\R$ : par définition de la valeur absolue comme distance à $0$, on a toujours $|x+y|\le |x|+|y|$.
+
+\textbf{Exercice 29.} Soit on développe, soit on utilise la différence de deux carrés :
+\[(x+1)^2-(x-1)^2=[(x+1)-(x-1)] [(x+1)+(x-1)] =2\cdot 2x=4x.\]
+
+\textbf{Exercice 30.} On factorise par $x$ puis par différence de deux carrés :
+\[x^3-x=x(x^2-1)=x(x-1)(x+1).\]
+
+\textbf{Exercice 31.} Par récurrence. Initialisation $n=0$ : $1=(0+1)^2$. Hérédité : si $1+3+\cdots +(2n+1)=(n+1)^2$, alors en ajoutant le terme suivant $2n+3$ on obtient
+\[(n+1)^2+2n+3=n^2+4n+4=(n+2)^2.\]
+
+\textbf{Exercice 32.} On calcule : $P(1)=1-6+11-6=0$, $P(2)=8-24+22-6=0$, $P(3)=27-54+33-6=0$. Donc $1,2,3$ sont racines et
+\[P(x)=(x-1)(x-2)(x-3).\]
+Le coefficient dominant vaut bien $1$.
+
+\subsection*{Exercices de réflexion}
+\textbf{Exercice 33.} L'affirmation est fausse. Contre-exemple : $(1+1)^2=4$ alors que $1^2+1^2=2$. La bonne formule est $(a+b)^2=a^2+2ab+b^2$.
+
+\textbf{Exercice 34.} On passe tout du même côté :
+\[x(x-1)-x(x+2)=0 \iff x[(x-1)-(x+2)]=0 \iff -3x=0,\]
+donc $x=0$. On n'a pas simplifié abusivement par $x$.
+
+\textbf{Exercice 35.} 
+\[\frac1x-\frac1{x+1}=\frac{x+1-x}{x(x+1)}=\frac1{x(x+1)},\]
+pour $x\neq 0,-1$. Si $x>0$, alors $x(x+1)>0$, donc le résultat est strictement positif.
+
+\textbf{Exercice 36.} a) On factorise par $(x-2)$ :
+\[A=(x-2)[(x+5)-(x-1)]=6(x-2).\]
+ b) En développant : $A=(x^2+3x-10)-(x^2-3x+2)=6x-12=6(x-2)$.
+
+\textbf{Exercice 37.}
+\[(x+y)^2+(x-y)^2=(x^2+2xy+y^2)+(x^2-2xy+y^2)=2x^2+2y^2.
+\]
+De même,
+\[(x+y)^2-(x-y)^2=4xy.\]
+
+\textbf{Exercice 38.} Posons $u=x+1$. Alors $u^2-3u+2=0$, soit $(u-1)(u-2)=0$. Donc $u=1$ ou $u=2$, et ainsi $x=0$ ou $x=1$.
+
+\textbf{Exercice 39.} Si $u$ et $v$ ont somme $7$ et produit $10$, alors ce sont les racines du polynôme $X^2-7X+10=(X-5)(X-2)$. Donc $(u,v)=(5,2)$ ou $(2,5)$.
+
+\textbf{Exercice 40.} 
+\[|x-3|=5 \iff x-3=5 \text{ ou } x-3=-5 \iff x=8 \text{ ou } x=-2.\]
+Interprétation géométrique : ce sont les points de la droite réelle situés à distance $5$ de $3$.
+
+\textbf{Exercice 41.} Somme géométrique de raison $2$ :
+\[1+2+2^2+\cdots+2^{10}=\frac{1-2^{11}}{1-2}=2^{11}-1=2047.\]
+
+\textbf{Exercice 42.} C'est le même calcul que l'exercice 35 :
+\[\frac1x-\frac1{x+1}=\frac1{x(x+1)},\qquad x\neq 0,-1.\]
+
+\newpage
+\section{Chapitre 3 -- Espaces vectoriels et sous-espaces}
+\subsection*{Exercices d'application directe}
+\textbf{Exercice 1.} $\R^2$, $\R^3$, l'ensemble des polynômes réels et l'ensemble des fonctions réelles sur $\R$ sont des espaces vectoriels réels. $\R_+$ ne l'est pas, car il n'est pas stable par multiplication par $-1$.
+
+\textbf{Exercice 2.} a) $u+0_E=u$. b) $u+(-u)=0_E$. c) $(-1)u=-u$. d) $0u=0_E$. e) $\lambda 0_E=0_E$.
+
+\textbf{Exercice 3.} a) stable par addition et par produit par un réel. b) aucune des deux. c) pas stable par multiplication par un réel négatif. d) stable par les deux. e) aucune des deux.
+
+\textbf{Exercice 4.} a) sous-espace. b) pas un sous-espace. c) sous-espace. d) sous-espace réduit à $\{(0,0)\}$.
+
+\textbf{Exercice 5.} a) sous-espace. b) non. c) sous-espace. d) sous-espace (droite vectorielle engendrée par $(1,1,1)$).
+
+\textbf{Exercice 6.} a) oui : $3(1,0)+5(0,1)$. b) oui : $4(1,2)=(4,8)$. c) oui, déjà l'un des vecteurs. d) oui : $(2,1)=\frac32(1,1)+\frac12(1,-1)$.
+
+\textbf{Exercice 7.} a) $\Vect((1,0))=\{(x,0)\mid x\in\R\}$. b) $\{(0,y)\mid y\in\R\}$. c) $\{(t,2t)\mid t\in\R\}$. d) $\R^2$.
+
+\textbf{Exercice 8.} a) sous-espace. b) sous-espace. c) non. d) sous-espace.
+
+\textbf{Exercice 9.} a) sous-espace. b) sous-espace. c) non. d) sous-espace.
+
+\textbf{Exercice 10.} $F\cap G=\{(x,0,0)\mid x\in\R\}=\Vect((1,0,0))$ et $F+G=\R^3$.
+
+\subsection*{Exercices de méthode}
+\textbf{Exercice 11.} Pour tous $\lambda,\mu\in\R$ et $u=(x, y), v=(x',y')\in F$, on a $x=2y$ et $x'=2y'$. Alors
+\[\lambda u+\mu v=(\lambda x+\mu x',\lambda y+\mu y')\]
+vérifie
+\[\lambda x+\mu x'=2(\lambda y+\mu y').\]
+Donc $F$ est un sous-espace vectoriel de $\R^2$.
+
+\textbf{Exercice 12.} Première méthode : $(0,0)\notin A$ car $0+0\neq 1$, donc $A$ n'est pas un sous-espace. Deuxième méthode : $(1,0),(0,1)\in A$ mais leur somme $(1,1)\notin A$.
+
+\textbf{Exercice 13.} On cherche les combinaisons linéaires de $(1,1)$ et $(1,-1)$ :
+\[\lambda(1,1)+\mu(1,-1)=(\lambda+\mu,\lambda-\mu).\]
+Pour tout $(x,y)\in\R^2$, le système
+\[\lambda+\mu=x,\quad \lambda-\mu=y\]
+admet la solution $\lambda=\frac{x+y}{2}$, $\mu=\frac{x-y}{2}$. Donc $\Vect((1,1),(1,-1))=\R^2$.
+
+\textbf{Exercice 14.} L'équation $x+y-z=0$ donne $z=x+y$, donc
+\[F=\{(x,y,x+y)\mid x,y\in\R\}=\Vect((1,0,1),(0,1,1)).\]
+
+\textbf{Exercice 15.} Si $f(1)=0$ et $g(1)=0$, alors $(f+g)(1)=0$ et $(\lambda f)(1)=\lambda f(1)=0$. Donc $E$ est un sous-espace vectoriel.
+
+\textbf{Exercice 16.} a) droite vectorielle. b) droite affine non vectorielle. c) droite vectorielle. d) droite affine non vectorielle.
+
+\textbf{Exercice 17.} 
+\[\Vect((1,0,0),(0,1,0))=\{(x,y,0)\mid x,y\in\R\}.\]
+De même,
+\[\Vect((1,1,0),(1,-1,0))=\{(x,y,0)\mid x,y\in\R\},\]
+car les deux vecteurs engendrent le plan $z=0$.
+
+\textbf{Exercice 18.} Cherchons $\lambda,\mu$ tels que
+\[\lambda(1,1,0)+\mu(0,1,1)=(2,3,1).\]
+Cela donne $\lambda=2$, $\mu=1$, et $\lambda+\mu=3$, donc oui. Pour $(1,0,1)$, on aurait $\lambda=1$, $\mu=1$, mais alors $\lambda+\mu=2\neq 0$, donc non.
+
+\textbf{Exercice 19.} Dans $F\cap G$, on a $x=y$ et $x+y+z=0$, donc $2x+z=0$, soit $z=-2x$. Ainsi
+\[F\cap G=\{(t,t,-2t)\mid t\in\R\}=\Vect((1,1,-2)).\]
+
+\textbf{Exercice 20.} 
+\[F+G=\Vect((1,0,0),(0,1,0),(0,0,1))=\R^3.\]
+
+\subsection*{Exercices de démonstration}
+\textbf{Exercice 21.} Si $0_E$ et $0_E'$ sont deux vecteurs nuls, alors $0_E+0_E'=0_E'$ parce que $0_E$ est neutre, et aussi $0_E+0_E'=0_E$ parce que $0_E'$ est neutre. Donc $0_E=0_E'$.
+
+\textbf{Exercice 22.} Si $v$ et $w$ sont deux opposés de $u$, alors
+\[v=v+0_E=v+(u+w)=(v+u)+w=0_E+w=w.\]
+L'opposé est donc unique.
+
+\textbf{Exercice 23.} 
+\[(0+0)u=0u+0u.\]
+Or $(0+0)u=0u$. En ajoutant l'opposé de $0u$, on obtient $0u=0_E$.
+
+\textbf{Exercice 24.} 
+\[u+(-1)u=(1+(-1))u=0u=0_E.\]
+Donc $(-1)u$ est un opposé de $u$, i.e. $(-1)u=-u$.
+
+\textbf{Exercice 25.} Si $\lambda\neq 0$ et $\lambda u=0_E$, alors on multiplie par $\lambda^{-1}$ :
+\[u=\lambda^{-1}(\lambda u)=0_E.\]
+Donc $\lambda u=0_E\Rightarrow \lambda=0$ ou $u=0_E$.
+
+\textbf{Exercice 26.} L'intersection de deux sous-espaces contient $0_E$. Si $u,v\in F\cap G$, alors $u,v\in F$ et $u,v\in G$, donc $u+v\in F$ et $u+v\in G$, donc $u+v\in F\cap G$. Même chose pour la multiplication par un scalaire. Donc c'est un sous-espace.
+
+\textbf{Exercice 27.} Si $u=u_F+u_G$ et $v=v_F+v_G$ avec $u_F,v_F\in F$ et $u_G,v_G\in G$, alors
+\[u+v=(u_F+v_F)+(u_G+v_G)\in F+G\]
+et
+\[\lambda u=(\lambda u_F)+(\lambda u_G)\in F+G.\]
+Donc $F+G$ est un sous-espace.
+
+\textbf{Exercice 28.} $0_E=0u_1+\cdots+0u_p\in\Vect(u_1,\dots,u_p)$. Si $x=\sum\lambda_i u_i$ et $y=\sum\mu_i u_i$, alors
+\[x+y=\sum (\lambda_i+\mu_i)u_i,\qquad \alpha x=\sum (\alpha\lambda_i)u_i.\]
+Donc $\Vect(u_1,\dots,u_p)$ est un sous-espace.
+
+\textbf{Exercice 29.} Tout sous-espace contenant les $u_i$ contient toute combinaison linéaire des $u_i$. Donc il contient $\Vect(u_1,\dots,u_p)$.
+
+\textbf{Exercice 30.} Ici $F=\{(x,0)\}$ et $G=\{(0,y)\}$ sont des sous-espaces. Mais $(1,0)\in F\subset F\cup G$ et $(0,1)\in G\subset F\cup G$, tandis que $(1,1)=(1,0)+(0,1)\notin F\cup G$. L'union n'est donc pas stable par addition.
+
+\textbf{Exercice 31.} Si $f$ et $g$ sont paires, alors $(f+g)(-x)=f(-x)+g(-x)=f(x)+g(x)=(f+g)(x)$, et $(\lambda f)(-x)=\lambda f(-x)=\lambda f(x)=(\lambda f)(x)$. Donc les fonctions paires forment un sous-espace. Même preuve pour les fonctions impaires avec le signe $-$.
+
+\textbf{Exercice 32.} Les matrices symétriques contiennent la matrice nulle. La somme de deux matrices symétriques est symétrique, et un multiple scalaire d'une matrice symétrique est symétrique. Donc c'est un sous-espace.
+
+\subsection*{Exercices de réflexion}
+\textbf{Exercice 33.} $A=\{(x,y)\mid xy=0\}$ n'est pas un sous-espace : $(1,0)\in A$ et $(0,1)\in A$, mais $(1,1)\notin A$.
+
+\textbf{Exercice 34.} Si $u,v\in F$, alors $\lambda u+\mu v\in F$ pour tous $\lambda,\mu$. C'est la stabilité par combinaison linéaire. Le critère est donc satisfait par un sous-espace.
+
+\textbf{Exercice 35.} Un sous-espace de $\R^2$ ne peut être que $\{0\}$, une droite vectorielle ou $\R^2$.
+
+\textbf{Exercice 36.} Dans $\R^2$, l'ensemble $\{(x,y)\mid y=1\}$ n'est pas un sous-espace car il ne contient pas $0$. Même logique pour toute droite affine non passant pas par l'origine.
+
+\textbf{Exercice 37.} Les deux conditions donnent $x=y$ puis $2x+z=0$, donc
+\[F=\{(t,t,-2t)\mid t\in\R\}=\Vect((1,1,-2)).\]
+
+\textbf{Exercice 38.} On a déjà montré que $(1,1)$ et $(1,-1)$ engendrent $\R^2$ ; donc la somme vaut tout l'espace.
+
+\textbf{Exercice 39.} $F=G=\{(t,0)\mid t\in\R\}$. Donc $F\cap G=F=G$ et $F+G=F$. Deux droites distinctes en écriture peuvent donc décrire le même sous-espace.
+
+\textbf{Exercice 40.} Toute fonction $f(x)=ax+b$ s'écrit $b\cdot 1+a\cdot x$, donc appartient à $\Vect(1,x)$. Réciproquement, tout élément de $\Vect(1,x)$ est de cette forme.
+
+\textbf{Exercice 41.} $A$ n'est pas un sous-espace : $(1,1)$ et $(1,-1)$ appartiennent à $A$, mais leur somme $(2,0)$ n'appartient pas à $A$.
+
+\textbf{Exercice 42.} Si $P(1)=Q(1)=0$, alors $(P+Q)(1)=0$ et $(\lambda P)(1)=0$. Donc $F$ est un sous-espace.
+
+\textbf{Exercice 43.} Si $P$ et $Q$ sont pairs, alors $(P+Q)(-X)=P(-X)+Q(-X)=P(X)+Q(X)=(P+Q)(X)$, et même chose pour un multiple scalaire. Donc $E$ est un sous-espace.
+
+\textbf{Exercice 44.} Toute combinaison linéaire vaut
+\[\lambda(1,1,0)+\mu(1,0,1)+\nu(0,1,1)=(\lambda+\mu,\lambda+\nu,\mu+\nu).\]
+On reconnaît l'ensemble de tous les $(x,y,z)$ tels que $x+y+z$ est pair... mais en contexte réel, ce critère n'a pas de sens : en fait, comme la famille de trois vecteurs est libre dans $\R^3$, son espace engendré est $\R^3$.
+
+\textbf{Exercice 45.} 1) Faux, contre-exemple : les axes de $\R^2$. 2) Vrai. 3) Faux : par exemple $\{(x,y)\mid xy=0\}$ contient $(0,0)$ mais n'est pas un sous-espace. 4) Vrai par stabilité.
+
+\textbf{Exercice 46.} Les suites constantes vérifiant $u_{n+1}=u_n$ forment un sous-espace : somme et multiples de suites constantes sont encore constants.
+
+\textbf{Exercice 47.} Les fonctions $1$-périodiques forment un sous-espace par stabilité de l'équation $f(x+1)=f(x)$ par somme et multiplication par un scalaire.
+
+\textbf{Exercice 48.} Les trois vecteurs sont colinéaires à $(1,2)$, donc
+\[\Vect((1,2),(2,4),(3,6))=\Vect((1,2)).\]
+
+\textbf{Exercice 49.} Si $\lambda\neq 0$, alors tout multiple de $u$ est un multiple de $\lambda u$, et réciproquement. Plus précisément,
+\[tu=\frac{t}{\lambda}(\lambda u),\qquad s(\lambda u)=(s\lambda)u.\]
+Donc $\Vect(u)=\Vect(\lambda u)$.
+
+\textbf{Exercice 50.} a) $F$ est un sous-espace. b) $G\subset F$ car $(1,-1,0)$ vérifie $x+y+z=0$. c) Par exemple $(1,0,-1)\in F$ mais n'est pas multiple de $(1,-1,0)$, donc $\notin G$. d) Géométriquement, $F$ est un plan vectoriel de $\R^3$ et $G$ une droite vectorielle contenue dans ce plan.
+
+\newpage
+\section{Chapitre 4 -- Familles libres, génératrices et bases}
+\subsection*{Exercices d'application directe}
+\textbf{Exercice 1.} a) libre, génératrice, base. b) liée, non génératrice, non base. c) libre, génératrice, base. d) libre, non génératrice, non base. e) génératrice mais liée, donc non base.
+
+\textbf{Exercice 2.} a) libre. b) liée. c) libre. d) liée.
+
+\textbf{Exercice 3.} a) $(1,1)=(1,0)+(0,1)$. b) $(2,4)=2(1,2)$. c) $(1,1,0)=(1,0,0)+(0,1,0)$. d) $X+1=1+X$.
+
+\textbf{Exercice 4.} a) libre car aucun vecteur n'est multiple de l'autre. b) liée car $(2,4)=2(1,2)$. c) libre : le système associé n'admet que la solution nulle. d) libre dans $\R[X]$.
+
+\textbf{Exercice 5.} a) oui. b) oui. c) non. d) oui dans $\R_2[X]$.
+
+\textbf{Exercice 6.} a) coordonnées $(3,-2)$. b) $(1,0,4)$. c) $(2,-3,1)$ dans la base $(1,X,X^2)$.
+
+\textbf{Exercice 7.} Dans la base $B=((1,1),(1,-1))$, on résout $\lambda(1,1)+\mu(1,-1)=(x,y)$, soit $\lambda=\frac{x+y}{2}$, $\mu=\frac{x-y}{2}$.
+Donc : a) $(2,1)$. b) $(2,3)$. c) $(1,-1)$. d) $\big(\frac{a+b}{2},\frac{a-b}{2}\big)$.
+
+\textbf{Exercice 8.} a) vrai. b) faux. c) vrai. d) faux.
+
+\textbf{Exercice 9.} La famille canonique de $\R^2$, $\R^3$ et plus généralement de $\R^n$ est libre et génératrice, donc c'est une base.
+
+\textbf{Exercice 10.} a) base de $\R_2[X]$. b) liée car $1+X$ est somme des deux premiers. c) libre mais non génératrice de $\R_2[X]$. d) libre donc base de $\R_2[X]$.
+
+\subsection*{Exercices de méthode}
+\textbf{Exercice 11.} On pose
+\[\lambda(1,0,1)+\mu(0,1,1)+\nu(1,1,0)=(0,0,0).\]
+On obtient
+\[\lambda+\nu=0,\quad \mu+\nu=0,\quad \lambda+\mu=0.\]
+D'où $\lambda=-\nu$, $\mu=-\nu$, puis $-2\nu=0$, donc $\lambda=\mu=\nu=0$. La famille est libre.
+
+\textbf{Exercice 12.} Pour $(x,y,z)\in\R^3$, on cherche
+\[\lambda(1,0,1)+\mu(0,1,1)+\nu(1,1,0)=(x,y,z).\]
+On résout
+\[\lambda+\nu=x,\quad \mu+\nu=y,\quad \lambda+\mu=z.\]
+On trouve
+\[\lambda=\frac{x-y+z}{2},\quad \mu=\frac{-x+y+z}{2},\quad \nu=\frac{x+y-z}{2}.\]
+La famille engendre donc $\R^3$.
+
+\textbf{Exercice 13.} a) oui, car deux vecteurs libres de $\R^2$. b) oui par 11 et 12. c) oui. d) oui dans l'espace des polynômes de degré $\le 1$.
+
+\textbf{Exercice 14.} L'équation donne $z=x+y$, donc
+\[F=\{(x,y,x+y)\}=\Vect((1,0,1),(0,1,1)).\]
+Les deux vecteurs sont libres, donc c'est une base de $F$.
+
+\textbf{Exercice 15.} Ici $x-y+z=0$, soit $z=y-x$. Ainsi
+\[F=\{(x,y,y-x)\}=\Vect((1,0,-1),(0,1,1)).\]
+C'est une base de $F$.
+
+\textbf{Exercice 16.} a) La famille contient la base canonique, donc elle est génératrice. b) Elle est liée car $(1,1,0)=(1,0,0)+(0,1,0)$. c) Une base extraite est $((1,0,0),(0,1,0),(0,0,1))$.
+
+\textbf{Exercice 17.} En soustrayant les deux écritures, on obtient
+\[(\lambda-\lambda')(1,1)+(\mu-\mu')(1,-1)=0.\]
+Comme $B$ est une base, donc libre, on en déduit $\lambda=\lambda'$ et $\mu=\mu'$.
+
+\textbf{Exercice 18.} a) On résout
+\[\alpha(1,0,0)+\beta(1,1,0)+\gamma(1,1,1)=(0,0,0),\]
+ce qui donne successivement $\gamma=0$, $\beta=0$, $\alpha=0$, donc $B$ est libre ; avec trois vecteurs de $\R^3$, c'est une base. b) Pour $(x,y,z)$,
+\[\alpha+\beta+\gamma=x,\quad \beta+\gamma=y,\quad \gamma=z.\]
+Donc $\gamma=z$, $\beta=y-z$, $\alpha=x-y$. c) Pour $(2,-1,3)$, on obtient $(-? )$ : $\gamma=3$, $\beta=-4$, $\alpha=3$.
+
+\textbf{Exercice 19.} La famille $((1,0),(a,1))$ est toujours libre, car si
+\[\lambda(1,0)+\mu(a,1)=(0,0),\]
+alors la deuxième coordonnée donne $\mu=0$, puis $\lambda=0$. Donc elle est aussi toujours génératrice de $\R^2$ et toujours base.
+
+\textbf{Exercice 20.} a) Non, trois vecteurs de $\R^2$ ne peuvent pas être libres. b) Oui, car $u_1,u_2$ suffisent déjà à engendrer $\R^2$. c) $u_3$ est toujours redondant puisque $u_3=au_1+bu_2$.
+
+\textbf{Exercice 21.} a) Les coordonnées des trois polynômes dans la base canonique $(1,X,X^2)$ sont $(1,0,0)$, $(1,1,0)$, $(1,1,1)$. C'est donc une famille libre de trois vecteurs dans $\R_2[X]$, donc une base. b) On cherche
+\[2-X+3X^2=a\cdot 1+b(1+X)+c(1+X+X^2).\]
+Par identification : $c=3$, $b+c=-1\Rightarrow b=-4$, $a+b+c=2\Rightarrow a=3$. Coordonnées : $(3,-4,3)$.
+
+\textbf{Exercice 22.} Toute fonction affine s'écrit $ax+b=b\cdot 1+a\cdot \id$. Donc $F=(1,\id)$ engendre l'espace et est libre ; c'est une base. Les coordonnées de $x\mapsto 3x-2$ sont $(-2,3)$.
+
+\subsection*{Exercices de démonstration}
+\textbf{Exercice 23.} C'est la négation de la définition de liberté.
+
+\textbf{Exercice 24.} Si la famille contient $0_E$, alors $1\cdot 0_E+0\cdots+0=0_E$ est une relation non triviale, donc la famille est liée.
+
+\textbf{Exercice 25.} Si $u_i=u_j$ avec $i\neq j$, alors $u_i-u_j=0_E$ donne une relation non triviale.
+
+\textbf{Exercice 26.} Si $u_p=\sum_{i=1}^{p-1}\lambda_i u_i$, alors
+\[\lambda_1u_1+\cdots+\lambda_{p-1}u_{p-1}-u_p=0_E,\]
+relation non triviale.
+
+\textbf{Exercice 27.} Sens direct : exercice 26. Sens réciproque : si la famille est liée, il existe une relation non triviale ; on isole un coefficient non nul, par exemple $u_p$.
+
+\textbf{Exercice 28.} Toute relation sur une sous-famille se prolonge en mettant $0$ sur les autres coefficients ; la liberté de la grande famille force tous les coefficients à être nuls.
+
+\textbf{Exercice 29.} Si une famille contient une famille génératrice, elle engendre tout ce qu'engendrait déjà la plus petite, donc tout l'espace.
+
+\textbf{Exercice 30.} C'est exactement la caractérisation fondamentale des familles libres : liberté $\Leftrightarrow$ unicité des coordonnées dans l'espace engendré.
+
+\textbf{Exercice 31.} Une famille libre engendre son propre sous-espace engendré ; elle y est donc libre et génératrice, donc base.
+
+\textbf{Exercice 32.} C'est la preuve usuelle sur les coordonnées.
+
+\textbf{Exercice 33.} On retire successivement les vecteurs redondants d'une famille génératrice finie ; le processus s'arrête et laisse une famille libre génératrice.
+
+\textbf{Exercice 34.} La famille $(1,X,X^2)$ est libre par identification des coefficients dans un polynôme nul, et elle est génératrice de $\R_2[X]$.
+
+\textbf{Exercice 35.} Si $a\cdot 1+b\cdot \id=0$ comme fonction, alors pour tout $x$, $a+bx=0$. En prenant $x=0$ puis $x=1$, on obtient $a=b=0$.
+
+\subsection*{Exercices de réflexion}
+\textbf{Exercice 36.} a) $((1,0,0),(0,1,0))$. b) $((1,0),(0,1),(1,1))$. c) par exemple $((1,0,0),(2,0,0))$. d) $((1,1),(1,-1))$.
+
+\textbf{Exercice 37.} Trois vecteurs de $\R^2$ ne peuvent pas être libres. En revanche trois vecteurs peuvent être générateurs, par exemple $((1,0),(0,1),(1,1))$.
+
+\textbf{Exercice 38.} Deux vecteurs de $\R^3$ ne peuvent pas engendrer tout $\R^3$. En revanche ils peuvent être libres, par exemple $((1,0,0),(0,1,0))$.
+
+\textbf{Exercice 39.} La famille de trois vecteurs est libre (même calcul que plus haut), donc génératrice de $\R^3$ et donc base.
+
+\textbf{Exercice 40.} 
+\[\Vect((1,0,-1),(0,1,-1))=\{(a,b,-a-b)\mid a,b\in\R\}=\{(x,y,z)\mid x+y+z=0\}.\]
+
+\textbf{Exercice 41.} $B_a$ est une base ssi les deux vecteurs ne sont pas colinéaires, donc ssi $a\neq 1$. Pour $a\neq 1$, on résout
+\[\lambda+\mu=x,\quad \lambda+a\mu=y,\]
+d'où
+\[\mu=\frac{y-x}{a-1},\qquad \lambda=x-\mu=\frac{ax-y}{a-1}.\]
+
+\textbf{Exercice 42.} Dans $B=(1,X-1,(X-1)^2)$, on cherche
+\[X^2+X+1=a+b(X-1)+c(X-1)^2.
+\]
+Comme $(X-1)^2=X^2-2X+1$, on identifie : $c=1$, $b-2c=1\Rightarrow b=3$, $a-b+c=1\Rightarrow a=3$. Coordonnées : $(3,3,1)$.
+
+\textbf{Exercice 43.} Pour tout $a$, la famille $(1,X+a,X^2)$ est libre : si $\alpha+\beta(X+a)+\gamma X^2=0$, l'identification des coefficients donne $\gamma=0$, $\beta=0$, puis $\alpha=0$. Avec trois vecteurs dans $\R_2[X]$, elle est donc aussi génératrice et base pour tout $a$.
+
+\textbf{Exercice 44.} On a $f_3=f_1+f_2$. Donc la famille est liée, et
+\[\Vect(f_1,f_2,f_3)=\Vect(1,x),\]
+qui est l'espace des fonctions affines.
+
+\textbf{Exercice 45.} L'équation donne $y=2x+z$, donc
+\[F=\{(x,2x+z,z)\}=\Vect((1,2,0),(0,1,1)).\]
+Le vecteur $(1,1,-1)$ n'appartient pas à $F$ car $2\cdot1-1+(-1)=0$, si en fait il appartient à $F$. Ses coordonnées dans la base ci-dessus vérifient $\alpha=1$, $\beta=-1$.
+
+\textbf{Exercice 46.} $F_1$ : libre, non génératrice. $F_2$ : liée, non génératrice. $F_3$ : base canonique. $F_4$ : libre et génératrice donc base.
+
+\textbf{Exercice 47.} La famille est génératrice car elle contient une base de $\R^4$ ; elle est liée car $u_3=u_1+u_2$. Une base extraite possible : $(u_1,u_2,u_4,u_5)$. D'autres extractions sont possibles ; elles ne donnent pas la même famille, seulement des bases du même espace.
+
+\textbf{Exercice 48.} La famille $B$ est une base. Pour $(x,y,z)$, on résout
+\[\lambda+\nu=x,\quad \mu+\nu=y,\quad \lambda+\mu=z.\]
+Donc
+\[\lambda=\frac{x-y+z}{2},\ \mu=\frac{-x+y+z}{2},\ \nu=\frac{x+y-z}{2}.\]
+Pour $(1,2,3)$ : $(1,2,0)$. Pour des coordonnées $(2,-1,4)$, le vecteur vaut
+\[2(1,0,1)-1(0,1,1)+4(1,1,0)=(6,3,1).\]
+
+\textbf{Exercice 49.} Une base de $F$ est par exemple $((1,-1,0),(1,0,-1))$. On écrit alors
+\[(1,-2,1)=a(1,-1,0)+b(1,0,-1).
+\]
+On trouve $a=2$, $b=-1$.
+
+\textbf{Exercice 50.} 1) faux. 2) faux. 3) vrai. 4) vrai. 5) vrai. 6) faux en général. 7) vrai. 8) vrai.
+
+\textbf{Exercice 51.} Si $a+b\,\id+c\,\id^2=0$ comme fonction, alors le polynôme $a+bx+cx^2$ est nul pour tout $x$, donc $a=b=c=0$. La famille est libre.
+
+\textbf{Exercice 52.} Dans $B=(1,1+X,1+X+X^2)$ :
+\[1=(1,0,0),\quad X=(-1,1,0),\quad X^2=(0,-1,1),\]
+et donc
+\[a+bX+cX^2=(a-b,\ b-c,\ c)_B.\]
+
+\textbf{Exercice 53.} Si $P(1)=0$, alors $X-1$ divise $P$. Tout polynôme de degré $\le 3$ multiple de $X-1$ s'écrit $(X-1)Q$ avec $\deg Q\le 2$. Une base simple est $((X-1),X(X-1),X^2(X-1))$.
+
+\textbf{Exercice 54.} La famille $(u_1,u_2,u_3)$ est toujours libre : la troisième coordonnée force le coefficient de $u_3$ à être nul, puis les deux autres aussi. Donc elle est toujours génératrice et toujours base de $\R^3$.
+
+\textbf{Exercice 55.} On résout
+\[a(1,0,1)+b(1,1,0)+c(0,1,1)=0.
+\]
+On obtient $a+b=0$, $b+c=0$, $a+c=0$, donc $a=b=c=0$. La famille $(u_1,u_2,u_3)$ est libre, donc base de $\R^3$. Pour $u_4=(2,1,1)$, on trouve
+\[u_4=u_1+u_2+0u_3.
+\]
+Donc $(u_1,u_2,u_3,u_4)$ est liée, et une base extraite est $(u_1,u_2,u_3)$.
+
+\newpage
+\section{Chapitre 5 -- Espaces vectoriels de dimension finie}
+\subsection*{Exercices d'application directe}
+\textbf{Exercice 1.} a) $2$. b) $5$. c) $6$. d) $4$. e) $0$.
+
+\textbf{Exercice 2.} a) non. b) oui. c) non car $\dim M_{2,2}(\R)=4$. d) non : une droite vectorielle est de dimension $1$.
+
+\textbf{Exercice 3.} a) non. b) oui, éventuellement si la famille est une base. c) oui. d) non car $\dim M_{1,4}(\R)=4$.
+
+\textbf{Exercice 4.} a) libre, génératrice, base. b) liée, non génératrice de $\R^3$, non base. c) libre, non génératrice, non base. d) liée, génératrice, non base.
+
+\textbf{Exercice 5.} a) oui. b) oui. c) oui car $\dim M_{2,2}(\R)=4$. d) oui car $\dim \R_3[X]=4$.
+
+\textbf{Exercice 6.} a) $z=0$ : dimension $2$. b) $G=\{(t,t,t,t)\}=\Vect((1,1,1,1))$ : dimension $1$. c) Les deux vecteurs sont colinéaires, donc dimension $1$. d) Dimension $3$.
+
+\textbf{Exercice 7.} a) droite vectorielle. b) plan vectoriel. c) hyperplan de $\R^4$. d) plan vectoriel.
+
+\textbf{Exercice 8.} a) dimension $6$, base naturelle : les matrices élémentaires $E_{ij}$. b) dimension $5$, base $(1,X,X^2,X^3,X^4)$. c) dimension $n$, base canonique. d) dimension $p$, base des matrices-lignes élémentaires.
+
+\textbf{Exercice 9.} a) $2$. b) $1$. c) $\{0\}$. d) $\R^3$. e) Oui, somme directe.
+
+\textbf{Exercice 10.} a) $2$. b) Deux plans de $\R^3$ distincts se coupent au moins selon une droite vectorielle. c) La dimension possible de $F\cap G$ est $1$. d) Grassmann donne $\dim(F+G)=2+2-1=3$.
+
+\subsection*{Exercices de méthode}
+\textbf{Exercice 11.} Les équations donnent $z=x+y$ et $t=2x-y$. Donc
+\[F=\{(x,y,x+y,2x-y)\mid x,y\in\R\}=\Vect((1,0,1,2),(0,1,1,-1)).\]
+Ces deux vecteurs sont libres, donc c'est une base et $\dim F=2$.
+
+\textbf{Exercice 12.} Les matrices de $F$ s'écrivent
+\[\begin{pmatrix}a&b\\ c&-a\end{pmatrix}=a\begin{pmatrix}1&0\\0&-1\end{pmatrix}+b\begin{pmatrix}0&1\\0&0\end{pmatrix}+c\begin{pmatrix}0&0\\1&0\end{pmatrix}.\]
+Donc $F$ est un sous-espace de base donnée ci-dessus, de dimension $3$.
+
+\textbf{Exercice 13.} Si $P\in F$, alors $P(1)=0$, donc $X-1$ divise $P$. Dans $\R_3[X]$, on a
+\[P(X)=(X-1)(a+bX+cX^2).
+\]
+Une base est $((X-1),X(X-1),X^2(X-1))$ et $\dim F=3$.
+
+\textbf{Exercice 14.} Dans $\R^4$, la famille de quatre vecteurs est triangulaire. Si
+\[\lambda_1(1,0,0,0)+\lambda_2(1,1,0,0)+\lambda_3(1,1,1,0)+\lambda_4(1,1,1,1)=0,
+\]
+la dernière coordonnée donne $\lambda_4=0$, puis la troisième $\lambda_3=0$, puis la deuxième $\lambda_2=0$, puis la première $\lambda_1=0$. Elle est libre ; avec $4$ vecteurs dans un espace de dimension $4$, c'est une base.
+
+\textbf{Exercice 15.} a) Si $\lambda u_1+\mu u_2=0$, les coordonnées 1 et 2 donnent $\lambda=\mu=0$. b) On peut compléter par $e_1=(1,0,0,0)$ et $e_2=(0,1,0,0)$, ou mieux par $(1,0,0,0)$ et $(0,0,1,0)$ ; il faut juste vérifier l'indépendance. Une complétion simple est $(u_1,u_2,(1,0,0,0),(0,0,1,0))$. c) Une autre : $(u_1,u_2,(0,0,1,0),(0,0,0,1))$.
+
+\textbf{Exercice 16.} a) La famille contient la base canonique. b) Elle est liée car $(1,1,0,0)=(1,0,0,0)+(0,1,0,0)$. c) Une base extraite est la base canonique de $\R^4$.
+
+\textbf{Exercice 17.} $F$ a dimension $2$, $G$ aussi. Un vecteur de $G$ a la forme $(a,b,a,b)$. Pour être dans $F$, il faut $a=b=0$. Donc $F\cap G=\{0\}$ et
+\[\dim(F+G)=2+2-0=4.\]
+Ainsi $F+G=\R^4$.
+
+\textbf{Exercice 18.} a) Comme $F$ contient les trois vecteurs de la base canonique, il contient toutes leurs combinaisons linéaires, donc $F=\R^3$. b) Ces trois vecteurs forment une famille libre de $3$ vecteurs dans $\R^3$ ; ils constituent donc une base d'un sous-espace contenu dans $F$, d'où $\dim F=3$ et donc $F=\R^3$.
+
+\textbf{Exercice 19.} L'équation $x+2y-z+t=0$ donne par exemple
+\[z=x+2y+t.
+\]
+Donc
+\[H=\Vect((1,0,1,0),(0,1,2,0),(0,0,1,1)).\]
+C'est un hyperplan car il est défini par une équation linéaire non triviale dans $\R^4$, donc de dimension $3$.
+
+\textbf{Exercice 20.} a) On a déjà vu que $F\cap G=\{0\}$ et $F+G=\R^3$, donc $\R^3=F\oplus G$. b) 
+\[(x,y,z)=(x,y,0)+(0,0,z).\]
+ c) L'unicité vient de l'intersection réduite à $\{0\}$.
+
+\textbf{Exercice 21.} Les conditions donnent $y=-x$ et $z=t$, donc
+\[F=\{(x,-x,z,z)\}=\Vect((1,-1,0,0),(0,0,1,1)).\]
+On peut compléter en une base de $\R^4$ par exemple avec $(1,0,0,0)$ et $(0,0,1,0)$.
+
+\textbf{Exercice 22.} Pour $F$ : une base est $((1,-1,0),(1,0,-1))$, donc $\dim F=2$. Pour $G$ : $x=y$, donc $G=\Vect((1,1,0),(0,0,1))$, donc $\dim G=2$. Dans l'intersection, on a $(t,t,-2t)$, donc $\dim(F\cap G)=1$. Grassmann donne $\dim(F+G)=2+2-1=3$, donc $F+G=\R^3$.
+
+\subsection*{Exercices de démonstration}
+\textbf{Exercice 23.} C'est la proposition fondamentale : dans un espace de dimension $n$, toute famille libre contient au plus $n$ vecteurs.
+
+\textbf{Exercice 24.} C'est le dual du précédent : toute famille génératrice contient au moins $n$ vecteurs.
+
+\textbf{Exercice 25.} Une famille libre de $n$ vecteurs dans un espace de dimension $n$ est automatiquement génératrice ; c'est donc une base.
+
+\textbf{Exercice 26.} Une famille génératrice de $n$ vecteurs dans un espace de dimension $n$ est automatiquement libre ; c'est donc une base.
+
+\textbf{Exercice 27.} Si $F\subset E$ et $\dim F=\dim E$, alors un sous-espace strict aurait une dimension strictement inférieure ; donc nécessairement $F=E$.
+
+\textbf{Exercice 28.} Si $u\neq 0$, la famille $(u)$ est libre ; elle engendre $\Vect(u)$, donc c'est une base de $\Vect(u)$ et la dimension vaut $1$.
+
+\textbf{Exercice 29.} Si $u$ et $v$ sont libres, la famille $(u,v)$ est une base de $\Vect(u,v)$, donc la dimension vaut $2$.
+
+\textbf{Exercice 30.} On ajoute successivement à une famille libre des vecteurs hors de son espace engendré ; le processus s'arrête en dimension finie et produit une base.
+
+\textbf{Exercice 31.} On applique dans le sous-espace considéré le théorème d'extraction d'une base à partir d'une famille génératrice finie.
+
+\textbf{Exercice 32.} Grassmann donne directement
+\[\dim(F+G)=2+2-1=3.\]
+
+\textbf{Exercice 33.} Si $F\cap G=\{0\}$, alors la somme est directe et Grassmann donne
+\[\dim(F\oplus G)=\dim F+\dim G.\]
+
+\textbf{Exercice 34.} Un hyperplan de $\R^n$ est exactement le noyau d'une forme linéaire non nulle. Comme au moins un $a_i$ est non nul, l'équation définit un hyperplan, donc un sous-espace de dimension $n-1$.
+
+\subsection*{Exercices de réflexion}
+\textbf{Exercice 35.} a) non. b) non. c) oui, par exemple une base de $\R^3$ plus un vecteur redondant. d) non : deux sous-espaces de dimension $2$ en somme directe auraient une somme de dimension $4$, impossible dans $\R^3$.
+
+\textbf{Exercice 36.} a) $((1,0,0),(0,1,0))$. b) $((1,0,0),(0,1,0),(0,0,1),(1,1,1))$. c) $\{(x,y,0)\}$. d) $\{(x,y,z,t)\mid x+y+z+t=0\}$.
+
+\textbf{Exercice 37.} Avec $\dim F=\dim G=2$ dans $\R^4$, on a $\dim(F\cap G)\in\{0,1,2\}$. Si elle vaut $2$, alors $F=G$. Grassmann donne alors $\dim(F+G)\in\{4,3,2\}$.
+
+\textbf{Exercice 38.} Dans $\R^5$, un sous-espace strict de dimension $4$ existe (un hyperplan). Un sous-espace de dimension $5$ est tout l'espace, donc pas strict. Un sous-espace de dimension $6$ est impossible.
+
+\textbf{Exercice 39.} a) $P=D_1\oplus D_2$ car l'intersection est nulle et la somme engendre le plan $z=0$. b) Oui. c) Par exemple
+\[\R^3=\Vect(e_1)\oplus \Vect(e_2)\oplus \Vect(e_3).\]
+
+\textbf{Exercice 40.} Une matrice triangulaire supérieure $3\times 3$ a $6$ coefficients libres. Donc $\dim T=6$. Base naturelle : les $E_{ij}$ avec $i\le j$.
+
+\textbf{Exercice 41.} Une matrice symétrique $2\times 2$ s'écrit
+\[\begin{pmatrix}a&b\\b&c\end{pmatrix},\]
+donc $S$ est un sous-espace de dimension $3$. Or $\dim M_2(\R)=4$.
+
+\textbf{Exercice 42.} Dans $\R_5[X]$, les polynômes pairs ont pour base $(1,X^2,X^4)$ et les impairs $(X,X^3,X^5)$. On a donc des dimensions $3$ et $3$, et
+\[\R_5[X]=P\oplus I.\]
+
+\textbf{Exercice 43.} Ici
+\[F\cap G=\Vect((1,0,0)),\]
+car ce vecteur est commun aux deux générateurs. La somme vaut $\R^3$ puisque les trois vecteurs $e_1,e_2,e_3$ sont dans $F+G$. La somme n'est pas directe car l'intersection n'est pas nulle. Grassmann : $2+2-1=3$.
+
+\textbf{Exercice 44.} Pour $r$ équations homogènes indépendantes dans $\R^n$, on s'attend à une dimension $n-r$ pour l'espace des solutions. Exemples : une équation non triviale dans $\R^3$ donne un plan de dimension $2$ ; deux équations indépendantes dans $\R^4$ donnent typiquement un sous-espace de dimension $2$.
+
+\textbf{Exercice 45.} Avec $\dim F=2$ et $\dim G=3$ dans $\R^4$, l'intersection a dimension possible $1$ ou $2$. Alors
+\[\dim(F+G)=2+3-\dim(F\cap G)\in\{4,3\}.\]
+On a $F+G=\R^4$ ssi $\dim(F\cap G)=1$.
+
+\textbf{Exercice 46.} a) L'intersection est nulle et la somme vaut $\R^4$, donc $\R^4=F\oplus G$. b) Une base adaptée est $(e_1,e_2,e_3,e_4)$ avec les deux premiers dans $F$ et les deux derniers dans $G$. c) Les coordonnées de $(x,y,z,t)$ dans cette base sont précisément $(x,y,z,t)$.
+
+\textbf{Exercice 47.} Une suite de $E$ est déterminée par $u_0$ et $u_1$, car la relation de récurrence construit tous les termes suivants. Donc l'application $E\to\R^2$, $(u_n)\mapsto (u_0,u_1)$ est un isomorphisme linéaire. Ainsi $\dim E=2$. Une base explicite est donnée par la suite de Fibonacci normalisée $(0,1,1,2,3,\dots)$ et la suite $(1,0,1,1,2,\dots)$.
+
+\textbf{Exercice 48.} Si $\dim F=\dim G=p$ dans un espace de dimension $n$, alors
+\[0\le \dim(F\cap G)\le p.
+\]
+Grassmann donne ensuite
+\[p\le \dim(F+G)=2p-\dim(F\cap G)\le 2p,\]
+avec bien sûr la borne supérieure $n$ à prendre en compte. Cas limites : intersection nulle ou bien $F=G$.
+
+\textbf{Exercice 49.} Dans $\R^2$, les sous-espaces sont : $\{0\}$, les droites vectorielles, $\R^2$. Dans $\R^3$, ils sont : $\{0\}$, les droites vectorielles, les plans vectoriels, $\R^3$.
+
+\end{document}

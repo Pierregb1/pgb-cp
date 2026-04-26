@@ -1,0 +1,765 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Algèbre linéaire --- Chapitre 5}
+\fancyhead[R]{Espaces vectoriels de dimension finie}
+\fancyfoot[C]{\thepage}
+
+% Environnements
+\newtheorem{definition}{Définition}[section]
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+\theoremstyle{remark}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem*{methode}{Méthode}
+\newtheorem*{idee}{Idée}
+
+% Commandes
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Vect}{\mathrm{Vect}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Chapitre 5 --- Espaces vectoriels de dimension finie}}\\[0.5em]
+    {\large Mesurer la taille d’un espace vectoriel}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\tableofcontents
+
+\newpage
+
+\section{Pourquoi la notion de dimension est-elle fondamentale ?}
+
+Dans les chapitres précédents, on a introduit les notions de famille libre, de famille génératrice et de base. Une base permet de décrire complètement un espace vectoriel. Une question naturelle apparaît alors :
+
+\begin{center}
+\textit{combien de vecteurs faut-il pour décrire l’espace ?}
+\end{center}
+
+La réponse est donnée par la \textbf{dimension}.
+
+\begin{idee}
+La dimension d’un espace vectoriel mesure le nombre de directions indépendantes nécessaires pour décrire tous les vecteurs de cet espace.
+\end{idee}
+
+\begin{exemple}
+\begin{itemize}
+    \item Dans \(\R^2\), il faut \(2\) vecteurs bien choisis pour former une base.
+    \item Dans \(\R^3\), il en faut \(3\).
+    \item Dans l’espace des polynômes de degré inférieur ou égal à \(2\), il en faut aussi \(3\), par exemple
+    \[
+    (1,X,X^2).
+    \]
+\end{itemize}
+\end{exemple}
+
+\begin{remarque}
+Toute la théorie de la dimension repose sur un fait majeur : dans un espace vectoriel bien engendré, toutes les bases ont le même nombre de vecteurs.
+\end{remarque}
+
+\section{Espaces vectoriels de dimension finie}
+
+\subsection{Définition}
+
+\begin{definition}
+Un espace vectoriel \(E\) est dit \textbf{de dimension finie} s’il admet une famille génératrice finie.
+
+Autrement dit, il existe des vecteurs \(u_1,\dots,u_p\in E\) tels que
+\[
+E=\Vect(u_1,\dots,u_p).
+\]
+\end{definition}
+
+\begin{definition}
+Un espace vectoriel qui n’est pas de dimension finie est dit \textbf{de dimension infinie}.
+\end{definition}
+
+\begin{exemple}
+\[
+\R^n,\quad \C^n,\quad M_{p,q}(\K),\quad \K_n[X]
+\]
+sont des espaces vectoriels de dimension finie.
+\end{exemple}
+
+\begin{exemple}
+L’espace \(\K[X]\) de tous les polynômes, sans borne sur le degré, est de dimension infinie.
+\end{exemple}
+
+\begin{exemple}
+L’espace \(\mathcal{F}(\R,\R)\) de toutes les fonctions de \(\R\) dans \(\R\) est de dimension infinie.
+\end{exemple}
+
+\subsection{Premières remarques}
+
+\begin{remarque}
+Si un espace est engendré par une famille finie, alors, d’après le chapitre précédent, on peut en extraire une base finie.
+\end{remarque}
+
+\begin{corollaire}
+Tout espace vectoriel de dimension finie admet une base finie.
+\end{corollaire}
+
+\begin{proof}
+Soit \(E\) un espace vectoriel de dimension finie. Il admet une famille génératrice finie. D’après le théorème d’extraction d’une base à partir d’une famille génératrice finie, on peut en extraire une base. Cette base est donc finie.
+\end{proof}
+
+\section{Théorème fondamental : toutes les bases ont le même cardinal}
+
+\subsection{Lemme de la famille libre dans une famille génératrice}
+
+\begin{lemme}
+Soit \(E\) un espace vectoriel, \((u_1,\dots,u_p)\) une famille génératrice de \(E\), et \((v_1,\dots,v_q)\) une famille libre de \(E\). Alors
+\[
+q\le p.
+\]
+\end{lemme}
+
+\begin{proof}
+La démonstration complète sera ensuite réutilisée dans le théorème fondamental.
+
+On procède par récurrence sur \(p\), le nombre de vecteurs de la famille génératrice.
+
+\textbf{Initialisation :} si \(p=0\), alors la famille génératrice est vide, donc \(E=\{0_E\}\). La seule famille libre de \(E\) est la famille vide, donc \(q=0\), et l’on a bien \(q\le p\).
+
+\textbf{Hérédité :} supposons le résultat vrai pour les familles génératrices de longueur \(p-1\), et considérons une famille génératrice \((u_1,\dots,u_p)\).
+
+Si \(q=0\), c’est immédiat. Supposons \(q\ge 1\).
+
+Comme \((u_1,\dots,u_p)\) engendre \(E\), le vecteur \(v_q\) s’écrit
+\[
+v_q=\lambda_1u_1+\cdots+\lambda_pu_p.
+\]
+Comme \(v_q\neq 0_E\) (sinon la famille libre contiendrait le vecteur nul), au moins un coefficient \(\lambda_i\) est non nul. Quitte à réordonner, on suppose \(\lambda_p\neq 0\).
+
+On peut alors écrire
+\[
+u_p=\frac{1}{\lambda_p}v_q-\frac{\lambda_1}{\lambda_p}u_1-\cdots-\frac{\lambda_{p-1}}{\lambda_p}u_{p-1}.
+\]
+Cela montre que tout vecteur de \(E\), initialement écrit avec \(u_1,\dots,u_p\), peut en réalité être écrit avec
+\[
+u_1,\dots,u_{p-1},v_q.
+\]
+Donc la famille
+\[
+(u_1,\dots,u_{p-1},v_q)
+\]
+est génératrice de \(E\).
+
+Comme \((v_1,\dots,v_q)\) est libre, la sous-famille \((v_1,\dots,v_{q-1})\) est libre. Elle est contenue dans un espace engendré par \(p-1\) vecteurs, à savoir
+\[
+(u_1,\dots,u_{p-1},v_q).
+\]
+En raisonnant dans le sous-espace engendré par cette famille, l’hypothèse de récurrence donne
+\[
+q-1\le p-1.
+\]
+Ainsi
+\[
+q\le p.
+\]
+\end{proof}
+
+\subsection{Théorème fondamental}
+
+\begin{theoreme}
+Toutes les bases d’un espace vectoriel de dimension finie ont le même nombre de vecteurs.
+\end{theoreme}
+
+\begin{proof}
+Soient \(\mathcal{B}=(e_1,\dots,e_p)\) et \(\mathcal{B}'=(f_1,\dots,f_q)\) deux bases d’un espace vectoriel \(E\).
+
+La famille \(\mathcal{B}\) est libre et la famille \(\mathcal{B}'\) est génératrice. D’après le lemme précédent,
+\[
+p\le q.
+\]
+De même, \(\mathcal{B}'\) est libre et \(\mathcal{B}\) est génératrice, donc
+\[
+q\le p.
+\]
+Ainsi
+\[
+p=q.
+\]
+\end{proof}
+
+\section{Définition de la dimension}
+
+\begin{definition}
+Soit \(E\) un espace vectoriel de dimension finie. On appelle \textbf{dimension} de \(E\), notée
+\[
+\dim(E),
+\]
+le nombre de vecteurs d’une base de \(E\).
+\end{definition}
+
+\begin{remarque}
+Cette définition a un sens grâce au théorème précédent : toutes les bases ont le même nombre de vecteurs.
+\end{remarque}
+
+\begin{definition}
+On pose
+\[
+\dim(\{0_E\})=0.
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+\dim(\R^2)=2,\qquad \dim(\R^3)=3,\qquad \dim(\K^n)=n.
+\]
+\end{exemple}
+
+\begin{exemple}
+Dans l’espace \(\K_n[X]\) des polynômes de degré inférieur ou égal à \(n\), la famille
+\[
+(1,X,X^2,\dots,X^n)
+\]
+est une base, donc
+\[
+\dim(\K_n[X])=n+1.
+\]
+\end{exemple}
+
+\begin{exemple}
+L’espace \(M_{p,q}(\K)\) a pour dimension
+\[
+pq.
+\]
+En effet, une base est donnée par les matrices élémentaires \(E_{ij}\), qui valent \(1\) en position \((i,j)\) et \(0\) ailleurs.
+\end{exemple}
+
+\section{Conséquences fondamentales}
+
+\subsection{Cardinal d’une famille libre}
+
+\begin{proposition}
+Dans un espace vectoriel \(E\) de dimension finie \(n\), toute famille libre a au plus \(n\) vecteurs.
+\end{proposition}
+
+\begin{proof}
+Soit \((u_1,\dots,u_p)\) une famille libre de \(E\). Soit \((e_1,\dots,e_n)\) une base de \(E\). Cette base est génératrice. D’après le lemme fondamental,
+\[
+p\le n.
+\]
+\end{proof}
+
+\subsection{Cardinal d’une famille génératrice}
+
+\begin{proposition}
+Dans un espace vectoriel \(E\) de dimension finie \(n\), toute famille génératrice a au moins \(n\) vecteurs.
+\end{proposition}
+
+\begin{proof}
+Soit \((u_1,\dots,u_p)\) une famille génératrice de \(E\). Soit \((e_1,\dots,e_n)\) une base de \(E\). Cette base est libre. D’après le lemme fondamental,
+\[
+n\le p.
+\]
+\end{proof}
+
+\subsection{Critère de base par le cardinal}
+
+\begin{theoreme}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+\begin{enumerate}[label=\arabic*)]
+    \item Toute famille libre de \(n\) vecteurs est une base de \(E\).
+    \item Toute famille génératrice de \(n\) vecteurs est une base de \(E\).
+\end{enumerate}
+\end{theoreme}
+
+\begin{proof}
+\textbf{1.} Soit \((u_1,\dots,u_n)\) une famille libre de \(E\). Supposons qu’elle ne soit pas génératrice. Alors on pourrait ajouter un vecteur \(u_{n+1}\) hors de son sous-espace engendré, et la famille
+\[
+(u_1,\dots,u_n,u_{n+1})
+\]
+resterait libre. On obtiendrait alors une famille libre de \(n+1\) vecteurs dans \(E\), ce qui est impossible puisque \(\dim(E)=n\). Donc la famille est génératrice, donc base.
+
+\textbf{2.} Soit \((u_1,\dots,u_n)\) une famille génératrice de \(E\). Si elle n’était pas libre, on pourrait retirer un vecteur redondant et obtenir encore une famille génératrice de \(n-1\) vecteurs, ce qui est impossible dans un espace de dimension \(n\). Donc la famille est libre, donc base.
+\end{proof}
+
+\begin{remarque}
+Ce résultat est extrêmement utile en pratique : dans un espace de dimension connue, il suffit souvent de montrer une seule des deux propriétés.
+\end{remarque}
+
+\section{Dimension d’un sous-espace vectoriel}
+
+\subsection{Inégalité fondamentale}
+
+\begin{theoreme}
+Soit \(E\) un espace vectoriel de dimension finie, et \(F\) un sous-espace vectoriel de \(E\). Alors \(F\) est de dimension finie et
+\[
+\dim(F)\le \dim(E).
+\]
+\end{theoreme}
+
+\begin{proof}
+Soit \((e_1,\dots,e_n)\) une base de \(E\), où \(n=\dim(E)\).
+
+Si \(F=\{0_E\}\), alors \(\dim(F)=0\le n\).
+
+Supposons \(F\neq \{0_E\}\). Toute famille libre de \(F\) est aussi une famille libre de \(E\), donc elle contient au plus \(n\) vecteurs. On peut alors construire dans \(F\) une famille libre maximale, nécessairement finie. Une telle famille est une base de \(F\). Ainsi \(F\) est de dimension finie et sa base contient au plus \(n\) vecteurs :
+\[
+\dim(F)\le n=\dim(E).
+\]
+\end{proof}
+
+\begin{corollaire}
+Si \(F\) est un sous-espace vectoriel de \(E\) et
+\[
+\dim(F)=\dim(E),
+\]
+alors
+\[
+F=E.
+\]
+\end{corollaire}
+
+\begin{proof}
+On a toujours \(F\subset E\). Si \(F\neq E\), alors on pourrait trouver un vecteur de \(E\) hors de \(F\), et compléter une base de \(F\) par ce vecteur pour obtenir une famille libre de cardinal strictement supérieur à \(\dim(F)\), contradiction avec \(\dim(F)=\dim(E)\). Donc \(F=E\).
+\end{proof}
+
+\subsection{Cas des droites et des plans vectoriels}
+
+\begin{definition}
+Un sous-espace vectoriel de dimension \(1\) est appelé une \textbf{droite vectorielle}.
+
+Un sous-espace vectoriel de dimension \(2\) est appelé un \textbf{plan vectoriel}.
+\end{definition}
+
+\begin{exemple}
+Dans \(\R^3\),
+\[
+\Vect((1,2,3))
+\]
+est une droite vectorielle.
+
+Le sous-espace
+\[
+\Vect((1,0,0),(0,1,0))
+\]
+est un plan vectoriel.
+\end{exemple}
+
+\section{Base incomplète et extraction}
+
+\subsection{Compléter une famille libre}
+
+\begin{theoreme}
+Dans un espace vectoriel \(E\) de dimension finie, toute famille libre peut être complétée en une base de \(E\).
+\end{theoreme}
+
+\begin{proof}
+Soit \((u_1,\dots,u_p)\) une famille libre de \(E\).
+
+Si elle est génératrice, c’est déjà une base.
+
+Sinon, il existe \(v_1\in E\) n’appartenant pas à \(\Vect(u_1,\dots,u_p)\). Alors la famille
+\[
+(u_1,\dots,u_p,v_1)
+\]
+est libre.
+
+Si elle n’est toujours pas génératrice, on ajoute un vecteur \(v_2\) hors du sous-espace engendré, et ainsi de suite.
+
+Comme \(E\) est de dimension finie \(n\), on ne peut pas construire une famille libre de plus de \(n\) vecteurs. Le processus s’arrête donc après un nombre fini d’étapes. On obtient alors une famille libre maximale, donc une base de \(E\).
+\end{proof}
+
+\begin{remarque}
+Ce résultat est le pendant du théorème du chapitre précédent : de toute famille génératrice finie, on peut extraire une base ; de toute famille libre, on peut compléter en une base.
+\end{remarque}
+
+\subsection{Extraction d’une base d’un sous-espace}
+
+\begin{proposition}
+Toute famille génératrice finie d’un sous-espace vectoriel contient une base de ce sous-espace.
+\end{proposition}
+
+\begin{proof}
+C’est une application directe du théorème d’extraction d’une base à partir d’une famille génératrice finie, appliqué dans le sous-espace considéré.
+\end{proof}
+
+\section{Dimension de quelques espaces classiques}
+
+\subsection{Espace \(\K^n\)}
+
+\begin{proposition}
+\[
+\dim(\K^n)=n.
+\]
+\end{proposition}
+
+\begin{proof}
+La base canonique
+\[
+(e_1,\dots,e_n)
+\]
+est une base de \(\K^n\), et elle contient \(n\) vecteurs.
+\end{proof}
+
+\subsection{Espace des polynômes}
+
+\begin{proposition}
+L’espace \(\K_n[X]\) des polynômes de degré inférieur ou égal à \(n\) est de dimension
+\[
+n+1.
+\]
+\end{proposition}
+
+\begin{proof}
+La famille
+\[
+(1,X,X^2,\dots,X^n)
+\]
+engendre \(\K_n[X]\), car tout polynôme de degré \(\le n\) s’écrit comme combinaison linéaire de ces polynômes.
+
+Elle est libre : si
+\[
+a_0+a_1X+\cdots+a_nX^n=0
+\]
+comme polynôme nul, alors tous les coefficients sont nuls :
+\[
+a_0=\cdots=a_n=0.
+\]
+C’est donc une base. Elle contient \(n+1\) vecteurs.
+\end{proof}
+
+\subsection{Espace des matrices}
+
+\begin{proposition}
+\[
+\dim(M_{p,q}(\K))=pq.
+\]
+\end{proposition}
+
+\begin{proof}
+Les matrices élémentaires \(E_{ij}\), pour \(1\le i\le p\) et \(1\le j\le q\), forment une base de \(M_{p,q}(\K)\). Il y en a \(pq\).
+\end{proof}
+
+\section{Somme de sous-espaces et formule de Grassmann}
+
+\subsection{Rappel}
+
+Soient \(F\) et \(G\) deux sous-espaces vectoriels de \(E\). On note
+\[
+F+G=\{x+y\mid x\in F,\ y\in G\}.
+\]
+
+\subsection{Théorème de Grassmann}
+
+\begin{theoreme}[Formule de Grassmann]
+Soient \(F\) et \(G\) deux sous-espaces vectoriels de dimension finie d’un espace vectoriel \(E\). Alors
+\[
+\dim(F+G)=\dim(F)+\dim(G)-\dim(F\cap G).
+\]
+\end{theoreme}
+
+\begin{proof}
+Soit
+\[
+(e_1,\dots,e_r)
+\]
+une base de \(F\cap G\), où
+\[
+r=\dim(F\cap G).
+\]
+
+Complétons cette base en une base de \(F\) :
+\[
+(e_1,\dots,e_r,f_1,\dots,f_p),
+\]
+de sorte que
+\[
+\dim(F)=r+p.
+\]
+
+Complétons de même la base de \(F\cap G\) en une base de \(G\) :
+\[
+(e_1,\dots,e_r,g_1,\dots,g_q),
+\]
+de sorte que
+\[
+\dim(G)=r+q.
+\]
+
+Montrons que la famille
+\[
+(e_1,\dots,e_r,f_1,\dots,f_p,g_1,\dots,g_q)
+\]
+est une base de \(F+G\).
+
+\textbf{Elle est génératrice :} tout élément de \(F+G\) s’écrit \(x+y\) avec \(x\in F\), \(y\in G\). Or \(x\) se décompose dans la base de \(F\), et \(y\) dans la base de \(G\). Donc \(x+y\) est combinaison linéaire de cette famille.
+
+\textbf{Elle est libre :} supposons
+\[
+\sum_{i=1}^r \alpha_i e_i+\sum_{j=1}^p \beta_j f_j+\sum_{k=1}^q \gamma_k g_k=0.
+\]
+On réécrit :
+\[
+\sum_{i=1}^r \alpha_i e_i+\sum_{j=1}^p \beta_j f_j
+=
+-\sum_{k=1}^q \gamma_k g_k.
+\]
+Le membre de gauche appartient à \(F\), celui de droite à \(G\). Leur valeur commune appartient donc à \(F\cap G\), donc s’écrit comme combinaison linéaire des \(e_i\). Comme
+\[
+(e_1,\dots,e_r,f_1,\dots,f_p)
+\]
+est libre dans \(F\), on obtient
+\[
+\beta_1=\cdots=\beta_p=0.
+\]
+De même, comme
+\[
+(e_1,\dots,e_r,g_1,\dots,g_q)
+\]
+est libre dans \(G\), on obtient
+\[
+\gamma_1=\cdots=\gamma_q=0.
+\]
+Puis, comme \((e_1,\dots,e_r)\) est libre,
+\[
+\alpha_1=\cdots=\alpha_r=0.
+\]
+La famille est donc libre.
+
+Ainsi,
+\[
+\dim(F+G)=r+p+q.
+\]
+Or
+\[
+\dim(F)=r+p,\qquad \dim(G)=r+q.
+\]
+Donc
+\[
+\dim(F+G)=\dim(F)+\dim(G)-\dim(F\cap G).
+\]
+\end{proof}
+
+\begin{remarque}
+Cette formule est fondamentale pour calculer la dimension d’une somme de sous-espaces.
+\end{remarque}
+
+\section{Somme directe}
+
+\begin{definition}
+Deux sous-espaces \(F\) et \(G\) sont en \textbf{somme directe} si
+\[
+F\cap G=\{0_E\}.
+\]
+On note alors
+\[
+F\oplus G.
+\]
+\end{definition}
+
+\begin{corollaire}
+Si \(F\) et \(G\) sont en somme directe, alors
+\[
+\dim(F+G)=\dim(F)+\dim(G).
+\]
+\end{corollaire}
+
+\begin{proof}
+Dans la formule de Grassmann, si \(F\cap G=\{0_E\}\), alors
+\[
+\dim(F\cap G)=0.
+\]
+Donc
+\[
+\dim(F+G)=\dim(F)+\dim(G).
+\]
+\end{proof}
+
+\begin{exemple}
+Dans \(\R^3\), la droite
+\[
+F=\Vect((1,0,0))
+\]
+et le plan
+\[
+G=\Vect((0,1,0),(0,0,1))
+\]
+sont en somme directe. On a
+\[
+\R^3=F\oplus G.
+\]
+\end{exemple}
+
+\section{Hyperplans}
+
+\begin{definition}
+Dans un espace vectoriel \(E\) de dimension \(n\ge 1\), un sous-espace vectoriel de dimension \(n-1\) est appelé un \textbf{hyperplan vectoriel}.
+\end{definition}
+
+\begin{exemple}
+Dans \(\R^2\), les hyperplans sont les droites vectorielles.
+
+Dans \(\R^3\), les hyperplans sont les plans vectoriels.
+\end{exemple}
+
+\begin{exemple}
+Dans \(\R^3\), l’ensemble
+\[
+H=\{(x,y,z)\in\R^3\mid x+y+z=0\}
+\]
+est un hyperplan, car il est de dimension \(2\).
+\end{exemple}
+
+\section{Méthodes pratiques}
+
+\subsection{Pour calculer une dimension}
+
+\begin{methode}
+Pour déterminer la dimension d’un espace ou d’un sous-espace :
+\begin{enumerate}
+    \item on cherche une famille génératrice ;
+    \item on simplifie si nécessaire ;
+    \item on montre que la famille obtenue est libre ;
+    \item si l’on obtient une base à \(p\) vecteurs, alors la dimension vaut \(p\).
+\end{enumerate}
+\end{methode}
+
+\subsection{Pour montrer qu’un sous-espace est tout l’espace}
+
+\begin{methode}
+Si \(F\subset E\), pour montrer que \(F=E\), il suffit souvent de montrer que
+\[
+\dim(F)=\dim(E).
+\]
+\end{methode}
+
+\subsection{Pour montrer qu’une famille est une base}
+
+\begin{methode}
+Dans un espace de dimension \(n\), si une famille contient exactement \(n\) vecteurs, alors :
+\begin{itemize}
+    \item montrer qu’elle est libre suffit ;
+    \item montrer qu’elle est génératrice suffit.
+\end{itemize}
+\end{methode}
+
+\section{Erreurs classiques}
+
+\begin{itemize}
+    \item Confondre le nombre de vecteurs d’une famille avec la dimension de l’espace.
+    \item Oublier que la dimension est définie par le nombre de vecteurs d’une base.
+    \item Penser qu’une famille de \(n\) vecteurs dans un espace de dimension \(n\) est automatiquement une base.
+    \item Croire que tout sous-espace strict a forcément une dimension égale à \(\dim(E)-1\).
+    \item Utiliser la formule de Grassmann sans vérifier que les sous-espaces sont de dimension finie.
+    \item Confondre somme de sous-espaces et somme directe.
+\end{itemize}
+
+\section{Résumé du chapitre}
+
+\begin{itemize}
+    \item Un espace vectoriel est de dimension finie s’il admet une famille génératrice finie.
+    \item Toutes les bases d’un espace vectoriel de dimension finie ont le même nombre de vecteurs.
+    \item Ce nombre est la dimension de l’espace.
+    \item Dans un espace de dimension \(n\) :
+    \begin{itemize}
+        \item toute famille libre a au plus \(n\) vecteurs ;
+        \item toute famille génératrice a au moins \(n\) vecteurs ;
+        \item toute famille libre de \(n\) vecteurs est une base ;
+        \item toute famille génératrice de \(n\) vecteurs est une base.
+    \end{itemize}
+    \item Tout sous-espace d’un espace de dimension finie est de dimension finie, et sa dimension est majorée par celle de l’espace ambiant.
+    \item La formule de Grassmann est
+    \[
+    \dim(F+G)=\dim(F)+\dim(G)-\dim(F\cap G).
+    \]
+    \item Si \(F\cap G=\{0_E\}\), alors
+    \[
+    \dim(F\oplus G)=\dim(F)+\dim(G).
+    \]
+\end{itemize}
+
+\section*{Exercices d’application immédiate}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}]
+    \item Déterminer la dimension de
+    \[
+    \R^2,\qquad \R^3,\qquad \K^n,\qquad \K_4[X],\qquad M_{2,3}(\R).
+    \]
+
+    \item Montrer que la famille
+    \[
+    \big((1,0,0),(0,1,0),(0,0,1)\big)
+    \]
+    est une base de \(\R^3\), puis en déduire la dimension de \(\R^3\).
+
+    \item Dans \(\R^2\), montrer que
+    \[
+    \big((1,1),(1,-1)\big)
+    \]
+    est une base.
+
+    \item Dans \(\R^3\), étudier si la famille
+    \[
+    \big((1,0,1),(0,1,1),(1,1,0)\big)
+    \]
+    est une base.
+
+    \item Déterminer une base puis la dimension du sous-espace
+    \[
+    F=\{(x,y,z)\in\R^3\mid x+y+z=0\}.
+    \]
+
+    \item Montrer que dans \(\R^3\), toute famille libre de \(3\) vecteurs est une base.
+
+    \item Soient
+    \[
+    F=\Vect((1,0,0),(0,1,0)),\qquad G=\Vect((0,1,0),(0,0,1)).
+    \]
+    Déterminer \(\dim(F)\), \(\dim(G)\), \(\dim(F\cap G)\) puis \(\dim(F+G)\).
+
+    \item Montrer que
+    \[
+    \dim(\K_n[X])=n+1.
+    \]
+
+    \item Soit \(F\subset E\) avec \(\dim(F)=\dim(E)\). Montrer que \(F=E\).
+
+    \item Soient \(F\) et \(G\) deux sous-espaces de \(\R^4\) tels que
+    \[
+    \dim(F)=2,\qquad \dim(G)=3,\qquad \dim(F\cap G)=1.
+    \]
+    Calculer \(\dim(F+G)\).
+\end{enumerate}
+
+\end{document}

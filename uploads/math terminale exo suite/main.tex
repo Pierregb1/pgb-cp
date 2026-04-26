@@ -1,0 +1,1339 @@
+\documentclass[11pt,a4paper]{article}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --------------------------------------------------
+% Hyperref
+% --------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+% --------------------------------------------------
+% Header / Footer
+% --------------------------------------------------
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spécialité mathématiques}
+\fancyhead[C]{TD complet : Suites numériques}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{TD progressif avec corrigé final}
+
+% --------------------------------------------------
+% Theorems
+% --------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{exercice}{Exercice}[section]
+\newtheorem{remarque}[exercice]{Remarque}
+\newtheorem{methode}[exercice]{Méthode}
+\newtheorem*{corrige}{Corrigé}
+
+% --------------------------------------------------
+% Commands
+% --------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\suite}[1]{\left(#1_n\right)_{n\in\N}}
+\newcommand{\vv}{\vspace{0.2cm}}
+\newcommand{\etoile}[1]{\hfill{\small\textbf{#1}}}
+
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{TD complet -- Suites numériques}}\\[0.2cm]
+    {\large Terminale spécialité mathématiques}\\[0.2cm]
+    {\small Progression : vrai/faux, QCM, exercices type bac, exercices classiques, approfondissements}\\[0.2cm]
+    {\small Les corrections sont regroupées à la fin du document.}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|}
+\hline
+$\star$ & facile / application directe \\
+\hline
+$\star\star$ & classique Terminale \\
+\hline
+$\star\star\star$ & bon niveau Terminale \\
+\hline
+$\star\star\star\star$ & difficile / demande de recul \\
+\hline
+$\star\star\star\star\star$ & approfondissement poussé \\
+\hline
+\end{tabular}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% =========================================================
+\section{Vrai / Faux}
+% =========================================================
+
+\begin{exercice}[Vrai/Faux 1 \etoile{$\star$}]
+Pour chaque affirmation, dire si elle est vraie ou fausse, puis justifier.
+\begin{enumerate}[label=\alph*)]
+    \item Si une suite est croissante, alors elle converge.
+    \item Toute suite géométrique de raison $q$ avec $0<q<1$ converge vers $0$.
+    \item Si $u_n \to 0$, alors la suite $(u_n)$ est décroissante à partir d'un certain rang.
+    \item Toute suite bornée converge.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux 2 \etoile{$\star\star$}]
+Pour chaque affirmation, dire si elle est vraie ou fausse, puis justifier.
+\begin{enumerate}[label=\alph*)]
+    \item Si $(u_n)$ est arithmétique, alors $u_{n+1}-u_n$ est constant.
+    \item Si $(u_n)$ est géométrique et positive, alors elle est monotone.
+    \item Si $u_n \le v_n$ pour tout $n$ et si $v_n\to 0$, alors $u_n\to 0$.
+    \item Si $u_n\to \ell$, alors $u_{n+1}\to \ell$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux 3 \etoile{$\star\star$}]
+Dire si chaque affirmation est vraie ou fausse.
+\begin{enumerate}[label=\alph*)]
+    \item La suite $u_n=(-1)^n$ est bornée.
+    \item La suite $u_n=(-1)^n$ converge.
+    \item Si $u_n\ge 0$ pour tout $n$ et $u_n\to 0$, alors $\sqrt{u_n}\to 0$.
+    \item Si une suite admet une limite strictement positive, alors elle est positive à partir d'un certain rang.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux 4 \etoile{$\star\star\star$}]
+Dire si chaque affirmation est vraie ou fausse.
+\begin{enumerate}[label=\alph*)]
+    \item Si $(u_n)$ est croissante et majorée, alors elle converge.
+    \item Si $(u_n)$ converge vers $\ell$, alors la suite $(u_n-\ell)$ converge vers $0$.
+    \item Si $u_{n+1}-u_n>0$ pour tout $n$, alors $(u_n)$ tend vers $+\infty$.
+    \item Si $0\le u_n\le \frac1n$, alors $u_n\to 0$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux 5 \etoile{$\star\star\star$}]
+Dire si chaque affirmation est vraie ou fausse.
+\begin{enumerate}[label=\alph*)]
+    \item Si $\frac{u_{n+1}}{u_n}>1$ pour tout $n$, alors $(u_n)$ est croissante.
+    \item Si $u_n\to+\infty$, alors $\frac1{u_n}\to 0$.
+    \item Si $u_n\to 0$ et $v_n$ est bornée, alors $u_nv_n\to0$.
+    \item Si $u_n\le v_n\le w_n$ et si $u_n\to+\infty$, alors $v_n\to+\infty$.
+\end{enumerate}
+\end{exercice}
+
+% =========================================================
+\section{QCM}
+% =========================================================
+
+\begin{exercice}[QCM 1 \etoile{$\star$}]
+Une suite arithmétique de premier terme $u_0=7$ et de raison $-3$ vérifie :
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*.]
+    \item $u_n=7-3n$
+    \item $u_n=7(-3)^n$
+    \item $u_n=4n+7$
+    \item $u_n=7+n-3$
+\end{enumerate}
+\end{multicols}
+Une seule réponse est correcte.
+\end{exercice}
+
+\begin{exercice}[QCM 2 \etoile{$\star$}]
+Si $u_n=5\times 0{,}8^n$, alors la suite :
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*.]
+    \item est croissante
+    \item est décroissante
+    \item est constante
+    \item diverge vers $+\infty$
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+\begin{exercice}[QCM 3 \etoile{$\star\star$}]
+La limite de la suite $u_n=\dfrac{2n+1}{n+5}$ est :
+\begin{multicols}{4}
+\begin{enumerate}[label=\Alph*.]
+    \item $0$
+    \item $1$
+    \item $2$
+    \item $+\infty$
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+\begin{exercice}[QCM 4 \etoile{$\star\star$}]
+On considère la suite définie par $u_0=1$ et $u_{n+1}=u_n+4$. Alors :
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*.]
+    \item elle est géométrique de raison $4$
+    \item elle est arithmétique de raison $4$
+    \item elle converge vers $4$
+    \item elle est bornée
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+\begin{exercice}[QCM 5 \etoile{$\star\star\star$}]
+On considère la suite $u_n=\dfrac{(-1)^n}{n+1}$. Alors :
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*.]
+    \item elle ne converge pas
+    \item elle converge vers $1$
+    \item elle converge vers $0$
+    \item elle est monotone
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+% =========================================================
+\section{20 exercices type bac}
+% =========================================================
+
+\begin{exercice}[Type bac 1 : étude d'une suite récurrente \etoile{$\star\star$}]
+On considère la suite $(u_n)$ définie par
+\[
+u_0=2,\qquad u_{n+1}=\frac{u_n+4}{3}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer $u_1$, $u_2$, $u_3$.
+    \item Montrer par récurrence que $u_n\ge 2$ pour tout $n$.
+    \item Étudier le sens de variation de $(u_n)$.
+    \item Montrer que $(u_n)$ converge et déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 2 : géométrique et seuil \etoile{$\star\star$}]
+Une population bactérienne diminue de $12\%$ chaque jour. On note $u_n$ la population au bout de $n$ jours, avec $u_0=50000$.
+\begin{enumerate}[label=\arabic*.]
+    \item Exprimer $u_n$ en fonction de $n$.
+    \item Étudier les variations de $(u_n)$.
+    \item Déterminer la limite de $(u_n)$.
+    \item Déterminer le plus petit entier $n$ tel que $u_n<10000$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 3 : arithmético-géométrique simple \etoile{$\star\star\star$}]
+On considère la suite $(u_n)$ définie par
+\[
+u_0=1,\qquad u_{n+1}=0{,}6u_n+2.
+\]
+On pose $v_n=u_n-5$.
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $(v_n)$ est géométrique.
+    \item En déduire une expression de $u_n$.
+    \item Déterminer le sens de variation de $(u_n)$.
+    \item Déterminer la limite de $(u_n)$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 4 : somme de termes \etoile{$\star\star$}]
+On considère la suite arithmétique $(u_n)$ définie par $u_0=5$ et de raison $3$.
+\begin{enumerate}[label=\arabic*.]
+    \item Donner l'expression de $u_n$.
+    \item Calculer $u_{20}$.
+    \item Calculer la somme $S= u_0+u_1+\cdots+u_{20}$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 5 : comparaison et gendarmes \etoile{$\star\star$}]
+Étudier la limite de chacune des suites suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item $u_n=\dfrac{\sin n}{n+2}$
+    \item $v_n=\dfrac{(-1)^n+3}{n+1}$
+    \item $w_n=\dfrac{2+\cos n}{n}$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 6 : récurrence et intervalle stable \etoile{$\star\star\star$}]
+Soit la suite $(u_n)$ définie par
+\[
+u_0=1,\qquad u_{n+1}=\sqrt{u_n+3}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que, pour tout $n$, $1\le u_n\le 3$.
+    \item Montrer que la suite est croissante.
+    \item En déduire qu'elle converge.
+    \item Déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 7 : limite rationnelle \etoile{$\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{3n^2-1}{n^2+4n+7}.
+\]
+\end{exercice}
+
+\begin{exercice}[Type bac 8 : lecture algorithmique \etoile{$\star\star$}]
+On considère l'algorithme suivant :
+\begin{verbatim}
+u <- 10
+n <- 0
+Tant que u > 2:
+    u <- 0.7*u + 0.4
+    n <- n + 1
+Fin Tant que
+\end{verbatim}
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer les deux premières valeurs prises par $u$.
+    \item Interpréter la variable $n$ à la fin de l'algorithme.
+    \item Étudier la suite associée.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 9 : suite et fonction associée \etoile{$\star\star\star$}]
+On considère la suite définie par
+\[
+u_n=n\e^{-0,2n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Étudier les variations de la fonction $f(x)=xe^{-0,2x}$ sur $[0,+\infty[$.
+    \item En déduire le comportement de la suite $(u_n)$.
+    \item Déterminer la limite de $(u_n)$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 10 : démonstration d'une formule \etoile{$\star\star$}]
+On considère la suite $(u_n)$ définie par
+\[
+u_0=4,\qquad u_{n+1}=2u_n+3.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer $u_1$, $u_2$, $u_3$.
+    \item On pose $v_n=u_n+3$. Montrer que $(v_n)$ est géométrique.
+    \item En déduire l'expression de $u_n$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 11 : pourcentage d'évolution \etoile{$\star\star$}]
+Une ville comptait $120000$ habitants en 2025. On suppose qu'à partir de cette date, la population augmente de $1,8\%$ par an.
+\begin{enumerate}[label=\arabic*.]
+    \item Modéliser la situation par une suite.
+    \item Calculer la population estimée en 2030.
+    \item Déterminer l'année à partir de laquelle la population dépassera $135000$ habitants.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 12 : suite alternée amortie \etoile{$\star\star\star$}]
+Étudier la convergence de
+\[
+u_n=\frac{(-1)^n(2n+1)}{n^2+1}.
+\]
+\end{exercice}
+
+\begin{exercice}[Type bac 13 : somme géométrique \etoile{$\star\star$}]
+On considère la suite géométrique de premier terme $u_0=3$ et de raison $\frac12$.
+\begin{enumerate}[label=\arabic*.]
+    \item Donner l'expression de $u_n$.
+    \item Calculer $S_n=u_0+u_1+\cdots+u_n$.
+    \item Déterminer la limite de $S_n$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 14 : limite par comparaison \etoile{$\star\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{n+\sin n}{n+1}.
+\]
+\end{exercice}
+
+\begin{exercice}[Type bac 15 : suite définie par intégration du cours \etoile{$\star\star\star$}]
+On considère
+\[
+u_n=\frac{n}{n+1}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Étudier les variations de $(u_n)$.
+    \item Montrer que $(u_n)$ est majorée.
+    \item Déterminer la limite de $(u_n)$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 16 : point fixe \etoile{$\star\star\star$}]
+Soit la suite $(u_n)$ définie par
+\[
+u_0=0,\qquad u_{n+1}=\frac{2u_n+6}{u_n+4}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $0\le u_n\le 2$ pour tout $n$.
+    \item Étudier le sens de variation de $(u_n)$.
+    \item Montrer que $(u_n)$ converge.
+    \item Déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 17 : lecture de conjecture \etoile{$\star\star$}]
+On donne les premiers termes d'une suite :
+\[
+u_0=1,\quad u_1=3,\quad u_2=7,\quad u_3=15,\quad u_4=31.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Conjecturer une expression de $u_n$.
+    \item Vérifier la conjecture à partir d'une relation de récurrence simple.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 18 : seuil logarithmique sans logarithme obligatoire \etoile{$\star\star\star$}]
+On considère la suite géométrique
+\[
+u_n=400\times 1{,}05^n.
+\]
+Déterminer le plus petit entier $n$ tel que $u_n>600$.
+\end{exercice}
+
+\begin{exercice}[Type bac 19 : deux suites liées \etoile{$\star\star\star$}]
+On considère
+\[
+u_n=2-\frac1{n+1},\qquad v_n=2+\frac1{n+1}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Étudier les variations de $(u_n)$ et $(v_n)$.
+    \item Comparer $u_n$ et $v_n$.
+    \item Déterminer leurs limites.
+    \item Calculer $v_n-u_n$ et interpréter.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Type bac 20 : modèle de refroidissement discret \etoile{$\star\star\star$}]
+La température d'un liquide passe de $80^\circ$C à $65\%$ de l'écart avec la température ambiante de $20^\circ$C à chaque minute. On note $u_n$ la température après $n$ minutes.
+\begin{enumerate}[label=\arabic*.]
+    \item Justifier que
+    \[
+    u_{n+1}=0{,}65u_n+7.
+    \]
+    \item Déterminer l'expression de $u_n$.
+    \item Déterminer la température limite.
+\end{enumerate}
+\end{exercice}
+
+% =========================================================
+\section{20 exercices niveau Terminale}
+% =========================================================
+
+\begin{exercice}[Terminale 1 \etoile{$\star$}]
+Déterminer les cinq premiers termes de la suite définie par
+\[
+u_n=3n-2.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 2 \etoile{$\star$}]
+Déterminer les cinq premiers termes de la suite définie par
+\[
+u_0=1,\qquad u_{n+1}=2u_n+1.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 3 \etoile{$\star$}]
+Dire si la suite suivante est arithmétique, géométrique ou ni l'une ni l'autre :
+\[
+2,\;5,\;8,\;11,\;14,\dots
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 4 \etoile{$\star$}]
+Même question pour :
+\[
+3,\;6,\;12,\;24,\;48,\dots
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 5 \etoile{$\star$}]
+Donner une expression explicite de la suite arithmétique de premier terme $u_0=9$ et de raison $-2$.
+\end{exercice}
+
+\begin{exercice}[Terminale 6 \etoile{$\star$}]
+Donner une expression explicite de la suite géométrique de premier terme $u_0=4$ et de raison $\frac13$.
+\end{exercice}
+
+\begin{exercice}[Terminale 7 \etoile{$\star\star$}]
+Étudier le sens de variation de
+\[
+u_n=\frac{n}{n+1}.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 8 \etoile{$\star\star$}]
+Étudier le sens de variation de
+\[
+u_n=n^2-6n+5.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 9 \etoile{$\star\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{5n-1}{2n+7}.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 10 \etoile{$\star\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{n^2+1}{n}.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 11 \etoile{$\star\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{1}{n^2+3}.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 12 \etoile{$\star\star$}]
+Déterminer la limite de
+\[
+u_n=4-0{,}8^n.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 13 \etoile{$\star\star$}]
+Calculer
+\[
+1+4+7+\cdots+58.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 14 \etoile{$\star\star$}]
+Calculer
+\[
+2+6+18+\cdots+2\times 3^8.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 15 \etoile{$\star\star$}]
+Montrer par récurrence que, pour tout $n\in\N$,
+\[
+2^n\ge n+1.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 16 \etoile{$\star\star$}]
+Montrer par récurrence que, pour tout $n\in\N$,
+\[
+1+2+\cdots+n=\frac{n(n+1)}2.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 17 \etoile{$\star\star\star$}]
+On considère la suite
+\[
+u_0=0,\qquad u_{n+1}=u_n+2n+1.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer les premiers termes.
+    \item Conjecturer une expression de $u_n$.
+    \item Démontrer la conjecture.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Terminale 18 \etoile{$\star\star\star$}]
+On considère
+\[
+u_0=1,\qquad u_{n+1}=\frac{u_n}{1+u_n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer quelques termes.
+    \item Conjecturer le sens de variation.
+    \item Montrer que $u_n>0$ pour tout $n$.
+    \item Étudier le sens de variation.
+    \item Déterminer la limite éventuelle.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Terminale 19 \etoile{$\star\star\star$}]
+Résoudre dans $\N$ :
+\[
+5\times 1{,}2^n>20.
+\]
+\end{exercice}
+
+\begin{exercice}[Terminale 20 \etoile{$\star\star\star$}]
+Soit la suite
+\[
+u_n=\frac{2n^2+3n+1}{n^2-n+5}.
+\]
+Déterminer sa limite.
+\end{exercice}
+
+% =========================================================
+\section{20 exercices d'approfondissement}
+% =========================================================
+
+\begin{exercice}[Approfondissement 1 \etoile{$\star\star\star$}]
+Étudier la suite
+\[
+u_n=\sqrt{n+1}-\sqrt{n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $u_n>0$.
+    \item Déterminer sa limite.
+    \item Étudier son sens de variation.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 2 \etoile{$\star\star\star$}]
+Étudier la limite de
+\[
+u_n=n\left(\sqrt{1+\frac1n}-1\right).
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 3 \etoile{$\star\star\star$}]
+On considère
+\[
+u_n=\frac{n}{2^n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Étudier le sens de variation de $(u_n)$.
+    \item Déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 4 \etoile{$\star\star\star$}]
+Montrer que pour tout entier $n\ge1$,
+\[
+\left(1+\frac1n\right)^n\ge 2.
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 5 \etoile{$\star\star\star$}]
+Étudier la suite
+\[
+u_n=\left(1-\frac1n\right)^n
+\qquad (n\ge2).
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 6 \etoile{$\star\star\star\star$}]
+On considère la suite
+\[
+u_0=1,\qquad u_{n+1}=\frac{2u_n+1}{u_n+2}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $1\le u_n\le 2$ pour tout $n$.
+    \item Étudier le sens de variation.
+    \item Déterminer la limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 7 \etoile{$\star\star\star$}]
+Déterminer la limite de
+\[
+u_n=\frac{\ln(n+1)}{n+1}.
+\]
+(Admettre que $\ln x$ croît plus lentement que $x$.)
+\end{exercice}
+
+\begin{exercice}[Approfondissement 8 \etoile{$\star\star\star\star$}]
+Soit
+\[
+u_n=\sum_{k=0}^n \frac1{2^k}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $(u_n)$ est croissante.
+    \item Calculer $u_n$ explicitement.
+    \item Déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 9 \etoile{$\star\star\star$}]
+Étudier la suite
+\[
+u_n=\frac{(-1)^n+n}{n+1}.
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 10 \etoile{$\star\star\star\star$}]
+On considère
+\[
+u_0=2,\qquad u_{n+1}=\frac12\left(u_n+\frac{3}{u_n}\right).
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $u_n>0$ pour tout $n$.
+    \item Montrer que $u_n\ge \sqrt{3}$ pour tout $n$.
+    \item Étudier la monotonie.
+    \item Conjecturer puis déterminer la limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 11 \etoile{$\star\star\star$}]
+Montrer que la suite
+\[
+u_n=\frac{n+(-1)^n}{n}
+\qquad (n\ge1)
+\]
+converge et déterminer sa limite.
+\end{exercice}
+
+\begin{exercice}[Approfondissement 12 \etoile{$\star\star\star\star$}]
+On considère
+\[
+u_n=\frac{1+2+\cdots+n}{n^2}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Donner une expression simplifiée de $u_n$.
+    \item Déterminer la limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 13 \etoile{$\star\star\star\star$}]
+Montrer que la suite définie par
+\[
+u_0=0,\qquad u_{n+1}=\frac{u_n+5}{3}
+\]
+est majorée par $\frac52$, puis déterminer sa limite.
+\end{exercice}
+
+\begin{exercice}[Approfondissement 14 \etoile{$\star\star\star\star$}]
+On considère
+\[
+u_n=\frac{2^n+3^n}{3^n}.
+\]
+Déterminer la limite de $(u_n)$.
+\end{exercice}
+
+\begin{exercice}[Approfondissement 15 \etoile{$\star\star\star$}]
+Résoudre :
+\[
+0{,}92^n<0{,}1.
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 16 \etoile{$\star\star\star\star$}]
+Étudier la convergence de
+\[
+u_n=\cos\left(\frac{1}{n+1}\right).
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 17 \etoile{$\star\star\star\star$}]
+On considère les suites
+\[
+u_n=2-\frac1{2^n},\qquad v_n=2+\frac1{2^n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Montrer que $(u_n)$ est croissante et $(v_n)$ décroissante.
+    \item Montrer que $u_n\le v_n$.
+    \item Déterminer leurs limites.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 18 \etoile{$\star\star\star\star$}]
+Étudier la suite
+\[
+u_n=\frac{n^3-2n+1}{2n^2+3}.
+\]
+\end{exercice}
+
+\begin{exercice}[Approfondissement 19 \etoile{$\star\star\star\star\star$}]
+On considère
+\[
+u_0=1,\qquad u_{n+1}=1+\frac1{u_n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Calculer $u_1$, $u_2$, $u_3$, $u_4$.
+    \item Montrer que $u_n\ge1$ pour tout $n$.
+    \item Montrer que toute limite éventuelle $\ell$ vérifie
+    \[
+    \ell=1+\frac1\ell.
+    \]
+    \item Déterminer les solutions de cette équation.
+    \item On admet que la suite converge. Déterminer sa limite.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Approfondissement 20 \etoile{$\star\star\star\star\star$}]
+On considère
+\[
+u_n=\sum_{k=1}^n \frac1{k(k+1)}.
+\]
+\begin{enumerate}[label=\arabic*.]
+    \item Décomposer
+    \[
+    \frac1{k(k+1)}
+    \]
+    sous la forme d'une différence.
+    \item Simplifier la somme.
+    \item Déterminer la limite de $(u_n)$.
+\end{enumerate}
+\end{exercice}
+
+\newpage
+% =========================================================
+\section{Corrigé}
+% =========================================================
+
+\subsection{Corrigé des Vrai / Faux}
+
+\paragraph{Vrai/Faux 1}
+\begin{enumerate}[label=\alph*)]
+    \item Faux : la suite $u_n=n$ est croissante mais ne converge pas dans $\R$.
+    \item Vrai : une suite géométrique de raison $q$ avec $0<q<1$ tend vers $0$.
+    \item Faux : $u_n=\frac{1}{n+1}+\frac{(-1)^n}{100}$ tend vers $0$ sans être décroissante à partir d'un certain rang.
+    \item Faux : $u_n=(-1)^n$ est bornée mais ne converge pas.
+\end{enumerate}
+
+\paragraph{Vrai/Faux 2}
+\begin{enumerate}[label=\alph*)]
+    \item Vrai.
+    \item Faux : si la raison est négative, la suite n'est généralement pas monotone.
+    \item Faux : prendre $u_n=-1$ et $v_n=\frac1n$.
+    \item Vrai : un décalage d'indice ne change pas la limite.
+\end{enumerate}
+
+\paragraph{Vrai/Faux 3}
+\begin{enumerate}[label=\alph*)]
+    \item Vrai.
+    \item Faux.
+    \item Vrai par continuité de la racine sur $\R_+$.
+    \item Vrai.
+\end{enumerate}
+
+\paragraph{Vrai/Faux 4}
+\begin{enumerate}[label=\alph*)]
+    \item Vrai.
+    \item Vrai.
+    \item Faux : la suite $u_n=1-\frac1{n+1}$ vérifie $u_{n+1}-u_n>0$ mais converge vers $1$.
+    \item Vrai par encadrement.
+\end{enumerate}
+
+\paragraph{Vrai/Faux 5}
+\begin{enumerate}[label=\alph*)]
+    \item Faux si $u_n<0$.
+    \item Vrai si $u_n$ est non nul à partir d'un certain rang.
+    \item Vrai.
+    \item Vrai.
+\end{enumerate}
+
+\subsection{Corrigé des QCM}
+
+\paragraph{QCM 1} Réponse A.
+
+\paragraph{QCM 2} Réponse B.
+
+\paragraph{QCM 3} Réponse C.
+
+\paragraph{QCM 4} Réponse B.
+
+\paragraph{QCM 5} Réponse C.
+
+\subsection{Corrigé des exercices type bac}
+
+\paragraph{Type bac 1}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_1=2$, $u_2=2$, $u_3=2$.
+    \item Immédiat par récurrence.
+    \item $u_{n+1}-u_n=\frac{4-2u_n}{3}$. Comme $u_n=2$ dès le départ, la suite est constante.
+    \item La suite converge vers $2$.
+\end{enumerate}
+
+\paragraph{Type bac 2}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_n=50000\times 0{,}88^n$.
+    \item Décroissante.
+    \item $\lim u_n=0$.
+    \item Chercher le plus petit $n$ tel que $50000\cdot 0{,}88^n<10000$, soit $0{,}88^n<0{,}2$. On trouve numériquement $n=13$.
+\end{enumerate}
+
+\paragraph{Type bac 3}
+\begin{enumerate}[label=\arabic*.]
+    \item $v_{n+1}=u_{n+1}-5=0{,}6u_n+2-5=0{,}6(u_n-5)=0{,}6v_n$.
+    \item $v_n=(u_0-5)\cdot 0{,}6^n=-4\cdot 0{,}6^n$, donc
+    \[
+    u_n=5-4\cdot 0{,}6^n.
+    \]
+    \item Comme $0{,}6^n$ décroît vers $0$, la suite $(u_n)$ est croissante.
+    \item $\lim u_n=5$.
+\end{enumerate}
+
+\paragraph{Type bac 4}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_n=5+3n$.
+    \item $u_{20}=65$.
+    \item
+    \[
+    S=21\times \frac{5+65}{2}=21\times 35=735.
+    \]
+\end{enumerate}
+
+\paragraph{Type bac 5}
+\begin{enumerate}[label=\alph*)]
+    \item $\sin n$ est borné, donc $u_n\to0$.
+    \item $v_n=\frac{(-1)^n}{n+1}+\frac{3}{n+1}\to0$.
+    \item $0\le w_n\le \frac3n$, donc $w_n\to0$.
+\end{enumerate}
+
+\paragraph{Type bac 6}
+\begin{enumerate}[label=\arabic*.]
+    \item Par récurrence : si $1\le u_n\le3$, alors $4\le u_n+3\le6$, donc $2\le u_{n+1}\le \sqrt6<3$.
+    \item Montrer que $u_{n+1}\ge u_n$ en étudiant $\sqrt{u_n+3}\ge u_n$ sur $[1,3]$.
+    \item Croissante et majorée par $3$, donc convergente.
+    \item $\ell=\sqrt{\ell+3}$, donc $\ell^2-\ell-3=0$. La solution positive est
+    \[
+    \ell=\frac{1+\sqrt{13}}{2}.
+    \]
+\end{enumerate}
+
+\paragraph{Type bac 7}
+\[
+\frac{3n^2-1}{n^2+4n+7}\to 3.
+\]
+
+\paragraph{Type bac 8}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_1=7{,}4$, $u_2=5{,}58$.
+    \item $n$ est le premier rang tel que $u_n\le2$.
+    \item La suite vérifie $u_{n+1}=0{,}7u_n+0{,}4$. Sa limite éventuelle $\ell$ vérifie $\ell=0{,}7\ell+0{,}4$, donc $\ell=\frac43$. Elle converge vers $\frac43$.
+\end{enumerate}
+
+\paragraph{Type bac 9}
+\begin{enumerate}[label=\arabic*.]
+    \item $f'(x)=e^{-0,2x}(1-0,2x)$, donc $f$ croît sur $[0,5]$ puis décroît.
+    \item La suite augmente puis décroît à partir d'un certain rang.
+    \item $\lim u_n=0$.
+\end{enumerate}
+
+\paragraph{Type bac 10}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_1=11$, $u_2=25$, $u_3=53$.
+    \item $v_{n+1}=u_{n+1}+3=2u_n+6=2(u_n+3)=2v_n$.
+    \item $v_n=7\cdot 2^n$, donc
+    \[
+    u_n=7\cdot 2^n-3.
+    \]
+\end{enumerate}
+
+\paragraph{Type bac 11}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_n=120000\cdot 1{,}018^n$.
+    \item En 2030, cela correspond à $n=5$ :
+    \[
+    u_5\approx 131244.
+    \]
+    \item Chercher $n$ tel que $120000\cdot 1{,}018^n>135000$. On obtient environ $n=7$, donc à partir de 2032.
+\end{enumerate}
+
+\paragraph{Type bac 12}
+\[
+u_n=\frac{(-1)^n(2n+1)}{n^2+1}.
+\]
+On a
+\[
+|u_n|=\frac{2n+1}{n^2+1}\to0.
+\]
+Donc $u_n\to0$.
+
+\paragraph{Type bac 13}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_n=3\left(\frac12\right)^n$.
+    \item
+    \[
+    S_n=3\frac{1-\left(\frac12\right)^{n+1}}{1-\frac12}=6\left(1-\left(\frac12\right)^{n+1}\right).
+    \]
+    \item $\lim S_n=6$.
+\end{enumerate}
+
+\paragraph{Type bac 14}
+\[
+u_n=\frac{n+\sin n}{n+1}.
+\]
+Comme $-1\le \sin n\le1$,
+\[
+\frac{n-1}{n+1}\le u_n\le \frac{n+1}{n+1}=1.
+\]
+Les deux bornes tendent vers $1$, donc $u_n\to1$.
+
+\paragraph{Type bac 15}
+\begin{enumerate}[label=\arabic*.]
+    \item
+    \[
+    u_{n+1}-u_n=\frac{n+1}{n+2}-\frac{n}{n+1}=\frac1{(n+1)(n+2)}>0.
+    \]
+    Donc croissante.
+    \item $u_n<1$.
+    \item Donc $u_n\to1$.
+\end{enumerate}
+
+\paragraph{Type bac 16}
+\begin{enumerate}[label=\arabic*.]
+    \item Par récurrence, l'intervalle $[0,2]$ est stable.
+    \item
+    \[
+    u_{n+1}-u_n=\frac{2u_n+6}{u_n+4}-u_n=\frac{-(u_n-2)(u_n+3)}{u_n+4}\ge0
+    \]
+    sur $[0,2]$.
+    \item Suite croissante majorée, donc convergente.
+    \item $\ell=\frac{2\ell+6}{\ell+4}$, soit $\ell^2+2\ell-6=0$. La solution dans $[0,2]$ est
+    \[
+    \ell=-1+\sqrt7.
+    \]
+\end{enumerate}
+
+\paragraph{Type bac 17}
+\begin{enumerate}[label=\arabic*.]
+    \item On conjecture $u_n=2^{n+1}-1$.
+    \item Vérification possible par récurrence ou via la relation $u_{n+1}=2u_n+1$.
+\end{enumerate}
+
+\paragraph{Type bac 18}
+On cherche $400\cdot1{,}05^n>600$, soit $1{,}05^n>1{,}5$. On trouve numériquement $n=9$.
+
+\paragraph{Type bac 19}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_n$ croissante, $v_n$ décroissante.
+    \item $u_n<v_n$.
+    \item Les deux suites tendent vers $2$.
+    \item
+    \[
+    v_n-u_n=\frac{2}{n+1}\to0.
+    \]
+    Elles sont adjacentes.
+\end{enumerate}
+
+\paragraph{Type bac 20}
+\begin{enumerate}[label=\arabic*.]
+    \item
+    \[
+    u_{n+1}-20=0{,}65(u_n-20),
+    \]
+    donc
+    \[
+    u_{n+1}=0{,}65u_n+7.
+    \]
+    \item Posons $v_n=u_n-20$. Alors $v_{n+1}=0{,}65v_n$ et $v_0=60$.
+    Donc
+    \[
+    u_n=20+60\cdot 0{,}65^n.
+    \]
+    \item La température limite est $20^\circ$C.
+\end{enumerate}
+
+\subsection{Corrigé des exercices niveau Terminale}
+
+\paragraph{Terminale 1}
+\[
+u_0=-2,\quad u_1=1,\quad u_2=4,\quad u_3=7,\quad u_4=10.
+\]
+
+\paragraph{Terminale 2}
+\[
+u_0=1,\quad u_1=3,\quad u_2=7,\quad u_3=15,\quad u_4=31.
+\]
+
+\paragraph{Terminale 3}
+Suite arithmétique de raison $3$.
+
+\paragraph{Terminale 4}
+Suite géométrique de raison $2$.
+
+\paragraph{Terminale 5}
+\[
+u_n=9-2n.
+\]
+
+\paragraph{Terminale 6}
+\[
+u_n=4\left(\frac13\right)^n.
+\]
+
+\paragraph{Terminale 7}
+\[
+u_{n+1}-u_n=\frac1{(n+1)(n+2)}>0.
+\]
+Donc croissante.
+
+\paragraph{Terminale 8}
+\[
+u_{n+1}-u_n=(n+1)^2-6(n+1)+5-(n^2-6n+5)=2n-5.
+\]
+Donc décroissante pour $n=0,1,2$ puis croissante à partir de $n\ge3$.
+
+\paragraph{Terminale 9}
+\[
+u_n\to \frac52.
+\]
+
+\paragraph{Terminale 10}
+\[
+u_n=n+\frac1n \to +\infty.
+\]
+
+\paragraph{Terminale 11}
+\[
+u_n\to0.
+\]
+
+\paragraph{Terminale 12}
+\[
+0{,}8^n\to0,\qquad u_n\to4.
+\]
+
+\paragraph{Terminale 13}
+Suite arithmétique de premier terme $1$, dernier terme $58$, raison $3$.  
+Nombre de termes :
+\[
+\frac{58-1}{3}+1=20.
+\]
+Somme :
+\[
+S=20\times \frac{1+58}{2}=590.
+\]
+
+\paragraph{Terminale 14}
+\[
+S=2(1+3+3^2+\cdots+3^8)=2\cdot \frac{3^9-1}{3-1}=3^9-1=19682.
+\]
+
+\paragraph{Terminale 15}
+Initialisation : $2^0=1\ge1$.  
+Hérédité :
+\[
+2^{n+1}=2\cdot 2^n\ge 2(n+1)\ge n+2.
+\]
+
+\paragraph{Terminale 16}
+Preuve classique par récurrence.
+
+\paragraph{Terminale 17}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_0=0$, $u_1=1$, $u_2=4$, $u_3=9$, ...
+    \item On conjecture $u_n=n^2$.
+    \item Par récurrence :
+    \[
+    u_{n+1}=u_n+2n+1=n^2+2n+1=(n+1)^2.
+    \]
+\end{enumerate}
+
+\paragraph{Terminale 18}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_1=\frac12$, $u_2=\frac13$, $u_3=\frac14$.
+    \item On conjecture $u_n=\frac1{n+1}$.
+    \item Clair par récurrence.
+    \item
+    \[
+    u_{n+1}=\frac{u_n}{1+u_n}<u_n.
+    \]
+    donc décroissante.
+    \item La limite éventuelle vaut $0$.
+\end{enumerate}
+
+\paragraph{Terminale 19}
+\[
+1{,}2^n>4.
+\]
+Numériquement, $n=8$ convient et c'est le plus petit.
+
+\paragraph{Terminale 20}
+\[
+u_n\to 2.
+\]
+
+\subsection{Corrigé des exercices d'approfondissement}
+
+\paragraph{Approfondissement 1}
+\begin{enumerate}[label=\arabic*.]
+    \item Clair.
+    \item Rationaliser :
+    \[
+    u_n=\frac{1}{\sqrt{n+1}+\sqrt n}\to0.
+    \]
+    \item Le dénominateur croît, donc la suite décroît.
+\end{enumerate}
+
+\paragraph{Approfondissement 2}
+Rationalisons :
+\[
+u_n=n\left(\sqrt{1+\frac1n}-1\right)
+=\frac{n\left(\frac1n\right)}{\sqrt{1+\frac1n}+1}
+=\frac{1}{\sqrt{1+\frac1n}+1}\to \frac12.
+\]
+
+\paragraph{Approfondissement 3}
+\begin{enumerate}[label=\arabic*.]
+    \item
+    \[
+    \frac{u_{n+1}}{u_n}=\frac{n+1}{2n}<1
+    \]
+    à partir d'un certain rang.
+    \item $u_n\to0$.
+\end{enumerate}
+
+\paragraph{Approfondissement 4}
+Par binôme de Newton :
+\[
+\left(1+\frac1n\right)^n=1+n\cdot \frac1n+\text{termes positifs}\ge2.
+\]
+
+\paragraph{Approfondissement 5}
+La suite est positive et bornée par $1$. Elle converge vers $\e^{-1}$ si l'on connaît ce résultat ; sinon on retient qu'elle converge vers une limite strictement positive inférieure à $1$.
+
+\paragraph{Approfondissement 6}
+\begin{enumerate}[label=\arabic*.]
+    \item L'intervalle $[1,2]$ est stable.
+    \item
+    \[
+    u_{n+1}-u_n=\frac{-(u_n-1)(u_n-2)}{u_n+2}\ge0
+    \]
+    sur $[1,2]$.
+    \item La suite converge vers la solution de
+    \[
+    \ell=\frac{2\ell+1}{\ell+2},
+    \]
+    soit $\ell^2=1$, donc $\ell=1$ ou $\ell=-1$. Ici $\ell\in[1,2]$, donc $\ell=1$. Comme $u_0=1$, la suite est d'ailleurs constante égale à $1$.
+\end{enumerate}
+
+\paragraph{Approfondissement 7}
+\[
+\frac{\ln(n+1)}{n+1}\to0.
+\]
+
+\paragraph{Approfondissement 8}
+\begin{enumerate}[label=\arabic*.]
+    \item Somme de termes positifs donc croissante.
+    \item
+    \[
+    u_n=\frac{1-\left(\frac12\right)^{n+1}}{1-\frac12}=2\left(1-\left(\frac12\right)^{n+1}\right).
+    \]
+    \item $\lim u_n=2$.
+\end{enumerate}
+
+\paragraph{Approfondissement 9}
+\[
+u_n=\frac{n}{n+1}+\frac{(-1)^n}{n+1}\to1+0=1.
+\]
+
+\paragraph{Approfondissement 10}
+\begin{enumerate}[label=\arabic*.]
+    \item Clair.
+    \item Par AM-GM :
+    \[
+    \frac12\left(u_n+\frac3{u_n}\right)\ge \sqrt3.
+    \]
+    \item On étudie
+    \[
+    u_{n+1}-u_n=\frac{3-u_n^2}{2u_n}.
+    \]
+    Si $u_n\ge \sqrt3$, alors cette différence est $\le0$. Donc la suite est décroissante et minorée par $\sqrt3$.
+    \item Elle converge vers $\sqrt3$.
+\end{enumerate}
+
+\paragraph{Approfondissement 11}
+\[
+u_n=1+\frac{(-1)^n}{n}\to1.
+\]
+
+\paragraph{Approfondissement 12}
+\begin{enumerate}[label=\arabic*.]
+    \item
+    \[
+    u_n=\frac{\frac{n(n+1)}2}{n^2}=\frac{n+1}{2n}.
+    \]
+    \item $\lim u_n=\frac12$.
+\end{enumerate}
+
+\paragraph{Approfondissement 13}
+Par récurrence, $u_n\le \frac52$.  
+Puis
+\[
+u_{n+1}-u_n=\frac{5-2u_n}{3}\ge0.
+\]
+La suite est croissante majorée, donc convergente.  
+Sa limite vérifie
+\[
+\ell=\frac{\ell+5}{3},
+\]
+d'où $\ell=\frac52$.
+
+\paragraph{Approfondissement 14}
+\[
+u_n=\left(\frac23\right)^n+1\to1.
+\]
+
+\paragraph{Approfondissement 15}
+On cherche $n$ tel que $0{,}92^n<0{,}1$. Numériquement, le plus petit est $n=28$.
+
+\paragraph{Approfondissement 16}
+Comme $\frac1{n+1}\to0$ et que $\cos$ est continue en $0$,
+\[
+u_n\to \cos(0)=1.
+\]
+
+\paragraph{Approfondissement 17}
+\begin{enumerate}[label=\arabic*.]
+    \item Clair.
+    \item Oui car $-\frac1{2^n}\le \frac1{2^n}$.
+    \item Les deux suites tendent vers $2$.
+\end{enumerate}
+
+\paragraph{Approfondissement 18}
+\[
+u_n\sim \frac{n^3}{2n^2}=\frac n2,
+\]
+donc $u_n\to+\infty$.
+
+\paragraph{Approfondissement 19}
+\begin{enumerate}[label=\arabic*.]
+    \item $u_1=2$, $u_2=\frac32$, $u_3=\frac53$, $u_4=\frac85$.
+    \item Clair par récurrence.
+    \item Toute limite $\ell$ vérifie
+    \[
+    \ell=1+\frac1\ell.
+    \]
+    \item
+    \[
+    \ell^2-\ell-1=0.
+    \]
+    Les solutions sont
+    \[
+    \frac{1\pm\sqrt5}{2}.
+    \]
+    \item Comme $u_n\ge1$, la limite est
+    \[
+    \frac{1+\sqrt5}{2}.
+    \]
+\end{enumerate}
+
+\paragraph{Approfondissement 20}
+\begin{enumerate}[label=\arabic*.]
+    \item
+    \[
+    \frac1{k(k+1)}=\frac1k-\frac1{k+1}.
+    \]
+    \item
+    \[
+    u_n=\sum_{k=1}^n\left(\frac1k-\frac1{k+1}\right)=1-\frac1{n+1}=\frac{n}{n+1}.
+    \]
+    \item $\lim u_n=1$.
+\end{enumerate}
+
+\end{document}

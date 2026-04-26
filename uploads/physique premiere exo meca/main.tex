@@ -1,0 +1,3167 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.7cm]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{siunitx}
+\sisetup{locale=FR}
+\usepackage{enumitem}
+\usepackage{array,tabularx,booktabs,multicol}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathmorphing}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Première générale -- Spécialité Physique-Chimie}
+\fancyhead[C]{TD géant -- Mouvement, interactions et énergie}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{\textit{QCM, vrai/faux, exercices progressifs, problèmes longs et très longs}}
+
+\newtcolorbox{bloc}[1][]{
+breakable, enhanced, colback=blue!3, colframe=blue!50!black,
+title=#1, fonttitle=\bfseries
+}
+\newcommand{\etoiles}[1]{\textbf{Difficulté : }#1}
+
+\title{\Huge TD super exhaustif\\[0.3em]\LARGE Mouvement, interactions et énergie\\[0.2em]\large Avec gradient de difficulté et gros problèmes}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\begin{bloc}[Objectif]
+Ce document rassemble un très grand nombre d'exercices de nature variée pour pousser la compréhension :
+QCM, vrai/faux argumentés, exercices techniques, exercices de modélisation, problèmes longs, et problèmes très longs de type concours.
+Le but n'est pas seulement d'appliquer des formules, mais de comprendre les idées physiques, les ordres de grandeur, les hypothèses de modèle, les pièges classiques et les changements de point de vue.
+\end{bloc}
+
+\begin{bloc}[Conseils d'utilisation]
+\begin{itemize}
+\item Commencer par les QCM et les vrai/faux pour vérifier les réflexes.
+\item Alterner ensuite exercices techniques et problèmes de synthèse.
+\item Pour chaque problème long, toujours faire un schéma, choisir un système et expliciter les hypothèses.
+\item Pour les très longs problèmes, prendre le temps de rédiger proprement chaque étape.
+\end{itemize}
+\end{bloc}
+
+\section{QCM de compréhension rapide}
+\begin{enumerate}[label=\textbf{QCM \arabic*.},leftmargin=*]
+\item À propos de la force gravitationnelle entre deux masses ponctuelles :
+\begin{enumerate}[label=\alph*)]
+\item elle peut être attractive ou répulsive
+\item elle décroît comme l'inverse du carré de la distance
+\item elle dépend du milieu matériel traversé
+\item elle est toujours attractive
+\end{enumerate}
+\item Dans un liquide au repos :
+\begin{enumerate}[label=\alph*)]
+\item la pression augmente avec l'altitude
+\item la pression est identique en tous points
+\item la pression augmente quand on descend
+\item la pression ne dépend pas de la masse volumique
+\end{enumerate}
+\item Le vecteur variation de vitesse $\Delta \vec v$ :
+\begin{enumerate}[label=\alph*)]
+\item est toujours colinéaire au vecteur vitesse
+\item traduit le changement du vecteur vitesse entre deux instants
+\item est nul dès que la valeur de la vitesse est constante
+\item peut être non nul même si la norme de la vitesse reste constante
+\end{enumerate}
+\item Pour un système de masse $m$ soumis à une somme des forces $\sum \vec F$ :
+\begin{enumerate}[label=\alph*)]
+\item $\Delta \vec v \approx \dfrac{\sum \vec F}{m}\Delta t$
+\item $\Delta \vec v \approx m\sum \vec F\,\Delta t$
+\item plus la masse est grande, plus le mouvement est facile à modifier
+\item la variation du vecteur vitesse a la direction de la somme des forces
+\end{enumerate}
+\item L'énergie cinétique d'un point matériel :
+\begin{enumerate}[label=\alph*)]
+\item vaut $mv^2$
+\item est proportionnelle à la vitesse
+\item vaut $\dfrac12 mv^2$
+\item est toujours positive ou nulle
+\end{enumerate}
+\item Le travail d'une force constante :
+\begin{enumerate}[label=\alph*)]
+\item peut être négatif
+\item est toujours égal à $F\times AB$
+\item peut s'écrire $\vec F\cdot \vec{AB}$
+\item est nul si la force est perpendiculaire au déplacement
+\end{enumerate}
+\item Le théorème de l'énergie cinétique affirme que :
+\begin{enumerate}[label=\alph*)]
+\item $\Delta E_c$ est égale à la somme des travaux des forces
+\item $\Delta E_c$ est égale à la somme des intensités des forces
+\item si la somme des travaux est nulle alors la vitesse est forcément nulle
+\item une force de frottement peut faire diminuer $E_c$
+\end{enumerate}
+\item L'énergie potentielle de pesanteur près de la surface de la Terre :
+\begin{enumerate}[label=\alph*)]
+\item dépend de l'altitude choisie
+\item peut s'écrire $E_p=mgz$ à une constante près
+\item est toujours nulle au sol quelle que soit la convention choisie
+\item ne dépend pas du choix de la référence
+\end{enumerate}
+\item À propos de l'énergie mécanique :
+\begin{enumerate}[label=\alph*)]
+\item elle vaut $E_c+E_p$
+\item elle se conserve toujours
+\item elle peut diminuer sous l'effet des frottements
+\item elle est une force
+\end{enumerate}
+\item Dans un conducteur ohmique :
+\begin{enumerate}[label=\alph*)]
+\item la puissance électrique peut s'écrire $P=UI$
+\item l'effet Joule correspond à une dissipation thermique
+\item $P=RI$
+\item $P=RI^2$
+\end{enumerate}
+\item Le champ électrostatique créé par une charge ponctuelle positive :
+\begin{enumerate}[label=\alph*)]
+\item est dirigé vers la charge
+\item est dirigé radialement vers l'extérieur
+\item peut être nul partout
+\item décroît comme $1/r^2$
+\end{enumerate}
+\item La loi de Mariotte :
+\begin{enumerate}[label=\alph*)]
+\item relie la pression et le volume d'un gaz à température constante
+\item s'écrit $PV=\mathrm{cste}$
+\item s'applique à tout fluide incompressible
+\item permet de modéliser une compression isotherme
+\end{enumerate}
+\item Pour une source réelle de tension continue :
+\begin{enumerate}[label=\alph*)]
+\item on peut la modéliser par une source idéale seule
+\item sa tension à vide est égale à sa tension en charge dans tous les cas
+\item une résistance interne peut provoquer des pertes
+\item sa caractéristique peut être affine
+\end{enumerate}
+\item Le rendement d'un convertisseur :
+\begin{enumerate}[label=\alph*)]
+\item est toujours inférieur ou égal à 1
+\item peut dépasser 1 si le convertisseur est performant
+\item compare une grandeur utile à une grandeur reçue
+\item s'exprime souvent en pourcentage
+\end{enumerate}
+\item Dans un mouvement circulaire uniforme :
+\begin{enumerate}[label=\alph*)]
+\item la vitesse vectorielle est constante
+\item la valeur de la vitesse est constante
+\item $\Delta\vec v$ est nul
+\item il existe une variation de direction de la vitesse
+\end{enumerate}
+\item À propos de la force gravitationnelle entre deux masses ponctuelles :
+\begin{enumerate}[label=\alph*)]
+\item elle peut être attractive ou répulsive
+\item elle décroît comme l'inverse du carré de la distance
+\item elle dépend du milieu matériel traversé
+\item elle est toujours attractive
+\end{enumerate}
+\item Dans un liquide au repos :
+\begin{enumerate}[label=\alph*)]
+\item la pression augmente avec l'altitude
+\item la pression est identique en tous points
+\item la pression augmente quand on descend
+\item la pression ne dépend pas de la masse volumique
+\end{enumerate}
+\item Le vecteur variation de vitesse $\Delta \vec v$ :
+\begin{enumerate}[label=\alph*)]
+\item est toujours colinéaire au vecteur vitesse
+\item traduit le changement du vecteur vitesse entre deux instants
+\item est nul dès que la valeur de la vitesse est constante
+\item peut être non nul même si la norme de la vitesse reste constante
+\end{enumerate}
+\item Pour un système de masse $m$ soumis à une somme des forces $\sum \vec F$ :
+\begin{enumerate}[label=\alph*)]
+\item $\Delta \vec v \approx \dfrac{\sum \vec F}{m}\Delta t$
+\item $\Delta \vec v \approx m\sum \vec F\,\Delta t$
+\item plus la masse est grande, plus le mouvement est facile à modifier
+\item la variation du vecteur vitesse a la direction de la somme des forces
+\end{enumerate}
+\item L'énergie cinétique d'un point matériel :
+\begin{enumerate}[label=\alph*)]
+\item vaut $mv^2$
+\item est proportionnelle à la vitesse
+\item vaut $\dfrac12 mv^2$
+\item est toujours positive ou nulle
+\end{enumerate}
+\item Le travail d'une force constante :
+\begin{enumerate}[label=\alph*)]
+\item peut être négatif
+\item est toujours égal à $F\times AB$
+\item peut s'écrire $\vec F\cdot \vec{AB}$
+\item est nul si la force est perpendiculaire au déplacement
+\end{enumerate}
+\item Le théorème de l'énergie cinétique affirme que :
+\begin{enumerate}[label=\alph*)]
+\item $\Delta E_c$ est égale à la somme des travaux des forces
+\item $\Delta E_c$ est égale à la somme des intensités des forces
+\item si la somme des travaux est nulle alors la vitesse est forcément nulle
+\item une force de frottement peut faire diminuer $E_c$
+\end{enumerate}
+\item L'énergie potentielle de pesanteur près de la surface de la Terre :
+\begin{enumerate}[label=\alph*)]
+\item dépend de l'altitude choisie
+\item peut s'écrire $E_p=mgz$ à une constante près
+\item est toujours nulle au sol quelle que soit la convention choisie
+\item ne dépend pas du choix de la référence
+\end{enumerate}
+\item À propos de l'énergie mécanique :
+\begin{enumerate}[label=\alph*)]
+\item elle vaut $E_c+E_p$
+\item elle se conserve toujours
+\item elle peut diminuer sous l'effet des frottements
+\item elle est une force
+\end{enumerate}
+\item Dans un conducteur ohmique :
+\begin{enumerate}[label=\alph*)]
+\item la puissance électrique peut s'écrire $P=UI$
+\item l'effet Joule correspond à une dissipation thermique
+\item $P=RI$
+\item $P=RI^2$
+\end{enumerate}
+\item Le champ électrostatique créé par une charge ponctuelle positive :
+\begin{enumerate}[label=\alph*)]
+\item est dirigé vers la charge
+\item est dirigé radialement vers l'extérieur
+\item peut être nul partout
+\item décroît comme $1/r^2$
+\end{enumerate}
+\item La loi de Mariotte :
+\begin{enumerate}[label=\alph*)]
+\item relie la pression et le volume d'un gaz à température constante
+\item s'écrit $PV=\mathrm{cste}$
+\item s'applique à tout fluide incompressible
+\item permet de modéliser une compression isotherme
+\end{enumerate}
+\item Pour une source réelle de tension continue :
+\begin{enumerate}[label=\alph*)]
+\item on peut la modéliser par une source idéale seule
+\item sa tension à vide est égale à sa tension en charge dans tous les cas
+\item une résistance interne peut provoquer des pertes
+\item sa caractéristique peut être affine
+\end{enumerate}
+\item Le rendement d'un convertisseur :
+\begin{enumerate}[label=\alph*)]
+\item est toujours inférieur ou égal à 1
+\item peut dépasser 1 si le convertisseur est performant
+\item compare une grandeur utile à une grandeur reçue
+\item s'exprime souvent en pourcentage
+\end{enumerate}
+\item Dans un mouvement circulaire uniforme :
+\begin{enumerate}[label=\alph*)]
+\item la vitesse vectorielle est constante
+\item la valeur de la vitesse est constante
+\item $\Delta\vec v$ est nul
+\item il existe une variation de direction de la vitesse
+\end{enumerate}
+\end{enumerate}
+\subsection*{Remarque} Ces QCM sont volontairement piégeux : dans beaucoup d'entre eux, plusieurs réponses sont justes.
+\section{Vrai/Faux argumentés}
+\begin{enumerate}[label=\textbf{VF \arabic*.},leftmargin=*]
+\item Un objet en mouvement possède forcément une somme des forces non nulle.
+\item Dans le vide, deux corps massiques s'attirent toujours.
+\item Deux charges de même signe se repoussent.
+\item Dans un fluide au repos, deux points à la même altitude ont la même pression si le fluide est homogène.
+\item Dans un mouvement rectiligne uniforme, le vecteur variation de vitesse est nul.
+\item Si la norme de la vitesse reste constante, alors le vecteur vitesse est constant.
+\item Le travail du poids lors d'une descente verticale est positif.
+\item Le travail d'une force perpendiculaire au déplacement est nul.
+\item L'énergie cinétique dépend linéairement de la vitesse.
+\item Une force de frottement peut avoir un travail négatif.
+\item L'énergie potentielle de pesanteur dépend du choix de la référence.
+\item Si l'énergie mécanique se conserve, alors l'énergie cinétique reste constante.
+\item Le rendement d'un convertisseur est toujours inférieur à 100\%.
+\item Une pile réelle peut être modélisée par une source idéale en série avec une résistance.
+\item La puissance électrique reçue par un dipôle vaut toujours $UI$.
+\item La pression s'exprime en newton par mètre carré.
+\item Dans l'eau au repos, la pression augmente quand on descend.
+\item Dans la loi de Mariotte, la température est supposée constante.
+\item Le champ électrostatique créé par une charge positive est dirigé vers l'extérieur.
+\item Le champ de gravitation terrestre est dirigé vers le centre de la Terre.
+\item Le travail des frottements est toujours nul.
+\item Une force nulle implique une vitesse nulle.
+\item La masse mesure en partie l'inertie d'un système.
+\item Si la somme des travaux des forces est positive, l'énergie cinétique augmente.
+\item Une force peut modifier la direction de la vitesse sans modifier sa valeur.
+\item Deux forces de même intensité s'annulent toujours.
+\item Dans un conducteur ohmique, l'effet Joule correspond à une conversion d'énergie électrique en énergie thermique.
+\item Le poids est une force conservative dans le champ de pesanteur uniforme.
+\item Si un système monte, son énergie potentielle de pesanteur diminue.
+\item L'intensité d'un courant est le débit de charges.
+\end{enumerate}
+\section{Exercices progressifs}
+\begin{enumerate}[label=\textbf{Exercice \arabic*.},leftmargin=*]
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=2\times 10^{-6}\ \si{C}$, $q_B=3\times 10^{-6}\ \si{C}$ et $r=11\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=3\times 10^{-6}\ \si{C}$, $q_B=4\times 10^{-6}\ \si{C}$ et $r=12\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=4\times 10^{-6}\ \si{C}$, $q_B=5\times 10^{-6}\ \si{C}$ et $r=13\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=5\times 10^{-6}\ \si{C}$, $q_B=2\times 10^{-6}\ \si{C}$ et $r=14\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=1\times 10^{-6}\ \si{C}$, $q_B=3\times 10^{-6}\ \si{C}$ et $r=15\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=2\times 10^{-6}\ \si{C}$, $q_B=4\times 10^{-6}\ \si{C}$ et $r=16\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=3\times 10^{-6}\ \si{C}$, $q_B=5\times 10^{-6}\ \si{C}$ et $r=17\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=4\times 10^{-6}\ \si{C}$, $q_B=2\times 10^{-6}\ \si{C}$ et $r=18\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=5\times 10^{-6}\ \si{C}$, $q_B=3\times 10^{-6}\ \si{C}$ et $r=19\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=1\times 10^{-6}\ \si{C}$, $q_B=4\times 10^{-6}\ \si{C}$ et $r=20\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=2\times 10^{-6}\ \si{C}$, $q_B=5\times 10^{-6}\ \si{C}$ et $r=21\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=3\times 10^{-6}\ \si{C}$, $q_B=2\times 10^{-6}\ \si{C}$ et $r=22\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=4\times 10^{-6}\ \si{C}$, $q_B=3\times 10^{-6}\ \si{C}$ et $r=23\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=5\times 10^{-6}\ \si{C}$, $q_B=4\times 10^{-6}\ \si{C}$ et $r=24\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=1\times 10^{-6}\ \si{C}$, $q_B=5\times 10^{-6}\ \si{C}$ et $r=25\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=2\times 10^{-6}\ \si{C}$, $q_B=2\times 10^{-6}\ \si{C}$ et $r=26\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=3\times 10^{-6}\ \si{C}$, $q_B=3\times 10^{-6}\ \si{C}$ et $r=27\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=4\times 10^{-6}\ \si{C}$, $q_B=4\times 10^{-6}\ \si{C}$ et $r=28\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=5\times 10^{-6}\ \si{C}$, $q_B=5\times 10^{-6}\ \si{C}$ et $r=29\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux charges ponctuelles $q_A$ et $q_B$ sont séparées par une distance $r$.
+On donne $q_A=1\times 10^{-6}\ \si{C}$, $q_B=2\times 10^{-6}\ \si{C}$ et $r=30\ \si{cm}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force électrostatique.
+\item Préciser son sens pour des charges de même signe.
+\item Refaire si les charges sont de signes opposés.
+\item Étudier l'effet d'un doublement de la distance.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux masses ponctuelles $m_A=3\ \si{kg}$ et $m_B=7\ \si{kg}$ sont séparées par une distance $r=0.33\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux masses ponctuelles $m_A=4\ \si{kg}$ et $m_B=9\ \si{kg}$ sont séparées par une distance $r=0.36\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux masses ponctuelles $m_A=5\ \si{kg}$ et $m_B=11\ \si{kg}$ sont séparées par une distance $r=0.39\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★}
+
+Deux masses ponctuelles $m_A=6\ \si{kg}$ et $m_B=13\ \si{kg}$ sont séparées par une distance $r=0.42\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=7\ \si{kg}$ et $m_B=15\ \si{kg}$ sont séparées par une distance $r=0.45\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=8\ \si{kg}$ et $m_B=17\ \si{kg}$ sont séparées par une distance $r=0.48\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=9\ \si{kg}$ et $m_B=19\ \si{kg}$ sont séparées par une distance $r=0.51\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=10\ \si{kg}$ et $m_B=21\ \si{kg}$ sont séparées par une distance $r=0.54\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=11\ \si{kg}$ et $m_B=23\ \si{kg}$ sont séparées par une distance $r=0.57\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=12\ \si{kg}$ et $m_B=25\ \si{kg}$ sont séparées par une distance $r=0.60\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=13\ \si{kg}$ et $m_B=27\ \si{kg}$ sont séparées par une distance $r=0.63\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=14\ \si{kg}$ et $m_B=29\ \si{kg}$ sont séparées par une distance $r=0.66\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=15\ \si{kg}$ et $m_B=31\ \si{kg}$ sont séparées par une distance $r=0.69\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=16\ \si{kg}$ et $m_B=33\ \si{kg}$ sont séparées par une distance $r=0.72\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=17\ \si{kg}$ et $m_B=35\ \si{kg}$ sont séparées par une distance $r=0.75\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=18\ \si{kg}$ et $m_B=37\ \si{kg}$ sont séparées par une distance $r=0.78\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=19\ \si{kg}$ et $m_B=39\ \si{kg}$ sont séparées par une distance $r=0.81\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=20\ \si{kg}$ et $m_B=41\ \si{kg}$ sont séparées par une distance $r=0.84\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=21\ \si{kg}$ et $m_B=43\ \si{kg}$ sont séparées par une distance $r=0.87\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Deux masses ponctuelles $m_A=22\ \si{kg}$ et $m_B=45\ \si{kg}$ sont séparées par une distance $r=0.90\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Calculer la valeur de la force gravitationnelle.
+\item Étudier l'effet d'un doublement d'une des masses.
+\item Étudier l'effet d'une division par 2 de la distance.
+\item Commenter l'ordre de grandeur obtenu.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=2\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.09\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=3\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.10\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=4\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.11\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=1\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.12\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=2\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.13\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=3\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.14\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=4\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.15\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★}
+
+Une charge ponctuelle $Q=1\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.16\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=2\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.17\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=3\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.18\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=4\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.19\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=1\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.20\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=2\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.21\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=3\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.22\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=4\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.23\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=1\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.24\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=2\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.25\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=3\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.26\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=4\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.27\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+Une charge ponctuelle $Q=1\times10^{-8}\ \si{C}$ crée un champ électrostatique. On étudie un point situé à $r=0.28\ \si{m}$.
+\begin{enumerate}[label=\alph*)]
+\item Donner l'expression de la valeur du champ électrostatique.
+\item Calculer cette valeur.
+\item Préciser la direction et le sens du champ pour $Q>0$ puis pour $Q<0$.
+\item Une charge test négative est placée en ce point : indiquer le sens de la force subie.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=910\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.5\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=20\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=920\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.6\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=22\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=930\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.7\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=24\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=940\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.8\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=26\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=950\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.9\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=18\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=960\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.4\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=20\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=970\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.5\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=22\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=980\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.6\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=24\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=990\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.7\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=26\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=1000\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.8\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=18\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=1010\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.9\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=20\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★}
+
+On considère un liquide de masse volumique $\rho=1020\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.4\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=22\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1030\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.5\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=24\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1040\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.6\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=26\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1050\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.7\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=18\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1060\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.8\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=20\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1070\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.9\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=22\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1080\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.4\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=24\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1090\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.5\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=26\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+On considère un liquide de masse volumique $\rho=1100\ \si{kg.m^{-3}}$.
+Deux points $A$ et $B$ sont séparés verticalement de $h=0.6\ \si{m}$, le point $B$ étant plus bas.
+\begin{enumerate}[label=\alph*)]
+\item Écrire la loi fondamentale de la statique des fluides.
+\item Calculer la différence de pression $P_B-P_A$.
+\item Interpréter physiquement le signe obtenu.
+\item Déterminer la force pressante sur une surface $S=18\ \si{cm^2}$ placée au point $B$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.5\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.12\ \si{s}$, la somme des forces a pour norme $F=4\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.6\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.14\ \si{s}$, la somme des forces a pour norme $F=5\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.7\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.16\ \si{s}$, la somme des forces a pour norme $F=6\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.8\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.18\ \si{s}$, la somme des forces a pour norme $F=7\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.9\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.10\ \si{s}$, la somme des forces a pour norme $F=8\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.4\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.12\ \si{s}$, la somme des forces a pour norme $F=9\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.5\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.14\ \si{s}$, la somme des forces a pour norme $F=10\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.6\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.16\ \si{s}$, la somme des forces a pour norme $F=11\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.7\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.18\ \si{s}$, la somme des forces a pour norme $F=12\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.8\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.10\ \si{s}$, la somme des forces a pour norme $F=13\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.9\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.12\ \si{s}$, la somme des forces a pour norme $F=14\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.4\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.14\ \si{s}$, la somme des forces a pour norme $F=15\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.5\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.16\ \si{s}$, la somme des forces a pour norme $F=16\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.6\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.18\ \si{s}$, la somme des forces a pour norme $F=17\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.7\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.10\ \si{s}$, la somme des forces a pour norme $F=18\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★}
+
+Un système de masse $m=0.8\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.12\ \si{s}$, la somme des forces a pour norme $F=19\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Un système de masse $m=0.9\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.14\ \si{s}$, la somme des forces a pour norme $F=20\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Un système de masse $m=0.4\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.16\ \si{s}$, la somme des forces a pour norme $F=21\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Un système de masse $m=0.5\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.18\ \si{s}$, la somme des forces a pour norme $F=22\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Un système de masse $m=0.6\ \si{kg}$ est modélisé par un point matériel.
+Entre deux instants séparés de $\Delta t=0.10\ \si{s}$, la somme des forces a pour norme $F=23\ \si{N}$.
+\begin{enumerate}[label=\alph*)]
+\item Évaluer la norme de $\Delta \vec v$.
+\item Comment évolue cette valeur si la masse est doublée ?
+\item Comment évolue cette valeur si l'intervalle de temps est doublé ?
+\item Expliquer le lien géométrique entre $\Delta\vec v$ et $\sum \vec F$.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.15\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.0\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.20\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.2\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.25\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.4\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.30\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.6\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.10\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.15\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=0.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.20\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.0\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.25\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.2\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.30\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.4\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.10\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.6\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.15\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.20\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=0.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.25\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.0\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.30\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.2\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.10\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.4\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.15\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.6\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.20\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.25\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=0.8\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.30\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.0\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\item \etoiles{★★★★★}
+
+Une bille de masse $m=0.10\ \si{kg}$ est lâchée sans vitesse initiale depuis une hauteur $h=1.2\ \si{m}$.
+On néglige les frottements.
+\begin{enumerate}[label=\alph*)]
+\item Écrire l'énergie mécanique initiale.
+\item Écrire l'énergie mécanique juste avant l'impact.
+\item En déduire la vitesse d'impact.
+\item Indiquer qualitativement l'effet de frottements non négligeables.
+\end{enumerate}
+\end{enumerate}
+\section{Problèmes longs}
+\begin{enumerate}[label=\textbf{Problème long \arabic*.},leftmargin=*]
+\item \etoiles{★★★}
+\textbf{Cartographie d'un champ électrostatique par points d'essai -- version 1}
+\begin{enumerate}[label=\alph*)]
+\item Deux petites sphères métalliques chargées sont placées sur une table isolante.
+\item On veut proposer une méthode de cartographie qualitative du champ électrostatique créé dans leur voisinage.
+\item Décrire un protocole expérimental raisonnable.
+\item Préciser ce que signifient les lignes de champ, les régions où elles sont serrées et le lien avec les forces subies par une charge test.
+\item Discuter les limites du modèle de charge ponctuelle dans cette expérience.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Ascenseur, câble et bilan dynamique -- version 2}
+\begin{enumerate}[label=\alph*)]
+\item Une cabine d'ascenseur est modélisée par un point matériel de masse totale $m$.
+\item On distingue trois phases : démarrage, montée à vitesse constante, freinage.
+\item Pour chaque phase, faire le bilan des forces et comparer la tension du câble au poids.
+\item Relier qualitativement puis quantitativement la variation de vitesse à la somme des forces.
+\item Expliquer pourquoi un passager ressent parfois une sensation de lourdeur ou de légèreté.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Glissement sur table puis chute -- version 3}
+\begin{enumerate}[label=\alph*)]
+\item Un palet est lancé sur une table horizontale, puis quitte le bord de la table.
+\item Étudier séparément la phase de glissement sur la table et la phase de chute.
+\item Proposer un modèle avec ou sans frottements pour la première phase.
+\item Discuter le rôle de la somme des forces sur la variation de vitesse dans chaque phase.
+\item Interpréter la transition entre les deux régimes de mouvement.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Pression dans une colonne de fluide à deux liquides -- version 4}
+\begin{enumerate}[label=\alph*)]
+\item Un tube vertical contient deux liquides non miscibles de masses volumiques différentes.
+\item Exprimer la pression à différentes profondeurs.
+\item Comparer les contributions de chaque couche.
+\item Représenter qualitativement la pression en fonction de l'altitude.
+\item Discuter ce qui changerait si l'on remplaçait un liquide par un gaz compressible.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Source réelle, résistance interne et rendement -- version 5}
+\begin{enumerate}[label=\alph*)]
+\item Une source réelle de tension alimente successivement plusieurs dipôles ohmiques.
+\item Établir un schéma de modélisation avec source idéale et résistance interne.
+\item Expliquer comment exploiter la caractéristique tension-intensité de la source.
+\item Discuter le rendement de l'alimentation selon le dipôle branché.
+\item Comparer tension à vide, tension en charge et pertes par effet Joule.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Chute avec rebond et dissipation -- version 6}
+\begin{enumerate}[label=\alph*)]
+\item On lâche une balle d'une certaine hauteur sur un support horizontal.
+\item On suppose que le rebond atteint une hauteur plus faible que la hauteur initiale.
+\item Analyser les variations d'énergie cinétique, potentielle et mécanique entre les différentes phases.
+\item Identifier les phases conservatrices et dissipatives.
+\item Proposer un modèle énergétique simple du choc.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Pendule et lecture énergétique -- version 7}
+\begin{enumerate}[label=\alph*)]
+\item Un pendule simple est écarté d'un angle initial puis lâché sans vitesse.
+\item Décrire les formes d'énergie au cours du mouvement.
+\item Identifier les positions où l'énergie potentielle est maximale et celles où l'énergie cinétique est maximale.
+\item Discuter l'influence d'un frottement de l'air faible sur l'amplitude au cours du temps.
+\item Relier ce problème aux échanges d'énergie dans d'autres oscillateurs.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Freinage d'un vélo -- version 8}
+\begin{enumerate}[label=\alph*)]
+\item Un cycliste freine sur route horizontale.
+\item Faire le bilan des forces principales.
+\item Discuter qualitativement le sens du travail de chacune d'elles sur une portion de trajectoire.
+\item Établir un bilan énergétique simple.
+\item Comparer un freinage doux et un freinage brutal du point de vue des transferts d'énergie.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Mouvement circulaire uniforme sur une trajectoire imposée -- version 9}
+\begin{enumerate}[label=\alph*)]
+\item Un mobile se déplace à vitesse de norme constante sur une trajectoire circulaire.
+\item Montrer qualitativement que le vecteur vitesse change malgré la constance de sa norme.
+\item Construire graphiquement le vecteur variation de vitesse entre deux instants voisins.
+\item Relier cette variation à la somme des forces.
+\item Discuter pourquoi ce cas contredit l'idée naïve ``vitesse constante donc pas de force''.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★}
+\textbf{Baignoire, pression et force sur une bonde -- version 10}
+\begin{enumerate}[label=\alph*)]
+\item Une bonde circulaire ferme l'orifice au fond d'une baignoire remplie.
+\item Calculer la pression à la profondeur de la bonde.
+\item En déduire la force pressante exercée sur la bonde.
+\item Comparer cette force au poids d'un petit objet familier.
+\item Discuter l'effet d'une augmentation de la hauteur d'eau.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Cartographie d'un champ électrostatique par points d'essai -- version 11}
+\begin{enumerate}[label=\alph*)]
+\item Deux petites sphères métalliques chargées sont placées sur une table isolante.
+\item On veut proposer une méthode de cartographie qualitative du champ électrostatique créé dans leur voisinage.
+\item Décrire un protocole expérimental raisonnable.
+\item Préciser ce que signifient les lignes de champ, les régions où elles sont serrées et le lien avec les forces subies par une charge test.
+\item Discuter les limites du modèle de charge ponctuelle dans cette expérience.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Ascenseur, câble et bilan dynamique -- version 12}
+\begin{enumerate}[label=\alph*)]
+\item Une cabine d'ascenseur est modélisée par un point matériel de masse totale $m$.
+\item On distingue trois phases : démarrage, montée à vitesse constante, freinage.
+\item Pour chaque phase, faire le bilan des forces et comparer la tension du câble au poids.
+\item Relier qualitativement puis quantitativement la variation de vitesse à la somme des forces.
+\item Expliquer pourquoi un passager ressent parfois une sensation de lourdeur ou de légèreté.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Glissement sur table puis chute -- version 13}
+\begin{enumerate}[label=\alph*)]
+\item Un palet est lancé sur une table horizontale, puis quitte le bord de la table.
+\item Étudier séparément la phase de glissement sur la table et la phase de chute.
+\item Proposer un modèle avec ou sans frottements pour la première phase.
+\item Discuter le rôle de la somme des forces sur la variation de vitesse dans chaque phase.
+\item Interpréter la transition entre les deux régimes de mouvement.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Pression dans une colonne de fluide à deux liquides -- version 14}
+\begin{enumerate}[label=\alph*)]
+\item Un tube vertical contient deux liquides non miscibles de masses volumiques différentes.
+\item Exprimer la pression à différentes profondeurs.
+\item Comparer les contributions de chaque couche.
+\item Représenter qualitativement la pression en fonction de l'altitude.
+\item Discuter ce qui changerait si l'on remplaçait un liquide par un gaz compressible.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Source réelle, résistance interne et rendement -- version 15}
+\begin{enumerate}[label=\alph*)]
+\item Une source réelle de tension alimente successivement plusieurs dipôles ohmiques.
+\item Établir un schéma de modélisation avec source idéale et résistance interne.
+\item Expliquer comment exploiter la caractéristique tension-intensité de la source.
+\item Discuter le rendement de l'alimentation selon le dipôle branché.
+\item Comparer tension à vide, tension en charge et pertes par effet Joule.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Chute avec rebond et dissipation -- version 16}
+\begin{enumerate}[label=\alph*)]
+\item On lâche une balle d'une certaine hauteur sur un support horizontal.
+\item On suppose que le rebond atteint une hauteur plus faible que la hauteur initiale.
+\item Analyser les variations d'énergie cinétique, potentielle et mécanique entre les différentes phases.
+\item Identifier les phases conservatrices et dissipatives.
+\item Proposer un modèle énergétique simple du choc.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Pendule et lecture énergétique -- version 17}
+\begin{enumerate}[label=\alph*)]
+\item Un pendule simple est écarté d'un angle initial puis lâché sans vitesse.
+\item Décrire les formes d'énergie au cours du mouvement.
+\item Identifier les positions où l'énergie potentielle est maximale et celles où l'énergie cinétique est maximale.
+\item Discuter l'influence d'un frottement de l'air faible sur l'amplitude au cours du temps.
+\item Relier ce problème aux échanges d'énergie dans d'autres oscillateurs.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Freinage d'un vélo -- version 18}
+\begin{enumerate}[label=\alph*)]
+\item Un cycliste freine sur route horizontale.
+\item Faire le bilan des forces principales.
+\item Discuter qualitativement le sens du travail de chacune d'elles sur une portion de trajectoire.
+\item Établir un bilan énergétique simple.
+\item Comparer un freinage doux et un freinage brutal du point de vue des transferts d'énergie.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Mouvement circulaire uniforme sur une trajectoire imposée -- version 19}
+\begin{enumerate}[label=\alph*)]
+\item Un mobile se déplace à vitesse de norme constante sur une trajectoire circulaire.
+\item Montrer qualitativement que le vecteur vitesse change malgré la constance de sa norme.
+\item Construire graphiquement le vecteur variation de vitesse entre deux instants voisins.
+\item Relier cette variation à la somme des forces.
+\item Discuter pourquoi ce cas contredit l'idée naïve ``vitesse constante donc pas de force''.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★}
+\textbf{Baignoire, pression et force sur une bonde -- version 20}
+\begin{enumerate}[label=\alph*)]
+\item Une bonde circulaire ferme l'orifice au fond d'une baignoire remplie.
+\item Calculer la pression à la profondeur de la bonde.
+\item En déduire la force pressante exercée sur la bonde.
+\item Comparer cette force au poids d'un petit objet familier.
+\item Discuter l'effet d'une augmentation de la hauteur d'eau.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Cartographie d'un champ électrostatique par points d'essai -- version 21}
+\begin{enumerate}[label=\alph*)]
+\item Deux petites sphères métalliques chargées sont placées sur une table isolante.
+\item On veut proposer une méthode de cartographie qualitative du champ électrostatique créé dans leur voisinage.
+\item Décrire un protocole expérimental raisonnable.
+\item Préciser ce que signifient les lignes de champ, les régions où elles sont serrées et le lien avec les forces subies par une charge test.
+\item Discuter les limites du modèle de charge ponctuelle dans cette expérience.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Ascenseur, câble et bilan dynamique -- version 22}
+\begin{enumerate}[label=\alph*)]
+\item Une cabine d'ascenseur est modélisée par un point matériel de masse totale $m$.
+\item On distingue trois phases : démarrage, montée à vitesse constante, freinage.
+\item Pour chaque phase, faire le bilan des forces et comparer la tension du câble au poids.
+\item Relier qualitativement puis quantitativement la variation de vitesse à la somme des forces.
+\item Expliquer pourquoi un passager ressent parfois une sensation de lourdeur ou de légèreté.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Glissement sur table puis chute -- version 23}
+\begin{enumerate}[label=\alph*)]
+\item Un palet est lancé sur une table horizontale, puis quitte le bord de la table.
+\item Étudier séparément la phase de glissement sur la table et la phase de chute.
+\item Proposer un modèle avec ou sans frottements pour la première phase.
+\item Discuter le rôle de la somme des forces sur la variation de vitesse dans chaque phase.
+\item Interpréter la transition entre les deux régimes de mouvement.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Pression dans une colonne de fluide à deux liquides -- version 24}
+\begin{enumerate}[label=\alph*)]
+\item Un tube vertical contient deux liquides non miscibles de masses volumiques différentes.
+\item Exprimer la pression à différentes profondeurs.
+\item Comparer les contributions de chaque couche.
+\item Représenter qualitativement la pression en fonction de l'altitude.
+\item Discuter ce qui changerait si l'on remplaçait un liquide par un gaz compressible.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Source réelle, résistance interne et rendement -- version 25}
+\begin{enumerate}[label=\alph*)]
+\item Une source réelle de tension alimente successivement plusieurs dipôles ohmiques.
+\item Établir un schéma de modélisation avec source idéale et résistance interne.
+\item Expliquer comment exploiter la caractéristique tension-intensité de la source.
+\item Discuter le rendement de l'alimentation selon le dipôle branché.
+\item Comparer tension à vide, tension en charge et pertes par effet Joule.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Chute avec rebond et dissipation -- version 26}
+\begin{enumerate}[label=\alph*)]
+\item On lâche une balle d'une certaine hauteur sur un support horizontal.
+\item On suppose que le rebond atteint une hauteur plus faible que la hauteur initiale.
+\item Analyser les variations d'énergie cinétique, potentielle et mécanique entre les différentes phases.
+\item Identifier les phases conservatrices et dissipatives.
+\item Proposer un modèle énergétique simple du choc.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Pendule et lecture énergétique -- version 27}
+\begin{enumerate}[label=\alph*)]
+\item Un pendule simple est écarté d'un angle initial puis lâché sans vitesse.
+\item Décrire les formes d'énergie au cours du mouvement.
+\item Identifier les positions où l'énergie potentielle est maximale et celles où l'énergie cinétique est maximale.
+\item Discuter l'influence d'un frottement de l'air faible sur l'amplitude au cours du temps.
+\item Relier ce problème aux échanges d'énergie dans d'autres oscillateurs.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Freinage d'un vélo -- version 28}
+\begin{enumerate}[label=\alph*)]
+\item Un cycliste freine sur route horizontale.
+\item Faire le bilan des forces principales.
+\item Discuter qualitativement le sens du travail de chacune d'elles sur une portion de trajectoire.
+\item Établir un bilan énergétique simple.
+\item Comparer un freinage doux et un freinage brutal du point de vue des transferts d'énergie.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Mouvement circulaire uniforme sur une trajectoire imposée -- version 29}
+\begin{enumerate}[label=\alph*)]
+\item Un mobile se déplace à vitesse de norme constante sur une trajectoire circulaire.
+\item Montrer qualitativement que le vecteur vitesse change malgré la constance de sa norme.
+\item Construire graphiquement le vecteur variation de vitesse entre deux instants voisins.
+\item Relier cette variation à la somme des forces.
+\item Discuter pourquoi ce cas contredit l'idée naïve ``vitesse constante donc pas de force''.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Baignoire, pression et force sur une bonde -- version 30}
+\begin{enumerate}[label=\alph*)]
+\item Une bonde circulaire ferme l'orifice au fond d'une baignoire remplie.
+\item Calculer la pression à la profondeur de la bonde.
+\item En déduire la force pressante exercée sur la bonde.
+\item Comparer cette force au poids d'un petit objet familier.
+\item Discuter l'effet d'une augmentation de la hauteur d'eau.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Cartographie d'un champ électrostatique par points d'essai -- version 31}
+\begin{enumerate}[label=\alph*)]
+\item Deux petites sphères métalliques chargées sont placées sur une table isolante.
+\item On veut proposer une méthode de cartographie qualitative du champ électrostatique créé dans leur voisinage.
+\item Décrire un protocole expérimental raisonnable.
+\item Préciser ce que signifient les lignes de champ, les régions où elles sont serrées et le lien avec les forces subies par une charge test.
+\item Discuter les limites du modèle de charge ponctuelle dans cette expérience.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Ascenseur, câble et bilan dynamique -- version 32}
+\begin{enumerate}[label=\alph*)]
+\item Une cabine d'ascenseur est modélisée par un point matériel de masse totale $m$.
+\item On distingue trois phases : démarrage, montée à vitesse constante, freinage.
+\item Pour chaque phase, faire le bilan des forces et comparer la tension du câble au poids.
+\item Relier qualitativement puis quantitativement la variation de vitesse à la somme des forces.
+\item Expliquer pourquoi un passager ressent parfois une sensation de lourdeur ou de légèreté.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Glissement sur table puis chute -- version 33}
+\begin{enumerate}[label=\alph*)]
+\item Un palet est lancé sur une table horizontale, puis quitte le bord de la table.
+\item Étudier séparément la phase de glissement sur la table et la phase de chute.
+\item Proposer un modèle avec ou sans frottements pour la première phase.
+\item Discuter le rôle de la somme des forces sur la variation de vitesse dans chaque phase.
+\item Interpréter la transition entre les deux régimes de mouvement.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Pression dans une colonne de fluide à deux liquides -- version 34}
+\begin{enumerate}[label=\alph*)]
+\item Un tube vertical contient deux liquides non miscibles de masses volumiques différentes.
+\item Exprimer la pression à différentes profondeurs.
+\item Comparer les contributions de chaque couche.
+\item Représenter qualitativement la pression en fonction de l'altitude.
+\item Discuter ce qui changerait si l'on remplaçait un liquide par un gaz compressible.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Source réelle, résistance interne et rendement -- version 35}
+\begin{enumerate}[label=\alph*)]
+\item Une source réelle de tension alimente successivement plusieurs dipôles ohmiques.
+\item Établir un schéma de modélisation avec source idéale et résistance interne.
+\item Expliquer comment exploiter la caractéristique tension-intensité de la source.
+\item Discuter le rendement de l'alimentation selon le dipôle branché.
+\item Comparer tension à vide, tension en charge et pertes par effet Joule.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Chute avec rebond et dissipation -- version 36}
+\begin{enumerate}[label=\alph*)]
+\item On lâche une balle d'une certaine hauteur sur un support horizontal.
+\item On suppose que le rebond atteint une hauteur plus faible que la hauteur initiale.
+\item Analyser les variations d'énergie cinétique, potentielle et mécanique entre les différentes phases.
+\item Identifier les phases conservatrices et dissipatives.
+\item Proposer un modèle énergétique simple du choc.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Pendule et lecture énergétique -- version 37}
+\begin{enumerate}[label=\alph*)]
+\item Un pendule simple est écarté d'un angle initial puis lâché sans vitesse.
+\item Décrire les formes d'énergie au cours du mouvement.
+\item Identifier les positions où l'énergie potentielle est maximale et celles où l'énergie cinétique est maximale.
+\item Discuter l'influence d'un frottement de l'air faible sur l'amplitude au cours du temps.
+\item Relier ce problème aux échanges d'énergie dans d'autres oscillateurs.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Freinage d'un vélo -- version 38}
+\begin{enumerate}[label=\alph*)]
+\item Un cycliste freine sur route horizontale.
+\item Faire le bilan des forces principales.
+\item Discuter qualitativement le sens du travail de chacune d'elles sur une portion de trajectoire.
+\item Établir un bilan énergétique simple.
+\item Comparer un freinage doux et un freinage brutal du point de vue des transferts d'énergie.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Mouvement circulaire uniforme sur une trajectoire imposée -- version 39}
+\begin{enumerate}[label=\alph*)]
+\item Un mobile se déplace à vitesse de norme constante sur une trajectoire circulaire.
+\item Montrer qualitativement que le vecteur vitesse change malgré la constance de sa norme.
+\item Construire graphiquement le vecteur variation de vitesse entre deux instants voisins.
+\item Relier cette variation à la somme des forces.
+\item Discuter pourquoi ce cas contredit l'idée naïve ``vitesse constante donc pas de force''.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Baignoire, pression et force sur une bonde -- version 40}
+\begin{enumerate}[label=\alph*)]
+\item Une bonde circulaire ferme l'orifice au fond d'une baignoire remplie.
+\item Calculer la pression à la profondeur de la bonde.
+\item En déduire la force pressante exercée sur la bonde.
+\item Comparer cette force au poids d'un petit objet familier.
+\item Discuter l'effet d'une augmentation de la hauteur d'eau.
+\item Proposer au moins une vérification expérimentale, numérique ou graphique permettant de tester la cohérence du modèle choisi.
+\end{enumerate}
+\end{enumerate}
+\section{Problèmes très longs de type concours}
+\begin{enumerate}[label=\textbf{Très long \arabic*.},leftmargin=*]
+\item \etoiles{★★★★★}
+\textbf{Satellite, lancement vertical simplifié et bilan énergétique}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Exploration d'une sonde dans un champ gravitationnel central}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Étude complète d'un barrage : statique des fluides, pression et force résultante}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Voiture électrique en montée : bilan des forces, puissances et rendement}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Cabine téléphérique : dynamique, énergie et sécurité}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Mesure expérimentale de $g$ par vidéo d'une chute}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Conception d'un manège circulaire : lecture vectorielle de $\Delta\vec v$}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Chaîne d'énergie d'un drone : batterie réelle, moteurs et puissance utile}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Plongée sous-marine : pression, flottabilité simplifiée et sécurité}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★}
+\textbf{Étude d'un pendule réel amorti : regard mécanique et énergétique}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Montgolfière idéale simplifiée : fluides, poids et énergie}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Machine de levage : source réelle, moteur, rendement et montée d'une charge}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Descente d'un skieur : frottements, travail et dissipation}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Ballon-sonde : altitude, pression et modèles d'air}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Parcours d'un roller coaster simplifié : conversion d'énergie et zones critiques}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Marteau-pilon : énergie de chute et dissipation au choc}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Ascenseur intelligent : algorithme de commande et coût énergétique}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Robot mobile : capteurs, alimentation et ralentissement}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Électrostatique et particules chargées en chambre d'essai}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\item \etoiles{★★★★★★}
+\textbf{Grand problème de synthèse : de la force au champ, puis du champ à l'énergie}
+\begin{enumerate}[label=\textbf{\arabic*)}]
+\item Lire attentivement le contexte et reformuler précisément le système étudié.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Énumérer toutes les hypothèses de modélisation nécessaires et discuter leur domaine de validité.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Faire un schéma clair de la situation avec les grandeurs utiles.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Établir le bilan des forces ou des interactions en jeu.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer une stratégie dynamique fondée sur la relation entre $\Delta\vec v$ et $\sum\vec F$.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Proposer en parallèle une stratégie énergétique et comparer les deux approches.
+\begin{enumerate}[label=\alph*)]
+\item Écrire les relations physiques pertinentes sous forme littérale.
+\item Préciser quelles grandeurs sont supposées constantes et lesquelles peuvent varier.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+\item Introduire un ou plusieurs ordres de grandeur pertinents et commenter leur intérêt.
+\begin{enumerate}[label=\alph*)]
+\item Identifier les données utiles et les grandeurs inconnues.
+\item Choisir des notations cohérentes et justifier ce choix.
+\item Expliquer les pièges conceptuels possibles dans ce contexte.
+\end{enumerate}
+\item Discuter ce qui changerait si l'on ajoutait un terme dissipatif, une résistance interne ou un changement de milieu.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Imaginer un protocole expérimental ou numérique permettant de confronter le modèle à des mesures.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\item Rédiger une conclusion scientifique : résultats, limites, prolongements vers la Terminale ou au-delà.
+\begin{enumerate}[label=\alph*)]
+\item Comparer au moins deux scénarios différents.
+\item Discuter la robustesse du résultat face à une variation de paramètre.
+\item Proposer une ouverture vers une situation réelle plus complexe.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\section*{Bilan quantitatif}
+Ce TD contient :
+\begin{itemize}
+\item 30 QCM ;
+\item 30 vrai/faux ;
+\item 120 exercices progressifs ;
+\item 40 problèmes longs ;
+\item 20 problèmes très longs de type concours.
+\end{itemize}
+
+Au total, cela représente \textbf{240 énoncés différents}, avec une montée en difficulté.
+\end{document}

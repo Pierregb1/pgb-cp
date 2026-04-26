@@ -1,0 +1,307 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{framed}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setstretch{1.08}
+
+\definecolor{bleufonce}{RGB}{25,45,85}
+\definecolor{bleuclair}{RGB}{235,242,252}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textsc{Terminale spé -- Spécialité mathématiques + Maths expertes}}
+\fancyhead[R]{\textsc{Devoir maison 0}}
+\fancyfoot[C]{Page \thepage\ /\pageref{LastPage}}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{bleufonce}}
+{}{0em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{bleufonce}}
+{}{0em}{}
+
+\newtcolorbox{enteteDM}{
+    colback=bleuclair,
+    colframe=bleufonce,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{consignesbox}{
+    colback=grisclair,
+    colframe=black!60,
+    boxrule=0.5pt,
+    arc=1.5mm,
+    left=2mm,
+    right=2mm,
+    top=1.5mm,
+    bottom=1.5mm
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\begin{document}
+
+\begin{center}
+\begin{enteteDM}
+{\LARGE \textbf{DM 0 de mathématiques}}\\[0.3em]
+{\large Niveau Terminale générale}\\
+{\normalsize Spécialité mathématiques + option mathématiques expertes}\\[0.4em]
+\textbf{Durée conseillée :} 2 h 30 à 3 h 30
+\end{enteteDM}
+\end{center}
+
+\vspace{0.4em}
+
+\begin{consignesbox}
+\textbf{Consignes :}
+\begin{itemize}[leftmargin=1.2cm]
+    \item La calculatrice est interdite.
+    \item La rédaction devra être \textbf{claire, rigoureuse et soignée}.
+    \item Toute affirmation devra être \textbf{justifiée}.
+    \item Note le tend que t'as mis à le faire à la fin de ta copie (chronomètre toi).
+    \item La qualité de la présentation, de l'enchaînement logique des arguments et de la rédaction sera prise en compte.
+    \item comme d'hab pas de chat gpt, pas d'aide extérieure si tu bloques plus de 25 min sautes question et reviens-y plus tard.
+\end{itemize}
+\end{consignesbox}
+
+\vspace{0.6em}
+
+\section*{Exercice 1 -- Étude d'une fonction \hfill \textnormal{(9 points)}}
+
+On considère la fonction \( f \) définie sur \( ]0;+\infty[ \) par
+\[
+f(x)=x+\frac{1}{x}-2\ln(x).
+\]
+
+\subsection*{Partie A -- Étude préliminaire}
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.1cm]
+    \item Déterminer la limite de \( f(x) \) lorsque \( x\to 0^+ \).
+    \item Déterminer la limite de \( f(x) \) lorsque \( x\to +\infty \).
+    \item Montrer que, pour tout réel \( x>0 \),
+    \[
+    f'(x)=\frac{(x-1)^2}{x^2}.
+    \]
+    \item Dresser le tableau de variations de \( f \) sur \( ]0;+\infty[ \).
+    \item En déduire que, pour tout réel \( x>0 \),
+    \[
+    x+\frac{1}{x}\ge 2\ln(x)+2.
+    \]
+\end{enumerate}
+
+\subsection*{Partie B -- Exploitation}
+On considère l'équation
+\[
+x+\frac{1}{x}-2\ln(x)=3.
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=6, leftmargin=1.1cm]
+    \item Justifier que cette équation admet exactement deux solutions sur \( ]0;+\infty[ \).
+    \item Montrer que l'une de ces solutions appartient à \( ]0;1[ \) et l'autre à \( ]1;+\infty[ \).
+    \item Donner un encadrement d'amplitude \(10^{-2}\) de chacune de ces deux solutions.
+\end{enumerate}
+
+\vspace{0.5em}
+
+\section*{Exercice 2 -- Fonction et suite récurrente \hfill \textnormal{(14 points)}}
+
+On considère la fonction \( g \) définie sur \( [0;+\infty[ \) par
+\[
+g(x)=\frac{2x+3}{x+2}.
+\]
+On considère également la suite \( (u_n) \) définie par
+\[
+u_0=2
+\qquad \text{et} \qquad
+u_{n+1}=g(u_n)
+\quad \text{pour tout entier naturel } n.
+\]
+
+\subsection*{Partie A -- Étude de la fonction}
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.1cm]
+    \item Déterminer \( g(0) \).
+    \item Montrer que, pour tout réel \( x\ge 0 \),
+    \[
+    g(x)=2-\frac{1}{x+2}.
+    \]
+    \item En déduire la limite de \( g(x) \) lorsque \( x\to +\infty \).
+    \item Montrer que, pour tout réel \( x\ge 0 \),
+    \[
+    g'(x)=\frac{1}{(x+2)^2}.
+    \]
+    \item Étudier le sens de variation de \( g \) sur \( [0;+\infty[ \).
+    \item Résoudre sur \( [0;+\infty[ \) l'équation
+    \[
+    g(x)=x.
+    \]
+\end{enumerate}
+
+\subsection*{Partie B -- Étude de la suite}
+\begin{enumerate}[label=\textbf{\arabic*.}, start=7, leftmargin=1.1cm]
+    \item Calculer \( u_1 \) puis \( u_2 \).
+    \item Montrer par récurrence que, pour tout entier naturel \( n \),
+    \[
+    u_n\ge 1.
+    \]
+    \item Montrer que, pour tout entier naturel \( n \),
+    \[
+    u_{n+1}-1=\frac{u_n+1}{u_n+2}.
+    \]
+    \item Montrer que, pour tout entier naturel \( n \),
+    \[
+    u_{n+1}-u_n=\frac{(1-u_n)(u_n+1)}{u_n+2}.
+    \]
+    \item En déduire le sens de variation de la suite \( (u_n) \).
+    \item Montrer que la suite \( (u_n) \) converge.
+    \item Déterminer sa limite.
+\end{enumerate}
+
+\subsection*{Partie C -- Interprétation graphique}
+Dans un repère, on note \( \mathcal C_g \) la courbe représentative de la fonction \( g \), et \( \Delta \) la droite d'équation \( y=x \).
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=14, leftmargin=1.1cm]
+    \item Expliquer comment la position relative de \( \mathcal C_g \) et de \( \Delta \) permet de retrouver le sens de variation de la suite \( (u_n) \).
+\end{enumerate}
+
+\vspace{0.5em}
+
+\section*{Exercice 3 -- Taux de variation et tangente \hfill \textnormal{(7 points)}}
+
+On considère la fonction \( h \) définie sur \( \R \) par
+\[
+h(x)=x\sqrt{x^2+1}.
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.1cm]
+    \item Calculer \( h(0) \).
+    \item Étudier la parité de la fonction \( h \).
+    \item Montrer que, pour tout réel \( x \),
+    \[
+    h'(x)=\frac{2x^2+1}{\sqrt{x^2+1}}.
+    \]
+    \item Déterminer une équation de la tangente à la courbe représentative de \( h \) au point d'abscisse \( 1 \).
+    \item Déterminer, s'il existe, un point de la courbe en lequel la tangente est parallèle à la droite d'équation
+    \[
+    y=3x-2.
+    \]
+    \item Étudier la dérivabilité de \( h \) en \( 0 \).
+    \item En déduire l'équation de la tangente à la courbe au point d'abscisse \( 0 \).
+\end{enumerate}
+
+\vspace{0.5em}
+
+\section*{Exercice 4 -- Probabilités conditionnelles \hfill \textnormal{(7 points)}}
+
+Une urne \( A \) contient 3 boules rouges et 2 boules bleues.\\
+Une urne \( B \) contient 1 boule rouge et 4 boules bleues.
+
+On choisit au hasard une urne, avec équiprobabilité, puis on tire une boule dans l'urne choisie.
+
+On note :
+\begin{itemize}[leftmargin=1.2cm]
+    \item \( U_A \) l'événement : « l'urne choisie est l'urne \( A \) » ;
+    \item \( R \) l'événement : « la boule tirée est rouge ».
+\end{itemize}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.1cm]
+    \item Calculer \( P(U_A) \) et \( P(U_B) \).
+    \item Calculer \( P_{U_A}(R) \) et \( P_{U_B}(R) \).
+    \item En déduire \( P(R) \).
+    \item Calculer \( P_R(U_A) \).
+    \item On répète l'expérience 3 fois, de manière indépendante. On note \( X \) le nombre de fois où l'on obtient une boule rouge.
+    \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=0.9cm]
+        \item Justifier que \( X \) suit une loi binomiale dont on précisera les paramètres.
+        \item Calculer \( P(X=2) \).
+        \item Calculer \( P(X\ge 1) \).
+    \end{enumerate}
+\end{enumerate}
+
+\vspace{0.5em}
+
+\section*{Bonus -- Question ouverte \hfill \textnormal{(3 points)}}
+
+Déterminer tous les réels \( x>0 \) tels que
+\[
+x+\frac{1}{x}=2+2\ln(x).
+\]
+
+\vspace{1em}
+
+\begin{center}
+\begin{tcolorbox}[colback=bleuclair,colframe=bleufonce,boxrule=0.7pt,arc=2mm,width=0.95\textwidth]
+\centering
+\textbf{\Large Barème indicatif}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-0.3em}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}m{8cm}|>{\centering\arraybackslash}m{3cm}|}
+\hline
+
+\textbf{Exercice} & \textbf{Points} \\
+\hline
+Exercice 1 -- Étude d'une fonction & 9 \\
+\hline
+Exercice 2 -- Fonction et suite récurrente & 14 \\
+\hline
+Exercice 3 -- Taux de variation et tangente & 7 \\
+\hline
+Exercice 4 -- Probabilités conditionnelles & 7 \\
+\hline
+Bonus -- Question ouverte & 3 \\
+\hline
+
+\textbf{Total principal} & \textbf{37} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.8em}
+
+\begin{consignesbox}
+\textbf{Appréciation qualitative attendue :}
+\begin{itemize}[leftmargin=1.2cm]
+    \item qualité de la rédaction ;
+    \item rigueur des démonstrations ;
+    \item enchaînement logique des arguments ;
+    \item soin apporté à la copie ;
+    \item capacité à mobiliser les outils du cours de manière pertinente.
+\end{itemize}
+\end{consignesbox}
+
+\end{document}

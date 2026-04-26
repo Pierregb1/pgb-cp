@@ -1,0 +1,662 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Programme de colle --- Nombres complexes}
+\fancyhead[R]{Terminale générale}
+\fancyfoot[C]{\thepage}
+
+\newtheorem{prop}{Démonstration}
+\newtheorem*{idee}{Idée}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Reel}{\operatorname{Re}}
+\newcommand{\Imag}{\operatorname{Im}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Programme de colle --- Nombres complexes}}\\[0.5em]
+    {\large 15 démonstrations à apprendre}
+\end{center}
+
+\vspace{1em}
+
+\hrule
+\vspace{1em}
+
+\textbf{Convention.} On note un complexe sous la forme $z=a+\ii b$ avec $a,b\in\R$, son conjugué $\overline z$, et son module $|z|$.
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section*{1. Le conjugué d'un produit est le produit des conjugués}
+
+\textbf{Énoncé.} Pour tous $z,z'\in\C$,
+\[
+\overline{zz'}=\overline z\,\overline{z'}.
+\]
+
+\textbf{Type de raisonnement.} Calcul direct par écriture algébrique.
+
+\begin{prop}
+Écrivons
+\[
+z=a+\ii b,\qquad z'=c+\ii d,
+\]
+avec $a,b,c,d\in\R$.
+
+On calcule d'abord le produit :
+\[
+zz'=(a+\ii b)(c+\ii d)=ac-bd+\ii(ad+bc).
+\]
+Par définition du conjugué,
+\[
+\overline{zz'}=ac-bd-\ii(ad+bc).
+\]
+
+Calculons maintenant le produit des conjugués :
+\[
+\overline z\,\overline{z'}=(a-\ii b)(c-\ii d).
+\]
+En développant,
+\[
+(a-\ii b)(c-\ii d)=ac-a\ii d-\ii bc+(-\ii)(-\ii)bd.
+\]
+Or
+\[
+(-\ii)(-\ii)=\ii^2=-1.
+\]
+Ainsi
+\[
+\overline z\,\overline{z'}=ac-bd-\ii(ad+bc).
+\]
+
+Les deux expressions obtenues étant identiques, on conclut que
+\[
+\overline{zz'}=\overline z\,\overline{z'}.
+\]
+\end{prop}
+
+\section*{2. Expression du module : \texorpdfstring{$z\overline z=|z|^2$}{zconj(z)=|z|²}}
+
+\textbf{Énoncé.} Pour tout $z\in\C$,
+\[
+z\overline z=|z|^2.
+\]
+
+\textbf{Type de raisonnement.} Calcul direct à partir de l'écriture algébrique et de la définition du module.
+
+\begin{prop}
+Soit
+\[
+z=a+\ii b.
+\]
+Alors
+\[
+\overline z=a-\ii b.
+\]
+On calcule :
+\[
+z\overline z=(a+\ii b)(a-\ii b)=a^2-(\ii b)^2.
+\]
+Or
+\[
+(\ii b)^2=\ii^2b^2=-b^2.
+\]
+Donc
+\[
+z\overline z=a^2+b^2.
+\]
+
+Par définition du module,
+\[
+|z|=\sqrt{a^2+b^2}.
+\]
+En élevant au carré, on obtient
+\[
+|z|^2=a^2+b^2.
+\]
+Par conséquent,
+\[
+z\overline z=|z|^2.
+\]
+\end{prop}
+
+\section*{3. Formules donnant la partie réelle et la partie imaginaire}
+
+\textbf{Énoncé.} Pour tout $z\in\C$,
+\[
+\Reel(z)=\frac{z+\overline z}{2},
+\qquad
+\Imag(z)=\frac{z-\overline z}{2\ii}.
+\]
+
+\textbf{Type de raisonnement.} Calcul algébrique par somme et différence de $z$ et $\overline z$.
+
+\begin{prop}
+Posons
+\[
+z=a+\ii b.
+\]
+Alors
+\[
+\overline z=a-\ii b.
+\]
+
+En additionnant $z$ et $\overline z$, on obtient
+\[
+z+\overline z=(a+\ii b)+(a-\ii b)=2a.
+\]
+Ainsi
+\[
+\frac{z+\overline z}{2}=a=\Reel(z).
+\]
+
+En soustrayant $\overline z$ à $z$, on obtient
+\[
+z-\overline z=(a+\ii b)-(a-\ii b)=2\ii b.
+\]
+Donc
+\[
+\frac{z-\overline z}{2\ii}=b=\Imag(z).
+\]
+
+On a donc bien
+\[
+\Reel(z)=\frac{z+\overline z}{2},
+\qquad
+\Imag(z)=\frac{z-\overline z}{2\ii}.
+\]
+\end{prop}
+
+\section*{4. Le module d'un produit est le produit des modules}
+
+\textbf{Énoncé.} Pour tous $z,z'\in\C$,
+\[
+|zz'|=|z|\,|z'|.
+\]
+
+\textbf{Type de raisonnement.} Déduction algébrique à partir de l'identité $z\overline z=|z|^2$.
+
+\begin{prop}
+On calcule le carré du module de $zz'$ :
+\[
+|zz'|^2=(zz')\overline{(zz')}.
+\]
+D'après la propriété du conjugué d'un produit,
+\[
+\overline{(zz')}=\overline z\,\overline{z'}.
+\]
+Ainsi,
+\[
+|zz'|^2=(zz')(\overline z\,\overline{z'})=(z\overline z)(z'\overline{z'}).
+\]
+Or
+\[
+z\overline z=|z|^2
+\qquad \text{et} \qquad
+z'\overline{z'}=|z'|^2.
+\]
+Donc
+\[
+|zz'|^2=|z|^2|z'|^2.
+\]
+
+Les quantités $|zz'|$ et $|z|\,|z'|$ étant positives ou nulles, l'égalité de leurs carrés entraîne l'égalité :
+\[
+|zz'|=|z|\,|z'|.
+\]
+\end{prop}
+
+\section*{5. Formule du module d'un quotient}
+
+\textbf{Énoncé.} Pour tous $z,z'\in\C$ avec $z'\neq 0$,
+\[
+\left|\frac{z}{z'}\right|=\frac{|z|}{|z'|}.
+\]
+
+\textbf{Type de raisonnement.} Déduction à partir de la multiplicativité du module.
+
+\begin{prop}
+Comme $z'\neq 0$, le quotient $\dfrac{z}{z'}$ est bien défini et l'on peut écrire
+\[
+z=\frac{z}{z'}\cdot z'.
+\]
+En prenant les modules, on obtient
+\[
+|z|=\left|\frac{z}{z'}\cdot z'\right|.
+\]
+D'après la propriété de multiplicativité du module,
+\[
+|z|=\left|\frac{z}{z'}\right|\,|z'|.
+\]
+Comme $z'\neq 0$, on a $|z'|>0$. On peut donc diviser par $|z'|$, ce qui donne
+\[
+\left|\frac{z}{z'}\right|=\frac{|z|}{|z'|}.
+\]
+\end{prop}
+
+\section*{6. Inverse d'un complexe non nul}
+
+\textbf{Énoncé.} Pour tout $z\neq 0$,
+\[
+\frac{1}{z}=\frac{\overline z}{|z|^2}.
+\]
+
+\textbf{Type de raisonnement.} Vérification directe de la propriété caractéristique de l'inverse.
+
+\begin{prop}
+Soit $z\neq 0$. Alors
+\[
+|z|^2=z\overline z\neq 0,
+\]
+de sorte que le nombre $\dfrac{\overline z}{|z|^2}$ est bien défini.
+
+Calculons :
+\[
+z\cdot \frac{\overline z}{|z|^2}
+=\frac{z\overline z}{|z|^2}
+=\frac{|z|^2}{|z|^2}
+=1.
+\]
+Ainsi, le nombre $\dfrac{\overline z}{|z|^2}$ multiplié par $z$ donne $1$ ; c'est donc l'inverse de $z$.
+
+On en déduit
+\[
+\frac{1}{z}=\frac{\overline z}{|z|^2}.
+\]
+\end{prop}
+
+\section*{7. Si \texorpdfstring{$z=r(\cos\theta+\ii\sin\theta)$}{z=r(cosθ+i sinθ)}, alors \texorpdfstring{$|z|=r$}{|z|=r}}
+
+\textbf{Énoncé.} Si
+\[
+z=r(\cos\theta+\ii\sin\theta)
+\qquad \text{avec } r\geq 0,
+\]
+alors
+\[
+|z|=r.
+\]
+
+\textbf{Type de raisonnement.} Calcul direct utilisant l'identité trigonométrique fondamentale.
+
+\begin{prop}
+On écrit
+\[
+z=(r\cos\theta)+\ii(r\sin\theta).
+\]
+Ainsi,
+\[
+\Reel(z)=r\cos\theta,
+\qquad
+\Imag(z)=r\sin\theta.
+\]
+Par définition du module,
+\[
+|z|=\sqrt{(r\cos\theta)^2+(r\sin\theta)^2}.
+\]
+On factorise par $r^2$ :
+\[
+|z|=\sqrt{r^2(\cos^2\theta+\sin^2\theta)}.
+\]
+Or
+\[
+\cos^2\theta+\sin^2\theta=1.
+\]
+Donc
+\[
+|z|=\sqrt{r^2}=r,
+\]
+puisque $r\geq 0$.
+\end{prop}
+
+\section*{8. Affixe du milieu d'un segment}
+
+\textbf{Énoncé.} Soient $A$ et $B$ d'affixes respectives $z_A$ et $z_B$. Le milieu $M$ de $[AB]$ a pour affixe
+\[
+z_M=\frac{z_A+z_B}{2}.
+\]
+
+\textbf{Type de raisonnement.} Traduction complexe d'une relation vectorielle caractéristique.
+
+\begin{prop}
+Par définition du milieu, le point $M$ vérifie
+\[
+\overrightarrow{AM}=\frac12\,\overrightarrow{AB}.
+\]
+En écriture complexe, cela se traduit par
+\[
+z_M-z_A=\frac12(z_B-z_A).
+\]
+En développant le membre de droite,
+\[
+z_M-z_A=\frac12 z_B-\frac12 z_A.
+\]
+Il suffit alors d'ajouter $z_A$ aux deux membres :
+\[
+z_M=\frac12 z_B+\frac12 z_A=\frac{z_A+z_B}{2}.
+\]
+
+On retrouve bien l'affixe du milieu.
+\end{prop}
+
+\section*{9. Condition pour appartenir à un cercle}
+
+\textbf{Énoncé.} Soit $A$ d'affixe $a$. Un point $M$ d'affixe $z$ appartient au cercle de centre $A$ et de rayon $R$ si et seulement si
+\[
+|z-a|=R.
+\]
+
+\textbf{Type de raisonnement.} Caractérisation géométrique traduite en écriture complexe.
+
+\begin{prop}
+L'affixe du vecteur $\overrightarrow{AM}$ est
+\[
+z-a.
+\]
+Le module de ce complexe est donc la longueur du vecteur $\overrightarrow{AM}$, c'est-à-dire
+\[
+|z-a|=AM.
+\]
+
+Par définition, le point $M$ appartient au cercle de centre $A$ et de rayon $R$ si et seulement si
+\[
+AM=R.
+\]
+En remplaçant $AM$ par $|z-a|$, on obtient
+\[
+M\in \mathcal{C}(A,R)\iff |z-a|=R.
+\]
+\end{prop}
+
+\section*{10. Alignement de trois points}
+
+\textbf{Énoncé.} Soient $A,B,C$ d'affixes respectives $z_A,z_B,z_C$, avec $z_B\neq z_A$. Alors
+\[
+A,B,C \text{ alignés } \iff \frac{z_C-z_A}{z_B-z_A}\in\R.
+\]
+
+\textbf{Type de raisonnement.} Double implication fondée sur la caractérisation de la colinéarité.
+
+\begin{prop}
+Les points $A,B,C$ sont alignés si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+
+Or l'affixe de $\overrightarrow{AB}$ est
+\[
+z_B-z_A,
+\]
+et celle de $\overrightarrow{AC}$ est
+\[
+z_C-z_A.
+\]
+
+Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires si et seulement s'il existe un réel $k$ tel que
+\[
+z_C-z_A=k(z_B-z_A).
+\]
+Comme $z_B-z_A\neq 0$, cette relation équivaut à
+\[
+\frac{z_C-z_A}{z_B-z_A}=k.
+\]
+Comme $k$ est réel, on obtient
+\[
+\frac{z_C-z_A}{z_B-z_A}\in\R.
+\]
+
+Réciproquement, si
+\[
+\frac{z_C-z_A}{z_B-z_A}\in\R,
+\]
+alors il existe $k\in\R$ tel que
+\[
+\frac{z_C-z_A}{z_B-z_A}=k,
+\]
+c'est-à-dire
+\[
+z_C-z_A=k(z_B-z_A).
+\]
+Les vecteurs $\overrightarrow{AC}$ et $\overrightarrow{AB}$ sont donc colinéaires, ce qui prouve que les points $A,B,C$ sont alignés.
+\end{prop}
+
+\section*{11. Orthogonalité de deux vecteurs par quotient imaginaire pur}
+
+\textbf{Énoncé.} Soient $A,B,C$ trois points tels que $z_B\neq z_A$ et $z_C\neq z_A$. Alors
+\[
+\overrightarrow{AB}\perp \overrightarrow{AC}
+\iff
+\frac{z_C-z_A}{z_B-z_A}\in \ii\R.
+\]
+
+\textbf{Type de raisonnement.} Double implication fondée sur la caractérisation complexe d'un quart de tour.
+
+\begin{prop}
+Supposons d'abord que
+\[
+\overrightarrow{AB}\perp \overrightarrow{AC}.
+\]
+Deux vecteurs non nuls sont orthogonaux si et seulement si l'un s'obtient à partir de l'autre par multiplication par un imaginaire pur. Il existe donc $\lambda\in\R$ tel que
+\[
+\overrightarrow{AC}=\ii\lambda\,\overrightarrow{AB}.
+\]
+En écriture complexe, cela donne
+\[
+z_C-z_A=\ii\lambda(z_B-z_A).
+\]
+Comme $z_B-z_A\neq 0$, on peut diviser par $z_B-z_A$ :
+\[
+\frac{z_C-z_A}{z_B-z_A}=\ii\lambda.
+\]
+Or $\ii\lambda\in \ii\R$, donc
+\[
+\frac{z_C-z_A}{z_B-z_A}\in \ii\R.
+\]
+
+Réciproquement, supposons que
+\[
+\frac{z_C-z_A}{z_B-z_A}\in \ii\R.
+\]
+Alors il existe $\lambda\in\R$ tel que
+\[
+\frac{z_C-z_A}{z_B-z_A}=\ii\lambda.
+\]
+En multipliant par $z_B-z_A$, on obtient
+\[
+z_C-z_A=\ii\lambda(z_B-z_A).
+\]
+Le vecteur $\overrightarrow{AC}$ s'obtient donc à partir de $\overrightarrow{AB}$ par multiplication par un imaginaire pur ; il lui est donc orthogonal. Ainsi
+\[
+\overrightarrow{AB}\perp \overrightarrow{AC}.
+\]
+\end{prop}
+
+\section*{12. Caractérisation d'une médiatrice par les modules}
+
+\textbf{Énoncé.} Soient $A$ et $B$ d'affixes $a$ et $b$. Un point $M$ d'affixe $z$ appartient à la médiatrice de $[AB]$ si et seulement si
+\[
+|z-a|=|z-b|.
+\]
+
+\textbf{Type de raisonnement.} Double implication par traduction d'une caractérisation géométrique classique.
+
+\begin{prop}
+Par définition, un point appartient à la médiatrice de $[AB]$ si et seulement s'il est à égale distance de $A$ et de $B$.
+
+Or, si $M$ est d'affixe $z$, on a
+\[
+AM=|z-a|
+\qquad \text{et} \qquad
+BM=|z-b|.
+\]
+Par conséquent,
+\[
+M \text{ appartient à la médiatrice de } [AB]
+\iff
+AM=BM
+\iff
+|z-a|=|z-b|.
+\]
+\end{prop}
+
+\section*{13. Cercle de diamètre \texorpdfstring{$[AB]$}{[AB]} : angle droit}
+
+\textbf{Énoncé.} Soient $A$ et $B$ deux points distincts d'affixes $a$ et $b$. Pour un point $M$ d'affixe $z$, on a
+\[
+\widehat{AMB}=90^\circ
+\iff
+\frac{z-a}{z-b}\in \ii\R.
+\]
+
+\textbf{Type de raisonnement.} Réduction à une condition d'orthogonalité, puis utilisation d'une caractérisation précédente.
+
+\begin{prop}
+L'affixe du vecteur $\overrightarrow{MA}$ est
+\[
+a-z=-(z-a),
+\]
+et celle du vecteur $\overrightarrow{MB}$ est
+\[
+b-z=-(z-b).
+\]
+On en déduit
+\[
+\frac{a-z}{b-z}=\frac{-(z-a)}{-(z-b)}=\frac{z-a}{z-b}.
+\]
+
+Or
+\[
+\widehat{AMB}=90^\circ
+\iff
+\overrightarrow{MA}\perp \overrightarrow{MB}.
+\]
+D'après la caractérisation de l'orthogonalité obtenue précédemment, cela équivaut à
+\[
+\frac{a-z}{b-z}\in \ii\R.
+\]
+Comme
+\[
+\frac{a-z}{b-z}=\frac{z-a}{z-b},
+\]
+on obtient finalement
+\[
+\widehat{AMB}=90^\circ
+\iff
+\frac{z-a}{z-b}\in \ii\R.
+\]
+\end{prop}
+
+\section*{14. Ensemble des points \texorpdfstring{$M$}{M} tels que \texorpdfstring{$\left|\dfrac{z-a}{z-b}\right|=1$}{|(z-a)/(z-b)|=1}}
+
+\textbf{Énoncé.} Soient $A$ et $B$ deux points distincts d'affixes $a$ et $b$. L'ensemble des points $M$ d'affixe $z$, avec $z\neq b$, tels que
+\[
+\left|\frac{z-a}{z-b}\right|=1
+\]
+est la médiatrice de $[AB]$.
+
+\textbf{Type de raisonnement.} Transformation algébrique de la condition, puis interprétation géométrique.
+
+\begin{prop}
+On utilise la formule du module d'un quotient :
+\[
+\left|\frac{z-a}{z-b}\right|=\frac{|z-a|}{|z-b|}.
+\]
+Ainsi,
+\[
+\left|\frac{z-a}{z-b}\right|=1
+\iff
+\frac{|z-a|}{|z-b|}=1.
+\]
+Comme $|z-b|>0$ puisque $z\neq b$, cette relation équivaut à
+\[
+|z-a|=|z-b|.
+\]
+
+Or cette dernière égalité signifie que le point $M$ est à égale distance de $A$ et de $B$. L'ensemble des points vérifiant cette propriété est précisément la médiatrice de $[AB]$.
+
+L'ensemble cherché est donc la médiatrice de $[AB]$.
+\end{prop}
+
+\section*{15. Nature d'une transformation \texorpdfstring{$z'=az+b$}{z'=az+b}}
+
+\textbf{Énoncé.} Soient $a,b\in\C$ avec $a\neq 0$. L'application
+\[
+z'=az+b
+\]
+transforme toute droite en droite et tout cercle en cercle.
+
+\textbf{Type de raisonnement.} Décomposition en transformations élémentaires et composition de propriétés géométriques.
+
+\begin{prop}
+On peut réécrire l'application sous la forme
+\[
+z'=a\left(z+\frac{b}{a}\right).
+\]
+Elle apparaît ainsi comme la composée de deux transformations :
+\begin{itemize}[label=--]
+    \item la translation $z\mapsto z+\dfrac{b}{a}$ ;
+    \item puis la multiplication par $a$.
+\end{itemize}
+
+La translation conserve les alignements et les distances entre points ; elle transforme donc une droite en une droite et un cercle en un cercle.
+
+Étudions maintenant la multiplication par $a$. Écrivons
+\[
+a=\rho(\cos\theta+\ii\sin\theta)
+\qquad \text{avec } \rho=|a|>0.
+\]
+Multiplier un complexe par $a$, c'est :
+\begin{itemize}[label=--]
+    \item multiplier son module par $\rho$ ;
+    \item ajouter $\theta$ à son argument.
+\end{itemize}
+Autrement dit, cette transformation est la composée d'une homothétie de centre $O$ et de rapport $\rho$, puis d'une rotation de centre $O$ et d'angle $\theta$.
+
+Or une homothétie transforme une droite en une droite et un cercle en un cercle. Il en est de même d'une rotation.
+
+La composée de transformations qui envoient les droites sur des droites et les cercles sur des cercles possède encore cette propriété. On en déduit que l'application
+\[
+z\mapsto az+b
+\]
+transforme toute droite en droite et tout cercle en cercle.
+\end{prop}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section*{Pour apprendre efficacement}
+
+On peut découper ce programme de colle en trois blocs.
+
+\begin{itemize}
+    \item \textbf{Bloc 1 --- Calcul algébrique :} démonstrations 1 à 7.
+    \item \textbf{Bloc 2 --- Géométrie complexe de base :} démonstrations 8 à 10.
+    \item \textbf{Bloc 3 --- Géométrie complexe plus ambitieuse :} démonstrations 11 à 15.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,1376 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{array}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Algèbre linéaire --- Chapitre 4}
+\fancyhead[R]{Calcul matriciel}
+\fancyfoot[C]{\thepage}
+
+% Environnements
+\newtheorem{definition}{Définition}[section]
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+\theoremstyle{remark}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem*{methode}{Méthode}
+\newtheorem*{idee}{Idée}
+
+% Commandes
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Mnp}{M_{n,p}(\K)}
+\newcommand{\Mnn}{M_n(\K)}
+\newcommand{\GLn}{GL_n(\K)}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\tr}{\mathrm{tr}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Chapitre 4 --- Calcul matriciel}}\\[0.5em]
+    {\large Manipuler efficacement les écritures linéaires}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\tableofcontents
+
+\newpage
+
+\section{Pourquoi les matrices sont-elles fondamentales ?}
+
+Les systèmes linéaires étudiés au chapitre précédent font apparaître naturellement des tableaux de coefficients. Ces tableaux sont les \textbf{matrices}. Elles permettent :
+\begin{itemize}
+    \item de condenser l’écriture d’un système linéaire ;
+    \item d’organiser les calculs ;
+    \item de représenter des transformations linéaires ;
+    \item de passer d’un calcul sur des vecteurs à un calcul plus structuré.
+\end{itemize}
+
+\begin{idee}
+Une matrice est avant tout un \textbf{outil d’organisation} de l’information linéaire.
+\end{idee}
+
+\begin{remarque}
+Le calcul matriciel n’est pas seulement un langage pratique : il possède ses propres règles, qu’il faut maîtriser soigneusement. En particulier, le produit matriciel n’a pas les mêmes propriétés que le produit de nombres réels.
+\end{remarque}
+
+\section{Définition d’une matrice}
+
+\subsection{Définition}
+
+\begin{definition}
+Soient \(n,p\in \N^\ast\).  
+Une \textbf{matrice à \(n\) lignes et \(p\) colonnes} à coefficients dans \(\K\) est un tableau rectangulaire de la forme
+\[
+A=(a_{ij})_{1\le i\le n,\ 1\le j\le p},
+\]
+où chaque coefficient \(a_{ij}\in \K\).
+\end{definition}
+
+On note
+\[
+M_{n,p}(\K)
+\]
+l’ensemble des matrices à \(n\) lignes et \(p\) colonnes à coefficients dans \(\K\).
+
+\begin{remarque}
+Le coefficient \(a_{ij}\) est situé à l’intersection de la \(i\)-ème ligne et de la \(j\)-ème colonne.
+\end{remarque}
+
+\begin{exemple}
+\[
+A=
+\begin{pmatrix}
+1 & 2 & -1\\
+0 & 3 & 4
+\end{pmatrix}
+\in M_{2,3}(\R).
+\]
+Ici :
+\[
+a_{11}=1,\quad a_{12}=2,\quad a_{13}=-1,\quad a_{21}=0,\quad a_{22}=3,\quad a_{23}=4.
+\]
+\end{exemple}
+
+\subsection{Taille d’une matrice}
+
+\begin{definition}
+Si \(A\in M_{n,p}(\K)\), on dit que \(A\) est de taille \(n\times p\).
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & 0\\
+2 & 3\\
+-1 & 4
+\end{pmatrix}
+\]
+est une matrice de taille \(3\times 2\).
+\end{exemple}
+
+\subsection{Matrices carrées}
+
+\begin{definition}
+Une matrice est dite \textbf{carrée} lorsque son nombre de lignes est égal à son nombre de colonnes, c’est-à-dire lorsqu’elle appartient à \(M_n(\K)=M_{n,n}(\K)\).
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix}
+\in M_2(\R)
+\]
+est une matrice carrée d’ordre \(2\).
+\end{exemple}
+
+\section{Égalité de matrices}
+
+\begin{definition}
+Deux matrices \(A=(a_{ij})\) et \(B=(b_{ij})\) sont égales si et seulement si :
+\begin{itemize}
+    \item elles ont la même taille ;
+    \item tous leurs coefficients correspondants sont égaux :
+    \[
+    \forall i,\forall j,\ a_{ij}=b_{ij}.
+    \]
+\end{itemize}
+\end{definition}
+
+\begin{exemple}
+Si
+\[
+\begin{pmatrix}
+x & 1\\
+2 & y
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 1\\
+2 & -4
+\end{pmatrix},
+\]
+alors
+\[
+x=3\qquad \text{et} \qquad y=-4.
+\]
+\end{exemple}
+
+\section{Addition et multiplication par un scalaire}
+
+\subsection{Addition}
+
+\begin{definition}
+Soient \(A=(a_{ij})\) et \(B=(b_{ij})\) deux matrices de même taille \(n\times p\).  
+On définit leur somme par
+\[
+A+B=(a_{ij}+b_{ij})_{1\le i\le n,\ 1\le j\le p}.
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix}
++
+\begin{pmatrix}
+0 & -1\\
+5 & 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 1\\
+8 & 6
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Multiplication par un scalaire}
+
+\begin{definition}
+Soit \(\lambda\in \K\) et \(A=(a_{ij})\in M_{n,p}(\K)\).  
+On définit
+\[
+\lambda A=(\lambda a_{ij})_{1\le i\le n,\ 1\le j\le p}.
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+2\begin{pmatrix}
+1 & -3\\
+0 & 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 & -6\\
+0 & 8
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Structure d’espace vectoriel}
+
+\begin{proposition}
+L’ensemble \(M_{n,p}(\K)\), muni de l’addition et de la multiplication par un scalaire définies coefficient par coefficient, est un espace vectoriel sur \(\K\).
+\end{proposition}
+
+\begin{proof}
+Les propriétés d’espace vectoriel découlent directement des propriétés des opérations dans \(\K\), appliquées coefficient par coefficient.
+\end{proof}
+
+\begin{remarque}
+On retrouve ici un exemple fondamental d’espace vectoriel de dimension finie.
+\end{remarque}
+
+\section{Matrices particulières}
+
+\subsection{Matrice nulle}
+
+\begin{definition}
+La \textbf{matrice nulle} de \(M_{n,p}(\K)\), notée \(0_{n,p}\) ou simplement \(0\) lorsqu’il n’y a pas d’ambiguïté, est la matrice dont tous les coefficients sont nuls.
+\end{definition}
+
+\begin{exemple}
+\[
+0_{2,3}=
+\begin{pmatrix}
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Matrice identité}
+
+\begin{definition}
+Dans \(M_n(\K)\), la \textbf{matrice identité} d’ordre \(n\), notée \(I_n\), est la matrice définie par
+\[
+(I_n)_{ij}=
+\begin{cases}
+1 & \text{si } i=j,\\
+0 & \text{si } i\neq j.
+\end{cases}
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+I_2=
+\begin{pmatrix}
+1 & 0\\
+0 & 1
+\end{pmatrix},
+\qquad
+I_3=
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Matrices lignes et colonnes}
+
+\begin{definition}
+Une matrice à une seule ligne est appelée \textbf{matrice ligne}.  
+Une matrice à une seule colonne est appelée \textbf{matrice colonne}.
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & -2 & 4
+\end{pmatrix}
+\]
+est une matrice ligne, tandis que
+\[
+\begin{pmatrix}
+1\\
+-2\\
+4
+\end{pmatrix}
+\]
+est une matrice colonne.
+\end{exemple}
+
+\subsection{Matrices diagonales, scalaires, triangulaires}
+
+\begin{definition}
+Une matrice carrée \(A=(a_{ij})\in M_n(\K)\) est :
+\begin{itemize}
+    \item \textbf{diagonale} si \(a_{ij}=0\) pour \(i\neq j\) ;
+    \item \textbf{scalaire} si elle est diagonale et si tous les coefficients diagonaux sont égaux ;
+    \item \textbf{triangulaire supérieure} si \(a_{ij}=0\) pour \(i>j\) ;
+    \item \textbf{triangulaire inférieure} si \(a_{ij}=0\) pour \(i<j\).
+\end{itemize}
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & -2 & 0\\
+0 & 0 & 5
+\end{pmatrix}
+\]
+est diagonale.
+
+\[
+3I_3=
+\begin{pmatrix}
+3 & 0 & 0\\
+0 & 3 & 0\\
+0 & 0 & 3
+\end{pmatrix}
+\]
+est scalaire.
+
+\[
+\begin{pmatrix}
+1 & 2 & 3\\
+0 & 4 & 5\\
+0 & 0 & 6
+\end{pmatrix}
+\]
+est triangulaire supérieure.
+\end{exemple}
+
+\section{Produit matriciel}
+
+\subsection{Définition}
+
+\begin{definition}
+Soient
+\[
+A=(a_{ij})\in M_{n,p}(\K)
+\qquad \text{et} \qquad
+B=(b_{jk})\in M_{p,q}(\K).
+\]
+On définit leur produit \(AB\in M_{n,q}(\K)\) par
+\[
+(AB)_{ik}=\sum_{j=1}^p a_{ij}b_{jk}.
+\]
+\end{definition}
+
+\begin{remarque}
+Le produit \(AB\) n’est défini que si le nombre de colonnes de \(A\) est égal au nombre de lignes de \(B\).
+\end{remarque}
+
+\begin{idee}
+Le coefficient \((i,k)\) du produit s’obtient en faisant le produit scalaire de la \(i\)-ème ligne de \(A\) avec la \(k\)-ème colonne de \(B\).
+\end{idee}
+
+\subsection{Exemple de calcul}
+
+\begin{exemple}
+Soient
+\[
+A=
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+5 & 6\\
+7 & 8
+\end{pmatrix}.
+\]
+Alors
+\[
+AB=
+\begin{pmatrix}
+1\cdot 5+2\cdot 7 & 1\cdot 6+2\cdot 8\\
+3\cdot 5+4\cdot 7 & 3\cdot 6+4\cdot 8
+\end{pmatrix}
+=
+\begin{pmatrix}
+19 & 22\\
+43 & 50
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\begin{exemple}
+Soient
+\[
+A=
+\begin{pmatrix}
+1 & 2 & 3\\
+0 & -1 & 4
+\end{pmatrix}
+\in M_{2,3}(\R),
+\qquad
+B=
+\begin{pmatrix}
+1\\
+2\\
+-1
+\end{pmatrix}
+\in M_{3,1}(\R).
+\]
+Alors
+\[
+AB=
+\begin{pmatrix}
+1+4-3\\
+0-2-4
+\end{pmatrix}
+=
+\begin{pmatrix}
+2\\
+-6
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Propriétés du produit matriciel}
+
+\begin{proposition}
+Soient \(A,B,C\) des matrices de tailles compatibles, et \(\lambda\in\K\). Alors :
+\begin{enumerate}[label=\arabic*)]
+    \item \(A(BC)=(AB)C\) ;
+    \item \(A(B+C)=AB+AC\) ;
+    \item \((A+B)C=AC+BC\) ;
+    \item \(\lambda(AB)=(\lambda A)B=A(\lambda B)\) ;
+    \item \(I_nA=A\) et \(AI_p=A\) si \(A\in M_{n,p}(\K)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Les preuves reposent sur le calcul des coefficients des matrices.
+
+Par exemple, pour l’associativité, si les tailles sont compatibles :
+\[
+((AB)C)_{ik}
+=
+\sum_{j} (AB)_{ij}c_{jk}
+=
+\sum_j \left(\sum_\ell a_{i\ell}b_{\ell j}\right)c_{jk}.
+\]
+En réorganisant les sommes,
+\[
+((AB)C)_{ik}
+=
+\sum_\ell a_{i\ell}\left(\sum_j b_{\ell j}c_{jk}\right)
+=
+\sum_\ell a_{i\ell}(BC)_{\ell k}
+=
+(A(BC))_{ik}.
+\]
+Les autres propriétés se démontrent de façon analogue.
+\end{proof}
+
+\begin{remarque}
+L’associativité permet d’écrire \(ABC\) sans parenthèses dès que le produit a un sens.
+\end{remarque}
+
+\subsection{Non-commutativité}
+
+\begin{proposition}
+En général,
+\[
+AB\neq BA.
+\]
+\end{proposition}
+
+\begin{exemple}
+Posons
+\[
+A=
+\begin{pmatrix}
+1 & 1\\
+0 & 0
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix}.
+\]
+Alors
+\[
+AB=
+\begin{pmatrix}
+2 & 0\\
+0 & 0
+\end{pmatrix},
+\qquad
+BA=
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix}.
+\]
+Donc
+\[
+AB\neq BA.
+\]
+\end{exemple}
+
+\begin{remarque}
+C’est l’une des différences majeures avec le calcul réel. Il faut toujours faire attention à l’ordre des facteurs.
+\end{remarque}
+
+\section{Produit par blocs ligne-colonne}
+
+\begin{proposition}
+Si
+\[
+A=
+\begin{pmatrix}
+L_1\\
+\vdots\\
+L_n
+\end{pmatrix}
+\in M_{n,p}(\K),
+\qquad
+B=
+\begin{pmatrix}
+C_1 & \cdots & C_q
+\end{pmatrix}
+\in M_{p,q}(\K),
+\]
+où les \(L_i\) sont les lignes de \(A\) et les \(C_j\) les colonnes de \(B\), alors
+\[
+AB=
+\big(L_iC_j\big)_{1\le i\le n,\ 1\le j\le q}.
+\]
+\end{proposition}
+
+\begin{remarque}
+Autrement dit, chaque coefficient de \(AB\) est obtenu en multipliant une ligne de \(A\) par une colonne de \(B\).
+\end{remarque}
+
+\section{Puissances d’une matrice carrée}
+
+\begin{definition}
+Soit \(A\in M_n(\K)\). On définit, pour tout entier \(k\in \N\),
+\[
+A^0=I_n,\qquad A^1=A,\qquad A^{k+1}=A^kA.
+\]
+\end{definition}
+
+\begin{remarque}
+Les puissances d’une matrice n’ont de sens que pour les matrices carrées.
+\end{remarque}
+
+\begin{proposition}
+Pour \(A\in M_n(\K)\) et \(p,q\in\N\),
+\[
+A^pA^q=A^{p+q}.
+\]
+\end{proposition}
+
+\begin{proof}
+La propriété se démontre par récurrence, en utilisant l’associativité du produit matriciel.
+\end{proof}
+
+\begin{exemple}
+Si
+\[
+A=
+\begin{pmatrix}
+1 & 1\\
+0 & 1
+\end{pmatrix},
+\]
+alors
+\[
+A^2=
+\begin{pmatrix}
+1 & 2\\
+0 & 1
+\end{pmatrix},
+\qquad
+A^3=
+\begin{pmatrix}
+1 & 3\\
+0 & 1
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\section{Transposée}
+
+\subsection{Définition}
+
+\begin{definition}
+Soit \(A=(a_{ij})\in M_{n,p}(\K)\).  
+La \textbf{transposée} de \(A\), notée \(A^T\), est la matrice de \(M_{p,n}(\K)\) définie par
+\[
+(A^T)_{ij}=a_{ji}.
+\]
+\end{definition}
+
+\begin{idee}
+Transposer une matrice revient à échanger ses lignes et ses colonnes.
+\end{idee}
+
+\begin{exemple}
+\[
+A=
+\begin{pmatrix}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{pmatrix}
+\quad \Longrightarrow \quad
+A^T=
+\begin{pmatrix}
+1 & 4\\
+2 & 5\\
+3 & 6
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Propriétés}
+
+\begin{proposition}
+Pour toutes matrices \(A,B\) de tailles compatibles et tout scalaire \(\lambda\in\K\),
+\begin{enumerate}[label=\arabic*)]
+    \item \((A^T)^T=A\) ;
+    \item \((A+B)^T=A^T+B^T\) ;
+    \item \((\lambda A)^T=\lambda A^T\) ;
+    \item \((AB)^T=B^TA^T\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Les trois premières propriétés découlent immédiatement de la définition coefficient par coefficient.
+
+Pour la quatrième, si \(A\in M_{n,p}(\K)\) et \(B\in M_{p,q}(\K)\), alors
+\[
+((AB)^T)_{ij}=(AB)_{ji}=\sum_{k=1}^p a_{jk}b_{ki}.
+\]
+Or
+\[
+(B^TA^T)_{ij}=\sum_{k=1}^p (B^T)_{ik}(A^T)_{kj}
+=\sum_{k=1}^p b_{ki}a_{jk}.
+\]
+Comme les produits scalaires commutent dans \(\K\),
+\[
+((AB)^T)_{ij}=(B^TA^T)_{ij}.
+\]
+Donc
+\[
+(AB)^T=B^TA^T.
+\]
+\end{proof}
+
+\begin{remarque}
+Il faut bien retenir l’inversion de l’ordre :
+\[
+(AB)^T\neq A^TB^T \quad \text{en général.}
+\]
+\end{remarque}
+
+\subsection{Matrices symétriques}
+
+\begin{definition}
+Une matrice carrée \(A\in M_n(\K)\) est dite \textbf{symétrique} si
+\[
+A^T=A.
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{pmatrix}
+1 & 2 & 3\\
+2 & 0 & -1\\
+3 & -1 & 4
+\end{pmatrix}
+\]
+est symétrique.
+\end{exemple}
+
+\section{Matrices inversibles}
+
+\subsection{Définition}
+
+\begin{definition}
+Soit \(A\in M_n(\K)\).  
+On dit que \(A\) est \textbf{inversible} s’il existe une matrice \(B\in M_n(\K)\) telle que
+\[
+AB=BA=I_n.
+\]
+Cette matrice \(B\) est appelée l’\textbf{inverse} de \(A\), et notée \(A^{-1}\).
+\end{definition}
+
+\begin{remarque}
+Seules les matrices carrées peuvent être inversibles.
+\end{remarque}
+
+\subsection{Unicité de l’inverse}
+
+\begin{proposition}
+Si une matrice carrée \(A\) est inversible, alors son inverse est unique.
+\end{proposition}
+
+\begin{proof}
+Supposons que \(B\) et \(C\) soient deux inverses de \(A\). Alors
+\[
+AB=BA=I_n
+\qquad \text{et} \qquad
+AC=CA=I_n.
+\]
+On calcule :
+\[
+B=BI_n=B(AC)=(BA)C=I_nC=C.
+\]
+Donc l’inverse est unique.
+\end{proof}
+
+\subsection{Exemples}
+
+\begin{exemple}
+La matrice identité \(I_n\) est inversible, et
+\[
+I_n^{-1}=I_n.
+\]
+\end{exemple}
+
+\begin{exemple}
+Si \(\lambda\in\K^\ast\), alors la matrice scalaire \(\lambda I_n\) est inversible et
+\[
+(\lambda I_n)^{-1}=\frac{1}{\lambda}I_n.
+\]
+\end{exemple}
+
+\begin{exemple}
+Pour
+\[
+A=
+\begin{pmatrix}
+a & 0\\
+0 & b
+\end{pmatrix},
+\]
+si \(a\neq 0\) et \(b\neq 0\), alors
+\[
+A^{-1}=
+\begin{pmatrix}
+\frac1a & 0\\
+0 & \frac1b
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Produit de matrices inversibles}
+
+\begin{proposition}
+Si \(A\) et \(B\) sont deux matrices inversibles de \(M_n(\K)\), alors \(AB\) est inversible et
+\[
+(AB)^{-1}=B^{-1}A^{-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+On calcule :
+\[
+(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=I_n,
+\]
+et
+\[
+(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}I_nB=I_n.
+\]
+Donc \(B^{-1}A^{-1}\) est bien l’inverse de \(AB\).
+\end{proof}
+
+\begin{remarque}
+L’ordre est inversé, comme pour la transposée.
+\end{remarque}
+
+\subsection{Inverse de la transposée}
+
+\begin{proposition}
+Si \(A\) est inversible, alors \(A^T\) est inversible et
+\[
+(A^T)^{-1}=(A^{-1})^T.
+\]
+\end{proposition}
+
+\begin{proof}
+Comme
+\[
+AA^{-1}=I_n,
+\]
+en transposant :
+\[
+(A^{-1})^TA^T=I_n.
+\]
+De même, à partir de
+\[
+A^{-1}A=I_n,
+\]
+on obtient
+\[
+A^T(A^{-1})^T=I_n.
+\]
+Donc \((A^{-1})^T\) est l’inverse de \(A^T\).
+\end{proof}
+
+\section{Calcul explicite de l’inverse en petite taille}
+
+\subsection{Cas \(2\times 2\)}
+
+\begin{proposition}
+Soit
+\[
+A=
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}.
+\]
+Si
+\[
+ad-bc\neq 0,
+\]
+alors \(A\) est inversible et
+\[
+A^{-1}=\frac{1}{ad-bc}
+\begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix}.
+\]
+\end{proposition}
+
+\begin{proof}
+On vérifie directement que
+\[
+A\cdot
+\begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix}
+=
+\begin{pmatrix}
+ad-bc & 0\\
+0 & ad-bc
+\end{pmatrix}
+=(ad-bc)I_2.
+\]
+Si \(ad-bc\neq 0\), on divise par cette quantité et on obtient bien l’inverse.
+\end{proof}
+
+\begin{exemple}
+Pour
+\[
+A=
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix},
+\]
+on a
+\[
+ad-bc=4-6=-2\neq 0,
+\]
+donc
+\[
+A^{-1}
+=
+-\frac12
+\begin{pmatrix}
+4 & -2\\
+-3 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2 & 1\\
+\frac32 & -\frac12
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Méthode par résolution de systèmes}
+
+\begin{remarque}
+Pour calculer l’inverse d’une matrice \(A\), on peut aussi résoudre les systèmes
+\[
+AX=E_1,\quad AX=E_2,\quad \dots,\quad AX=E_n,
+\]
+où \(E_1,\dots,E_n\) sont les colonnes de la base canonique. Les solutions forment alors les colonnes de \(A^{-1}\).
+\end{remarque}
+
+\section{Opérations élémentaires sur les lignes et matrices élémentaires}
+
+\subsection{Rappel}
+
+\begin{remarque}
+Au chapitre précédent, on a utilisé des opérations élémentaires sur les lignes d’un système. Ces opérations peuvent être vues comme des multiplications à gauche par certaines matrices particulières.
+\end{remarque}
+
+\subsection{Matrices élémentaires}
+
+\begin{definition}
+On appelle \textbf{matrices élémentaires} les matrices obtenues à partir de \(I_n\) en effectuant une unique opération élémentaire sur les lignes :
+\begin{itemize}
+    \item échange de deux lignes ;
+    \item multiplication d’une ligne par un scalaire non nul ;
+    \item ajout à une ligne d’un multiple d’une autre.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Multiplier une matrice \(A\) à gauche par une matrice élémentaire revient à effectuer sur \(A\) l’opération élémentaire de lignes correspondante.
+\end{proposition}
+
+\begin{remarque}
+C’est le fondement matriciel de la méthode du pivot de Gauss.
+\end{remarque}
+
+\section{Lien entre matrices et systèmes linéaires}
+
+\subsection{Écriture matricielle}
+
+\begin{definition}
+Le système linéaire
+\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
+\hspace{2.2cm}\vdots\\
+a_{p1}x_1+\cdots+a_{pn}x_n=b_p
+\end{cases}
+\]
+s’écrit matriciellement
+\[
+AX=B,
+\]
+où
+\[
+A=(a_{ij})\in M_{p,n}(\K),
+\qquad
+X=
+\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+b_1\\
+\vdots\\
+b_p
+\end{pmatrix}.
+\]
+\end{definition}
+
+\begin{exemple}
+Le système
+\[
+\begin{cases}
+x+2y-z=3,\\
+2x-y+4z=1
+\end{cases}
+\]
+s’écrit
+\[
+\begin{pmatrix}
+1 & 2 & -1\\
+2 & -1 & 4
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}
+=
+\begin{pmatrix}
+3\\
+1
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Cas d’un système carré}
+
+\begin{proposition}
+Si \(A\in M_n(\K)\) est inversible, alors le système
+\[
+AX=B
+\]
+admet une unique solution, donnée par
+\[
+X=A^{-1}B.
+\]
+\end{proposition}
+
+\begin{proof}
+Si \(AX=B\), en multipliant à gauche par \(A^{-1}\), on obtient
+\[
+X=A^{-1}B.
+\]
+Cette expression fournit une solution.
+
+Réciproquement, cette solution est unique car toute solution doit satisfaire cette égalité.
+\end{proof}
+
+\begin{remarque}
+L’inversibilité d’une matrice carrée garantit donc l’existence et l’unicité de la solution pour tout second membre.
+\end{remarque}
+
+\section{Matrice d’un vecteur et conventions}
+
+\begin{remarque}
+En algèbre linéaire, un vecteur de \(\K^n\) est souvent identifié à une matrice colonne de taille \(n\times 1\). C’est cette convention qui permet d’écrire les systèmes sous la forme
+\[
+AX=B.
+\]
+\end{remarque}
+
+\begin{exemple}
+Le vecteur \((x,y,z)\in\R^3\) sera souvent écrit
+\[
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\section{Premiers résultats utiles sur les matrices carrées}
+
+\subsection{Simplification}
+
+\begin{remarque}
+Contrairement aux nombres réels, on ne peut pas toujours simplifier dans un produit matriciel. Par exemple, de
+\[
+AB=AC
+\]
+on ne peut pas conclure en général que
+\[
+B=C.
+\]
+\end{remarque}
+
+\begin{proposition}
+Si \(A\in M_n(\K)\) est inversible et si
+\[
+AB=AC,
+\]
+alors
+\[
+B=C.
+\]
+De même, si
+\[
+BA=CA,
+\]
+alors
+\[
+B=C.
+\]
+\end{proposition}
+
+\begin{proof}
+Si \(AB=AC\), on multiplie à gauche par \(A^{-1}\) :
+\[
+A^{-1}AB=A^{-1}AC
+\Longrightarrow
+B=C.
+\]
+Le second cas se traite en multipliant à droite par \(A^{-1}\).
+\end{proof}
+
+\subsection{Produit nul}
+
+\begin{remarque}
+Le produit matriciel n’a pas la propriété de produit nul des réels :
+\[
+AB=0
+\]
+n’implique pas en général que
+\[
+A=0 \quad \text{ou} \quad B=0.
+\]
+\end{remarque}
+
+\begin{exemple}
+Posons
+\[
+A=
+\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+0 & 0\\
+1 & 0
+\end{pmatrix}.
+\]
+Alors
+\[
+AB=
+\begin{pmatrix}
+0 & 0\\
+0 & 0
+\end{pmatrix},
+\]
+mais \(A\neq 0\) et \(B\neq 0\).
+\end{exemple}
+
+\section{Dimension de l’espace des matrices}
+
+\begin{proposition}
+L’espace vectoriel \(M_{n,p}(\K)\) est de dimension
+\[
+np.
+\]
+\end{proposition}
+
+\begin{proof}
+Pour \(1\le i\le n\) et \(1\le j\le p\), on note \(E_{ij}\) la matrice dont tous les coefficients sont nuls sauf celui en position \((i,j)\), qui vaut \(1\).
+
+Toute matrice \(A=(a_{ij})\in M_{n,p}(\K)\) s’écrit
+\[
+A=\sum_{i=1}^n\sum_{j=1}^p a_{ij}E_{ij}.
+\]
+Donc la famille \((E_{ij})\) engendre \(M_{n,p}(\K)\).
+
+Elle est libre : si
+\[
+\sum_{i=1}^n\sum_{j=1}^p \lambda_{ij}E_{ij}=0,
+\]
+alors tous les coefficients de la matrice nulle sont nuls, donc
+\[
+\lambda_{ij}=0
+\]
+pour tous \(i,j\).
+
+Cette famille est donc une base de \(M_{n,p}(\K)\), contenant \(np\) éléments. Ainsi
+\[
+\dim(M_{n,p}(\K))=np.
+\]
+\end{proof}
+
+\begin{remarque}
+Cette base \((E_{ij})\) est la base canonique de l’espace des matrices.
+\end{remarque}
+
+\section{Méthodes pratiques}
+
+\begin{methode}
+Pour additionner ou multiplier une matrice par un scalaire, on travaille coefficient par coefficient.
+\end{methode}
+
+\begin{methode}
+Pour calculer un produit matriciel :
+\begin{enumerate}
+    \item vérifier d’abord que le produit a un sens ;
+    \item déterminer la taille de la matrice résultat ;
+    \item calculer chaque coefficient comme produit d’une ligne par une colonne.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}
+Pour montrer qu’une matrice \(B\) est l’inverse de \(A\), il faut vérifier
+\[
+AB=BA=I_n.
+\]
+\end{methode}
+
+\begin{methode}
+Pour résoudre un système carré \(AX=B\), si \(A\) est inversible, penser immédiatement à
+\[
+X=A^{-1}B.
+\]
+\end{methode}
+
+\section{Erreurs classiques}
+
+\begin{itemize}
+    \item Oublier de vérifier que le produit matriciel a un sens.
+    \item Croire que deux matrices de tailles différentes peuvent s’additionner.
+    \item Croire que le produit matriciel est commutatif.
+    \item Oublier que \((AB)^T=B^TA^T\).
+    \item Écrire à tort
+    \[
+    (AB)^{-1}=A^{-1}B^{-1}.
+    \]
+    La bonne formule est
+    \[
+    (AB)^{-1}=B^{-1}A^{-1}.
+    \]
+    \item Croire que \(AB=0\) implique \(A=0\) ou \(B=0\).
+    \item Utiliser la formule de l’inverse d’une matrice \(2\times 2\) sans vérifier que \(ad-bc\neq 0\).
+\end{itemize}
+
+\section{Résumé du chapitre}
+
+\begin{itemize}
+    \item Une matrice est un tableau de coefficients.
+    \item L’ensemble \(M_{n,p}(\K)\) est un espace vectoriel de dimension \(np\).
+    \item Le produit matriciel est défini lorsque les tailles sont compatibles.
+    \item Il est associatif et distributif, mais en général non commutatif.
+    \item La transposée échange les lignes et les colonnes, et vérifie
+    \[
+    (AB)^T=B^TA^T.
+    \]
+    \item Une matrice carrée \(A\) est inversible s’il existe \(A^{-1}\) tel que
+    \[
+    AA^{-1}=A^{-1}A=I_n.
+    \]
+    \item Si \(A\) est inversible, alors le système
+    \[
+    AX=B
+    \]
+    admet une unique solution
+    \[
+    X=A^{-1}B.
+    \]
+    \item Les opérations élémentaires sur les lignes correspondent à des multiplications par des matrices élémentaires.
+\end{itemize}
+
+\section*{Exercices d’application immédiate}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}]
+    \item Déterminer la taille des matrices suivantes :
+    \[
+    \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6
+    \end{pmatrix},
+    \qquad
+    \begin{pmatrix}
+    1\\
+    2\\
+    3
+    \end{pmatrix},
+    \qquad
+    \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+    \end{pmatrix}.
+    \]
+
+    \item Calculer :
+    \[
+    \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+    0 & -1\\
+    5 & 2
+    \end{pmatrix}.
+    \]
+
+    \item Calculer :
+    \[
+    3
+    \begin{pmatrix}
+    1 & -2\\
+    0 & 4
+    \end{pmatrix}.
+    \]
+
+    \item Calculer les produits suivants lorsqu’ils ont un sens :
+    \[
+    \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+    \end{pmatrix}
+    \begin{pmatrix}
+    5 & 6\\
+    7 & 8
+    \end{pmatrix},
+    \qquad
+    \begin{pmatrix}
+    1 & 2 & 3
+    \end{pmatrix}
+    \begin{pmatrix}
+    1\\
+    0\\
+    -1
+    \end{pmatrix}.
+    \]
+
+    \item Calculer la transposée de
+    \[
+    \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6
+    \end{pmatrix}.
+    \]
+
+    \item Vérifier sur un exemple que, en général,
+    \[
+    AB\neq BA.
+    \]
+
+    \item Déterminer l’inverse de
+    \[
+    \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+    \end{pmatrix}.
+    \]
+
+    \item Écrire sous forme matricielle le système
+    \[
+    \begin{cases}
+    x+2y-z=3,\\
+    2x-y+4z=1.
+    \end{cases}
+    \]
+
+    \item Résoudre le système
+    \[
+    \begin{cases}
+    x+y=1,\\
+    2x+3y=4
+    \end{cases}
+    \]
+    par la méthode de l’inverse de matrice.
+
+    \item Montrer que les matrices élémentaires traduisent les opérations élémentaires sur les lignes.
+\end{enumerate}
+
+\end{document}

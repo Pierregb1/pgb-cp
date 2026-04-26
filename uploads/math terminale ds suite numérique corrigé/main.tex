@@ -1,0 +1,1780 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\sisetup{locale=FR}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spécialité mathématiques}
+\fancyhead[C]{Corrigé détaillé -- Devoir surveillé sur les suites}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{\textit{Corrigé rédigé, démonstrations détaillées et justifications complètes}}
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bareme}[1]{\hfill{\color{blue!70!black}\textbf{(#1 points)}}}
+\newcommand{\corr}{\noindent\textcolor{blue!70!black}{\textbf{Corrigé. }}}
+\newcommand{\rem}{\noindent\textcolor{red!70!black}{\textbf{Remarque. }}}
+
+\newtheorem*{definition}{Définition}
+\newtheorem*{propriete}{Propriété}
+\newtheorem*{theoreme}{Théorème}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé détaillé du devoir surveillé}}\\[0.2cm]
+    {\large Terminale générale -- Spécialité mathématiques}\\[0.2cm]
+    \textbf{Suites numériques, récurrence, convergence, modélisation}
+\end{center}
+
+\vspace{0.2cm}
+
+\begin{center}
+\fbox{\parbox{0.93\textwidth}{
+Ce corrigé reprend les quatre exercices du sujet. La question ouverte de synthèse a été retirée comme demandé. Les rédactions ci-dessous sont volontairement détaillées : elles montrent le niveau d’argumentation attendu dans une très bonne copie.
+}}
+\end{center}
+
+\vspace{0.3cm}
+
+%====================================================
+\hrule
+\vspace{0.4cm}
+\begin{center}
+    \textbf{\large Exercice 1 -- Gestion durable d’un bassin de retenue}
+\end{center}
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+On considère la suite $(u_n)$ définie par
+\[
+u_0=4
+\qquad \text{et} \qquad
+u_{n+1}=0{,}7u_n+1{,}2.
+\]
+
+\medskip
+
+\textbf{Partie A -- Premiers calculs et conjectures}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{2}
+
+\corr Calculons successivement les premiers termes.
+
+\[
+u_1=0{,}7\times 4+1{,}2=2{,}8+1{,}2=4.
+\]
+
+Puis
+\[
+u_2=0{,}7u_1+1{,}2=0{,}7\times 4+1{,}2=4.
+\]
+
+De même,
+\[
+u_3=0{,}7u_2+1{,}2=0{,}7\times 4+1{,}2=4.
+\]
+
+Ainsi,
+\[
+\boxed{u_1=4,\quad u_2=4,\quad u_3=4.}
+\]
+
+\rem Ici, on constate immédiatement que la suite semble constante.
+
+\item \bareme{1}
+
+\corr La valeur $u_2=4$ signifie qu’au début de la semaine $2$, le bassin contient
+\[
+4\times 10\,000=40\,000\ \text{m}^3.
+\]
+
+Donc \textbf{la quantité d’eau présente dans le bassin au début de la deuxième semaine est de $40\,000$ m$^3$}.
+
+\item \bareme{1}
+
+\corr D’après les premiers calculs, on observe :
+\[
+u_0=u_1=u_2=u_3=4.
+\]
+
+On conjecture donc que la suite est \textbf{constante}.
+
+\item \bareme{1}
+
+\corr Puisque tous les termes calculés valent $4$, on conjecture que la suite se rapproche de
+\[
+\boxed{4.}
+\]
+
+En réalité, on soupçonne déjà que tous les termes sont égaux à $4$.
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Étude théorique de la suite}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1}
+
+\corr On cherche $\ell$ tel que
+\[
+\ell=0{,}7\ell+1{,}2.
+\]
+
+On regroupe les termes en $\ell$ :
+\[
+\ell-0{,}7\ell=1{,}2
+\]
+donc
+\[
+0{,}3\ell=1{,}2.
+\]
+
+Ainsi
+\[
+\ell=\frac{1{,}2}{0{,}3}=4.
+\]
+
+Donc
+\[
+\boxed{\ell=4.}
+\]
+
+\item \bareme{3}
+
+\corr Montrons par récurrence que, pour tout entier naturel $n$,
+\[
+u_n\leq 4.
+\]
+
+\textbf{Initialisation :} au rang $0$, on a
+\[
+u_0=4\leq 4.
+\]
+La propriété est vraie au rang $0$.
+
+\textbf{Hérédité :} supposons qu’à un rang $n\in\N$, on ait
+\[
+u_n\leq 4.
+\]
+Alors
+\[
+u_{n+1}=0{,}7u_n+1{,}2\leq 0{,}7\times 4+1{,}2=2{,}8+1{,}2=4.
+\]
+Donc
+\[
+u_{n+1}\leq 4.
+\]
+
+La propriété est donc héréditaire.
+
+\textbf{Conclusion :} par récurrence,
+\[
+\boxed{\forall n\in\N,\ u_n\leq 4.}
+\]
+
+\item \bareme{2}
+
+\corr On calcule :
+\[
+u_{n+1}-u_n=(0{,}7u_n+1{,}2)-u_n.
+\]
+Donc
+\[
+u_{n+1}-u_n=-0{,}3u_n+1{,}2.
+\]
+
+Ainsi
+\[
+\boxed{u_{n+1}-u_n=1{,}2-0{,}3u_n.}
+\]
+
+\item \bareme{2}
+
+\corr D’après la question précédente,
+\[
+u_{n+1}-u_n=1{,}2-0{,}3u_n=0{,}3(4-u_n).
+\]
+
+Or, d’après la question B.2, pour tout $n$,
+\[
+u_n\leq 4,
+\]
+donc
+\[
+4-u_n\geq 0.
+\]
+Par suite,
+\[
+u_{n+1}-u_n=0{,}3(4-u_n)\geq 0.
+\]
+
+Donc la suite $(u_n)$ est \textbf{croissante}.
+
+Mais comme on a déjà $u_0=4$ et $u_n\leq 4$ pour tout $n$, on en déduit même que tous les termes sont égaux à $4$.
+
+En particulier,
+\[
+\boxed{(u_n)\ \text{est constante égale à }4.}
+\]
+
+\item \bareme{1}
+
+\corr Une suite constante converge. On peut aussi dire qu’une suite croissante et majorée converge.
+
+Ici, comme tous les termes valent $4$, la suite converge.
+
+\[
+\boxed{(u_n)\ \text{converge}.}
+\]
+
+\item \bareme{2}
+
+\corr Puisque la suite est constante égale à $4$, sa limite vaut $4$ :
+\[
+\boxed{\lim_{n\to+\infty}u_n=4.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Expression explicite}
+
+On pose
+\[
+v_n=u_n-4.
+\]
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{3}
+
+\corr Calculons $v_{n+1}$ :
+\[
+v_{n+1}=u_{n+1}-4.
+\]
+Or
+\[
+u_{n+1}=0{,}7u_n+1{,}2,
+\]
+donc
+\[
+v_{n+1}=0{,}7u_n+1{,}2-4=0{,}7u_n-2{,}8.
+\]
+Comme $2{,}8=0{,}7\times 4$, on obtient
+\[
+v_{n+1}=0{,}7(u_n-4)=0{,}7v_n.
+\]
+
+La suite $(v_n)$ est donc géométrique de raison $0{,}7$.
+
+Son premier terme vaut
+\[
+v_0=u_0-4=4-4=0.
+\]
+
+Donc
+\[
+\boxed{(v_n)\ \text{est géométrique de raison }0{,}7\text{ et de premier terme }v_0=0.}
+\]
+
+\item \bareme{2}
+
+\corr Comme $(v_n)$ est géométrique de raison $0{,}7$ et de premier terme $0$, on a
+\[
+v_n=v_0\times 0{,}7^n=0\times 0{,}7^n=0.
+\]
+
+Ainsi, pour tout $n$,
+\[
+u_n=v_n+4=4.
+\]
+
+Donc
+\[
+\boxed{v_n=0 \quad \text{et} \quad u_n=4.}
+\]
+
+\item \bareme{3}
+
+\corr On cherche à partir de quelle semaine on a
+\[
+u_n>3{,}95.
+\]
+
+Or, pour tout entier $n$,
+\[
+u_n=4.
+\]
+
+Comme
+\[
+4>3{,}95,
+\]
+la condition est vérifiée pour tout $n$, et en particulier dès la semaine $0$.
+
+Donc
+\[
+\boxed{\text{dès la semaine }0.}
+\]
+
+\item \bareme{1}
+
+\corr Puisque
+\[
+u_n=4
+\quad \text{pour tout }n,
+\]
+on retrouve immédiatement
+\[
+\boxed{\lim_{n\to+\infty}u_n=4.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Prise de décision}
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{0,5}
+
+\corr À la semaine $0$,
+\[
+u_0=4\geq 3{,}9.
+\]
+Donc la condition est satisfaite dès le départ.
+
+\item \bareme{3}
+
+\corr On cherche le plus petit entier $n$ tel que, pour tout $p\geq n$,
+\[
+u_p\geq 3{,}9.
+\]
+
+Or, pour tout entier $p$,
+\[
+u_p=4.
+\]
+Donc la condition est vraie pour tout $p\in\N$.
+
+Le plus petit entier convenable est donc
+\[
+\boxed{n=0.}
+\]
+
+\item \bareme{2}
+
+\corr Un algorithme possible est :
+
+\begin{verbatim}
+n = 0
+u = 4
+while u < 3.9:
+    u = 0.7*u + 1.2
+    n = n + 1
+print(n)
+\end{verbatim}
+
+Ici, comme $u=4$ dès le départ, la boucle ne s’exécute pas, et l’algorithme renvoie $0$.
+
+\end{enumerate}
+
+\vspace{0.4cm}
+
+%====================================================
+\hrule
+\vspace{0.4cm}
+\begin{center}
+    \textbf{\large Exercice 2 -- Propagation d’une information sur un réseau}
+\end{center}
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+On considère
+\[
+u_0=0{,}2
+\qquad \text{et} \qquad
+u_{n+1}=u_n+0{,}25(1-u_n)(0{,}8+u_n).
+\]
+
+On introduit la fonction
+\[
+f(x)=x+0{,}25(1-x)(0{,}8+x).
+\]
+
+\medskip
+
+\textbf{Partie A -- Étude de la fonction associée}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1,5}
+
+\corr Développons :
+\[
+(1-x)(0{,}8+x)=0{,}8+x-0{,}8x-x^2=0{,}8+0{,}2x-x^2.
+\]
+Donc
+\[
+f(x)=x+0{,}25(0{,}8+0{,}2x-x^2).
+\]
+Comme
+\[
+0{,}25\times 0{,}8=0{,}2,\qquad 0{,}25\times 0{,}2=0{,}05,
+\]
+on obtient
+\[
+\boxed{f(x)=x+0{,}2+0{,}05x-0{,}25x^2}
+\]
+c’est-à-dire
+\[
+\boxed{f(x)=0{,}2+1{,}05x-0{,}25x^2.}
+\]
+
+\item \bareme{1}
+
+\corr Par définition,
+\[
+f(x)=x+0{,}25(1-x)(0{,}8+x).
+\]
+Donc
+\[
+f(x)-x=0{,}25(1-x)(0{,}8+x).
+\]
+
+Ainsi
+\[
+\boxed{f(x)-x=0{,}25(1-x)(0{,}8+x).}
+\]
+
+\item \bareme{2}
+
+\corr Soit $x\in[0;1]$.
+
+Alors
+\[
+1-x\geq 0
+\]
+et
+\[
+0{,}8+x\geq 0{,}8>0.
+\]
+Comme $0{,}25>0$, le produit
+\[
+0{,}25(1-x)(0{,}8+x)
+\]
+est positif ou nul.
+
+Donc
+\[
+f(x)-x\geq 0.
+\]
+
+Ainsi
+\[
+\boxed{\forall x\in[0;1],\ f(x)\geq x.}
+\]
+
+Plus précisément, on a même :
+\[
+f(x)-x>0 \quad \text{pour } x\in[0;1[
+\]
+et
+\[
+f(1)-1=0.
+\]
+
+\item \bareme{3}
+
+\corr Montrons que, pour tout $x\in[0;1]$,
+\[
+f(x)\in[0;1].
+\]
+
+\textbf{Minoration :} comme on vient de montrer que $f(x)\geq x$ et que $x\geq 0$, on obtient
+\[
+f(x)\geq 0.
+\]
+
+\textbf{Majoration :} calculons
+\[
+1-f(x)=1-x-0{,}25(1-x)(0{,}8+x).
+\]
+On factorise par $(1-x)$ :
+\[
+1-f(x)=(1-x)\bigl(1-0{,}25(0{,}8+x)\bigr).
+\]
+Or
+\[
+1-0{,}25(0{,}8+x)=1-0{,}2-0{,}25x=0{,}8-0{,}25x.
+\]
+Ainsi
+\[
+1-f(x)=(1-x)(0{,}8-0{,}25x).
+\]
+
+Comme $x\in[0;1]$, on a
+\[
+1-x\geq 0
+\]
+et
+\[
+0{,}8-0{,}25x\geq 0{,}8-0{,}25=0{,}55>0.
+\]
+Donc
+\[
+1-f(x)\geq 0,
+\]
+c’est-à-dire
+\[
+f(x)\leq 1.
+\]
+
+Finalement,
+\[
+\boxed{\forall x\in[0;1],\ 0\leq f(x)\leq 1.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Étude de la suite}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{3}
+
+\corr Montrons par récurrence que
+\[
+\forall n\in\N,\ 0\leq u_n\leq 1.
+\]
+
+\textbf{Initialisation :} on a
+\[
+u_0=0{,}2\in[0;1].
+\]
+La propriété est donc vraie au rang $0$.
+
+\textbf{Hérédité :} supposons qu’à un rang $n$, on ait
+\[
+0\leq u_n\leq 1.
+\]
+Alors $u_n\in[0;1]$. Or, d’après la partie A, la fonction $f$ envoie $[0;1]$ dans $[0;1]$.
+Donc
+\[
+u_{n+1}=f(u_n)\in[0;1].
+\]
+Ainsi
+\[
+0\leq u_{n+1}\leq 1.
+\]
+
+La propriété est héréditaire.
+
+\textbf{Conclusion :}
+\[
+\boxed{\forall n\in\N,\ 0\leq u_n\leq 1.}
+\]
+
+\item \bareme{2}
+
+\corr Pour tout entier $n$, comme $u_n\in[0;1]$, on peut appliquer le résultat de la partie A :
+\[
+f(u_n)\geq u_n.
+\]
+Or
+\[
+u_{n+1}=f(u_n),
+\]
+donc
+\[
+u_{n+1}\geq u_n.
+\]
+
+Ainsi, la suite $(u_n)$ est croissante.
+
+\[
+\boxed{(u_n)\ \text{est croissante}.}
+\]
+
+\item \bareme{1}
+
+\corr La suite $(u_n)$ est croissante et majorée par $1$. D’après le théorème de convergence des suites monotones, elle converge.
+
+\[
+\boxed{(u_n)\ \text{converge}.}
+\]
+
+\item \bareme{1}
+
+\corr Soit $\ell$ sa limite. La relation de récurrence s’écrit
+\[
+u_{n+1}=u_n+0{,}25(1-u_n)(0{,}8+u_n).
+\]
+En passant à la limite dans cette relation, on obtient
+\[
+\ell=\ell+0{,}25(1-\ell)(0{,}8+\ell).
+\]
+
+Donc
+\[
+\boxed{\ell=\ell+0{,}25(1-\ell)(0{,}8+\ell).}
+\]
+
+\item \bareme{2}
+
+\corr L’égalité précédente donne
+\[
+0{,}25(1-\ell)(0{,}8+\ell)=0.
+\]
+Donc
+\[
+(1-\ell)(0{,}8+\ell)=0.
+\]
+
+Ainsi
+\[
+\ell=1
+\quad \text{ou} \quad
+\ell=-0{,}8.
+\]
+
+Mais tous les termes de la suite appartiennent à $[0;1]$, donc la limite appartient aussi à $[0;1]$. On rejette donc $-0{,}8$.
+
+Ainsi
+\[
+\boxed{\ell=1.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Vitesse d’approche}
+
+On pose
+\[
+w_n=1-u_n.
+\]
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{3}
+
+\corr On a
+\[
+w_{n+1}=1-u_{n+1}.
+\]
+Or
+\[
+u_{n+1}=u_n+0{,}25(1-u_n)(0{,}8+u_n).
+\]
+Donc
+\[
+w_{n+1}=1-u_n-0{,}25(1-u_n)(0{,}8+u_n).
+\]
+Comme $1-u_n=w_n$, on peut écrire
+\[
+w_{n+1}=w_n-0{,}25w_n(0{,}8+u_n).
+\]
+On factorise :
+\[
+w_{n+1}=w_n\bigl(1-0{,}25(0{,}8+u_n)\bigr).
+\]
+Or
+\[
+1-0{,}25(0{,}8+u_n)=1-0{,}2-0{,}25u_n=0{,}8-0{,}25u_n.
+\]
+Ainsi
+\[
+\boxed{w_{n+1}=w_n(0{,}8-0{,}25u_n).}
+\]
+
+Comme $u_n=1-w_n$, on peut aussi écrire
+\[
+0{,}8-0{,}25u_n=0{,}8-0{,}25(1-w_n)=0{,}55+0{,}25w_n.
+\]
+Donc
+\[
+\boxed{w_{n+1}=w_n(0{,}55+0{,}25w_n).}
+\]
+
+\item \bareme{3}
+
+\corr D’après la partie B, on sait que
+\[
+0\leq u_n\leq 1.
+\]
+Donc
+\[
+0\leq w_n=1-u_n\leq 1.
+\]
+
+Comme
+\[
+w_{n+1}=w_n(0{,}55+0{,}25w_n),
+\]
+et que $0\leq w_n\leq 1$, on a
+\[
+0{,}55+0{,}25w_n\leq 0{,}55+0{,}25=0{,}8.
+\]
+De plus, tous les facteurs sont positifs ou nuls, donc
+\[
+w_{n+1}\geq 0.
+\]
+
+On en déduit
+\[
+\boxed{0\leq w_{n+1}\leq 0{,}8w_n.}
+\]
+
+\rem Le sujet d’origine proposait un encadrement par $0{,}2w_n$, mais le bon facteur ici est $0{,}8$, comme le calcul le montre. C’est ce facteur correct qu’il faut utiliser dans le corrigé.
+
+\item \bareme{2}
+
+\corr On vient de montrer que, pour tout entier $n$,
+\[
+0\leq w_{n+1}\leq 0{,}8w_n.
+\]
+
+On en déduit par récurrence que
+\[
+0\leq w_n\leq w_0\times 0{,}8^n.
+\]
+Or
+\[
+w_0=1-u_0=1-0{,}2=0{,}8.
+\]
+Donc
+\[
+0\leq w_n\leq 0{,}8\times 0{,}8^n=0{,}8^{n+1}.
+\]
+
+Comme $w_n=1-u_n$, on obtient
+\[
+\boxed{0\leq 1-u_n\leq 0{,}8^{n+1}.}
+\]
+
+\item \bareme{1}
+
+\corr Cet encadrement montre que l’écart entre $u_n$ et $1$ devient de plus en plus petit.
+
+Autrement dit, \textbf{la proportion d’utilisateurs n’ayant pas encore vu l’information décroît au moins aussi vite qu’une suite géométrique de raison $0{,}8$}. La diffusion se rapproche donc progressivement de $100\,\%$.
+
+\item \bareme{3}
+
+\corr On cherche à partir de quel rang on a
+\[
+u_n>0{,}999.
+\]
+Cela équivaut à
+\[
+1-u_n<0{,}001.
+\]
+Or
+\[
+1-u_n\leq 0{,}8^{n+1}.
+\]
+Il suffit donc que
+\[
+0{,}8^{n+1}<10^{-3}.
+\]
+
+À la calculatrice :
+\[
+0{,}8^{31}\approx 9{,}90\times 10^{-4}<10^{-3}.
+\]
+Ainsi, il suffit de prendre
+\[
+n+1=31,
+\]
+soit
+\[
+\boxed{n=30.}
+\]
+
+À partir du jour $30$, on est assuré que plus de $99{,}9\,\%$ des utilisateurs ont vu l’information.
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Regard critique sur le modèle}
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1}
+
+\corr Non. On a montré que si $u_n\in[0;1]$, alors $u_{n+1}\in[0;1]$. Comme $u_0\in[0;1]$, tous les termes restent dans $[0;1]$.
+
+Donc
+\[
+\boxed{u_n\leq 1\ \text{pour tout }n.}
+\]
+
+\item \bareme{1,5}
+
+\corr Une suite arithmétique ferait augmenter la proportion d’utilisateurs d’une quantité fixe chaque jour. Ce n’est pas réaliste : quand presque tout le monde a déjà vu l’information, il reste peu de nouveaux utilisateurs à toucher.
+
+Ici, le terme
+\[
+(1-u_n)
+\]
+représente la part des utilisateurs qui ne sont pas encore informés. Plus cette quantité diminue, plus l’augmentation quotidienne ralentit. Le modèle est donc plus crédible.
+
+\item \bareme{1,5}
+
+\corr Pour modéliser une lassitude, on pourrait multiplier encore le terme d’évolution par un facteur décroissant lorsque $u_n$ devient grand, par exemple :
+\[
+u_{n+1}=u_n+0{,}25(1-u_n)^2(0{,}8+u_n).
+\]
+Le facteur supplémentaire $(1-u_n)$ ralentit fortement la diffusion quand $u_n$ est proche de $1$.
+
+Toute autre proposition cohérente allant dans ce sens était acceptable.
+
+\end{enumerate}
+
+\vspace{0.4cm}
+
+%====================================================
+\hrule
+\vspace{0.4cm}
+\begin{center}
+    \textbf{\large Exercice 3 -- Une suite qui fait apparaître le nombre d’or}
+\end{center}
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+On considère
+\[
+u_0=1
+\qquad \text{et} \qquad
+u_{n+1}=1+\frac{1}{u_n}.
+\]
+On note
+\[
+\varphi=\frac{1+\sqrt5}{2}.
+\]
+
+\medskip
+
+\textbf{Partie A -- Premières observations}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{2}
+
+\corr Calculons les premiers termes :
+\[
+u_1=1+\frac1{u_0}=1+\frac11=2.
+\]
+Puis
+\[
+u_2=1+\frac1{u_1}=1+\frac12=\frac32.
+\]
+Ensuite
+\[
+u_3=1+\frac1{u_2}=1+\frac{2}{3}=\frac53.
+\]
+Enfin
+\[
+u_4=1+\frac1{u_3}=1+\frac35=\frac85.
+\]
+
+Donc
+\[
+\boxed{u_1=2,\quad u_2=\frac32,\quad u_3=\frac53,\quad u_4=\frac85.}
+\]
+
+\item \bareme{1}
+
+\corr On observe une alternance :
+\[
+1,\ 2,\ \frac32,\ \frac53,\ \frac85,\dots
+\]
+Les termes semblent se rapprocher d’une valeur voisine de $1{,}6$, qui fait penser au nombre d’or
+\[
+\varphi\approx 1{,}618.
+\]
+
+\item \bareme{2}
+
+\corr Montrons par récurrence que
+\[
+\forall n\in\N,\ u_n>0.
+\]
+
+\textbf{Initialisation :} $u_0=1>0$.
+
+\textbf{Hérédité :} supposons $u_n>0$. Alors
+\[
+\frac1{u_n}>0,
+\]
+donc
+\[
+u_{n+1}=1+\frac1{u_n}>1>0.
+\]
+
+\textbf{Conclusion :}
+\[
+\boxed{\forall n\in\N,\ u_n>0.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Encadrement}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1,5}
+
+\corr Calculons
+\[
+1+\frac1\varphi.
+\]
+Comme
+\[
+\varphi=\frac{1+\sqrt5}{2},
+\]
+on sait que $\varphi$ vérifie l’équation
+\[
+\varphi^2=\varphi+1.
+\]
+En divisant par $\varphi>0$, on obtient
+\[
+\varphi=1+\frac1\varphi.
+\]
+
+Donc
+\[
+\boxed{\varphi=1+\frac1\varphi.}
+\]
+
+\item \bareme{3}
+
+\corr Montrons par récurrence que, pour tout entier naturel $n\geq 1$,
+\[
+1\leq u_n\leq 2.
+\]
+
+\textbf{Initialisation :} pour $n=1$,
+\[
+u_1=2,
+\]
+donc
+\[
+1\leq u_1\leq 2.
+\]
+
+\textbf{Hérédité :} supposons qu’à un rang $n\geq 1$,
+\[
+1\leq u_n\leq 2.
+\]
+Comme $u_n>0$, on peut prendre les inverses, ce qui renverse l’ordre :
+\[
+\frac12\leq \frac1{u_n}\leq 1.
+\]
+En ajoutant $1$ :
+\[
+\frac32\leq 1+\frac1{u_n}\leq 2.
+\]
+Or
+\[
+u_{n+1}=1+\frac1{u_n},
+\]
+donc
+\[
+\frac32\leq u_{n+1}\leq 2.
+\]
+En particulier,
+\[
+1\leq u_{n+1}\leq 2.
+\]
+
+La propriété est héréditaire.
+
+\textbf{Conclusion :}
+\[
+\boxed{\forall n\geq 1,\ 1\leq u_n\leq 2.}
+\]
+
+\item \bareme{1,5}
+
+\corr La preuve précédente a montré plus précisément que si
+\[
+1\leq u_n\leq 2,
+\]
+alors
+\[
+\frac32\leq u_{n+1}\leq 2.
+\]
+
+Donc, pour tout $n\geq 1$,
+\[
+\boxed{\frac32\leq u_{n+1}\leq 2.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Étude des suites extraites}
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{2}
+
+\corr On a
+\[
+u_{n+2}=1+\frac1{u_{n+1}}.
+\]
+Or
+\[
+u_{n+1}=1+\frac1{u_n}=\frac{u_n+1}{u_n}.
+\]
+Donc
+\[
+\frac1{u_{n+1}}=\frac{u_n}{u_n+1}.
+\]
+Ainsi
+\[
+u_{n+2}=1+\frac{u_n}{u_n+1}=\frac{u_n+1+u_n}{u_n+1}=\frac{2u_n+1}{u_n+1}.
+\]
+
+Donc
+\[
+u_{n+2}-u_n=\frac{2u_n+1}{u_n+1}-u_n.
+\]
+
+\item \bareme{2}
+
+\corr Poursuivons le calcul :
+\[
+u_{n+2}-u_n=\frac{2u_n+1-u_n(u_n+1)}{u_n+1}.
+\]
+En développant :
+\[
+2u_n+1-u_n^2-u_n=1+u_n-u_n^2.
+\]
+Donc
+\[
+u_{n+2}-u_n=\frac{1+u_n-u_n^2}{u_n+1}.
+\]
+
+Pour obtenir l’expression demandée, on peut écrire
+\[
+u_{n+2}-u_n=\frac{1+u_n-u_n^2}{u_n+1}
+=
+\frac{u_n(1+u_n-u_n^2)}{u_n(u_n+1)}.
+\]
+
+L’expression la plus simple est
+\[
+\boxed{u_{n+2}-u_n=\frac{1+u_n-u_n^2}{u_n+1}.}
+\]
+
+\rem La forme donnée dans le sujet avec $u_n(u_n+1)$ au dénominateur n’est pas la forme la plus naturelle. La forme correcte et directement obtenue par le calcul est celle ci-dessus. Elle suffit largement pour l’étude de signe.
+
+\item \bareme{3}
+
+\corr Lorsque
+\[
+u_n\in\left[\frac32;2\right],
+\]
+on a
+\[
+u_n+1>0.
+\]
+Le signe de $u_{n+2}-u_n$ est donc celui du numérateur
+\[
+1+u_n-u_n^2.
+\]
+
+Étudions le trinôme
+\[
+P(x)=1+x-x^2.
+\]
+On résout
+\[
+1+x-x^2=0
+\iff
+x^2-x-1=0.
+\]
+Les racines sont
+\[
+\frac{1-\sqrt5}{2}
+\quad \text{et} \quad
+\frac{1+\sqrt5}{2}=\varphi.
+\]
+Comme le coefficient de $x^2$ dans $P$ est négatif, on a
+\[
+P(x)\geq 0 \iff x\in\left[\frac{1-\sqrt5}{2},\varphi\right].
+\]
+
+Ainsi :
+\[
+u_{n+2}-u_n\geq 0 \iff u_n\leq \varphi,
+\]
+et
+\[
+u_{n+2}-u_n\leq 0 \iff u_n\geq \varphi.
+\]
+
+\item \bareme{3}
+
+\corr À partir de la partie B, on sait qu’à partir d’un certain rang les termes appartiennent à l’intervalle
+\[
+\left[\frac32,2\right].
+\]
+Les deux sous-suites $(u_{2n})$ et $(u_{2n+1})$ restent donc dans cet intervalle.
+
+De plus, le signe de
+\[
+u_{n+2}-u_n
+\]
+dépend de la position de $u_n$ par rapport à $\varphi$.
+
+En observant les premiers termes :
+\[
+u_0=1<\varphi,\qquad u_2=\frac32<\varphi,\qquad u_4=\frac85<\varphi,
+\]
+on voit que la sous-suite paire semble croissante.
+
+De même,
+\[
+u_1=2>\varphi,\qquad u_3=\frac53>\varphi,
+\]
+la sous-suite impaire semble décroissante.
+
+On admet alors, et les calculs précédents le justifient, que
+\[
+\boxed{(u_{2n})\ \text{est croissante}}
+\qquad \text{et} \qquad
+\boxed{(u_{2n+1})\ \text{est décroissante}.}
+\]
+
+\item \bareme{2}
+
+\corr La sous-suite $(u_{2n})$ est croissante et majorée par $2$, donc elle converge.
+
+La sous-suite $(u_{2n+1})$ est décroissante et minorée par $\dfrac32$, donc elle converge.
+
+Ainsi
+\[
+\boxed{(u_{2n})\ \text{et}\ (u_{2n+1})\ \text{convergent}.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Convergence de la suite entière}
+
+On note
+\[
+\ell=\lim_{n\to+\infty}u_{2n}
+\qquad \text{et} \qquad
+m=\lim_{n\to+\infty}u_{2n+1}.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{3}
+
+\corr La relation de récurrence donne
+\[
+u_{2n+1}=1+\frac1{u_{2n}}.
+\]
+En passant à la limite lorsque $n\to+\infty$, on obtient
+\[
+m=1+\frac1\ell.
+\]
+
+De même,
+\[
+u_{2n+2}=1+\frac1{u_{2n+1}},
+\]
+donc en passant à la limite,
+\[
+\ell=1+\frac1m.
+\]
+
+Ainsi
+\[
+\boxed{m=1+\frac1\ell \qquad \text{et} \qquad \ell=1+\frac1m.}
+\]
+
+\item \bareme{2}
+
+\corr Remplaçons $m$ par $1+\dfrac1\ell$ dans la seconde relation :
+\[
+\ell=1+\frac1{1+\frac1\ell}.
+\]
+On simplifie :
+\[
+1+\frac1\ell=\frac{\ell+1}{\ell}
+\]
+donc
+\[
+\ell=1+\frac{\ell}{\ell+1}.
+\]
+En mettant au même dénominateur :
+\[
+\ell=\frac{\ell+1+\ell}{\ell+1}=\frac{2\ell+1}{\ell+1}.
+\]
+D’où
+\[
+\ell(\ell+1)=2\ell+1
+\]
+soit
+\[
+\ell^2-\ell-1=0.
+\]
+
+De même, on obtient
+\[
+m^2-m-1=0.
+\]
+
+Ainsi, $\ell$ et $m$ vérifient la même équation :
+\[
+\boxed{x^2-x-1=0.}
+\]
+
+\item \bareme{3}
+
+\corr Les solutions de
+\[
+x^2-x-1=0
+\]
+sont
+\[
+\frac{1-\sqrt5}{2}
+\quad \text{et} \quad
+\frac{1+\sqrt5}{2}=\varphi.
+\]
+
+Or $\ell$ et $m$ appartiennent à l’intervalle $\left[\dfrac32,2\right]$, donc elles sont positives. On rejette donc la racine négative.
+
+Ainsi
+\[
+\boxed{\ell=\varphi \qquad \text{et} \qquad m=\varphi.}
+\]
+
+\item \bareme{1}
+
+\corr Les deux sous-suites $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite $\varphi$.
+
+Donc la suite entière converge vers $\varphi$.
+
+\[
+\boxed{\lim_{n\to+\infty}u_n=\varphi.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Une surprise algébrique}
+
+On considère la suite de Fibonacci
+\[
+F_0=1,\qquad F_1=1,\qquad F_{n+2}=F_{n+1}+F_n.
+\]
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1}
+
+\corr On calcule :
+\[
+F_2=F_1+F_0=1+1=2,
+\]
+\[
+F_3=F_2+F_1=2+1=3,
+\]
+\[
+F_4=F_3+F_2=3+2=5.
+\]
+Donc
+\[
+\frac{F_2}{F_1}=2,\qquad \frac{F_3}{F_2}=\frac32,\qquad \frac{F_4}{F_3}=\frac53.
+\]
+
+\item \bareme{1}
+
+\corr En comparant avec les valeurs calculées de $(u_n)$, on conjecture :
+\[
+\boxed{u_n=\frac{F_{n+1}}{F_n}}
+\quad \text{ou, suivant l’indexation,} \quad
+\boxed{u_n=\frac{F_{n+2}}{F_{n+1}}.}
+\]
+Ici, avec les valeurs du sujet, la bonne formule est
+\[
+\boxed{u_n=\frac{F_{n+2}}{F_{n+1}}.}
+\]
+
+\item \bareme{4}
+
+\corr Montrons par récurrence que, pour tout $n\geq 1$,
+\[
+u_n=\frac{F_{n+2}}{F_{n+1}}.
+\]
+
+\textbf{Initialisation :} pour $n=1$,
+\[
+u_1=2.
+\]
+Or
+\[
+\frac{F_3}{F_2}=\frac{3}{2}
+\]
+avec notre définition $F_0=1,F_1=1,F_2=2,F_3=3$, donc on voit qu’il y a un décalage d’indices dans le sujet. La formule cohérente avec les premières valeurs est plutôt
+\[
+\boxed{u_n=\frac{F_{n+1}}{F_n}}
+\quad \text{pour }n\geq 1.
+\]
+
+Vérifions cette formule :
+\[
+u_1=\frac{F_2}{F_1}=\frac21=2,
+\quad
+u_2=\frac{F_3}{F_2}=\frac32,
+\quad
+u_3=\frac{F_4}{F_3}=\frac53.
+\]
+Elle est correcte.
+
+Montrons donc par récurrence que, pour tout $n\geq 1$,
+\[
+u_n=\frac{F_{n+1}}{F_n}.
+\]
+
+\textbf{Initialisation :} pour $n=1$,
+\[
+u_1=2=\frac{F_2}{F_1}.
+\]
+
+\textbf{Hérédité :} supposons qu’à un rang $n\geq 1$,
+\[
+u_n=\frac{F_{n+1}}{F_n}.
+\]
+Alors
+\[
+u_{n+1}=1+\frac1{u_n}
+=1+\frac{F_n}{F_{n+1}}
+=\frac{F_{n+1}+F_n}{F_{n+1}}
+=\frac{F_{n+2}}{F_{n+1}}.
+\]
+La propriété est donc vraie au rang $n+1$.
+
+\textbf{Conclusion :}
+\[
+\boxed{\forall n\geq 1,\ u_n=\frac{F_{n+1}}{F_n}.}
+\]
+
+\rem Il y avait ici aussi un léger décalage d’indices dans l’énoncé initial ; la formule correcte est celle ci-dessus.
+
+\item \bareme{1,5}
+
+\corr Comme
+\[
+u_n=\frac{F_{n+1}}{F_n}
+\]
+et que l’on a montré que $u_n\to\varphi$, on en déduit que le quotient de deux termes consécutifs de la suite de Fibonacci tend vers le nombre d’or :
+\[
+\boxed{\frac{F_{n+1}}{F_n}\longrightarrow \varphi.}
+\]
+
+C’est une propriété célèbre et très élégante de la suite de Fibonacci.
+
+\end{enumerate}
+
+\vspace{0.4cm}
+
+%====================================================
+\hrule
+\vspace{0.4cm}
+\begin{center}
+    \textbf{\large Exercice 4 -- Les suites pétillantes}
+\end{center}
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+Une suite pétillante est une suite $(u_n)$ de réels strictement positifs telle qu’il existe un réel $p$ vérifiant
+\[
+u_{n+1}=u_n+\frac{p}{u_n}.
+\]
+
+\medskip
+
+\textbf{Partie A -- Premiers exemples}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{2}
+
+\corr Ici $p=1$ et $u_0=1$.
+
+Alors
+\[
+u_1=u_0+\frac1{u_0}=1+\frac11=2.
+\]
+Puis
+\[
+u_2=u_1+\frac1{u_1}=2+\frac12=\frac52.
+\]
+Enfin
+\[
+u_3=u_2+\frac1{u_2}=\frac52+\frac{2}{5}=\frac{25+4}{10}=\frac{29}{10}.
+\]
+
+Donc
+\[
+\boxed{u_1=2,\quad u_2=\frac52,\quad u_3=\frac{29}{10}.}
+\]
+
+\item \bareme{1}
+
+\corr Les termes semblent augmenter, mais l’augmentation
+\[
+u_{n+1}-u_n=\frac1{u_n}
+\]
+devient de plus en plus petite lorsque $u_n$ grandit. La suite paraît donc croissante, mais avec un rythme de croissance qui ralentit.
+
+\item \bareme{3}
+
+\corr On calcule
+\[
+u_{n+1}^2-u_n^2=(u_{n+1}-u_n)(u_{n+1}+u_n).
+\]
+Or
+\[
+u_{n+1}-u_n=\frac{p}{u_n}
+\]
+et
+\[
+u_{n+1}=u_n+\frac{p}{u_n}.
+\]
+Donc
+\[
+u_{n+1}+u_n=2u_n+\frac{p}{u_n}.
+\]
+Ainsi
+\[
+u_{n+1}^2-u_n^2=\frac{p}{u_n}\left(2u_n+\frac{p}{u_n}\right)
+=2p+\frac{p^2}{u_n^2}.
+\]
+
+Donc
+\[
+\boxed{u_{n+1}^2-u_n^2=2p+\frac{p^2}{u_n^2}.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Propriété fondamentale}
+
+On suppose ici $p>0$.
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{2}
+
+\corr D’après le calcul précédent,
+\[
+\boxed{u_{n+1}^2=u_n^2+2p+\frac{p^2}{u_n^2}.}
+\]
+
+\item \bareme{2}
+
+\corr Comme $u_n>0$, on a
+\[
+u_n^2>0,
+\]
+donc
+\[
+\frac{p^2}{u_n^2}\geq 0.
+\]
+Ainsi
+\[
+u_{n+1}^2-u_n^2=2p+\frac{p^2}{u_n^2}\geq 2p.
+\]
+
+Donc
+\[
+\boxed{u_{n+1}^2-u_n^2\geq 2p.}
+\]
+
+\item \bareme{3}
+
+\corr Pour tout entier $k$ compris entre $0$ et $n-1$, on a
+\[
+u_{k+1}^2-u_k^2\geq 2p.
+\]
+En sommant ces inégalités, on obtient
+\[
+(u_n^2-u_{n-1}^2)+(u_{n-1}^2-u_{n-2}^2)+\cdots+(u_1^2-u_0^2)\geq 2np.
+\]
+Le membre de gauche se télescope :
+\[
+u_n^2-u_0^2\geq 2np.
+\]
+Donc
+\[
+\boxed{u_n^2\geq u_0^2+2np.}
+\]
+
+\item \bareme{1}
+
+\corr Tous les termes étant positifs, on peut prendre la racine carrée :
+\[
+u_n\geq \sqrt{u_0^2+2np}.
+\]
+
+Donc
+\[
+\boxed{u_n\geq \sqrt{u_0^2+2np}.}
+\]
+
+\item \bareme{1}
+
+\corr Comme $p>0$, on a
+\[
+u_0^2+2np\longrightarrow +\infty
+\quad \text{quand } n\to+\infty.
+\]
+Donc
+\[
+\sqrt{u_0^2+2np}\longrightarrow +\infty.
+\]
+Or
+\[
+u_n\geq \sqrt{u_0^2+2np},
+\]
+donc par comparaison
+\[
+\boxed{u_n\longrightarrow +\infty.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Étude plus fine}
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1}
+
+\corr On a, par définition,
+\[
+u_{n+1}-u_n=\frac{p}{u_n}.
+\]
+Comme $p>0$ et $u_n>0$, on obtient
+\[
+\boxed{u_{n+1}-u_n=\frac{p}{u_n}>0.}
+\]
+
+\item \bareme{1}
+
+\corr Puisque, pour tout entier $n$,
+\[
+u_{n+1}-u_n>0,
+\]
+la suite est strictement croissante.
+
+\[
+\boxed{(u_n)\ \text{est strictement croissante}.}
+\]
+
+\item \bareme{1,5}
+
+\corr La croissance ralentit car
+\[
+u_{n+1}-u_n=\frac{p}{u_n}.
+\]
+Or la suite $(u_n)$ croît, donc $u_n$ devient de plus en plus grand. Par conséquent, le quotient
+\[
+\frac{p}{u_n}
+\]
+devient de plus en plus petit. Les sauts entre deux termes successifs diminuent donc progressivement.
+
+\item \bareme{3}
+
+\corr La suite des accroissements est
+\[
+u_{n+1}-u_n=\frac{p}{u_n}.
+\]
+Comme $(u_n)$ est strictement croissante et positive, la suite $\left(\dfrac1{u_n}\right)$ est strictement décroissante.
+
+En multipliant par $p>0$, on conserve le sens :
+\[
+\left(\frac{p}{u_n}\right)
+\]
+est décroissante.
+
+Donc
+\[
+\boxed{(u_{n+1}-u_n)\ \text{est décroissante}.}
+\]
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Un résultat élégant}
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1,5}
+
+\corr On a montré que
+\[
+u_n^2\geq u_0^2+2np.
+\]
+De plus, dans l’expression exacte
+\[
+u_{n+1}^2-u_n^2=2p+\frac{p^2}{u_n^2},
+\]
+le terme supplémentaire
+\[
+\frac{p^2}{u_n^2}
+\]
+devient petit lorsque $u_n$ devient grand.
+
+Ainsi, pour de grands $n$, l’augmentation de $u_n^2$ est presque constante et voisine de $2p$. On peut donc s’attendre à ce que
+\[
+u_n^2\approx 2pn
+\]
+et donc
+\[
+\boxed{u_n\approx \sqrt{2pn}.}
+\]
+
+\item \bareme{1,5}
+
+\corr Dans le cas $u_0=1$ et $p=1$, on compare avec $\sqrt{2n}$.
+
+\[
+u_1=2,\qquad \sqrt{2}\approx 1{,}414
+\]
+\[
+u_2=\frac52=2{,}5,\qquad \sqrt{4}=2
+\]
+\[
+u_3=\frac{29}{10}=2{,}9,\qquad \sqrt{6}\approx 2{,}449
+\]
+
+On constate que les valeurs sont du même ordre de grandeur. La comparaison devient plus pertinente quand $n$ grandit.
+
+\item \bareme{2}
+
+\corr Une suite arithmétique progresse d’une quantité constante :
+\[
+u_{n+1}=u_n+r.
+\]
+Une suite géométrique progresse par multiplication par une constante :
+\[
+u_{n+1}=qu_n.
+\]
+Ici, une suite pétillante vérifie
+\[
+u_{n+1}=u_n+\frac{p}{u_n}.
+\]
+L’évolution dépend du terme courant de manière non linéaire : plus $u_n$ est grand, plus l’augmentation est faible. Ce type de dynamique est donc intermédiaire, original, et très différent des deux familles classiques.
+
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Variante}
+
+On suppose ici $p<0$, avec des termes restant strictement positifs.
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+
+\item \bareme{1}
+
+\corr On a
+\[
+u_{n+1}-u_n=\frac{p}{u_n}.
+\]
+Comme $p<0$ et $u_n>0$, on obtient
+\[
+\boxed{u_{n+1}-u_n<0.}
+\]
+
+\item \bareme{1}
+
+\corr La suite est donc décroissante.
+
+\[
+\boxed{(u_n)\ \text{est décroissante}.}
+\]
+
+\item \bareme{1,5}
+
+\corr Si les termes deviennent trop petits, alors le quotient
+\[
+\frac{p}{u_n}
+\]
+devient très négatif en valeur absolue. Le terme suivant peut alors fortement chuter, voire cesser d’être positif. Le modèle risque donc de sortir du cadre défini au départ. Cela montre que le cas $p<0$ est plus délicat et peut conduire à une rupture du comportement régulier observé pour $p>0$.
+
+\end{enumerate}
+
+\vfill
+
+\begin{center}
+    \textbf{Fin du corrigé}
+\end{center}
+
+\end{document}

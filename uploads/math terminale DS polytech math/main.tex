@@ -1,0 +1,371 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spécialité Mathématiques + Maths expertes}
+\fancyhead[C]{Devoir surveillé -- Version corrigée}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{\textit{La qualité du raisonnement, de la rédaction et de l'organisation de la preuve est essentielle}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{DEVOIR SURVEILLÉ -- Mathématiques}}\\[0.3em]
+    {\large \textbf{Niveau Terminale générale + option Maths expertes}}\\[0.4em]
+    {\large \textbf{Sujet d'approfondissement -- version corrigée}}\\[0.5em]
+    Durée conseillée : 3h à 3h30
+\end{center}
+
+\vspace{0.4em}
+
+\noindent\textbf{Consignes générales}
+\begin{itemize}[leftmargin=1.8em]
+    \item Tous les exercices sont indépendants.
+    \item Les résultats doivent être justifiés avec soin.
+    \item Les initiatives, les changements de point de vue et les raisonnements personnels pertinents sont valorisés.
+    \item Une réponse juste mais non justifiée pourra être très peu valorisée.
+\end{itemize}
+
+\vspace{0.4em}
+
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|}
+\hline
+Exercice 1 & Exercice 2 & Exercice 3 & Exercice 4 \\
+\hline
+18 points & 18 points & 22 points & 22 points \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 1 -- Fonctions, inégalités, raisonnement global \hfill /18}
+
+On considère la fonction \(g\) définie sur \(]0,+\infty[\) par
+\[
+g(x)=x-\ln x.
+\]
+
+\subsection*{Partie A -- Étude fine d'une fonction}
+\begin{enumerate}[label=\textbf{1.\arabic*}, leftmargin=1.6em]
+    \item Déterminer les limites de \(g\) en \(0^+\) et en \(+\infty\).
+    \item Étudier les variations de \(g\) sur \(]0,+\infty[\).
+    \item Montrer que, pour tout réel \(x>0\),
+    \[
+    x-\ln x\ge 1.
+    \]
+    Préciser le cas d'égalité.
+\end{enumerate}
+
+\subsection*{Partie B -- Une inégalité moins immédiate}
+On considère maintenant la fonction \(f\) définie sur \(]0,+\infty[\setminus\{1\}\) par
+\[
+f(x)=\frac{\ln x}{x-1}.
+\]
+
+\begin{enumerate}[label=\textbf{1.\arabic*}, resume, leftmargin=1.6em]
+    \item Déterminer le signe de \(f(x)\) selon les valeurs de \(x\).
+    \item Montrer que, pour tout \(x>0\), \(x\neq 1\),
+    \[
+    f'(x)=\frac{\frac{x-1}{x}-\ln x}{(x-1)^2}.
+    \]
+    \item En utilisant la fonction \(g\) ou toute autre méthode, étudier le signe de
+    \[
+    \frac{x-1}{x}-\ln x.
+    \]
+    \item En déduire les variations de \(f\) sur \(]0,1[\) puis sur \(]1,+\infty[\).
+    \item Déterminer
+    \[
+    \lim_{x\to 1}\frac{\ln x}{x-1}.
+    \]
+    \item Montrer finalement que, pour tout réel \(x>0\),
+    \[
+    \ln x \le x-1.
+    \]
+    \item Étudier le cas d'égalité.
+\end{enumerate}
+
+\subsection*{Partie C -- Exploitation}
+\begin{enumerate}[label=\textbf{1.\arabic*}, resume, leftmargin=1.6em]
+    \item Montrer que, pour tout réel \(x>0\),
+    \[
+    \ln x \le \sqrt{x}-1
+    \]
+    ou infirmer cette assertion par un contre-exemple soigneusement justifié.
+    \item Étudier le nombre de solutions de l'équation
+    \[
+    \ln x = \frac{x-1}{2}
+    \]
+    sur \(]0,+\infty[\).
+\end{enumerate}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 2 -- Probabilités, suite récurrente, vitesse de convergence \hfill /18}
+
+Une plateforme en ligne propose aléatoirement une réduction à un utilisateur qui se connecte plusieurs jours de suite.
+
+Pour tout entier naturel \(n\ge 1\), on note \(A_n\) l'événement :
+\[
+\text{\og l'utilisateur reçoit une réduction le \(n\)-ième jour \fg}
+\]
+et on pose
+\[
+a_n=P(A_n).
+\]
+
+On sait que :
+\begin{itemize}
+    \item au premier jour, la probabilité de recevoir une réduction est
+    \[
+    a_1=\frac12;
+    \]
+    \item si l'utilisateur a reçu une réduction un jour donné, alors la probabilité d'en recevoir une le lendemain est \(\dfrac13\) ;
+    \item s'il n'en a pas reçu un jour donné, alors la probabilité d'en recevoir une le lendemain est \(\dfrac14\).
+\end{itemize}
+
+\subsection*{Partie A -- Mise en équation}
+\begin{enumerate}[label=\textbf{2.\arabic*}, leftmargin=1.6em]
+    \item Représenter la situation par un arbre entre les jours \(n\) et \(n+1\).
+    \item Montrer que, pour tout entier \(n\ge 1\),
+    \[
+    a_{n+1}=\frac{1}{12}a_n+\frac14.
+    \]
+\end{enumerate}
+
+\subsection*{Partie B -- Étude théorique}
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+    \item Déterminer le réel \(\ell\) vérifiant
+    \[
+    \ell=\frac{1}{12}\ell+\frac14.
+    \]
+    \item On pose, pour tout \(n\ge 1\),
+    \[
+    u_n=a_n-\ell.
+    \]
+    Montrer que \((u_n)\) est géométrique.
+    \item Préciser sa raison et son premier terme.
+    \item En déduire l'expression de \(a_n\) en fonction de \(n\).
+    \item Déterminer la limite de la suite \((a_n)\).
+\end{enumerate}
+
+\subsection*{Partie C -- Lecture qualitative}
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+    \item Étudier le sens de variation de la suite \((a_n)\).
+    \item Déterminer, selon les valeurs de \(n\), si \(a_n\) est supérieur ou inférieur à \(\ell\).
+    \item Interpréter concrètement la valeur de \(\ell\).
+\end{enumerate}
+
+\subsection*{Partie D -- Question plus fine}
+\begin{enumerate}[label=\textbf{2.\arabic*}, resume, leftmargin=1.6em]
+    \item Déterminer le plus petit entier \(n\) tel que
+    \[
+    |a_n-\ell|<10^{-4}.
+    \]
+    \item On note
+    \[
+    S_n=a_1+a_2+\cdots+a_n.
+    \]
+    Donner une expression de \(S_n\) en fonction de \(n\).
+    \item Interpréter \(S_n\) dans le contexte.
+\end{enumerate}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 3 -- Nombres complexes et géométrie : structure cachée \hfill /22}
+
+Dans le plan complexe rapporté à un repère orthonormé direct, on considère les points
+\(A\), \(B\), \(C\) d'affixes respectives
+\[
+z_A=1,\qquad z_B=\ii,\qquad z_C=-1.
+\]
+
+\subsection*{Partie A -- Première lecture géométrique}
+\begin{enumerate}[label=\textbf{3.\arabic*}, leftmargin=1.6em]
+    \item Représenter les points \(A\), \(B\) et \(C\).
+    \item Déterminer les longueurs \(AB\), \(BC\) et \(CA\).
+    \item En déduire la nature du triangle \(ABC\).
+\end{enumerate}
+
+\subsection*{Partie B -- Une transformation complexe}
+On considère l'application \(T\) qui, à tout point \(M\) d'affixe \(z\), associe le point \(M'\) d'affixe
+\[
+z'=(1-\ii)z+1+\ii.
+\]
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+    \item Déterminer le module et un argument de \(1-\ii\).
+    \item Interpréter géométriquement l'application
+    \[
+    z\mapsto (1-\ii)z.
+    \]
+    \item Montrer que l'application \(T\) admet un unique point fixe \(\Omega\) dont on déterminera l'affixe.
+    \item Montrer que \(T\) est une similitude directe de centre \(\Omega\).
+    \item Déterminer le rapport et l'angle de cette similitude.
+\end{enumerate}
+
+\subsection*{Partie C -- Itérations}
+On définit une suite de points \((M_n)\) par :
+\[
+z_0=2,\qquad z_{n+1}=(1-\ii)z_n+1+\ii.
+\]
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+    \item Calculer \(z_1\) puis \(z_2\).
+    \item On note \(\omega\) l'affixe du point fixe de \(T\). Montrer que, pour tout entier naturel \(n\),
+    \[
+    z_{n+1}-\omega=(1-\ii)(z_n-\omega).
+    \]
+    \item En déduire l'expression de \(z_n-\omega\) en fonction de \(n\).
+    \item Montrer que
+    \[
+    |z_n-\omega|=(\sqrt2)^n|z_0-\omega|.
+    \]
+    \item Que peut-on en déduire sur le comportement géométrique des points \(M_n\) ?
+\end{enumerate}
+
+\subsection*{Partie D -- Une question de lieu}
+On considère l'ensemble \(\mathcal E\) des points \(M\) d'affixe \(z\neq 1\) tels que
+\[
+\left|\frac{z-\ii}{z-1}\right|=\sqrt2.
+\]
+
+\begin{enumerate}[label=\textbf{3.\arabic*}, resume, leftmargin=1.6em]
+    \item Donner une interprétation géométrique de cette relation.
+    \item Montrer que \(\mathcal E\) est un cercle dont on précisera le centre et le rayon.
+    \item Déterminer si le point \(C\) appartient à \(\mathcal E\).
+\end{enumerate}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.6em}
+
+\section*{Exercice 4 -- Arithmétique, congruences, structure des entiers \hfill /22}
+
+\subsection*{Partie A -- Étude modulo 7}
+\begin{enumerate}[label=\textbf{4.\arabic*}, leftmargin=1.6em]
+    \item Calculer les restes modulo \(7\) des puissances successives de \(3\) :
+    \[
+    3,\ 3^2,\ 3^3,\ 3^4,\ 3^5,\ 3^6.
+    \]
+    \item En déduire que, pour tout entier naturel \(n\),
+    \[
+    3^6\equiv 1 \pmod 7.
+    \]
+    \item Déterminer tous les entiers naturels \(n\) tels que
+    \[
+    3^n\equiv 5 \pmod 7.
+    \]
+\end{enumerate}
+
+\subsection*{Partie B -- Une équation plus structurée}
+On cherche les couples \((x,y)\in\Z^2\) tels que
+\[
+3x-7y=5.
+\]
+
+\begin{enumerate}[label=\textbf{4.\arabic*}, resume, leftmargin=1.6em]
+    \item Déterminer une solution particulière.
+    \item Déterminer toutes les solutions dans \(\Z^2\).
+    \item Déterminer toutes les solutions vérifiant de plus
+    \[
+    0\le x\le 20.
+    \]
+\end{enumerate}
+
+\subsection*{Partie C -- Carrés modulo 8}
+\begin{enumerate}[label=\textbf{4.\arabic*}, resume, leftmargin=1.6em]
+    \item Montrer que, pour tout entier relatif \(n\), le reste de la division de \(n^2\) par \(8\) appartient à l'ensemble
+    \[
+    \{0,1,4\}.
+    \]
+    \item En déduire que l'équation
+    \[
+    n^2\equiv 3 \pmod 8
+    \]
+    n'admet aucune solution entière.
+    \item Résoudre dans \(\Z\) la congruence
+    \[
+    n^2\equiv 1 \pmod 8.
+    \]
+\end{enumerate}
+
+\subsection*{Partie D -- Problème de synthèse}
+On considère l'équation
+\[
+x^2+7y^2=2026.
+\]
+
+\begin{enumerate}[label=\textbf{4.\arabic*}, resume, leftmargin=1.6em]
+    \item Montrer que l’étude modulo \(8\) est pertinente pour ce problème.
+    \item En étudiant l'équation modulo \(8\), montrer que l'équation n'admet aucune solution dans \(\Z^2\).
+\end{enumerate}
+
+\vspace{0.7em}
+\hrule
+\vspace{0.4em}
+
+\section*{Barème indicatif}
+
+\begin{itemize}[leftmargin=1.8em]
+    \item Exercice 1 : 18 points
+    \begin{itemize}
+        \item Partie A : 5 points
+        \item Partie B : 9 points
+        \item Partie C : 4 points
+    \end{itemize}
+    \item Exercice 2 : 18 points
+    \begin{itemize}
+        \item Partie A : 3 points
+        \item Partie B : 6 points
+        \item Partie C : 4 points
+        \item Partie D : 5 points
+    \end{itemize}
+    \item Exercice 3 : 22 points
+    \begin{itemize}
+        \item Partie A : 4 points
+        \item Partie B : 7 points
+        \item Partie C : 6 points
+        \item Partie D : 5 points
+    \end{itemize}
+    \item Exercice 4 : 22 points
+    \begin{itemize}
+        \item Partie A : 5 points
+        \item Partie B : 5 points
+        \item Partie C : 5 points
+        \item Partie D : 7 points
+    \end{itemize}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,989 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{array}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Algèbre linéaire --- Chapitre 3}
+\fancyhead[R]{Systèmes linéaires}
+\fancyfoot[C]{\thepage}
+
+% Environnements
+\newtheorem{definition}{Définition}[section]
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+\theoremstyle{remark}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem*{methode}{Méthode}
+\newtheorem*{idee}{Idée}
+
+% Commandes
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\rg}{\mathrm{rg}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Chapitre 3 --- Systèmes linéaires}}\\[0.5em]
+    {\large Résoudre, interpréter, structurer}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\tableofcontents
+
+\newpage
+
+\section{Pourquoi ce chapitre est-il fondamental ?}
+
+Les systèmes linéaires sont l’un des points de départ naturels de l’algèbre linéaire. Ils apparaissent partout :
+\begin{itemize}
+    \item en géométrie, pour décrire des intersections de droites ou de plans ;
+    \item en calcul matriciel ;
+    \item dans l’étude des espaces vectoriels et des applications linéaires ;
+    \item en sciences physiques, en économie, en informatique, dès qu’on modélise des relations linéaires entre inconnues.
+\end{itemize}
+
+\begin{idee}
+Résoudre un système linéaire, c’est chercher les valeurs des inconnues qui satisfont simultanément plusieurs équations linéaires.
+\end{idee}
+
+\begin{remarque}
+Ce chapitre est central, car beaucoup de questions d’algèbre linéaire se ramènent, en pratique, à la résolution d’un système linéaire :
+\begin{itemize}
+    \item tester si une famille est libre ;
+    \item déterminer si une famille est génératrice ;
+    \item calculer des coordonnées ;
+    \item résoudre des problèmes d’intersection de sous-espaces.
+\end{itemize}
+\end{remarque}
+
+\section{Définition d’un système linéaire}
+
+\subsection{Équation linéaire}
+
+\begin{definition}
+Soient \(x_1,\dots,x_n\) des inconnues à valeurs dans un corps \(\K\) (le plus souvent \(\R\) ou \(\C\)).  
+Une \textbf{équation linéaire} en \(x_1,\dots,x_n\) est une équation de la forme
+\[
+a_1x_1+\cdots+a_nx_n=b,
+\]
+où \(a_1,\dots,a_n,b\in\K\).
+\end{definition}
+
+\begin{remarque}
+Le mot \og linéaire \fg{} signifie que les inconnues apparaissent seulement au premier degré, sans produit entre elles, sans puissance, sans fonction non linéaire.
+\end{remarque}
+
+\begin{exemple}
+\[
+2x-3y+z=5
+\]
+est une équation linéaire en \(x,y,z\).
+
+En revanche,
+\[
+x^2+y=1
+\qquad \text{ou} \qquad
+xy+z=0
+\]
+ne sont pas des équations linéaires.
+\end{exemple}
+
+\subsection{Système linéaire}
+
+\begin{definition}
+Un \textbf{système linéaire} de \(p\) équations à \(n\) inconnues est un ensemble d’équations linéaires du type
+\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
+a_{21}x_1+\cdots+a_{2n}x_n=b_2,\\
+\hspace{2.5cm}\vdots\\
+a_{p1}x_1+\cdots+a_{pn}x_n=b_p.
+\end{cases}
+\]
+\end{definition}
+
+\begin{definition}
+Une \textbf{solution} du système est un \(n\)-uplet \((x_1,\dots,x_n)\in\K^n\) qui vérifie simultanément toutes les équations du système.
+\end{definition}
+
+\begin{exemple}
+Le système
+\[
+\begin{cases}
+x+y=3,\\
+2x-y=0
+\end{cases}
+\]
+admet pour solution \((1,2)\), car
+\[
+1+2=3
+\qquad \text{et} \qquad
+2\cdot 1-2=0.
+\]
+\end{exemple}
+
+\section{Systèmes homogènes et non homogènes}
+
+\subsection{Définitions}
+
+\begin{definition}
+Un système linéaire est dit \textbf{homogène} si tous les seconds membres sont nuls :
+\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=0,\\
+\hspace{2.2cm}\vdots\\
+a_{p1}x_1+\cdots+a_{pn}x_n=0.
+\end{cases}
+\]
+\end{definition}
+
+\begin{definition}
+Un système linéaire est dit \textbf{non homogène} s’il possède au moins un second membre non nul.
+\end{definition}
+
+\begin{exemple}
+Le système
+\[
+\begin{cases}
+x+2y-z=0,\\
+3x-y+4z=0
+\end{cases}
+\]
+est homogène.
+
+Le système
+\[
+\begin{cases}
+x+2y-z=1,\\
+3x-y+4z=0
+\end{cases}
+\]
+ne l’est pas.
+\end{exemple}
+
+\subsection{Propriété fondamentale des systèmes homogènes}
+
+\begin{proposition}
+Tout système linéaire homogène admet au moins une solution : la solution nulle
+\[
+(x_1,\dots,x_n)=(0,\dots,0).
+\]
+\end{proposition}
+
+\begin{proof}
+Si toutes les inconnues valent \(0\), alors chaque membre de gauche est nul, donc chaque équation est vérifiée.
+\end{proof}
+
+\begin{remarque}
+C’est une différence importante avec les systèmes non homogènes, qui peuvent ne pas avoir de solution du tout.
+\end{remarque}
+
+\section{Interprétation géométrique}
+
+\subsection{Dans le plan}
+
+\begin{exemple}
+Dans \(\R^2\), une équation linéaire
+\[
+ax+by=c
+\]
+représente une droite affine lorsque \((a,b)\neq (0,0)\).
+
+Ainsi, résoudre un système de deux équations à deux inconnues revient à chercher l’intersection de deux droites.
+\end{exemple}
+
+\begin{remarque}
+Trois situations peuvent se produire :
+\begin{itemize}
+    \item une unique solution : les droites sont sécantes ;
+    \item aucune solution : les droites sont parallèles distinctes ;
+    \item une infinité de solutions : les droites sont confondues.
+\end{itemize}
+\end{remarque}
+
+\subsection{Dans l’espace}
+
+\begin{exemple}
+Dans \(\R^3\), une équation linéaire
+\[
+ax+by+cz=d
+\]
+représente un plan affine lorsque \((a,b,c)\neq (0,0,0)\).
+
+Résoudre un système de deux ou trois équations revient alors à étudier l’intersection de plans.
+\end{exemple}
+
+\section{Opérations élémentaires sur les équations}
+
+\subsection{Principe}
+
+\begin{idee}
+Pour résoudre un système, on peut le transformer en un système plus simple, à condition de ne pas changer l’ensemble des solutions.
+\end{idee}
+
+\begin{definition}
+On appelle \textbf{opérations élémentaires sur les lignes} les opérations suivantes :
+\begin{enumerate}[label=\arabic*)]
+    \item échanger deux équations ;
+    \item multiplier une équation par un scalaire non nul ;
+    \item ajouter à une équation un multiple d’une autre.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Les opérations élémentaires conservent l’ensemble des solutions d’un système.
+\end{proposition}
+
+\begin{proof}
+\textbf{1.} Échanger deux équations ne change évidemment pas les conditions imposées aux inconnues.
+
+\textbf{2.} Multiplier une équation par un scalaire non nul ne change pas l’ensemble des solutions, car une égalité
+\[
+L=b
+\]
+équivaut à
+\[
+\lambda L=\lambda b
+\]
+si \(\lambda\neq 0\).
+
+\textbf{3.} Remplacer une équation \(L_2=b_2\) par
+\[
+L_2+\lambda L_1=b_2+\lambda b_1
+\]
+ne change pas l’ensemble des solutions, car toute solution de l’ancien système vérifie la nouvelle équation, et réciproquement, connaissant \(L_1=b_1\), on retrouve \(L_2=b_2\) en soustrayant \(\lambda L_1\).
+\end{proof}
+
+\begin{remarque}
+C’est ce principe qui justifie toute la méthode du pivot de Gauss.
+\end{remarque}
+
+\section{Méthode du pivot de Gauss}
+
+\subsection{Objectif}
+
+\begin{idee}
+La méthode du pivot de Gauss consiste à transformer le système en un système équivalent plus simple, de forme triangulaire, afin de résoudre successivement les inconnues.
+\end{idee}
+
+\subsection{Exemple simple}
+
+\begin{exemple}
+Résolvons le système
+\[
+\begin{cases}
+x+y=3,\\
+2x-y=0.
+\end{cases}
+\]
+
+On conserve la première ligne, et on remplace la deuxième par
+\[
+L_2 \leftarrow L_2-2L_1.
+\]
+On obtient
+\[
+\begin{cases}
+x+y=3,\\
+-3y=-6.
+\end{cases}
+\]
+Donc
+\[
+y=2.
+\]
+En reportant dans la première équation :
+\[
+x+2=3 \Longrightarrow x=1.
+\]
+La solution unique est
+\[
+(x,y)=(1,2).
+\]
+\end{exemple}
+
+\subsection{Forme triangulaire}
+
+\begin{definition}
+Un système est dit \textbf{triangulaire} si les inconnues apparaissent progressivement, par exemple :
+\[
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1,\\
+a_{22}x_2+\cdots+a_{2n}x_n=b_2,\\
+\hspace{2cm}\vdots\\
+a_{nn}x_n=b_n.
+\end{cases}
+\]
+\end{definition}
+
+\begin{remarque}
+Un système triangulaire se résout par \textbf{remontée} :
+\begin{itemize}
+    \item on détermine d’abord la dernière inconnue ;
+    \item puis on remonte ligne par ligne.
+\end{itemize}
+\end{remarque}
+
+\subsection{Description générale de la méthode}
+
+\begin{methode}
+Pour résoudre un système linéaire par pivot de Gauss :
+\begin{enumerate}
+    \item on choisit une inconnue à éliminer ;
+    \item on utilise une équation dans laquelle son coefficient est non nul comme \textbf{ligne pivot} ;
+    \item on élimine cette inconnue dans les autres équations ;
+    \item on recommence sur le système réduit ;
+    \item une fois la forme triangulaire obtenue, on remonte.
+\end{enumerate}
+\end{methode}
+
+\section{Systèmes compatibles, incompatibles, déterminés, indéterminés}
+
+\subsection{Définitions}
+
+\begin{definition}
+Un système est dit \textbf{compatible} s’il admet au moins une solution.
+
+Il est dit \textbf{incompatible} s’il n’admet aucune solution.
+\end{definition}
+
+\begin{definition}
+Un système compatible est dit :
+\begin{itemize}
+    \item \textbf{déterminé} s’il admet une unique solution ;
+    \item \textbf{indéterminé} s’il admet une infinité de solutions.
+\end{itemize}
+\end{definition}
+
+\begin{exemple}
+\[
+\begin{cases}
+x+y=2,\\
+x-y=0
+\end{cases}
+\]
+est déterminé.
+
+\[
+\begin{cases}
+x+y=2,\\
+2x+2y=4
+\end{cases}
+\]
+est indéterminé.
+
+\[
+\begin{cases}
+x+y=2,\\
+2x+2y=5
+\end{cases}
+\]
+est incompatible.
+\end{exemple}
+
+\subsection{Interprétation algébrique}
+
+\begin{remarque}
+Après réduction, trois types de situations apparaissent souvent :
+\begin{itemize}
+    \item une ligne du type
+    \[
+    0=1
+    \]
+    indique une incompatibilité ;
+    \item toutes les inconnues sont déterminées : il y a une solution unique ;
+    \item certaines inconnues restent libres : il y a une infinité de solutions.
+\end{itemize}
+\end{remarque}
+
+\section{Résolution des systèmes triangulaires}
+
+\begin{proposition}
+Un système triangulaire dont tous les coefficients diagonaux sont non nuls admet une unique solution.
+\end{proposition}
+
+\begin{proof}
+Considérons un système triangulaire
+\[
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1,\\
+a_{22}x_2+\cdots+a_{2n}x_n=b_2,\\
+\hspace{2cm}\vdots\\
+a_{nn}x_n=b_n,
+\end{cases}
+\]
+avec
+\[
+a_{11},a_{22},\dots,a_{nn}\neq 0.
+\]
+
+La dernière équation donne immédiatement
+\[
+x_n=\frac{b_n}{a_{nn}}.
+\]
+En reportant dans l’avant-dernière, on obtient \(x_{n-1}\), puis ainsi de suite jusqu’à \(x_1\). À chaque étape, le coefficient directeur de l’inconnue à déterminer est non nul, donc la valeur obtenue est unique. Ainsi le système admet une unique solution.
+\end{proof}
+
+\begin{exemple}
+Résolvons
+\[
+\begin{cases}
+x+2y-z=1,\\
+3y+4z=5,\\
+2z=6.
+\end{cases}
+\]
+La dernière équation donne
+\[
+z=3.
+\]
+Puis
+\[
+3y+12=5 \Longrightarrow 3y=-7 \Longrightarrow y=-\frac73.
+\]
+Enfin
+\[
+x+2\left(-\frac73\right)-3=1.
+\]
+Donc
+\[
+x-\frac{14}{3}-3=1
+\Longrightarrow
+x-\frac{23}{3}=1
+\Longrightarrow
+x=\frac{26}{3}.
+\]
+\end{exemple}
+
+\section{Systèmes homogènes et structure de l’ensemble des solutions}
+
+\subsection{Stabilité par combinaison linéaire}
+
+\begin{proposition}
+L’ensemble des solutions d’un système linéaire homogène est un sous-espace vectoriel de \(\K^n\).
+\end{proposition}
+
+\begin{proof}
+Considérons le système homogène
+\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=0,\\
+\hspace{2.2cm}\vdots\\
+a_{p1}x_1+\cdots+a_{pn}x_n=0.
+\end{cases}
+\]
+
+Notons \(S\) son ensemble de solutions.
+
+\textbf{1.} Le vecteur nul appartient à \(S\).
+
+\textbf{2.} Soient \(u=(u_1,\dots,u_n)\in S\) et \(v=(v_1,\dots,v_n)\in S\). Alors, pour chaque équation,
+\[
+a_{i1}u_1+\cdots+a_{in}u_n=0
+\quad \text{et} \quad
+a_{i1}v_1+\cdots+a_{in}v_n=0.
+\]
+En additionnant, on obtient que \(u+v\) est encore solution.
+
+\textbf{3.} Soit \(\lambda\in\K\) et \(u\in S\). En multipliant chaque égalité par \(\lambda\), on voit que \(\lambda u\in S\).
+
+Ainsi \(S\) est un sous-espace vectoriel de \(\K^n\).
+\end{proof}
+
+\begin{remarque}
+C’est un résultat fondamental : les systèmes homogènes conduisent naturellement à des sous-espaces vectoriels.
+\end{remarque}
+
+\subsection{Exemple}
+
+\begin{exemple}
+Considérons
+\[
+\begin{cases}
+x+y+z=0,\\
+x-y=0.
+\end{cases}
+\]
+La seconde équation donne
+\[
+x=y.
+\]
+En remplaçant dans la première :
+\[
+2x+z=0 \Longrightarrow z=-2x.
+\]
+Donc les solutions sont
+\[
+(x,x,-2x)=x(1,1,-2).
+\]
+Ainsi l’ensemble des solutions est
+\[
+\Vect((1,1,-2)).
+\]
+C’est une droite vectorielle de \(\R^3\).
+\end{exemple}
+
+\section{Systèmes non homogènes et structure de l’ensemble des solutions}
+
+\subsection{Différence de deux solutions}
+
+\begin{proposition}
+Soient \(u\) et \(v\) deux solutions d’un même système linéaire non homogène. Alors \(u-v\) est solution du système homogène associé.
+\end{proposition}
+
+\begin{proof}
+Considérons un système
+\[
+A x=b.
+\]
+Si \(u\) et \(v\) sont deux solutions, alors
+\[
+Au=b
+\qquad \text{et} \qquad
+Av=b.
+\]
+En soustrayant,
+\[
+A(u-v)=0.
+\]
+Donc \(u-v\) est solution du système homogène associé.
+\end{proof}
+
+\subsection{Description de toutes les solutions}
+
+\begin{theoreme}
+Si un système linéaire non homogène admet une solution particulière \(u_0\), alors l’ensemble de ses solutions est
+\[
+u_0+S_h,
+\]
+où \(S_h\) désigne l’ensemble des solutions du système homogène associé.
+\end{theoreme}
+
+\begin{proof}
+Soit \(S\) l’ensemble des solutions du système non homogène, et \(S_h\) celui du système homogène associé.
+
+Soit \(u\in S\). Alors, par la proposition précédente,
+\[
+u-u_0\in S_h,
+\]
+donc
+\[
+u=u_0+(u-u_0)\in u_0+S_h.
+\]
+Ainsi
+\[
+S\subset u_0+S_h.
+\]
+
+Réciproquement, si \(v\in S_h\), alors
+\[
+A(u_0+v)=Au_0+Av=b+0=b.
+\]
+Donc \(u_0+v\in S\). Ainsi
+\[
+u_0+S_h\subset S.
+\]
+
+On conclut que
+\[
+S=u_0+S_h.
+\]
+\end{proof}
+
+\begin{remarque}
+L’ensemble des solutions d’un système non homogène compatible est donc un \textbf{translaté} d’un sous-espace vectoriel.
+\end{remarque}
+
+\subsection{Exemple}
+
+\begin{exemple}
+Résolvons
+\[
+\begin{cases}
+x+y+z=1,\\
+x-y=0.
+\end{cases}
+\]
+On a encore
+\[
+x=y.
+\]
+Donc
+\[
+2x+z=1 \Longrightarrow z=1-2x.
+\]
+Les solutions sont
+\[
+(x,x,1-2x).
+\]
+En posant \(x=t\),
+\[
+(t,t,1-2t)=(0,0,1)+t(1,1,-2).
+\]
+Ainsi l’ensemble des solutions est
+\[
+(0,0,1)+\Vect((1,1,-2)).
+\]
+\end{exemple}
+
+\section{Systèmes à paramètres}
+
+\subsection{Principe}
+
+\begin{remarque}
+Dans de nombreux problèmes, les coefficients ou les seconds membres dépendent d’un paramètre. Il faut alors discuter selon les valeurs de ce paramètre.
+\end{remarque}
+
+\begin{methode}
+Pour discuter un système à paramètre :
+\begin{enumerate}
+    \item on applique la méthode du pivot de Gauss comme d’habitude ;
+    \item on repère les expressions qu’on divise ou qu’on utilise comme pivots ;
+    \item on distingue les cas selon que ces expressions sont nulles ou non.
+\end{enumerate}
+\end{methode}
+
+\subsection{Exemple}
+
+\begin{exemple}
+Discutons selon \(m\in\R\) le système
+\[
+\begin{cases}
+x+y=1,\\
+x+my=2.
+\end{cases}
+\]
+
+On soustrait la première équation à la deuxième :
+\[
+(m-1)y=1.
+\]
+
+\textbf{Cas 1 :} si \(m\neq 1\), alors
+\[
+y=\frac{1}{m-1},
+\]
+puis
+\[
+x=1-y=1-\frac{1}{m-1}=\frac{m-2}{m-1}.
+\]
+Il y a une unique solution.
+
+\textbf{Cas 2 :} si \(m=1\), le système devient
+\[
+\begin{cases}
+x+y=1,\\
+x+y=2,
+\end{cases}
+\]
+ce qui est impossible. Il n’y a aucune solution.
+\end{exemple}
+
+\section{Écriture matricielle d’un système}
+
+\subsection{Matrice des coefficients}
+
+\begin{definition}
+Au système
+\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
+\hspace{2.2cm}\vdots\\
+a_{p1}x_1+\cdots+a_{pn}x_n=b_p
+\end{cases}
+\]
+on associe :
+\begin{itemize}
+    \item la matrice des coefficients
+    \[
+    A=(a_{ij})\in M_{p,n}(\K),
+    \]
+    \item le vecteur inconnu
+    \[
+    X=\begin{pmatrix}x_1\\ \vdots\\ x_n\end{pmatrix},
+    \]
+    \item le vecteur second membre
+    \[
+    B=\begin{pmatrix}b_1\\ \vdots\\ b_p\end{pmatrix}.
+    \]
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Le système s’écrit alors
+\[
+AX=B.
+\]
+\end{definition}
+
+\begin{remarque}
+Cette écriture sera fondamentale dans les chapitres suivants.
+\end{remarque}
+
+\subsection{Matrice augmentée}
+
+\begin{definition}
+La \textbf{matrice augmentée} du système est la matrice obtenue en accolant le second membre à la matrice des coefficients :
+\[
+\left(
+\begin{array}{ccc|c}
+a_{11} & \cdots & a_{1n} & b_1\\
+\vdots &        & \vdots & \vdots\\
+a_{p1} & \cdots & a_{pn} & b_p
+\end{array}
+\right).
+\]
+\end{definition}
+
+\begin{remarque}
+Les opérations élémentaires se lisent alors comme des opérations sur les lignes de la matrice augmentée.
+\end{remarque}
+
+\section{Analyse-synthèse dans les systèmes linéaires}
+
+\begin{remarque}
+La méthode d’analyse-synthèse est très naturelle pour les systèmes linéaires :
+\begin{itemize}
+    \item l’analyse consiste à supposer qu’une solution existe et à dériver sa forme ;
+    \item la synthèse consiste à vérifier que les formes trouvées conviennent effectivement.
+\end{itemize}
+\end{remarque}
+
+\begin{exemple}
+Résolvons
+\[
+\begin{cases}
+x+y+z=0,\\
+x-y=0.
+\end{cases}
+\]
+
+\textbf{Analyse :} de \(x-y=0\), on déduit
+\[
+x=y.
+\]
+En remplaçant dans la première :
+\[
+2x+z=0 \Longrightarrow z=-2x.
+\]
+Donc toute solution éventuelle est de la forme
+\[
+(x,x,-2x)=t(1,1,-2).
+\]
+
+\textbf{Synthèse :} vérifions qu’un vecteur de cette forme est bien solution :
+\[
+t+t-2t=0
+\qquad \text{et} \qquad
+t-t=0.
+\]
+Donc toutes ces valeurs conviennent.
+
+L’ensemble des solutions est donc
+\[
+\Vect((1,1,-2)).
+\]
+\end{exemple}
+
+\section{Lien avec les chapitres suivants}
+
+\begin{remarque}
+Les systèmes linéaires interviennent immédiatement dans :
+\begin{itemize}
+    \item le calcul matriciel ;
+    \item les espaces vectoriels ;
+    \item les familles libres et génératrices ;
+    \item la dimension ;
+    \item les applications linéaires.
+\end{itemize}
+\end{remarque}
+
+\begin{exemple}
+Pour savoir si une famille \((u_1,\dots,u_p)\) est libre, on résout
+\[
+\lambda_1u_1+\cdots+\lambda_pu_p=0.
+\]
+C’est un système linéaire homogène en les \(\lambda_i\).
+
+Pour savoir si elle est génératrice, on cherche à résoudre
+\[
+x=\lambda_1u_1+\cdots+\lambda_pu_p
+\]
+pour tout vecteur \(x\). C’est encore un système linéaire.
+\end{exemple}
+
+\section{Méthodes pratiques}
+
+\begin{methode}
+Pour résoudre un système linéaire :
+\begin{enumerate}
+    \item écrire proprement le système ;
+    \item choisir une stratégie d’élimination ;
+    \item effectuer des opérations élémentaires justifiées ;
+    \item obtenir un système triangulaire si possible ;
+    \item résoudre par remontée ;
+    \item vérifier éventuellement la cohérence du résultat.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}
+Pour un système à paramètre :
+\begin{enumerate}
+    \item ne jamais diviser par une expression sans discuter le cas où elle s’annule ;
+    \item distinguer clairement les cas ;
+    \item conclure pour chaque cas : aucune solution, une solution unique, ou infinité de solutions.
+\end{enumerate}
+\end{methode}
+
+\section{Erreurs classiques}
+
+\begin{itemize}
+    \item Effectuer une opération sur une équation sans la faire sur le second membre.
+    \item Diviser par une quantité qui peut être nulle sans discuter les cas.
+    \item Confondre système homogène et système non homogène.
+    \item Oublier qu’un système homogène a toujours la solution nulle.
+    \item Mal interpréter une ligne du type
+    \[
+    0=0
+    \]
+    qui ne donne pas de contrainte nouvelle.
+    \item Mal interpréter une ligne du type
+    \[
+    0=1
+    \]
+    qui rend le système incompatible.
+    \item Conclure trop vite qu’un système est déterminé sans avoir traité toutes les inconnues.
+\end{itemize}
+
+\section{Résumé du chapitre}
+
+\begin{itemize}
+    \item Un système linéaire est un ensemble d’équations linéaires portant sur les mêmes inconnues.
+    \item Les opérations élémentaires conservent l’ensemble des solutions.
+    \item La méthode du pivot de Gauss permet de simplifier un système jusqu’à une forme triangulaire.
+    \item Un système homogène admet toujours la solution nulle.
+    \item L’ensemble des solutions d’un système homogène est un sous-espace vectoriel.
+    \item Si un système non homogène est compatible, l’ensemble de ses solutions est un translaté de l’ensemble des solutions du système homogène associé.
+    \item Les systèmes à paramètres se discutent selon les valeurs des pivots éventuels.
+    \item Un système s’écrit matriciellement sous la forme
+    \[
+    AX=B.
+    \]
+\end{itemize}
+
+\section*{Exercices d’application immédiate}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}]
+    \item Résoudre dans \(\R^2\) :
+    \[
+    \begin{cases}
+    x+y=5,\\
+    2x-y=1.
+    \end{cases}
+    \]
+
+    \item Résoudre dans \(\R^3\) :
+    \[
+    \begin{cases}
+    x+y+z=2,\\
+    x-y=0,\\
+    z=1.
+    \end{cases}
+    \]
+
+    \item Résoudre le système homogène
+    \[
+    \begin{cases}
+    x+y+z=0,\\
+    x-y=0.
+    \end{cases}
+    \]
+
+    \item Décrire l’ensemble des solutions du système
+    \[
+    \begin{cases}
+    x+y+z=1,\\
+    x-y=0.
+    \end{cases}
+    \]
+
+    \item Discuter selon \(m\in\R\) le système
+    \[
+    \begin{cases}
+    x+y=1,\\
+    x+my=2.
+    \end{cases}
+    \]
+
+    \item Écrire sous forme matricielle le système
+    \[
+    \begin{cases}
+    2x-y+z=3,\\
+    x+4y-2z=0.
+    \end{cases}
+    \]
+
+    \item Montrer que l’ensemble des solutions d’un système homogène est un sous-espace vectoriel.
+
+    \item Soient \(u\) et \(v\) deux solutions d’un système non homogène. Montrer que \(u-v\) est solution du système homogène associé.
+
+    \item Résoudre par pivot de Gauss :
+    \[
+    \begin{cases}
+    x+2y-z=1,\\
+    2x+y+z=4,\\
+    3x+3y=5.
+    \end{cases}
+    \]
+
+    \item Interpréter géométriquement dans \(\R^2\) les trois systèmes suivants :
+    \[
+    \begin{cases}
+    x+y=1,\\
+    x-y=0,
+    \end{cases}
+    \qquad
+    \begin{cases}
+    x+y=1,\\
+    2x+2y=2,
+    \end{cases}
+    \qquad
+    \begin{cases}
+    x+y=1,\\
+    2x+2y=3.
+    \end{cases}
+    \]
+\end{enumerate}
+
+\end{document}

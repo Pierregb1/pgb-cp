@@ -1,0 +1,694 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Encodage et langue ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% ---------- Mise en page ----------
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.08}
+
+% ---------- Maths ----------
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{bm}
+
+% ---------- Couleurs et encadrés ----------
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+% ---------- Listes ----------
+\usepackage{enumitem}
+
+% ---------- Liens ----------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+% ---------- En-têtes / pieds ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Banque d'exercices --- Terminale spécialité mathématiques}
+\fancyhead[R]{Raisonnements poussés}
+\fancyfoot[C]{\thepage}
+
+% ---------- Commandes ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+% ---------- Style des sections ----------
+\definecolor{bleuclair}{RGB}{225,238,255}
+\definecolor{bleufonce}{RGB}{25,70,140}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+\newtcolorbox{chapitrebox}[1]{
+    colback=bleuclair,
+    colframe=bleufonce,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,right=2mm,top=1mm,bottom=1mm,
+    title=\bfseries #1
+}
+
+\newtcolorbox{objectifbox}{
+    colback=grisclair,
+    colframe=black!50,
+    boxrule=0.5pt,
+    arc=1.5mm,
+    left=2mm,right=2mm,top=1mm,bottom=1mm
+}
+
+% ---------- Document ----------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Banque d'exercices de Terminale}}\\[0.3em]
+    {\large \textbf{avec raisonnements légèrement plus poussés}}\\[0.5em]
+    {\normalsize Niveau Terminale.
+\end{center}
+
+\vspace{0.5em}
+
+\begin{objectifbox}
+\textbf{Objectif.} Cette feuille regroupe des exercices classés par chapitre.  
+Les outils utilisés restent ceux du \textbf{programme de Terminale}, mais les raisonnements demandés sont plus fins, plus structurés et plus rigoureux.
+\end{objectifbox}
+
+\vspace{1em}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 1 --- Fonctions}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Soit \(f(x)=\dfrac{x^2-1}{x-1}\) définie sur \(\R\setminus\{1\}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Simplifier \(f(x)\).
+    \item Étudier les variations de \(f\).
+    \item Peut-on prolonger \(f\) par continuité en \(x=1\) ?
+    \item Interpréter graphiquement le résultat.
+\end{enumerate}
+
+\item Comparer \(e^\pi\) et \(\pi^e\).
+
+\item Soit \(f(x)=\dfrac{x}{x^2+1}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier les variations de \(f\) sur \(\R\).
+    \item Montrer que, pour tout réel \(x\),
+    \[
+    -\frac12 \leq f(x)\leq \frac12.
+    \]
+    \item Retrouver ce résultat sans utiliser la dérivée.
+\end{enumerate}
+
+\item Soit \(f(x)=\sqrt{x+2}-\sqrt{x}\) définie sur \([0,+\infty[\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier les variations de \(f\).
+    \item Déterminer sa limite en \(+\infty\).
+    \item Montrer que \(f(x)>0\) pour tout \(x\geq 0\).
+    \item Déterminer le plus grand réel \(M\) tel que \(f(x)\leq M\) pour tout \(x\geq 0\).
+\end{enumerate}
+
+\item Déterminer le nombre de solutions de l'équation
+\[
+x+\sqrt{x}=2.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Résoudre algébriquement.
+    \item Retrouver le résultat par une étude de fonction.
+    \item Expliquer l'intérêt de croiser les deux méthodes.
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 2 --- Suites}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, start=1, leftmargin=*, itemsep=1em]
+
+\item Soit \((u_n)\) définie par
+\[
+u_0=1,\qquad u_{n+1}=\frac{2u_n+3}{u_n+4}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que la suite est bien définie.
+    \item Conjecturer sa limite.
+    \item Montrer que si \(u_n\to \ell\), alors \(\ell\) vérifie une équation.
+    \item Montrer que \((u_n)\) est convergente.
+\end{enumerate}
+
+\item Soit \((u_n)\) définie par
+\[
+u_0\in ]0,1[,\qquad u_{n+1}=u_n(2-u_n).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(0<u_n<1\) pour tout \(n\).
+    \item Étudier le sens de variation de \((u_n)\).
+    \item Déterminer la limite de \((u_n)\).
+\end{enumerate}
+
+\item Soit
+\[
+u_n=\sum_{k=1}^n \frac{1}{k(k+1)}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer les premiers termes.
+    \item Simplifier cette somme.
+    \item Déterminer la limite de \((u_n)\).
+\end{enumerate}
+
+\item Soit \((u_n)\) définie par
+\[
+u_0=1,\qquad u_{n+1}=\sqrt{2+u_n}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(u_n\leq 2\) pour tout \(n\).
+    \item Étudier la monotonie de la suite.
+    \item Montrer qu'elle converge et déterminer sa limite.
+\end{enumerate}
+
+\item Soit
+\[
+u_n=\frac{n}{2^n}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier le sens de variation de \((u_n)\).
+    \item Déterminer sa limite.
+    \item Montrer qu'il existe un entier \(N\) tel que, pour tout \(n\geq N\),
+    \[
+    u_n\leq 10^{-3}.
+    \]
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 3 --- Dérivation et convexité}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Soit \(f(x)=x^3-3x\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier les variations de \(f\).
+    \item Étudier la convexité de \(f\).
+    \item Déterminer les tangentes horizontales.
+    \item Déterminer les points d'inflexion.
+\end{enumerate}
+
+\item Soit \(f(x)=\ln x\) sur \(]0,+\infty[\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que la courbe de \(f\) est en dessous de chacune de ses tangentes.
+    \item En déduire que, pour tout \(x>0\),
+    \[
+    \ln x\leq x-1.
+    \]
+\end{enumerate}
+
+\item Soit \(f(x)=e^x\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire l'équation de la tangente au point d'abscisse \(0\).
+    \item Comparer \(e^x\) et \(x+1\).
+    \item Étudier le signe de \(e^x-x-1\).
+\end{enumerate}
+
+\item Soit \(f(x)=\dfrac{1}{x}\) sur \(]0,+\infty[\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier la convexité de \(f\).
+    \item Montrer que, pour tous réels \(a,b>0\),
+    \[
+    \frac{1}{\frac{a+b}{2}} \leq \frac12\left(\frac1a+\frac1b\right).
+    \]
+\end{enumerate}
+
+\item Soit \(f(x)=x\ln x\) sur \(]0,+\infty[\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Étudier les variations de \(f\).
+    \item Étudier sa convexité.
+    \item Montrer que l'équation \(x\ln x=1\) admet une unique solution sur \(]1,+\infty[\).
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 4 --- Logarithme et exponentielle}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Résoudre dans \(\R\) :
+\[
+e^{2x}-3e^x+2=0.
+\]
+
+\item Résoudre :
+\[
+\ln(x+1)+\ln(x-2)=\ln 4.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer l'ensemble de définition.
+    \item Résoudre l'équation.
+    \item Vérifier les solutions obtenues.
+\end{enumerate}
+
+\item Étudier, selon le réel \(m\), le nombre de solutions de l'équation
+\[
+\ln x=mx.
+\]
+
+\item Étudier les variations de la fonction
+\[
+f(x)=\frac{\ln x}{x}
+\qquad \text{sur } ]0,+\infty[.
+\]
+En déduire une nouvelle démonstration pour comparer \(e^\pi\) et \(\pi^e\).
+
+\item Montrer que, pour tout \(x>0\),
+\[
+\ln x\leq x-1,
+\]
+puis discuter le cas d'égalité.
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 5 --- Intégration et primitives}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Calculer
+\[
+\int_0^1 (2x+3)\,dx,
+\]
+puis retrouver le résultat par une interprétation géométrique.
+
+\item Calculer
+\[
+\int_0^1 xe^x\,dx.
+\]
+
+\item Soit
+\[
+f(x)=\frac{1}{x^2+1}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que, pour tout \(x\in[0,1]\),
+    \[
+    \frac12\leq f(x)\leq 1.
+    \]
+    \item En déduire un encadrement de
+    \[
+    \int_0^1 \frac{1}{x^2+1}\,dx.
+    \]
+\end{enumerate}
+
+\item On considère
+\[
+A(x)=\int_0^x (t^2-2t+3)\,dt.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer \(A(x)\).
+    \item Étudier ses variations.
+    \item Interpréter \(A(x)\) comme une aire algébrique.
+\end{enumerate}
+
+\item Pour tout entier \(n\in\N\), on pose
+\[
+I_n=\int_0^1 x^n\,dx.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer \(I_n\).
+    \item Étudier la suite \((I_n)\).
+    \item Déterminer sa limite.
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 6 --- Équations différentielles}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Résoudre sur \(\R\) :
+\[
+y'+2y=0.
+\]
+
+\item Déterminer la solution de
+\[
+y'-3y=0
+\]
+vérifiant \(y(0)=5\).
+
+\item Résoudre
+\[
+y'+y=2.
+\]
+
+\item On considère l'équation
+\[
+y'=ky.
+\]
+Déterminer, selon le réel \(k\), les solutions croissantes.
+
+\item Une population bactérienne est modélisée par
+\[
+P'(t)=0{,}3P(t),\qquad P(0)=500.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer \(P(t)\).
+    \item À quel instant la population dépasse-t-elle 2000 ?
+    \item Interpréter le modèle.
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 7 --- Probabilités}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item On lance deux dés équilibrés.
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer la probabilité d'obtenir une somme égale à 7.
+    \item Déterminer la probabilité d'obtenir une somme supérieure ou égale à 10.
+    \item Les événements précédents sont-ils incompatibles ?
+\end{enumerate}
+
+\item Dans une urne, on place 5 boules rouges, 3 bleues et 2 vertes.  
+On tire une boule au hasard.
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer la probabilité d'obtenir une boule rouge.
+    \item Calculer la probabilité de ne pas obtenir une boule verte.
+    \item Calculer la probabilité d'obtenir une boule rouge ou bleue.
+\end{enumerate}
+
+\item On sait que
+\[
+P(A)=0{,}6,\qquad P(B)=0{,}5,\qquad P(A\cap B)=0{,}3.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer \(P(A\cup B)\).
+    \item Les événements \(A\) et \(B\) sont-ils indépendants ?
+    \item Calculer \(P_A(B)\).
+\end{enumerate}
+
+\item Dans une population, \(2\%\) des individus ont une maladie.  
+Un test est positif dans \(95\%\) des cas chez les malades, et dans \(4\%\) des cas chez les non-malades.
+
+\begin{enumerate}[label=\alph*)]
+    \item Construire un arbre pondéré.
+    \item Calculer la probabilité qu'un individu soit testé positif.
+    \item Calculer la probabilité qu'un individu soit malade sachant que le test est positif.
+\end{enumerate}
+
+\item On considère deux événements \(A\) et \(B\) tels que \(P(B)\neq 0\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que
+    \[
+    P(A\cap B)=P(B)\,P_B(A).
+    \]
+    \item Retrouver la formule des probabilités totales dans un cas simple.
+    \item Donner un exemple numérique.
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 8 --- Variables aléatoires et loi binomiale}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item On lance 5 fois une pièce équilibrée.  
+Soit \(X\) le nombre de piles obtenus.
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer la loi de \(X\).
+    \item Calculer \(P(X=3)\).
+    \item Calculer \(P(X\geq 1)\).
+\end{enumerate}
+
+\item Une machine produit des pièces avec \(3\%\) de défauts.  
+On prélève 20 pièces au hasard. Soit \(X\) le nombre de pièces défectueuses.
+
+\begin{enumerate}[label=\alph*)]
+    \item Justifier que \(X\) suit une loi binomiale.
+    \item Déterminer ses paramètres.
+    \item Calculer \(P(X=0)\).
+    \item Calculer \(P(X\leq 2)\).
+\end{enumerate}
+
+\item On considère \(X\sim\mathcal{B}(n,p)\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Donner l'espérance \(E(X)\).
+    \item Dans le cas \(n=10\) et \(p=0{,}2\), calculer \(E(X)\).
+    \item Interpréter le résultat.
+\end{enumerate}
+
+\item On joue à un jeu où la probabilité de gagner une partie est \(0{,}4\).  
+On joue 8 parties. Soit \(X\) le nombre de victoires.
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer \(P(X=4)\).
+    \item Calculer \(P(X\geq 4)\).
+    \item Déterminer le nombre moyen de victoires.
+\end{enumerate}
+
+\item Une variable aléatoire \(X\) suit une loi binomiale \(\mathcal{B}(6,p)\).  
+On sait que
+\[
+P(X=0)=\frac1{64}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer \(p\).
+    \item Calculer \(P(X=2)\).
+    \item Calculer l'espérance de \(X\).
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 9 --- Géométrie dans l'espace}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Dans un repère de l'espace, on considère
+\[
+A(1,0,2),\quad B(2,1,3),\quad C(0,1,1).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer \(\overrightarrow{AB}\) et \(\overrightarrow{AC}\).
+    \item Montrer que les points \(A\), \(B\) et \(C\) ne sont pas alignés.
+\end{enumerate}
+
+\item Déterminer une représentation paramétrique de la droite passant par \(A(1,2,3)\) et de vecteur directeur \((2,-1,4)\).
+
+\item On considère le plan \((P)\) d'équation
+\[
+2x-y+z-3=0.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Vérifier que \(A(1,0,1)\) appartient à \((P)\).
+    \item Donner un vecteur normal au plan.
+    \item Déterminer si la droite de vecteur directeur \((2,-1,1)\) est parallèle au plan.
+\end{enumerate}
+
+\item On considère les droites
+\[
+d:\begin{cases}
+x=1+t\\
+y=2-t\\
+z=3+2t
+\end{cases}
+\qquad
+d':\begin{cases}
+x=2+s\\
+y=1+2s\\
+z=5+s
+\end{cases}
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer si elles sont parallèles.
+    \item Déterminer si elles sont sécantes.
+    \item Conclure sur leur position relative.
+\end{enumerate}
+
+\item Dans un cube, montrer qu'une droite est perpendiculaire à un plan à l'aide d'un raisonnement vectoriel.
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 10 --- Nombres complexes}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Résoudre dans \(\C\) :
+\[
+z^2+4=0.
+\]
+
+\item Mettre sous forme algébrique :
+\[
+(2+3i)(1-4i).
+\]
+
+\item Résoudre dans \(\C\) :
+\[
+z^2-2z+5=0.
+\]
+
+\item Soit \(z=1+i\sqrt{3}\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer le module de \(z\).
+    \item Déterminer un argument de \(z\).
+    \item Écrire \(z\) sous forme trigonométrique.
+\end{enumerate}
+
+\item On considère les points \(A\), \(B\), \(C\) d'affixes respectives \(1\), \(i\), \(1+i\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Placer ces points dans le plan complexe.
+    \item Montrer que le triangle \(ABC\) est rectangle.
+    \item Montrer qu'il est isocèle.
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 11 --- Algorithmique et raisonnement}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item On considère l'algorithme suivant :
+
+\begin{center}
+\begin{tabular}{l}
+\(u\leftarrow 1\)\\
+Pour \(k\) allant de \(1\) à \(n\)\\
+\hspace{1em} \(u\leftarrow 2u+1\)
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=\alph*)]
+    \item Calculer les premières valeurs.
+    \item Conjecturer une expression de \(u_n\).
+    \item Démontrer cette expression par récurrence.
+\end{enumerate}
+
+\item Écrire un algorithme qui détermine le plus petit entier \(n\) tel que
+\[
+\frac{n}{2^n}<10^{-4}.
+\]
+
+\item On considère une suite définie par récurrence.  
+Proposer :
+
+\begin{enumerate}[label=\alph*)]
+    \item un algorithme qui calcule \(u_n\) ;
+    \item un algorithme qui affiche le premier rang où \(u_n>100\).
+\end{enumerate}
+
+\item On veut approcher une solution de l'équation
+\[
+x^3+x-1=0
+\]
+sur \([0,1]\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer qu'il existe une unique solution sur \([0,1]\).
+    \item Décrire une méthode de dichotomie.
+    \item Écrire un algorithme associé.
+\end{enumerate}
+
+\item On considère une fonction \(f\) strictement croissante sur \([a,b]\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Expliquer pourquoi l'équation \(f(x)=0\) admet au plus une solution.
+    \item Proposer une méthode algorithmique pour l'approcher si \(f(a)<0<f(b)\).
+\end{enumerate}
+
+\end{enumerate}
+
+% =========================================================
+\begin{chapitrebox}{Chapitre 12 --- Arithmétique}
+\end{chapitrebox}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}, leftmargin=*, itemsep=1em]
+
+\item Déterminer le reste de la division euclidienne de \(2^{10}\) par 7.
+
+\item Montrer que si \(n\) est impair, alors \(n^2\) est impair.
+
+\item Montrer que pour tout entier \(n\),
+\[
+n(n+1)
+\]
+est pair.
+
+\item Déterminer les entiers \(n\) tels que
+\[
+n^2-n
+\]
+soit divisible par 2.
+
+\item Montrer que pour tout entier \(n\),
+\[
+n^3-n
+\]
+est divisible par 6.
+\end{enumerate}
+
+\vspace{1em}
+
+\begin{objectifbox}
+\textbf{Conseil de travail.} Pour chaque exercice, on attend une rédaction claire, structurée et justifiée.  
+Même lorsqu'un calcul semble évident, il faut expliquer le raisonnement.
+\end{objectifbox}
+
+\end{document}

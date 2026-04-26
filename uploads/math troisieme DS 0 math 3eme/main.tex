@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{DS de mathématiques -- Niveau 3\ieme}
+\rhead{Nom : \hspace{4cm}}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{DS de mathématiques}}\\[0.3em]
+    {\large \textbf{Niveau 3\ieme}}\\[0.5em]
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{6cm}|}
+\hline
+\textbf{Durée} & \textbf{Barème} & \textbf{Matériel autorisé} \\
+\hline
+1 h 30 à 2 h & 20 points & Stylo, règle, équerre, compas, calculatrice \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Consignes générales}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Pensez bien à noter le temps que vous avez pris pour faire le sujet.
+    \item Toute réponse doit être justifiée.
+    \item Les calculs doivent être rédigés clairement.
+    \item Lorsqu’un rappel ou une aide est donné, il peut être utilisé librement.
+    \item La qualité de la rédaction et le soin apporté à la copie seront pris en compte.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|}
+\hline
+\textbf{Exercice 1} & \textbf{Exercice 2} & \textbf{Exercice 3} & \textbf{Exercice 4} & \textbf{Exercice 5} & \textbf{Total} \\
+\hline
+5 pts & 4 pts & 4 pts & 3 pts & 4 pts & 20 pts \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Exercice 1 -- Calcul littéral, équation et fonction \hfill /5}
+
+On considère la fonction \(f\) définie par :
+\[
+f(x)=x^2-5x+6.
+\]
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Calculer l’image d’un nombre par une fonction, c’est remplacer \(x\) par ce nombre.
+    \item Si un produit est nul, alors au moins un des facteurs est nul.
+    \item Une expression développée et une expression factorisée peuvent représenter la même fonction.
+\end{itemize}
+
+\begin{enumerate}
+    \item Calculer \(f(0)\), \(f(1)\), \(f(2)\) et \(f(3)\).
+    \item Montrer que, pour tout réel \(x\),
+    \[
+    f(x)=(x-2)(x-3).
+    \]
+    \item Résoudre l’équation
+    \[
+    f(x)=0.
+    \]
+    \item Résoudre l’équation
+    \[
+    f(x)=6.
+    \]
+    \item Déterminer les réels \(x\) tels que
+    \[
+    f(x)<0.
+    \]
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 1 pt ; 1 pt ; 1 pt.
+
+\section*{Exercice 2 -- Géométrie : théorème de Thalès \hfill /4}
+
+Dans la figure ci-dessous, les points \(A\), \(B\), \(M\) sont alignés, les points \(A\), \(C\), \(N\) sont alignés et les droites \((BC)\) et \((MN)\) sont parallèles.
+
+On donne :
+\[
+AB=6 \text{ cm}, \qquad AM=9 \text{ cm}, \qquad AC=4 \text{ cm}.
+\]
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Si \(B\in[AM]\), \(C\in[AN]\) et \((BC)\parallel(MN)\), alors
+    \[
+    \frac{AB}{AM}=\frac{AC}{AN}=\frac{BC}{MN}.
+    \]
+    \item On pense à bien vérifier les conditions d’utilisation du théorème de Thalès.
+\end{itemize}
+
+\begin{enumerate}
+    \item Expliquer pourquoi on peut utiliser le théorème de Thalès dans cette situation.
+    \item Calculer la longueur \(AN\).
+    \item On donne de plus \(BC=5\) cm. Calculer la longueur \(MN\).
+    \item Sans refaire tous les calculs, expliquer si le triangle \(AMN\) est un agrandissement ou une réduction du triangle \(ABC\).
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1,5 pt ; 1 pt ; 0,5 pt.
+
+\section*{Exercice 3 -- Démonstration : théorème de Pythagore \hfill /4}
+
+On considère un triangle \(ABC\) rectangle en \(A\), tel que :
+\[
+AB=6 \text{ cm} \qquad \text{et} \qquad AC=8 \text{ cm}.
+\]
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Dans un triangle rectangle, le théorème de Pythagore dit que :
+    \[
+    \text{(hypoténuse)}^2=\text{(côté 1)}^2+\text{(côté 2)}^2.
+    \]
+    \item La réciproque permet de montrer qu’un triangle est rectangle.
+\end{itemize}
+
+\begin{enumerate}
+    \item Calculer la longueur \(BC\).
+    \item Le point \(D\) est tel que \(AD=2\) cm et \(D\in[AB]\). Faire un schéma soigné.
+    \item Calculer la longueur \(DC\).
+    \item Le triangle \(ADC\) est-il rectangle ? Justifier.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1,5 pt ; 0,5 pt ; 1 pt ; 1 pt.
+
+\section*{Exercice 4 -- Statistiques et probabilités \hfill /3}
+
+Une classe de 25 élèves a obtenu les notes suivantes à un contrôle :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Note & 6 & 8 & 10 & 12 & 15 & 18 \\
+\hline
+Effectif & 2 & 4 & 7 & 6 & 4 & 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item La moyenne est la somme des notes pondérées par leurs effectifs, divisée par l’effectif total.
+    \item La médiane partage la série en deux groupes de même effectif.
+    \item Une probabilité se calcule par :
+    \[
+    \frac{\text{nombre de cas favorables}}{\text{nombre de cas possibles}}
+    \]
+    lorsque les issues sont équiprobables.
+\end{itemize}
+
+\begin{enumerate}
+    \item Vérifier que l’effectif total est bien 25.
+    \item Calculer la moyenne de la classe.
+    \item On choisit au hasard un élève de la classe. Quelle est la probabilité qu’il ait obtenu au moins 12 ?
+\end{enumerate}
+
+\textbf{Barème indicatif :} 0,5 pt ; 1,5 pt ; 1 pt.
+
+\section*{Exercice 5 -- Logique, nombres et raisonnement \hfill /4}
+
+\textbf{Rappels utiles}
+\begin{itemize}[leftmargin=1.2cm]
+    \item Un nombre pair s’écrit sous la forme \(2n\), avec \(n\in\mathbb{Z}\).
+    \item Un nombre impair s’écrit sous la forme \(2n+1\), avec \(n\in\mathbb{Z}\).
+    \item Si un produit est nul, alors au moins un des facteurs est nul.
+\end{itemize}
+
+\begin{enumerate}
+    \item Montrer que la somme de deux nombres impairs est paire.
+    \item Montrer que le carré d’un nombre pair est pair.
+    \item Résoudre l’équation
+    \[
+    (x-4)(2x+3)=0.
+    \]
+    \item On considère l’affirmation suivante :\\
+    \emph{« Si un nombre est multiple de 6, alors il est multiple de 3. »}\\
+    Dire si cette affirmation est vraie ou fausse, puis justifier.
+\end{enumerate}
+
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 1 pt ; 1 pt.
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{Fin du sujet -- Toute réponse doit être justifiée avec soin.}
+\end{center}
+
+\end{document}

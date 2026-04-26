@@ -1,0 +1,580 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Fiche d’exercices --- Algèbre linéaire Chapitre 4}
+\fancyhead[R]{Familles libres, génératrices et bases}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Fiche d’exercices --- Chapitre 4}}\\[0.4em]
+    {\Large \textbf{Familles libres, génératrices et bases}}\\[0.6em]
+    Algèbre linéaire
+\end{center}
+
+\textbf{AIDE de lecture type d’exo :} APP = application directe, METH = méthode, DEM = démonstration, PREP = réflexion plus poussée. Les étoiles représentent un gradient de difficulté de 1 à 5.
+
+\tableofcontents
+
+\newpage
+
+\section*{Exercices d’application directe}
+\addcontentsline{toc}{section}{Exercices d’application directe}
+
+\textbf{Exercice 1 [APP $\star$]}\\
+\textbf{Libre, génératrice, base dans \(\mathbb{R}^2\)}\\
+Pour chacune des familles suivantes de \(\mathbb{R}^2\), dire si elle est libre, génératrice, et si c’est une base :
+\begin{enumerate}[label=\alph*)]
+    \item \(\big((1,0),(0,1)\big)\),
+    \item \(\big((1,0),(2,0)\big)\),
+    \item \(\big((1,1),(1,-1)\big)\),
+    \item \(\big((1,2)\big)\),
+    \item \(\big((1,0),(0,1),(1,1)\big)\).
+\end{enumerate}
+
+\textbf{Exercice 2 [APP $\star$]}\\
+\textbf{Famille à un vecteur}\\
+Dire, selon les cas, si la famille \((u)\) est libre :
+\begin{enumerate}[label=\alph*)]
+    \item dans \(\mathbb{R}^2\), avec \(u=(1,2)\),
+    \item dans \(\mathbb{R}^2\), avec \(u=(0,0)\),
+    \item dans \(\mathbb{R}[X]\), avec \(u=X^2+1\),
+    \item dans \(\mathcal F(\mathbb{R},\mathbb{R})\), avec \(u=0\).
+\end{enumerate}
+
+\textbf{Exercice 3 [APP $\star\star$]}\\
+\textbf{Vecteur redondant}\\
+Dans chacune des familles suivantes, déterminer si l’un des vecteurs est combinaison linéaire des autres :
+\begin{enumerate}[label=\alph*)]
+    \item \(\big((1,0),(0,1),(1,1)\big)\),
+    \item \(\big((1,2),(2,4)\big)\),
+    \item \(\big((1,0,0),(0,1,0),(1,1,0)\big)\),
+    \item \(\big(1,X,X+1\big)\) dans \(\mathbb{R}[X]\).
+\end{enumerate}
+
+\textbf{Exercice 4 [APP $\star\star$]}\\
+\textbf{Première étude de liberté}\\
+Étudier la liberté des familles suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \(\big((1,2),(2,3)\big)\) dans \(\mathbb{R}^2\),
+    \item \(\big((1,2),(2,4)\big)\) dans \(\mathbb{R}^2\),
+    \item \(\big((1,0,1),(0,1,1),(1,1,0)\big)\) dans \(\mathbb{R}^3\),
+    \item \(\big(1,X,X^2\big)\) dans \(\mathbb{R}[X]\).
+\end{enumerate}
+
+\textbf{Exercice 5 [APP $\star\star$]}\\
+\textbf{Première étude du caractère générateur}\\
+Déterminer si les familles suivantes sont génératrices de l’espace indiqué :
+\begin{enumerate}[label=\alph*)]
+    \item \(\big((1,0),(0,1)\big)\) dans \(\mathbb{R}^2\),
+    \item \(\big((1,1),(1,-1)\big)\) dans \(\mathbb{R}^2\),
+    \item \(\big((1,0,0),(0,1,0)\big)\) dans \(\mathbb{R}^3\),
+    \item \(\big(1,X,X^2\big)\) dans \(\mathbb{R}_2[X]\) (polynômes de degré \(\le 2\)).
+\end{enumerate}
+
+\textbf{Exercice 6 [APP $\star\star$]}\\
+\textbf{Coordonnées dans la base canonique}\\
+Donner les coordonnées des vecteurs suivants dans la base canonique :
+\begin{enumerate}[label=\alph*)]
+    \item \((3,-2)\) dans \(\mathbb{R}^2\),
+    \item \((1,0,4)\) dans \(\mathbb{R}^3\),
+    \item \(2-3X+X^2\) dans la base \((1,X,X^2)\) de \(\mathbb{R}_2[X]\).
+\end{enumerate}
+
+\textbf{Exercice 7 [APP $\star\star$]}\\
+\textbf{Coordonnées dans une autre base}\\
+Dans la base \(\mathcal B=\big((1,1),(1,-1)\big)\) de \(\mathbb{R}^2\), déterminer les coordonnées de :
+\begin{enumerate}[label=\alph*)]
+    \item \((3,1)\),
+    \item \((5,-1)\),
+    \item \((0,2)\),
+    \item \((a,b)\) avec \(a,b\in\mathbb{R}\).
+\end{enumerate}
+
+\textbf{Exercice 8 [APP $\star\star$]}\\
+\textbf{Sous-familles et sur-familles}\\
+Pour chacune des affirmations suivantes, dire si elle est vraie ou fausse :
+\begin{enumerate}[label=\alph*)]
+    \item toute sous-famille d’une famille libre est libre ;
+    \item toute sous-famille d’une famille génératrice est génératrice ;
+    \item toute sur-famille d’une famille génératrice est génératrice ;
+    \item toute sur-famille d’une famille libre est libre.
+\end{enumerate}
+
+\textbf{Exercice 9 [APP $\star\star$]}\\
+\textbf{Base canonique}\\
+Montrer que la famille canonique est une base de :
+\begin{enumerate}[label=\alph*)]
+    \item \(\mathbb{R}^2\),
+    \item \(\mathbb{R}^3\),
+    \item \(\mathbb{R}^n\).
+\end{enumerate}
+
+\textbf{Exercice 10 [APP $\star\star$]}\\
+\textbf{Polynômes}\\
+Dans \(\mathbb{R}_2[X]\), étudier les familles suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \((1,X,X^2)\),
+    \item \((1,X,1+X)\),
+    \item \((X,X^2)\),
+    \item \((1+X, X+X^2, 1+X^2)\).
+\end{enumerate}
+
+\newpage
+
+\section*{Exercices de méthode}
+\addcontentsline{toc}{section}{Exercices de méthode}
+
+\textbf{Exercice 11 [METH $\star\star$]}\\
+\textbf{Méthode générale pour la liberté}\\
+Étudier la liberté de la famille
+\[
+\big((1,0,1),(0,1,1),(1,1,0)\big)
+\]
+dans \(\mathbb{R}^3\) en suivant précisément la méthode du cours :
+\[
+\lambda_1u_1+\lambda_2u_2+\lambda_3u_3=0.
+\]
+
+\textbf{Exercice 12 [METH $\star\star$]}\\
+\textbf{Méthode générale pour le caractère générateur}\\
+Montrer que la famille
+\[
+\big((1,0,1),(0,1,1),(1,1,0)\big)
+\]
+engendre \(\mathbb{R}^3\) en partant d’un vecteur arbitraire \((x,y,z)\).
+
+\textbf{Exercice 13 [METH $\star\star\star$]}\\
+\textbf{Base ou non ?}\\
+Déterminer si les familles suivantes sont des bases de l’espace indiqué :
+\begin{enumerate}[label=\alph*)]
+    \item \(\big((1,2),(2,3)\big)\) de \(\mathbb{R}^2\),
+    \item \(\big((1,0,1),(0,1,1),(1,1,0)\big)\) de \(\mathbb{R}^3\),
+    \item \(\big(1,X,X^2\big)\) de \(\mathbb{R}_2[X]\),
+    \item \(\big(1,\mathrm{id}\big)\) de l’espace des polynômes de degré \(\le 1\).
+\end{enumerate}
+
+\textbf{Exercice 14 [METH $\star\star\star$]}\\
+\textbf{Base d’un sous-espace de \(\mathbb{R}^3\)}\\
+Déterminer une base de
+\[
+F=\{(x,y,z)\in\mathbb{R}^3\mid x+y-z=0\}.
+\]
+On demandera une rédaction par analyse-synthèse.
+
+\textbf{Exercice 15 [METH $\star\star\star$]}\\
+\textbf{Autre base d’un sous-espace}\\
+Déterminer une base de
+\[
+F=\{(x,y,z)\in\mathbb{R}^3\mid x-y+z=0\}.
+\]
+
+\textbf{Exercice 16 [METH $\star\star\star$]}\\
+\textbf{Extraction d’une base à partir d’une famille génératrice}\\
+Dans \(\mathbb{R}^3\), on considère la famille
+\[
+\mathcal F=\big((1,0,0),(0,1,0),(1,1,0),(0,0,1)\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer qu’elle est génératrice de \(\mathbb{R}^3\).
+    \item Montrer qu’elle est liée.
+    \item En extraire une base de \(\mathbb{R}^3\).
+\end{enumerate}
+
+\textbf{Exercice 17 [METH $\star\star\star$]}\\
+\textbf{Deux écritures d’un même vecteur}\\
+Soit \(\mathcal B=\big((1,1),(1,-1)\big)\), base de \(\mathbb{R}^2\).\\
+On considère un vecteur \(u\in\mathbb{R}^2\) admettant deux écritures :
+\[
+u=\lambda(1,1)+\mu(1,-1)=\lambda'(1,1)+\mu'(1,-1).
+\]
+Montrer que \(\lambda=\lambda'\) et \(\mu=\mu'\).
+
+\textbf{Exercice 18 [METH $\star\star\star$]}\\
+\textbf{Déterminer les coordonnées dans une base non canonique}\\
+Dans \(\mathbb{R}^3\), on considère la famille
+\[
+\mathcal B=\big((1,0,0),(1,1,0),(1,1,1)\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\mathcal B\) est une base de \(\mathbb{R}^3\).
+    \item Déterminer les coordonnées de \((x,y,z)\) dans cette base.
+    \item En déduire les coordonnées de \((2,-1,3)\).
+\end{enumerate}
+
+\textbf{Exercice 19 [METH $\star\star\star$]}\\
+\textbf{Famille génératrice avec paramètre}\\
+Dans \(\mathbb{R}^2\), on considère la famille
+\[
+\mathcal F_a=\big((1,0),(a,1)\big),\qquad a\in\mathbb{R}.
+\]
+Pour quelles valeurs de \(a\) la famille \(\mathcal F_a\) est-elle :
+\begin{enumerate}[label=\alph*)]
+    \item libre ?
+    \item génératrice ?
+    \item une base de \(\mathbb{R}^2\) ?
+\end{enumerate}
+
+\textbf{Exercice 20 [METH $\star\star\star$]}\\
+\textbf{Famille à trois vecteurs dans \(\mathbb{R}^2\)}\\
+Dans \(\mathbb{R}^2\), on considère
+\[
+u_1=(1,0),\qquad u_2=(0,1),\qquad u_3=(a,b).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item La famille \((u_1,u_2,u_3)\) est-elle libre ?
+    \item Est-elle génératrice ?
+    \item Dans quels cas contient-elle un vecteur redondant évident ?
+\end{enumerate}
+
+\textbf{Exercice 21 [METH $\star\star\star\star$]}\\
+\textbf{Polynômes et base adaptée}\\
+Dans \(\mathbb{R}_2[X]\), on considère la famille
+\[
+\mathcal F=\big(1,\;1+X,\;1+X+X^2\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\mathcal F\) est une base de \(\mathbb{R}_2[X]\).
+    \item Déterminer les coordonnées de \(P(X)=2-X+3X^2\) dans cette base.
+\end{enumerate}
+
+\textbf{Exercice 22 [METH $\star\star\star\star$]}\\
+\textbf{Fonctions affines}\\
+Dans l’espace \(E\) des fonctions polynomiales de degré \(\le 1\), on considère la famille
+\[
+\mathcal F=(1,\mathrm{id}).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\mathcal F\) est libre.
+    \item Montrer qu’elle engendre \(E\).
+    \item En déduire que \(\mathcal F\) est une base de \(E\).
+    \item Donner les coordonnées de la fonction \(x\mapsto 3x-2\) dans cette base.
+\end{enumerate}
+
+\newpage
+
+\section*{Exercices de démonstration}
+\addcontentsline{toc}{section}{Exercices de démonstration}
+
+\textbf{Exercice 23 [DEM $\star\star$]}\\
+\textbf{Caractérisation d’une famille liée}\\
+Montrer qu’une famille finie \((u_1,\dots,u_p)\) est liée si et seulement s’il existe des scalaires non tous nuls \(\lambda_1,\dots,\lambda_p\) tels que
+\[
+\lambda_1u_1+\cdots+\lambda_pu_p=0.
+\]
+
+\textbf{Exercice 24 [DEM $\star\star$]}\\
+\textbf{Famille contenant le vecteur nul}\\
+Montrer que toute famille contenant le vecteur nul est liée.
+
+\textbf{Exercice 25 [DEM $\star\star$]}\\
+\textbf{Deux vecteurs égaux}\\
+Montrer que si une famille contient deux vecteurs égaux, alors elle est liée.
+
+\textbf{Exercice 26 [DEM $\star\star\star$]}\\
+\textbf{Vecteur combinaison linéaire des autres}\\
+Montrer que si un vecteur d’une famille est combinaison linéaire des autres, alors la famille est liée.
+
+\textbf{Exercice 27 [DEM $\star\star\star$]}\\
+\textbf{Caractérisation opérationnelle d’une famille liée}\\
+Montrer qu’une famille finie est liée si et seulement si l’un de ses vecteurs est combinaison linéaire des autres.
+
+\textbf{Exercice 28 [DEM $\star\star\star$]}\\
+\textbf{Sous-famille d’une famille libre}\\
+Montrer que toute sous-famille d’une famille libre est libre.
+
+\textbf{Exercice 29 [DEM $\star\star\star$]}\\
+\textbf{Sur-famille d’une famille génératrice}\\
+Montrer que toute famille contenant une famille génératrice est génératrice.
+
+\textbf{Exercice 30 [DEM $\star\star\star$]}\\
+\textbf{Liberté et unicité d’écriture}\\
+Montrer qu’une famille finie \((u_1,\dots,u_p)\) est libre si et seulement si tout vecteur de \(\mathrm{Vect}(u_1,\dots,u_p)\) admet une écriture unique comme combinaison linéaire de cette famille.
+
+\textbf{Exercice 31 [DEM $\star\star\star$]}\\
+\textbf{Une famille libre est une base de son espace engendré}\\
+Montrer que toute famille libre est une base du sous-espace qu’elle engendre.
+
+\textbf{Exercice 32 [DEM $\star\star\star$]}\\
+\textbf{Base canonique}\\
+Montrer que la base canonique de \(K^n\) est bien une base de \(K^n\).
+
+\textbf{Exercice 33 [DEM $\star\star\star\star$]}\\
+\textbf{Extraction d’une base}\\
+Montrer que de toute famille génératrice finie d’un espace vectoriel, on peut extraire une base.
+
+\textbf{Exercice 34 [DEM $\star\star\star\star$]}\\
+\textbf{Polynômes de degré \(\le 2\)}\\
+Montrer que la famille \((1,X,X^2)\) est une base de \(\mathbb{R}_2[X]\).
+
+\textbf{Exercice 35 [DEM $\star\star\star\star$]}\\
+\textbf{Fonctions \(1\) et \(\mathrm{id}\)}\\
+Montrer que la famille \((1,\mathrm{id})\) est libre dans l’espace des fonctions de \(\mathbb{R}\) dans \(\mathbb{R}\).
+
+\newpage
+
+\section*{Exercices de réflexion}
+\addcontentsline{toc}{section}{Exercices de réflexion}
+
+\textbf{Exercice 36 [PREP $\star\star\star$]}\\
+\textbf{Libre mais non génératrice ?}\\
+Donner un exemple :
+\begin{enumerate}[label=\alph*)]
+    \item d’une famille libre mais non génératrice de \(\mathbb{R}^3\),
+    \item d’une famille génératrice mais liée de \(\mathbb{R}^2\),
+    \item d’une famille qui ne soit ni libre ni génératrice dans \(\mathbb{R}^3\),
+    \item d’une base de \(\mathbb{R}^2\) différente de la base canonique.
+\end{enumerate}
+
+\textbf{Exercice 37 [PREP $\star\star\star$]}\\
+\textbf{Trois vecteurs dans \(\mathbb{R}^2\)}\\
+Peut-on trouver trois vecteurs de \(\mathbb{R}^2\) qui soient libres ?\\
+Peut-on trouver trois vecteurs de \(\mathbb{R}^2\) qui soient générateurs ?\\
+Donner des justifications précises.
+
+\textbf{Exercice 38 [PREP $\star\star\star$]}\\
+\textbf{Deux vecteurs dans \(\mathbb{R}^3\)}\\
+Peut-on trouver deux vecteurs de \(\mathbb{R}^3\) qui soient générateurs de \(\mathbb{R}^3\) ?\\
+Peut-on trouver deux vecteurs de \(\mathbb{R}^3\) qui soient libres ?\\
+Justifier.
+
+\textbf{Exercice 39 [PREP $\star\star\star\star$]}\\
+\textbf{Famille libre et relation cachée}\\
+Dans \(\mathbb{R}^3\), on considère
+\[
+u_1=(1,1,0),\qquad u_2=(1,0,1),\qquad u_3=(0,1,1).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Étudier la liberté de \((u_1,u_2,u_3)\).
+    \item Étudier si cette famille est génératrice de \(\mathbb{R}^3\).
+    \item Déterminer si c’est une base.
+\end{enumerate}
+
+\textbf{Exercice 40 [PREP $\star\star\star\star$]}\\
+\textbf{Description explicite d’un sous-espace engendré}\\
+Décrire explicitement
+\[
+\mathrm{Vect}\big((1,0,-1),(0,1,-1)\big)\subset\mathbb{R}^3.
+\]
+Puis montrer que c’est exactement le sous-espace
+\[
+F=\{(x,y,z)\in\mathbb{R}^3\mid x+y+z=0\}.
+\]
+
+\textbf{Exercice 41 [PREP $\star\star\star\star$]}\\
+\textbf{Coordonnées et paramètre}\\
+Dans \(\mathbb{R}^2\), on considère la famille
+\[
+\mathcal B_a=\big((1,1),(1,a)\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Pour quelles valeurs de \(a\) cette famille est-elle une base de \(\mathbb{R}^2\) ?
+    \item Lorsque c’est une base, déterminer les coordonnées de \((x,y)\) dans \(\mathcal B_a\).
+\end{enumerate}
+
+\textbf{Exercice 42 [PREP $\star\star\star\star$]}\\
+\textbf{Coordonnées dans une base de polynômes}\\
+Dans \(\mathbb{R}_2[X]\), on considère la base
+\[
+\mathcal B=\big(1,\;X-1,\;(X-1)^2\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\mathcal B\) est une base de \(\mathbb{R}_2[X]\).
+    \item Déterminer les coordonnées de \(P(X)=X^2+X+1\) dans cette base.
+\end{enumerate}
+
+\textbf{Exercice 43 [PREP $\star\star\star\star$]}\\
+\textbf{Une famille de polynômes dépendant d’un paramètre}\\
+Dans \(\mathbb{R}_2[X]\), on considère
+\[
+\mathcal F_a=(1,\;X+a,\;X^2).
+\]
+Étudier, selon \(a\in\mathbb{R}\), si cette famille est libre, génératrice, puis base de \(\mathbb{R}_2[X]\).
+
+\textbf{Exercice 44 [PREP $\star\star\star\star$]}\\
+\textbf{Une famille de fonctions}\\
+Dans l’espace des fonctions de \(\mathbb{R}\) dans \(\mathbb{R}\), on considère
+\[
+f_1(x)=1,\qquad f_2(x)=x,\qquad f_3(x)=x+1.
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Étudier la liberté de \((f_1,f_2,f_3)\).
+    \item Déterminer \(\mathrm{Vect}(f_1,f_2,f_3)\).
+\end{enumerate}
+
+\textbf{Exercice 45 [PREP $\star\star\star\star$]}\\
+\textbf{Une base d’un plan de \(\mathbb{R}^3\)}\\
+On considère
+\[
+F=\{(x,y,z)\in\mathbb{R}^3\mid 2x-y+z=0\}.
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer une base de \(F\).
+    \item Le vecteur \((1,1,-1)\) appartient-il à \(F\) ?
+    \item Donner les coordonnées de tout vecteur de \(F\) dans la base trouvée.
+\end{enumerate}
+
+\textbf{Exercice 46 [PREP $\star\star\star\star\star$]}\\
+\textbf{Famille libre, génératrice, base : panorama complet}\\
+Dans \(\mathbb{R}^3\), on considère les familles suivantes :
+\[
+\mathcal F_1=\big((1,0,0),(0,1,0)\big),\qquad
+\mathcal F_2=\big((1,0,0),(0,1,0),(1,1,0)\big),
+\]
+\[
+\mathcal F_3=\big((1,0,0),(0,1,0),(0,0,1)\big),\qquad
+\mathcal F_4=\big((1,1,0),(1,0,1),(0,1,1)\big).
+\]
+Pour chacune :
+\begin{enumerate}[label=\alph*)]
+    \item déterminer le sous-espace engendré ;
+    \item dire si la famille est libre ;
+    \item dire si elle est génératrice de \(\mathbb{R}^3\) ;
+    \item dire si c’est une base de \(\mathbb{R}^3\).
+\end{enumerate}
+
+\textbf{Exercice 47 [PREP $\star\star\star\star\star$]}\\
+\textbf{Extraire intelligemment une base}\\
+Dans \(\mathbb{R}^4\), on considère
+\[
+u_1=(1,0,0,0),\quad
+u_2=(0,1,0,0),\quad
+u_3=(1,1,0,0),\quad
+u_4=(0,0,1,0),\quad
+u_5=(0,0,0,1).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que la famille \((u_1,u_2,u_3,u_4,u_5)\) est génératrice de \(\mathbb{R}^4\).
+    \item Montrer qu’elle est liée.
+    \item En extraire une base de \(\mathbb{R}^4\).
+    \item Toutes les extractions possibles donnent-elles la même base ?
+\end{enumerate}
+
+\textbf{Exercice 48 [PREP $\star\star\star\star\star$]}\\
+\textbf{Un problème de coordonnées complet}\\
+Dans \(\mathbb{R}^3\), on considère
+\[
+\mathcal B=\big((1,0,1),(0,1,1),(1,1,0)\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\mathcal B\) est une base de \(\mathbb{R}^3\).
+    \item Déterminer les coordonnées de \((x,y,z)\) dans \(\mathcal B\).
+    \item En déduire les coordonnées de \((1,2,3)\).
+    \item Déterminer le vecteur dont les coordonnées dans \(\mathcal B\) sont \((2,-1,4)\).
+\end{enumerate}
+
+\textbf{Exercice 49 [PREP $\star\star\star\star\star$]}\\
+\textbf{Analyse-synthèse dans \(\mathbb{R}^3\)}\\
+Déterminer une base du sous-espace
+\[
+F=\{(x,y,z)\in\mathbb{R}^3\mid x+y+z=0\}
+\]
+puis, pour le vecteur \(u=(1,-2,1)\), déterminer ses coordonnées dans cette base.
+
+\textbf{Exercice 50 [PREP $\star\star\star\star\star$]}\\
+\textbf{Problème de synthèse final}\\
+Pour chacune des affirmations suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item dire si elle est vraie ou fausse ;
+    \item si elle est vraie, la démontrer ;
+    \item si elle est fausse, donner un contre-exemple.
+\end{enumerate}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Toute famille libre est génératrice.
+    \item Toute famille génératrice est libre.
+    \item Toute base est une famille libre.
+    \item Toute base est une famille génératrice.
+    \item Toute famille libre est une base de son espace engendré.
+    \item Toute famille contenant une base est une base.
+    \item Toute sous-famille d’une base est libre.
+    \item Toute sur-famille d’une base est génératrice.
+\end{enumerate}
+
+\newpage
+
+\section*{Pour aller plus loin}
+\addcontentsline{toc}{section}{Pour aller plus loin}
+
+\textbf{Exercice 51 [PREP $\star\star\star\star\star$]}\\
+\textbf{Famille libre de fonctions}\\
+Dans l’espace des fonctions de \(\mathbb{R}\) dans \(\mathbb{R}\), montrer que la famille
+\[
+(1,\mathrm{id},\mathrm{id}^2)
+\]
+est libre, où \(\mathrm{id}(x)=x\) et \(\mathrm{id}^2(x)=x^2\).
+
+\textbf{Exercice 52 [PREP $\star\star\star\star\star$]}\\
+\textbf{Polynômes et coordonnées abstraites}\\
+Dans \(\mathbb{R}_2[X]\), on considère la base
+\[
+\mathcal B=\big(1,\;1+X,\;1+X+X^2\big).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Déterminer les coordonnées de \(1\), \(X\) et \(X^2\) dans \(\mathcal B\).
+    \item Retrouver ensuite les coordonnées d’un polynôme général \(a+bX+cX^2\) dans \(\mathcal B\).
+\end{enumerate}
+
+\textbf{Exercice 53 [PREP $\star\star\star\star\star$]}\\
+\textbf{Base d’un sous-espace de polynômes}\\
+Soit
+\[
+F=\{P\in\mathbb{R}_3[X]\mid P(1)=0\}.
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(F\) est un sous-espace vectoriel de \(\mathbb{R}_3[X]\).
+    \item Montrer que tout polynôme de \(F\) est multiple de \(X-1\).
+    \item En déduire une famille génératrice simple de \(F\).
+    \item Montrer que cette famille est une base de \(F\).
+\end{enumerate}
+
+\textbf{Exercice 54 [PREP $\star\star\star\star\star$]}\\
+\textbf{Familles avec paramètre dans \(\mathbb{R}^3\)}\\
+Dans \(\mathbb{R}^3\), on considère
+\[
+u_1=(1,0,0),\qquad u_2=(0,1,0),\qquad u_3=(a,b,1).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Étudier, selon \(a,b\in\mathbb{R}\), si \((u_1,u_2,u_3)\) est libre.
+    \item Même question pour le caractère générateur.
+    \item En déduire pour quelles valeurs de \(a,b\) cette famille est une base de \(\mathbb{R}^3\).
+\end{enumerate}
+
+\textbf{Exercice 55 [PREP $\star\star\star\star\star$]}\\
+\textbf{Synthèse finale longue}\\
+Dans \(\mathbb{R}^3\), on considère
+\[
+u_1=(1,0,1),\qquad u_2=(1,1,0),\qquad u_3=(0,1,1),\qquad u_4=(2,1,1).
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Étudier la liberté de \((u_1,u_2,u_3)\).
+    \item Montrer que \((u_1,u_2,u_3)\) est une base de \(\mathbb{R}^3\).
+    \item Déterminer les coordonnées de \(u_4\) dans cette base.
+    \item En déduire que la famille \((u_1,u_2,u_3,u_4)\) est liée.
+    \item Extraire de cette famille une base de \(\mathbb{R}^3\).
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,514 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\sisetup{locale=FR}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale générale -- Spé mathématiques-pgb}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bareme}[1]{\hfill{\color{blue!70!black}\textbf{(#1 points)}}}
+
+\newtheorem*{remarque}{Remarque}
+\newtheorem*{definition}{Définition}
+\newtheorem*{propriete}{Propriété}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Devoir surveillé de mathématiques /94}}\\[0.3cm]
+    {\large Terminale générale -- Spécialité mathématiques}\\[0.2cm]
+    \textbf{Thème principal : suites numériques, récurrence, convergence, modélisation}\\[0.3cm]
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Consignes :}
+\begin{itemize}[leftmargin=0.7cm]
+    \item La calculatrice est autorisée.
+    \item La qualité de la rédaction, la justification des affirmations et le soin apporté à l’argumentation seront valorisés.
+    \item Les résultats non justifiés ne seront pas pleinement pris en compte.
+    \item On pourra admettre un résultat d’une question pour traiter la suite d’un exercice, en le signalant clairement.
+    \item Le barème n’est pas ramené à une note fixe à ce stade : il est conçu pour valoriser davantage les raisonnements fins, les prises d’initiative et les démonstrations longues.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\hrule
+\vspace{0.3cm}
+
+\begin{center}
+    \textbf{\large Exercice 1 -- Problème type bac métropole contextualisé}\\
+    \textbf{Gestion durable d’un bassin de retenue}
+\end{center}
+
+Une commune de montagne possède un bassin de retenue d’eau utilisé à la fois pour l’enneigement artificiel en hiver et pour l’arrosage en été. On modélise, en dizaines de milliers de mètres cubes, la quantité d’eau présente dans ce bassin au début de chaque semaine.
+
+Au début de la semaine $0$, le bassin contient $4$ unités d’eau, soit $40\,000$ m$^3$.
+
+On suppose que, d’une semaine à l’autre :
+\begin{itemize}[leftmargin=0.7cm]
+    \item $70\,\%$ de l’eau présente en début de semaine reste dans le bassin après consommation et évaporation ;
+    \item des apports extérieurs ajoutent ensuite $1{,}2$ unité d’eau.
+\end{itemize}
+
+On note $(u_n)$ la suite définie pour tout entier naturel $n$ par :
+\[
+u_0=4
+\qquad \text{et} \qquad
+u_{n+1}=0{,}7u_n+1{,}2.
+\]
+
+\medskip
+
+\textbf{Partie A -- Premiers calculs et conjectures}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Calculer $u_1$, $u_2$ et $u_3$. \bareme{2}
+    \item Interpréter concrètement la valeur de $u_2$ dans le contexte. \bareme{1}
+    \item À l’aide des premières valeurs obtenues, conjecturer le sens de variation de la suite $(u_n)$. \bareme{1}
+    \item Conjecturer également une valeur vers laquelle la suite semble se rapprocher. \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Étude théorique de la suite}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Soit $\ell$ un réel vérifiant
+    \[
+    \ell=0{,}7\ell+1{,}2.
+    \]
+    Déterminer $\ell$. \bareme{1}
+    \item Montrer par récurrence que, pour tout entier naturel $n$,
+    \[
+    u_n\leq 4.
+    \]
+    \bareme{3}
+    \item Montrer que, pour tout entier naturel $n$,
+    \[
+    u_{n+1}-u_n=1{,}2-0{,}3u_n.
+    \]
+    \bareme{2}
+    \item En déduire que la suite $(u_n)$ est monotone. \bareme{2}
+    \item Que peut-on conclure sur la convergence de la suite $(u_n)$ ? \bareme{1}
+    \item Déterminer la limite de la suite $(u_n)$. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Expression explicite}
+
+On pose, pour tout entier naturel $n$,
+\[
+v_n=u_n-4.
+\]
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que la suite $(v_n)$ est géométrique dont on précisera la raison et le premier terme. \bareme{3}
+    \item Exprimer $v_n$ puis $u_n$ en fonction de $n$. \bareme{2}
+    \item Déterminer à partir de quelle semaine la quantité d’eau du bassin dépassera $3{,}95$ unités. \bareme{3}
+    \item Retrouver par le calcul la limite de $(u_n)$. \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Prise de décision}
+
+Pour assurer la sécurité du système, la commune estime que le bassin fonctionne dans de bonnes conditions lorsque la quantité d’eau est supérieure ou égale à $3{,}9$ unités.
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Vérifier si cette condition est satisfaite dès la semaine $0$. \bareme{0,5}
+    \item Déterminer le plus petit entier $n$ tel que, pour tout entier $p\geq n$, on ait
+    \[
+    u_p\geq 3{,}9.
+    \]
+    \bareme{3}
+    \item Proposer un algorithme, en pseudo-code ou en Python, permettant de déterminer ce rang. \bareme{2}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+\newpage
+\begin{center}
+    \textbf{\large Exercice 2 -- Exercice type bac centres étrangers}\\
+    \textbf{Propagation d’une information sur un réseau}
+\end{center}
+
+On considère une plateforme numérique sur laquelle une information se diffuse de jour en jour. On note $u_n$ la proportion d’utilisateurs ayant vu cette information au bout de $n$ jours. Ainsi $u_n$ est un réel de l’intervalle $[0;1]$.
+
+On suppose que :
+\begin{itemize}[leftmargin=0.7cm]
+    \item au jour $0$, $20\,\%$ des utilisateurs ont vu l’information ;
+    \item chaque jour, une partie des utilisateurs déjà informés restent informés ;
+    \item parmi ceux qui ne l’ont pas encore vue, une partie la découvre.
+\end{itemize}
+
+Le modèle conduit à la relation :
+\[
+u_0=0{,}2
+\qquad \text{et} \qquad
+u_{n+1}=u_n+0{,}25(1-u_n)(0{,}8+u_n).
+\]
+
+\medskip
+
+\textbf{Partie A -- Étude de la fonction associée}
+
+On introduit la fonction $f$ définie sur $[0;1]$ par
+\[
+f(x)=x+0{,}25(1-x)(0{,}8+x).
+\]
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Développer l’expression de $f(x)$. \bareme{1,5}
+    \item Montrer que, pour tout $x\in[0;1]$,
+    \[
+    f(x)-x=0{,}25(1-x)(0{,}8+x).
+    \]
+    \bareme{1}
+    \item En déduire le signe de $f(x)-x$ sur $[0;1]$. \bareme{2}
+    \item Montrer que, pour tout $x\in[0;1]$, on a $f(x)\in[0;1]$. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Étude de la suite}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer par récurrence que, pour tout entier naturel $n$,
+    \[
+    0\leq u_n\leq 1.
+    \]
+    \bareme{3}
+    \item Montrer que la suite $(u_n)$ est croissante. \bareme{2}
+    \item En déduire que la suite $(u_n)$ converge. \bareme{1}
+    \item On note $\ell$ sa limite éventuelle. Montrer que $\ell$ vérifie
+    \[
+    \ell=\ell+0{,}25(1-\ell)(0{,}8+\ell).
+    \]
+    \bareme{1}
+    \item En déduire la valeur de $\ell$. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Vitesse d’approche}
+
+On définit, pour tout entier naturel $n$,
+\[
+w_n=1-u_n.
+\]
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Exprimer $w_{n+1}$ en fonction de $u_n$ puis en fonction de $w_n$. \bareme{3}
+    \item Montrer que, pour tout entier naturel $n$,
+    \[
+    0\leq w_{n+1}\leq 0{,}2\,w_n.
+    \]
+    \bareme{3}
+    \item En déduire que, pour tout entier naturel $n$,
+    \[
+    0\leq 1-u_n\leq 0{,}8\times 0{,}2^n.
+    \]
+    \bareme{2}
+    \item Donner une interprétation concrète de cet encadrement. \bareme{1}
+    \item Déterminer un rang $n$ à partir duquel plus de $99{,}9\,\%$ des utilisateurs ont vu l’information. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Regard critique sur le modèle}
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Dans ce modèle, la proportion d’utilisateurs informés peut-elle dépasser $1$ ? \bareme{1}
+    \item Expliquer pourquoi ce type de modèle est plus réaliste qu’une simple suite arithmétique de raison constante. \bareme{1,5}
+    \item Proposer, sans calcul détaillé, une modification possible du modèle si l’on souhaite tenir compte d’un phénomène de lassitude ralentissant fortement la diffusion lorsque beaucoup d’utilisateurs ont déjà vu l’information. \bareme{1,5}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+\newpage
+\begin{center}
+    \textbf{\large Exercice 3 -- Problème plus difficile et plus théorique}\\
+    \textbf{Une suite qui fait apparaître le nombre d’or}
+\end{center}
+
+On considère la suite $(u_n)$ définie par
+\[
+u_0=1
+\qquad \text{et} \qquad
+u_{n+1}=1+\frac{1}{u_n}
+\]
+pour tout entier naturel $n$.
+
+On rappelle que le nombre d’or est le réel
+\[
+\varphi=\frac{1+\sqrt{5}}{2}.
+\]
+
+\medskip
+
+\textbf{Partie A -- Premières observations}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item Calculer $u_1$, $u_2$, $u_3$ et $u_4$. \bareme{2}
+    \item Que semble-t-on observer ? \bareme{1}
+    \item Montrer que, pour tout entier naturel $n$, on a $u_n>0$. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Encadrement}
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que $\varphi$ vérifie
+    \[
+    \varphi=1+\frac{1}{\varphi}.
+    \]
+    \bareme{1,5}
+    \item Montrer par récurrence que, pour tout entier naturel $n\geq 1$,
+    \[
+    1\leq u_n\leq 2.
+    \]
+    \bareme{3}
+    \item En déduire que, pour tout entier naturel $n\geq 1$,
+    \[
+    \frac{3}{2}\leq u_{n+1}\leq 2.
+    \]
+    \bareme{1,5}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Étude des suites extraites}
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Calculer
+    \[
+    u_{n+2}-u_n
+    \]
+    en fonction de $u_n$. \bareme{2}
+    \item Montrer que, pour tout entier naturel $n$,
+    \[
+    u_{n+2}-u_n=\frac{1-u_n^2+u_n}{u_n(u_n+1)}.
+    \]
+    \bareme{2}
+    \item Étudier le signe de $u_{n+2}-u_n$ lorsque $u_n\in\left[\frac32;2\right]$. \bareme{3}
+    \item En déduire que la suite $(u_{2n})$ est monotone à partir d’un certain rang et que la suite $(u_{2n+1})$ l’est aussi. \bareme{3}
+    \item Justifier que les suites $(u_{2n})$ et $(u_{2n+1})$ convergent. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Convergence de la suite entière}
+
+On note
+\[
+\ell=\lim_{n\to+\infty}u_{2n}
+\qquad \text{et} \qquad
+m=\lim_{n\to+\infty}u_{2n+1}.
+\]
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que
+    \[
+    m=1+\frac{1}{\ell}
+    \qquad \text{et} \qquad
+    \ell=1+\frac{1}{m}.
+    \]
+    \bareme{3}
+    \item En déduire que $\ell$ et $m$ vérifient la même équation du second degré. \bareme{2}
+    \item Montrer que $\ell=m=\varphi$. \bareme{3}
+    \item Conclure que la suite $(u_n)$ converge vers $\varphi$. \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Une surprise algébrique}
+
+On définit une nouvelle suite $(F_n)$ par
+\[
+F_0=1,\qquad F_1=1,\qquad \text{et}\qquad F_{n+2}=F_{n+1}+F_n.
+\]
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+    \item Vérifier que
+    \[
+    \frac{F_2}{F_1}=2,\quad \frac{F_3}{F_2}=\frac32,\quad \frac{F_4}{F_3}=\frac53.
+    \]
+    \bareme{1}
+    \item Conjecturer un lien entre $u_n$ et le quotient $\dfrac{F_{n+1}}{F_n}$. \bareme{1}
+    \item Démontrer par récurrence que, pour tout entier naturel $n\geq 1$,
+    \[
+    u_n=\frac{F_{n+2}}{F_{n+1}}.
+    \]
+    \bareme{4}
+    \item En déduire une interprétation de la convergence de $(u_n)$ vers $\varphi$. \bareme{1,5}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+\newpage
+\begin{center}
+    \textbf{\large Exercice 4 -- Découverte d’une nouvelle notion}\\
+    \textbf{Les suites pétillantes}
+\end{center}
+
+Dans tout cet exercice, on introduit une nouvelle notion.
+
+\begin{definition}
+On appelle \textbf{suite pétillante} toute suite $(u_n)$ de réels strictement positifs telle qu’il existe un réel $p$ vérifiant, pour tout entier naturel $n$,
+\[
+u_{n+1}=u_n+\frac{p}{u_n}.
+\]
+Le réel $p$ est appelé \textbf{intensité pétillante} de la suite.
+\end{definition}
+
+L’idée est que la suite augmente d’une quantité qui est d’autant plus faible que le terme courant est grand : au début, la suite peut évoluer rapidement, puis son évolution se calme progressivement.
+
+\medskip
+
+\textbf{Partie A -- Premiers exemples}
+
+\begin{enumerate}[label=\textbf{A.\arabic*.}, leftmargin=0.9cm]
+    \item On considère la suite pétillante d’intensité $p=1$ définie par $u_0=1$.
+    Calculer $u_1$, $u_2$ et $u_3$. \bareme{2}
+    \item Avec ces premières valeurs, que semble-t-on observer sur le comportement de la suite ? \bareme{1}
+    \item Calculer, pour tout entier naturel $n$,
+    \[
+    u_{n+1}^2-u_n^2.
+    \]
+    \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie B -- Propriété fondamentale}
+
+Dans cette partie, on considère une suite pétillante quelconque d’intensité $p>0$.
+
+\begin{enumerate}[label=\textbf{B.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que, pour tout entier naturel $n$,
+    \[
+    u_{n+1}^2=u_n^2+2p+\frac{p^2}{u_n^2}.
+    \]
+    \bareme{2}
+    \item En déduire que, pour tout entier naturel $n$,
+    \[
+    u_{n+1}^2-u_n^2\geq 2p.
+    \]
+    \bareme{2}
+    \item Montrer alors que, pour tout entier naturel $n$,
+    \[
+    u_n^2\geq u_0^2+2np.
+    \]
+    \bareme{3}
+    \item En déduire que la suite $(u_n)$ est minorée par
+    \[
+    \sqrt{u_0^2+2np}.
+    \]
+    \bareme{1}
+    \item Que peut-on conclure sur la limite de $(u_n)$ lorsque $n$ tend vers $+\infty$ ? \bareme{1}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie C -- Étude plus fine}
+
+\begin{enumerate}[label=\textbf{C.\arabic*.}, leftmargin=0.9cm]
+    \item Montrer que, pour tout entier naturel $n$,
+    \[
+    u_{n+1}-u_n=\frac{p}{u_n}>0.
+    \]
+    \bareme{1}
+    \item En déduire que la suite $(u_n)$ est strictement croissante. \bareme{1}
+    \item Expliquer pourquoi la croissance de la suite ralentit malgré le fait qu’elle soit toujours croissante. \bareme{1,5}
+    \item Montrer que la suite
+    \[
+    \left(u_{n+1}-u_n\right)
+    \]
+    est décroissante. \bareme{3}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie D -- Un résultat élégant}
+
+On cherche à montrer que, lorsque $n$ devient grand, $u_n$ se comporte approximativement comme $\sqrt{2pn}$.
+
+\begin{enumerate}[label=\textbf{D.\arabic*.}, leftmargin=0.9cm]
+    \item À partir de la question B.3, expliquer pourquoi cette conjecture est plausible. \bareme{1,5}
+    \item Dans le cas particulier $u_0=1$ et $p=1$, comparer numériquement quelques valeurs de $u_n$ avec celles de $\sqrt{2n}$. \bareme{1,5}
+    \item Expliquer en quelques lignes pourquoi les suites pétillantes constituent un bon exemple intermédiaire entre les suites arithmétiques et les suites géométriques : elles ne progressent ni d’une quantité constante, ni par multiplication par une constante. \bareme{2}
+\end{enumerate}
+
+\medskip
+
+\textbf{Partie E -- Variante}
+
+Dans cette partie, on suppose que l’intensité pétillante est négative : $p<0$, tout en supposant que tous les termes restent strictement positifs.
+
+\begin{enumerate}[label=\textbf{E.\arabic*.}, leftmargin=0.9cm]
+    \item Le terme $u_{n+1}-u_n$ est-il positif ou négatif ? \bareme{1}
+    \item Que peut-on conjecturer sur le sens de variation de la suite ? \bareme{1}
+    \item Sans démonstration complète, discuter qualitativement ce qui peut se produire lorsque les termes deviennent trop petits. \bareme{1,5}
+\end{enumerate}
+
+\vspace{0.4cm}
+\hrule
+\vspace{0.4cm}
+
+
+
+\vspace{0.4cm}
+
+\begin{center}
+    \fbox{\parbox{0.92\textwidth}{
+    \textbf{Barème global indicatif :} les questions de calcul direct, d’application immédiate du cours ou de simple interprétation rapportent peu. Les questions de récurrence, de modélisation, d’encadrement fin, d’étude de monotonie non immédiate, de changement de suite auxiliaire, et surtout les questions demandant une vraie prise de recul ou une idée originale rapportent davantage.}}
+\end{center}
+
+\vfill
+
+\begin{center}
+    \textbf{Fin du sujet}
+\end{center}
+
+\end{document}

@@ -1,0 +1,290 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Terminale spécialité -- Mathématiques}
+\rhead{DM -- Analyse de fonctions}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\setlist[itemize]{leftmargin=1.8em}
+\setlist[enumerate]{leftmargin=2em}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Devoir Maison -- Mathématiques}}\\[0.3em]
+    {\Large \textbf{Terminale spécialité}}\\[0.5em]
+    {\large \textbf{Thème : Analyse de fonctions}}\\[0.8em]
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\textbf{Consignes générales :}
+\begin{itemize}
+    \item Les réponses doivent être \textbf{rédigées}, \textbf{justifiées} et organisées avec soin.
+    \item Les raisonnements, les interprétations graphiques, les tableaux de variations et les conclusions seront particulièrement valorisés.
+    \item Les résultats numériques ou algébriques non justifiés ne rapporteront qu'une partie des points.
+    \item Le barème donne davantage de points aux questions longues, aux études globales de fonctions et aux raisonnements fins qu'aux applications directes du cours.
+\end{itemize}
+
+\vspace{0.8em}
+
+\begin{center}
+    \fbox{\parbox{0.93\linewidth}{
+    \textbf{Répartition indicative du barème :} \\
+    Problème 1 : \textbf{25 points} \hfill
+    Problème 2 : \textbf{29 points} \hfill
+    Problème 3 : \textbf{30 points} \\[0.2em]
+    \hfill \textbf{Total : 84 points}
+    }}
+\end{center}
+
+\section*{Problème 1 -- Étude complète d'une fonction logarithmique \hfill /25}
+
+On considère la fonction \(f\) définie sur \(]0,+\infty[\) par
+\[
+f(x)=x-1-\ln(x).
+\]
+
+Ce problème est volontairement construit dans l'esprit des études classiques du bac : domaine, dérivée, variations, convexité, tangente, lecture graphique et inégalités.
+
+\subsection*{1. Premières observations}
+\begin{enumerate}
+    \item Déterminer l'ensemble de définition de \(f\). \hfill \textbf{/1}
+    \item Calculer \(f(1)\). \hfill \textbf{/1}
+    \item Étudier la limite de \(f(x)\) lorsque \(x\to 0^+\). \hfill \textbf{/2}
+    \item Étudier la limite de \(f(x)\) lorsque \(x\to +\infty\). \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{2. Variations de la fonction}
+\begin{enumerate}
+    \item Calculer \(f'(x)\) pour tout \(x>0\). \hfill \textbf{/2}
+    \item Étudier le signe de \(f'(x)\). \hfill \textbf{/2}
+    \item En déduire le tableau de variations complet de \(f\). \hfill \textbf{/3}
+    \item Montrer que \(f(x)\geq 0\) pour tout \(x>0\). \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{3. Étude de la convexité}
+\begin{enumerate}
+    \item Calculer \(f''(x)\). \hfill \textbf{/1}
+    \item Étudier le signe de \(f''(x)\). \hfill \textbf{/1}
+    \item En déduire la convexité de la fonction \(f\). \hfill \textbf{/1}
+    \item Donner une interprétation graphique de ce résultat. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{4. Tangente et comparaison locale}
+\begin{enumerate}
+    \item Déterminer une équation de la tangente à la courbe de \(f\) au point d'abscisse \(1\). \hfill \textbf{/2}
+    \item Étudier la position relative de la courbe de \(f\) et de cette tangente. \hfill \textbf{/3}
+    \item Retrouver ainsi une inégalité simple reliant \(\ln(x)\) et \(x-1\). \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{5. Regard critique}
+\begin{enumerate}
+    \item Un élève affirme : \og comme \(f(1)=0\), la fonction change forcément de signe en \(1\). \fg \\
+    Dire si cette affirmation est vraie ou fausse, puis justifier soigneusement. \hfill \textbf{/2}
+    \item Expliquer pourquoi ce problème permet de comprendre géométriquement que la fonction logarithme est en dessous de certaines de ses tangentes. \hfill \textbf{/1}
+\end{enumerate}
+
+\vspace{1em}
+
+\section*{Problème 2 -- Une fonction rationnelle-exponentielle pour modéliser un rendement \hfill /29}
+
+On considère la fonction \(g\) définie sur \([0,+\infty[\) par
+\[
+g(x)=\frac{x}{x+1}\,e^{-x}.
+\]
+
+Cette fonction modélise de façon simplifiée un rendement : le facteur \(\dfrac{x}{x+1}\) augmente avec \(x\), tandis que le facteur \(e^{-x}\) traduit une perte progressive.
+
+\subsection*{1. Étude préliminaire}
+\begin{enumerate}
+    \item Déterminer l'ensemble de définition de \(g\). \hfill \textbf{/1}
+    \item Calculer \(g(0)\). \hfill \textbf{/1}
+    \item Déterminer la limite de \(g(x)\) lorsque \(x\to +\infty\). \hfill \textbf{/2}
+    \item Interpréter graphiquement les résultats précédents. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{2. Dérivation et variations}
+\begin{enumerate}
+    \item Montrer que, pour tout \(x\geq 0\),
+    \[
+    g'(x)=\frac{e^{-x}}{(x+1)^2}\bigl(1-x-x^2\bigr).
+    \]
+    \hfill \textbf{/4}
+    \item Étudier le signe de \(g'(x)\) sur \([0,+\infty[\). \hfill \textbf{/3}
+    \item En déduire le tableau de variations complet de \(g\). \hfill \textbf{/3}
+    \item Montrer que l'équation \(1-x-x^2=0\) admet une unique solution positive \(\alpha\), que l'on exprimera exactement. \hfill \textbf{/2}
+    \item En déduire que \(g\) admet un maximum sur \([0,+\infty[\), atteint pour \(x=\alpha\). \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{3. Exploitation du maximum}
+\begin{enumerate}
+    \item Calculer la valeur exacte de \(\alpha\). \hfill \textbf{/1}
+    \item Donner une valeur approchée au centième de \(\alpha\). \hfill \textbf{/1}
+    \item Donner une valeur approchée au centième de \(g(\alpha)\). \hfill \textbf{/2}
+    \item Interpréter concrètement le rôle de \(\alpha\) dans le modèle. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{4. Une équation associée}
+On considère l'équation
+\[
+g(x)=0,1
+\]
+sur l'intervalle \([0,+\infty[\).
+
+\begin{enumerate}
+    \item Expliquer, sans résoudre explicitement l'équation, pourquoi elle admet soit zéro, soit une, soit deux solutions sur \([0,+\infty[\). \hfill \textbf{/2}
+    \item En utilisant les variations de \(g\), expliquer pourquoi cette équation admet en fait deux solutions. \hfill \textbf{/3}
+    \item Donner un encadrement de chacune des solutions d'amplitude \(1\), à l'aide d'un simple tableau de valeurs si nécessaire. \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{5. Prise de recul}
+\begin{enumerate}
+    \item Expliquer pourquoi la présence du facteur exponentiel modifie profondément le comportement global de la fonction par rapport à la seule fonction \(\dfrac{x}{x+1}\). \hfill \textbf{/2}
+    \item Sans faire de calcul complet, dire ce que deviendrait qualitativement l'étude si on remplaçait \(e^{-x}\) par \(e^{-2x}\). \hfill \textbf{/2}
+\end{enumerate}
+
+\vspace{1em}
+
+\textbf{Problème 3 -- Une équation fonctionnelle autour des symétries d'une courbe \hfill /30}
+
+On considère une fonction \(f\) définie sur \(\mathbb{R}\) par :
+\[
+f(x)=\frac{1}{1+e^{-x}}.
+\]
+
+On cherche à étudier cette fonction puis à mettre en évidence une relation remarquable reliant \(f(x)\) et \(f(-x)\).
+
+\subsection*{1. Premières propriétés}
+\begin{enumerate}
+    \item Montrer que \(f\) est définie sur \(\mathbb{R}\). \hfill \textbf{/1}
+    \item Calculer \(f(0)\). \hfill \textbf{/1}
+    \item Déterminer les limites de \(f(x)\) lorsque \(x\to -\infty\) puis lorsque \(x\to +\infty\). \hfill \textbf{/3}
+    \item Interpréter graphiquement ces résultats. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{2. Variations de la fonction}
+\begin{enumerate}
+    \item Montrer que, pour tout réel \(x\),
+    \[
+    f'(x)=\frac{e^{-x}}{(1+e^{-x})^2}.
+    \]
+    \hfill \textbf{/3}
+    \item Étudier le signe de \(f'(x)\). \hfill \textbf{/2}
+    \item En déduire le tableau de variations de \(f\) sur \(\mathbb{R}\). \hfill \textbf{/2}
+\end{enumerate}
+
+\subsection*{3. Une équation fonctionnelle}
+\begin{enumerate}
+    \item Calculer \(f(-x)\). \hfill \textbf{/2}
+    \item Montrer que, pour tout réel \(x\),
+    \[
+    f(x)+f(-x)=1.
+    \]
+    \hfill \textbf{/4}
+    \item Expliquer pourquoi cette relation est appelée une \textbf{équation fonctionnelle}. \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{4. Interprétation graphique}
+\begin{enumerate}
+    \item Soit \(M(x,f(x))\) un point de la courbe représentative de \(f\). Montrer que le point
+    \[
+    M'(-x,1-f(x))
+    \]
+    appartient aussi à cette courbe. \hfill \textbf{/3}
+    \item En déduire que la courbe de \(f\) admet un centre de symétrie dont on précisera les coordonnées. \hfill \textbf{/3}
+    \item Vérifier ce résultat sur le point correspondant à \(x=0\). \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{5. Une autre écriture utile}
+\begin{enumerate}
+    \item Montrer que, pour tout réel \(x\),
+    \[
+    1-f(x)=\frac{e^{-x}}{1+e^{-x}}.
+    \]
+    \hfill \textbf{/2}
+    \item Montrer alors que
+    \[
+    f'(x)=f(x)\bigl(1-f(x)\bigr).
+    \]
+    \hfill \textbf{/3}
+    \item Expliquer en quoi cette écriture permet de mieux comprendre le signe de \(f'(x)\). \hfill \textbf{/1}
+\end{enumerate}
+
+\subsection*{6. Question de recul}
+\begin{enumerate}
+    \item Un élève affirme : \og comme \(f(x)+f(-x)=1\), la fonction \(f\) est paire \fg. Dire si cette affirmation est vraie ou fausse et justifier soigneusement. \hfill \textbf{/2}
+    \item Expliquer la différence entre :
+    \begin{itemize}
+        \item une symétrie par rapport à l'axe des ordonnées ;
+        \item une symétrie centrale.
+    \end{itemize}
+    \hfill \textbf{/1}
+\end{enumerate}
+
+\vspace{1em}
+
+\section*{Barème détaillé récapitulatif}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{|Y|c|}
+\hline
+\textbf{Éléments évalués} & \textbf{Points} \\
+\hline
+\textbf{Problème 1} : étude classique de fonction, variations, convexité, tangente, interprétation d'inégalités & \textbf{25} \\
+\hline
+\textbf{Problème 2} : dérivation plus technique, maximum, exploitation d'un modèle, existence de solutions, lecture qualitative & \textbf{29} \\
+\hline
+\textbf{Problème 3} : fonction définie par intégrale, croissance, convexité, majoration, limite, lien avec une primitive connue & \textbf{30} \\
+\hline
+\textbf{Total} & \textbf{84} \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\noindent\textbf{Remarque sur la philosophie du barème :}
+\begin{itemize}
+    \item Les questions de \textbf{cours direct} ou de calcul immédiat rapportent peu.
+    \item Les questions demandant une \textbf{étude complète}, un \textbf{raisonnement global}, une \textbf{interprétation graphique} ou une \textbf{prise de recul} rapportent davantage.
+    \item Une réponse juste mais non justifiée ne rapporte qu'une partie des points.
+\end{itemize}
+
+\vspace{1em}
+
+\begin{center}
+    \fbox{\parbox{0.92\linewidth}{
+    \textbf{Conseil à l'élève :} Pour réussir ce DM, il faut aller au-delà du calcul. On attend une vraie compréhension des variations, de la convexité, du rôle des dérivées et du sens des objets étudiés.
+    }}
+\end{center}
+
+\end{document}

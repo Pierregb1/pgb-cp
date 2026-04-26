@@ -1,0 +1,1422 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{array}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Algèbre linéaire --- Chapitre 8}
+\fancyhead[R]{Applications linéaires et représentations matricielles}
+\fancyfoot[C]{\thepage}
+
+% Environnements
+\newtheorem{definition}{Définition}[section]
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+\theoremstyle{remark}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem*{methode}{Méthode}
+\newtheorem*{idee}{Idée}
+
+% Commandes
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Ker}{\mathrm{Ker}}
+\newcommand{\Img}{\mathrm{Im}}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\id}{\mathrm{Id}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\Lin}{\mathcal{L}}
+\newcommand{\Mnp}{M_{n,p}(\K)}
+\newcommand{\Mpn}{M_{p,n}(\K)}
+\newcommand{\Mnn}{M_n(\K)}
+\newcommand{\GLn}{GL_n(\K)}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Chapitre 8 --- Applications linéaires et représentations matricielles}}\\[0.4em]
+    {\large Version enrichie et détaillée}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\tableofcontents
+
+\newpage
+
+\section{Pourquoi ce chapitre est-il central ?}
+
+Dans les chapitres précédents, on a étudié :
+\begin{itemize}
+    \item les espaces vectoriels ;
+    \item les familles libres, génératrices et les bases ;
+    \item la dimension ;
+    \item les systèmes linéaires ;
+    \item les matrices.
+\end{itemize}
+
+Il manque encore l’objet qui relie naturellement tous ces chapitres : les \textbf{applications linéaires}.
+
+\begin{idee}
+Une application linéaire est une transformation entre espaces vectoriels qui respecte les combinaisons linéaires.
+\end{idee}
+
+C’est pourquoi elles sont partout :
+\begin{itemize}
+    \item en géométrie : projections, symétries, rotations, homothéties ;
+    \item en calcul : dérivation, intégration sur certains espaces ;
+    \item en algèbre : passage aux matrices, changement de base, réduction ;
+    \item dans les systèmes : toute matrice définit une application linéaire.
+\end{itemize}
+
+\begin{remarque}
+Le vrai sens du calcul matriciel apparaît ici : une matrice n’est pas seulement un tableau de nombres, c’est souvent la représentation d’une application linéaire dans des bases choisies.
+\end{remarque}
+
+\section{Définition d’une application linéaire}
+
+\subsection{Définition}
+
+\begin{definition}
+Soient \(E\) et \(F\) deux espaces vectoriels sur un même corps \(\K\).  
+Une application
+\[
+u:E\to F
+\]
+est dite \textbf{linéaire} si
+\[
+\forall x,y\in E,\ \forall \lambda,\mu\in\K,\qquad
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y).
+\]
+\end{definition}
+
+\begin{remarque}
+Cette écriture unique contient à la fois les deux propriétés usuelles :
+\[
+u(x+y)=u(x)+u(y)
+\qquad \text{et} \qquad
+u(\lambda x)=\lambda u(x).
+\]
+\end{remarque}
+
+\begin{proposition}
+Une application \(u:E\to F\) est linéaire si et seulement si
+\[
+\forall x,y\in E,\qquad u(x+y)=u(x)+u(y)
+\]
+et
+\[
+\forall \lambda\in\K,\ \forall x\in E,\qquad u(\lambda x)=\lambda u(x).
+\]
+\end{proposition}
+
+\begin{proof}
+Si \(u\) est linéaire au sens de la définition précédente, il suffit de prendre \((\lambda,\mu)=(1,1)\) puis \((\lambda,\mu)=(\lambda,0)\).
+
+Réciproquement, si \(u\) vérifie les deux propriétés séparées, alors
+\[
+u(\lambda x+\mu y)=u(\lambda x)+u(\mu y)=\lambda u(x)+\mu u(y).
+\]
+\end{proof}
+
+\subsection{Premiers exemples}
+
+\begin{exemple}
+L’application
+\[
+u:\R^2\to\R^2,\qquad u(x,y)=(2x-y,\ x+3y)
+\]
+est linéaire.
+\end{exemple}
+
+\begin{proof}
+Pour \((x,y),(x',y')\in\R^2\) et \(\lambda,\mu\in\R\),
+\[
+u(\lambda(x,y)+\mu(x',y'))
+=
+u(\lambda x+\mu x',\lambda y+\mu y')
+\]
+\[
+=
+(2(\lambda x+\mu x')-(\lambda y+\mu y'),\ (\lambda x+\mu x')+3(\lambda y+\mu y')).
+\]
+Cela vaut
+\[
+\lambda(2x-y,\ x+3y)+\mu(2x'-y',\ x'+3y')
+=
+\lambda u(x,y)+\mu u(x',y').
+\]
+\end{proof}
+
+\begin{exemple}
+L’application
+\[
+D:\R[X]\to\R[X],\qquad P\mapsto P'
+\]
+est linéaire.
+\end{exemple}
+
+\begin{exemple}
+L’application
+\[
+f:\R\to\R,\qquad x\mapsto x^2
+\]
+n’est pas linéaire.
+\end{exemple}
+
+\begin{proof}
+En effet,
+\[
+f(1+1)=4
+\qquad \text{tandis que} \qquad
+f(1)+f(1)=2.
+\]
+\end{proof}
+
+\begin{exemple}
+L’application
+\[
+u:\R^3\to\R,\qquad u(x,y,z)=x-2y+3z
+\]
+est linéaire.
+\end{exemple}
+
+\section{Premières propriétés générales}
+
+\begin{proposition}
+Si \(u:E\to F\) est linéaire, alors
+\[
+u(0_E)=0_F.
+\]
+\end{proposition}
+
+\begin{proof}
+On a
+\[
+u(0_E)=u(0_E+0_E)=u(0_E)+u(0_E).
+\]
+En ajoutant l’opposé de \(u(0_E)\), on obtient
+\[
+u(0_E)=0_F.
+\]
+\end{proof}
+
+\begin{proposition}
+Si \(u:E\to F\) est linéaire, alors pour tout \(x\in E\),
+\[
+u(-x)=-u(x).
+\]
+\end{proposition}
+
+\begin{proof}
+Comme
+\[
+x+(-x)=0_E,
+\]
+on a
+\[
+u(x)+u(-x)=u(0_E)=0_F.
+\]
+Donc \(u(-x)\) est l’opposé de \(u(x)\).
+\end{proof}
+
+\begin{proposition}
+Si \(u:E\to F\) est linéaire, alors pour toute combinaison linéaire
+\[
+\lambda_1x_1+\cdots+\lambda_px_p,
+\]
+on a
+\[
+u(\lambda_1x_1+\cdots+\lambda_px_p)
+=
+\lambda_1u(x_1)+\cdots+\lambda_pu(x_p).
+\]
+\end{proposition}
+
+\begin{proof}
+Par récurrence sur le nombre de termes.
+\end{proof}
+
+\begin{remarque}
+C’est cette propriété qui fait des applications linéaires les transformations naturelles des espaces vectoriels.
+\end{remarque}
+
+\section{L’espace vectoriel \(\Lin(E,F)\)}
+
+\subsection{Définition}
+
+\begin{definition}
+On note
+\[
+\Lin(E,F)
+\]
+l’ensemble des applications linéaires de \(E\) dans \(F\).
+\end{definition}
+
+\subsection{Structure d’espace vectoriel}
+
+\begin{proposition}
+L’ensemble \(\Lin(E,F)\), muni des opérations définies par
+\[
+(u+v)(x)=u(x)+v(x)
+\]
+et
+\[
+(\lambda u)(x)=\lambda\,u(x),
+\]
+est un espace vectoriel sur \(\K\).
+\end{proposition}
+
+\begin{proof}
+Il faut vérifier que \(u+v\) est linéaire lorsque \(u\) et \(v\) le sont, de même pour \(\lambda u\), puis que les axiomes d’espace vectoriel sont satisfaits. Tout découle des propriétés de \(F\), point par point.
+\end{proof}
+
+\begin{remarque}
+Cet espace vectoriel joue un rôle très important. Lorsque \(E\) et \(F\) sont de dimension finie, il sera isomorphe à un espace de matrices.
+\end{remarque}
+
+\subsection{Dimension de \(\Lin(E,F)\)}
+
+\begin{theoreme}
+Si \(E\) et \(F\) sont de dimension finie avec
+\[
+\dim(E)=n,\qquad \dim(F)=p,
+\]
+alors
+\[
+\dim(\Lin(E,F))=pn.
+\]
+\end{theoreme}
+
+\begin{proof}
+On choisit une base \(\mathcal B=(e_1,\dots,e_n)\) de \(E\) et une base \(\mathcal C=(f_1,\dots,f_p)\) de \(F\).
+
+Pour \(1\le i\le p\), \(1\le j\le n\), on définit \(u_{ij}\in\Lin(E,F)\) par
+\[
+u_{ij}(e_k)=
+\begin{cases}
+f_i & \text{si } k=j,\\
+0 & \text{si } k\neq j.
+\end{cases}
+\]
+Cette définition a un sens et détermine une unique application linéaire.
+
+Montrons que la famille \((u_{ij})\) forme une base de \(\Lin(E,F)\).
+
+\textbf{Génération :} soit \(u\in \Lin(E,F)\). Écrivons
+\[
+u(e_j)=\sum_{i=1}^p a_{ij}f_i.
+\]
+Alors
+\[
+u=\sum_{j=1}^n\sum_{i=1}^p a_{ij}u_{ij}.
+\]
+
+\textbf{Liberté :} si
+\[
+\sum_{j=1}^n\sum_{i=1}^p \lambda_{ij}u_{ij}=0,
+\]
+en évaluant sur \(e_j\), on obtient
+\[
+\sum_{i=1}^p \lambda_{ij}f_i=0.
+\]
+Comme \((f_1,\dots,f_p)\) est libre, tous les \(\lambda_{ij}\) sont nuls.
+
+La famille contient \(pn\) éléments, donc
+\[
+\dim(\Lin(E,F))=pn.
+\]
+\end{proof}
+
+\section{Noyau et image}
+
+\subsection{Définitions}
+
+\begin{definition}
+Soit \(u:E\to F\) linéaire.
+
+Le \textbf{noyau} de \(u\), noté \(\Ker(u)\), est
+\[
+\Ker(u)=\{x\in E\mid u(x)=0_F\}.
+\]
+
+L’\textbf{image} de \(u\), notée \(\Img(u)\), est
+\[
+\Img(u)=\{u(x)\mid x\in E\}.
+\]
+\end{definition}
+
+\begin{idee}
+Le noyau mesure ce que l’application \textbf{annule}.  
+L’image mesure ce qu’elle \textbf{produit réellement}.
+\end{idee}
+
+\subsection{Le noyau et l’image sont des sous-espaces}
+
+\begin{proposition}
+Si \(u:E\to F\) est linéaire, alors \(\Ker(u)\) est un sous-espace vectoriel de \(E\).
+\end{proposition}
+
+\begin{proof}
+On a
+\[
+u(0_E)=0_F,
+\]
+donc \(0_E\in\Ker(u)\).
+
+Si \(x,y\in\Ker(u)\) et \(\lambda,\mu\in\K\), alors
+\[
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y)=0_F.
+\]
+Donc \(\lambda x+\mu y\in\Ker(u)\).
+\end{proof}
+
+\begin{proposition}
+Si \(u:E\to F\) est linéaire, alors \(\Img(u)\) est un sous-espace vectoriel de \(F\).
+\end{proposition}
+
+\begin{proof}
+Comme
+\[
+u(0_E)=0_F,
+\]
+on a \(0_F\in\Img(u)\).
+
+Si \(y_1=u(x_1)\) et \(y_2=u(x_2)\) sont dans \(\Img(u)\), alors pour \(\lambda,\mu\in\K\),
+\[
+\lambda y_1+\mu y_2=\lambda u(x_1)+\mu u(x_2)=u(\lambda x_1+\mu x_2)\in\Img(u).
+\]
+\end{proof}
+
+\subsection{Exemples}
+
+\begin{exemple}
+Soit
+\[
+u:\R^2\to\R,\qquad u(x,y)=x-2y.
+\]
+Alors
+\[
+\Ker(u)=\{(x,y)\in\R^2\mid x-2y=0\}
+=
+\{(2t,t)\mid t\in\R\}
+=
+\Vect((2,1)).
+\]
+Et
+\[
+\Img(u)=\R,
+\]
+car tout réel \(r\) s’écrit \(r=u(r,0)\).
+\end{exemple}
+
+\begin{exemple}
+Soit
+\[
+u:\R^3\to\R^2,\qquad u(x,y,z)=(x+y,y+z).
+\]
+Alors
+\[
+\Ker(u)=\{(x,y,z)\in\R^3\mid x+y=0,\ y+z=0\}.
+\]
+On obtient
+\[
+x=-y,\qquad z=-y,
+\]
+donc
+\[
+\Ker(u)=\{(-t,t,-t)\mid t\in\R\}=\Vect((-1,1,-1)).
+\]
+\end{exemple}
+
+\section{Injectivité, surjectivité, bijectivité}
+
+\begin{definition}
+Soit \(u:E\to F\) une application.
+\begin{itemize}
+    \item On dit que \(u\) est \textbf{injective} si
+    \[
+    \forall x,y\in E,\quad u(x)=u(y)\Longrightarrow x=y.
+    \]
+    \item On dit que \(u\) est \textbf{surjective} si
+    \[
+    \forall z\in F,\ \exists x\in E,\quad u(x)=z.
+    \]
+    \item On dit que \(u\) est \textbf{bijective} si elle est à la fois injective et surjective.
+\end{itemize}
+\end{definition}
+
+\begin{remarque}
+Pour une application linéaire, ces notions sont exactement les mêmes que pour les applications entre ensembles.
+La linéarité permet ensuite de les caractériser par le noyau, l’image, le rang, ou encore l’image d’une base.
+\end{remarque}
+
+\subsection{Injectivité}
+
+\begin{theoreme}
+Soit \(u:E\to F\) linéaire. Alors
+\[
+u \text{ injective }
+\Longleftrightarrow
+\Ker(u)=\{0_E\}.
+\]
+\end{theoreme}
+
+\begin{proof}
+Déjà donnée dans les versions précédentes : si \(u(x)=u(y)\), alors
+\[
+u(x-y)=0.
+\]
+Le caractère injectif revient donc à dire que la seule solution de \(u(x)=0\) est \(x=0\).
+\end{proof}
+
+\subsection{Surjectivité}
+
+\begin{proposition}
+Une application linéaire \(u:E\to F\) est surjective si et seulement si
+\[
+\Img(u)=F.
+\]
+\end{proposition}
+
+\begin{proof}
+C’est exactement la définition de la surjectivité.
+\end{proof}
+
+\subsection{Bijectivité}
+
+\begin{definition}
+Une application linéaire bijective est appelée un \textbf{isomorphisme}.
+
+Un endomorphisme bijectif est appelé un \textbf{automorphisme}.
+\end{definition}
+
+\begin{definition}
+Une application linéaire
+\[
+u:E\to E
+\]
+est appelée un \textbf{endomorphisme} de \(E\).
+\end{definition}
+
+\begin{remarque}
+Un isomorphisme identifie deux espaces vectoriels du point de vue linéaire : ils ont exactement la même structure.
+\end{remarque}
+
+\begin{proposition}
+L’inverse d’un isomorphisme est linéaire.
+\end{proposition}
+
+\begin{proof}
+Soit \(u:E\to F\) un isomorphisme. Si \(y_1=u(x_1)\) et \(y_2=u(x_2)\), alors
+\[
+u(\lambda x_1+\mu x_2)=\lambda y_1+\mu y_2.
+\]
+En appliquant \(u^{-1}\), on obtient
+\[
+u^{-1}(\lambda y_1+\mu y_2)=\lambda u^{-1}(y_1)+\mu u^{-1}(y_2).
+\]
+\end{proof}
+
+\section{Applications linéaires particulières}
+
+\subsection{Formes linéaires}
+
+\begin{definition}
+Une application linéaire
+\[
+f:E\to \K
+\]
+est appelée une \textbf{forme linéaire}.
+\end{definition}
+
+\begin{exemple}
+Sur \(\R^3\),
+\[
+f(x,y,z)=x-2y+z
+\]
+est une forme linéaire.
+\end{exemple}
+
+\subsection{Hyperplans comme noyaux de formes linéaires}
+
+\begin{proposition}
+Soit \(E\) un espace vectoriel de dimension finie \(n\), et \(f:E\to\K\) une forme linéaire non nulle. Alors
+\[
+\rg(f)=1
+\qquad \text{et} \qquad
+\dim(\Ker(f))=n-1.
+\]
+\end{proposition}
+
+\begin{proof}
+Comme \(f\neq 0\), son image n’est pas réduite à \(\{0\}\). Or \(\Img(f)\subset \K\), et les seuls sous-espaces de \(\K\) sont \(\{0\}\) et \(\K\). Donc
+\[
+\Img(f)=\K,
+\]
+et ainsi
+\[
+\rg(f)=1.
+\]
+Le théorème du rang donne
+\[
+n=\dim(\Ker(f))+1.
+\]
+\end{proof}
+
+\begin{corollaire}
+Le noyau d’une forme linéaire non nulle est un hyperplan.
+\end{corollaire}
+
+\subsection{Projecteurs}
+
+\begin{definition}
+Un endomorphisme \(p:E\to E\) est appelé un \textbf{projecteur} si
+\[
+p^2=p.
+\]
+\end{definition}
+
+\begin{remarque}
+Un projecteur correspond à une projection sur un sous-espace, parallèlement à un autre.
+\end{remarque}
+
+\subsection{Symétries}
+
+\begin{definition}
+Un endomorphisme \(s:E\to E\) est appelé une \textbf{symétrie} si
+\[
+s^2=\id_E.
+\]
+\end{definition}
+
+\subsection{Homothéties}
+
+\begin{definition}
+Pour \(\lambda\in\K\), l’application
+\[
+h_\lambda:E\to E,\qquad x\mapsto \lambda x
+\]
+est une application linéaire, appelée \textbf{homothétie de rapport \(\lambda\)}.
+\end{definition}
+
+\section{Composition d’applications linéaires}
+
+\begin{proposition}
+Si
+\[
+u:E\to F
+\qquad \text{et} \qquad
+v:F\to G
+\]
+sont linéaires, alors
+\[
+v\circ u:E\to G
+\]
+est linéaire.
+\end{proposition}
+
+\begin{proof}
+Pour \(x,y\in E\) et \(\lambda,\mu\in\K\),
+\[
+(v\circ u)(\lambda x+\mu y)
+=
+v(u(\lambda x+\mu y))
+=
+v(\lambda u(x)+\mu u(y))
+=
+\lambda v(u(x))+\mu v(u(y)).
+\]
+\end{proof}
+
+\begin{remarque}
+La composition des applications linéaires correspondra au produit matriciel.
+\end{remarque}
+
+\section{Image d’une famille génératrice, image d’une famille libre}
+
+\subsection{Image d’une famille génératrice}
+
+\begin{proposition}
+Si \((e_1,\dots,e_n)\) engendre \(E\), alors
+\[
+(u(e_1),\dots,u(e_n))
+\]
+engendre \(\Img(u)\).
+\end{proposition}
+
+\begin{proof}
+Si \(y\in \Img(u)\), il existe \(x\in E\) tel que \(y=u(x)\). Comme \((e_1,\dots,e_n)\) engendre \(E\),
+\[
+x=\lambda_1e_1+\cdots+\lambda_ne_n.
+\]
+Donc
+\[
+y=u(x)=\lambda_1u(e_1)+\cdots+\lambda_nu(e_n).
+\]
+\end{proof}
+
+\subsection{Image d’une famille libre par une application injective}
+
+\begin{proposition}
+Si \(u:E\to F\) est injective et si \((e_1,\dots,e_n)\) est libre, alors
+\[
+(u(e_1),\dots,u(e_n))
+\]
+est libre.
+\end{proposition}
+
+\begin{proof}
+Supposons
+\[
+\lambda_1u(e_1)+\cdots+\lambda_nu(e_n)=0.
+\]
+Alors
+\[
+u(\lambda_1e_1+\cdots+\lambda_ne_n)=0.
+\]
+Comme \(u\) est injective,
+\[
+\Ker(u)=\{0\},
+\]
+donc
+\[
+\lambda_1e_1+\cdots+\lambda_ne_n=0.
+\]
+La famille \((e_1,\dots,e_n)\) étant libre, tous les \(\lambda_i\) sont nuls.
+\end{proof}
+
+\section{Détermination par l’image d’une base}
+
+\begin{theoreme}
+Soit \((e_1,\dots,e_n)\) une base de \(E\), et soit \((y_1,\dots,y_n)\) une famille de vecteurs de \(F\). Alors il existe une unique application linéaire
+\[
+u:E\to F
+\]
+telle que
+\[
+u(e_i)=y_i
+\qquad \text{pour tout } i.
+\]
+\end{theoreme}
+
+\begin{proof}
+Tout \(x\in E\) s’écrit de manière unique
+\[
+x=\lambda_1e_1+\cdots+\lambda_ne_n.
+\]
+On pose alors
+\[
+u(x)=\lambda_1y_1+\cdots+\lambda_ny_n.
+\]
+La définition est correcte car les coordonnées sont uniques. La linéarité est immédiate. L’unicité découle du fait qu’une application linéaire est entièrement déterminée par ses valeurs sur une base.
+\end{proof}
+
+\begin{corollaire}
+Deux applications linéaires de \(E\) dans \(F\) qui coïncident sur une base de \(E\) sont égales.
+\end{corollaire}
+
+\section{Théorème du rang}
+
+\subsection{Définition}
+
+\begin{definition}
+Soit \(u:E\to F\) linéaire avec \(E\) de dimension finie. On appelle \textbf{rang} de \(u\) la dimension de son image :
+\[
+\rg(u)=\dim(\Img(u)).
+\]
+\end{definition}
+
+\subsection{Théorème}
+
+\begin{theoreme}[Théorème du rang]
+Si \(u:E\to F\) est linéaire et si \(E\) est de dimension finie, alors
+\[
+\dim(E)=\dim(\Ker(u))+\rg(u).
+\]
+\end{theoreme}
+
+\begin{proof}
+Soit
+\[
+(e_1,\dots,e_k)
+\]
+une base de \(\Ker(u)\), puis complétons-la en une base de \(E\) :
+\[
+(e_1,\dots,e_k,e_{k+1},\dots,e_n).
+\]
+On montre alors que
+\[
+(u(e_{k+1}),\dots,u(e_n))
+\]
+forme une base de \(\Img(u)\).
+
+\textbf{Génération :} tout vecteur de \(\Img(u)\) est de la forme \(u(x)\), et \(x\) se décompose dans la base de \(E\). Les vecteurs \(e_1,\dots,e_k\) étant dans le noyau, leurs images sont nulles.
+
+\textbf{Liberté :} si
+\[
+\lambda_{k+1}u(e_{k+1})+\cdots+\lambda_nu(e_n)=0,
+\]
+alors
+\[
+u(\lambda_{k+1}e_{k+1}+\cdots+\lambda_ne_n)=0.
+\]
+Donc cette combinaison appartient au noyau, donc à \(\Vect(e_1,\dots,e_k)\). On obtient alors une relation linéaire entre les vecteurs d’une base, donc tous les coefficients sont nuls.
+
+Ainsi
+\[
+\dim(\Img(u))=n-k.
+\]
+Donc
+\[
+\dim(E)=n=k+(n-k)=\dim(\Ker(u))+\dim(\Img(u)).
+\]
+\end{proof}
+
+\subsection{Conséquences}
+
+\begin{corollaire}
+Si \(u:E\to F\) est linéaire avec \(E\) de dimension finie, alors
+\[
+u \text{ injective } \Longleftrightarrow \rg(u)=\dim(E).
+\]
+\end{corollaire}
+
+\begin{proof}
+L’injectivité équivaut à \(\Ker(u)=\{0\}\), donc à \(\dim(\Ker(u))=0\), puis au théorème du rang.
+\end{proof}
+
+\begin{corollaire}
+Si \(u:E\to F\) est linéaire avec \(F\) de dimension finie, alors
+\[
+u \text{ surjective } \Longleftrightarrow \rg(u)=\dim(F).
+\]
+\end{corollaire}
+
+\section{Représentation matricielle}
+
+\subsection{Matrice d’une application linéaire}
+
+\begin{definition}
+Soient \(E\) et \(F\) de dimensions finies, avec
+\[
+\mathcal B=(e_1,\dots,e_n)
+\]
+base de \(E\) et
+\[
+\mathcal C=(f_1,\dots,f_p)
+\]
+base de \(F\).
+
+Pour \(u\in\Lin(E,F)\), on écrit pour chaque \(j\),
+\[
+u(e_j)=a_{1j}f_1+\cdots+a_{pj}f_p.
+\]
+La matrice
+\[
+A=(a_{ij})\in M_{p,n}(\K)
+\]
+est appelée la \textbf{matrice de \(u\) dans les bases \(\mathcal B\) et \(\mathcal C\)} et notée
+\[
+\mathrm{Mat}_{\mathcal B,\mathcal C}(u).
+\]
+\end{definition}
+
+\begin{remarque}
+La \(j\)-ème colonne de la matrice est le vecteur-colonne des coordonnées de \(u(e_j)\) dans la base \(\mathcal C\).
+\end{remarque}
+
+\subsection{Exemple}
+
+\begin{exemple}
+Soit
+\[
+u:\R^2\to\R^3,\qquad u(x,y)=(x+y,2x-y,3y).
+\]
+Dans les bases canoniques :
+\[
+u(1,0)=(1,2,0),\qquad u(0,1)=(1,-1,3).
+\]
+Donc
+\[
+\mathrm{Mat}(u)=
+\begin{pmatrix}
+1 & 1\\
+2 & -1\\
+0 & 3
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\section{Lien entre application et matrice}
+
+\begin{theoreme}
+Soit \(u:E\to F\), et
+\[
+A=\mathrm{Mat}_{\mathcal B,\mathcal C}(u).
+\]
+Si \(x\in E\) a pour vecteur-colonne de coordonnées \(X\) dans \(\mathcal B\), alors \(u(x)\) a pour coordonnées
+\[
+Y=AX
+\]
+dans \(\mathcal C\).
+\end{theoreme}
+
+\begin{proof}
+Écrivons
+\[
+x=x_1e_1+\cdots+x_ne_n.
+\]
+Alors
+\[
+u(x)=x_1u(e_1)+\cdots+x_nu(e_n).
+\]
+Comme les colonnes de \(A\) sont précisément les coordonnées des \(u(e_j)\), le produit \(AX\) donne exactement les coordonnées de \(u(x)\) dans \(\mathcal C\).
+\end{proof}
+
+\begin{remarque}
+C’est le sens conceptuel du produit matrice-colonne.
+\end{remarque}
+
+\section{Isomorphisme entre applications linéaires et matrices}
+
+\begin{theoreme}
+Soient \(E\) et \(F\) de dimensions finies, de bases \(\mathcal B\) et \(\mathcal C\), avec
+\[
+\dim(E)=n,\qquad \dim(F)=p.
+\]
+L’application
+\[
+\Phi:\Lin(E,F)\to M_{p,n}(\K),\qquad
+u\mapsto \mathrm{Mat}_{\mathcal B,\mathcal C}(u)
+\]
+est un isomorphisme d’espaces vectoriels.
+\end{theoreme}
+
+\begin{proof}
+\textbf{Linéarité :} immédiate, car la matrice de \(u+v\) s’obtient en additionnant colonne par colonne celles de \(u\) et \(v\), et pareil pour \(\lambda u\).
+
+\textbf{Injectivité :} si \(\mathrm{Mat}_{\mathcal B,\mathcal C}(u)=0\), alors toutes les colonnes sont nulles, donc
+\[
+u(e_j)=0
+\]
+pour tout \(j\). Comme \(u\) est linéaire, cela impose \(u=0\).
+
+\textbf{Surjectivité :} soit \(A=(a_{ij})\in M_{p,n}(\K)\). Pour chaque \(j\), on pose
+\[
+y_j=a_{1j}f_1+\cdots+a_{pj}f_p.
+\]
+Le théorème de détermination par l’image d’une base fournit une unique application linéaire \(u\) telle que
+\[
+u(e_j)=y_j.
+\]
+Sa matrice est alors exactement \(A\).
+\end{proof}
+
+\begin{corollaire}
+Si
+\[
+\dim(E)=n,\qquad \dim(F)=p,
+\]
+alors
+\[
+\dim(\Lin(E,F))=pn.
+\]
+\end{corollaire}
+
+\section{Composition et matrices}
+
+\begin{theoreme}
+Si
+\[
+u:E\to F,\qquad v:F\to G
+\]
+sont linéaires, alors dans des bases compatibles,
+\[
+\mathrm{Mat}(v\circ u)=\mathrm{Mat}(v)\,\mathrm{Mat}(u).
+\]
+\end{theoreme}
+
+\begin{proof}
+Les coordonnées de \(u(x)\) sont obtenues en multipliant par \(\mathrm{Mat}(u)\), puis celles de \(v(u(x))\) en multipliant par \(\mathrm{Mat}(v)\). Donc les coordonnées de \(v\circ u\) s’obtiennent par le produit des deux matrices.
+\end{proof}
+
+\section{Endomorphismes, identité, inverse}
+
+\subsection{Endomorphismes}
+
+\begin{definition}
+Si \(u:E\to E\) est linéaire, on parle d’\textbf{endomorphisme}.
+\end{definition}
+
+\subsection{Matrice de l’identité}
+
+\begin{proposition}
+Dans toute base \(\mathcal B\) de \(E\),
+\[
+\mathrm{Mat}_{\mathcal B}(\id_E)=I_n.
+\]
+\end{proposition}
+
+\begin{proof}
+Chaque vecteur de base est envoyé sur lui-même.
+\end{proof}
+
+\subsection{Matrice de l’inverse}
+
+\begin{proposition}
+Si \(u:E\to E\) est un automorphisme, alors
+\[
+\mathrm{Mat}_{\mathcal B}(u^{-1})
+=
+\big(\mathrm{Mat}_{\mathcal B}(u)\big)^{-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+On utilise
+\[
+u\circ u^{-1}=\id_E
+\qquad \text{et} \qquad
+u^{-1}\circ u=\id_E,
+\]
+puis la compatibilité entre composition et produit matriciel.
+\end{proof}
+
+\begin{corollaire}
+Un endomorphisme est un automorphisme si et seulement si sa matrice dans une base est inversible.
+\end{corollaire}
+
+\section{Noyau, image et matrice}
+
+\subsection{Noyau}
+
+\begin{proposition}
+Soit \(u:E\to F\), et soit \(A=\mathrm{Mat}_{\mathcal B,\mathcal C}(u)\).  
+Alors calculer \(\Ker(u)\) revient à résoudre le système homogène
+\[
+AX=0.
+\]
+\end{proposition}
+
+\begin{proof}
+Un vecteur \(x\in E\) appartient au noyau si et seulement si \(u(x)=0\). En coordonnées, cela équivaut à
+\[
+AX=0.
+\]
+\end{proof}
+
+\subsection{Image}
+
+\begin{proposition}
+L’image d’une application linéaire de matrice \(A\) est engendrée par les colonnes de \(A\).
+\end{proposition}
+
+\begin{proof}
+Déjà vu : si \(X=(x_1,\dots,x_n)^T\), alors
+\[
+AX=x_1C_1+\cdots+x_nC_n,
+\]
+où \(C_1,\dots,C_n\) sont les colonnes de \(A\). Donc
+\[
+\Img(u)=\Vect(C_1,\dots,C_n).
+\]
+\end{proof}
+
+\begin{corollaire}
+Le rang d’une application linéaire est le rang de sa matrice dans n’importe quelles bases.
+\end{corollaire}
+
+\section{Rang et critères matriciels}
+
+\begin{proposition}
+Soit \(u:E\to F\), avec
+\[
+\dim(E)=n,\qquad \dim(F)=p,
+\]
+et soit \(A\in M_{p,n}(\K)\) une matrice de \(u\). Alors :
+\begin{enumerate}[label=\arabic*)]
+    \item \(u\) est injective si et seulement si
+    \[
+    \rg(A)=n.
+    \]
+    \item \(u\) est surjective si et seulement si
+    \[
+    \rg(A)=p.
+    \]
+    \item si \(n=p\), alors \(u\) est bijective si et seulement si
+    \[
+    \rg(A)=n
+    \]
+    si et seulement si \(A\) est inversible.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+C’est la traduction matricielle des résultats généraux sur le rang, l’injectivité, la surjectivité et la bijectivité.
+\end{proof}
+
+\section{Changement de base}
+
+\subsection{Matrice de passage}
+
+\begin{definition}
+Soient \(\mathcal B=(e_1,\dots,e_n)\) et \(\mathcal B'=(e'_1,\dots,e'_n)\) deux bases de \(E\).
+
+La matrice dont les colonnes sont les coordonnées des \(e'_j\) dans la base \(\mathcal B\) est appelée \textbf{matrice de passage de \(\mathcal B'\) vers \(\mathcal B\)}.
+\end{definition}
+
+\begin{remarque}
+Cette matrice transforme les coordonnées dans \(\mathcal B'\) en coordonnées dans \(\mathcal B\).
+\end{remarque}
+
+\subsection{Formule}
+
+\begin{theoreme}
+Soit \(u:E\to E\) un endomorphisme. Soient \(\mathcal B\) et \(\mathcal B'\) deux bases de \(E\). Si \(P\) est la matrice de passage de \(\mathcal B'\) vers \(\mathcal B\), alors
+\[
+\mathrm{Mat}_{\mathcal B'}(u)=P^{-1}\,\mathrm{Mat}_{\mathcal B}(u)\,P.
+\]
+\end{theoreme}
+
+\begin{proof}
+Si \(X'\) désigne les coordonnées de \(x\) dans \(\mathcal B'\), alors ses coordonnées dans \(\mathcal B\) sont
+\[
+X=PX'.
+\]
+Si \(A=\mathrm{Mat}_{\mathcal B}(u)\), alors les coordonnées de \(u(x)\) dans \(\mathcal B\) sont
+\[
+AX=APX'.
+\]
+Pour revenir à la base \(\mathcal B'\), on multiplie par \(P^{-1}\). On obtient donc
+\[
+X'_{u(x)}=P^{-1}APX'.
+\]
+\end{proof}
+
+\begin{remarque}
+Deux matrices représentant le même endomorphisme dans deux bases différentes sont \textbf{semblables}.
+\end{remarque}
+
+\section{Exemples classiques complets}
+
+\subsection{Dérivation sur \(\R_2[X]\)}
+
+\begin{exemple}
+Considérons
+\[
+D:\R_2[X]\to \R_2[X],\qquad P\mapsto P'.
+\]
+Dans la base \((1,X,X^2)\),
+\[
+D(1)=0,\qquad D(X)=1,\qquad D(X^2)=2X.
+\]
+Les colonnes de la matrice sont donc :
+\[
+[0]_{\mathcal B}=
+\begin{pmatrix}
+0\\
+0\\
+0
+\end{pmatrix},
+\qquad
+[1]_{\mathcal B}=
+\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix},
+\qquad
+[2X]_{\mathcal B}=
+\begin{pmatrix}
+0\\
+2\\
+0
+\end{pmatrix}.
+\]
+Donc
+\[
+\mathrm{Mat}_{\mathcal B}(D)=
+\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 2\\
+0 & 0 & 0
+\end{pmatrix}.
+\]
+\end{exemple}
+
+\subsection{Projecteur sur un plan}
+
+\begin{exemple}
+Considérons
+\[
+p:\R^3\to\R^3,\qquad p(x,y,z)=(x,y,0).
+\]
+Alors \(p\) est linéaire, et
+\[
+\Ker(p)=\Vect((0,0,1)),
+\qquad
+\Img(p)=\Vect((1,0,0),(0,1,0)).
+\]
+Dans la base canonique,
+\[
+\mathrm{Mat}(p)=
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix}.
+\]
+On vérifie que
+\[
+p^2=p.
+\]
+\end{exemple}
+
+\section{Méthodes pratiques}
+
+\begin{methode}
+Pour montrer qu’une application est linéaire, il faut tester
+\[
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y).
+\]
+\end{methode}
+
+\begin{methode}
+Pour construire la matrice d’une application linéaire :
+\begin{enumerate}
+    \item choisir une base de départ ;
+    \item calculer l’image de chaque vecteur de cette base ;
+    \item écrire chaque image dans la base d’arrivée ;
+    \item placer ces coordonnées en colonnes.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}
+Pour calculer le noyau :
+\begin{enumerate}
+    \item passer à la matrice ;
+    \item résoudre le système homogène
+    \[
+    AX=0.
+    \]
+\end{enumerate}
+\end{methode}
+
+\begin{methode}
+Pour calculer l’image :
+\begin{enumerate}
+    \item calculer l’image d’une base ;
+    \item ou prendre les colonnes de la matrice ;
+    \item puis extraire une famille libre ou calculer un rang.
+\end{enumerate}
+\end{methode}
+
+\section{Erreurs classiques}
+
+\begin{itemize}
+    \item Confondre application linéaire et application affine.
+    \item Oublier qu’une application linéaire doit envoyer \(0\) sur \(0\).
+    \item Croire que l’image d’une famille libre est toujours libre : il faut l’injectivité.
+    \item Croire que l’image d’une famille génératrice engendre tout l’espace d’arrivée : elle engendre seulement l’image.
+    \item Mettre les images des vecteurs de base en lignes au lieu de les mettre en colonnes.
+    \item Oublier l’ordre dans
+    \[
+    \mathrm{Mat}(v\circ u)=\mathrm{Mat}(v)\mathrm{Mat}(u).
+    \]
+    \item Se tromper dans le changement de base :
+    \[
+    A'=P^{-1}AP.
+    \]
+\end{itemize}
+
+\section{Résumé du chapitre}
+
+\begin{itemize}
+    \item Une application linéaire respecte les combinaisons linéaires.
+    \item \(\Lin(E,F)\) est un espace vectoriel.
+    \item Si \(E\) et \(F\) sont de dimensions finies \(n\) et \(p\), alors
+    \[
+    \dim(\Lin(E,F))=pn.
+    \]
+    \item Le noyau et l’image d’une application linéaire sont des sous-espaces vectoriels.
+    \item L’injectivité équivaut à
+    \[
+    \Ker(u)=\{0\}.
+    \]
+    \item Une application linéaire est entièrement déterminée par l’image d’une base.
+    \item Le théorème du rang donne
+    \[
+    \dim(E)=\dim(\Ker(u))+\rg(u).
+    \]
+    \item Une forme linéaire non nulle a pour noyau un hyperplan.
+    \item Une application linéaire entre espaces de dimension finie se représente par une matrice.
+    \item Les colonnes de cette matrice sont les coordonnées des images des vecteurs de base.
+    \item La composition correspond au produit matriciel.
+    \item Le changement de base donne la formule
+    \[
+    A'=P^{-1}AP.
+    \]
+\end{itemize}
+
+\section*{Exercices d’application immédiate}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}]
+    \item Montrer que
+    \[
+    u:\R^2\to\R^2,\qquad u(x,y)=(x+2y,3x-y)
+    \]
+    est linéaire.
+
+    \item Déterminer le noyau et l’image de
+    \[
+    u:\R^2\to\R,\qquad u(x,y)=x-2y.
+    \]
+
+    \item Déterminer le noyau et l’image de
+    \[
+    u:\R^3\to\R^2,\qquad u(x,y,z)=(x+y,y+z).
+    \]
+
+    \item Montrer qu’une application linéaire injective envoie une famille libre sur une famille libre.
+
+    \item Montrer qu’une application linéaire envoie une famille génératrice sur une famille génératrice de son image.
+
+    \item Déterminer la matrice de
+    \[
+    u:\R^2\to\R^3,\qquad u(x,y)=(x+y,2x-y,3y)
+    \]
+    dans les bases canoniques.
+
+    \item Déterminer la matrice de la dérivation sur \(\R_2[X]\) dans la base \((1,X,X^2)\).
+
+    \item Vérifier le théorème du rang sur un exemple simple.
+
+    \item Montrer que le noyau d’une forme linéaire non nulle est un hyperplan.
+
+    \item Soit \(u\) un endomorphisme de \(\R^2\) de matrice
+    \[
+    A=
+    \begin{pmatrix}
+    2 & 1\\
+    1 & 1
+    \end{pmatrix}.
+    \]
+    Étudier si \(u\) est un automorphisme.
+
+    \item Déterminer la matrice de passage entre les bases
+    \[
+    \mathcal B=((1,0),(0,1))
+    \quad \text{et} \quad
+    \mathcal B'=((1,1),(1,-1)).
+    \]
+
+    \item Relier les matrices d’un même endomorphisme dans ces deux bases.
+\end{enumerate}
+
+\section{Le dual d’un espace vectoriel}
+
+\subsection{Définition}
+
+\begin{definition}
+Le \textbf{dual} d’un espace vectoriel \(E\) sur \(\K\) est l’espace
+\[
+E^\ast=\Lin(E,\K),
+\]
+ensemble des formes linéaires sur \(E\).
+\end{definition}
+
+\begin{proposition}
+Si \(E\) est de dimension finie \(n\), alors
+\[
+\dim(E^\ast)=n.
+\]
+\end{proposition}
+
+\begin{proof}
+Comme \(E^\ast=\Lin(E,\K)\), on a en dimension finie
+\[
+\dim(E^\ast)=\dim(\Lin(E,\K))=\dim(E)\dim(\K)=n.
+\]
+\end{proof}
+
+\subsection{Base duale}
+
+\begin{definition}
+Soit \(\mathcal B=(e_1,\dots,e_n)\) une base de \(E\). La \textbf{base duale} associée est l’unique famille
+\((e_1^\ast,\dots,e_n^\ast)\) de \(E^\ast\) telle que
+\[
+e_i^\ast(e_j)=\delta_{ij}.
+\]
+\end{definition}
+
+\begin{proposition}
+La famille \((e_1^\ast,\dots,e_n^\ast)\) est une base de \(E^\ast\).
+Si
+\[
+x=\sum_{j=1}^n x_j e_j,
+\]
+alors
+\[
+x_j=e_j^\ast(x).
+\]
+\end{proposition}
+
+\subsection{Hyperplans}
+
+\begin{definition}
+Un sous-espace vectoriel \(H\subset E\) est un \textbf{hyperplan} s’il admet un supplémentaire de dimension \(1\).
+En dimension finie, cela équivaut à \(\dim(H)=\dim(E)-1\).
+\end{definition}
+
+\begin{theoreme}
+Si \(\varphi\in E^\ast\) est une forme linéaire non nulle et si \(E\) est de dimension finie, alors
+\(\Ker(\varphi)\) est un hyperplan de \(E\).
+Réciproquement, tout hyperplan est le noyau d’une forme linéaire non nulle.
+\end{theoreme}
+
+\begin{proof}
+Comme \(\varphi\neq 0\), son image est un sous-espace non nul de \(\K\), donc de dimension \(1\).
+Le théorème du rang donne alors \(\dim(E)=\dim(\Ker(\varphi))+1\), d’où le résultat.
+La réciproque se construit en choisissant un supplémentaire de dimension \(1\).
+\end{proof}
+
+\begin{exemple}
+Dans \(\R^3\), l’ensemble
+\[
+H=\{(x,y,z)\in\R^3\mid 2x-y+3z=0\}
+\]
+est un hyperplan : c’est le noyau de la forme linéaire \(\varphi(x,y,z)=2x-y+3z\).
+\end{exemple}
+
+\end{document}

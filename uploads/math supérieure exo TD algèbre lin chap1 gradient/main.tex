@@ -1,0 +1,517 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{stmaryrd}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Fiche d’exercices --- Algèbre linéaire}
+\fancyhead[R]{Chapitre 1 : Ensembles et raisonnement}
+\fancyfoot[C]{\thepage}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PP}{\mathcal{P}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Fiche d’exercices --- Chapitre 1}}\\[0.3em]
+    {\Large \textbf{Vocabulaire ensembliste et méthodes de raisonnement}}\\[0.5em]
+    {\large Algèbre linéaire}
+\end{center}
+
+\hrule
+\vspace{0.8em}
+
+AIDE de lecture type d’exo :  
+\textbf{APP} = application directe, \textbf{LOG} = logique et quantificateurs, \textbf{DEM} = démonstration, \textbf{PREP} = réflexion plus poussée.  
+Les étoiles représentent un gradient de difficulté de 1 à 5.
+
+\tableofcontents
+
+\newpage
+
+\section*{Exercices d’application directe}
+\addcontentsline{toc}{section}{Exercices d’application directe}
+
+\textbf{Exercice 1 [APP \(\star\)]}\\
+Appartenance ou non-appartenance
+
+Dire pour chacune des affirmations suivantes si elle est vraie ou fausse :
+\begin{enumerate}[label=\alph*)]
+    \item \(2\in \N\)
+    \item \(-3\in \N\)
+    \item \(\pi\in \Q\)
+    \item \sqrt{2}\in \R
+    \item \(i\in \C\)
+    \item \(\frac{3}{4}\in \Z\)
+\end{enumerate}
+
+\textbf{Exercice 2 [APP \(\star\)]}\\
+Inclusions d’ensembles
+
+Dire si les inclusions suivantes sont vraies :
+\begin{enumerate}[label=\alph*)]
+    \item \(\N\subset \Z\)
+    \item \(\Z\subset \Q\)
+    \item \(\Q\subset \R\)
+    \item \(\R\subset \C\)
+    \item \(\R\subset \Q\)
+\end{enumerate}
+
+\textbf{Exercice 3 [APP \(\star\star\)]}\\
+Définition par extension et compréhension
+
+Écrire chacun des ensembles suivants :
+\begin{enumerate}[label=\alph*)]
+    \item par extension lorsque c’est possible ;
+    \item par compréhension.
+\end{enumerate}
+
+\begin{enumerate}[label=\arabic*)]
+    \item l’ensemble des entiers naturels inférieurs ou égaux à \(4\),
+    \item l’ensemble des entiers relatifs pairs,
+    \item l’ensemble des réels strictement positifs,
+    \item l’ensemble des solutions réelles de \(x^2=4\).
+\end{enumerate}
+
+\textbf{Exercice 4 [APP \(\star\star\)]}\\
+Union, intersection, différence
+
+Soient
+\[
+A=\{1,2,3,4\},\qquad B=\{3,4,5,6\},\qquad C=\{2,4,6\}.
+\]
+Déterminer :
+\begin{enumerate}[label=\alph*)]
+    \item \(A\cup B\),
+    \item \(A\cap B\),
+    \item \(A\setminus B\),
+    \item \(B\setminus A\),
+    \item \((A\cup B)\cap C\),
+    \item \(A\cap(B\setminus C)\).
+\end{enumerate}
+
+\textbf{Exercice 5 [APP \(\star\star\)]}\\
+Intervalles et opérations ensemblistes
+
+Déterminer :
+\begin{enumerate}[label=\alph*)]
+    \item \(]-\infty,2]\cap [1,+\infty[\),
+    \item \(]-\infty,2]\cup [1,+\infty[\),
+    \item \([0,3]\setminus ]1,2[\),
+    \item \(\R\setminus [0,1]\),
+    \item \(]-\infty,0[\cap [0,+\infty[\).
+\end{enumerate}
+
+\textbf{Exercice 6 [APP \(\star\star\)]}\\
+Disjonction
+
+Parmi les couples d’ensembles suivants, préciser lesquels sont disjoints :
+\begin{enumerate}[label=\alph*)]
+    \item \(]-\infty,0[\) et \([0,+\infty[\),
+    \item \([1,3]\) et \([3,5]\),
+    \item \(\{1,2\}\) et \(\{3,4\}\),
+    \item \(2\Z\) et \(2\Z+1\).
+\end{enumerate}
+
+\textbf{Exercice 7 [APP \(\star\star\)]}\\
+Produit cartésien
+
+Soient
+\[
+A=\{1,2\},\qquad B=\{a,b,c\}.
+\]
+Déterminer :
+\begin{enumerate}[label=\alph*)]
+    \item \(A\times B\),
+    \item \(B\times A\),
+    \item le nombre d’éléments de \(A\times B\),
+    \item si \(A\times B=B\times A\).
+\end{enumerate}
+
+\textbf{Exercice 8 [APP \(\star\star\)]}\\
+Égalité de deux ensembles
+
+Montrer les égalités suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \(\{x\in \R\mid x^2=9\}=\{-3,3\}\),
+    \item \(\{x\in \R\mid x^2-5x+6=0\}=\{2,3\}\),
+    \item \(\{n\in \Z\mid n \text{ est multiple de } 2\}=\{2k\mid k\in \Z\}\).
+\end{enumerate}
+
+\section*{Exercices de logique et de quantificateurs}
+\addcontentsline{toc}{section}{Exercices de logique et de quantificateurs}
+
+\textbf{Exercice 9 [LOG \(\star\star\)]}\\
+Traduire avec des quantificateurs
+
+Écrire avec les symboles \(\forall\), \(\exists\), \(\exists!\) les propositions suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item Tout réel a un carré positif ou nul.
+    \item Il existe un réel dont le carré vaut \(2\).
+    \item Il existe un unique réel \(x\) tel que \(x+1=0\).
+    \item Tout entier naturel possède un successeur.
+\end{enumerate}
+
+\textbf{Exercice 10 [LOG \(\star\star\)]}\\
+Négation de propositions quantifiées
+
+Nier correctement les propositions suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \(\forall x\in\R,\ x^2+1>0\),
+    \item \(\exists x\in\R,\ x^2=-1\),
+    \item \(\forall n\in\N,\ n+1\in\N\),
+    \item \(\exists x\in\R,\ x>3 \text{ et } x<4\).
+\end{enumerate}
+
+\textbf{Exercice 11 [LOG \(\star\star\)]}\\
+Existence et unicité
+
+Pour chacune des affirmations suivantes, dire si elle est vraie :
+\begin{enumerate}[label=\alph*)]
+    \item \(\exists! x\in \R,\ x+5=0\),
+    \item \(\exists! x\in \R,\ x^2=1\),
+    \item \(\exists x\in \R,\ x^2+1=0\),
+    \item \(\exists! x\in \R,\ 2x-8=0\).
+\end{enumerate}
+
+\textbf{Exercice 12 [LOG \(\star\star\star\)]}\\
+Conditions nécessaires et suffisantes
+
+Pour chacune des propositions suivantes, préciser si elle exprime :
+\begin{itemize}
+    \item une implication,
+    \item une réciproque,
+    \item une équivalence.
+\end{itemize}
+
+\begin{enumerate}[label=\alph*)]
+    \item Si \(x=0\), alors \(x^2=0\).
+    \item Si \(x^2=0\), alors \(x=0\).
+    \item \(x^2=0\) si et seulement si \(x=0\).
+    \item Si un entier est multiple de \(4\), alors il est pair.
+\end{enumerate}
+
+\textbf{Exercice 13 [LOG \(\star\star\star\)]}\\
+Contraposée
+
+Écrire la contraposée de chacune des implications suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item Si \(x>2\), alors \(x^2>4\).
+    \item Si \(n\) est multiple de \(4\), alors \(n\) est pair.
+    \item Si \(x^2\neq 0\), alors \(x\neq 0\).
+    \item Si \(x\in ]0,1[\), alors \(x>0\).
+\end{enumerate}
+
+\textbf{Exercice 14 [LOG \(\star\star\star\)]}\\
+Réciproque vraie ou fausse
+
+Pour chacune des implications suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item dire si elle est vraie ;
+    \item dire si sa réciproque est vraie ;
+    \item si la réciproque est fausse, donner un contre-exemple.
+\end{enumerate}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Si \(x=1\), alors \(x^2=1\).
+    \item Si \(n\) est multiple de \(6\), alors \(n\) est multiple de \(3\).
+    \item Si \(x>1\), alors \(x^2>1\).
+    \item Si \(x^2>1\), alors \(x>1\).
+\end{enumerate}
+
+\section*{Exercices de démonstration}
+\addcontentsline{toc}{section}{Exercices de démonstration}
+
+\textbf{Exercice 15 [DEM \(\star\star\)]}\\
+Double inclusion
+
+Montrer que pour tous ensembles \(A\) et \(B\),
+\[
+A=B \Longleftrightarrow (A\subset B \text{ et } B\subset A).
+\]
+
+\textbf{Exercice 16 [DEM \(\star\star\)]}\\
+Commutativité de l’union et de l’intersection
+
+Montrer que pour tous ensembles \(A\) et \(B\),
+\[
+A\cup B=B\cup A
+\qquad \text{et} \qquad
+A\cap B=B\cap A.
+\]
+
+\textbf{Exercice 17 [DEM \(\star\star\)]}\\
+Associativité
+
+Montrer que pour tous ensembles \(A\), \(B\), \(C\),
+\[
+(A\cup B)\cup C=A\cup(B\cup C).
+\]
+
+\textbf{Exercice 18 [DEM \(\star\star\star\)]}\\
+Distributivité
+
+Montrer que pour tous ensembles \(A\), \(B\), \(C\),
+\[
+A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
+\]
+
+\textbf{Exercice 19 [DEM \(\star\star\star\)]}\\
+Formules de De Morgan
+
+Soit \(E\) un ensemble de référence et \(A,B\subset E\). Montrer que
+\[
+E\setminus(A\cup B)=(E\setminus A)\cap(E\setminus B).
+\]
+
+Puis démontrer la seconde formule de De Morgan :
+\[
+E\setminus(A\cap B)=(E\setminus A)\cup(E\setminus B).
+\]
+
+\textbf{Exercice 20 [DEM \(\star\star\)]}\\
+Produit nul dans \(\Z\)
+
+Montrer que si \(ab=0\) avec \(a,b\in\Z\), alors \(a=0\) ou \(b=0\).
+
+\textbf{Exercice 21 [DEM \(\star\star\)]}\\
+Raisonnement direct
+
+Montrer que la somme de trois entiers pairs est paire.
+
+\textbf{Exercice 22 [DEM \(\star\star\)]}\\
+Disjonction de cas
+
+Montrer que pour tout entier \(n\), le produit \(n(n+1)\) est pair.
+
+\textbf{Exercice 23 [DEM \(\star\star\star\)]}\\
+Contraposée
+
+Montrer que si \(n^2\) est pair, alors \(n\) est pair.
+
+\textbf{Exercice 24 [DEM \(\star\star\star\)]}\\
+Contraposée plus fine
+
+Montrer que si \(n^2\) est multiple de \(3\), alors \(n\) est multiple de \(3\).
+
+\textbf{Exercice 25 [DEM \(\star\star\star\)]}\\
+Raisonnement par l’absurde
+
+Montrer par l’absurde que l’équation
+\[
+x^2=-1
+\]
+n’admet aucune solution réelle.
+
+\textbf{Exercice 26 [DEM \(\star\star\star\)]}\\
+Irrationalité
+
+Montrer que \(\sqrt{2}\notin \Q\).
+
+\textbf{Exercice 27 [DEM \(\star\star\star\)]}\\
+Existence et unicité
+
+Montrer que pour tout réel \(a\), l’équation
+\[
+x+a=0
+\]
+admet une unique solution réelle.
+
+\textbf{Exercice 28 [DEM \(\star\star\star\)]}\\
+Existence et unicité affine
+
+Montrer que pour tout réel \(a\), il existe un unique réel \(x\) tel que
+\[
+2x+a=0.
+\]
+
+\textbf{Exercice 29 [DEM \(\star\star\star\)]}\\
+Récurrence simple
+
+Montrer par récurrence que pour tout \(n\in\N\),
+\[
+1+2+\cdots+n=\frac{n(n+1)}{2}.
+\]
+
+\textbf{Exercice 30 [DEM \(\star\star\star\)]}\\
+Récurrence sur les entiers impairs
+
+Montrer par récurrence que pour tout \(n\in\N\),
+\[
+1+3+5+\cdots+(2n+1)=(n+1)^2.
+\]
+
+\textbf{Exercice 31 [DEM \(\star\star\star\star\)]}\\
+Inégalité classique
+
+Montrer que pour tout \(n\in\N\),
+\[
+2^n\geq n+1.
+\]
+
+\section*{Exercices de réflexion}
+\addcontentsline{toc}{section}{Exercices de réflexion}
+
+\textbf{Exercice 32 [PREP \(\star\star\star\)]}\\
+Analyse-synthèse
+
+Déterminer tous les réels \(x\) tels que
+\[
+x+\frac{1}{x}=2.
+\]
+On demandera une rédaction par analyse-synthèse.
+
+\textbf{Exercice 33 [PREP \(\star\star\star\)]}\\
+Égalité d’ensembles un peu plus subtile
+
+Montrer que
+\[
+A\cap(B\setminus C)=(A\cap B)\setminus C.
+\]
+
+\textbf{Exercice 34 [PREP \(\star\star\star\star\)]}\\
+Union de deux sous-ensembles
+
+Soient \(A\) et \(B\) deux ensembles. Montrer que
+\[
+A\subset B \Longleftrightarrow A\cup B=B.
+\]
+
+Puis montrer que
+\[
+A\subset B \Longleftrightarrow A\cap B=A.
+\]
+
+\textbf{Exercice 35 [PREP \(\star\star\star\star\)]}\\
+Caractérisation de l’ensemble vide
+
+Soit \(A\) un ensemble. Montrer que
+\[
+A=\varnothing \Longleftrightarrow \forall x,\ x\notin A.
+\]
+
+\textbf{Exercice 36 [PREP \(\star\star\star\star\)]}\\
+Récurrence avec paramètre
+
+Montrer que pour tout réel \(a\neq 1\) et tout entier \(n\in\N\),
+\[
+1+a+a^2+\cdots+a^n=\frac{1-a^{n+1}}{1-a}.
+\]
+
+\textbf{Exercice 37 [PREP \(\star\star\star\star\)]}\\
+Existence et unicité géométrique
+
+Soient \(u\) et \(v\) deux vecteurs d’un espace vectoriel. Montrer qu’il existe un unique vecteur \(x\) tel que
+\[
+x+u=v.
+\]
+
+\textbf{Exercice 38 [PREP \(\star\star\star\star\star\)]}\\
+Quantificateurs et négations
+
+Nier correctement la proposition suivante :
+\[
+\forall x\in\R,\ \exists y\in\R,\ x+y=0.
+\]
+Puis dire si la proposition initiale est vraie ou fausse.
+
+\textbf{Exercice 39 [PREP \(\star\star\star\star\star\)]}\\
+Équivalence logique
+
+Montrer que les assertions suivantes sont équivalentes :
+\begin{enumerate}[label=\alph*)]
+    \item \(A\subset B\),
+    \item \(A\cap (\R\setminus B)=\varnothing\).
+\end{enumerate}
+
+\textbf{Exercice 40 [PREP \(\star\star\star\star\star\)]}\\
+Synthèse générale
+
+Pour chacune des affirmations suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item dire si elle est vraie ou fausse ;
+    \item si elle est vraie, la démontrer ;
+    \item si elle est fausse, donner un contre-exemple.
+\end{enumerate}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Si \(A\subset B\), alors \(A\cap C\subset B\cap C\).
+    \item Si \(A\cup C=B\cup C\), alors \(A=B\).
+    \item Si \(A\cap C=B\cap C\), alors \(A=B\).
+    \item Si \(A\subset B\) et \(B\subset C\), alors \(A\subset C\).
+\end{enumerate}
+
+\section*{Pour aller plus loin}
+\addcontentsline{toc}{section}{Pour aller plus loin}
+
+\textbf{Exercice 41 [PREP \(\star\star\star\star\star\)]}\\
+Structure logique d’un énoncé
+
+Écrire la négation précise de chacune des propositions suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \(\forall x\in\R,\ \exists ! y\in\R,\ x+y=0\),
+    \item \(\exists x\in\R,\ \forall y\in\R,\ x+y=0\),
+    \item \(\forall n\in\N,\ \exists p\in\N,\ p>n\).
+\end{enumerate}
+
+\textbf{Exercice 42 [PREP \(\star\star\star\star\star\)]}\\
+Analyse-synthèse et unicité
+
+Déterminer tous les réels \(x\) tels que
+\[
+x^2-2x+1=0
+\]
+par une rédaction complète en analyse-synthèse, puis expliquer pourquoi cette méthode apporte plus qu’une simple résolution calculatoire.
+
+\textbf{Exercice 43 [DEM \(\star\star\star\star\)]}\\
+Principe de récurrence renforcé
+
+Montrer par récurrence que, pour tout \(n\in\N\),
+\[
+\sum_{k=0}^n (2k+1)=(n+1)^2.
+\]
+
+\textbf{Exercice 44 [DEM \(\star\star\star\star\)]}\\
+Preuve en deux sens
+
+Montrer que pour tout réel \(x\),
+\[
+x^2=1 \Longleftrightarrow x=1 \text{ ou } x=-1.
+\]
+
+\textbf{Exercice 45 [PREP \(\star\star\star\star\star\)]}\\
+Problème de synthèse final
+
+Soient \(A,B,C\) trois ensembles. Étudier la validité des implications suivantes :
+\begin{enumerate}[label=\alph*)]
+    \item \(A\subset B \Longrightarrow A\cup C\subset B\cup C\),
+    \item \(A\subset B \Longrightarrow A\setminus C\subset B\setminus C\),
+    \item \(A\subset B \Longrightarrow C\setminus B\subset C\setminus A\).
+\end{enumerate}
+On justifiera rigoureusement chaque réponse.
+
+\end{document}
