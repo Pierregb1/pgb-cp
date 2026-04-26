@@ -14,7 +14,33 @@ function login() {
     alert("Identifiant ou mot de passe incorrect");
   }
 }
+// ===== NORMALISATION =====
+function normalize(value, type) {
+  if (!value) return value;
 
+  value = value.toLowerCase();
+
+  if (type === "matiere") {
+    if (["math", "maths", "mathematique", "mathematiques"].includes(value)) return "maths";
+    if (["phy", "physique", "physiquechimie", "physique-chimie", "pc"].includes(value)) return "physique";
+  }
+
+  if (type === "niveau") {
+    if (["term", "terminale", "tle"].includes(value)) return "terminale";
+    if (["premiere", "prem", "1ere"].includes(value)) return "premiere";
+    if (["troisieme", "3eme", "3ieme"].includes(value)) return "3eme";
+    if (["sup", "superieur", "superieure", "supérieur", "supérieure"].includes(value)) return "superieur";
+  }
+
+  if (type === "type") {
+    if (["exo", "exos", "td", "exercice", "exercices"].includes(value)) return "exercice";
+    if (["ds", "devoir"].includes(value)) return "ds";
+    if (["corr", "corrige", "correction"].includes(value)) return "corrige";
+    if (["cours"].includes(value)) return "cours";
+  }
+
+  return value;
+}
 // ========================
 // 🔓 LOGOUT
 // ========================
@@ -103,7 +129,7 @@ async function loadDocs() {
   const res = await fetch("data/documents.json");
   const docs = await res.json();
 
-  const matieres = [...new Set(docs.map(d => d.matiere))];
+  const matieres = [...new Set(docs.map(d => normalize(d.matiere, "matiere")))];
   const niveaux = [...new Set(docs.map(d => d.niveau))];
   const types = [...new Set(docs.map(d => d.type))];
 
@@ -132,7 +158,7 @@ function filterDocs(docs) {
   const t = document.getElementById("type").value;
 
   const filtered = docs.filter(d =>
-    (!m || d.matiere === m) &&
+    (!m || normalize(d.matiere, "matiere") === m) &&
     (!n || d.niveau === n) &&
     (!t || d.type === t)
   );
@@ -152,7 +178,7 @@ function displayDocs(docs) {
 
     div.innerHTML = `
       <h3>${doc.titre}</h3>
-      <p>${doc.matiere} • ${doc.niveau} • ${doc.type}</p>
+      <p>${normalize(doc.matiere,"matiere")} • ${doc.niveau} • ${doc.type}</p>
     `;
 
     div.onclick = () => {
