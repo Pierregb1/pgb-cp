@@ -8,6 +8,350 @@
   }
 ,
   {
+    "titre": "ds ana fonct",
+    "fichier": "docs/math  terminale ds ana fonct.pdf",
+    "matiere": "maths",
+    "niveau": "",
+    "type": "terminale"
+  }
+,
+  {
+    "titre": "td alg lin chap 1-5",
+    "fichier": "docs/math superieur Corrigé TD alg lin chap 1-5.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "algèbre lin 1 facile +",
+    "fichier": "docs/math superieure Ds algèbre lin 1 facile +.pdf",
+    "matiere": "maths",
+    "niveau": "superieure",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "ds complexe pcsi pgb corr",
+    "fichier": "docs/math supérieur corrigé DS COMPLEXE PcSI pgb CORR.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "algèbre linéaire chapitre 8 app lin",
+    "fichier": "docs/math supérieur cour algèbre linéaire chapitre 8 app lin.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cour"
+  }
+,
+  {
+    "titre": "algèbre linéaire chapitre 9 rang",
+    "fichier": "docs/math supérieur cour algèbre linéaire chapitre 9 rang.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cour"
+  }
+,
+  {
+    "titre": "algèbre lin chap 1raisonnement et ensembles",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 1Raisonnement et ensembles.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 2 pratique calculatoire et objets algébriques de base",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 3 espaces vectoriels et sous-espaces",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 3 Espaces vectoriels et sous-espaces.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 4 familles libres, génératrices, bases",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 4 familles libres, génératrices, bases.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 5 ev dim finie",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 5 EV dim finie.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 6 syst lin",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 6 syst lin.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 7 intro calc matr",
+    "fichier": "docs/math supérieur cours Algèbre lin chap 7 intro calc matr.pdf",
+    "matiere": "maths",
+    "niveau": "supérieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "complexe pcsi pgb",
+    "fichier": "docs/math supérieure DS COMPLEXE PCSI pgb.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "td complexe pierre gradient corr",
+    "fichier": "docs/math supérieure corrigé Td complexe pierre gradient corr.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "complexe pierre",
+    "fichier": "docs/math supérieure cours complexe pierre.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "td alg lin chap 4 bases",
+    "fichier": "docs/math supérieure exo TD ALG LIN CHAP 4 BASES.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "td algèbre lin chap1 gradient",
+    "fichier": "docs/math supérieure exo TD algèbre lin chap1 gradient.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "td alg lin chap 2 pratiques calculatoire",
+    "fichier": "docs/math supérieure exo Td alg lin chap 2 pratiques calculatoire.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "td alg lin chap 3 ev et sev",
+    "fichier": "docs/math supérieure exo Td alg lin chap 3 ev et sev.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "td alg lin chap 5 dim",
+    "fichier": "docs/math supérieure exo Td alg lin chap 5 dim.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "td complexe pierre gradient",
+    "fichier": "docs/math supérieure exo Td complexe pierre gradient.pdf",
+    "matiere": "maths",
+    "niveau": "supérieure",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "dm ana fonction term corr",
+    "fichier": "docs/math terimanale corrige DM ana fonction term corr.pdf",
+    "matiere": "maths",
+    "niveau": "terimanale",
+    "type": "corrige"
+  }
+,
+  {
+    "titre": "géométrie mid +",
+    "fichier": "docs/math terminale DS géométrie mid +.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "polytech math",
+    "fichier": "docs/math terminale DS polytech math.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "0 un peu de tout",
+    "fichier": "docs/math terminale Ds 0 un peu de tout.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "1 math analyse fonctionnelle harr-",
+    "fichier": "docs/math terminale Ds 1 MATH ANALYSE FONCTIONNELLE HARR-.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "term  mid +",
+    "fichier": "docs/math terminale EXO TERM  MID +.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "analyse fonctionnelle gradient",
+    "fichier": "docs/math terminale Exo ANALYSE FONCTIONNELLE gradient.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "dm géométrie mid +",
+    "fichier": "docs/math terminale corrigé DM géométrie mid +.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "dm1 math analyse fonctionnelle harr-",
+    "fichier": "docs/math terminale corrigé DM1 math analyse fonctionnelle HARR-.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "ds polytech math",
+    "fichier": "docs/math terminale corrigé ds polytech math.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "exo term mid +",
+    "fichier": "docs/math terminale corrigé exo term mid +.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "cours analyse fonctionnelle pierre term",
+    "fichier": "docs/math terminale cours Cours analyse fonctionnelle pierre term.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "géométrie collège-  term",
+    "fichier": "docs/math terminale cours géométrie collège-_ term.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "suite",
+    "fichier": "docs/math terminale cours suite.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "blanc",
+    "fichier": "docs/math terminale ds blanc.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "suite numérique corrigé",
+    "fichier": "docs/math terminale ds suite numérique corrigé.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "suite numérique",
+    "fichier": "docs/math terminale ds suite numérique.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "colle complexe term",
+    "fichier": "docs/math terminale exo colle complexe term.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "colle complexe",
+    "fichier": "docs/math terminale exo colle complexe.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "suite",
+    "fichier": "docs/math terminale exo suite.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "0 math 3eme",
+    "fichier": "docs/math troisieme DS 0 math 3eme.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "ds"
+  }
+,
+  {
     "titre": "0",
     "fichier": "docs/physique 3eme ds 0.pdf",
     "matiere": "physique",
@@ -32,6 +376,14 @@
   }
 ,
   {
+    "titre": "meca",
+    "fichier": "docs/physique premiere cours meca.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
     "titre": "physiqechimie première",
     "fichier": "docs/physique premiere cours physiqechimie première.pdf",
     "matiere": "physique",
@@ -48,6 +400,22 @@
   }
 ,
   {
+    "titre": "onde",
+    "fichier": "docs/physique premiere exercice onde.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "meca",
+    "fichier": "docs/physique premiere exo meca.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
     "titre": "prem phychim",
     "fichier": "docs/physique premiere exo prem phychim.pdf",
     "matiere": "physique",
@@ -61,6 +429,14 @@
     "matiere": "physique",
     "niveau": "premiere",
     "type": "exercice"
+  }
+,
+  {
+    "titre": "ondes",
+    "fichier": "docs/physique première cours ondes.pdf",
+    "matiere": "physique",
+    "niveau": "première",
+    "type": "cours"
   }
 ,
   {
@@ -96,11 +472,27 @@
   }
 ,
   {
+    "titre": "meca",
+    "fichier": "docs/physique terminale cours meca.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
     "titre": "total",
     "fichier": "docs/physique terminale cours total.pdf",
     "matiere": "physique",
     "niveau": "terminale",
     "type": "cours"
+  }
+,
+  {
+    "titre": "meca",
+    "fichier": "docs/physique terminale ds meca.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "ds"
   }
 ,
   {
@@ -122,6 +514,14 @@
   {
     "titre": "physique chimie gradient",
     "fichier": "docs/physique terminale exercice physique_chimie gradient.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "meca",
+    "fichier": "docs/physique terminale exo meca.pdf",
     "matiere": "physique",
     "niveau": "terminale",
     "type": "exercice"
