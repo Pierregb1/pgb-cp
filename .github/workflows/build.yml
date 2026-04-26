@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # 🔥 autorise le push automatique
+      contents: write
 
     steps:
       - uses: actions/checkout@v3
@@ -24,28 +24,47 @@ jobs:
           mkdir -p data
 
       # =========================
-      # COMPILATION LATEX
+      # COMPILATION LATEX (FIX)
       # =========================
       - name: Compile LaTeX
         run: |
-          for dir in uploads/*; do
-            if [ -f "$dir/main.tex" ]; then
-              # =========================
-              # PATCH AUTOMATIQUE
-              # =========================
-              sed -i 's/\\begin{document}/\\usepackage{siunitx}\n\\begin{document}/' "$dir/main.tex"
+          echo "🔍 Recherche des fichiers main.tex..."
 
-              cd "$dir"
+          find uploads -type f -name "main.tex" | while read file; do
+            
+            dir=$(dirname "$file")
+            name=$(basename "$dir")
 
-              pdflatex -interaction=nonstopmode main.tex
-              pdflatex -interaction=nonstopmode main.tex
-              
-              cd -
+            echo "📄 Compilation de $name dans $dir"
 
-              name=$(basename "$dir")
+            # =========================
+            # PATCH AUTOMATIQUE siunitx
+            # =========================
+            sed -i 's/\\begin{document}/\\usepackage{siunitx}\n\\begin{document}/' "$file"
+
+            cd "$dir"
+
+            pdflatex -interaction=nonstopmode main.tex || true
+            pdflatex -interaction=nonstopmode main.tex || true
+
+            cd -
+
+            if [ -f "$dir/main.pdf" ]; then
               mv "$dir/main.pdf" "docs/$name.pdf"
+              echo "✅ PDF généré : docs/$name.pdf"
+            else
+              echo "❌ ERREUR : pas de PDF pour $name"
             fi
+
           done
+
+      # =========================
+      # DEBUG (IMPORTANT)
+      # =========================
+      - name: Debug docs
+        run: |
+          echo "📂 Contenu du dossier docs :"
+          ls -R docs || true
 
       # =========================
       # GENERATION JSON
@@ -58,25 +77,19 @@ jobs:
           for file in docs/*.pdf; do
             name=$(basename "$file" .pdf)
 
-            # =========================
             # NORMALISATION
-            # =========================
             name=$(echo "$name" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
 
             IFS='_' read -r matiere niveau type reste <<< "$name"
 
-            # =====================
             # MATIERE
-            # =====================
             if [[ "$matiere" =~ ^(math|maths|mathematique|mathematiques)$ ]]; then
               matiere="maths"
             elif [[ "$matiere" =~ ^(phy|physique|physiquechimie|physique-chimie|pc)$ ]]; then
               matiere="physique"
             fi
 
-            # =====================
             # NIVEAU
-            # =====================
             if [[ "$niveau" =~ ^(term|terminale|tle)$ ]]; then
               niveau="terminale"
             elif [[ "$niveau" =~ ^(premiere|prem|1ere)$ ]]; then
@@ -87,9 +100,7 @@ jobs:
               niveau="superieur"
             fi
 
-            # =====================
             # TYPE
-            # =====================
             if [[ "$type" =~ ^(exo|exos|td|exercice|exercices)$ ]]; then
               type="exercice"
             elif [[ "$type" =~ ^(ds|devoir)$ ]]; then
@@ -100,14 +111,9 @@ jobs:
               type="corrige"
             fi
 
-            # =====================
             # TITRE
-            # =====================
             titre=$(echo "$reste" | sed 's/_/ /g')
 
-            # =====================
-            # JSON
-            # =====================
             if [ $first -eq 0 ]; then echo "," >> data/documents.json; fi
 
             echo "  {" >> data/documents.json
