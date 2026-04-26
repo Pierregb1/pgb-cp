@@ -30,8 +30,16 @@ jobs:
         run: |
           for dir in uploads/*; do
             if [ -f "$dir/main.tex" ]; then
+              # =========================
+              # PATCH AUTOMATIQUE
+              # =========================
+              sed -i 's/\\begin{document}/\\usepackage{siunitx}\n\\begin{document}/' "$dir/main.tex"
+
               cd "$dir"
-              pdflatex main.tex
+
+              pdflatex -interaction=nonstopmode main.tex
+              pdflatex -interaction=nonstopmode main.tex
+              
               cd -
 
               name=$(basename "$dir")
