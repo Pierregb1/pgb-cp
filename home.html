@@ -9,29 +9,27 @@
 <body>
 
 <header>
-  <h1>📚 Plateforme</h1>
+  <h1>📚 Plateforme de cours</h1>
   <nav>
     <button onclick="goCourses()">Cours</button>
     <button onclick="logout()">Déconnexion</button>
   </nav>
 </header>
 
-<div class="grid">
+<div class="container">
 
-<div class="card">
-  <h2>Mathématicien(ne) de la semaine</h2>
-  <div id="math-week"></div>
-</div>
+  <div class="big-card">
+    <h2>👨‍🏫 Mathématicien(ne) de la semaine</h2>
+    <div id="math-week"></div>
+  </div>
 
-<div class="card">
-  <h2>Problème de la semaine</h2>
-  <p id="problem"></p>
-  <button onclick="toggleSolution()">Voir correction</button>
-  <p id="solution" class="hidden"></p>
-</div>
+  <div class="big-card">
+    <h2>🧠 Problème de la semaine</h2>
+    <div id="problem-box"></div>
+  </div>
 
 </div>
 
-<script src="app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>

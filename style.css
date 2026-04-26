@@ -52,13 +52,16 @@ nav button:hover {
   margin-top: 120px;
   padding: 25px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
 .center {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* DOCS */
@@ -96,4 +99,60 @@ h3 {
 
 .hidden {
   display: none;
+}
+
+/* ===== NOUVEAU DESIGN HOME ===== */
+
+.container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.big-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.big-card:hover {
+  transform: translateY(-5px);
+}
+
+/* LOGIN AMÉLIORÉ */
+.title {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: gray;
+}
+
+.name {
+  margin-bottom: 20px;
+  color: #3b82f6;
+}
+
+/* PROBLEM */
+#problem-box {
+  line-height: 1.7;
+}
+
+#problem-box button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+#problem-box button:hover {
+  background: #2563eb;
 }

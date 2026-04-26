@@ -182,3 +182,61 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCourses();
 
 });
+
+// ===== RANDOM SEMAINE =====
+
+function getWeekNumber() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1);
+  return Math.floor((now - start) / (1000 * 60 * 60 * 24 * 7));
+}
+
+function pickWeekly(array) {
+  const week = getWeekNumber();
+  return array[week % array.length];
+}
+
+// ===== LOAD HOME AMÉLIORÉ =====
+
+async function loadHomeEnhanced() {
+
+  // PROBLEMS
+  const resProb = await fetch("data/fun-problems.json");
+  const problems = await resProb.json();
+
+  const p = pickWeekly(problems);
+
+  if (document.getElementById("problem-box")) {
+    document.getElementById("problem-box").innerHTML = `
+      <h3>${p.title}</h3>
+      <p><b>Énoncé :</b> ${p.statement}</p>
+      <p><i>Indice :</i> ${p.hint}</p>
+      <button onclick="toggleSolution()">Voir correction</button>
+      <p id="solution" class="hidden">${p.solution}</p>
+    `;
+  }
+
+  // MATHS
+  const men = await (await fetch("data/mathematicians-men.json")).json();
+  const women = await (await fetch("data/mathematicians-women.json")).json();
+
+  const all = [...men, ...women];
+  const m = pickWeekly(all);
+
+  if (document.getElementById("math-week")) {
+    document.getElementById("math-week").innerHTML = `
+      <h3>${m.name} (${m.era})</h3>
+      <p>${m.summary}</p>
+      <p><b>Travaux :</b> ${m.research}</p>
+      <p><b>Formules :</b></p>
+      <ul>
+        ${m.formulas.map(f => `<li>${f}</li>`).join("")}
+      </ul>
+    `;
+  }
+}
+
+// AUTO LOAD SANS CASSER L'ANCIEN
+if (document.getElementById("math-week")) {
+  loadHomeEnhanced();
+}
