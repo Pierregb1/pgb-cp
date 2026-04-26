@@ -26,6 +26,10 @@ jobs:
       # =========================
       # COMPILATION LATEX (FIX)
       # =========================
+      - name: Debug uploads
+        run: |
+          echo "📂 Contenu de uploads :"
+          ls -R uploads || true
       - name: Compile LaTeX
         run: |
           echo "🔍 Recherche des fichiers main.tex..."
