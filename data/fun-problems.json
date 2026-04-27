@@ -1,4 +1,4 @@
-
+[
   {
     "title": "Nombre miroir",
     "statement": "On prend un entier n, on inverse ses chiffres et on additionne les deux trouver des conditions pour qu'il soit un nombre palindrome",
@@ -276,3 +276,4 @@
 "solution": "suite sans répétition triviale",
 "formula": "liens avec combinatoire et fractales"
 }
+]

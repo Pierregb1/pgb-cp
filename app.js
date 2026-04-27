@@ -109,6 +109,7 @@ async function loadHome() {
     const p = probs[getWeek() % probs.length];
 
     document.getElementById("problem").innerText = p.statement;
+    
     document.getElementById("solution").innerText = p.solution;
   } catch (e) {
     console.log("Erreur chargement problème", e);
