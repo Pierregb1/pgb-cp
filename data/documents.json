@@ -27,7 +27,7 @@
     "titre": "algèbre lin 1 facile +",
     "fichier": "docs/math superieure Ds algèbre lin 1 facile +.pdf",
     "matiere": "maths",
-    "niveau": "superieure",
+    "niveau": "superieur",
     "type": "ds"
   }
 ,
@@ -35,7 +35,7 @@
     "titre": "ds complexe pcsi pgb corr",
     "fichier": "docs/math supérieur corrigé DS COMPLEXE PcSI pgb CORR.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "corrigé"
   }
 ,
@@ -43,23 +43,23 @@
     "titre": "algèbre linéaire chapitre 8 app lin",
     "fichier": "docs/math supérieur cour algèbre linéaire chapitre 8 app lin.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
-    "type": "cour"
+    "niveau": "superieur",
+    "type": "cours"
   }
 ,
   {
     "titre": "algèbre linéaire chapitre 9 rang",
     "fichier": "docs/math supérieur cour algèbre linéaire chapitre 9 rang.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
-    "type": "cour"
+    "niveau": "superieur",
+    "type": "cours"
   }
 ,
   {
     "titre": "algèbre lin chap 1raisonnement et ensembles",
     "fichier": "docs/math supérieur cours Algèbre lin chap 1Raisonnement et ensembles.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -67,7 +67,7 @@
     "titre": "algèbre lin chap 2 pratique calculatoire et objets algébriques de base",
     "fichier": "docs/math supérieur cours Algèbre lin chap 2 Pratique calculatoire et objets algébriques de base.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -75,7 +75,7 @@
     "titre": "algèbre lin chap 3 espaces vectoriels et sous-espaces",
     "fichier": "docs/math supérieur cours Algèbre lin chap 3 Espaces vectoriels et sous-espaces.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -83,7 +83,7 @@
     "titre": "algèbre lin chap 4 familles libres, génératrices, bases",
     "fichier": "docs/math supérieur cours Algèbre lin chap 4 familles libres, génératrices, bases.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -91,7 +91,7 @@
     "titre": "algèbre lin chap 5 ev dim finie",
     "fichier": "docs/math supérieur cours Algèbre lin chap 5 EV dim finie.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -99,7 +99,7 @@
     "titre": "algèbre lin chap 6 syst lin",
     "fichier": "docs/math supérieur cours Algèbre lin chap 6 syst lin.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -107,7 +107,23 @@
     "titre": "algèbre lin chap 7 intro calc matr",
     "fichier": "docs/math supérieur cours Algèbre lin chap 7 intro calc matr.pdf",
     "matiere": "maths",
-    "niveau": "supérieur",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre linéaire chapitre 8 app lin",
+    "fichier": "docs/math supérieur cours algèbre linéaire chapitre 8 app lin.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre linéaire chapitre 9 rang",
+    "fichier": "docs/math supérieur cours algèbre linéaire chapitre 9 rang.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -115,7 +131,7 @@
     "titre": "complexe pcsi pgb",
     "fichier": "docs/math supérieure DS COMPLEXE PCSI pgb.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "ds"
   }
 ,
@@ -123,7 +139,7 @@
     "titre": "td complexe pierre gradient corr",
     "fichier": "docs/math supérieure corrigé Td complexe pierre gradient corr.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "corrigé"
   }
 ,
@@ -131,7 +147,7 @@
     "titre": "complexe pierre",
     "fichier": "docs/math supérieure cours complexe pierre.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
@@ -139,7 +155,7 @@
     "titre": "td alg lin chap 4 bases",
     "fichier": "docs/math supérieure exo TD ALG LIN CHAP 4 BASES.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -147,7 +163,7 @@
     "titre": "td algèbre lin chap1 gradient",
     "fichier": "docs/math supérieure exo TD algèbre lin chap1 gradient.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -155,7 +171,7 @@
     "titre": "td alg lin chap 2 pratiques calculatoire",
     "fichier": "docs/math supérieure exo Td alg lin chap 2 pratiques calculatoire.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -163,7 +179,7 @@
     "titre": "td alg lin chap 3 ev et sev",
     "fichier": "docs/math supérieure exo Td alg lin chap 3 ev et sev.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -171,7 +187,7 @@
     "titre": "td alg lin chap 5 dim",
     "fichier": "docs/math supérieure exo Td alg lin chap 5 dim.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -179,7 +195,7 @@
     "titre": "td complexe pierre gradient",
     "fichier": "docs/math supérieure exo Td complexe pierre gradient.pdf",
     "matiere": "maths",
-    "niveau": "supérieure",
+    "niveau": "superieur",
     "type": "exercice"
   }
 ,
@@ -304,6 +320,14 @@
   }
 ,
   {
+    "titre": "ana fonct",
+    "fichier": "docs/math terminale ds ana fonct.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "ds"
+  }
+,
+  {
     "titre": "blanc",
     "fichier": "docs/math terminale ds blanc.pdf",
     "matiere": "maths",
@@ -368,11 +392,11 @@
   }
 ,
   {
-    "titre": "ds 0",
-    "fichier": "docs/physique PREMIERE GENERALE DS 0.pdf",
+    "titre": "0",
+    "fichier": "docs/physique PREMIERE DS 0.pdf",
     "matiere": "physique",
     "niveau": "premiere",
-    "type": "generale"
+    "type": "ds"
   }
 ,
   {
@@ -443,7 +467,7 @@
     "titre": "ondes",
     "fichier": "docs/physique première cours ondes.pdf",
     "matiere": "physique",
-    "niveau": "première",
+    "niveau": "premiere",
     "type": "cours"
   }
 ,
@@ -452,7 +476,7 @@
     "fichier": "docs/physique terminale DM physique elec term.pdf",
     "matiere": "physique",
     "niveau": "terminale",
-    "type": "dm"
+    "type": "ds"
   }
 ,
   {
