@@ -240,6 +240,14 @@
   }
 ,
   {
+    "titre": "dm ana fonction term corr",
+    "fichier": "docs/math terminale corrige DM ana fonction term corr.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrige"
+  }
+,
+  {
     "titre": "dm géométrie mid +",
     "fichier": "docs/math terminale corrigé DM géométrie mid +.pdf",
     "matiere": "maths",
