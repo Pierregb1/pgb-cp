@@ -93,22 +93,22 @@ jobs:
             fi
 
             # NIVEAU
-            if [[ "$niveau" =~ ^(term|terminale|tle)$ ]]; then
+            if [[ "$niveau" =~ ^(term|terminale|tle|te)$ ]]; then
               niveau="terminale"
-            elif [[ "$niveau" =~ ^(premiere|prem|1ere)$ ]]; then
+            elif [[ "$niveau" =~ ^(premiere|prem|1ere|première)$ ]]; then
               niveau="premiere"
-            elif [[ "$niveau" =~ ^(troisieme|3eme|3ieme)$ ]]; then
+            elif [[ "$niveau" =~ ^(troisieme|3eme|3ieme|troisième)$ ]]; then
               niveau="3eme"
-            elif [[ "$niveau" =~ ^(sup|superieur)$ ]]; then
+            elif [[ "$niveau" =~ ^(sup|superieur|superieure|supérieur|supérieure|supp)$ ]]; then
               niveau="superieur"
             fi
 
             # TYPE
             if [[ "$type" =~ ^(exo|exos|td|exercice|exercices)$ ]]; then
               type="exercice"
-            elif [[ "$type" =~ ^(ds|devoir)$ ]]; then
+            elif [[ "$type" =~ ^(ds|devoir|dm)$ ]]; then
               type="ds"
-            elif [[ "$type" =~ ^(cours)$ ]]; then
+            elif [[ "$type" =~ ^(cours|cour|)$ ]]; then
               type="cours"
             elif [[ "$type" =~ ^(corr|corrige|correction)$ ]]; then
               type="corrige"
