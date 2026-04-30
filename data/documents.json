@@ -32,6 +32,30 @@
   }
 ,
   {
+    "titre": "ds algebre linéaine 1",
+    "fichier": "docs/math superieure corrigé ds algebre linéaine 1.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "algebre linéaine 1",
+    "fichier": "docs/math superieure ds algebre linéaine 1.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "proba",
+    "fichier": "docs/math superieure td proba.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
     "titre": "ds complexe pcsi pgb corr",
     "fichier": "docs/math supérieur corrigé DS COMPLEXE PcSI pgb CORR.pdf",
     "matiere": "maths",
@@ -152,6 +176,14 @@
   }
 ,
   {
+    "titre": "proba",
+    "fichier": "docs/math supérieure cours proba.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
     "titre": "td alg lin chap 4 bases",
     "fichier": "docs/math supérieure exo TD ALG LIN CHAP 4 BASES.pdf",
     "matiere": "maths",
@@ -197,14 +229,6 @@
     "matiere": "maths",
     "niveau": "superieur",
     "type": "exercice"
-  }
-,
-  {
-    "titre": "dm ana fonction term corr",
-    "fichier": "docs/math terimanale corrige DM ana fonction term corr.pdf",
-    "matiere": "maths",
-    "niveau": "terimanale",
-    "type": "corrige"
   }
 ,
   {
@@ -282,6 +306,14 @@
   {
     "titre": "ds polytech math",
     "fichier": "docs/math terminale corrigé ds polytech math.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "ds un peu de tout",
+    "fichier": "docs/math terminale corrigé ds un peu de tout.pdf",
     "matiere": "maths",
     "niveau": "terminale",
     "type": "corrigé"
@@ -381,6 +413,22 @@
     "matiere": "maths",
     "niveau": "3eme",
     "type": "ds"
+  }
+,
+  {
+    "titre": "calcul numerique",
+    "fichier": "docs/math troisieme cours calcul numerique.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "calcul numerique",
+    "fichier": "docs/math troisieme exercice calcul numerique.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "exercice"
   }
 ,
   {
@@ -572,6 +620,22 @@
     "fichier": "docs/physique terminale exo type colle elec term.pdf",
     "matiere": "physique",
     "niveau": "terminale",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "meca",
+    "fichier": "docs/physique troisième cours meca.pdf",
+    "matiere": "physique",
+    "niveau": "3eme",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "meca",
+    "fichier": "docs/physique troisème td meca.pdf",
+    "matiere": "physique",
+    "niveau": "troisème",
     "type": "exercice"
   }
 ]
