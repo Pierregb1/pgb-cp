@@ -1,0 +1,360 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+%========================
+% MISE EN PAGE
+%========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Terminale Spé Maths}
+\fancyhead[C]{Corrigé détaillé -- DM 0}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+
+%========================
+\begin{document}
+
+\section*{Exercice 1}
+
+On considère $f(x)=x+\frac{1}{x}-2\ln x$ sur $]0,+\infty[$.
+
+\subsection*{Partie A}
+
+\textbf{1. Limite en $0^+$}
+
+On sait que :
+\[
+\frac{1}{x}\to +\infty \quad \text{et} \quad \ln x \to -\infty
+\]
+
+Donc :
+\[
+-2\ln x \to +\infty
+\]
+
+Ainsi :
+\[
+f(x)\to +\infty
+\]
+
+\textbf{Conclusion :} $\lim_{x\to0^+} f(x)=+\infty$.
+
+\bigskip
+
+\textbf{2. Limite en $+\infty$}
+
+On a :
+\[
+x\to+\infty,\quad \frac{1}{x}\to0,\quad \ln x\to+\infty
+\]
+
+Donc :
+\[
+f(x)=x-2\ln x + o(1)
+\]
+
+Or $x$ domine $\ln x$, donc :
+\[
+f(x)\to +\infty
+\]
+
+\bigskip
+
+\textbf{3. Dérivée}
+
+\[
+f'(x)=1-\frac{1}{x^2}-\frac{2}{x}
+\]
+
+On met au même dénominateur :
+\[
+f'(x)=\frac{x^2 -1 -2x}{x^2} = \frac{(x-1)^2}{x^2}
+\]
+
+\bigskip
+
+\textbf{4. Variations}
+
+Comme $x^2>0$, le signe dépend de $(x-1)^2\ge0$.
+
+Donc :
+\[
+f'(x)\ge0 \quad \text{et nul seulement en } x=1
+\]
+
+Donc $f$ est croissante sur $]0,+\infty[$.
+
+Minimum en $x=1$ :
+\[
+f(1)=1+1-0=2
+\]
+
+\bigskip
+
+\textbf{5. Inégalité}
+
+Comme $f(x)\ge2$ :
+\[
+x+\frac{1}{x}-2\ln x \ge 2
+\]
+
+Donc :
+\[
+x+\frac{1}{x} \ge 2\ln x +2
+\]
+
+\bigskip
+
+\subsection*{Partie B}
+
+\textbf{6. Nombre de solutions}
+
+$f$ est continue et strictement croissante, avec :
+\[
+f(1)=2<3,\quad f\to+\infty \text{ aux bornes}
+\]
+
+Donc 2 solutions.
+
+\bigskip
+
+\textbf{7. Position}
+
+Une solution dans $]0,1[$ et une dans $]1,+\infty[$.
+
+\bigskip
+
+\textbf{8. Encadrement}
+
+(on donne résultat numérique)
+
+\[
+x_1 \approx 0{,}28 \quad ; \quad x_2 \approx 3{,}57
+\]
+
+\bigskip
+
+\section*{Exercice 2}
+
+\subsection*{Partie A}
+
+\textbf{1.} $g(0)=\frac{3}{2}$
+
+\bigskip
+
+\textbf{2.}
+
+\[
+g(x)=2-\frac{1}{x+2}
+\]
+
+\bigskip
+
+\textbf{3.}
+
+\[
+\lim_{x\to+\infty} g(x)=2
+\]
+
+\bigskip
+
+\textbf{4.}
+
+\[
+g'(x)=\frac{1}{(x+2)^2}>0
+\]
+
+Donc croissante.
+
+\bigskip
+
+\textbf{6. Point fixe}
+
+\[
+g(x)=x \Rightarrow x=\frac{2x+3}{x+2}
+\]
+
+\[
+x(x+2)=2x+3
+\]
+
+\[
+x^2=3 \Rightarrow x=\sqrt{3}
+\]
+
+\bigskip
+
+\subsection*{Partie B}
+
+\textbf{7.}
+
+\[
+u_1=\frac{7}{4},\quad u_2=\frac{13}{7}
+\]
+
+\bigskip
+
+\textbf{8.} Par récurrence $u_n\ge1$.
+
+\bigskip
+
+\textbf{10.}
+
+\[
+u_{n+1}-u_n=\frac{(1-u_n)(u_n+1)}{u_n+2}
+\]
+
+Comme $u_n\ge1$, on a $u_{n+1}-u_n\le0$.
+
+Donc suite décroissante.
+
+\bigskip
+
+\textbf{12.} Suite décroissante et minorée $\Rightarrow$ convergente.
+
+\bigskip
+
+\textbf{13. Limite}
+
+\[
+\ell=g(\ell) \Rightarrow \ell=\sqrt{3}
+\]
+
+\bigskip
+
+\section*{Exercice 3}
+
+\[
+h(x)=x\sqrt{x^2+1}
+\]
+
+\textbf{1.} $h(0)=0$
+
+\bigskip
+
+\textbf{2.} Fonction impaire.
+
+\bigskip
+
+\textbf{3.}
+
+\[
+h'(x)=\frac{2x^2+1}{\sqrt{x^2+1}}
+\]
+
+\bigskip
+
+\textbf{4. Tangente en 1}
+
+\[
+h(1)=\sqrt{2}, \quad h'(1)=\frac{3}{\sqrt{2}}
+\]
+
+\[
+y=\frac{3}{\sqrt{2}}(x-1)+\sqrt{2}
+\]
+
+\bigskip
+
+\textbf{5. Tangente parallèle à $y=3x-2$}
+
+\[
+h'(x)=3 \Rightarrow \frac{2x^2+1}{\sqrt{x^2+1}}=3
+\]
+
+Résolution $\Rightarrow x=\pm\sqrt{\frac{5+\sqrt{17}}{2}}$
+
+\bigskip
+
+\textbf{6. Dérivabilité en 0}
+
+Taux de variation :
+\[
+\frac{h(x)-0}{x}=\sqrt{x^2+1}\to1
+\]
+
+Donc dérivable.
+
+\bigskip
+
+\textbf{7. Tangente en 0}
+
+\[
+y=x
+\]
+
+\bigskip
+
+\section*{Exercice 4}
+
+\textbf{1.}
+
+\[
+P(U_A)=\frac{1}{2},\quad P(U_B)=\frac{1}{2}
+\]
+
+\bigskip
+
+\textbf{2.}
+
+\[
+P(R|A)=\frac{3}{5},\quad P(R|B)=\frac{1}{5}
+\]
+
+\bigskip
+
+\textbf{3.}
+
+\[
+P(R)=\frac{1}{2}\times\frac{3}{5}+\frac{1}{2}\times\frac{1}{5}=\frac{2}{5}
+\]
+
+\bigskip
+
+\textbf{4.}
+
+\[
+P(A|R)=\frac{\frac{3}{10}}{\frac{2}{5}}=\frac{3}{4}
+\]
+
+\bigskip
+
+\textbf{5. Loi binomiale}
+
+\[
+X \sim \mathcal{B}(3,\frac{2}{5})
+\]
+
+\[
+P(X=2)=\binom{3}{2}\left(\frac{2}{5}\right)^2\left(\frac{3}{5}\right)=\frac{36}{125}
+\]
+
+\[
+P(X\ge1)=1-\left(\frac{3}{5}\right)^3=\frac{98}{125}
+\]
+
+\bigskip
+
+\section*{Bonus}
+
+\[
+x+\frac{1}{x}=2+2\ln x
+\]
+
+C’est exactement l’égalité atteinte au minimum de $f$, donc solution unique :
+
+\[
+x=1
+\]
+
+\end{document}

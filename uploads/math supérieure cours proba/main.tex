@@ -1,0 +1,293 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+
+%====================================================
+% ENVIRONNEMENTS
+%====================================================
+\newtheorem{definition}{Définition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Théorème}
+\newtheorem{exemple}{Exemple}
+\newtheorem{remarque}{Remarque}
+
+%====================================================
+\begin{document}
+
+\title{\textbf{Chapitre — Probabilités et Statistiques}}
+\maketitle
+
+\tableofcontents
+
+%====================================================
+\section{Pourquoi ce chapitre est-il fondamental ?}
+
+Les probabilités permettent de modéliser l’incertitude.
+
+\textbf{Idée :} transformer le hasard en modèle mathématique.
+
+\textbf{Point clé :} une probabilité est une modélisation.
+
+%====================================================
+\section{Modélisation probabiliste}
+
+\subsection{Univers}
+
+\begin{definition}
+Un univers $\Omega$ est l’ensemble des résultats possibles.
+\end{definition}
+
+\begin{exemple}
+\[
+\Omega = \{1,2,3,4,5,6\}
+\]
+\end{exemple}
+
+\subsection{Événements}
+
+\begin{definition}
+Un événement est une partie de $\Omega$.
+\end{definition}
+
+%====================================================
+\section{Tribu et modèle}
+
+\begin{definition}
+Une tribu $\mathcal{T}$ est une famille stable par complémentaire et union.
+\end{definition}
+
+%====================================================
+\section{Probabilité}
+
+\begin{definition}
+\[
+P : \mathcal{T} \to [0,1]
+\]
+avec $P(\Omega)=1$ et additivité.
+\end{definition}
+
+\begin{definition}
+Un espace probabilisé est $(\Omega,\mathcal{T},P)$.
+\end{definition}
+
+%====================================================
+\section{Propriétés}
+
+\begin{proposition}
+\[
+P(A^c)=1-P(A)
+\]
+\end{proposition}
+
+\begin{proposition}
+\[
+P(A \cup B)=P(A)+P(B)-P(A \cap B)
+\]
+\end{proposition}
+
+%====================================================
+\section{Probabilité conditionnelle}
+
+\begin{definition}
+\[
+P(A|B)=\frac{P(A \cap B)}{P(B)}
+\]
+\end{definition}
+
+%====================================================
+\section{Indépendance}
+
+\begin{definition}
+\[
+P(A \cap B)=P(A)P(B)
+\]
+\end{definition}
+
+%====================================================
+\section{Variables aléatoires}
+
+\begin{definition}
+\[
+X : \Omega \to \mathbb{R}
+\]
+\end{definition}
+
+%====================================================
+\section{Espérance et variance}
+
+\begin{definition}
+\[
+E(X)=\sum xP(X=x)
+\]
+\end{definition}
+
+\begin{definition}
+\[
+Var(X)=E(X^2)-E(X)^2
+\]
+\end{definition}
+
+%====================================================
+\section{Lois discrètes usuelles}
+
+\subsection{Bernoulli}
+
+\[
+P(X=1)=p,\quad P(X=0)=1-p
+\]
+
+\subsection{Binomiale}
+
+\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+\]
+
+\subsection{Géométrique}
+
+\[
+P(X=k)=(1-p)^{k-1}p
+\]
+
+\subsection{Poisson}
+
+\[
+P(X=k)=\frac{\lambda^k e^{-\lambda}}{k!}
+\]
+
+%====================================================
+\section{Lien entre les lois}
+
+\subsection{Schéma de Bernoulli}
+
+Suite d’expériences indépendantes de probabilité $p$.
+
+\subsection{Bernoulli → Binomiale}
+
+\begin{theorem}
+Nombre de succès :
+\[
+X \sim \mathcal{B}(n,p)
+\]
+\end{theorem}
+
+\begin{proof}
+Choix des succès :
+\[
+\binom{n}{k}
+\]
+Probabilité :
+\[
+p^k(1-p)^{n-k}
+\]
+\end{proof}
+
+\subsection{Binomiale → Poisson}
+
+\begin{theorem}
+Si $np \to \lambda$ :
+\[
+\mathcal{B}(n,p) \to \mathcal{P}(\lambda)
+\]
+\end{theorem}
+
+%====================================================
+\section{Espérance et variance des lois}
+
+\subsection{Bernoulli}
+
+\[
+E(X)=p,\quad Var(X)=p(1-p)
+\]
+
+\begin{proof}
+Calcul direct.
+\end{proof}
+
+\subsection{Binomiale}
+
+\[
+E(X)=np,\quad Var(X)=np(1-p)
+\]
+
+\begin{proof}
+Somme de variables Bernoulli indépendantes.
+\end{proof}
+
+\subsection{Géométrique}
+
+\[
+E(X)=\frac{1}{p},\quad Var(X)=\frac{1-p}{p^2}
+\]
+
+\subsection{Poisson}
+
+\[
+E(X)=\lambda,\quad Var(X)=\lambda
+\]
+
+%====================================================
+\section{Variables continues}
+
+\begin{definition}
+\[
+P(a \leq X \leq b)=\int_a^b f(x)dx
+\]
+\end{definition}
+
+%====================================================
+\section{Lois continues}
+
+\subsection{Uniforme}
+
+\[
+f(x)=\frac{1}{b-a}
+\]
+
+\subsection{Exponentielle}
+
+\[
+f(x)=\lambda e^{-\lambda x}
+\]
+
+\subsection{Normale}
+
+\[
+Z=\frac{X-\mu}{\sigma}
+\]
+
+%====================================================
+\section{Statistiques}
+
+\subsection{Échantillon}
+
+Variables indépendantes.
+
+\subsection{Intervalle de confiance}
+
+\[
+\bar{x} \pm \frac{1}{\sqrt{n}}
+\]
+
+\subsection{Fluctuation}
+
+Comparer fréquence et probabilité.
+
+%====================================================
+\section{Résumé}
+
+\begin{itemize}
+\item modèle $(\Omega,\mathcal{T},P)$
+\item lois usuelles
+\item espérance et variance
+\item statistiques
+\end{itemize}
+
+\end{document}

@@ -35,8 +35,8 @@ function normalize(value, type) {
   if (type === "type") {
     if (["exo", "exos", "td", "exercice", "exercices"].includes(value)) return "exercice";
     if (["ds", "devoir"].includes(value)) return "ds";
-    if (["corr", "corrige", "correction"].includes(value)) return "corrige";
-    if (["cours"].includes(value)) return "cours";
+    if (["corr", "corrige", "correction, corrigé"].includes(value)) return "corrige";
+    if (["cours","cour"].includes(value)) return "cours";
   }
 
   return value;
@@ -97,9 +97,23 @@ async function loadHome() {
     const m = all[getWeek() % all.length];
 
     document.getElementById("math-week").innerHTML = `
-      <h3>${m.name}</h3>
-      <p>${m.summary}</p>
-    `;
+        <h2>${math.name}</h2>
+        <p><strong>Période :</strong> ${math.era}</p>
+
+        <p><strong>Résumé :</strong><br>
+        ${math.summary}</p>
+
+        <p><strong>Travaux :</strong><br>
+        ${math.research}</p>
+
+        <p><strong>Formules importantes :</strong></p>
+        <ul>
+          ${math.formulas.map(f => `<li>\\(${f}\\)</li>`).join("")}
+        </ul>
+        `;
+    if (window.MathJax) {
+      MathJax.typeset();
+    }
   } catch (e) {
     console.log("Erreur chargement mathématiciens", e);
   }
