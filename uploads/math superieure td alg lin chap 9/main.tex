@@ -1,0 +1,1828 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\definecolor{bleuprepa}{RGB}{22,70,120}
+\definecolor{grisclair}{RGB}{245,245,245}
+\definecolor{grisfonce}{RGB}{80,80,80}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Algèbre linéaire}}
+\fancyhead[C]{\textbf{TD -- Applications linéaires}}
+\fancyhead[R]{\textbf{Page \thepage/\pageref{LastPage}}}
+\setlength{\headheight}{15pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleuprepa,
+    urlcolor=bleuprepa
+}
+
+\titleformat{\section}
+  {\Large\bfseries\color{bleuprepa}}
+  {\thesection}{0.7em}{}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{grisfonce}}
+  {\thesubsection}{0.7em}{}
+
+\setlist[enumerate]{label=\textbf{\alph*)}, leftmargin=1.1cm, itemsep=0.08cm}
+\setlist[itemize]{leftmargin=0.9cm, itemsep=0.08cm}
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcounter{exo}
+\newcommand{\exo}[3]{
+    \refstepcounter{exo}
+    \vspace{0.45cm}
+    \noindent
+    \colorbox{grisclair}{
+    \parbox{0.965\linewidth}{
+    \textbf{\textcolor{bleuprepa}{Exercice \theexo\ -- #1}}
+    \hfill
+    \textbf{[#2 \; #3]}
+    }}
+    \vspace{0.15cm}
+}
+
+\newcommand{\corr}[1]{
+    \vspace{0.4cm}
+    \noindent\textbf{\textcolor{bleuprepa}{Corrigé de l'exercice #1.}}
+    \par\vspace{0.1cm}
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Img}{\operatorname{Im}}
+\newcommand{\rg}{\operatorname{rg}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Id}{\operatorname{Id}}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Classe préparatoire scientifique}}\\[0.2cm]
+    {\Huge \textbf{\textcolor{bleuprepa}{TD -- Applications linéaires}}}\\[0.2cm]
+    {\Large MPSI/PCSI/MP -- Algèbre linéaire}\\[0.25cm]
+    \textbf{Nom :} \underline{\hspace{5cm}}
+    \hfill
+    \textbf{Date :} \underline{\hspace{3cm}}
+\end{center}
+
+\vspace{0.35cm}
+\hrule
+\vspace{0.25cm}
+
+\noindent\textbf{Objectifs.}
+Ce TD a pour but de maîtriser les applications linéaires, le calcul de noyau, d'image et de rang, ainsi que les critères d'injectivité et de surjectivité. Les exercices sont progressifs : application directe, méthode, démonstration, réflexion, puis oraux de concours.
+
+\vspace{0.2cm}
+\noindent\textbf{Types d'exercices.}
+APP = application directe ; METH = méthode ; DEM = démonstration ; PREP = réflexion ; ORAL = type concours.
+
+\vspace{0.25cm}
+\hrule
+
+\tableofcontents
+\newpage
+
+%====================================================
+\section{Énoncés}
+%====================================================
+
+%====================================================
+\subsection{Exercices d'application directe}
+%====================================================
+
+\exo{Vérifier la linéarité d'une application de $\R^2$ dans $\R^2$}{APP}{$\star$}
+On considère
+\[
+u:\R^2\to\R^2,\qquad u(x,y)=(2x-y,\;x+3y).
+\]
+\begin{enumerate}
+    \item Calculer $u(0,0)$ et rappeler pourquoi ce test est nécessaire mais non suffisant.
+    \item Vérifier l'additivité de $u$ pour deux vecteurs quelconques $(x_1,y_1)$ et $(x_2,y_2)$.
+    \item Vérifier l'homogénéité de $u$ pour un scalaire $\lambda\in\R$.
+    \item Conclure rigoureusement que $u$ est linéaire.
+\end{enumerate}
+
+\exo{Reconnaître une application non linéaire}{APP}{$\star$}
+On considère
+\[
+f:\R^2\to\R,\qquad f(x,y)=x^2+y.
+\]
+\begin{enumerate}
+    \item Calculer $f(1,0)$, $f(2,0)$ et $f(0,0)$.
+    \item Comparer $f((1,0)+(1,0))$ et $f(1,0)+f(1,0)$.
+    \item Conclure que $f$ n'est pas linéaire.
+    \item Expliquer en une phrase pourquoi la présence d'un terme quadratique est incompatible avec la linéarité.
+\end{enumerate}
+
+\exo{Forme linéaire et noyau dans $\R^3$}{APP}{$\star\star$}
+On considère
+\[
+\varphi:\R^3\to\R,\qquad \varphi(x,y,z)=x-2y+3z.
+\]
+\begin{enumerate}
+    \item Montrer que $\varphi$ est linéaire.
+    \item Déterminer $\Ker(\varphi)$ sous forme paramétrique.
+    \item Donner une base de $\Ker(\varphi)$.
+    \item Donner la dimension du noyau et interpréter géométriquement le résultat.
+\end{enumerate}
+
+\exo{Noyau d'une application de $\R^2$ dans $\R$}{APP}{$\star\star$}
+On considère
+\[
+u:\R^2\to\R,\qquad u(x,y)=x-y.
+\]
+\begin{enumerate}
+    \item Résoudre l'équation $u(x,y)=0$.
+    \item Décrire $\Ker(u)$ comme un sous-espace vectoriel.
+    \item Donner une base de $\Ker(u)$.
+    \item L'application $u$ est-elle injective ? Justifier avec le noyau.
+\end{enumerate}
+
+\exo{Image d'une application de $\R^3$ dans $\R^2$}{APP}{$\star\star$}
+On considère
+\[
+u:\R^3\to\R^2,\qquad u(x,y,z)=(x+y,\;y+z).
+\]
+\begin{enumerate}
+    \item Calculer $u(e_1)$, $u(e_2)$ et $u(e_3)$, où $(e_1,e_2,e_3)$ est la base canonique.
+    \item En déduire une famille génératrice de $\Img(u)$.
+    \item Extraire une base de $\Img(u)$.
+    \item Calculer $\rg(u)$.
+\end{enumerate}
+
+\exo{Injectivité et surjectivité}{APP}{$\star\star$}
+On reprend
+\[
+u:\R^3\to\R^2,\qquad u(x,y,z)=(x+y,\;y+z).
+\]
+\begin{enumerate}
+    \item Déterminer $\Ker(u)$.
+    \item L'application est-elle injective ?
+    \item L'application est-elle surjective ?
+    \item Vérifier le théorème du rang.
+\end{enumerate}
+
+\exo{Matrice d'une application dans les bases canoniques}{APP}{$\star\star$}
+Soit
+\[
+u:\R^2\to\R^3,\qquad u(x,y)=(x+y,\;2x-y,\;3y).
+\]
+\begin{enumerate}
+    \item Calculer $u(1,0)$ et $u(0,1)$.
+    \item Construire la matrice de $u$ dans les bases canoniques.
+    \item Vérifier que le produit matrice-colonne redonne bien $u(x,y)$.
+    \item Déterminer si $u$ peut être surjective.
+\end{enumerate}
+
+\exo{Dérivation sur $\R_2[X]$}{APP}{$\star\star$}
+On considère
+\[
+D:\R_2[X]\to\R_2[X],\qquad P\mapsto P'.
+\]
+On travaille dans la base $B=(1,X,X^2)$.
+\begin{enumerate}
+    \item Calculer $D(1)$, $D(X)$ et $D(X^2)$.
+    \item Écrire la matrice de $D$ dans la base $B$.
+    \item Déterminer $\Ker(D)$.
+    \item Déterminer $\Img(D)$.
+    \item Vérifier le théorème du rang.
+\end{enumerate}
+
+\exo{Application donnée par une matrice}{APP}{$\star\star$}
+Soit
+\[
+A=\begin{pmatrix}1&2\\2&4\end{pmatrix}
+\]
+et soit $u$ l'application linéaire de $\R^2$ dans $\R^2$ de matrice $A$ dans la base canonique.
+\begin{enumerate}
+    \item Déterminer explicitement $u(x,y)$.
+    \item Calculer $\Ker(u)$.
+    \item Calculer $\Img(u)$.
+    \item Donner $\rg(u)$.
+    \item L'application est-elle un automorphisme de $\R^2$ ?
+\end{enumerate}
+
+\exo{Projecteur canonique de $\R^3$}{APP}{$\star\star$}
+On considère
+\[
+p:\R^3\to\R^3,\qquad p(x,y,z)=(x,y,0).
+\]
+\begin{enumerate}
+    \item Montrer que $p$ est linéaire.
+    \item Calculer $p^2$.
+    \item Déterminer $\Ker(p)$.
+    \item Déterminer $\Img(p)$.
+    \item Interpréter géométriquement $p$.
+\end{enumerate}
+
+%====================================================
+\subsection{Exercices de méthode}
+%====================================================
+
+\exo{Construire une application par l'image d'une base}{METH}{$\star\star$}
+On considère la base canonique $(e_1,e_2,e_3)$ de $\R^3$. On cherche une application linéaire
+\[
+u:\R^3\to\R^2
+\]
+telle que
+\[
+u(e_1)=(1,0),\qquad u(e_2)=(0,1),\qquad u(e_3)=(1,1).
+\]
+\begin{enumerate}
+    \item Justifier qu'une telle application existe et est unique.
+    \item Déterminer l'expression de $u(x,y,z)$.
+    \item Écrire la matrice de $u$ dans les bases canoniques.
+    \item Calculer $\Ker(u)$.
+    \item Calculer $\Img(u)$ et $\rg(u)$.
+\end{enumerate}
+
+\exo{Application paramétrée}{METH}{$\star\star\star$}
+Pour $\lambda\in\R$, on définit
+\[
+u_\lambda:\R^2\to\R^2,\qquad u_\lambda(x,y)=(x+\lambda y,\;\lambda x+y).
+\]
+\begin{enumerate}
+    \item Montrer que $u_\lambda$ est linéaire.
+    \item Écrire sa matrice $A_\lambda$.
+    \item Résoudre le système $u_\lambda(x,y)=(0,0)$ selon les valeurs de $\lambda$.
+    \item Pour quelles valeurs de $\lambda$ l'application est-elle injective ?
+    \item Pour quelles valeurs de $\lambda$ l'application est-elle surjective ?
+    \item Étudier précisément les cas $\lambda=1$ et $\lambda=-1$.
+\end{enumerate}
+
+\exo{Rang, noyau et image}{METH}{$\star\star\star$}
+On considère
+\[
+u:\R^3\to\R^2,\qquad u(x,y,z)=(x+y+z,\;x+2y+3z).
+\]
+\begin{enumerate}
+    \item Vérifier que $u$ est linéaire.
+    \item Calculer les images des vecteurs de la base canonique.
+    \item Déterminer une base de $\Img(u)$.
+    \item Déterminer $\Ker(u)$.
+    \item Vérifier le théorème du rang.
+\end{enumerate}
+
+\exo{Image d'une base et rang}{METH}{$\star\star\star$}
+Soit $u:E\to F$ linéaire, où $E$ est de dimension $3$, et soit $(e_1,e_2,e_3)$ une base de $E$.
+On suppose que
+\[
+u(e_1)=f_1,\qquad u(e_2)=f_2,\qquad u(e_3)=f_1+f_2.
+\]
+\begin{enumerate}
+    \item Montrer que $\Img(u)=\Vect(f_1,f_2)$.
+    \item À quelle condition sur $(f_1,f_2)$ a-t-on $\rg(u)=2$ ?
+    \item Dans ce cas, calculer $\dim(\Ker(u))$.
+    \item Donner un vecteur non nul de $\Ker(u)$ en fonction de $e_1,e_2,e_3$.
+\end{enumerate}
+
+\exo{Étude matricielle complète sans déterminant}{METH}{$\star\star\star$}
+Soit
+\[
+A=\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+1&0&1
+\end{pmatrix}.
+\]
+On note $u$ l'endomorphisme de $\R^3$ de matrice $A$ dans la base canonique.
+\begin{enumerate}
+    \item Écrire $u(x,y,z)$.
+    \item Résoudre $u(x,y,z)=(0,0,0)$.
+    \item En déduire $\Ker(u)$.
+    \item En déduire l'injectivité puis le rang.
+    \item Déterminer $\Img(u)$.
+\end{enumerate}
+
+\exo{Application à valeurs dans un espace de polynômes}{METH}{$\star\star\star$}
+On définit
+\[
+u:\R^2\to\R_2[X],\qquad u(a,b)=a(1+X)+b(X+X^2).
+\]
+\begin{enumerate}
+    \item Montrer que $u$ est linéaire.
+    \item Écrire la matrice de $u$ dans la base canonique de $\R^2$ et la base $(1,X,X^2)$.
+    \item Déterminer $\Ker(u)$.
+    \item Déterminer $\Img(u)$.
+    \item L'application est-elle injective ? surjective ?
+\end{enumerate}
+
+\exo{Forme linéaire et hyperplan}{METH}{$\star\star\star$}
+On considère
+\[
+\varphi:\R^4\to\R,\qquad
+\varphi(x,y,z,t)=x+2y-z+t.
+\]
+\begin{enumerate}
+    \item Montrer que $\varphi$ est une forme linéaire non nulle.
+    \item Déterminer $\Ker(\varphi)$ sous forme paramétrique.
+    \item Donner une base de $\Ker(\varphi)$.
+    \item Vérifier que $\Ker(\varphi)$ est un hyperplan de $\R^4$.
+\end{enumerate}
+
+\exo{Image d'une famille génératrice}{METH}{$\star\star\star$}
+Soit $u:E\to F$ linéaire et soit $(e_1,\dots,e_n)$ une famille génératrice de $E$.
+\begin{enumerate}
+    \item Soit $y\in\Img(u)$. Écrire $y=u(x)$ pour un certain $x\in E$.
+    \item Décomposer $x$ comme combinaison linéaire des $e_i$.
+    \item En déduire que $(u(e_1),\dots,u(e_n))$ engendre $\Img(u)$.
+    \item Donner un exemple où cette famille n'est pas libre.
+\end{enumerate}
+
+\exo{Image d'une famille libre par une application injective}{METH}{$\star\star\star$}
+Soit $u:E\to F$ linéaire injective.
+\begin{enumerate}
+    \item Soit $(e_1,\dots,e_n)$ une famille libre de $E$.
+    \item Supposer qu'une relation
+    \[
+    \lambda_1u(e_1)+\cdots+\lambda_nu(e_n)=0
+    \]
+    est vérifiée.
+    \item Utiliser la linéarité et l'injectivité de $u$.
+    \item Conclure que $(u(e_1),\dots,u(e_n))$ est libre.
+\end{enumerate}
+
+\exo{Composition et matrices}{METH}{$\star\star\star$}
+On considère
+\[
+u:\R^2\to\R^3,\qquad u(x,y)=(x+y,\;x-y,\;2y),
+\]
+et
+\[
+v:\R^3\to\R^2,\qquad v(a,b,c)=(a+c,\;b-c).
+\]
+\begin{enumerate}
+    \item Écrire les matrices $A$ et $B$ de $u$ et $v$ dans les bases canoniques.
+    \item Calculer $v\circ u$ directement.
+    \item Calculer la matrice de $v\circ u$ par produit matriciel.
+    \item Vérifier la cohérence des deux méthodes.
+\end{enumerate}
+
+%====================================================
+\subsection{Exercices de démonstration}
+%====================================================
+
+\exo{Image du vecteur nul}{DEM}{$\star\star$}
+Soit $u:E\to F$ linéaire.
+\begin{enumerate}
+    \item Écrire $0_E=0_E+0_E$.
+    \item Appliquer $u$ à cette égalité.
+    \item En déduire que $u(0_E)=0_F$.
+\end{enumerate}
+
+\exo{Le noyau est un sous-espace vectoriel}{DEM}{$\star\star$}
+Soit $u:E\to F$ linéaire.
+\begin{enumerate}
+    \item Montrer que $0_E\in\Ker(u)$.
+    \item Montrer la stabilité de $\Ker(u)$ par addition.
+    \item Montrer la stabilité de $\Ker(u)$ par multiplication scalaire.
+    \item Conclure.
+\end{enumerate}
+
+\exo{L'image est un sous-espace vectoriel}{DEM}{$\star\star$}
+Soit $u:E\to F$ linéaire.
+\begin{enumerate}
+    \item Montrer que $0_F\in\Img(u)$.
+    \item Soient $y_1,y_2\in\Img(u)$. Écrire $y_1=u(x_1)$ et $y_2=u(x_2)$.
+    \item Montrer que $\lambda y_1+\mu y_2\in\Img(u)$.
+    \item Conclure.
+\end{enumerate}
+
+\exo{Critère d'injectivité par le noyau}{DEM}{$\star\star\star$}
+Soit $u:E\to F$ linéaire.
+\begin{enumerate}
+    \item Montrer que si $u$ est injective, alors $\Ker(u)=\{0_E\}$.
+    \item Réciproquement, supposer $\Ker(u)=\{0_E\}$.
+    \item Montrer que si $u(x)=u(y)$, alors $x-y\in\Ker(u)$.
+    \item Conclure.
+\end{enumerate}
+
+\exo{Détermination par l'image d'une base}{DEM}{$\star\star\star$}
+Soit $(e_1,\dots,e_n)$ une base de $E$ et soient $f_1,\dots,f_n$ des vecteurs de $F$.
+\begin{enumerate}
+    \item Montrer que tout $x\in E$ s'écrit de manière unique sous la forme
+    \[
+    x=\lambda_1e_1+\cdots+\lambda_ne_n.
+    \]
+    \item Définir $u(x)=\lambda_1f_1+\cdots+\lambda_nf_n$.
+    \item Montrer que $u$ est linéaire.
+    \item Montrer l'unicité d'une telle application.
+\end{enumerate}
+
+\exo{Théorème du rang}{DEM}{$\star\star\star\star$}
+Soit $u:E\to F$ linéaire, avec $E$ de dimension finie.
+\begin{enumerate}
+    \item Choisir une base $(e_1,\dots,e_k)$ de $\Ker(u)$.
+    \item Compléter cette famille en une base $(e_1,\dots,e_k,e_{k+1},\dots,e_n)$ de $E$.
+    \item Montrer que $(u(e_{k+1}),\dots,u(e_n))$ engendre $\Img(u)$.
+    \item Montrer que cette famille est libre.
+    \item En déduire
+    \[
+    \dim(E)=\dim(\Ker(u))+\rg(u).
+    \]
+\end{enumerate}
+
+\exo{Dimension de $\mathcal{L}(E,F)$}{DEM}{$\star\star\star\star$}
+Soient $E$ et $F$ deux espaces vectoriels de dimensions respectives $n$ et $p$.
+\begin{enumerate}
+    \item Expliquer pourquoi une application linéaire $u:E\to F$ est déterminée par les images d'une base de $E$.
+    \item Pour chaque vecteur de base de $E$, combien de coefficients faut-il pour décrire son image dans une base de $F$ ?
+    \item En déduire que
+    \[
+    \dim(\mathcal{L}(E,F))=np.
+    \]
+\end{enumerate}
+
+\exo{Composition d'applications linéaires}{DEM}{$\star\star\star$}
+Soient $u:E\to F$ et $v:F\to G$ deux applications linéaires.
+\begin{enumerate}
+    \item Montrer que $v\circ u$ est bien définie de $E$ dans $G$.
+    \item Vérifier que $(v\circ u)(\lambda x+\mu y)=\lambda(v\circ u)(x)+\mu(v\circ u)(y)$.
+    \item Conclure.
+\end{enumerate}
+
+\exo{Inverse d'un isomorphisme}{DEM}{$\star\star\star\star$}
+Soit $u:E\to F$ un isomorphisme.
+\begin{enumerate}
+    \item Soient $y_1,y_2\in F$. Poser $x_1=u^{-1}(y_1)$ et $x_2=u^{-1}(y_2)$.
+    \item Calculer $u(\lambda x_1+\mu x_2)$.
+    \item En déduire une expression de $u^{-1}(\lambda y_1+\mu y_2)$.
+    \item Conclure que $u^{-1}$ est linéaire.
+\end{enumerate}
+
+\exo{Forme linéaire non nulle et hyperplan}{DEM}{$\star\star\star\star$}
+Soit $E$ de dimension finie $n$ et soit $\varphi:E\to\R$ une forme linéaire non nulle.
+\begin{enumerate}
+    \item Montrer que $\Img(\varphi)=\R$.
+    \item Appliquer le théorème du rang.
+    \item En déduire que $\dim(\Ker(\varphi))=n-1$.
+    \item Conclure que $\Ker(\varphi)$ est un hyperplan.
+\end{enumerate}
+
+%====================================================
+\subsection{Exercices de réflexion}
+%====================================================
+
+\exo{Applications injectives non surjectives}{PREP}{$\star\star\star$}
+\begin{enumerate}
+    \item Peut-on construire une application linéaire injective de $\R^2$ dans $\R^3$ ?
+    \item En donner un exemple.
+    \item Peut-elle être surjective ?
+    \item Justifier par un argument de dimension.
+\end{enumerate}
+
+\exo{Applications surjectives non injectives}{PREP}{$\star\star\star$}
+\begin{enumerate}
+    \item Peut-on construire une application linéaire surjective de $\R^3$ dans $\R^2$ ?
+    \item En donner un exemple.
+    \item Peut-elle être injective ?
+    \item Justifier par le théorème du rang.
+\end{enumerate}
+
+\exo{Endomorphismes de $\R$}{PREP}{$\star\star$}
+On considère une application linéaire $u:\R\to\R$.
+\begin{enumerate}
+    \item Poser $a=u(1)$.
+    \item Montrer que pour tout $x\in\R$, $u(x)=ax$.
+    \item En déduire toutes les applications linéaires de $\R$ dans $\R$.
+\end{enumerate}
+
+\exo{Endomorphismes de rang $1$}{PREP}{$\star\star\star\star$}
+Soit $u:E\to E$ un endomorphisme de rang $1$.
+\begin{enumerate}
+    \item Montrer que $\Img(u)$ est une droite vectorielle.
+    \item Soit $e\neq 0$ un vecteur de $\Img(u)$. Montrer que pour tout $x\in E$, il existe un scalaire $\varphi(x)$ tel que
+    \[
+    u(x)=\varphi(x)e.
+    \]
+    \item Montrer que $\varphi$ est une forme linéaire.
+    \item Décrire $\Ker(u)$ en fonction de $\varphi$.
+\end{enumerate}
+
+\exo{Projecteurs abstraits}{PREP}{$\star\star\star\star$}
+Soit $p:E\to E$ tel que $p^2=p$.
+\begin{enumerate}
+    \item Montrer que pour tout $x\in E$,
+    \[
+    x=(x-p(x))+p(x).
+    \]
+    \item Montrer que $x-p(x)\in\Ker(p)$.
+    \item Montrer que $p(x)\in\Img(p)$.
+    \item Montrer que
+    \[
+    E=\Ker(p)\oplus\Img(p).
+    \]
+\end{enumerate}
+
+\exo{Symétries abstraites}{PREP}{$\star\star\star\star$}
+Soit $s:E\to E$ tel que $s^2=\Id_E$.
+\begin{enumerate}
+    \item Montrer que $(s-\Id_E)(s+\Id_E)=0$.
+    \item Pour $x\in E$, montrer que
+    \[
+    x=\frac{x+s(x)}{2}+\frac{x-s(x)}{2}.
+    \]
+    \item Montrer que la première composante appartient à $\Ker(s-\Id_E)$.
+    \item Montrer que la seconde appartient à $\Ker(s+\Id_E)$.
+    \item Conclure que
+    \[
+    E=\Ker(s-\Id_E)\oplus\Ker(s+\Id_E).
+    \]
+\end{enumerate}
+
+\exo{Nilpotence d'ordre $2$}{PREP}{$\star\star\star\star$}
+Soit $u:E\to E$ tel que $u^2=0$.
+\begin{enumerate}
+    \item Montrer que $\Img(u)\subset\Ker(u)$.
+    \item En déduire que $\rg(u)\leq \dim(\Ker(u))$.
+    \item En utilisant le théorème du rang, montrer que
+    \[
+    2\rg(u)\leq \dim(E).
+    \]
+\end{enumerate}
+
+\exo{Applications en dimension égale}{PREP}{$\star\star\star$}
+Soit $u:E\to F$ linéaire, avec $\dim(E)=\dim(F)<+\infty$.
+\begin{enumerate}
+    \item Montrer que si $u$ est injective, alors $u$ est surjective.
+    \item Montrer que si $u$ est surjective, alors $u$ est injective.
+    \item En déduire trois caractérisations équivalentes d'un isomorphisme.
+\end{enumerate}
+
+\exo{Base adaptée à un projecteur}{PREP}{$\star\star\star\star$}
+Soit $p:E\to E$ un projecteur.
+\begin{enumerate}
+    \item Choisir une base de $\Ker(p)$ et une base de $\Img(p)$.
+    \item Justifier que la réunion de ces deux bases est une base de $E$.
+    \item Écrire la matrice de $p$ dans cette base adaptée.
+\end{enumerate}
+
+\exo{Rang d'une composée}{PREP}{$\star\star\star\star$}
+Soient $u:E\to F$ et $v:F\to G$ linéaires, avec espaces de dimensions finies.
+\begin{enumerate}
+    \item Montrer que $\Img(v\circ u)\subset \Img(v)$.
+    \item Montrer que $\rg(v\circ u)\leq \rg(v)$.
+    \item Montrer que $\Img(v\circ u)=v(\Img(u))$.
+    \item En déduire que $\rg(v\circ u)\leq \rg(u)$.
+\end{enumerate}
+
+%====================================================
+\subsection{Exercices type oraux Mines, Centrale, CCP-INP}
+%====================================================
+
+\exo{Oral CCP -- Étude complète d'une application}{ORAL}{$\star\star\star$}
+On considère
+\[
+u:\R^3\to\R^3,\qquad u(x,y,z)=(x+y,\;y+z,\;x+z).
+\]
+\begin{enumerate}
+    \item Vérifier que $u$ est linéaire.
+    \item Déterminer $\Ker(u)$.
+    \item En déduire si $u$ est injective.
+    \item Déterminer $\Img(u)$.
+    \item En déduire si $u$ est surjective.
+    \item Déterminer si $\Img(u)$ est une droite, un plan ou tout $\R^3$.
+\end{enumerate}
+
+\exo{Oral Mines -- Projecteur}{ORAL}{$\star\star\star\star$}
+Soit $p:E\to E$ tel que $p^2=p$.
+\begin{enumerate}
+    \item Montrer que $p$ fixe tous les vecteurs de $\Img(p)$.
+    \item Montrer que $E=\Ker(p)\oplus\Img(p)$.
+    \item Réciproquement, si $E=F\oplus G$, définir le projecteur sur $F$ parallèlement à $G$.
+    \item Donner sa matrice dans une base adaptée.
+\end{enumerate}
+
+\exo{Oral Centrale -- Symétrie}{ORAL}{$\star\star\star\star$}
+Soit $s:E\to E$ tel que $s^2=\Id_E$.
+\begin{enumerate}
+    \item Montrer que $s$ est bijective.
+    \item Décomposer tout vecteur $x$ en somme d'un vecteur fixé par $s$ et d'un vecteur envoyé sur son opposé.
+    \item En déduire une décomposition directe de $E$.
+    \item Interpréter géométriquement.
+\end{enumerate}
+
+\exo{Oral Mines -- Rang $1$}{ORAL}{$\star\star\star\star\star$}
+Soit $u:E\to F$ une application linéaire de rang $1$.
+\begin{enumerate}
+    \item Montrer que $\Img(u)$ est une droite.
+    \item Montrer qu'il existe une forme linéaire $\varphi$ et un vecteur non nul $f\in F$ tels que
+    \[
+    u(x)=\varphi(x)f.
+    \]
+    \item Étudier le noyau de $u$.
+    \item Réciproquement, donner une condition pour qu'une application de la forme $x\mapsto\varphi(x)f$ soit de rang $1$.
+\end{enumerate}
+
+\exo{Oral CCP -- Noyau et image d'une matrice}{ORAL}{$\star\star\star$}
+Soit
+\[
+A=\begin{pmatrix}
+1&2&1\\
+2&4&2\\
+1&1&0
+\end{pmatrix}.
+\]
+\begin{enumerate}
+    \item Calculer le noyau de l'application associée.
+    \item Déterminer son image.
+    \item Calculer son rang.
+    \item Vérifier le théorème du rang.
+\end{enumerate}
+
+\exo{Oral Centrale -- Endomorphisme vérifiant $u^2=0$}{ORAL}{$\star\star\star\star$}
+Soit $u:E\to E$ tel que $u^2=0$.
+\begin{enumerate}
+    \item Montrer que $\Img(u)\subset\Ker(u)$.
+    \item Donner une conséquence sur le rang de $u$.
+    \item Que peut-on dire si $\dim(E)=3$ ?
+    \item Donner un exemple non nul dans $\R^2$.
+\end{enumerate}
+
+\exo{Oral Mines -- Matrice dans une base adaptée}{ORAL}{$\star\star\star\star$}
+Dans $\R^2$, on définit
+\[
+u(x,y)=(3x+y,\;x+3y).
+\]
+On pose
+\[
+v_1=(1,1),\qquad v_2=(1,-1).
+\]
+\begin{enumerate}
+    \item Montrer que $(v_1,v_2)$ est une base de $\R^2$.
+    \item Calculer $u(v_1)$ et $u(v_2)$.
+    \item En déduire la matrice de $u$ dans la base $(v_1,v_2)$.
+    \item Comparer avec la matrice de $u$ dans la base canonique.
+\end{enumerate}
+
+\exo{Oral CCP -- Forme linéaire et hyperplan}{ORAL}{$\star\star\star$}
+On considère
+\[
+H=\{(x,y,z,t)\in\R^4\mid x-y+2z+t=0\}.
+\]
+\begin{enumerate}
+    \item Montrer que $H$ est le noyau d'une forme linéaire.
+    \item Donner une base de $H$.
+    \item Montrer que $H$ est un hyperplan.
+\end{enumerate}
+
+\exo{Oral Centrale -- Composition et noyau}{ORAL}{$\star\star\star\star$}
+Soient $u:E\to F$ et $v:F\to G$ deux applications linéaires.
+\begin{enumerate}
+    \item Montrer que $\Ker(u)\subset\Ker(v\circ u)$.
+    \item Donner une condition suffisante pour avoir égalité.
+    \item Montrer que $\Img(v\circ u)\subset\Img(v)$.
+    \item Donner un exemple où l'inclusion est stricte.
+\end{enumerate}
+
+\exo{Oral Mines -- Isomorphisme induit}{ORAL}{$\star\star\star\star\star$}
+Soit $u:E\to F$ linéaire. On suppose que $E$ est de dimension finie.
+\begin{enumerate}
+    \item Choisir un supplémentaire $G$ de $\Ker(u)$ dans $E$.
+    \item Montrer que la restriction de $u$ à $G$ est injective.
+    \item Montrer que $u(G)=\Img(u)$.
+    \item En déduire que $G$ est isomorphe à $\Img(u)$.
+    \item Retrouver le théorème du rang.
+\end{enumerate}
+
+\newpage
+
+%====================================================
+\section{Corrigé complet}
+%====================================================
+
+\subsection{Corrigé des exercices d'application directe}
+
+\corr{1}
+On calcule d'abord
+\[
+u(0,0)=(0,0).
+\]
+Soient $X=(x_1,y_1)$ et $Y=(x_2,y_2)$. Alors
+\[
+u(X+Y)=u(x_1+x_2,y_1+y_2)
+=(2x_1+2x_2-y_1-y_2,\;x_1+x_2+3y_1+3y_2).
+\]
+D'autre part,
+\[
+u(X)+u(Y)=(2x_1-y_1,x_1+3y_1)+(2x_2-y_2,x_2+3y_2),
+\]
+ce qui donne le même résultat. Enfin,
+\[
+u(\lambda x,\lambda y)=(2\lambda x-\lambda y,\lambda x+3\lambda y)=\lambda u(x,y).
+\]
+Donc $u$ est linéaire.
+
+\corr{2}
+On a
+\[
+f(1,0)=1,\qquad f(2,0)=4.
+\]
+Mais
+\[
+f((1,0)+(1,0))=f(2,0)=4,
+\]
+alors que
+\[
+f(1,0)+f(1,0)=1+1=2.
+\]
+L'additivité est fausse, donc $f$ n'est pas linéaire. La présence du terme $x^2$ explique ce défaut : l'application ne respecte pas les combinaisons linéaires.
+
+\corr{3}
+La linéarité vient du fait que $\varphi$ est combinaison linéaire des coordonnées :
+\[
+\varphi(\lambda X+\mu Y)=\lambda\varphi(X)+\mu\varphi(Y).
+\]
+Le noyau est donné par
+\[
+x-2y+3z=0.
+\]
+On pose $y=s$ et $z=t$, donc $x=2s-3t$. Ainsi
+\[
+(x,y,z)=s(2,1,0)+t(-3,0,1).
+\]
+Donc
+\[
+\Ker(\varphi)=\Vect((2,1,0),(-3,0,1)).
+\]
+Ces deux vecteurs sont non colinéaires, donc forment une base du noyau. La dimension vaut $2$. Géométriquement, le noyau est un plan vectoriel de $\R^3$.
+
+\corr{4}
+On résout
+\[
+x-y=0,
+\]
+donc $x=y$. Ainsi
+\[
+\Ker(u)=\{(t,t)\mid t\in\R\}=\Vect((1,1)).
+\]
+Le noyau est une droite vectorielle. Il n'est donc pas réduit à $\{0\}$. Par conséquent, l'application n'est pas injective.
+
+\corr{5}
+On calcule
+\[
+u(e_1)=u(1,0,0)=(1,0),\qquad
+u(e_2)=u(0,1,0)=(1,1),\qquad
+u(e_3)=u(0,0,1)=(0,1).
+\]
+Donc
+\[
+\Img(u)=\Vect((1,0),(1,1),(0,1)).
+\]
+Comme $(1,0)$ et $(0,1)$ forment une base de $\R^2$, on obtient
+\[
+\Img(u)=\R^2.
+\]
+Donc
+\[
+\rg(u)=2.
+\]
+
+\corr{6}
+On cherche les solutions de
+\[
+x+y=0,\qquad y+z=0.
+\]
+On obtient $x=-y$ et $z=-y$, donc
+\[
+(x,y,z)=y(-1,1,-1).
+\]
+Ainsi
+\[
+\Ker(u)=\Vect((-1,1,-1)).
+\]
+Le noyau n'est pas nul, donc $u$ n'est pas injective. D'après l'exercice précédent, l'image est $\R^2$, donc $u$ est surjective. Enfin :
+\[
+3=\dim(\Ker(u))+\rg(u)=1+2.
+\]
+
+\corr{7}
+On calcule
+\[
+u(1,0)=(1,2,0),\qquad u(0,1)=(1,-1,3).
+\]
+La matrice de $u$ est donc
+\[
+\Mat(u)=
+\begin{pmatrix}
+1&1\\
+2&-1\\
+0&3
+\end{pmatrix}.
+\]
+Alors
+\[
+\begin{pmatrix}
+1&1\\
+2&-1\\
+0&3
+\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}
+x+y\\
+2x-y\\
+3y
+\end{pmatrix}.
+\]
+L'application ne peut pas être surjective de $\R^2$ vers $\R^3$, car son rang est au plus $2$.
+
+\corr{8}
+On a
+\[
+D(1)=0,\qquad D(X)=1,\qquad D(X^2)=2X.
+\]
+Dans la base $B=(1,X,X^2)$ :
+\[
+[0]_B=\begin{pmatrix}0\\0\\0\end{pmatrix},\qquad
+[1]_B=\begin{pmatrix}1\\0\\0\end{pmatrix},\qquad
+[2X]_B=\begin{pmatrix}0\\2\\0\end{pmatrix}.
+\]
+Donc
+\[
+\Mat_B(D)=
+\begin{pmatrix}
+0&1&0\\
+0&0&2\\
+0&0&0
+\end{pmatrix}.
+\]
+Le noyau est l'ensemble des polynômes constants :
+\[
+\Ker(D)=\Vect(1).
+\]
+L'image est
+\[
+\Img(D)=\Vect(1,X).
+\]
+Ainsi
+\[
+3=\dim(\Ker(D))+\rg(D)=1+2.
+\]
+
+\corr{9}
+La matrice donne
+\[
+u(x,y)=(x+2y,2x+4y).
+\]
+Le noyau est donné par
+\[
+x+2y=0,
+\]
+la seconde équation étant la même multipliée par $2$. Donc
+\[
+\Ker(u)=\Vect((-2,1)).
+\]
+L'image est engendrée par les colonnes :
+\[
+\Img(u)=\Vect((1,2),(2,4))=\Vect((1,2)).
+\]
+Donc
+\[
+\rg(u)=1.
+\]
+L'application n'est pas un automorphisme, car son noyau n'est pas nul.
+
+\corr{10}
+L'application est linéaire car chaque coordonnée est combinaison linéaire des coordonnées de départ. On a
+\[
+p^2(x,y,z)=p(x,y,0)=(x,y,0)=p(x,y,z).
+\]
+Donc $p^2=p$, c'est un projecteur. On a
+\[
+\Ker(p)=\{(0,0,z)\mid z\in\R\}=\Vect((0,0,1)),
+\]
+et
+\[
+\Img(p)=\{(x,y,0)\mid x,y\in\R\}=\Vect((1,0,0),(0,1,0)).
+\]
+Géométriquement, $p$ est la projection sur le plan $(Oxy)$ parallèlement à l'axe $(Oz)$.
+
+\subsection{Corrigé des exercices de méthode}
+
+\corr{11}
+Une application linéaire est entièrement déterminée par l'image d'une base. Il existe donc une unique application linéaire vérifiant ces conditions. Pour $(x,y,z)=xe_1+ye_2+ze_3$ :
+\[
+u(x,y,z)=xu(e_1)+yu(e_2)+zu(e_3).
+\]
+Donc
+\[
+u(x,y,z)=x(1,0)+y(0,1)+z(1,1)=(x+z,y+z).
+\]
+La matrice est
+\[
+A=
+\begin{pmatrix}
+1&0&1\\
+0&1&1
+\end{pmatrix}.
+\]
+Le noyau est défini par
+\[
+x+z=0,\qquad y+z=0.
+\]
+Donc $z=-x$ et $y=x$, d'où
+\[
+\Ker(u)=\Vect((1,1,-1)).
+\]
+Les colonnes $(1,0)$ et $(0,1)$ sont dans l'image, donc
+\[
+\Img(u)=\R^2,\qquad \rg(u)=2.
+\]
+
+\corr{12}
+La matrice est
+\[
+A_\lambda=
+\begin{pmatrix}
+1&\lambda\\
+\lambda&1
+\end{pmatrix}.
+\]
+On résout
+\[
+\begin{cases}
+x+\lambda y=0,\\
+\lambda x+y=0.
+\end{cases}
+\]
+Si $\lambda\neq 1$ et $\lambda\neq -1$, la seule solution est $(0,0)$, donc le noyau est nul. L'application est alors injective. Comme elle va de $\R^2$ dans $\R^2$, elle est aussi surjective.
+
+Si $\lambda=1$, on obtient
+\[
+x+y=0,
+\]
+donc
+\[
+\Ker(u_1)=\Vect((1,-1)).
+\]
+Si $\lambda=-1$, on obtient
+\[
+x-y=0,
+\]
+donc
+\[
+\Ker(u_{-1})=\Vect((1,1)).
+\]
+Dans ces deux cas, l'application n'est pas injective et son rang vaut $1$.
+
+\corr{13}
+On calcule
+\[
+u(e_1)=(1,1),\qquad u(e_2)=(1,2),\qquad u(e_3)=(1,3).
+\]
+Les vecteurs $(1,1)$ et $(1,2)$ ne sont pas colinéaires, donc ils forment une base de $\R^2$. Ainsi
+\[
+\Img(u)=\R^2,\qquad \rg(u)=2.
+\]
+Le noyau est donné par
+\[
+\begin{cases}
+x+y+z=0,\\
+x+2y+3z=0.
+\end{cases}
+\]
+En soustrayant la première équation à la seconde :
+\[
+y+2z=0,
+\]
+donc $y=-2z$. Puis
+\[
+x-2z+z=0,
+\]
+donc $x=z$. Ainsi
+\[
+(x,y,z)=z(1,-2,1).
+\]
+Donc
+\[
+\Ker(u)=\Vect((1,-2,1)).
+\]
+On vérifie bien
+\[
+3=1+2.
+\]
+
+\corr{14}
+Comme $(e_1,e_2,e_3)$ est une base de $E$, l'image de $u$ est engendrée par
+\[
+u(e_1),u(e_2),u(e_3).
+\]
+Or
+\[
+u(e_3)=f_1+f_2.
+\]
+Donc
+\[
+\Img(u)=\Vect(f_1,f_2,f_1+f_2)=\Vect(f_1,f_2).
+\]
+Si $(f_1,f_2)$ est libre, alors $\rg(u)=2$. Dans ce cas, comme $\dim(E)=3$, le théorème du rang donne
+\[
+\dim(\Ker(u))=3-2=1.
+\]
+Enfin
+\[
+u(e_3-e_1-e_2)=u(e_3)-u(e_1)-u(e_2)=f_1+f_2-f_1-f_2=0.
+\]
+Donc
+\[
+e_3-e_1-e_2\in\Ker(u).
+\]
+
+\corr{15}
+On a
+\[
+u(x,y,z)=(x+y,\;y+z,\;x+z).
+\]
+Le noyau est donné par
+\[
+\begin{cases}
+x+y=0,\\
+y+z=0,\\
+x+z=0.
+\end{cases}
+\]
+De $x+y=0$, on obtient $y=-x$. De $y+z=0$, on obtient $z=x$. Dans la troisième équation :
+\[
+x+z=2x=0,
+\]
+donc $x=0$, puis $y=0$ et $z=0$. Ainsi
+\[
+\Ker(u)=\{0\}.
+\]
+L'application est injective. Comme c'est un endomorphisme de $\R^3$, elle est bijective. Donc
+\[
+\rg(u)=3,\qquad \Img(u)=\R^3.
+\]
+
+\corr{16}
+On a
+\[
+u(a,b)=a+aX+bX+bX^2.
+\]
+Dans la base $(1,X,X^2)$ :
+\[
+u(1,0)=1+X,\qquad u(0,1)=X+X^2.
+\]
+Donc
+\[
+\Mat(u)=
+\begin{pmatrix}
+1&0\\
+1&1\\
+0&1
+\end{pmatrix}.
+\]
+Si $u(a,b)=0$, alors les coefficients de $1,X,X^2$ donnent
+\[
+a=0,\qquad a+b=0,\qquad b=0.
+\]
+Donc
+\[
+\Ker(u)=\{0\}.
+\]
+L'image est
+\[
+\Img(u)=\Vect(1+X,\;X+X^2).
+\]
+Elle est de dimension $2$. L'application est injective mais non surjective, car $\R_2[X]$ est de dimension $3$.
+
+\corr{17}
+$\varphi$ est une forme linéaire non nulle. Son noyau est défini par
+\[
+x+2y-z+t=0.
+\]
+On pose $y=a$, $z=b$, $t=c$. Alors
+\[
+x=-2a+b-c.
+\]
+Donc
+\[
+(x,y,z,t)=a(-2,1,0,0)+b(1,0,1,0)+c(-1,0,0,1).
+\]
+Ainsi
+\[
+\Ker(\varphi)=\Vect((-2,1,0,0),(1,0,1,0),(-1,0,0,1)).
+\]
+Cette famille est libre, donc elle est une base du noyau. Le noyau est de dimension $3$, c'est donc un hyperplan de $\R^4$.
+
+\corr{18}
+Soit $y\in\Img(u)$. Il existe $x\in E$ tel que $y=u(x)$. Comme $(e_1,\dots,e_n)$ engendre $E$, on peut écrire
+\[
+x=\lambda_1e_1+\cdots+\lambda_ne_n.
+\]
+Alors
+\[
+y=u(x)=\lambda_1u(e_1)+\cdots+\lambda_nu(e_n).
+\]
+Donc $(u(e_1),\dots,u(e_n))$ engendre $\Img(u)$. Un exemple où cette famille n'est pas libre : prendre $u:\R^2\to\R$, $u(x,y)=x$. L'image de la base canonique est $(1,0)$ dans $\R$, famille liée.
+
+\corr{19}
+Supposons
+\[
+\lambda_1u(e_1)+\cdots+\lambda_nu(e_n)=0.
+\]
+Par linéarité :
+\[
+u(\lambda_1e_1+\cdots+\lambda_ne_n)=0.
+\]
+Donc
+\[
+\lambda_1e_1+\cdots+\lambda_ne_n\in\Ker(u).
+\]
+Comme $u$ est injective, $\Ker(u)=\{0\}$. Ainsi
+\[
+\lambda_1e_1+\cdots+\lambda_ne_n=0.
+\]
+La famille $(e_1,\dots,e_n)$ étant libre, tous les $\lambda_i$ sont nuls. Donc la famille image est libre.
+
+\corr{20}
+Les matrices sont
+\[
+A=
+\begin{pmatrix}
+1&1\\
+1&-1\\
+0&2
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+1&0&1\\
+0&1&-1
+\end{pmatrix}.
+\]
+Directement :
+\[
+u(x,y)=(x+y,x-y,2y),
+\]
+donc
+\[
+v(u(x,y))=(x+y+2y,\;x-y-2y)=(x+3y,\;x-3y).
+\]
+Par produit matriciel :
+\[
+BA=
+\begin{pmatrix}
+1&0&1\\
+0&1&-1
+\end{pmatrix}
+\begin{pmatrix}
+1&1\\
+1&-1\\
+0&2
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&3\\
+1&-3
+\end{pmatrix}.
+\]
+C'est bien la matrice de $(x,y)\mapsto(x+3y,x-3y)$.
+
+\subsection{Corrigé des exercices de démonstration}
+
+\corr{21}
+On écrit
+\[
+0_E=0_E+0_E.
+\]
+Donc
+\[
+u(0_E)=u(0_E+0_E)=u(0_E)+u(0_E).
+\]
+En soustrayant $u(0_E)$ aux deux membres, on obtient
+\[
+u(0_E)=0_F.
+\]
+
+\corr{22}
+On a $u(0_E)=0_F$, donc $0_E\in\Ker(u)$.
+Si $x,y\in\Ker(u)$, alors
+\[
+u(x+y)=u(x)+u(y)=0_F+0_F=0_F.
+\]
+Donc $x+y\in\Ker(u)$. Si $\lambda\in\R$ et $x\in\Ker(u)$, alors
+\[
+u(\lambda x)=\lambda u(x)=0_F.
+\]
+Donc $\lambda x\in\Ker(u)$. Le noyau est un sous-espace vectoriel.
+
+\corr{23}
+Comme $u(0_E)=0_F$, on a $0_F\in\Img(u)$. Soient $y_1,y_2\in\Img(u)$. Il existe $x_1,x_2\in E$ tels que
+\[
+y_1=u(x_1),\qquad y_2=u(x_2).
+\]
+Alors
+\[
+\lambda y_1+\mu y_2=\lambda u(x_1)+\mu u(x_2)=u(\lambda x_1+\mu x_2).
+\]
+Donc $\lambda y_1+\mu y_2\in\Img(u)$. Ainsi $\Img(u)$ est un sous-espace vectoriel.
+
+\corr{24}
+Si $u$ est injective et si $x\in\Ker(u)$, alors
+\[
+u(x)=0_F=u(0_E).
+\]
+Par injectivité, $x=0_E$. Donc $\Ker(u)=\{0_E\}$.
+
+Réciproquement, supposons $\Ker(u)=\{0_E\}$. Si $u(x)=u(y)$, alors
+\[
+u(x-y)=u(x)-u(y)=0_F.
+\]
+Donc $x-y\in\Ker(u)$, puis $x-y=0_E$, et donc $x=y$. L'application est injective.
+
+\corr{25}
+Tout $x\in E$ s'écrit de manière unique
+\[
+x=\lambda_1e_1+\cdots+\lambda_ne_n.
+\]
+On définit
+\[
+u(x)=\lambda_1f_1+\cdots+\lambda_nf_n.
+\]
+Cette définition est correcte grâce à l'unicité des coordonnées dans une base. Elle est linéaire car les coordonnées d'une combinaison linéaire se combinent linéairement.
+Si $v$ est une autre application linéaire telle que $v(e_i)=f_i$, alors pour
+\[
+x=\sum_{i=1}^n\lambda_i e_i,
+\]
+on a
+\[
+v(x)=\sum_{i=1}^n\lambda_i v(e_i)=\sum_{i=1}^n\lambda_i f_i=u(x).
+\]
+Donc $v=u$. L'application est unique.
+
+\corr{26}
+Soit $(e_1,\dots,e_k)$ une base de $\Ker(u)$, complétée en une base
+\[
+(e_1,\dots,e_k,e_{k+1},\dots,e_n)
+\]
+de $E$.
+Montrons que $(u(e_{k+1}),\dots,u(e_n))$ engendre $\Img(u)$. Soit $y\in\Img(u)$. Il existe $x\in E$ tel que $y=u(x)$. Écrivons
+\[
+x=\sum_{i=1}^n \lambda_i e_i.
+\]
+Alors
+\[
+u(x)=\sum_{i=1}^n\lambda_i u(e_i)=\sum_{i=k+1}^n\lambda_i u(e_i),
+\]
+car $u(e_i)=0$ pour $1\leq i\leq k$.
+Montrons maintenant la liberté. Si
+\[
+\sum_{i=k+1}^n\lambda_i u(e_i)=0,
+\]
+alors
+\[
+u\left(\sum_{i=k+1}^n\lambda_i e_i\right)=0.
+\]
+Donc
+\[
+\sum_{i=k+1}^n\lambda_i e_i\in\Ker(u)=\Vect(e_1,\dots,e_k).
+\]
+On obtient alors une relation linéaire entre les vecteurs d'une base de $E$, donc tous les coefficients $\lambda_i$ sont nuls. La famille est libre. Elle est donc une base de $\Img(u)$, avec $n-k$ vecteurs. Ainsi
+\[
+\rg(u)=n-k.
+\]
+Donc
+\[
+\dim(E)=n=k+(n-k)=\dim(\Ker(u))+\rg(u).
+\]
+
+\corr{27}
+Une application linéaire $u:E\to F$ est déterminée par les images d'une base $(e_1,\dots,e_n)$ de $E$. Pour chaque $u(e_j)$, il faut $p$ coordonnées dans une base de $F$. Comme il y a $n$ vecteurs de base dans $E$, il faut donc $pn$ coefficients. Ainsi
+\[
+\dim(\mathcal{L}(E,F))=pn.
+\]
+
+\corr{28}
+Pour $x,y\in E$ et $\lambda,\mu\in\R$ :
+\[
+(v\circ u)(\lambda x+\mu y)=v(u(\lambda x+\mu y)).
+\]
+Comme $u$ est linéaire :
+\[
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y).
+\]
+Puis, comme $v$ est linéaire :
+\[
+v(\lambda u(x)+\mu u(y))=\lambda v(u(x))+\mu v(u(y)).
+\]
+Donc
+\[
+(v\circ u)(\lambda x+\mu y)=\lambda(v\circ u)(x)+\mu(v\circ u)(y).
+\]
+Ainsi $v\circ u$ est linéaire.
+
+\corr{29}
+Soient $y_1,y_2\in F$. Posons
+\[
+x_1=u^{-1}(y_1),\qquad x_2=u^{-1}(y_2).
+\]
+Alors $u(x_1)=y_1$ et $u(x_2)=y_2$. Par linéarité :
+\[
+u(\lambda x_1+\mu x_2)=\lambda y_1+\mu y_2.
+\]
+En appliquant $u^{-1}$ :
+\[
+u^{-1}(\lambda y_1+\mu y_2)=\lambda x_1+\mu x_2
+=\lambda u^{-1}(y_1)+\mu u^{-1}(y_2).
+\]
+Donc $u^{-1}$ est linéaire.
+
+\corr{30}
+Comme $\varphi$ est non nulle, il existe $x_0\in E$ tel que $\varphi(x_0)\neq 0$. L'image de $\varphi$ est un sous-espace non nul de $\R$, donc
+\[
+\Img(\varphi)=\R.
+\]
+Ainsi $\rg(\varphi)=1$. Par le théorème du rang :
+\[
+\dim(E)=\dim(\Ker(\varphi))+1.
+\]
+Donc
+\[
+\dim(\Ker(\varphi))=n-1.
+\]
+Ainsi $\Ker(\varphi)$ est un hyperplan.
+
+\subsection{Corrigé des exercices de réflexion}
+
+\corr{31}
+Oui. Par exemple
+\[
+u:\R^2\to\R^3,\qquad u(x,y)=(x,y,0).
+\]
+Si $u(x,y)=(0,0,0)$, alors $x=0$ et $y=0$, donc $u$ est injective. Elle n'est pas surjective car $(0,0,1)$ n'a pas d'antécédent. Par dimension, une application de $\R^2$ vers $\R^3$ ne peut pas être surjective, car son rang est au plus $2$.
+
+\corr{32}
+Oui. Par exemple
+\[
+u:\R^3\to\R^2,\qquad u(x,y,z)=(x,y).
+\]
+Elle est surjective car tout $(a,b)\in\R^2$ est l'image de $(a,b,0)$. Elle n'est pas injective car
+\[
+\Ker(u)=\{(0,0,z)\mid z\in\R\}.
+\]
+Par le théorème du rang, son noyau est de dimension $1$.
+
+\corr{33}
+Soit $a=u(1)$. Pour tout $x\in\R$, on a
+\[
+x=x\cdot 1.
+\]
+Par linéarité :
+\[
+u(x)=u(x\cdot 1)=x u(1)=ax.
+\]
+Ainsi toutes les applications linéaires de $\R$ dans $\R$ sont les homothéties
+\[
+x\mapsto ax.
+\]
+
+\corr{34}
+Comme $\rg(u)=1$, $\Img(u)$ est une droite. Choisissons $e\neq 0$ dans $\Img(u)$. Alors
+\[
+\Img(u)=\Vect(e).
+\]
+Donc pour tout $x\in E$, il existe un unique scalaire $\varphi(x)$ tel que
+\[
+u(x)=\varphi(x)e.
+\]
+Pour montrer que $\varphi$ est linéaire, on écrit
+\[
+u(x+y)=u(x)+u(y)=\varphi(x)e+\varphi(y)e=(\varphi(x)+\varphi(y))e.
+\]
+Mais aussi
+\[
+u(x+y)=\varphi(x+y)e.
+\]
+Comme $e\neq 0$ :
+\[
+\varphi(x+y)=\varphi(x)+\varphi(y).
+\]
+Même raisonnement pour les scalaires. Donc $\varphi$ est linéaire. Enfin :
+\[
+u(x)=0\Longleftrightarrow \varphi(x)e=0\Longleftrightarrow \varphi(x)=0.
+\]
+Donc
+\[
+\Ker(u)=\Ker(\varphi).
+\]
+
+\corr{35}
+Pour tout $x\in E$ :
+\[
+x=(x-p(x))+p(x).
+\]
+On a
+\[
+p(x-p(x))=p(x)-p^2(x)=p(x)-p(x)=0,
+\]
+donc $x-p(x)\in\Ker(p)$. De plus $p(x)\in\Img(p)$ par définition. Donc
+\[
+E=\Ker(p)+\Img(p).
+\]
+Si $y\in\Ker(p)\cap\Img(p)$, alors $y=p(x)$ et $p(y)=0$. Mais
+\[
+p(y)=p(p(x))=p^2(x)=p(x)=y.
+\]
+Donc $y=0$. La somme est directe :
+\[
+E=\Ker(p)\oplus\Img(p).
+\]
+
+\corr{36}
+On a
+\[
+(s-\Id)(s+\Id)=s^2-\Id=0.
+\]
+Pour tout $x\in E$ :
+\[
+x=\frac{x+s(x)}{2}+\frac{x-s(x)}{2}.
+\]
+Posons
+\[
+x_+=\frac{x+s(x)}2.
+\]
+Alors
+\[
+s(x_+)=\frac{s(x)+s^2(x)}2=\frac{s(x)+x}{2}=x_+,
+\]
+donc $x_+\in\Ker(s-\Id)$. Posons
+\[
+x_-=\frac{x-s(x)}2.
+\]
+Alors
+\[
+s(x_-)=\frac{s(x)-s^2(x)}2=\frac{s(x)-x}{2}=-x_-,
+\]
+donc $x_-\in\Ker(s+\Id)$.
+L'intersection est réduite à $\{0\}$ : si $v$ est à la fois fixé et envoyé sur son opposé, alors $v=-v$, donc $v=0$. Ainsi
+\[
+E=\Ker(s-\Id)\oplus\Ker(s+\Id).
+\]
+
+\corr{37}
+Si $u^2=0$, alors pour tout $x\in E$ :
+\[
+u(u(x))=0.
+\]
+Donc $u(x)\in\Ker(u)$, ce qui donne
+\[
+\Img(u)\subset\Ker(u).
+\]
+Ainsi
+\[
+\rg(u)\leq \dim(\Ker(u)).
+\]
+Par le théorème du rang :
+\[
+\dim(E)=\dim(\Ker(u))+\rg(u).
+\]
+Comme $\dim(\Ker(u))\geq \rg(u)$ :
+\[
+\dim(E)\geq 2\rg(u).
+\]
+Donc
+\[
+2\rg(u)\leq \dim(E).
+\]
+
+\corr{38}
+Si $u$ est injective, alors $\Ker(u)=\{0\}$. Par le théorème du rang :
+\[
+\dim(E)=\rg(u).
+\]
+Comme $\dim(E)=\dim(F)$, on obtient
+\[
+\rg(u)=\dim(F),
+\]
+donc $\Img(u)=F$, c'est-à-dire $u$ est surjective. Réciproquement, si $u$ est surjective, alors $\rg(u)=\dim(F)=\dim(E)$. Le théorème du rang impose alors
+\[
+\dim(\Ker(u))=0.
+\]
+Donc $u$ est injective. En dimension finie égale :
+\[
+u\text{ injective}\Longleftrightarrow u\text{ surjective}\Longleftrightarrow u\text{ bijective}.
+\]
+
+\corr{39}
+Comme $p$ est un projecteur :
+\[
+E=\Ker(p)\oplus\Img(p).
+\]
+Prenons une base $(k_1,\dots,k_r)$ de $\Ker(p)$ et une base $(i_1,\dots,i_s)$ de $\Img(p)$. La réunion est une base de $E$.
+Dans cette base, $p(k_j)=0$ pour les vecteurs du noyau, et $p(i_j)=i_j$ pour les vecteurs de l'image. Donc la matrice de $p$ est
+\[
+\begin{pmatrix}
+0_r&0\\
+0&I_s
+\end{pmatrix}
+\]
+si l'on place d'abord la base du noyau, puis celle de l'image.
+
+\corr{40}
+On a
+\[
+\Img(v\circ u)\subset \Img(v),
+\]
+car tout vecteur de $\Img(v\circ u)$ est de la forme $v(u(x))$. Donc
+\[
+\rg(v\circ u)\leq \rg(v).
+\]
+De plus,
+\[
+\Img(v\circ u)=v(\Img(u)).
+\]
+L'image par $v$ d'un sous-espace de dimension $\rg(u)$ ne peut avoir une dimension supérieure à $\rg(u)$. Donc
+\[
+\rg(v\circ u)\leq \rg(u).
+\]
+Finalement :
+\[
+\rg(v\circ u)\leq \min(\rg(u),\rg(v)).
+\]
+
+\subsection{Corrigé des exercices d'oraux}
+
+\corr{41}
+La linéarité est immédiate car chaque coordonnée est linéaire en $x,y,z$. Le noyau est donné par
+\[
+\begin{cases}
+x+y=0,\\
+y+z=0,\\
+x+z=0.
+\end{cases}
+\]
+De $x+y=0$, $y=-x$. De $y+z=0$, $z=x$. Dans la troisième équation :
+\[
+x+z=2x=0,
+\]
+donc $x=0$, puis $y=z=0$. Ainsi
+\[
+\Ker(u)=\{0\}.
+\]
+Comme $u:\R^3\to\R^3$ et que son noyau est nul, $u$ est injective, donc bijective. Par conséquent
+\[
+\Img(u)=\R^3,\qquad \rg(u)=3.
+\]
+L'image est donc tout l'espace $\R^3$.
+
+\corr{42}
+Si $p^2=p$, alors pour tout $y\in\Img(p)$, il existe $x$ tel que $y=p(x)$. Donc
+\[
+p(y)=p(p(x))=p^2(x)=p(x)=y.
+\]
+Ainsi $p$ fixe les vecteurs de son image. Comme montré précédemment :
+\[
+E=\Ker(p)\oplus\Img(p).
+\]
+Réciproquement, si $E=F\oplus G$, tout $x\in E$ s'écrit de manière unique $x=f+g$ avec $f\in F$, $g\in G$. On définit
+\[
+p(x)=f.
+\]
+Alors $p$ est linéaire, $p^2=p$, $\Img(p)=F$ et $\Ker(p)=G$. Dans une base adaptée, sa matrice est une matrice bloc avec un bloc identité sur $F$ et un bloc nul sur $G$.
+
+\corr{43}
+Si $s^2=\Id$, alors $s$ est bijective et $s^{-1}=s$. On pose
+\[
+x_+=\frac{x+s(x)}2,\qquad x_-=\frac{x-s(x)}2.
+\]
+Alors $x=x_++x_-$. De plus :
+\[
+s(x_+)=x_+,\qquad s(x_-)=-x_-.
+\]
+Donc
+\[
+x_+\in\Ker(s-\Id),\qquad x_-\in\Ker(s+\Id).
+\]
+L'intersection est nulle, donc
+\[
+E=\Ker(s-\Id)\oplus\Ker(s+\Id).
+\]
+Géométriquement, $s$ est une symétrie par rapport au sous-espace des vecteurs fixes, parallèlement au sous-espace des vecteurs changés en leurs opposés.
+
+\corr{44}
+Puisque $\rg(u)=1$, $\Img(u)$ est une droite. Prenons $f\neq0$ dans $\Img(u)$. Alors
+\[
+\Img(u)=\Vect(f).
+\]
+Pour tout $x\in E$, il existe un unique scalaire $\varphi(x)$ tel que
+\[
+u(x)=\varphi(x)f.
+\]
+La linéarité de $u$ entraîne celle de $\varphi$ par identification devant $f\neq0$. Le noyau est
+\[
+\Ker(u)=\Ker(\varphi).
+\]
+Réciproquement, si $u(x)=\varphi(x)f$ avec $\varphi\neq0$ et $f\neq0$, alors l'image est contenue dans $\Vect(f)$ et n'est pas nulle, donc elle est exactement $\Vect(f)$. Le rang vaut donc $1$.
+
+\corr{45}
+On résout
+\[
+\begin{cases}
+x+2y+z=0,\\
+2x+4y+2z=0,\\
+x+y=0.
+\end{cases}
+\]
+La deuxième équation est deux fois la première. De $x+y=0$, on a $x=-y$. Dans la première :
+\[
+-y+2y+z=0,
+\]
+donc
+\[
+y+z=0,\qquad z=-y.
+\]
+Ainsi
+\[
+(x,y,z)=y(-1,1,-1),
+\]
+et
+\[
+\Ker(A)=\Vect((-1,1,-1)).
+\]
+Donc $\dim(\Ker(A))=1$. Par le théorème du rang :
+\[
+\rg(A)=3-1=2.
+\]
+L'image est engendrée par les colonnes :
+\[
+C_1=(1,2,1),\quad C_2=(2,4,1),\quad C_3=(1,2,0).
+\]
+On peut garder par exemple $C_1$ et $C_2$, qui ne sont pas colinéaires :
+\[
+\Img(A)=\Vect((1,2,1),(2,4,1)).
+\]
+
+\corr{46}
+Si $u^2=0$, alors $\Img(u)\subset\Ker(u)$. Donc
+\[
+\rg(u)\leq \dim(\Ker(u)).
+\]
+Par le théorème du rang :
+\[
+\dim(E)=\dim(\Ker(u))+\rg(u).
+\]
+Si $\dim(E)=3$, alors
+\[
+2\rg(u)\leq3,
+\]
+donc
+\[
+\rg(u)\leq1.
+\]
+Un exemple non nul dans $\R^2$ :
+\[
+u(x,y)=(y,0).
+\]
+Alors
+\[
+u^2(x,y)=u(y,0)=(0,0).
+\]
+
+\corr{47}
+On a
+\[
+v_1=(1,1),\qquad v_2=(1,-1).
+\]
+Ils ne sont pas colinéaires, donc forment une base de $\R^2$. Calculons :
+\[
+u(v_1)=u(1,1)=(4,4)=4v_1,
+\]
+et
+\[
+u(v_2)=u(1,-1)=(2,-2)=2v_2.
+\]
+Donc, dans la base $(v_1,v_2)$ :
+\[
+\Mat(u)=
+\begin{pmatrix}
+4&0\\
+0&2
+\end{pmatrix}.
+\]
+Dans la base canonique, la matrice est
+\[
+\begin{pmatrix}
+3&1\\
+1&3
+\end{pmatrix}.
+\]
+La base $(v_1,v_2)$ rend donc la matrice plus simple.
+
+\corr{48}
+On définit
+\[
+\varphi(x,y,z,t)=x-y+2z+t.
+\]
+Alors
+\[
+H=\Ker(\varphi),
+\]
+avec $\varphi$ forme linéaire non nulle. Résolvons :
+\[
+x-y+2z+t=0.
+\]
+On pose $y=a$, $z=b$, $t=c$. Alors
+\[
+x=a-2b-c.
+\]
+Donc
+\[
+(x,y,z,t)=a(1,1,0,0)+b(-2,0,1,0)+c(-1,0,0,1).
+\]
+Ainsi
+\[
+H=\Vect((1,1,0,0),(-2,0,1,0),(-1,0,0,1)).
+\]
+Cette famille est libre, donc c'est une base de $H$. Ainsi $\dim(H)=3$, donc $H$ est un hyperplan de $\R^4$.
+
+\corr{49}
+Si $x\in\Ker(u)$, alors
+\[
+u(x)=0.
+\]
+Donc
+\[
+(v\circ u)(x)=v(0)=0,
+\]
+d'où
+\[
+\Ker(u)\subset\Ker(v\circ u).
+\]
+Si $v$ est injective, alors
+\[
+(v\circ u)(x)=0 \Rightarrow v(u(x))=0 \Rightarrow u(x)=0,
+\]
+donc égalité. De plus, pour tout $x\in E$ :
+\[
+(v\circ u)(x)=v(u(x))\in\Img(v),
+\]
+donc
+\[
+\Img(v\circ u)\subset\Img(v).
+\]
+Exemple d'inclusion stricte : prendre $u=0$. Alors $\Img(v\circ u)=\{0\}$, tandis que $\Img(v)$ peut être non nulle.
+
+\corr{50}
+On choisit un supplémentaire $G$ de $\Ker(u)$ dans $E$ :
+\[
+E=\Ker(u)\oplus G.
+\]
+La restriction $u_{|G}$ est injective : si $x\in G$ et $u(x)=0$, alors $x\in G\cap\Ker(u)$, donc $x=0$.
+De plus, tout vecteur de $\Img(u)$ est de la forme $u(x)$, avec $x=k+g$ où $k\in\Ker(u)$ et $g\in G$. Alors
+\[
+u(x)=u(k)+u(g)=u(g).
+\]
+Donc
+\[
+u(G)=\Img(u).
+\]
+La restriction
+\[
+u_{|G}:G\to\Img(u)
+\]
+est donc injective et surjective, donc c'est un isomorphisme. Ainsi
+\[
+\dim(G)=\dim(\Img(u))=\rg(u).
+\]
+Comme
+\[
+\dim(E)=\dim(\Ker(u))+\dim(G),
+\]
+on retrouve
+\[
+\dim(E)=\dim(\Ker(u))+\rg(u).
+\]
+
+\end{document}
+

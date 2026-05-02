@@ -1,0 +1,274 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+
+%========================
+% MISE EN PAGE
+%========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques}
+\fancyhead[C]{Devoir surveillé -- Calcul numérique}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+
+%========================
+\begin{document}
+
+\begin{center}
+\Large \textbf{DEVOIR SURVEILLÉ}\\
+\large Calcul numérique
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Durée :} 1h30 \hfill \textbf{Calculatrice autorisée}\\
+\textbf{Total : 28 points}
+
+\textbf{Consigne :} Justifier tous les calculs.
+
+\vspace{0.5cm}
+
+%========================
+\section*{Exercice 1 -- Problème contextualisé (type brevet)}
+
+Un parc de loisirs propose des entrées à la journée.
+
+\begin{itemize}
+\item Le prix d’une entrée adulte est de 24€.
+\item Le prix d’une entrée enfant est de 16€.
+\item Une famille achète 5 billets pour un total de 104€.
+\end{itemize}
+
+\begin{enumerate}
+\item Montrer que le nombre d’adultes et d’enfants vérifie le système : \hfill (2 pts)
+\[
+\begin{cases}
+a + e = 5 \\
+24a + 16e = 104
+\end{cases}
+\]
+
+\item Résoudre ce système et déterminer le nombre d’adultes et d’enfants. \hfill (3 pts)
+
+\item Le parc propose ensuite une réduction de 20\% sur le total.
+\begin{enumerate}
+\item Calculer le montant de la réduction. \hfill (0.5 pt)
+\item Calculer le prix final payé. \hfill (1 pt)
+\end{enumerate}
+
+\item Une autre famille paie 96€ après réduction.
+\begin{enumerate}
+\item Retrouver le prix avant réduction. \hfill (1 pt)
+\item Combien de billets ont-ils achetés s’ils n’ont pris que des billets enfants ? \hfill (0.5 pt)
+\end{enumerate}
+
+\end{enumerate}
+
+\vspace{0.5cm}
+
+%========================
+\section*{Exercice 2 -- Calculs sur les fractions}
+
+Dans cet exercice, on cherche à comprendre les \textbf{règles de calcul sur les fractions}.
+
+\subsection*{Partie A -- Calculs}
+
+\begin{enumerate}
+\item Calculer :
+\[
+A = \frac{3}{4} + \frac{5}{6}
+\] \hfill (0.5 pt)
+
+\item Calculer :
+\[
+B = \frac{7}{5} - \frac{2}{3}
+\] \hfill (0.5 pt)
+
+\item Calculer :
+\[
+C = \frac{3}{4} \times \frac{8}{9}
+\] \hfill (0.5 pt)
+
+\item Calculer :
+\[
+D = \frac{5}{6} \div \frac{2}{3}
+\] \hfill (0.5 pt)
+
+\end{enumerate}
+
+\subsection*{Partie B -- Erreurs classiques}
+
+On considère les affirmations suivantes :
+
+\begin{enumerate}
+\item $\displaystyle \frac{2}{3} + \frac{1}{3} = \frac{3}{6}$ \hfill (1 pt)
+
+\item $\displaystyle \frac{3}{4} + \frac{1}{2} = \frac{4}{6}$ \hfill (1 pt)
+
+\item $\displaystyle \frac{2}{5} \times \frac{3}{7} = \frac{6}{35}$ \hfill (1 pt)
+
+\item $\displaystyle \frac{4}{9} \div \frac{2}{3} = \frac{4}{9} \times \frac{3}{2}$ \hfill (1 pt)
+\end{enumerate}
+
+\begin{itemize}
+\item Dire si chaque affirmation est vraie ou fausse.
+\item Justifier en expliquant \textbf{la règle correcte}.
+\end{itemize}
+
+\subsection*{Partie C -- Calcul complexe}
+
+Calculer :
+\[
+E = \frac{\frac{3}{4} + \frac{1}{2}}{\frac{5}{6} - \frac{1}{3}}
+\] \hfill (2 pts)
+
+\vspace{0.5cm}
+
+%========================
+\section*{Exercice 3 -- Problème choisi (raisonnement)}
+
+On considère un nombre $x$.
+
+On définit l’expression :
+\[
+F(x) = \frac{2x + 3}{x - 1}
+\]
+
+\begin{enumerate}
+\item Calculer $F(2)$ et $F(3)$. \hfill (1 pt)
+
+\item Peut-on calculer $F(1)$ ? Justifier. \hfill (1 pt)
+
+\item On suppose que :
+\[
+F(x) = 2 + \frac{5}{x - 1}
+\]
+
+\begin{enumerate}
+\item Vérifier cette égalité. \hfill (2 pts)
+\item En déduire une méthode rapide pour calculer $F(101)$. \hfill (0.5 pt)
+\end{enumerate}
+
+\item Trouver une valeur de $x$ telle que :
+\[
+F(x) = 2
+\] \hfill (0.5 pt)
+
+\end{enumerate}
+
+\vspace{1cm}
+
+%========================
+\section*{Exercice 4 -- Redémonstration des règles (4 points)}
+
+\textbf{Objectif : reconstruire les règles de calcul sur les fractions.}
+
+\textbf{Barème :}
+\begin{itemize}
+\item Rigueur des démonstrations : 3 pts
+\item Qualité des explications : 1 pt
+\end{itemize}
+
+Soient $\frac{a}{b}$ et $\frac{c}{d}$ deux fractions avec $b \neq 0$ et $d \neq 0$.
+
+\subsection*{Partie A -- Addition de fractions}
+
+On cherche à démontrer que :
+\[
+\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}
+\]
+
+\begin{enumerate}
+\item Pourquoi ne peut-on pas additionner directement les dénominateurs ? \hfill (0.5 pt)
+
+\item Quel est le dénominateur commun le plus simple entre $b$ et $d$ ? \hfill (0.5 pt)
+
+\item Compléter :
+\[
+\frac{a}{b} = \frac{a \times \dots}{b \times \dots}
+\quad \text{et} \quad
+\frac{c}{d} = \frac{c \times \dots}{d \times \dots}
+\] \hfill (0.5 pt)
+
+\item Écrire $\frac{a}{b}$ avec le dénominateur $bd$. \hfill (0.5 pt)
+
+\item Écrire $\frac{c}{d}$ avec le dénominateur $bd$. \hfill (0.5 pt)
+
+\item Additionner les deux fractions obtenues. \hfill (0.5 pt)
+
+\item Simplifier l’expression et conclure. \hfill (0.5 pt)
+
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\subsection*{Partie B -- Multiplication de fractions}
+
+On cherche à montrer que :
+\[
+\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd}
+\]
+
+\begin{enumerate}
+\item Écrire $\frac{a}{b}$ comme $a \times \frac{1}{b}$. \hfill (0.5 pt)
+
+\item Écrire $\frac{c}{d}$ comme $c \times \frac{1}{d}$. \hfill (0.5 pt)
+
+\item Regrouper tous les facteurs. \hfill (0.5 pt)
+
+\item Simplifier pour obtenir le résultat. \hfill (0.5 pt)
+
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\subsection*{Partie C -- Division de fractions}
+
+On cherche à montrer que :
+\[
+\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}
+\]
+
+\begin{enumerate}
+\item Que signifie ``diviser par un nombre'' en mathématiques ? \hfill (0.5 pt)
+
+\item Quel est l’inverse de $\frac{c}{d}$ ? \hfill (0.5 pt)
+
+\item Réécrire la division comme une multiplication. \hfill (0.5 pt)
+
+\item Conclure. \hfill (0.5 pt)
+
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\subsection*{Partie D -- Compréhension}
+
+\begin{enumerate}
+\item Expliquer avec tes mots pourquoi on ne peut pas faire :
+\[
+\frac{a}{b} + \frac{c}{d} = \frac{a+c}{b+d}
+\] \hfill (0.5 pt)
+
+\item Donner un contre-exemple numérique simple. \hfill (0.5 pt)
+
+\end{enumerate}
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Fin du sujet}
+\end{center}
+
+\end{document}

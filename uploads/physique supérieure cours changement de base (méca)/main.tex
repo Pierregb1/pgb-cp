@@ -1,0 +1,1700 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Cinématique du point}
+\fancyhead[C]{Changement de bases}
+\fancyhead[R]{\thepage}
+
+\begin{document}
+
+\begin{center}
+\Huge \textbf{CINÉMATIQUE DU POINT MATÉRIEL}\\
+\Large Version complète + démonstrations + algèbre linéaire
+\end{center}
+
+%====================================================
+\section{Introduction complète}
+%====================================================
+
+La mécanique classique constitue un cadre fondamental de la physique permettant
+de décrire le mouvement des corps macroscopiques.
+
+Dans ce chapitre, on se limite à l’étude de la \textbf{cinématique},
+c’est-à-dire à la description des mouvements indépendamment de leurs causes :contentReference[oaicite:1]{index=1}.
+
+\bigskip
+
+\textbf{Idée centrale :}
+\begin{center}
+Décrire un mouvement revient à exprimer un vecteur position dans une base adaptée.
+\end{center}
+
+\bigskip
+
+Cela conduit à deux notions fondamentales :
+
+\begin{itemize}
+\item le choix d’un \textbf{référentiel}
+\item le choix d’un \textbf{système de coordonnées}
+\end{itemize}
+
+\bigskip
+
+\textbf{Remarque fondamentale :}
+
+\begin{center}
+Un vecteur est invariant, mais ses coordonnées dépendent du choix de la base.
+\end{center}
+
+---
+
+%====================================================
+\section{Référentiel et repère}
+%====================================================
+
+\subsection{Définition d’un référentiel}
+
+Un référentiel est un ensemble de points matériels considérés comme fixes entre eux.
+
+\bigskip
+
+Il est nécessaire de préciser le référentiel pour définir une vitesse.
+
+\bigskip
+
+\textbf{Exemple :}
+
+Dans un train en mouvement :
+\begin{itemize}
+\item vitesse par rapport au train
+\item vitesse par rapport au sol
+\end{itemize}
+
+Ces deux vitesses sont différentes.
+
+---
+
+\subsection{Différence repère / référentiel}
+
+\begin{itemize}
+\item référentiel = notion physique
+\item repère = outil mathématique
+\end{itemize}
+
+\bigskip
+
+Un même référentiel peut être associé à différents repères.
+
+---
+
+%====================================================
+\section{Repérage d’un point}
+%====================================================
+
+On choisit :
+\begin{itemize}
+\item un point origine $O$
+\item une base $(\vec{e}_1,\vec{e}_2,\vec{e}_3)$
+\end{itemize}
+
+\[
+\vec{OM} = u_1 \vec{e}_1 + u_2 \vec{e}_2 + u_3 \vec{e}_3
+\]
+
+---
+
+\subsection{Base orthonormée directe}
+
+Une base est orthonormée si :
+
+\[
+\vec{e}_i \cdot \vec{e}_j = 0 \quad (i \neq j)
+\]
+
+\[
+||\vec{e}_i|| = 1
+\]
+
+Elle est directe si :
+
+\[
+\vec{e}_1 \wedge \vec{e}_2 = \vec{e}_3
+\]
+
+---
+
+%====================================================
+\section{Coordonnées cartésiennes}
+%====================================================
+
+\[
+\vec{OM} = x\vec{e}_x + y\vec{e}_y + z\vec{e}_z
+\]
+
+\subsection{Schéma détaillé}
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+\draw[->] (0,0) -- (2,0) node[right]{$x$};
+\draw[->] (0,0) -- (0,2) node[above]{$y$};
+\draw[->] (0,0) -- (-1,-1) node[left]{$z$};
+
+\draw[->] (0,0) -- (1.2,1.3) node[right]{$M$};
+
+\end{tikzpicture}
+\end{center}
+
+---
+
+%====================================================
+\section{Coordonnées cylindriques}
+%====================================================
+
+\subsection{Définition physique}
+
+Utilisé pour les mouvements avec symétrie de rotation.
+
+\[
+x = r\cos\theta, \quad y = r\sin\theta
+\]
+
+\[
+\vec{OM} = r\vec{e}_r + z\vec{e}_z
+\]
+
+---
+
+\subsection{Schéma complet}
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+\draw (0,0) circle (1.5);
+
+\draw[->] (0,0) -- (1.2,0.9);
+\node at (1.3,1) {$M$};
+
+\draw[->] (0,0) -- (2,0) node[right]{$x$};
+\draw[->] (0,0) -- (0,2) node[above]{$y$};
+
+\draw (0.5,0) arc (0:35:0.5);
+\node at (0.7,0.3){$\theta$};
+
+\node at (1.2,0.6){$r$};
+
+\end{tikzpicture}
+\end{center}
+
+---
+
+%====================================================
+\section{Base cylindrique — démonstration}
+%====================================================
+
+\subsection{Objectif}
+
+Exprimer $(\vec{e}_r,\vec{e}_\theta)$ en fonction de $(\vec{e}_x,\vec{e}_y)$.
+
+---
+
+\subsection{Démonstration géométrique}
+
+On projette :
+
+\[
+\vec{e}_r = \cos\theta \vec{e}_x + \sin\theta \vec{e}_y
+\]
+
+---
+
+\[
+\vec{e}_\theta = -\sin\theta \vec{e}_x + \cos\theta \vec{e}_y
+\]
+
+---
+
+\subsection{Matrice associée}
+
+\[
+P =
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}
+\]
+
+---
+
+\subsection{Interprétation}
+
+Cette matrice est une rotation.
+
+---
+
+%====================================================
+\section{Coordonnées sphériques}
+%====================================================
+
+\[
+x = r\sin\theta\cos\varphi
+\]
+
+\[
+y = r\sin\theta\sin\varphi
+\]
+
+\[
+z = r\cos\theta
+\]
+
+---
+
+\subsection{Schéma}
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+\draw (0,0) circle (1.2);
+\draw[->] (0,0) -- (0.7,0.9);
+\node at (0.8,0.9){$r$};
+
+\end{tikzpicture}
+\end{center}
+
+---
+
+%====================================================
+\section{Conclusion partie 1}
+%====================================================
+
+On a introduit :
+
+\begin{itemize}
+\item les systèmes de coordonnées
+\item les bases associées
+\item le changement de base géométrique
+\end{itemize}
+
+\bigskip
+
+La suite consiste à étudier :
+
+\begin{itemize}
+\item la dérivation des vecteurs
+\item la vitesse
+\item l’accélération
+\end{itemize}
+
+\section{Dérivation d’un vecteur dans un référentiel}
+
+\subsection{Problème fondamental}
+
+On souhaite calculer la dérivée temporelle d’un vecteur :
+
+\[
+\vec{v}(t) = \sum_i a_i(t)\vec{e}_i(t)
+\]
+
+\bigskip
+
+\textbf{Problème :}
+
+\begin{itemize}
+\item les coefficients $a_i(t)$ dépendent du temps
+\item MAIS aussi les vecteurs $\vec{e}_i(t)$
+\end{itemize}
+
+\bigskip
+
+Donc :
+
+\[
+\frac{d\vec{v}}{dt} \neq \sum_i \dot{a}_i \vec{e}_i
+\]
+
+---
+
+\subsection{Formule générale}
+
+\[
+\boxed{
+\frac{d\vec{v}}{dt}
+=
+\sum_i \dot{a}_i \vec{e}_i + \sum_i a_i \frac{d\vec{e}_i}{dt}
+}
+\]
+
+\bigskip
+
+C’est LA formule clé du chapitre.
+
+---
+
+%====================================================
+\section{Dérivation de la base cylindrique}
+%====================================================
+
+\subsection{Expression de $\vec{e}_r$}
+
+\[
+\vec{e}_r = \cos\theta \vec{e}_x + \sin\theta \vec{e}_y
+\]
+
+---
+
+\subsection{Dérivation complète (ligne par ligne)}
+
+On dérive :
+
+\[
+\frac{d\vec{e}_r}{dt}
+=
+\frac{d}{dt}(\cos\theta)\vec{e}_x + \frac{d}{dt}(\sin\theta)\vec{e}_y
+\]
+
+Or :
+
+\[
+\frac{d}{dt}(\cos\theta) = -\sin\theta \dot{\theta}
+\]
+
+\[
+\frac{d}{dt}(\sin\theta) = \cos\theta \dot{\theta}
+\]
+
+Donc :
+
+\[
+\frac{d\vec{e}_r}{dt}
+=
+-\sin\theta \dot{\theta} \vec{e}_x + \cos\theta \dot{\theta} \vec{e}_y
+\]
+
+Factorisation :
+
+\[
+\frac{d\vec{e}_r}{dt}
+=
+\dot{\theta}(-\sin\theta \vec{e}_x + \cos\theta \vec{e}_y)
+\]
+
+Or :
+
+\[
+-\sin\theta \vec{e}_x + \cos\theta \vec{e}_y = \vec{e}_\theta
+\]
+
+Donc :
+
+\[
+\boxed{
+\frac{d\vec{e}_r}{dt} = \dot{\theta} \vec{e}_\theta
+}
+\]
+
+---
+
+\subsection{Dérivation de $\vec{e}_\theta$}
+
+\[
+\vec{e}_\theta = -\sin\theta \vec{e}_x + \cos\theta \vec{e}_y
+\]
+
+On dérive :
+
+\[
+\frac{d\vec{e}_\theta}{dt}
+=
+-\cos\theta \dot{\theta} \vec{e}_x - \sin\theta \dot{\theta} \vec{e}_y
+\]
+
+Factorisation :
+
+\[
+\frac{d\vec{e}_\theta}{dt}
+=
+-\dot{\theta}(\cos\theta \vec{e}_x + \sin\theta \vec{e}_y)
+\]
+
+Or :
+
+\[
+\cos\theta \vec{e}_x + \sin\theta \vec{e}_y = \vec{e}_r
+\]
+
+Donc :
+
+\[
+\boxed{
+\frac{d\vec{e}_\theta}{dt} = -\dot{\theta} \vec{e}_r
+}
+\]
+
+---
+
+%====================================================
+\section{Interprétation géométrique}
+%====================================================
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+\draw[->] (0,0) -- (1,0) node[right]{$\vec{e}_r$};
+\draw[->] (0,0) -- (0,1) node[above]{$\vec{e}_\theta$};
+
+\draw[->,red] (1,0) -- (1,0.4) node[right]{$d\vec{e}_r$};
+
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\textbf{Conclusion :}
+
+\begin{itemize}
+\item $\vec{e}_r$ tourne
+\item sa dérivée est perpendiculaire
+\end{itemize}
+
+\bigskip
+
+ C’est une rotation instantanée.
+
+---
+
+%====================================================
+\section{Vitesse d’un point}
+%====================================================
+
+\subsection{Définition}
+
+\[
+\vec{v} = \frac{d\vec{OM}}{dt}
+\]
+
+---
+
+%====================================================
+\subsection{Méthode 1 : calcul direct}
+%====================================================
+
+\[
+\vec{OM} = r\vec{e}_r + z\vec{e}_z
+\]
+
+\[
+\vec{v} = \frac{d}{dt}(r\vec{e}_r + z\vec{e}_z)
+\]
+
+\[
+\vec{v} = \dot{r}\vec{e}_r + r\frac{d\vec{e}_r}{dt} + \dot{z}\vec{e}_z
+\]
+
+Remplacement :
+
+\[
+\vec{v} = \dot{r}\vec{e}_r + r\dot{\theta}\vec{e}_\theta + \dot{z}\vec{e}_z
+\]
+
+---
+
+%====================================================
+\subsection{Méthode 2 : méthode géométrique}
+%====================================================
+
+On considère un déplacement infinitésimal :
+
+\[
+d\vec{OM} = dr\vec{e}_r + r d\theta \vec{e}_\theta + dz\vec{e}_z
+\]
+
+\bigskip
+
+ Interprétation :
+
+\begin{itemize}
+\item variation de $r$ → déplacement radial
+\item variation de $\theta$ → déplacement circulaire
+\item variation de $z$ → déplacement vertical
+\end{itemize}
+
+---
+
+En divisant par $dt$ :
+
+\[
+\vec{v} =
+\dot{r}\vec{e}_r + r\dot{\theta}\vec{e}_\theta + \dot{z}\vec{e}_z
+\]
+
+---
+
+%====================================================
+\section{Interprétation physique de la vitesse}
+%====================================================
+
+\[
+\vec{v} =
+\dot{r}\vec{e}_r + r\dot{\theta}\vec{e}_\theta + \dot{z}\vec{e}_z
+\]
+
+\bigskip
+
+\begin{itemize}
+\item $\dot{r}$ : vitesse radiale
+\item $r\dot{\theta}$ : vitesse tangentielle
+\item $\dot{z}$ : vitesse verticale
+\end{itemize}
+
+---
+
+%====================================================
+\section{Lien avec rotation}
+%====================================================
+
+On peut écrire :
+
+\[
+\frac{d\vec{e}_r}{dt} = \vec{\Omega} \wedge \vec{e}_r
+\]
+
+avec :
+
+\[
+\vec{\Omega} = \dot{\theta} \vec{e}_z
+\]
+
+---
+
+\textbf{Interprétation :}
+
+\begin{center}
+La base cylindrique tourne avec une vitesse angulaire $\dot{\theta}$.
+\end{center}
+
+---
+
+%====================================================
+\section{Conclusion de la partie}
+%====================================================
+
+On a montré :
+
+\begin{itemize}
+\item comment dériver une base mobile
+\item comment obtenir la vitesse par deux méthodes
+\item le lien avec la rotation
+\end{itemize}
+
+\bigskip
+
+ La prochaine étape est :
+
+\begin{center}
+\textbf{le calcul de l’accélération (beaucoup plus riche)}
+\end{center}
+
+%====================================================
+\section{Repère de Frenet}
+%====================================================
+
+\subsection{Motivation}
+
+Dans les systèmes précédents (cartésien, cylindrique, sphérique),
+la base dépend de la position dans l’espace.
+
+\bigskip
+
+Le repère de Frenet adopte une approche différente :
+
+\begin{center}
+\textbf{la base est adaptée à la trajectoire elle-même}
+\end{center}
+
+---
+
+%====================================================
+\subsection{Définition du repère de Frenet}
+%====================================================
+
+On considère une trajectoire paramétrée par le temps $t$ :
+
+\[
+\vec{OM}(t)
+\]
+
+On définit :
+
+---
+
+\textbf{Vecteur tangent :}
+
+\[
+\vec{T} = \frac{\vec{v}}{||\vec{v}||}
+\]
+
+---
+
+\textbf{Vecteur normal :}
+
+\[
+\vec{N} = \frac{1}{||\dot{\vec{T}}||} \dot{\vec{T}}
+\]
+
+---
+
+\textbf{Vecteur binormal :}
+
+\[
+\vec{B} = \vec{T} \wedge \vec{N}
+\]
+
+---
+
+Le triplet :
+
+\[
+(\vec{T}, \vec{N}, \vec{B})
+\]
+
+forme une base orthonormée directe.
+
+---
+
+%====================================================
+\subsection{Schéma}
+%====================================================
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+\draw (0,0) .. controls (0.5,0.8) .. (1,0);
+
+\draw[->] (0.5,0.4) -- (0.9,0.4) node[right] {$\vec{T}$};
+\draw[->] (0.5,0.4) -- (0.5,0.8) node[above] {$\vec{N}$};
+
+\end{tikzpicture}
+\end{center}
+
+---
+
+%====================================================
+\subsection{Formules de Frenet}
+%====================================================
+
+On montre que :
+
+\[
+\boxed{
+\frac{d\vec{T}}{dt} = \kappa v \vec{N}
+}
+\]
+
+\[
+\boxed{
+\frac{d\vec{N}}{dt} = -\kappa v \vec{T} + \tau v \vec{B}
+}
+\]
+
+\[
+\boxed{
+\frac{d\vec{B}}{dt} = -\tau v \vec{N}
+}
+\]
+
+---
+
+\subsection{Signification des grandeurs}
+
+\begin{itemize}
+\item $\kappa$ : courbure
+\item $\tau$ : torsion
+\item $v = ||\vec{v}||$ : vitesse
+\end{itemize}
+
+---
+
+%====================================================
+\subsection{Démonstration de la première formule}
+%====================================================
+
+On a :
+
+\[
+\vec{T} = \frac{\vec{v}}{||\vec{v}||}
+\]
+
+On dérive :
+
+\[
+\frac{d\vec{T}}{dt}
+=
+\frac{\dot{\vec{v}}}{||\vec{v}||}
+-
+\frac{\vec{v}}{||\vec{v}||^2} \frac{d||\vec{v}||}{dt}
+\]
+
+Après simplification, on montre que :
+
+\[
+\frac{d\vec{T}}{dt} \perp \vec{T}
+\]
+
+Donc :
+
+\[
+\frac{d\vec{T}}{dt} = \kappa v \vec{N}
+\]
+
+---
+
+%====================================================
+\subsection{Accélération dans le repère de Frenet}
+%====================================================
+
+\[
+\vec{v} = v \vec{T}
+\]
+
+On dérive :
+
+\[
+\vec{a} = \dot{v}\vec{T} + v \frac{d\vec{T}}{dt}
+\]
+
+\[
+\vec{a} = \dot{v}\vec{T} + \kappa v^2 \vec{N}
+\]
+
+---
+
+\subsection{Interprétation physique}
+
+\begin{itemize}
+\item $\dot{v}\vec{T}$ : accélération tangentielle
+\item $\kappa v^2 \vec{N}$ : accélération normale (centripète)
+\end{itemize}
+
+---
+
+%====================================================
+\subsection{Lien avec le mouvement circulaire}
+%====================================================
+
+Pour un cercle de rayon $R$ :
+
+\[
+\kappa = \frac{1}{R}
+\]
+
+Donc :
+
+\[
+\vec{a} = \frac{v^2}{R} \vec{N}
+\]
+
+�� On retrouve l’accélération centripète.
+
+---
+
+%====================================================
+\section{Conclusion sur le repère de Frenet}
+%====================================================
+
+\begin{itemize}
+\item il est adapté à la trajectoire
+\item il simplifie l’expression de l’accélération
+\item il relie directement géométrie et mécanique
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+\textbf{C’est le repère le plus naturel pour décrire un mouvement.}
+\end{center}
+
+%====================================================
+\section{Accélération d’un point}
+%====================================================
+
+\subsection{Définition}
+
+L’accélération est définie comme la dérivée de la vitesse :
+
+\[
+\vec{a} = \frac{d\vec{v}}{dt}
+\]
+
+\bigskip
+
+Contrairement à la vitesse, il n’existe pas de méthode géométrique simple :
+il faut dériver explicitement.
+
+---
+
+%====================================================
+\section{Accélération en coordonnées cylindriques}
+%====================================================
+
+\subsection{Rappel de la vitesse}
+
+\[
+\vec{v} =
+\dot{r}\vec{e}_r + r\dot{\theta}\vec{e}_\theta + \dot{z}\vec{e}_z
+\]
+
+---
+
+\subsection{Dérivation complète}
+
+On dérive chaque terme :
+
+---
+
+\textbf{Premier terme :}
+
+\[
+\frac{d}{dt}(\dot{r}\vec{e}_r)
+=
+\ddot{r}\vec{e}_r + \dot{r}\frac{d\vec{e}_r}{dt}
+\]
+
+\[
+= \ddot{r}\vec{e}_r + \dot{r}\dot{\theta}\vec{e}_\theta
+\]
+
+---
+
+\textbf{Deuxième terme :}
+
+\[
+\frac{d}{dt}(r\dot{\theta}\vec{e}_\theta)
+\]
+
+On applique la règle du produit :
+
+\[
+= \frac{d}{dt}(r\dot{\theta})\vec{e}_\theta
++ r\dot{\theta}\frac{d\vec{e}_\theta}{dt}
+\]
+
+Or :
+
+\[
+\frac{d}{dt}(r\dot{\theta}) = \dot{r}\dot{\theta} + r\ddot{\theta}
+\]
+
+et :
+
+\[
+\frac{d\vec{e}_\theta}{dt} = -\dot{\theta}\vec{e}_r
+\]
+
+Donc :
+
+\[
+= (\dot{r}\dot{\theta} + r\ddot{\theta})\vec{e}_\theta
+- r\dot{\theta}^2 \vec{e}_r
+\]
+
+---
+
+\textbf{Troisième terme :}
+
+\[
+\frac{d}{dt}(\dot{z}\vec{e}_z) = \ddot{z}\vec{e}_z
+\]
+
+(car $\vec{e}_z$ est constant)
+
+---
+
+%====================================================
+\subsection{Regroupement final}
+%====================================================
+
+On regroupe les composantes :
+
+---
+
+\textbf{Composante radiale :}
+
+\[
+\ddot{r} - r\dot{\theta}^2
+\]
+
+---
+
+\textbf{Composante orthoradiale :}
+
+\[
+2\dot{r}\dot{\theta} + r\ddot{\theta}
+\]
+
+---
+
+\textbf{Composante verticale :}
+
+\[
+\ddot{z}
+\]
+
+---
+
+\[
+\boxed{
+\vec{a} =
+(\ddot{r} - r\dot{\theta}^2)\vec{e}_r
++
+(2\dot{r}\dot{\theta} + r\ddot{\theta})\vec{e}_\theta
++
+\ddot{z}\vec{e}_z
+}
+\]
+
+---
+
+%====================================================
+\section{Interprétation physique}
+%====================================================
+
+\subsection{Terme centripète}
+
+\[
+-r\dot{\theta}^2
+\]
+
+\begin{itemize}
+\item dirigé vers le centre
+\item responsable du mouvement circulaire
+\end{itemize}
+
+---
+
+\subsection{Terme de Coriolis}
+
+\[
+2\dot{r}\dot{\theta}
+\]
+
+\begin{itemize}
+\item apparaît si le rayon varie
+\item lié au changement de base
+\end{itemize}
+
+---
+
+\subsection{Terme angulaire}
+
+\[
+r\ddot{\theta}
+\]
+
+accélération de rotation.
+
+---
+
+%====================================================
+\section{Coordonnées sphériques}
+%====================================================
+
+\subsection{Rappel du système}
+
+\[
+(r,\theta,\varphi)
+\]
+
+\begin{itemize}
+\item $r$ : distance à l’origine
+\item $\theta$ : colatitude
+\item $\varphi$ : azimut
+\end{itemize}
+
+---
+
+\subsection{Vitesse (rappel)}
+
+\[
+\vec{v} =
+\dot{r}\vec{e}_r
++
+r\dot{\theta}\vec{e}_\theta
++
+r\sin\theta \dot{\varphi}\vec{e}_\varphi
+\]
+
+---
+
+%====================================================
+\section{Démonstration de l’accélération sphérique}
+%====================================================
+
+ Calcul long mais fondamental.
+
+---
+
+On dérive :
+
+\[
+\vec{a} = \frac{d\vec{v}}{dt}
+\]
+
+---
+
+\textbf{1er terme :}
+
+\[
+\frac{d}{dt}(\dot{r}\vec{e}_r)
+=
+\ddot{r}\vec{e}_r + \dot{r}\frac{d\vec{e}_r}{dt}
+\]
+
+---
+
+\textbf{2e terme :}
+
+\[
+\frac{d}{dt}(r\dot{\theta}\vec{e}_\theta)
+=
+(\dot{r}\dot{\theta} + r\ddot{\theta})\vec{e}_\theta
++ r\dot{\theta}\frac{d\vec{e}_\theta}{dt}
+\]
+
+---
+
+\textbf{3e terme :}
+
+\[
+\frac{d}{dt}(r\sin\theta \dot{\varphi}\vec{e}_\varphi)
+\]
+
+développement :
+
+\[
+=
+(\dot{r}\sin\theta \dot{\varphi}
++ r\cos\theta \dot{\theta}\dot{\varphi}
++ r\sin\theta \ddot{\varphi})\vec{e}_\varphi
++ r\sin\theta \dot{\varphi}\frac{d\vec{e}_\varphi}{dt}
+\]
+
+---
+
+%====================================================
+\subsection{Résultat final}
+%====================================================
+
+\[
+\boxed{
+\vec{a} =
+(\ddot{r} - r\dot{\theta}^2 - r\sin^2\theta \dot{\varphi}^2)\vec{e}_r
+}
+\]
+
+\[
++
+\boxed{
+(2\dot{r}\dot{\theta} + r\ddot{\theta}
+- r\sin\theta\cos\theta \dot{\varphi}^2)\vec{e}_\theta
+}
+\]
+
+\[
++
+\boxed{
+(2\dot{r}\sin\theta \dot{\varphi}
++ 2r\cos\theta\dot{\theta}\dot{\varphi}
++ r\sin\theta\ddot{\varphi})\vec{e}_\varphi
+}
+\]
+
+---
+
+%====================================================
+\section{Interprétation physique (sphérique)}
+%====================================================
+
+\begin{itemize}
+\item accélération radiale → attraction vers centre
+\item termes mixtes → couplage rotation
+\item termes en $\sin\theta$ → géométrie sphérique
+\end{itemize}
+
+---
+
+%====================================================
+\section{Conclusion de la partie}
+%====================================================
+
+On a obtenu :
+
+\begin{itemize}
+\item accélération cylindrique complète
+\item accélération sphérique complète
+\item interprétation physique des termes
+\end{itemize}
+
+\bigskip
+
+ La dernière étape :
+
+\begin{center}
+\textbf{relier tout cela à l’algèbre linéaire (matrices)}
+\end{center}
+
+%====================================================
+\section{Changement de base : point de vue algèbre linéaire}
+%====================================================
+
+\subsection{Cadre général}
+
+Soit $V$ un espace vectoriel de dimension 3.
+
+On considère deux bases :
+
+\[
+\mathcal{B} = (\vec{e}_1,\vec{e}_2,\vec{e}_3), \quad
+\mathcal{B}' = (\vec{e}_1',\vec{e}_2',\vec{e}_3')
+\]
+
+---
+
+\subsection{Définition de la matrice de passage}
+
+La matrice de passage de $\mathcal{B}$ vers $\mathcal{B}'$ est définie par :
+
+\[
+P_{\mathcal{B},\mathcal{B}'}
+=
+\begin{pmatrix}
+| & | & | \\
+[\vec{e}_1']_{\mathcal{B}} &
+[\vec{e}_2']_{\mathcal{B}} &
+[\vec{e}_3']_{\mathcal{B}} \\
+| & | & |
+\end{pmatrix}
+\]
+
+---
+
+\subsection{Interprétation fondamentale}
+
+\[
+P_{\mathcal{B},\mathcal{B}'} = \text{Mat}_{\mathcal{B}',\mathcal{B}}(\mathrm{Id}_V)
+\]
+
+ C’est la matrice de l’identité entre deux bases.
+
+---
+
+%====================================================
+\section{Transformation des coordonnées}
+%====================================================
+
+Soit un vecteur $\vec{v}$.
+
+\[
+[\vec{v}]_{\mathcal{B}} = P [\vec{v}]_{\mathcal{B}'}
+\]
+
+\[
+[\vec{v}]_{\mathcal{B}'} = P^{-1} [\vec{v}]_{\mathcal{B}}
+\]
+
+---
+
+\subsection{Démonstration complète}
+
+On écrit :
+
+\[
+\vec{v} = \sum_i v_i' \vec{e}_i'
+\]
+
+Or chaque $\vec{e}_i'$ s’exprime dans $\mathcal{B}$ :
+
+\[
+\vec{e}_i' = \sum_j P_{ji} \vec{e}_j
+\]
+
+Donc :
+
+\[
+\vec{v} = \sum_i v_i' \sum_j P_{ji} \vec{e}_j
+\]
+
+\[
+= \sum_j \left( \sum_i P_{ji} v_i' \right)\vec{e}_j
+\]
+
+Donc :
+
+\[
+[\vec{v}]_{\mathcal{B}} = P [\vec{v}]_{\mathcal{B}'}
+\]
+
+---
+
+%====================================================
+\section{Changement de matrice d’un endomorphisme}
+%====================================================
+
+Soit $f : V \to V$.
+
+On note :
+
+\[
+A = \text{Mat}_{\mathcal{B}}(f), \quad
+B = \text{Mat}_{\mathcal{B}'}(f)
+\]
+
+---
+
+\subsection{Résultat fondamental}
+
+\[
+\boxed{
+B = P^{-1} A P
+}
+\]
+
+---
+
+\subsection{Démonstration}
+
+On a :
+
+\[
+f(\vec{v}) = A [\vec{v}]_{\mathcal{B}}
+\]
+
+Mais :
+
+\[
+[\vec{v}]_{\mathcal{B}} = P [\vec{v}]_{\mathcal{B}'}
+\]
+
+Donc :
+
+\[
+f(\vec{v}) = A P [\vec{v}]_{\mathcal{B}'}
+\]
+
+Or :
+
+\[
+[f(\vec{v})]_{\mathcal{B}'} = P^{-1} A P [\vec{v}]_{\mathcal{B}'}
+\]
+
+Donc :
+
+\[
+B = P^{-1} A P
+\]
+
+---
+
+%====================================================
+\section{Matrices semblables}
+%====================================================
+
+\textbf{Définition :}
+
+Deux matrices $A$ et $B$ sont semblables si :
+
+\[
+B = P^{-1} A P
+\]
+
+---
+
+\textbf{Interprétation :}
+
+\begin{center}
+Même transformation, bases différentes.
+\end{center}
+
+---
+
+%====================================================
+\section{Lien avec la mécanique}
+%====================================================
+
+En mécanique :
+
+\[
+\vec{v}_{cart} = P(t) \vec{v}_{mobile}
+\]
+
+ La matrice dépend du temps !
+
+---
+
+%====================================================
+\section{Dérivation matricielle}
+%====================================================
+
+On dérive :
+
+\[
+\frac{d\vec{v}}{dt}
+=
+\frac{d}{dt}(P(t)\vec{v}')
+\]
+
+---
+
+\subsection{Règle du produit}
+
+\[
+= \dot{P}(t)\vec{v}' + P(t)\dot{\vec{v}}'
+\]
+
+---
+
+\subsection{Réécriture}
+
+On veut exprimer en coordonnées physiques :
+
+\[
+\vec{v} = P\vec{v}'
+\]
+
+Donc :
+
+\[
+\vec{v}' = P^{-1}\vec{v}
+\]
+
+---
+
+\subsection{Substitution}
+
+\[
+\frac{d\vec{v}}{dt}
+=
+P\dot{\vec{v}}' + \dot{P}P^{-1}\vec{v}
+\]
+
+---
+
+%====================================================
+\section{Définition de l’opérateur de rotation}
+%====================================================
+
+On pose :
+
+\[
+\boxed{
+\Omega = \dot{P}P^{-1}
+}
+\]
+
+---
+
+\subsection{Formule fondamentale}
+
+\[
+\boxed{
+\frac{d\vec{v}}{dt}
+=
+\frac{d\vec{v}}{dt}_{mobile}
++
+\Omega \vec{v}
+}
+\]
+
+---
+
+%====================================================
+\section{Interprétation physique}
+%====================================================
+
+\[
+\Omega \vec{v} = \vec{\Omega} \wedge \vec{v}
+\]
+
+---
+
+\subsection{Conclusion}
+
+\begin{itemize}
+\item $\Omega$ représente la rotation de la base
+\item c’est une vitesse angulaire
+\end{itemize}
+
+---
+
+%====================================================
+\section{Lien avec la base cylindrique}
+%====================================================
+
+\[
+\vec{\Omega} = \dot{\theta} \vec{e}_z
+\]
+
+\[
+\frac{d\vec{e}_r}{dt} = \vec{\Omega} \wedge \vec{e}_r
+\]
+
+---
+
+%====================================================
+\section{Conclusion générale}
+%====================================================
+
+\begin{center}
+\Huge \textbf{Synthèse}
+\end{center}
+
+\bigskip
+
+\begin{itemize}
+\item Le changement de base est une transformation linéaire
+\item En mécanique, cette transformation dépend du temps
+\item Cela crée des termes supplémentaires (Coriolis, centripète)
+\item Ces termes ont une interprétation géométrique : rotation
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+\Huge \textbf{La mécanique est une géométrie dynamique}
+\end{center}
+
+%====================================================
+\section{Exercices d'application}
+%====================================================
+
+\subsection*{Exercice 1 — Changement de base cylindrique (*)}
+
+On considère un point $M$ dans le plan $(Oxy)$ de coordonnées cartésiennes $(x,y)$.
+
+\begin{enumerate}
+\item Exprimer les coordonnées cylindriques $(r,\theta)$ en fonction de $(x,y)$.
+\item Exprimer les vecteurs $\vec{e}_r$ et $\vec{e}_\theta$ en fonction de $\vec{e}_x$ et $\vec{e}_y$.
+\item Écrire la matrice de passage $P$ de la base cartésienne vers la base cylindrique.
+\item Montrer que cette matrice est orthogonale.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre le lien entre rotation et changement de base.
+
+---
+
+%====================================================
+\subsection*{Exercice 2 — Dérivation des vecteurs de base (**)}
+
+On considère la base cylindrique $(\vec{e}_r,\vec{e}_\theta)$.
+
+\begin{enumerate}
+\item Repartir de l’expression de $\vec{e}_r$ dans la base cartésienne.
+\item Calculer explicitement $\frac{d\vec{e}_r}{dt}$.
+\item Montrer que cette dérivée est orthogonale à $\vec{e}_r$.
+\item Interpréter géométriquement ce résultat.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre la notion de base mobile.
+
+---
+
+%====================================================
+\subsection*{Exercice 3 — Vitesse en coordonnées cylindriques (**)}
+
+On considère un point dont la position est donnée par :
+
+\[
+\vec{OM} = r(t)\vec{e}_r
+\]
+
+\begin{enumerate}
+\item Calculer la vitesse par dérivation directe.
+\item Retrouver le résultat par la méthode géométrique.
+\item Identifier les composantes radiale et tangentielle.
+\end{enumerate}
+
+\textbf{Objectif :} maîtriser les deux méthodes.
+
+---
+
+%====================================================
+\subsection*{Exercice 4 — Mouvement circulaire uniforme (***)}
+
+On considère un mouvement circulaire de rayon $R$ avec :
+
+\[
+r = R, \quad \theta = \omega t
+\]
+
+\begin{enumerate}
+\item Calculer la vitesse.
+\item Calculer l’accélération.
+\item Montrer que l’accélération est dirigée vers le centre.
+\item Interpréter physiquement le résultat.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre l’accélération centripète.
+
+---
+
+%====================================================
+\subsection*{Exercice 5 — Accélération complète (***)}
+
+On considère un mouvement général :
+
+\[
+r = r(t), \quad \theta = \theta(t)
+\]
+
+\begin{enumerate}
+\item Retrouver l’expression complète de l’accélération.
+\item Identifier les termes :
+\begin{itemize}
+\item radial
+\item orthoradial
+\end{itemize}
+\item Interpréter le terme $2\dot{r}\dot{\theta}$.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre le terme de Coriolis.
+
+---
+
+%====================================================
+\subsection*{Exercice 6 — Coordonnées sphériques (****)}
+
+On considère un point en coordonnées sphériques :
+
+\[
+(r,\theta,\varphi)
+\]
+
+\begin{enumerate}
+\item Écrire le vecteur position.
+\item Déterminer la vitesse par la méthode géométrique.
+\item Identifier les trois composantes de la vitesse.
+\item Interpréter physiquement chaque terme.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre la géométrie sphérique.
+
+---
+
+%====================================================
+\subsection*{Exercice 7 — Matrice de passage (****)}
+
+Soit deux bases :
+
+\[
+\mathcal{B} = (\vec{e}_x,\vec{e}_y), \quad
+\mathcal{B}' = (\vec{e}_r,\vec{e}_\theta)
+\]
+
+\begin{enumerate}
+\item Écrire la matrice de passage $P$.
+\item Calculer $P^{-1}$.
+\item Vérifier que $P^{-1} = P^T$.
+\item Interpréter ce résultat.
+\end{enumerate}
+
+\textbf{Objectif :} lien rotation ↔ matrices orthogonales.
+
+---
+
+%====================================================
+\subsection*{Exercice 8 — Endomorphisme et changement de base (****)}
+
+Soit une transformation linéaire de matrice :
+
+\[
+A =
+\begin{pmatrix}
+1 & 2 \\
+0 & 1
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+\item Calculer la matrice $B = P^{-1}AP$ où $P$ est une rotation.
+\item Interpréter le résultat.
+\item Montrer que $A$ et $B$ sont semblables.
+\end{enumerate}
+
+\textbf{Objectif :} lien avec l’algèbre linéaire.
+
+---
+
+%====================================================
+\subsection*{Exercice 9 — Rotation et dérivation (*****)}
+
+On considère une matrice de rotation $R(t)$.
+
+\begin{enumerate}
+\item Montrer que $R^T R = I$.
+\item Dériver cette relation.
+\item En déduire que $\dot{R}R^{-1}$ est antisymétrique.
+\end{enumerate}
+
+\textbf{Objectif :} comprendre la structure de $\Omega$.
+
+---
+
+%====================================================
+\subsection*{Exercice 10 — Formulation générale (*****)}
+
+On considère :
+
+\[
+\vec{v} = R(t)\vec{v}'
+\]
+
+\begin{enumerate}
+\item Dériver cette expression.
+\item Introduire $\Omega = \dot{R}R^{-1}$.
+\item Montrer que :
+
+\[
+\frac{d\vec{v}}{dt} =
+\frac{d\vec{v}}{dt}_{mobile} + \Omega \vec{v}
+\]
+
+\item Interpréter physiquement cette formule.
+\end{enumerate}
+
+\textbf{Objectif :} niveau ENS.
+
+---
+
+%====================================================
+\section{Conclusion des exercices}
+%====================================================
+
+Ces exercices permettent de :
+
+\begin{itemize}
+\item maîtriser les changements de base
+\item comprendre la dérivation dans une base mobile
+\item relier mécanique et algèbre linéaire
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+\textbf{La compréhension vient autant des calculs que de l’interprétation.}
+\end{center}
+\end{document}
