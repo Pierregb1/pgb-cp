@@ -48,6 +48,46 @@
   }
 ,
   {
+    "titre": "alg lin chap 10",
+    "fichier": "docs/math superieure td alg lin chap 10.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "alg lin chap 6",
+    "fichier": "docs/math superieure td alg lin chap 6.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "alg lin chap 7",
+    "fichier": "docs/math superieure td alg lin chap 7.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "alg lin chap 8",
+    "fichier": "docs/math superieure td alg lin chap 8.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "alg lin chap 9",
+    "fichier": "docs/math superieure td alg lin chap 9.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
     "titre": "proba",
     "fichier": "docs/math superieure td proba.pdf",
     "matiere": "maths",
@@ -344,6 +384,14 @@
   }
 ,
   {
+    "titre": "projeté ortho",
+    "fichier": "docs/math terminale cours projeté ortho.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
     "titre": "suite",
     "fichier": "docs/math terminale cours suite.pdf",
     "matiere": "maths",
@@ -421,6 +469,14 @@
     "matiere": "maths",
     "niveau": "3eme",
     "type": "cours"
+  }
+,
+  {
+    "titre": "calcul numerique",
+    "fichier": "docs/math troisieme ds calcul numerique.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "ds"
   }
 ,
   {
@@ -516,6 +572,14 @@
     "fichier": "docs/physique première cours ondes.pdf",
     "matiere": "physique",
     "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "changement de base (méca)",
+    "fichier": "docs/physique supérieure cours changement de base (méca).pdf",
+    "matiere": "physique",
+    "niveau": "superieur",
     "type": "cours"
   }
 ,
