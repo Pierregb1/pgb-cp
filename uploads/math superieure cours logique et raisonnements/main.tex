@@ -1,0 +1,1959 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx,multicol}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+%====================================================
+% COULEURS
+%====================================================
+\definecolor{bleuprepa}{RGB}{18,65,125}
+\definecolor{bleuclair}{RGB}{235,245,255}
+\definecolor{vertprepa}{RGB}{20,110,70}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougeprepa}{RGB}{160,40,40}
+\definecolor{rougeclair}{RGB}{255,240,240}
+\definecolor{orangeclair}{RGB}{255,245,230}
+\definecolor{violetprepa}{RGB}{92,45,145}
+\definecolor{violetclair}{RGB}{245,238,255}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{MPSI -- Mathématiques}
+\fancyhead[C]{Logique, raisonnement et fondements}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Polycopié de cours -- Niveau MPSI exigeant avec ouverture ENS}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleuprepa,
+    urlcolor=bleuprepa,
+    citecolor=bleuprepa
+}
+
+\setlist[itemize]{label=--}
+\setlist[enumerate]{itemsep=0.25em}
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ns}{\mathbb{N}^*}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\non}{\neg}
+\newcommand{\et}{\wedge}
+\newcommand{\ou}{\vee}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\card}{\operatorname{Card}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Imf}{\operatorname{Im}}
+
+\newcommand{\etoile}{\(\star\)}
+\newcommand{\deuxetoiles}{\(\star\star\)}
+\newcommand{\troisetoiles}{\(\star\star\star\)}
+\newcommand{\quatreetoiles}{\(\star\star\star\star\)}
+\newcommand{\cinqetoiles}{\(\star\star\star\star\star\)}
+
+%====================================================
+% ENVIRONNEMENTS
+%====================================================
+\newtcolorbox{definitionbox}[1][]{
+  enhanced, breakable,
+  colback=bleuclair,
+  colframe=bleuprepa,
+  title=\textbf{Définition #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{notationbox}[1][]{
+  enhanced, breakable,
+  colback=bleuclair,
+  colframe=bleuprepa!80!black,
+  title=\textbf{Notation #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{propositionbox}[1][]{
+  enhanced, breakable,
+  colback=vertclair,
+  colframe=vertprepa,
+  title=\textbf{Proposition #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{lemmebox}[1][]{
+  enhanced, breakable,
+  colback=vertclair,
+  colframe=vertprepa,
+  title=\textbf{Lemme #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{theorembox}[1][]{
+  enhanced, breakable,
+  colback=vertclair,
+  colframe=vertprepa!90!black,
+  title=\textbf{Théorème #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{corollairebox}[1][]{
+  enhanced, breakable,
+  colback=vertclair,
+  colframe=vertprepa!70!black,
+  title=\textbf{Corollaire #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}[1][]{
+  enhanced, breakable,
+  colback=orangeclair,
+  colframe=orange!80!black,
+  title=\textbf{Méthode #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{erreurbox}[1][]{
+  enhanced, breakable,
+  colback=rougeclair,
+  colframe=rougeprepa,
+  title=\textbf{Erreur classique #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{piegebox}[1][]{
+  enhanced, breakable,
+  colback=rougeclair,
+  colframe=rougeprepa,
+  title=\textbf{Piège de rédaction #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{remarquebox}[1][]{
+  enhanced, breakable,
+  colback=grisclair,
+  colframe=black!55,
+  title=\textbf{Remarque #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{exemplebox}[1][]{
+  enhanced, breakable,
+  colback=white,
+  colframe=bleuprepa!70,
+  title=\textbf{Exemple #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{exercicebox}[1][]{
+  enhanced, breakable,
+  colback=white,
+  colframe=black!70,
+  title=\textbf{Exercice #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{correctionbox}[1][]{
+  enhanced, breakable,
+  colback=white,
+  colframe=vertprepa!80!black,
+  title=\textbf{Correction #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{ensbox}[1][]{
+  enhanced, breakable,
+  colback=violetclair,
+  colframe=violetprepa,
+  title=\textbf{Point ENS #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{retenirbox}[1][]{
+  enhanced, breakable,
+  colback=bleuclair,
+  colframe=bleuprepa,
+  title=\textbf{À retenir #1},
+  fonttitle=\bfseries
+}
+
+%====================================================
+% TITRE
+%====================================================
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Huge\bfseries Logique, raisonnement}\\[0.25cm]
+{\Huge\bfseries et fondements mathématiques}\\[0.6cm]
+
+{\Large Cours complet de mathématiques}\\[0.2cm]
+{\Large Classe préparatoire scientifique -- Niveau MPSI exigeant}\\[0.2cm]
+{\large Avec ouvertures vers le niveau ENS}\\[1cm]
+
+\rule{0.88\textwidth}{0.6pt}\\[0.8cm]
+
+\begin{tcolorbox}[colback=bleuclair,colframe=bleuprepa,width=0.9\textwidth]
+\textbf{Objectif du polycopié.}
+Ce document rassemble les fondements logiques nécessaires à la rédaction mathématique en classe préparatoire : propositions, connecteurs, quantificateurs, ensembles, applications, relations, méthodes de preuve, récurrences, contre-exemples, analyse-synthèse et exigences de rédaction. Il vise une maîtrise solide de niveau MPSI, avec des ouvertures vers des raisonnements plus abstraits de type ENS.
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tabular}{rl}
+\textbf{Chapitre :} & Logique, raisonnement et fondements mathématiques\\
+\textbf{Niveau :} & MPSI exigeant / PCSI / MP en rappel\\
+\textbf{Objectif :} & Colles, DS, concours, approfondissement ENS\\
+\textbf{Date :} & \today
+\end{tabular}
+
+\vfill
+
+{\large Polycopié de cours -- Définitions, méthodes, preuves, exercices, corrigés, synthèse.}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%====================================================
+\section*{Partie 0 -- Introduction générale}
+\addcontentsline{toc}{section}{Partie 0 -- Introduction générale}
+%====================================================
+
+La logique n'est pas seulement un chapitre de début d'année : elle est la grammaire de toutes les mathématiques. En analyse, elle apparaît dans les définitions de limite et de continuité. En algèbre, elle structure les notions d'application linéaire, de noyau, d'image, d'injectivité et de dimension. En arithmétique, elle permet de rédiger les preuves par divisibilité, congruence, contraposée ou récurrence. En géométrie, elle permet de transformer une intuition de figure en une démonstration.
+
+\begin{definitionbox}[intuition, conjecture, preuve]
+\begin{itemize}
+    \item Une \textbf{intuition} est une idée informelle qui guide la recherche.
+    \item Une \textbf{conjecture} est une proposition que l'on pense vraie, mais qui n'est pas encore démontrée.
+    \item Une \textbf{preuve} est un raisonnement rigoureux établissant la vérité d'une proposition à partir d'axiomes, de définitions et de résultats déjà démontrés.
+\end{itemize}
+\end{definitionbox}
+
+\begin{retenirbox}
+En classe préparatoire, une réponse juste mais mal justifiée peut perdre une grande partie de sa valeur. Un résultat mathématique n'est pas seulement une formule : c'est une proposition située dans un cadre précis, avec des hypothèses précises, une conclusion précise et une preuve.
+\end{retenirbox}
+
+\begin{ensbox}[esprit de la logique avancée]
+Au niveau ENS, on attend souvent une capacité à manipuler des énoncés abstraits : comprendre la structure logique d'une définition, reconnaître l'ordre des quantificateurs, produire un contre-exemple minimal, et distinguer ce qui est formellement démontré de ce qui est simplement plausible.
+\end{ensbox}
+
+%====================================================
+\section{Objets mathématiques et phrases formelles}
+%====================================================
+
+\subsection{Objets, variables, constantes, paramètres}
+
+\begin{definitionbox}[objet mathématique]
+Un \textbf{objet mathématique} est une entité que l'on peut manipuler dans une théorie mathématique : nombre, ensemble, fonction, suite, matrice, relation, proposition, espace vectoriel, etc.
+
+Exemples :
+\[
+3,\quad \sqrt2,\quad \R,\quad \R[X],\quad M_n(\R),\quad (u_n)_{n\in\N},\quad f:E\to F.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[variable, constante, paramètre]
+Une \textbf{variable} est un symbole désignant un objet qui peut varier dans un ensemble donné.
+
+Une \textbf{constante} désigne un objet fixé une fois pour toutes.
+
+Un \textbf{paramètre} est un objet fixé dans un raisonnement, mais dont la valeur peut changer d'un problème à l'autre.
+\end{definitionbox}
+
+\begin{exemplebox}
+Dans la proposition
+\[
+\forall x\in\R,\quad x^2+1\geq 0,
+\]
+\(x\) est une variable liée au quantificateur \(\forall\).
+
+Dans l'énoncé
+\[
+\text{Soit } a\in\R. \text{ Résoudre } ax+1=0,
+\]
+\(a\) est un paramètre et \(x\) est l'inconnue.
+\end{exemplebox}
+
+\subsection{Propositions dépendant d'une variable}
+
+\begin{definitionbox}[propriété dépendant d'une variable]
+Une propriété \(P(x)\) dépendant d'une variable \(x\in E\) est une phrase qui devient une proposition vraie ou fausse dès que l'on fixe \(x\).
+\end{definitionbox}
+
+\begin{exemplebox}
+La phrase
+\[
+P(x):\quad x^2=1
+\]
+n'est pas vraie ou fausse tant que \(x\) n'est pas fixé. Si \(x=1\), elle est vraie ; si \(x=2\), elle est fausse.
+\end{exemplebox}
+
+\subsection{Phrase mathématique correcte}
+
+\begin{definitionbox}[phrase mathématique correcte]
+Une phrase mathématique correcte doit :
+\begin{itemize}
+    \item introduire toutes les variables ;
+    \item préciser les ensembles dans lesquels elles vivent ;
+    \item utiliser des symboles ayant un sens ;
+    \item permettre d'attribuer une valeur de vérité.
+\end{itemize}
+\end{definitionbox}
+
+\begin{exemplebox}[phrases correctes ou incorrectes]
+\begin{enumerate}
+    \item \(\forall x\in\R,\ x^2\geq0\) est une proposition correcte et vraie.
+    \item \(\forall x\in\R,\ \ln(x)\leq x\) n'est pas correctement formulée, car \(\ln(x)\) n'est pas défini pour \(x\leq0\).
+    \item \(\exists x\in\R,\ x^2=2\) est correcte et vraie.
+    \item \(f(x)=0\imp x=0\) n'est pas une phrase complète si \(f\), \(x\), le domaine et le codomaine ne sont pas définis.
+\end{enumerate}
+\end{exemplebox}
+
+\begin{piegebox}[variable non définie]
+Écrire
+\[
+\forall x,\quad x^2\geq0
+\]
+est insuffisant : pour tout \(x\) dans quel ensemble ? Dans \(\R\), l'énoncé a un sens usuel et est vrai. Dans \(\C\), l'ordre \(\geq\) n'est pas défini de la même manière.
+\end{piegebox}
+
+\subsection{Rôle de la virgule}
+
+\begin{definitionbox}[sens de la virgule]
+Dans une phrase mathématique, la virgule peut signifier :
+\begin{itemize}
+    \item \og tel que \fg{} : \(\exists x\in\R,\ x^2=2\) ;
+    \item \og on a \fg{} : \(\forall x\in\R,\ x^2\geq0\) ;
+    \item \og et \fg{} : \(x\in A,\ x\in B\).
+\end{itemize}
+\end{definitionbox}
+
+\begin{remarquebox}[plusieurs variables]
+L'écriture
+\[
+x,y\in E
+\]
+est un abus de notation pour dire
+\[
+(x,y)\in E^2.
+\]
+Plus généralement,
+\[
+x_1,\dots,x_n\in E
+\]
+signifie
+\[
+(x_1,\dots,x_n)\in E^n.
+\]
+\end{remarquebox}
+
+\begin{exercicebox}[1 -- Syntaxe et propositions -- \etoile]
+Dire si les phrases suivantes sont des propositions correctement formulées. Corriger celles qui ne le sont pas.
+\begin{enumerate}
+    \item \(x^2+1\geq0\).
+    \item \(\forall x\in\R,\ x^2+1\geq0\).
+    \item \(\forall x,\ x^2\geq0\).
+    \item \(\forall x\in\R,\ \ln(x)\leq x\).
+    \item \(\exists x\in\R,\ x^2=2\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[1]
+\begin{enumerate}
+    \item Pas une proposition complète : \(x\) n'est pas introduit.
+    \item Proposition correcte et vraie.
+    \item Incomplète : il manque l'ensemble de \(x\). Correction : \(\forall x\in\R,\ x^2\geq0\).
+    \item Mal formulée : \(\ln(x)\) n'est pas défini pour tout \(x\in\R\). Correction possible : \(\forall x\in\R_+^*,\ \ln(x)\leq x\).
+    \item Proposition correcte et vraie.
+\end{enumerate}
+\end{correctionbox}
+
+%====================================================
+\section{Logique propositionnelle}
+%====================================================
+
+\subsection{Propositions et valeurs de vérité}
+
+\begin{definitionbox}[proposition]
+Une \textbf{proposition} est un énoncé auquel on peut attribuer une valeur de vérité : vrai ou faux.
+\end{definitionbox}
+
+\begin{definitionbox}[principe du tiers exclu]
+En logique classique, pour toute proposition \(P\), la proposition \(P\) est vraie ou bien \(\non P\) est vraie.
+\end{definitionbox}
+
+\begin{definitionbox}[principe de non-contradiction]
+Une proposition et sa négation ne peuvent pas être vraies simultanément :
+\[
+P\et\non P
+\]
+est toujours fausse.
+\end{definitionbox}
+
+\subsection{Connecteurs logiques}
+
+\begin{definitionbox}[connecteurs]
+Soient \(P,Q\) deux propositions.
+\[
+\non P,\qquad P\et Q,\qquad P\ou Q,\qquad P\imp Q,\qquad P\ssi Q.
+\]
+Ces connecteurs signifient respectivement : non, et, ou, implique, équivaut à.
+\end{definitionbox}
+
+\begin{remarquebox}[ou inclusif]
+En mathématiques, le connecteur \(\ou\) est inclusif : \(P\ou Q\) est vraie si \(P\) est vraie, ou si \(Q\) est vraie, ou si les deux sont vraies.
+\end{remarquebox}
+
+\subsection{Tables de vérité fondamentales}
+
+\begin{center}
+\[
+\begin{array}{c|c}
+P & \non P\\
+\hline
+V&F\\
+F&V
+\end{array}
+\qquad
+\begin{array}{c|c|c|c}
+P&Q&P\et Q&P\ou Q\\
+\hline
+V&V&V&V\\
+V&F&F&V\\
+F&V&F&V\\
+F&F&F&F
+\end{array}
+\]
+\end{center}
+
+\begin{center}
+\[
+\begin{array}{c|c|c|c}
+P&Q&P\imp Q&P\ssi Q\\
+\hline
+V&V&V&V\\
+V&F&F&F\\
+F&V&V&F\\
+F&F&V&V
+\end{array}
+\]
+\end{center}
+
+\begin{retenirbox}
+L'implication \(P\imp Q\) est fausse uniquement lorsque \(P\) est vraie et \(Q\) est fausse.
+\end{retenirbox}
+
+\subsection{Lois fondamentales}
+
+\begin{propositionbox}[lois de De Morgan]
+Pour toutes propositions \(P,Q\),
+\[
+\non(P\et Q)\ssi(\non P)\ou(\non Q),
+\]
+\[
+\non(P\ou Q)\ssi(\non P)\et(\non Q).
+\]
+\end{propositionbox}
+
+\begin{propositionbox}[implication]
+Pour toutes propositions \(P,Q\),
+\[
+P\imp Q\ssi \non P\ou Q.
+\]
+\end{propositionbox}
+
+\begin{propositionbox}[équivalence et double implication]
+\[
+P\ssi Q \quad\ssi\quad (P\imp Q)\et(Q\imp P).
+\]
+\end{propositionbox}
+
+\begin{propositionbox}[contraposée]
+\[
+P\imp Q \quad\ssi\quad \non Q\imp\non P.
+\]
+\end{propositionbox}
+
+\subsection{Négation d'une implication}
+
+\begin{propositionbox}
+La négation de \(P\imp Q\) est
+\[
+P\et\non Q.
+\]
+\end{propositionbox}
+
+\begin{proof}
+On utilise \(P\imp Q\ssi\non P\ou Q\). Alors
+\[
+\non(P\imp Q)\ssi\non(\non P\ou Q)\ssi P\et\non Q
+\]
+par la loi de De Morgan.
+\end{proof}
+
+\subsection{Réciproque et contraposée}
+
+\begin{definitionbox}[réciproque et contraposée]
+Soit une implication \(P\imp Q\).
+\begin{itemize}
+    \item Sa \textbf{réciproque} est \(Q\imp P\).
+    \item Sa \textbf{contraposée} est \(\non Q\imp\non P\).
+\end{itemize}
+\end{definitionbox}
+
+\begin{piegebox}
+Une implication est toujours équivalente à sa contraposée, mais pas à sa réciproque.
+\end{piegebox}
+
+\subsection{Tautologie et contradiction}
+
+\begin{definitionbox}[tautologie]
+Une \textbf{tautologie} est une proposition composée toujours vraie.
+\end{definitionbox}
+
+\begin{definitionbox}[contradiction]
+Une \textbf{contradiction} est une proposition composée toujours fausse.
+\end{definitionbox}
+
+\[
+\begin{array}{c|c|c|c}
+P&\non P&P\ou\non P&P\et\non P\\
+\hline
+V&F&V&F\\
+F&V&V&F
+\end{array}
+\]
+
+\begin{exercicebox}[2 -- Tables de vérité -- \deuxetoiles]
+Construire les tables de vérité de :
+\[
+\non(P\et Q),\qquad \non P\ou\non Q,\qquad P\imp Q,\qquad \non Q\imp\non P.
+\]
+En déduire une loi de De Morgan et l'équivalence avec la contraposée.
+\end{exercicebox}
+
+\begin{correctionbox}[2]
+On obtient :
+\[
+\begin{array}{c|c|c|c|c|c|c}
+P&Q&P\et Q&\non(P\et Q)&\non P&\non Q&\non P\ou\non Q\\
+\hline
+V&V&V&F&F&F&F\\
+V&F&F&V&F&V&V\\
+F&V&F&V&V&F&V\\
+F&F&F&V&V&V&V
+\end{array}
+\]
+Les colonnes de \(\non(P\et Q)\) et \(\non P\ou\non Q\) sont égales.
+
+De plus :
+\[
+\begin{array}{c|c|c|c}
+P&Q&P\imp Q&\non Q\imp\non P\\
+\hline
+V&V&V&V\\
+V&F&F&F\\
+F&V&V&V\\
+F&F&V&V
+\end{array}
+\]
+Les colonnes sont égales, donc \(P\imp Q\ssi\non Q\imp\non P\).
+\end{correctionbox}
+
+%====================================================
+\section{Quantificateurs}
+%====================================================
+
+\subsection{Quantificateur universel, existentiel, unicité}
+
+\begin{definitionbox}[\(\forall\)]
+\[
+\forall x\in E,\quad P(x)
+\]
+signifie : pour tout élément \(x\) de \(E\), la propriété \(P(x)\) est vraie.
+\end{definitionbox}
+
+\begin{definitionbox}[\(\exists\)]
+\[
+\exists x\in E,\quad P(x)
+\]
+signifie : il existe au moins un élément \(x\in E\) tel que \(P(x)\) soit vraie.
+\end{definitionbox}
+
+\begin{definitionbox}[\(\exists!\)]
+\[
+\exists!x\in E,\quad P(x)
+\]
+signifie : il existe un unique élément \(x\in E\) tel que \(P(x)\) soit vraie.
+\end{definitionbox}
+
+\subsection{Variables libres et liées}
+
+\begin{definitionbox}[variable liée]
+Une variable est \textbf{liée} lorsqu'elle est introduite par un quantificateur.
+\end{definitionbox}
+
+\begin{definitionbox}[variable libre]
+Une variable est \textbf{libre} lorsqu'elle n'est pas liée par un quantificateur dans l'expression considérée.
+\end{definitionbox}
+
+\begin{exemplebox}
+Dans
+\[
+\forall x\in\R,\quad x^2+a\geq0,
+\]
+la variable \(x\) est liée, mais \(a\) est libre. L'énoncé n'est une proposition que si \(a\) a été défini auparavant.
+\end{exemplebox}
+
+\subsection{Négation des quantificateurs}
+
+\begin{propositionbox}
+\[
+\non\left(\forall x\in E,\ P(x)\right)
+\ssi
+\exists x\in E,\ \non P(x).
+\]
+\[
+\non\left(\exists x\in E,\ P(x)\right)
+\ssi
+\forall x\in E,\ \non P(x).
+\]
+\end{propositionbox}
+
+\begin{methodebox}[nier une proposition quantifiée]
+Pour nier une proposition quantifiée :
+\begin{enumerate}
+    \item on remplace chaque \(\forall\) par \(\exists\), et chaque \(\exists\) par \(\forall\) ;
+    \item on garde les mêmes ensembles ;
+    \item on nie la propriété finale.
+\end{enumerate}
+\end{methodebox}
+
+\subsection{Ordre des quantificateurs}
+
+\begin{propositionbox}
+Deux quantificateurs de même nature peuvent généralement être échangés :
+\[
+\forall x\in E,\forall y\in F,\ P(x,y)
+\ssi
+\forall y\in F,\forall x\in E,\ P(x,y).
+\]
+De même avec deux quantificateurs existentiels.
+
+En revanche, on ne peut pas échanger en général un \(\forall\) et un \(\exists\).
+\end{propositionbox}
+
+\begin{exemplebox}
+La proposition
+\[
+\forall x\in\R,\ \exists y\in\R,\ y>x
+\]
+est vraie.
+
+La proposition
+\[
+\exists y\in\R,\ \forall x\in\R,\ y>x
+\]
+est fausse.
+\end{exemplebox}
+
+\subsection{Suites bornées et convergence}
+
+\begin{definitionbox}[suite bornée]
+Une suite réelle \((u_n)\) est bornée si
+\[
+\exists M\geq0,\quad \forall n\in\N,\quad |u_n|\leq M.
+\]
+\end{definitionbox}
+
+\begin{propositionbox}[négation]
+La suite \((u_n)\) n'est pas bornée si
+\[
+\forall M\geq0,\quad \exists n\in\N,\quad |u_n|>M.
+\]
+\end{propositionbox}
+
+\begin{definitionbox}[convergence]
+Une suite réelle \((u_n)\) converge vers \(\ell\in\R\) si
+\[
+\forall \eps>0,\quad \exists N\in\N,\quad \forall n\geq N,\quad |u_n-\ell|\leq \eps.
+\]
+\end{definitionbox}
+
+\begin{propositionbox}[négation de la convergence vers \(\ell\)]
+\[
+\exists \eps>0,\quad \forall N\in\N,\quad \exists n\geq N,\quad |u_n-\ell|>\eps.
+\]
+\end{propositionbox}
+
+\begin{exercicebox}[3 -- Négations avec quantificateurs -- \deuxetoiles]
+Nier les propositions suivantes :
+\begin{enumerate}
+    \item \(\forall x\in\R,\ x^2+1>0\).
+    \item \(\exists x\in\R,\ x^2+1=0\).
+    \item \(\forall x\in\R,\exists y\in\R,\ x+y=0\).
+    \item \(\exists M>0,\forall n\in\N,\ |u_n|\leq M\).
+    \item \(\forall\eps>0,\exists N\in\N,\forall n\geq N,\ |u_n-\ell|\leq\eps\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[3]
+\begin{enumerate}
+    \item \(\exists x\in\R,\ x^2+1\leq0\).
+    \item \(\forall x\in\R,\ x^2+1\neq0\).
+    \item \(\exists x\in\R,\forall y\in\R,\ x+y\neq0\).
+    \item \(\forall M>0,\exists n\in\N,\ |u_n|>M\).
+    \item \(\exists\eps>0,\forall N\in\N,\exists n\geq N,\ |u_n-\ell|>\eps\).
+\end{enumerate}
+\end{correctionbox}
+
+%====================================================
+\section{Ensembles et raisonnement ensembliste}
+%====================================================
+
+\subsection{Notions fondamentales}
+
+\begin{definitionbox}[appartenance]
+L'écriture \(x\in E\) signifie que \(x\) est un élément de l'ensemble \(E\).
+\end{definitionbox}
+
+\begin{definitionbox}[inclusion]
+\[
+A\subset B\quad\ssi\quad \forall x,\ x\in A\imp x\in B.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[égalité d'ensembles]
+\[
+A=B\quad\ssi\quad A\subset B\ \text{et}\ B\subset A.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[opérations ensemblistes]
+Soient \(A,B\subset E\).
+\[
+A\cup B=\{x\in E\mid x\in A\ou x\in B\}.
+\]
+\[
+A\cap B=\{x\in E\mid x\in A\et x\in B\}.
+\]
+\[
+A\setminus B=\{x\in E\mid x\in A\et x\notin B\}.
+\]
+\[
+\overline A=E\setminus A.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[ensemble des parties]
+L'ensemble des parties de \(E\), noté \(\mathcal P(E)\), est l'ensemble de tous les sous-ensembles de \(E\).
+\end{definitionbox}
+
+\begin{definitionbox}[produit cartésien]
+\[
+E\times F=\{(x,y)\mid x\in E,\ y\in F\}.
+\]
+\end{definitionbox}
+
+\subsection{Lois ensemblistes}
+
+\begin{propositionbox}[De Morgan]
+\[
+\overline{A\cap B}=\overline A\cup\overline B,
+\qquad
+\overline{A\cup B}=\overline A\cap\overline B.
+\]
+\end{propositionbox}
+
+\begin{propositionbox}[distributivité]
+\[
+A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
+\]
+\[
+A\cup(B\cap C)=(A\cup B)\cap(A\cup C).
+\]
+\end{propositionbox}
+
+\begin{proof}[preuve de la première distributivité]
+Soit \(x\in E\). Alors
+\[
+x\in A\cap(B\cup C)
+\ssi x\in A\et (x\in B\ou x\in C).
+\]
+Par distributivité logique,
+\[
+x\in A\cap(B\cup C)
+\ssi (x\in A\et x\in B)\ou(x\in A\et x\in C).
+\]
+Donc
+\[
+x\in A\cap(B\cup C)\ssi x\in (A\cap B)\cup(A\cap C).
+\]
+Ainsi les deux ensembles sont égaux.
+\end{proof}
+
+\begin{methodebox}[montrer une inclusion]
+Pour montrer \(A\subset B\) :
+\begin{enumerate}
+    \item soit \(x\in A\) ;
+    \item on utilise les définitions ;
+    \item on montre \(x\in B\) ;
+    \item on conclut.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}[montrer une égalité d'ensembles]
+Deux méthodes principales :
+\begin{itemize}
+    \item double inclusion ;
+    \item raisonnement par équivalences sur \(x\in E\).
+\end{itemize}
+\end{methodebox}
+
+\begin{exercicebox}[4 -- Égalités d'ensembles -- \troisetoiles]
+Soient \(A,B,C\subset E\). Montrer :
+\begin{enumerate}
+    \item \(A\setminus B=A\cap\overline B\).
+    \item \(A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)\).
+    \item \(A\subset B\ssi \overline B\subset \overline A\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[4]
+\begin{enumerate}
+    \item Pour tout \(x\in E\),
+    \[
+    x\in A\setminus B\ssi x\in A\et x\notin B\ssi x\in A\et x\in\overline B\ssi x\in A\cap\overline B.
+    \]
+    \item
+    \[
+    x\in A\setminus(B\cup C)
+    \ssi x\in A\et x\notin B\cup C
+    \]
+    \[
+    \ssi x\in A\et x\notin B\et x\notin C
+    \ssi x\in A\setminus B\et x\in A\setminus C.
+    \]
+    \item Si \(A\subset B\), alors \(x\in\overline B\) implique \(x\notin B\). Par contraposée de \(x\in A\imp x\in B\), on obtient \(x\notin A\), donc \(x\in\overline A\). Réciproquement, on applique le même raisonnement à \(\overline B\subset\overline A\).
+\end{enumerate}
+\end{correctionbox}
+
+%====================================================
+\section{Applications et définitions logiques}
+%====================================================
+
+\subsection{Définitions}
+
+\begin{definitionbox}[application]
+Une application \(f:E\to F\) associe à chaque \(x\in E\) un unique élément \(f(x)\in F\).
+\end{definitionbox}
+
+\begin{definitionbox}[image directe]
+Si \(A\subset E\),
+\[
+f(A)=\{f(x)\mid x\in A\}.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[image réciproque]
+Si \(B\subset F\),
+\[
+f^{-1}(B)=\{x\in E\mid f(x)\in B\}.
+\]
+Cette notation ne suppose pas que \(f\) soit bijective.
+\end{definitionbox}
+
+\begin{definitionbox}[injectivité]
+\[
+f\text{ injective}\quad\ssi\quad
+\forall x,y\in E,\ f(x)=f(y)\imp x=y.
+\]
+Équivalent :
+\[
+\forall x,y\in E,\ x\neq y\imp f(x)\neq f(y).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[surjectivité]
+\[
+f\text{ surjective}\quad\ssi\quad
+\forall y\in F,\exists x\in E,\ f(x)=y.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[bijectivité]
+\(f:E\to F\) est bijective si elle est injective et surjective.
+\end{definitionbox}
+
+\subsection{Négations utiles}
+
+\begin{propositionbox}
+\(f:E\to F\) n'est pas injective si et seulement si
+\[
+\exists x,y\in E,\quad x\neq y\quad\text{et}\quad f(x)=f(y).
+\]
+\end{propositionbox}
+
+\begin{propositionbox}
+\(f:E\to F\) n'est pas surjective si et seulement si
+\[
+\exists y\in F,\quad \forall x\in E,\quad f(x)\neq y.
+\]
+\end{propositionbox}
+
+\subsection{Composition}
+
+\begin{propositionbox}
+Soient \(f:E\to F\) et \(g:F\to G\).
+\begin{enumerate}
+    \item Si \(f\) et \(g\) sont injectives, alors \(g\circ f\) est injective.
+    \item Si \(f\) et \(g\) sont surjectives, alors \(g\circ f\) est surjective.
+    \item Si \(g\circ f\) est injective, alors \(f\) est injective.
+    \item Si \(g\circ f\) est surjective, alors \(g\) est surjective.
+\end{enumerate}
+\end{propositionbox}
+
+\begin{proof}
+1. Supposons \(f,g\) injectives. Si \(g(f(x))=g(f(y))\), alors \(f(x)=f(y)\) par injectivité de \(g\), puis \(x=y\) par injectivité de \(f\).
+
+2. Supposons \(f,g\) surjectives. Soit \(z\in G\). Il existe \(y\in F\) tel que \(g(y)=z\). Comme \(f\) est surjective, il existe \(x\in E\) tel que \(f(x)=y\). Donc \(g(f(x))=z\).
+
+3. Supposons \(g\circ f\) injective. Si \(f(x)=f(y)\), alors \(g(f(x))=g(f(y))\), donc \(x=y\). Ainsi \(f\) est injective.
+
+4. Supposons \(g\circ f\) surjective. Soit \(z\in G\). Il existe \(x\in E\) tel que \(g(f(x))=z\). En posant \(y=f(x)\in F\), on obtient \(g(y)=z\). Donc \(g\) est surjective.
+\end{proof}
+
+\begin{exercicebox}[5 -- Applications -- \troisetoiles]
+Soient \(f:\R\to\R\), \(f(x)=x^2\), et \(g:\R_+\to\R_+\), \(g(x)=x^2\).
+\begin{enumerate}
+    \item Étudier l'injectivité et la surjectivité de \(f\).
+    \item Étudier l'injectivité et la surjectivité de \(g\).
+    \item Expliquer précisément le rôle de l'ensemble de départ et de l'ensemble d'arrivée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[5]
+\(f:\R\to\R\) n'est pas injective car \(f(-1)=f(1)\) alors que \(-1\neq1\). Elle n'est pas surjective car \(-1\) n'a pas d'antécédent réel.
+
+\(g:\R_+\to\R_+\) est injective : si \(x^2=y^2\) avec \(x,y\geq0\), alors \(x=y\). Elle est surjective : si \(z\in\R_+\), alors \(x=\sqrt z\in\R_+\) vérifie \(x^2=z\). L'ensemble de départ modifie l'injectivité ; l'ensemble d'arrivée modifie la surjectivité.
+\end{correctionbox}
+
+%====================================================
+\section{Relations binaires}
+%====================================================
+
+\subsection{Définition générale}
+
+\begin{definitionbox}[relation binaire]
+Une relation binaire \(\mathcal R\) sur un ensemble \(E\) est une propriété portant sur deux éléments de \(E\). On écrit
+\[
+x\mathcal R y
+\]
+pour dire que \(x\) est en relation avec \(y\).
+\end{definitionbox}
+
+\subsection{Propriétés d'une relation}
+
+\begin{definitionbox}
+Une relation \(\mathcal R\) sur \(E\) est :
+\begin{itemize}
+    \item \textbf{réflexive} si \(\forall x\in E,\ x\mathcal R x\) ;
+    \item \textbf{symétrique} si \(\forall x,y\in E,\ x\mathcal R y\imp y\mathcal R x\) ;
+    \item \textbf{antisymétrique} si \(\forall x,y\in E,\ (x\mathcal R y\et y\mathcal R x)\imp x=y\) ;
+    \item \textbf{transitive} si \(\forall x,y,z\in E,\ (x\mathcal R y\et y\mathcal R z)\imp x\mathcal R z\).
+\end{itemize}
+\end{definitionbox}
+
+\begin{definitionbox}[relation d'équivalence]
+Une relation est une relation d'équivalence si elle est réflexive, symétrique et transitive.
+\end{definitionbox}
+
+\begin{definitionbox}[relation d'ordre]
+Une relation est une relation d'ordre si elle est réflexive, antisymétrique et transitive.
+\end{definitionbox}
+
+\begin{definitionbox}[ordre total et ordre partiel]
+Un ordre est \textbf{total} si deux éléments quelconques sont comparables. Sinon, il est \textbf{partiel}.
+\end{definitionbox}
+
+\subsection{Classes d'équivalence et partitions}
+
+\begin{definitionbox}[classe d'équivalence]
+Si \(\mathcal R\) est une relation d'équivalence sur \(E\), la classe d'un élément \(x\in E\) est
+\[
+[x]=\{y\in E\mid y\mathcal R x\}.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[partition]
+Une partition de \(E\) est une famille de parties non vides, deux à deux disjointes, dont l'union est \(E\).
+\end{definitionbox}
+
+\begin{theorembox}
+Les classes d'équivalence d'une relation d'équivalence forment une partition de \(E\).
+\end{theorembox}
+
+\subsection{Exemples fondamentaux}
+
+\begin{propositionbox}[congruence modulo \(n\)]
+Pour \(n\in\Ns\), la relation sur \(\Z\) définie par
+\[
+a\equiv b \pmod n \quad\ssi\quad n\mid(a-b)
+\]
+est une relation d'équivalence.
+\end{propositionbox}
+
+\begin{proof}
+Réflexivité : \(a-a=0\), donc \(n\mid0\).
+
+Symétrie : si \(n\mid(a-b)\), alors \(n\mid(b-a)\).
+
+Transitivité : si \(n\mid(a-b)\) et \(n\mid(b-c)\), alors \(n\mid(a-c)\), car
+\[
+a-c=(a-b)+(b-c).
+\]
+\end{proof}
+
+\begin{propositionbox}[inclusion]
+La relation \(\subset\) est une relation d'ordre sur \(\mathcal P(E)\).
+\end{propositionbox}
+
+\begin{proof}
+Réflexivité : \(A\subset A\).
+
+Antisymétrie : si \(A\subset B\) et \(B\subset A\), alors \(A=B\).
+
+Transitivité : si \(A\subset B\) et \(B\subset C\), alors \(A\subset C\).
+\end{proof}
+
+\begin{propositionbox}[divisibilité]
+La divisibilité est une relation d'ordre sur \(\Ns\).
+\end{propositionbox}
+
+\begin{proof}
+Réflexivité : \(a\mid a\).
+
+Antisymétrie : si \(a\mid b\) et \(b\mid a\), avec \(a,b\in\Ns\), alors \(b=ka\) et \(a=\ell b\) avec \(k,\ell\in\Ns\). Donc \(a=k\ell a\), et comme \(a>0\), \(k\ell=1\), donc \(k=\ell=1\), donc \(a=b\).
+
+Transitivité : si \(a\mid b\) et \(b\mid c\), alors \(b=ka\), \(c=\ell b\), donc \(c=\ell k a\), donc \(a\mid c\).
+\end{proof}
+
+\begin{exercicebox}[6 -- Relations -- \quatreetoiles]
+\begin{enumerate}
+    \item Montrer que la relation \(\leq\) est un ordre total sur \(\R\).
+    \item Montrer que l'inclusion est un ordre partiel sur \(\mathcal P(E)\).
+    \item Montrer que la congruence modulo \(n\) partitionne \(\Z\) en \(n\) classes.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[6]
+\begin{enumerate}
+    \item La relation \(\leq\) est réflexive, antisymétrique, transitive, et deux réels sont toujours comparables : c'est un ordre total.
+    \item L'inclusion est un ordre, mais pas total en général. Si \(E=\{1,2\}\), les parties \(\{1\}\) et \(\{2\}\) ne sont pas comparables.
+    \item Les classes sont
+    \[
+    \overline 0,\overline 1,\dots,\overline{n-1}.
+    \]
+    Tout entier est congru à un unique reste \(r\in\{0,\dots,n-1\}\) modulo \(n\), par division euclidienne.
+\end{enumerate}
+\end{correctionbox}
+
+%====================================================
+\section{Méthodes de preuve}
+%====================================================
+
+\subsection{Vue d'ensemble}
+
+\begin{methodebox}[choisir une méthode]
+\begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
+\hline
+Forme de l'énoncé & Méthode naturelle\\
+\hline
+\(P\imp Q\) & preuve directe ou contraposée\\
+\hline
+\(P\ssi Q\) & double implication\\
+\hline
+\(\forall x\in E,\ P(x)\) & fixer \(x\in E\) quelconque\\
+\hline
+\(\exists x\in E,\ P(x)\) & construire un exemple\\
+\hline
+\(\exists!x\in E,\ P(x)\) & existence puis unicité\\
+\hline
+égalité d'ensembles & double inclusion ou équivalences\\
+\hline
+formule dépendant de \(n\) & récurrence\\
+\hline
+proposition négative & absurde ou contraposée\\
+\hline
+déterminer tous les objets & analyse-synthèse\\
+\hline
+\end{tabularx}
+\end{methodebox}
+
+\subsection{Preuve directe}
+
+\begin{methodebox}[preuve directe]
+Pour montrer \(P\imp Q\), on suppose \(P\) vraie et l'on démontre \(Q\).
+\end{methodebox}
+
+\begin{exemplebox}
+Montrer que si \(n\) est pair, alors \(n^2\) est pair.
+
+Si \(n=2k\), alors \(n^2=4k^2=2(2k^2)\). Donc \(n^2\) est pair.
+\end{exemplebox}
+
+\subsection{Double implication}
+
+\begin{methodebox}
+Pour prouver \(P\ssi Q\), montrer successivement \(P\imp Q\) puis \(Q\imp P\).
+\end{methodebox}
+
+\subsection{Contraposée}
+
+\begin{methodebox}
+Pour montrer \(P\imp Q\), il suffit de montrer \(\non Q\imp\non P\).
+\end{methodebox}
+
+\begin{exemplebox}
+Pour montrer que \(n^2\) pair implique \(n\) pair, on montre que \(n\) impair implique \(n^2\) impair.
+\end{exemplebox}
+
+\subsection{Absurde}
+
+\begin{methodebox}
+Pour montrer \(P\), on suppose \(\non P\), puis on obtient une contradiction.
+\end{methodebox}
+
+\begin{exemplebox}[irrationalité de \(\sqrt2\)]
+Supposons \(\sqrt2=\frac pq\), avec \(p,q\) premiers entre eux. Alors \(p^2=2q^2\), donc \(p\) est pair. On écrit \(p=2r\), puis \(q^2=2r^2\), donc \(q\) est pair. Contradiction.
+\end{exemplebox}
+
+\subsection{Disjonction de cas}
+
+\begin{methodebox}
+On découpe le problème en cas incompatibles et exhaustifs.
+\end{methodebox}
+
+\begin{exemplebox}
+Pour montrer que \(\frac{n(n+1)}2\in\N\), distinguer le cas \(n\) pair et le cas \(n\) impair.
+\end{exemplebox}
+
+\subsection{Double inclusion}
+
+\begin{methodebox}
+Pour montrer \(A=B\), montrer \(A\subset B\) puis \(B\subset A\).
+\end{methodebox}
+
+\subsection{Double inégalité}
+
+\begin{methodebox}
+Pour montrer \(x=y\), il suffit de montrer \(x\leq y\) et \(y\leq x\).
+\end{methodebox}
+
+\subsection{Existence, unicité, existence et unicité}
+
+\begin{methodebox}[existence]
+Pour montrer \(\exists x\in E,\ P(x)\), on construit un objet \(x\) qui convient.
+\end{methodebox}
+
+\begin{methodebox}[unicité]
+Pour montrer l'unicité, on suppose que \(x\) et \(y\) conviennent, puis on prouve \(x=y\).
+\end{methodebox}
+
+\begin{methodebox}[existence et unicité]
+Pour montrer \(\exists!x\in E,\ P(x)\), faire deux parties : existence puis unicité.
+\end{methodebox}
+
+\subsection{Contre-exemple}
+
+\begin{methodebox}
+Pour réfuter \(\forall x\in E,\ P(x)\), il suffit de trouver \(x_0\in E\) tel que \(P(x_0)\) soit fausse.
+\end{methodebox}
+
+\subsection{Analyse-synthèse}
+
+\begin{methodebox}
+\textbf{Analyse :} on suppose qu'une solution existe et on en déduit des conditions nécessaires.
+
+\textbf{Synthèse :} on vérifie quels candidats obtenus conviennent réellement.
+\end{methodebox}
+
+\begin{exemplebox}
+Déterminer \(f:\R\to\R\) telles que
+\[
+f(y-f(x))=2-x-y.
+\]
+En prenant \(y=f(x)\), on obtient \(f(x)=2-f(0)-x\). Donc \(f(x)=a-x\). Synthèse : \(f(y-f(x))=2a-x-y\), donc \(a=1\). Solution : \(f(x)=1-x\).
+\end{exemplebox}
+
+\subsection{Récurrences}
+
+\begin{theorembox}[récurrence simple]
+Si \(P_{n_0}\) est vraie et si \(\forall n\geq n_0,\ P_n\imp P_{n+1}\), alors \(P_n\) est vraie pour tout \(n\geq n_0\).
+\end{theorembox}
+
+\begin{theorembox}[récurrence forte]
+Si \(P_{n_0}\) est vraie et si
+\[
+(P_{n_0}\et\cdots\et P_n)\imp P_{n+1},
+\]
+alors \(P_n\) est vraie pour tout \(n\geq n_0\).
+\end{theorembox}
+
+\begin{theorembox}[récurrence double]
+Si \(P_{n_0}\) et \(P_{n_0+1}\) sont vraies et si
+\[
+(P_n\et P_{n+1})\imp P_{n+2},
+\]
+alors \(P_n\) est vraie pour tout \(n\geq n_0\).
+\end{theorembox}
+
+\begin{methodebox}[rédiger une récurrence]
+\begin{enumerate}
+    \item Définir précisément \(P_n\).
+    \item Initialiser.
+    \item Montrer l'hérédité.
+    \item Conclure par le principe de récurrence.
+\end{enumerate}
+\end{methodebox}
+
+\subsection{Minimalité et descente infinie}
+
+\begin{methodebox}[minimalité dans \(\N\)]
+Toute partie non vide de \(\N\) possède un plus petit élément. On utilise cela pour raisonner par contradiction sur un contre-exemple minimal.
+\end{methodebox}
+
+\begin{methodebox}[descente infinie]
+On suppose qu'un objet existe, puis on construit un objet strictement plus petit du même type, indéfiniment. Dans \(\N\), c'est impossible.
+\end{methodebox}
+
+\begin{exercicebox}[7 -- Méthodes de preuve -- \quatreetoiles]
+Démontrer les résultats suivants en indiquant à chaque fois la méthode utilisée :
+\begin{enumerate}
+    \item Il n'existe pas de plus petit réel strictement positif.
+    \item Il existe une infinité de nombres premiers.
+    \item Pour tout \(n\in\N\), \(1+2+\cdots+n=\frac{n(n+1)}2\).
+    \item Pour tout \(x\geq -1\), \((1+x)^n\geq1+nx\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[7]
+\begin{enumerate}
+    \item Par l'absurde : si \(a>0\) est minimal, alors \(a/2>0\) et \(a/2<a\), contradiction.
+    \item Par l'absurde : si \(p_1,\ldots,p_r\) sont tous les nombres premiers, alors \(N=p_1\cdots p_r+1\) admet un diviseur premier différent de tous les \(p_i\).
+    \item Par récurrence simple.
+    \item Par récurrence sur \(n\), en multipliant par \(1+x\geq0\).
+\end{enumerate}
+\end{correctionbox}
+
+%====================================================
+\section{Rédaction mathématique}
+%====================================================
+
+\subsection{Commencer une preuve}
+
+\begin{methodebox}[formules utiles]
+\begin{itemize}
+    \item \og Soit \(x\in E\). \fg{} : introduction d'un élément quelconque.
+    \item \og Supposons que... \fg{} : introduction d'une hypothèse.
+    \item \og Montrons que... \fg{} : annonce de l'objectif.
+    \item \og Posons... \fg{} : définition d'un objet utile.
+    \item \og Réciproquement... \fg{} : second sens d'une équivalence.
+\end{itemize}
+\end{methodebox}
+
+\subsection{Liens logiques}
+
+\begin{retenirbox}
+\begin{itemize}
+    \item \textbf{Or} introduit une information.
+    \item \textbf{Donc}, \textbf{ainsi}, \textbf{d'où} introduisent une conséquence.
+    \item \textbf{Finalement} introduit la conclusion.
+\end{itemize}
+\end{retenirbox}
+
+\subsection{Invoquer un théorème}
+
+\begin{methodebox}
+Pour utiliser un théorème de la forme \(A\imp B\), il faut :
+\begin{enumerate}
+    \item vérifier que l'hypothèse \(A\) est satisfaite ;
+    \item citer le théorème ;
+    \item conclure \(B\).
+\end{enumerate}
+\end{methodebox}
+
+\begin{piegebox}[équivalences abusives]
+Ne jamais écrire une chaîne d'équivalences si certaines étapes ne sont que des implications. Cela peut ajouter ou perdre des solutions.
+\end{piegebox}
+
+\begin{exemplebox}[mauvaise rédaction corrigée]
+Mauvaise rédaction :
+\[
+x^2=1\ssi x=1.
+\]
+Correction :
+\[
+x^2=1\ssi (x-1)(x+1)=0\ssi x=1\ \text{ou}\ x=-1.
+\]
+\end{exemplebox}
+
+\begin{ensbox}[rédaction niveau ENS]
+Une preuve avancée doit être concise mais non elliptique : les quantificateurs doivent être corrects, les objets introduits, les dépendances explicites. Un candidat doit savoir transformer une définition en outil de preuve.
+\end{ensbox}
+
+%====================================================
+\section{Ouvertures vers le niveau ENS}
+%====================================================
+
+\subsection{Logique du premier ordre}
+
+\begin{definitionbox}[prédicat]
+Un prédicat est une propriété dépendant d'une ou plusieurs variables. Par exemple :
+\[
+P(x,y):\quad x\leq y.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[formule du premier ordre]
+Une formule du premier ordre est construite à partir de variables, de prédicats, de connecteurs logiques et de quantificateurs portant sur des objets.
+\end{definitionbox}
+
+\begin{ensbox}[logique classique et logique constructive]
+Dans la logique classique, on admet le tiers exclu \(P\ou\non P\). En logique constructive, prouver \(\exists x,\ P(x)\) demande souvent de construire explicitement un tel \(x\). Cette différence devient importante en logique mathématique, informatique théorique et théorie de la démonstration.
+\end{ensbox}
+
+\subsection{Axiomes, structures, modèles}
+
+\begin{definitionbox}[structure mathématique]
+Une structure mathématique est un ensemble muni de données supplémentaires : loi, ordre, distance, topologie, etc.
+\end{definitionbox}
+
+\begin{exemplebox}
+\((\R,+,\times,\leq)\) est une structure riche : corps ordonné complet.
+
+\((\mathcal P(E),\subset)\) est un ensemble ordonné.
+
+\((\Z,+,\times)\) est une structure arithmétique.
+\end{exemplebox}
+
+\begin{ensbox}[prudence sur la compréhension naïve]
+L'ensemble
+\[
+\{x\mid x\notin x\}
+\]
+mène au paradoxe de Russell dans une théorie naïve des ensembles. Les mathématiques modernes évitent ces paradoxes grâce à des systèmes axiomatiques comme ZFC.
+\end{ensbox}
+
+%====================================================
+\section{Exercices intégrés corrigés}
+%====================================================
+
+\begin{exercicebox}[8 -- Connecteurs -- \deuxetoiles]
+Pour chaque couple de propositions, déterminer si elles sont équivalentes :
+\begin{enumerate}
+    \item \(P\imp Q\) et \(Q\imp P\).
+    \item \(P\imp Q\) et \(\non Q\imp\non P\).
+    \item \(\non(P\ou Q)\) et \(\non P\et\non Q\).
+    \item \(P\ssi Q\) et \((P\imp Q)\et(Q\imp P)\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[8]
+\begin{enumerate}
+    \item Non en général : c'est la réciproque.
+    \item Oui : c'est la contraposée.
+    \item Oui : loi de De Morgan.
+    \item Oui : définition logique de l'équivalence.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{exercicebox}[9 -- Quantificateurs -- \troisetoiles]
+Dire si les propositions suivantes sont vraies :
+\[
+\forall x\in\R,\exists y\in\R,\ y=x^2,
+\]
+\[
+\exists y\in\R,\forall x\in\R,\ y=x^2.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}[9]
+La première est vraie : pour chaque \(x\), on prend \(y=x^2\). La seconde est fausse : aucun réel fixe ne peut être égal à \(x^2\) pour tout \(x\).
+\end{correctionbox}
+
+\begin{exercicebox}[10 -- Applications -- \troisetoiles]
+Soit \(f:E\to F\). Montrer que \(f\) est injective si et seulement si pour toutes parties \(A,B\subset E\),
+\[
+f(A\cap B)=f(A)\cap f(B).
+\]
+\end{exercicebox}
+
+\begin{correctionbox}[10]
+On a toujours \(f(A\cap B)\subset f(A)\cap f(B)\).
+
+Supposons \(f\) injective. Soit \(y\in f(A)\cap f(B)\). Alors il existe \(a\in A\) et \(b\in B\) tels que \(y=f(a)=f(b)\). Par injectivité, \(a=b\), donc \(a\in A\cap B\), et \(y\in f(A\cap B)\).
+
+Réciproquement, supposons l'égalité vraie pour toutes parties. Si \(f(x)=f(y)\), prenons \(A=\{x\}\) et \(B=\{y\}\). Alors \(f(A)\cap f(B)\neq\varnothing\), donc \(f(A\cap B)\neq\varnothing\), donc \(A\cap B\neq\varnothing\), donc \(x=y\).
+\end{correctionbox}
+
+\begin{exercicebox}[11 -- Relations -- \quatreetoiles]
+Sur \(\Z\), on définit \(a\mathcal R b\) si \(a-b\) est pair.
+\begin{enumerate}
+    \item Montrer que \(\mathcal R\) est une relation d'équivalence.
+    \item Déterminer ses classes d'équivalence.
+    \item Montrer que ces classes forment une partition de \(\Z\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[11]
+Réflexivité : \(a-a=0\) est pair.
+
+Symétrie : si \(a-b\) est pair, alors \(b-a=-(a-b)\) est pair.
+
+Transitivité : si \(a-b\) et \(b-c\) sont pairs, alors \(a-c=(a-b)+(b-c)\) est pair.
+
+Les deux classes sont les entiers pairs et les entiers impairs. Elles sont non vides, disjointes, et leur union est \(\Z\).
+\end{correctionbox}
+
+\begin{exercicebox}[12 -- Méthodes de preuve -- \quatreetoiles]
+Déterminer toutes les fonctions \(f:\R\to\R\) telles que
+\[
+\forall x\in\R,\quad f(x)+2f(-x)=x.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}[12]
+Analyse : en remplaçant \(x\) par \(-x\), on obtient
+\[
+f(-x)+2f(x)=-x.
+\]
+On résout :
+\[
+\begin{cases}
+f(x)+2f(-x)=x,\\
+2f(x)+f(-x)=-x.
+\end{cases}
+\]
+On obtient \(f(x)=-x\).
+
+Synthèse : si \(f(x)=-x\), alors \(f(x)+2f(-x)=-x+2x=x\). Donc l'unique solution est \(f:x\mapsto -x\).
+\end{correctionbox}
+
+%====================================================
+\section{Problèmes longs de synthèse}
+%====================================================
+
+\begin{exercicebox}[Problème 1 -- Logique propositionnelle -- \quatreetoiles]
+Soient \(P,Q,R\) trois propositions.
+\begin{enumerate}
+    \item Démontrer par table de vérité :
+    \[
+    P\imp(Q\imp R)\ssi (P\et Q)\imp R.
+    \]
+    \item Interpréter cette équivalence comme une règle de preuve.
+    \item Montrer que
+    \[
+    P\imp(Q\et R)\ssi (P\imp Q)\et(P\imp R).
+    \]
+    \item La proposition
+    \[
+    (P\imp Q)\ou(Q\imp P)
+    \]
+    est-elle toujours vraie ?
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Problème 1]
+1. Les deux propositions sont fausses exactement lorsque \(P\), \(Q\) sont vraies et \(R\) est fausse ; elles sont vraies dans tous les autres cas. Donc elles sont équivalentes.
+
+2. Cela signifie que prouver \og si \(P\), alors si \(Q\), alors \(R\) \fg{} revient à supposer \(P\) et \(Q\), puis prouver \(R\).
+
+3. \(P\imp(Q\et R)\) signifie : si \(P\), alors \(Q\) et \(R\). Cela équivaut à : si \(P\), alors \(Q\), et si \(P\), alors \(R\).
+
+4. Oui. Si \(P\) est vraie et \(Q\) fausse, alors \(Q\imp P\) est vraie. Dans les autres cas, au moins l'une des deux implications est vraie.
+\end{correctionbox}
+
+\begin{exercicebox}[Problème 2 -- Suites et quantificateurs -- \quatreetoiles]
+Soit \((u_n)\) une suite réelle.
+\begin{enumerate}
+    \item Donner la définition formelle de : \((u_n)\) est bornée.
+    \item Donner sa négation.
+    \item Donner la définition formelle de : \(u_n\to\ell\).
+    \item Donner sa négation.
+    \item Montrer que \(u_n=(-1)^n\) est bornée mais ne converge pas vers \(0\).
+    \item Montrer que \(v_n=n\) n'est pas bornée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Problème 2]
+Bornée :
+\[
+\exists M\geq0,\forall n\in\N,\ |u_n|\leq M.
+\]
+Négation :
+\[
+\forall M\geq0,\exists n\in\N,\ |u_n|>M.
+\]
+Convergence vers \(\ell\) :
+\[
+\forall\eps>0,\exists N\in\N,\forall n\geq N,\ |u_n-\ell|\leq\eps.
+\]
+Négation :
+\[
+\exists\eps>0,\forall N\in\N,\exists n\geq N,\ |u_n-\ell|>\eps.
+\]
+Pour \((-1)^n\), \(M=1\) montre la bornitude. Pour la non-convergence vers \(0\), prendre \(\eps=\frac12\). Pour tout \(N\), \(n=N\) convient car \(|(-1)^n|=1>\frac12\).
+
+Pour \(v_n=n\), soit \(M\geq0\). Prendre \(n=\lfloor M\rfloor+1\). Alors \(n>M\).
+\end{correctionbox}
+
+\begin{exercicebox}[Problème 3 -- Ensembles et applications -- \cinqetoiles]
+Soit \(f:E\to F\). Pour \(A,B\subset E\) et \(C,D\subset F\), montrer :
+\begin{enumerate}
+    \item \(A\subset B\imp f(A)\subset f(B)\).
+    \item \(C\subset D\imp f^{-1}(C)\subset f^{-1}(D)\).
+    \item \(f^{-1}(C\cap D)=f^{-1}(C)\cap f^{-1}(D)\).
+    \item \(f^{-1}(C\cup D)=f^{-1}(C)\cup f^{-1}(D)\).
+    \item \(f(A\cup B)=f(A)\cup f(B)\).
+    \item Montrer que \(f(A\cap B)\subset f(A)\cap f(B)\), puis donner une condition suffisante pour l'égalité.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Problème 3]
+Les preuves se font par appartenance.
+
+1. Si \(y\in f(A)\), il existe \(x\in A\) tel que \(y=f(x)\). Comme \(A\subset B\), \(x\in B\), donc \(y\in f(B)\).
+
+2. Si \(x\in f^{-1}(C)\), alors \(f(x)\in C\subset D\), donc \(x\in f^{-1}(D)\).
+
+3.
+\[
+x\in f^{-1}(C\cap D)
+\ssi f(x)\in C\cap D
+\ssi f(x)\in C\et f(x)\in D
+\ssi x\in f^{-1}(C)\cap f^{-1}(D).
+\]
+
+4. Même preuve avec \(\ou\).
+
+5. Si \(y\in f(A\cup B)\), alors \(y=f(x)\) avec \(x\in A\) ou \(x\in B\), donc \(y\in f(A)\cup f(B)\). Réciproquement immédiat.
+
+6. Si \(y\in f(A\cap B)\), alors \(y=f(x)\) avec \(x\in A\cap B\), donc \(y\in f(A)\cap f(B)\). L'égalité est vraie si \(f\) est injective.
+\end{correctionbox}
+
+\begin{exercicebox}[Problème 4 -- Relations d'équivalence -- \quatreetoiles]
+Pour \(n\geq2\), on définit sur \(\Z\) :
+\[
+a\sim b\quad\ssi\quad n\mid(a-b).
+\]
+\begin{enumerate}
+    \item Montrer que \(\sim\) est une relation d'équivalence.
+    \item Décrire les classes d'équivalence.
+    \item Montrer qu'elles forment une partition de \(\Z\).
+    \item Déterminer les classes modulo \(5\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Problème 4]
+Réflexivité : \(n\mid a-a=0\). Symétrie : si \(n\mid(a-b)\), alors \(n\mid(b-a)\). Transitivité : si \(n\mid(a-b)\) et \(n\mid(b-c)\), alors \(n\mid(a-c)\).
+
+Les classes sont :
+\[
+\overline 0,\overline 1,\dots,\overline{n-1}.
+\]
+Chaque entier admet un unique reste modulo \(n\), donc les classes sont disjointes et recouvrent \(\Z\).
+
+Modulo \(5\), les classes sont \(\overline0,\overline1,\overline2,\overline3,\overline4\).
+\end{correctionbox}
+
+\begin{exercicebox}[Problème 5 -- Méthodes de preuve -- \cinqetoiles]
+Traiter les questions suivantes.
+\begin{enumerate}
+    \item Montrer que \(\sqrt2\notin\Q\).
+    \item Montrer qu'il existe une infinité de nombres premiers.
+    \item Montrer que toute suite strictement décroissante d'entiers naturels est finie.
+    \item Déterminer toutes les fonctions \(f:\R\to\R\) telles que \(f(y-f(x))=2-x-y\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Problème 5]
+1. Voir la preuve par l'absurde donnée plus haut.
+
+2. Supposer un nombre fini de nombres premiers \(p_1,\dots,p_r\), considérer \(N=p_1\cdots p_r+1\). Aucun \(p_i\) ne divise \(N\), contradiction avec l'existence d'un diviseur premier.
+
+3. Si une suite strictement décroissante infinie \((u_n)\) d'entiers naturels existait, l'ensemble \(\{u_n\mid n\in\N\}\) aurait un plus petit élément \(u_{n_0}\). Mais \(u_{n_0+1}<u_{n_0}\), contradiction.
+
+4. Analyse-synthèse. En prenant \(y=f(x)\), on obtient \(f(x)=2-f(0)-x\). Donc \(f(x)=a-x\). Synthèse : \(f(y-f(x))=2a-x-y\), donc \(a=1\). Solution unique : \(f(x)=1-x\).
+\end{correctionbox}
+
+%====================================================
+\section{Devoir bilan final}
+%====================================================
+
+\begin{center}
+{\Large\bfseries Devoir bilan -- Logique, raisonnement et fondements}\\[0.2cm]
+Niveau MPSI exigeant -- Durée : 3h -- Total : 50 points
+\end{center}
+
+\begin{exercicebox}[Exercice 1 -- Logique propositionnelle -- 10 points]
+Soient \(P,Q,R\) trois propositions.
+\begin{enumerate}
+    \item Dresser la table de vérité de \(P\imp Q\). \hfill 2 pts
+    \item Montrer par table que \(P\imp Q\ssi\non Q\imp\non P\). \hfill 3 pts
+    \item Montrer que \(\non(P\et Q)\ssi\non P\ou\non Q\). \hfill 2 pts
+    \item Montrer que \(P\imp(Q\imp R)\ssi(P\et Q)\imp R\). \hfill 3 pts
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[Exercice 2 -- Quantificateurs -- 10 points]
+\begin{enumerate}
+    \item Nier :
+    \[
+    \forall x\in\R,\exists y\in\R,\ y>x.
+    \]
+    \hfill 2 pts
+    \item Nier :
+    \[
+    \exists M\geq0,\forall n\in\N,\ |u_n|\leq M.
+    \]
+    \hfill 2 pts
+    \item Nier la définition de \(u_n\to\ell\). \hfill 3 pts
+    \item Dire si \(\exists y\in\R,\forall x\in\R,\ y>x\) est vraie. Justifier. \hfill 3 pts
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[Exercice 3 -- Ensembles et applications -- 10 points]
+Soit \(f:E\to F\), \(A,B\subset E\), \(C,D\subset F\).
+\begin{enumerate}
+    \item Montrer \(f(A\cup B)=f(A)\cup f(B)\). \hfill 3 pts
+    \item Montrer \(f^{-1}(C\cap D)=f^{-1}(C)\cap f^{-1}(D)\). \hfill 3 pts
+    \item Montrer que si \(f\) est injective, alors \(f(A\cap B)=f(A)\cap f(B)\). \hfill 4 pts
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[Exercice 4 -- Relations -- 10 points]
+Sur \(\Z\), on définit \(a\sim b\) si \(a-b\) est divisible par \(4\).
+\begin{enumerate}
+    \item Montrer que \(\sim\) est une relation d'équivalence. \hfill 4 pts
+    \item Déterminer les classes d'équivalence. \hfill 3 pts
+    \item Montrer qu'elles forment une partition de \(\Z\). \hfill 3 pts
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[Exercice 5 -- Méthodes de preuve -- 10 points]
+\begin{enumerate}
+    \item Montrer que pour tout \(n\in\N\),
+    \[
+    3^{2n}-1
+    \]
+    est divisible par \(8\). \hfill 4 pts
+    \item Montrer qu'il n'existe pas de plus petit réel strictement positif. \hfill 3 pts
+    \item Déterminer toutes les fonctions \(f:\R\to\R\) telles que
+    \[
+    f(x)+2f(-x)=x.
+    \]
+    \hfill 3 pts
+\end{enumerate}
+\end{exercicebox}
+
+\newpage
+
+%====================================================
+\section{Correction du devoir bilan}
+%====================================================
+
+\begin{correctionbox}[Exercice 1]
+1.
+\[
+\begin{array}{c|c|c}
+P&Q&P\imp Q\\
+\hline
+V&V&V\\
+V&F&F\\
+F&V&V\\
+F&F&V
+\end{array}
+\]
+
+2. En ajoutant la colonne \(\non Q\imp\non P\), on obtient exactement la même colonne que \(P\imp Q\). Donc les deux propositions sont équivalentes.
+
+3.
+\[
+\begin{array}{c|c|c|c|c|c|c}
+P&Q&P\et Q&\non(P\et Q)&\non P&\non Q&\non P\ou\non Q\\
+\hline
+V&V&V&F&F&F&F\\
+V&F&F&V&F&V&V\\
+F&V&F&V&V&F&V\\
+F&F&F&V&V&V&V
+\end{array}
+\]
+Les colonnes de \(\non(P\et Q)\) et \(\non P\ou\non Q\) sont identiques.
+
+4. Les deux propositions \(P\imp(Q\imp R)\) et \((P\et Q)\imp R\) sont fausses uniquement lorsque \(P,Q\) sont vraies et \(R\) fausse. Elles sont donc équivalentes.
+\end{correctionbox}
+
+\begin{correctionbox}[Exercice 2]
+1.
+\[
+\exists x\in\R,\forall y\in\R,\ y\leq x.
+\]
+
+2.
+\[
+\forall M\geq0,\exists n\in\N,\ |u_n|>M.
+\]
+
+3. La négation de
+\[
+\forall\eps>0,\exists N\in\N,\forall n\geq N,\ |u_n-\ell|\leq\eps
+\]
+est
+\[
+\exists\eps>0,\forall N\in\N,\exists n\geq N,\ |u_n-\ell|>\eps.
+\]
+
+4. La proposition est fausse. Si un tel \(y\) existait, en prenant \(x=y+1\), on aurait \(y>y+1\), impossible.
+\end{correctionbox}
+
+\begin{correctionbox}[Exercice 3]
+1. Si \(z\in f(A\cup B)\), alors \(z=f(x)\) avec \(x\in A\cup B\). Donc \(x\in A\) ou \(x\in B\), donc \(z\in f(A)\cup f(B)\). Réciproquement, si \(z\in f(A)\cup f(B)\), alors \(z=f(x)\) avec \(x\in A\) ou \(x\in B\), donc \(x\in A\cup B\), et \(z\in f(A\cup B)\).
+
+2.
+\[
+x\in f^{-1}(C\cap D)
+\ssi f(x)\in C\cap D
+\ssi f(x)\in C\et f(x)\in D
+\ssi x\in f^{-1}(C)\cap f^{-1}(D).
+\]
+
+3. L'inclusion \(f(A\cap B)\subset f(A)\cap f(B)\) est toujours vraie. Réciproquement, soit \(y\in f(A)\cap f(B)\). Alors \(y=f(a)=f(b)\) avec \(a\in A\), \(b\in B\). Si \(f\) est injective, \(a=b\), donc \(a\in A\cap B\), et \(y\in f(A\cap B)\).
+\end{correctionbox}
+
+\begin{correctionbox}[Exercice 4]
+Réflexivité : \(a-a=0\) est divisible par \(4\).
+
+Symétrie : si \(a-b\) est divisible par \(4\), alors \(b-a=-(a-b)\) aussi.
+
+Transitivité : si \(a-b\) et \(b-c\) sont divisibles par \(4\), alors \(a-c=(a-b)+(b-c)\) aussi.
+
+Les classes sont :
+\[
+\overline0,\quad \overline1,\quad \overline2,\quad \overline3.
+\]
+Tout entier est congru à exactement l'un des entiers \(0,1,2,3\) modulo \(4\). Ces classes sont disjointes et leur union est \(\Z\).
+\end{correctionbox}
+
+\begin{correctionbox}[Exercice 5]
+1. Récurrence. Pour \(n=0\), \(3^0-1=0\), divisible par \(8\). Supposons \(3^{2n}-1\) divisible par \(8\). Alors
+\[
+3^{2(n+1)}-1=9\cdot3^{2n}-1=9(3^{2n}-1)+8.
+\]
+Les deux termes sont divisibles par \(8\), donc la somme l'est.
+
+2. Supposons qu'il existe un plus petit réel strictement positif \(a\). Alors \(a/2>0\) et \(a/2<a\), contradiction.
+
+3. On remplace \(x\) par \(-x\) :
+\[
+f(-x)+2f(x)=-x.
+\]
+Avec
+\[
+f(x)+2f(-x)=x,
+\]
+on résout le système :
+\[
+\begin{cases}
+f(x)+2f(-x)=x,\\
+2f(x)+f(-x)=-x.
+\end{cases}
+\]
+On obtient \(f(x)=-x\). Vérification :
+\[
+f(x)+2f(-x)=-x+2x=x.
+\]
+\end{correctionbox}
+
+%====================================================
+\section{Fiche de synthèse finale}
+%====================================================
+
+\begin{tcolorbox}[enhanced,breakable,colback=bleuclair,colframe=bleuprepa,title=\textbf{Synthèse générale}]
+\textbf{Connecteurs logiques.}
+\[
+\non(P\et Q)\ssi\non P\ou\non Q,\qquad
+\non(P\ou Q)\ssi\non P\et\non Q.
+\]
+\[
+P\imp Q\ssi\non P\ou Q,\qquad
+P\imp Q\ssi\non Q\imp\non P.
+\]
+\[
+P\ssi Q\ssi(P\imp Q)\et(Q\imp P).
+\]
+
+\medskip
+
+\textbf{Quantificateurs.}
+\[
+\non(\forall x\in E,\ P(x))\ssi\exists x\in E,\ \non P(x).
+\]
+\[
+\non(\exists x\in E,\ P(x))\ssi\forall x\in E,\ \non P(x).
+\]
+
+\medskip
+
+\textbf{Ensembles.}
+\[
+A\subset B\ssi\forall x,\ x\in A\imp x\in B.
+\]
+\[
+A=B\ssi A\subset B\ \text{et}\ B\subset A.
+\]
+\[
+\overline{A\cap B}=\overline A\cup\overline B,\qquad
+\overline{A\cup B}=\overline A\cap\overline B.
+\]
+
+\medskip
+
+\textbf{Applications.}
+\[
+f\text{ injective}\ssi \forall x,y,\ f(x)=f(y)\imp x=y.
+\]
+\[
+f\text{ surjective}\ssi \forall y,\exists x,\ f(x)=y.
+\]
+
+\medskip
+
+\textbf{Relations.}
+\begin{itemize}
+    \item Équivalence : réflexive, symétrique, transitive.
+    \item Ordre : réflexive, antisymétrique, transitive.
+\end{itemize}
+
+\medskip
+
+\textbf{Méthodes de preuve.}
+\begin{itemize}
+    \item Implication : supposer l'hypothèse, démontrer la conclusion.
+    \item Équivalence : double implication.
+    \item Égalité d'ensembles : double inclusion.
+    \item Existence : construire.
+    \item Unicité : prendre deux solutions et montrer qu'elles sont égales.
+    \item Contre-exemple : réfuter un universel.
+    \item Contraposée : montrer \(\non Q\imp\non P\).
+    \item Absurde : supposer le contraire et obtenir une contradiction.
+    \item Récurrence : initialisation, hérédité, conclusion.
+    \item Analyse-synthèse : trouver les candidats, puis vérifier.
+\end{itemize}
+\end{tcolorbox}
+
+%====================================================
+\appendix
+\section{Annexe -- Alphabet grec et notations usuelles}
+%====================================================
+
+\renewcommand{\arraystretch}{1.25}
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|c|c|c|X|}
+\hline
+\textbf{Nom} & \textbf{Minuscule} & \textbf{Commande} & \textbf{Majuscule} & \textbf{Usage fréquent}\\
+\hline
+alpha & \(\alpha\) & \verb|\alpha| & \(A\) & angle, paramètre\\
+\hline
+bêta & \(\beta\) & \verb|\beta| & \(B\) & angle, paramètre\\
+\hline
+gamma & \(\gamma\) & \verb|\gamma| & \(\Gamma\) & constante, fonction, loi\\
+\hline
+delta & \(\delta\) & \verb|\delta| & \(\Delta\) & variation, discriminant\\
+\hline
+epsilon & \(\epsilon,\varepsilon\) & \verb|\epsilon|, \verb|\varepsilon| & \(E\) & petit réel positif en analyse\\
+\hline
+zêta & \(\zeta\) & \verb|\zeta| & \(Z\) & fonction spéciale\\
+\hline
+êta & \(\eta\) & \verb|\eta| & \(H\) & paramètre\\
+\hline
+thêta & \(\theta,\vartheta\) & \verb|\theta|, \verb|\vartheta| & \(\Theta\) & angle\\
+\hline
+iota & \(\iota\) & \verb|\iota| & \(I\) & injection canonique\\
+\hline
+kappa & \(\kappa\) & \verb|\kappa| & \(K\) & constante\\
+\hline
+lambda & \(\lambda\) & \verb|\lambda| & \(\Lambda\) & valeur propre, scalaire\\
+\hline
+mu & \(\mu\) & \verb|\mu| & \(M\) & mesure, coefficient\\
+\hline
+nu & \(\nu\) & \verb|\nu| & \(N\) & indice, mesure\\
+\hline
+xi & \(\xi\) & \verb|\xi| & \(\Xi\) & variable auxiliaire\\
+\hline
+omicron & \(o\) & lettre latine & \(O\) & rarement utilisé\\
+\hline
+pi & \(\pi,\varpi\) & \verb|\pi|, \verb|\varpi| & \(\Pi\) & constante, produit\\
+\hline
+rhô & \(\rho,\varrho\) & \verb|\rho|, \verb|\varrho| & \(P\) & rayon, densité\\
+\hline
+sigma & \(\sigma,\varsigma\) & \verb|\sigma|, \verb|\varsigma| & \(\Sigma\) & somme, permutation\\
+\hline
+tau & \(\tau\) & \verb|\tau| & \(T\) & temps, paramètre\\
+\hline
+upsilon & \(\upsilon\) & \verb|\upsilon| & \(\Upsilon\) & rare\\
+\hline
+phi & \(\phi,\varphi\) & \verb|\phi|, \verb|\varphi| & \(\Phi\) & fonction, angle, forme\\
+\hline
+chi & \(\chi\) & \verb|\chi| & \(X\) & indicatrice, caractère\\
+\hline
+psi & \(\psi\) & \verb|\psi| & \(\Psi\) & fonction auxiliaire\\
+\hline
+oméga & \(\omega\) & \verb|\omega| & \(\Omega\) & pulsation, univers\\
+\hline
+\end{tabularx}
+\end{center}
+\renewcommand{\arraystretch}{1}
+
+\begin{erreurbox}[confusions fréquentes]
+\begin{itemize}
+    \item Ne pas confondre \(\nu\) et \(v\).
+    \item Ne pas confondre \(\rho\) et \(p\).
+    \item Ne pas confondre \(\phi\) et \(\varphi\).
+    \item Ne pas confondre \(\epsilon\) et \(\varepsilon\).
+    \item Ne pas confondre \(\Sigma\) et \(E\).
+    \item Ne pas confondre \(\Pi\) et \(\pi\).
+\end{itemize}
+\end{erreurbox}
+
+\end{document}

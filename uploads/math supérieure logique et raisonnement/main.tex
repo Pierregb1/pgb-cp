@@ -1,0 +1,1567 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+%====================================================
+% COULEURS
+%====================================================
+\definecolor{bleuprepa}{RGB}{20,60,120}
+\definecolor{bleuclair}{RGB}{235,245,255}
+\definecolor{vertprepa}{RGB}{25,110,75}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougeprepa}{RGB}{160,40,40}
+\definecolor{rougeclair}{RGB}{255,240,240}
+\definecolor{orangeclair}{RGB}{255,246,232}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{MPSI/PCSI/MP}
+\fancyhead[C]{TD -- Logique et raisonnement}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Pierre Garcia-Buscaylet -- \today}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleuprepa,
+    urlcolor=bleuprepa
+}
+
+\setlist[itemize]{label=--}
+\setlist[enumerate]{itemsep=0.25em}
+
+%====================================================
+% COMMANDES
+%====================================================
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\non}{\neg}
+\newcommand{\et}{\wedge}
+\newcommand{\ou}{\vee}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\etoile}{\(\star\)}
+\newcommand{\etoiles}[1]{\(\underbrace{\star\cdots\star}_{#1}\)}
+
+%====================================================
+% ENVIRONNEMENTS
+%====================================================
+\newtcolorbox{objectifbox}{
+  enhanced,breakable,
+  colback=bleuclair,
+  colframe=bleuprepa,
+  title=\textbf{Objectifs},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}[1][]{
+  enhanced,breakable,
+  colback=orangeclair,
+  colframe=orange!80!black,
+  title=\textbf{Méthode #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{exercicebox}[1][]{
+  enhanced,breakable,
+  colback=white,
+  colframe=black!70,
+  title=\textbf{#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{correctionbox}[1][]{
+  enhanced,breakable,
+  colback=vertclair,
+  colframe=vertprepa,
+  title=\textbf{Correction #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{remarquebox}[1][]{
+  enhanced,breakable,
+  colback=grisclair,
+  colframe=black!55,
+  title=\textbf{Remarque #1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{attentionbox}[1][]{
+  enhanced,breakable,
+  colback=rougeclair,
+  colframe=rougeprepa,
+  title=\textbf{Attention #1},
+  fonttitle=\bfseries
+}
+
+%====================================================
+% TITRE
+%====================================================
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+
+{\Huge\bfseries TD complet}\\[0.3cm]
+{\Huge\bfseries Logique et raisonnement}\\[0.5cm]
+
+{\Large Classe préparatoire scientifique}\\[0.2cm]
+{\Large Niveau MPSI / PCSI / MP}\\[1cm]
+
+\rule{0.85\textwidth}{0.6pt}\\[0.8cm]
+
+{\large
+Propositions, connecteurs logiques, quantificateurs, négations, ensembles, implications, équivalences, contraposée, absurde, récurrence, unicité, contre-exemples et analyse-synthèse.
+}\\[0.8cm]
+
+\rule{0.85\textwidth}{0.6pt}\\[1.2cm]
+
+\begin{objectifbox}
+Ce TD contient 50 exercices progressifs avec corrigé détaillé. Il est conçu pour entraîner les étudiants à rédiger proprement, choisir la bonne méthode de preuve, manipuler les quantificateurs et éviter les erreurs classiques de logique en classe préparatoire.
+\end{objectifbox}
+
+\vfill
+
+{\large Nom : Pierre Garcia-Buscaylet}\\[0.2cm]
+{\large Date : \today}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%====================================================
+\section*{Mode d'emploi du TD}
+\addcontentsline{toc}{section}{Mode d'emploi du TD}
+
+Les exercices sont classés en cinq familles :
+
+\begin{center}
+\begin{tabularx}{0.95\textwidth}{|c|X|}
+\hline
+\textbf{Code} & \textbf{Objectif}\\
+\hline
+APP & Applications directes du cours, calcul logique, négations, tables de vérité.\\
+\hline
+METH & Méthodes de preuve : implication, équivalence, inclusion, contraposée, absurde, récurrence.\\
+\hline
+DEM & Démonstrations classiques à rédiger rigoureusement.\\
+\hline
+PREP & Exercices de réflexion, niveau DS ou colle exigeante.\\
+\hline
+ORAUX & Problèmes type oraux, avec prise d'initiative.\\
+\hline
+\end{tabularx}
+\end{center}
+
+La difficulté est indiquée par des étoiles :
+\[
+\star \quad \text{facile},\qquad
+\star\star \quad \text{classique},\qquad
+\star\star\star \quad \text{niveau DS},\qquad
+\star\star\star\star \quad \text{colle exigeante},\qquad
+\star\star\star\star\star \quad \text{problème difficile}.
+\]
+
+\newpage
+
+%====================================================
+\section{Exercices d'application -- APP}
+%====================================================
+
+\begin{exercicebox}[APP 1 -- Propositions et syntaxe -- \(\star\)]
+On considère les phrases suivantes.
+
+\begin{enumerate}
+    \item \(x^2+1\geq 0\).
+    \item \(\forall x\in\R,\ x^2+1\geq 0\).
+    \item \(\forall x,\ x^2+1\geq0\).
+    \item \(\exists x\in\R,\ x^2=-1\).
+    \item \(\forall x\in\R,\ \ln(x)\leq x\).
+\end{enumerate}
+
+\begin{enumerate}[label=\alph*)]
+    \item Dire lesquelles sont des propositions mathématiques correctement formulées.
+    \item Pour celles qui ne sont pas correctement formulées, expliquer précisément le problème.
+    \item Pour celles qui sont correctement formulées, dire si elles sont vraies ou fausses.
+    \item Proposer une correction pour les phrases incorrectes.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 2 -- Connecteurs logiques -- \(\star\)]
+Soient \(P\) et \(Q\) deux propositions.
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire en français les propositions \(P\et Q\), \(P\ou Q\), \(\non P\), \(P\imp Q\), \(P\ssi Q\).
+    \item Donner la table de vérité de \(P\et Q\).
+    \item Donner la table de vérité de \(P\ou Q\).
+    \item Expliquer pourquoi le \og ou \fg{} mathématique est inclusif.
+    \item Donner un exemple concret où \(P\ou Q\) est vraie avec \(P\) et \(Q\) toutes les deux vraies.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 3 -- Implication -- \(\star\star\)]
+Pour chacune des implications suivantes, dire si elle est vraie. Si elle est fausse, donner un contre-exemple.
+
+\begin{enumerate}[label=\alph*)]
+    \item Pour tout \(n\in\Z\), si \(n\) est multiple de \(6\), alors \(n\) est multiple de \(3\).
+    \item Pour tout \(n\in\Z\), si \(n\) est multiple de \(3\), alors \(n\) est multiple de \(6\).
+    \item Pour tout \(x\in\R\), si \(x>2\), alors \(x^2>4\).
+    \item Pour tout \(x\in\R\), si \(x^2>4\), alors \(x>2\).
+    \item Pour tout \(x\in\R\), si \(x=0\), alors \(x^2=0\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 4 -- Réciproque et contraposée -- \(\star\star\)]
+On considère l'implication :
+\[
+P\imp Q.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire sa réciproque.
+    \item Écrire sa contraposée.
+    \item Écrire la négation de l'implication \(P\imp Q\).
+    \item Appliquer cela à l'énoncé : \og si \(n^2\) est pair, alors \(n\) est pair \fg{}.
+    \item Dire laquelle, entre la réciproque et la contraposée, est toujours équivalente à l'implication initiale.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 5 -- Négation de propositions simples -- \(\star\)]
+Nier les propositions suivantes.
+
+\begin{enumerate}[label=\alph*)]
+    \item \(x\geq 0\).
+    \item \(x>0\).
+    \item \(x=0\).
+    \item \(x\in A\).
+    \item \(x\in A\cap B\).
+    \item \(x\in A\cup B\).
+    \item \(P\et Q\).
+    \item \(P\ou Q\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 6 -- Quantificateur universel -- \(\star\star\)]
+Pour chacune des propositions suivantes :
+
+\begin{enumerate}
+    \item dire si elle est vraie ou fausse ;
+    \item si elle est vraie, donner une preuve ;
+    \item si elle est fausse, donner un contre-exemple.
+\end{enumerate}
+
+\begin{enumerate}[label=\alph*)]
+    \item \(\forall x\in\R,\ x^2\geq0\).
+    \item \(\forall x\in\R,\ x^2>0\).
+    \item \(\forall n\in\N,\ n+1>n\).
+    \item \(\forall x\in[0,1],\ x(1-x)\geq0\).
+    \item \(\forall x\in\R,\ x(1-x)\geq0\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 7 -- Quantificateur existentiel -- \(\star\star\)]
+Pour chacune des propositions suivantes :
+
+\begin{enumerate}[label=\alph*)]
+    \item dire si elle est vraie ou fausse ;
+    \item justifier par un exemple ou un argument.
+\end{enumerate}
+
+\begin{enumerate}
+    \item \(\exists x\in\R,\ x^2=2\).
+    \item \(\exists x\in\Q,\ x^2=2\).
+    \item \(\exists n\in\N,\ n^2=49\).
+    \item \(\exists n\in\N,\ n^2=50\).
+    \item \(\exists x\in\R,\ x^2+x+1=0\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 8 -- Négation de quantificateurs -- \(\star\star\)]
+Nier soigneusement les propositions suivantes.
+
+\begin{enumerate}[label=\alph*)]
+    \item \(\forall x\in\R,\ x^2+1>0\).
+    \item \(\exists x\in\R,\ x^2+1=0\).
+    \item \(\forall n\in\N,\ \exists m\in\N,\ m>n\).
+    \item \(\exists M>0,\ \forall n\in\N,\ |u_n|\leq M\).
+    \item \(\forall \eps>0,\ \exists N\in\N,\ \forall n\geq N,\ |u_n-\ell|\leq \eps\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 9 -- Ensembles -- \(\star\star\)]
+Soient \(A\), \(B\), \(C\) trois parties d'un ensemble \(E\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Traduire \(A\subset B\) avec des quantificateurs.
+    \item Traduire \(x\in A\setminus B\) avec les connecteurs logiques.
+    \item Traduire \(x\in \overline{A}\).
+    \item Nier \(A\subset B\).
+    \item Nier \(A=B\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[APP 10 -- Tables de vérité -- \(\star\star\)]
+Construire les tables de vérité des propositions suivantes :
+
+\[
+\non(P\et Q),\qquad (\non P)\ou(\non Q),
+\]
+\[
+P\imp Q,\qquad \non Q\imp\non P,
+\]
+\[
+P\ssi Q,\qquad (P\imp Q)\et(Q\imp P).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Vérifier une loi de De Morgan.
+    \item Vérifier l'équivalence entre une implication et sa contraposée.
+    \item Vérifier l'équivalence entre \(P\ssi Q\) et la double implication.
+\end{enumerate}
+\end{exercicebox}
+
+%====================================================
+\section{Exercices de méthode -- METH}
+%====================================================
+
+\begin{exercicebox}[METH 11 -- Preuve directe -- \(\star\star\)]
+On veut démontrer :
+\[
+\forall n\in\Z,\quad n \text{ pair } \imp n^2 \text{ pair}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Rappeler la définition d'un entier pair.
+    \item Écrire le début de la preuve en introduisant correctement l'entier \(n\).
+    \item Démontrer l'implication.
+    \item Identifier précisément l'hypothèse et la conclusion.
+    \item Donner la réciproque de cette implication.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 12 -- Preuve par contraposée -- \(\star\star\star\)]
+Montrer que pour tout \(n\in\Z\),
+\[
+n^2 \text{ impair } \imp n \text{ impair}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire la contraposée.
+    \item Rappeler la définition d'un entier pair.
+    \item Démontrer la contraposée.
+    \item Conclure proprement.
+    \item Expliquer pourquoi une preuve directe serait moins naturelle ici.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 13 -- Double implication -- \(\star\star\)]
+Montrer que pour tous \(a,b\in\R\),
+\[
+(a+b)^2=a^2+b^2\quad \Longleftrightarrow\quad ab=0.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Démontrer le sens direct.
+    \item Démontrer le sens réciproque.
+    \item En déduire une condition nécessaire et suffisante sur \(a\) et \(b\).
+    \item Reformuler le résultat avec \og ou \fg{}.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 14 -- Double inclusion -- \(\star\star\star\)]
+Soient \(A,B,C\) trois parties d'un ensemble \(E\). Montrer :
+\[
+A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer l'inclusion \(\subset\).
+    \item Montrer l'inclusion \(\supset\).
+    \item Refaire la preuve par équivalences sur \(x\in E\).
+    \item Identifier la loi logique sous-jacente.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 15 -- Contre-exemple -- \(\star\star\)]
+Pour chacune des propositions suivantes, montrer qu'elle est fausse par un contre-exemple.
+
+\begin{enumerate}[label=\alph*)]
+    \item \(\forall x\in\R,\ x^2>0\).
+    \item \(\forall a,b\in\R,\ (a+b)^2=a^2+b^2\).
+    \item \(\forall n\in\N,\ 2^n>n^2\).
+    \item \(\forall x\in\R,\ x^2=1\imp x=1\).
+    \item \(\forall A,B\subset E,\ A\cup B=A\cap B\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 16 -- Disjonction de cas -- \(\star\star\star\)]
+Montrer que pour tout \(n\in\N\),
+\[
+\frac{n(n+1)}{2}\in\N.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Expliquer pourquoi il est naturel de distinguer selon la parité de \(n\).
+    \item Traiter le cas où \(n\) est pair.
+    \item Traiter le cas où \(n\) est impair.
+    \item Conclure en expliquant pourquoi les cas sont exhaustifs.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 17 -- Preuve d'unicité -- \(\star\star\star\)]
+Soit \(a\in\R\). Montrer qu'il existe un unique \(x\in\R\) tel que
+\[
+2x+3=a.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Résoudre l'équation.
+    \item Montrer l'existence.
+    \item Montrer l'unicité en supposant que deux solutions \(x\) et \(y\) existent.
+    \item Rédiger une conclusion avec le symbole \(\exists!\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 18 -- Récurrence simple -- \(\star\star\star\)]
+Montrer par récurrence que pour tout \(n\in\N\),
+\[
+\sum_{k=0}^{n} k=\frac{n(n+1)}2.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Définir précisément la propriété \(P_n\).
+    \item Vérifier l'initialisation.
+    \item Rédiger l'hérédité.
+    \item Conclure proprement.
+    \item Indiquer l'erreur classique à éviter dans l'hérédité.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 19 -- Analyse-synthèse -- \(\star\star\star\star\)]
+Déterminer toutes les fonctions \(f:\R\to\R\) telles que
+\[
+\forall x\in\R,\quad f(x)+f(-x)=2x.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Remplacer \(x\) par \(-x\) dans l'équation.
+    \item Obtenir un système en \(f(x)\) et \(f(-x)\).
+    \item Résoudre ce système.
+    \item Vérifier que la fonction obtenue convient.
+    \item Conclure par analyse-synthèse.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[METH 20 -- Choisir la bonne méthode -- \(\star\star\star\)]
+Pour chacun des énoncés suivants, indiquer la méthode naturelle de preuve, puis commencer la rédaction.
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(\forall x\in\R,\ x^2+1>0\).
+    \item Montrer que \(\exists x\in\R,\ x^2=2\).
+    \item Montrer que \(A=B\) pour deux ensembles \(A,B\).
+    \item Montrer que \(P\ssi Q\).
+    \item Montrer que \(\sqrt2\notin\Q\).
+    \item Montrer qu'une suite définie par récurrence vérifie une formule explicite.
+\end{enumerate}
+\end{exercicebox}
+
+%====================================================
+\section{Exercices de démonstration -- DEM}
+%====================================================
+
+\begin{exercicebox}[DEM 21 -- Lois de De Morgan logiques -- \(\star\star\star\)]
+Soient \(P,Q\) deux propositions.
+
+\begin{enumerate}[label=\alph*)]
+    \item Construire la table de vérité de \(\non(P\et Q)\).
+    \item Construire celle de \((\non P)\ou(\non Q)\).
+    \item En déduire l'équivalence :
+    \[
+    \non(P\et Q)\ssi(\non P)\ou(\non Q).
+    \]
+    \item Démontrer de même :
+    \[
+    \non(P\ou Q)\ssi(\non P)\et(\non Q).
+    \]
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 22 -- Contraposée -- \(\star\star\star\)]
+Soient \(P,Q\) deux propositions.
+
+\begin{enumerate}[label=\alph*)]
+    \item Construire la table de vérité de \(P\imp Q\).
+    \item Construire celle de \(\non Q\imp\non P\).
+    \item Conclure que ces deux propositions sont équivalentes.
+    \item Expliquer pourquoi cela justifie le raisonnement par contraposée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 23 -- Équivalence et double implication -- \(\star\star\star\)]
+Soient \(P,Q\) deux propositions.
+
+\begin{enumerate}[label=\alph*)]
+    \item Construire la table de vérité de \(P\ssi Q\).
+    \item Construire celles de \(P\imp Q\) et \(Q\imp P\).
+    \item Construire celle de \((P\imp Q)\et(Q\imp P)\).
+    \item En déduire :
+    \[
+    P\ssi Q\quad\ssi\quad (P\imp Q)\et(Q\imp P).
+    \]
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 24 -- Lois de De Morgan ensemblistes -- \(\star\star\star\)]
+Soient \(A,B\) deux parties d'un ensemble \(E\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que
+    \[
+    \overline{A\cap B}=\overline A\cup \overline B.
+    \]
+    \item Montrer que
+    \[
+    \overline{A\cup B}=\overline A\cap \overline B.
+    \]
+    \item Expliquer le lien avec les lois de De Morgan logiques.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 25 -- Inclusion et complémentaire -- \(\star\star\star\)]
+Soient \(A,B\) deux parties d'un ensemble \(E\). Montrer que :
+\[
+A\subset B \quad \Longleftrightarrow\quad \overline B\subset \overline A.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Démontrer le sens direct.
+    \item Démontrer le sens réciproque.
+    \item Identifier la méthode logique utilisée.
+    \item Donner une interprétation en termes de contraposée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 26 -- Irrationalité de \(\sqrt2\) -- \(\star\star\star\star\)]
+Montrer que \(\sqrt2\notin\Q\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Supposer par l'absurde que \(\sqrt2\in\Q\).
+    \item Écrire \(\sqrt2=\frac pq\) avec \(p,q\) entiers premiers entre eux.
+    \item Montrer que \(p\) est pair.
+    \item Montrer que \(q\) est pair.
+    \item Conclure à une contradiction.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 27 -- Infinité des nombres premiers -- \(\star\star\star\star\)]
+Montrer qu'il existe une infinité de nombres premiers.
+
+\begin{enumerate}[label=\alph*)]
+    \item Supposer par l'absurde qu'il n'existe qu'un nombre fini de nombres premiers \(p_1,\dots,p_r\).
+    \item Considérer le nombre
+    \[
+    N=p_1p_2\cdots p_r+1.
+    \]
+    \item Montrer qu'aucun des \(p_i\) ne divise \(N\).
+    \item Utiliser le fait que tout entier \(N\geq2\) admet un diviseur premier.
+    \item Conclure.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 28 -- Récurrence forte -- \(\star\star\star\star\)]
+On définit une suite \((u_n)\) par
+\[
+u_0=2,\qquad u_1=3,\qquad u_{n+2}=3u_{n+1}-2u_n.
+\]
+
+Montrer que pour tout \(n\in\N\),
+\[
+u_n=1+2^n.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Vérifier la formule aux rangs \(0\) et \(1\).
+    \item Expliquer pourquoi deux initialisations sont nécessaires.
+    \item Faire l'hérédité.
+    \item Conclure par récurrence forte.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 29 -- Unicité d'une décomposition paire-impaire -- \(\star\star\star\star\)]
+Soit \(f:\R\to\R\). Montrer qu'il existe un unique couple \((g,h)\) de fonctions de \(\R\) dans \(\R\) tel que :
+\[
+g \text{ est paire},\qquad h \text{ est impaire},\qquad f=g+h.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Proposer des formules pour \(g\) et \(h\).
+    \item Vérifier que \(g\) est paire.
+    \item Vérifier que \(h\) est impaire.
+    \item Vérifier que \(f=g+h\).
+    \item Démontrer l'unicité.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[DEM 30 -- Bornitude d'une suite -- \(\star\star\star\)]
+Soit \((u_n)\) une suite réelle. On dit que \((u_n)\) est bornée si
+\[
+\exists M\geq0,\quad \forall n\in\N,\quad |u_n|\leq M.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire la négation de cette définition.
+    \item Montrer que la suite \(u_n=(-1)^n\) est bornée.
+    \item Montrer que la suite \(v_n=n\) n'est pas bornée.
+    \item Rédiger entièrement la preuve de la non-bornitude de \((v_n)\) avec les quantificateurs.
+\end{enumerate}
+\end{exercicebox}
+
+%====================================================
+\section{Exercices de réflexion -- PREP}
+%====================================================
+
+\begin{exercicebox}[PREP 31 -- Quantificateurs imbriqués -- \(\star\star\star\)]
+Étudier la vérité des propositions suivantes.
+
+\[
+P_1:\quad \forall x\in\R,\ \exists y\in\R,\ y>x.
+\]
+\[
+P_2:\quad \exists y\in\R,\ \forall x\in\R,\ y>x.
+\]
+\[
+P_3:\quad \forall x\in\R,\ \exists y\in\R,\ x+y=0.
+\]
+\[
+P_4:\quad \exists y\in\R,\ \forall x\in\R,\ x+y=0.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Dire si chaque proposition est vraie ou fausse.
+    \item Justifier rigoureusement.
+    \item Écrire la négation de chacune.
+    \item Expliquer pourquoi l'ordre des quantificateurs change le sens.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 32 -- Inégalités et quantificateurs -- \(\star\star\star\star\)]
+Soit \(A\subset\R\) non vide. On dit qu'un réel \(M\) est un majorant de \(A\) si
+\[
+\forall x\in A,\quad x\leq M.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Nier : \og \(M\) est un majorant de \(A\) \fg{}.
+    \item Traduire : \og \(A\) est majorée \fg{}.
+    \item Nier : \og \(A\) est majorée \fg{}.
+    \item Appliquer à \(A=\N\).
+    \item Appliquer à \(A=[0,1]\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 33 -- Supremum par double inégalité -- \(\star\star\star\star\)]
+Montrer que
+\[
+\sup_{x,y\in[0,1]} \frac{1}{x+y+1}=1.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que pour tous \(x,y\in[0,1]\), on a \(\frac1{x+y+1}\leq1\).
+    \item En déduire que le supremum est inférieur ou égal à \(1\).
+    \item Trouver un couple \((x,y)\in[0,1]^2\) pour lequel la valeur vaut \(1\).
+    \item Conclure par double inégalité.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 34 -- Analyse-synthèse avec équation fonctionnelle -- \(\star\star\star\star\)]
+Déterminer toutes les fonctions \(f:\R\to\R\) telles que
+\[
+\forall x,y\in\R,\quad f(y-f(x))=2-x-y.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Dans la phase d'analyse, prendre \(y=f(x)\).
+    \item En déduire que \(f\) est de la forme \(x\mapsto a-x\).
+    \item Dans la phase de synthèse, tester les fonctions \(x\mapsto a-x\).
+    \item Déterminer \(a\).
+    \item Conclure.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 35 -- Négation d'une limite -- \(\star\star\star\star\)]
+Soit \((u_n)\) une suite réelle et \(\ell\in\R\). On rappelle :
+\[
+u_n\to\ell
+\quad\Longleftrightarrow\quad
+\forall \eps>0,\ \exists N\in\N,\ \forall n\geq N,\ |u_n-\ell|\leq\eps.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Nier cette définition.
+    \item Interpréter la négation en français.
+    \item Montrer que \(u_n=(-1)^n\) ne converge pas vers \(0\).
+    \item Montrer que \(u_n=n\) ne converge pas vers \(0\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 36 -- Injectivité et quantificateurs -- \(\star\star\star\)]
+Soit \(f:E\to F\). On rappelle :
+\[
+f \text{ injective }\quad\Longleftrightarrow\quad
+\forall x,y\in E,\ f(x)=f(y)\imp x=y.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Nier la définition d'injectivité.
+    \item Montrer que \(f:\R\to\R,\ f(x)=x^2\), n'est pas injective.
+    \item Montrer que \(g:\R_+\to\R_+,\ g(x)=x^2\), est injective.
+    \item Expliquer le rôle de l'ensemble de départ.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 37 -- Surjectivité et quantificateurs -- \(\star\star\star\)]
+Soit \(f:E\to F\). On rappelle :
+\[
+f \text{ surjective }\quad\Longleftrightarrow\quad
+\forall y\in F,\ \exists x\in E,\ f(x)=y.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Nier la définition de surjectivité.
+    \item Montrer que \(f:\R\to\R,\ f(x)=x^2\), n'est pas surjective.
+    \item Montrer que \(g:\R\to\R_+,\ g(x)=x^2\), est surjective.
+    \item Expliquer le rôle de l'ensemble d'arrivée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 38 -- Équivalence piégeuse -- \(\star\star\star\star\)]
+On considère l'énoncé :
+\[
+\forall x\in\R,\quad x^2=1 \Longleftrightarrow x=1.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Dire si l'énoncé est vrai ou faux.
+    \item Identifier le sens vrai et le sens faux.
+    \item Corriger l'équivalence.
+    \item Donner une preuve complète de l'équivalence corrigée.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 39 -- Récurrence et divisibilité -- \(\star\star\star\star\)]
+Montrer que pour tout \(n\in\N\),
+\[
+3^{2n}-1
+\]
+est divisible par \(8\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Vérifier le résultat au rang \(0\).
+    \item Écrire l'hypothèse de récurrence.
+    \item Relier \(3^{2(n+1)}-1\) à \(3^{2n}-1\).
+    \item Conclure.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[PREP 40 -- Minimalité et absurde -- \(\star\star\star\star\)]
+Montrer qu'il n'existe pas de plus petit réel strictement positif.
+
+\begin{enumerate}[label=\alph*)]
+    \item Traduire l'existence d'un plus petit réel strictement positif.
+    \item Supposer qu'un tel réel \(a\) existe.
+    \item Construire un réel strictement positif plus petit que \(a\).
+    \item Conclure par contradiction.
+\end{enumerate}
+\end{exercicebox}
+
+%====================================================
+\section{Exercices type oraux -- ORAUX}
+%====================================================
+
+\begin{exercicebox}[ORAUX 41 -- Mines/CCP : quantificateurs et monotonie -- \(\star\star\star\star\)]
+Soit \(f:\R\to\R\). On dit que \(f\) est croissante si
+\[
+\forall x,y\in\R,\quad x\leq y\imp f(x)\leq f(y).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Nier la définition de croissance.
+    \item Montrer que \(f(x)=x^3\) est croissante sur \(\R\).
+    \item Montrer que \(g(x)=x^2\) n'est pas croissante sur \(\R\).
+    \item Montrer que \(g(x)=x^2\) est croissante sur \(\R_+\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 42 -- Centrale : unicité d'un neutre -- \(\star\star\star\star\)]
+Soit \(E\) un ensemble muni d'une loi \(\star\). On suppose qu'il existe un élément \(e\in E\) tel que
+\[
+\forall x\in E,\quad e\star x=x\quad\text{et}\quad x\star e=x.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Écrire ce que signifie qu'un élément \(e'\) est aussi neutre.
+    \item Supposer que \(e\) et \(e'\) sont deux neutres.
+    \item Calculer \(e\star e'\) de deux manières.
+    \item Conclure que le neutre est unique.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 43 -- CCP : unicité d'un inverse -- \(\star\star\star\star\)]
+Soit \(E\) un ensemble muni d'une loi associative \(\star\) et d'un neutre \(e\). Soit \(a\in E\). On suppose que \(b\) et \(c\) vérifient :
+\[
+a\star b=e,\quad b\star a=e,\quad a\star c=e,\quad c\star a=e.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que \(b=b\star e\).
+    \item Remplacer \(e\) par \(a\star c\).
+    \item Utiliser l'associativité.
+    \item Conclure que \(b=c\).
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 44 -- Mines : raisonnement par minimalité -- \(\star\star\star\star\star\)]
+Soit \(A\) une partie non vide de \(\N\). On admet que \(A\) possède un plus petit élément.
+
+Montrer que toute suite strictement décroissante d'entiers naturels est finie.
+
+\begin{enumerate}[label=\alph*)]
+    \item Supposer qu'il existe une suite infinie strictement décroissante \((u_n)\) d'entiers naturels.
+    \item Considérer l'ensemble \(\{u_n\mid n\in\N\}\).
+    \item Utiliser l'existence d'un plus petit élément.
+    \item Obtenir une contradiction avec la stricte décroissance.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 45 -- Centrale : équivalence de définitions -- \(\star\star\star\star\)]
+Soit \(A\subset\R\). On dit que \(A\) est symétrique par rapport à \(0\) si
+\[
+\forall x\in A,\quad -x\in A.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que si \(A\) est symétrique, alors \(\forall x\in\R,\ x\in A\ssi -x\in A\).
+    \item Montrer la réciproque.
+    \item Donner trois exemples d'ensembles symétriques.
+    \item Donner un contre-exemple.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 46 -- CCP : équation fonctionnelle courte -- \(\star\star\star\star\)]
+Déterminer toutes les fonctions \(f:\R\to\R\) telles que
+\[
+\forall x\in\R,\quad f(x)+f(1-x)=1.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Donner un exemple de fonction solution.
+    \item Montrer qu'il n'y a pas unicité.
+    \item Construire une famille infinie de solutions.
+    \item Vérifier soigneusement la condition.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 47 -- Mines : composition et injectivité -- \(\star\star\star\star\)]
+Soient \(f:E\to F\) et \(g:F\to G\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que si \(f\) et \(g\) sont injectives, alors \(g\circ f\) est injective.
+    \item Montrer que si \(g\circ f\) est injective, alors \(f\) est injective.
+    \item La fonction \(g\) est-elle forcément injective ?
+    \item Donner un contre-exemple.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 48 -- Centrale : composition et surjectivité -- \(\star\star\star\star\)]
+Soient \(f:E\to F\) et \(g:F\to G\).
+
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que si \(f\) et \(g\) sont surjectives, alors \(g\circ f\) est surjective.
+    \item Montrer que si \(g\circ f\) est surjective, alors \(g\) est surjective.
+    \item La fonction \(f\) est-elle forcément surjective ?
+    \item Donner un contre-exemple.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 49 -- Mines : analyse-synthèse exigeante -- \(\star\star\star\star\star\)]
+Déterminer tous les couples \((x,y)\in\R^2\) tels que
+\[
+x+y=xy
+\quad\text{et}\quad
+x^2+y^2=2.
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Poser \(s=x+y\) et \(p=xy\).
+    \item Traduire la première équation en fonction de \(s\) et \(p\).
+    \item Utiliser \(x^2+y^2=s^2-2p\).
+    \item Résoudre pour \(s\), puis retrouver \(x,y\).
+    \item Vérifier les solutions.
+\end{enumerate}
+\end{exercicebox}
+
+\begin{exercicebox}[ORAUX 50 -- Grand oral de synthèse -- \(\star\star\star\star\star\)]
+On considère les trois assertions suivantes portant sur une fonction \(f:\R\to\R\) :
+\[
+A:\quad f \text{ est injective},
+\]
+\[
+B:\quad \forall y\in\R,\ \exists x\in\R,\ f(x)=y,
+\]
+\[
+C:\quad \forall x_1,x_2\in\R,\ x_1\neq x_2\imp f(x_1)\neq f(x_2).
+\]
+
+\begin{enumerate}[label=\alph*)]
+    \item Identifier les assertions \(A,B,C\).
+    \item Montrer que \(A\ssi C\).
+    \item Écrire la négation de \(A\).
+    \item Écrire la négation de \(B\).
+    \item Donner un exemple de fonction vérifiant \(A\) mais pas \(B\).
+    \item Donner un exemple de fonction vérifiant \(B\) mais pas \(A\).
+    \item Donner un exemple de fonction vérifiant \(A\) et \(B\).
+\end{enumerate}
+\end{exercicebox}
+
+\newpage
+
+%====================================================
+\section{Corrigé complet}
+%====================================================
+
+\begin{correctionbox}[APP 1]
+\begin{enumerate}[label=\alph*)]
+    \item Les propositions correctement formulées sont 2 et 4. La phrase 5 est syntaxiquement quantifiée mais incorrecte car \(\ln(x)\) n'est pas défini pour tout \(x\in\R\).
+    \item 1 n'est pas quantifiée : on ne sait pas ce qu'est \(x\). 3 ne précise pas l'ensemble de \(x\). 5 utilise \(\ln(x)\) hors de son domaine.
+    \item 2 est vraie. 4 est fausse dans \(\R\).
+    \item Corrections possibles :
+    \[
+    \forall x\in\R,\ x^2+1\geq0,\qquad
+    \forall x\in\R,\ x^2+1\geq0,\qquad
+    \forall x\in\R_+^*,\ \ln(x)\leq x.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 2]
+\begin{enumerate}[label=\alph*)]
+    \item \(P\et Q\) signifie que \(P\) et \(Q\) sont vraies. \(P\ou Q\) signifie qu'au moins l'une est vraie. \(\non P\) signifie que \(P\) est fausse. \(P\imp Q\) signifie que si \(P\) est vraie, alors \(Q\) est vraie. \(P\ssi Q\) signifie qu'elles ont même valeur de vérité.
+    \item
+    \[
+    \begin{array}{c|c|c}
+    P&Q&P\et Q\\ \hline
+    V&V&V\\
+    V&F&F\\
+    F&V&F\\
+    F&F&F
+    \end{array}
+    \]
+    \item
+    \[
+    \begin{array}{c|c|c}
+    P&Q&P\ou Q\\ \hline
+    V&V&V\\
+    V&F&V\\
+    F&V&V\\
+    F&F&F
+    \end{array}
+    \]
+    \item Le \og ou \fg{} est inclusif car \(P\ou Q\) est vraie lorsque \(P\) et \(Q\) sont simultanément vraies.
+    \item Si \(P\) : \og \(2\) est pair \fg{} et \(Q\) : \og \(2\) est premier \fg{}, alors \(P\ou Q\) est vraie avec \(P\) et \(Q\) vraies.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 3]
+\begin{enumerate}[label=\alph*)]
+    \item Vrai : si \(n=6k\), alors \(n=3(2k)\).
+    \item Faux : \(3\) est multiple de \(3\), pas de \(6\).
+    \item Vrai : si \(x>2\), alors \(x-2>0\) et \(x+2>0\), donc \(x^2-4>0\).
+    \item Faux : \(x=-3\) vérifie \(x^2=9>4\), mais \(x\not>2\).
+    \item Vrai : si \(x=0\), alors \(x^2=0\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 4]
+\begin{enumerate}[label=\alph*)]
+    \item La réciproque est \(Q\imp P\).
+    \item La contraposée est \(\non Q\imp\non P\).
+    \item La négation de \(P\imp Q\) est \(P\et\non Q\).
+    \item Réciproque : si \(n\) est pair, alors \(n^2\) est pair. Contraposée : si \(n\) est impair, alors \(n^2\) est impair.
+    \item L'implication est toujours équivalente à sa contraposée, pas à sa réciproque.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 5]
+\begin{enumerate}[label=\alph*)]
+    \item \(x<0\).
+    \item \(x\leq0\).
+    \item \(x\neq0\).
+    \item \(x\notin A\).
+    \item \(x\notin A\cap B\), soit \(x\notin A\) ou \(x\notin B\).
+    \item \(x\notin A\cup B\), soit \(x\notin A\) et \(x\notin B\).
+    \item \(\non P\ou\non Q\).
+    \item \(\non P\et\non Q\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 6]
+\begin{enumerate}[label=\alph*)]
+    \item Vrai car le carré d'un réel est positif ou nul.
+    \item Faux : \(x=0\) donne \(x^2=0\), pas \(>0\).
+    \item Vrai car \(n+1-n=1>0\).
+    \item Vrai : si \(x\in[0,1]\), alors \(x\geq0\) et \(1-x\geq0\), donc le produit est positif.
+    \item Faux : pour \(x=2\), \(x(1-x)=2(-1)=-2<0\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 7]
+\begin{enumerate}[label=\alph*)]
+    \item Vrai : \(x=\sqrt2\).
+    \item Faux : cela reviendrait à dire que \(\sqrt2\in\Q\), ce qui est faux.
+    \item Vrai : \(n=7\).
+    \item Faux : \(7^2=49\) et \(8^2=64\), donc aucun naturel n'a pour carré \(50\).
+    \item Faux car le discriminant vaut \(1-4=-3<0\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 8]
+\begin{enumerate}[label=\alph*)]
+    \item \(\exists x\in\R,\ x^2+1\leq0\).
+    \item \(\forall x\in\R,\ x^2+1\neq0\).
+    \item \(\exists n\in\N,\ \forall m\in\N,\ m\leq n\).
+    \item \(\forall M>0,\ \exists n\in\N,\ |u_n|>M\).
+    \item \(\exists \eps>0,\ \forall N\in\N,\ \exists n\geq N,\ |u_n-\ell|>\eps\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 9]
+\begin{enumerate}[label=\alph*)]
+    \item \(A\subset B\ssi \forall x\in E,\ x\in A\imp x\in B\).
+    \item \(x\in A\setminus B\ssi x\in A\et x\notin B\).
+    \item \(x\in\overline A\ssi x\in E\et x\notin A\).
+    \item \(\exists x\in E,\ x\in A\et x\notin B\).
+    \item \(A\neq B\ssi \exists x\in E,\ (x\in A\et x\notin B)\ou(x\in B\et x\notin A)\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[APP 10]
+Les tables donnent :
+\[
+\begin{array}{c|c|c|c|c|c|c}
+P&Q&P\et Q&\non(P\et Q)&\non P&\non Q&\non P\ou\non Q\\
+\hline
+V&V&V&F&F&F&F\\
+V&F&F&V&F&V&V\\
+F&V&F&V&V&F&V\\
+F&F&F&V&V&V&V
+\end{array}
+\]
+Les deux colonnes finales utiles sont égales, donc De Morgan est vérifiée.
+
+Pour la contraposée :
+\[
+\begin{array}{c|c|c|c}
+P&Q&P\imp Q&\non Q\imp\non P\\
+\hline
+V&V&V&V\\
+V&F&F&F\\
+F&V&V&V\\
+F&F&V&V
+\end{array}
+\]
+Les colonnes sont identiques.
+
+Enfin \(P\ssi Q\) et \((P\imp Q)\et(Q\imp P)\) ont pour table \(V,F,F,V\), donc elles sont équivalentes.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 11]
+Un entier \(n\) est pair s'il existe \(k\in\Z\) tel que \(n=2k\). Soit \(n\in\Z\). Supposons \(n\) pair. Alors \(n=2k\) pour un certain \(k\in\Z\). On a
+\[
+n^2=(2k)^2=4k^2=2(2k^2).
+\]
+Comme \(2k^2\in\Z\), \(n^2\) est pair. L'hypothèse est \og \(n\) pair \fg{} et la conclusion est \og \(n^2\) pair \fg{}. La réciproque est : si \(n^2\) est pair, alors \(n\) est pair.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 12]
+La contraposée de \og si \(n^2\) est impair, alors \(n\) est impair \fg{} est : si \(n\) est pair, alors \(n^2\) est pair. Supposons \(n\) pair. Alors \(n=2k\), donc
+\[
+n^2=4k^2=2(2k^2),
+\]
+donc \(n^2\) est pair. Par contraposée, si \(n^2\) est impair, alors \(n\) est impair. Cette méthode évite de manipuler directement la forme générale d'un carré impair.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 13]
+Sens direct : supposons \((a+b)^2=a^2+b^2\). Alors
+\[
+a^2+2ab+b^2=a^2+b^2,
+\]
+donc \(2ab=0\), puis \(ab=0\).
+
+Sens réciproque : si \(ab=0\), alors
+\[
+(a+b)^2=a^2+2ab+b^2=a^2+b^2.
+\]
+Donc
+\[
+(a+b)^2=a^2+b^2\ssi ab=0.
+\]
+Comme \(ab=0\ssi a=0\) ou \(b=0\), on obtient la formulation équivalente.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 14]
+Soit \(x\in A\cap(B\cup C)\). Alors \(x\in A\) et \(x\in B\cup C\), donc \(x\in B\) ou \(x\in C\). Dans le premier cas \(x\in A\cap B\), dans le second \(x\in A\cap C\). Donc \(x\in(A\cap B)\cup(A\cap C)\).
+
+Réciproquement, soit \(x\in(A\cap B)\cup(A\cap C)\). Alors \(x\in A\cap B\) ou \(x\in A\cap C\). Dans les deux cas \(x\in A\) et \(x\in B\cup C\). Donc \(x\in A\cap(B\cup C)\).
+
+La preuve par équivalences est :
+\[
+x\in A\cap(B\cup C)
+\ssi x\in A\et(x\in B\ou x\in C)
+\]
+\[
+\ssi (x\in A\et x\in B)\ou(x\in A\et x\in C)
+\ssi x\in(A\cap B)\cup(A\cap C).
+\]
+La loi logique utilisée est la distributivité de \(\et\) sur \(\ou\).
+\end{correctionbox}
+
+\begin{correctionbox}[METH 15]
+\begin{enumerate}[label=\alph*)]
+    \item \(x=0\).
+    \item \(a=b=1\).
+    \item \(n=3\), car \(2^3=8<9=3^2\).
+    \item \(x=-1\).
+    \item Si \(E=\{0,1\}\), \(A=\{0\}\), \(B=\{1\}\), alors \(A\cup B=E\) et \(A\cap B=\varnothing\).
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[METH 16]
+Si \(n\) est pair, \(n=2k\), donc
+\[
+\frac{n(n+1)}2=\frac{2k(n+1)}2=k(n+1)\in\N.
+\]
+Si \(n\) est impair, \(n+1\) est pair, donc \(n+1=2k\). Alors
+\[
+\frac{n(n+1)}2=\frac{2kn}{2}=kn\in\N.
+\]
+Tout entier naturel est pair ou impair, donc les deux cas sont exhaustifs.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 17]
+L'équation \(2x+3=a\) donne
+\[
+x=\frac{a-3}{2}.
+\]
+Existence : ce réel vérifie bien
+\[
+2\cdot\frac{a-3}{2}+3=a-3+3=a.
+\]
+Unicité : si \(x,y\) vérifient \(2x+3=a\) et \(2y+3=a\), alors \(2x=2y\), donc \(x=y\). Ainsi
+\[
+\exists!x\in\R,\quad 2x+3=a.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[METH 18]
+Posons
+\[
+P_n:\quad \sum_{k=0}^{n}k=\frac{n(n+1)}2.
+\]
+Initialisation : pour \(n=0\), les deux membres valent \(0\).
+
+Hérédité : supposons \(P_n\). Alors
+\[
+\sum_{k=0}^{n+1}k=\sum_{k=0}^{n}k+(n+1)
+=\frac{n(n+1)}2+(n+1)
+=\frac{(n+1)(n+2)}2.
+\]
+C'est \(P_{n+1}\). Par récurrence, \(P_n\) est vraie pour tout \(n\in\N\). L'erreur classique serait de supposer directement \(P_{n+1}\).
+\end{correctionbox}
+
+\begin{correctionbox}[METH 19]
+Remplaçons \(x\) par \(-x\) :
+\[
+f(-x)+f(x)=-2x.
+\]
+Mais l'équation initiale donne
+\[
+f(x)+f(-x)=2x.
+\]
+On obtient donc \(2x=-2x\) pour tout \(x\), ce qui est impossible sauf pour \(x=0\). Comme l'égalité doit valoir pour tout réel \(x\), il n'existe aucune fonction solution.
+\end{correctionbox}
+
+\begin{correctionbox}[METH 20]
+\begin{enumerate}[label=\alph*)]
+    \item Proposition universelle : soit \(x\in\R\), puis montrer \(x^2+1>0\).
+    \item Existence : prendre \(x=\sqrt2\).
+    \item Double inclusion : montrer \(A\subset B\) et \(B\subset A\).
+    \item Double implication : montrer \(P\imp Q\), puis \(Q\imp P\).
+    \item Absurde : supposer \(\sqrt2\in\Q\), puis contradiction.
+    \item Récurrence : initialisation, hérédité, conclusion.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 21]
+Les tables de vérité montrent que les colonnes de \(\non(P\et Q)\) et de \(\non P\ou\non Q\) coïncident. De même, celles de \(\non(P\ou Q)\) et de \(\non P\et\non Q\) coïncident. Donc les deux lois de De Morgan sont démontrées.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 22]
+La table de \(P\imp Q\) est \(V,F,V,V\) dans l'ordre \((V,V),(V,F),(F,V),(F,F)\). La table de \(\non Q\imp\non P\) est exactement la même. Les deux propositions sont donc équivalentes. C'est ce qui autorise à remplacer une implication par sa contraposée dans une démonstration.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 23]
+\(P\ssi Q\) est vraie lorsque \(P\) et \(Q\) ont même valeur de vérité : sa table est \(V,F,F,V\). En calculant \(P\imp Q\), \(Q\imp P\), puis leur conjonction, on obtient également \(V,F,F,V\). Les propositions sont donc équivalentes.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 24]
+Pour tout \(x\in E\),
+\[
+x\in\overline{A\cap B}
+\ssi x\notin A\cap B
+\ssi x\notin A\ou x\notin B
+\ssi x\in\overline A\cup\overline B.
+\]
+Donc \(\overline{A\cap B}=\overline A\cup\overline B\).
+
+De même,
+\[
+x\in\overline{A\cup B}
+\ssi x\notin A\cup B
+\ssi x\notin A\et x\notin B
+\ssi x\in\overline A\cap\overline B.
+\]
+Le lien avec la logique est direct : appartenance à une intersection correspond à \(\et\), appartenance à une union correspond à \(\ou\).
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 25]
+Supposons \(A\subset B\). Soit \(x\in\overline B\). Alors \(x\notin B\). Si \(x\in A\), alors \(x\in B\), contradiction. Donc \(x\notin A\), donc \(x\in\overline A\). Ainsi \(\overline B\subset\overline A\).
+
+Réciproquement, supposons \(\overline B\subset\overline A\). Soit \(x\in A\). Si \(x\notin B\), alors \(x\in\overline B\), donc \(x\in\overline A\), contradiction avec \(x\in A\). Donc \(x\in B\), et \(A\subset B\). C'est une contraposée ensembliste.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 26]
+Supposons \(\sqrt2=\frac pq\), avec \(p,q\in\Z\), \(q\neq0\), premiers entre eux. Alors
+\[
+p^2=2q^2.
+\]
+Donc \(p^2\) est pair, donc \(p\) est pair. Posons \(p=2r\). Alors
+\[
+4r^2=2q^2,
+\]
+donc
+\[
+q^2=2r^2.
+\]
+Donc \(q^2\) est pair, donc \(q\) est pair. Ainsi \(p\) et \(q\) sont tous deux pairs, contradiction avec le fait qu'ils soient premiers entre eux. Donc \(\sqrt2\notin\Q\).
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 27]
+Supposons qu'il n'existe qu'un nombre fini de nombres premiers \(p_1,\dots,p_r\). Posons
+\[
+N=p_1p_2\cdots p_r+1.
+\]
+Aucun \(p_i\) ne divise \(N\), car la division de \(N\) par \(p_i\) donne un reste \(1\). Or \(N\geq2\), donc \(N\) admet un diviseur premier. Ce diviseur premier n'est aucun des \(p_i\), contradiction. Il existe donc une infinité de nombres premiers.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 28]
+Pour \(n=0\), \(u_0=2=1+2^0\). Pour \(n=1\), \(u_1=3=1+2^1\). Supposons la formule vraie aux rangs \(n\) et \(n+1\). Alors
+\[
+u_{n+2}=3u_{n+1}-2u_n
+=3(1+2^{n+1})-2(1+2^n)
+=1+2^{n+2}.
+\]
+Donc la formule est vraie au rang \(n+2\). Par récurrence forte, elle est vraie pour tout \(n\in\N\).
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 29]
+Posons
+\[
+g(x)=\frac{f(x)+f(-x)}2,\qquad h(x)=\frac{f(x)-f(-x)}2.
+\]
+Alors
+\[
+g(-x)=\frac{f(-x)+f(x)}2=g(x),
+\]
+donc \(g\) est paire. De plus,
+\[
+h(-x)=\frac{f(-x)-f(x)}2=-h(x),
+\]
+donc \(h\) est impaire. Enfin \(g(x)+h(x)=f(x)\).
+
+Unicité : supposons \(f=G+H\), avec \(G\) paire et \(H\) impaire. Alors
+\[
+f(x)=G(x)+H(x),
+\]
+\[
+f(-x)=G(x)-H(x).
+\]
+En additionnant, \(G(x)=\frac{f(x)+f(-x)}2=g(x)\). En soustrayant, \(H(x)=h(x)\). Le couple est unique.
+\end{correctionbox}
+
+\begin{correctionbox}[DEM 30]
+La négation de la bornitude est :
+\[
+\forall M\geq0,\ \exists n\in\N,\ |u_n|>M.
+\]
+Pour \(u_n=(-1)^n\), on a \(|u_n|=1\), donc \(M=1\) convient.
+
+Pour \(v_n=n\), soit \(M\geq0\). Prenons \(n=\lfloor M\rfloor+1\). Alors \(n>M\), donc \(|v_n|=n>M\). Ainsi \((v_n)\) n'est pas bornée.
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 31]
+\(P_1\) est vraie : pour un \(x\), prendre \(y=x+1\). \(P_2\) est fausse : aucun réel n'est supérieur à tous les réels. \(P_3\) est vraie : pour un \(x\), prendre \(y=-x\). \(P_4\) est fausse : aucun \(y\) fixe ne vérifie \(x+y=0\) pour tout \(x\).
+
+Les négations s'obtiennent en inversant les quantificateurs et en niant la propriété finale :
+\[
+\non P_1:\exists x\in\R,\forall y\in\R,\ y\leq x.
+\]
+\[
+\non P_2:\forall y\in\R,\exists x\in\R,\ y\leq x.
+\]
+\[
+\non P_3:\exists x\in\R,\forall y\in\R,\ x+y\neq0.
+\]
+\[
+\non P_4:\forall y\in\R,\exists x\in\R,\ x+y\neq0.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 32]
+\(M\) est majorant de \(A\) signifie \(\forall x\in A,\ x\leq M\). Sa négation est :
+\[
+\exists x\in A,\ x>M.
+\]
+\(A\) est majorée signifie :
+\[
+\exists M\in\R,\ \forall x\in A,\ x\leq M.
+\]
+Sa négation est :
+\[
+\forall M\in\R,\ \exists x\in A,\ x>M.
+\]
+\(\N\) n'est pas majorée. \([0,1]\) est majorée, par exemple par \(1\).
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 33]
+Pour \(x,y\in[0,1]\), on a \(x+y+1\geq1\), donc
+\[
+\frac1{x+y+1}\leq1.
+\]
+Donc le supremum est inférieur ou égal à \(1\). Pour \(x=y=0\), la valeur est \(1\), donc le supremum est supérieur ou égal à \(1\). Par double inégalité, le supremum vaut \(1\).
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 34]
+Analyse : en prenant \(y=f(x)\), on obtient
+\[
+f(0)=2-x-f(x),
+\]
+donc
+\[
+f(x)=2-f(0)-x.
+\]
+Ainsi \(f(x)=a-x\). Synthèse : si \(f(x)=a-x\), alors
+\[
+f(y-f(x))=f(y-a+x)=a-(y-a+x)=2a-x-y.
+\]
+On veut \(2-x-y\), donc \(2a=2\), d'où \(a=1\). L'unique solution est \(f(x)=1-x\).
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 35]
+La négation est :
+\[
+\exists \eps>0,\ \forall N\in\N,\ \exists n\geq N,\ |u_n-\ell|>\eps.
+\]
+Pour \((-1)^n\) et \(\ell=0\), prendre \(\eps=\frac12\). Pour tout \(N\), tout \(n\geq N\) convient car \(|(-1)^n|=1>\frac12\). Pour \(u_n=n\), prendre \(\eps=1\). Pour tout \(N\), choisir \(n\geq\max(N,2)\), alors \(|n-0|>1\).
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 36]
+La négation de l'injectivité est :
+\[
+\exists x,y\in E,\quad x\neq y\quad\text{et}\quad f(x)=f(y).
+\]
+Pour \(x^2\) sur \(\R\), \(-1\neq1\) mais \((-1)^2=1^2\), donc non injective. Sur \(\R_+\), si \(x^2=y^2\), alors \((x-y)(x+y)=0\). Comme \(x+y\geq0\) et \(x,y\geq0\), on obtient \(x=y\). L'ensemble de départ est donc essentiel.
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 37]
+La négation est :
+\[
+\exists y\in F,\ \forall x\in E,\ f(x)\neq y.
+\]
+Pour \(x^2:\R\to\R\), \(-1\) n'a pas d'antécédent. Donc non surjective. Pour \(x^2:\R\to\R_+\), tout \(y\geq0\) admet \(\sqrt y\) comme antécédent. L'ensemble d'arrivée est donc essentiel.
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 38]
+L'énoncé est faux : \(x=-1\) vérifie \(x^2=1\), mais \(x\neq1\). Le sens \(x=1\imp x^2=1\) est vrai. Le sens réciproque est faux. L'équivalence corrigée est :
+\[
+x^2=1\ssi x=1\ \text{ou}\ x=-1.
+\]
+Preuve :
+\[
+x^2=1\ssi x^2-1=0\ssi (x-1)(x+1)=0\ssi x=1\ou x=-1.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 39]
+Initialisation : \(3^0-1=0\), divisible par \(8\). Supposons \(3^{2n}-1\) divisible par \(8\). Alors
+\[
+3^{2(n+1)}-1=9\cdot3^{2n}-1=9(3^{2n}-1)+8.
+\]
+Par hypothèse, \(3^{2n}-1\) est divisible par \(8\), donc \(9(3^{2n}-1)+8\) l'est aussi. Conclusion par récurrence.
+\end{correctionbox}
+
+\begin{correctionbox}[PREP 40]
+Supposons qu'il existe un plus petit réel strictement positif \(a\). Alors \(a>0\). Mais \(\frac a2>0\) et \(\frac a2<a\), contradiction avec la minimalité de \(a\). Donc un tel réel n'existe pas.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 41]
+La négation de la croissance est :
+\[
+\exists x,y\in\R,\quad x\leq y\quad\text{et}\quad f(x)>f(y).
+\]
+Pour \(x^3\), si \(x\leq y\), alors \(y^3-x^3=(y-x)(x^2+xy+y^2)\geq0\), car \(x^2+xy+y^2\geq0\). Donc \(x^3\leq y^3\).
+
+\(x^2\) n'est pas croissante sur \(\R\), car \(-1\leq0\) mais \(1>0\). Sur \(\R_+\), si \(0\leq x\leq y\), alors \(y^2-x^2=(y-x)(x+y)\geq0\), donc \(x^2\leq y^2\).
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 42]
+Si \(e'\) est aussi neutre, alors pour tout \(x\), \(e'\star x=x\) et \(x\star e'=x\). En particulier,
+\[
+e\star e'=e'
+\]
+car \(e\) est neutre à gauche, et
+\[
+e\star e'=e
+\]
+car \(e'\) est neutre à droite. Donc \(e=e'\). Le neutre est unique.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 43]
+On a
+\[
+b=b\star e=b\star(a\star c).
+\]
+Par associativité :
+\[
+b\star(a\star c)=(b\star a)\star c=e\star c=c.
+\]
+Donc \(b=c\). L'inverse est unique.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 44]
+Supposons qu'il existe une suite infinie strictement décroissante \((u_n)\) d'entiers naturels. L'ensemble \(A=\{u_n\mid n\in\N\}\) est non vide, donc il possède un plus petit élément \(u_{n_0}\). Mais comme la suite est strictement décroissante, \(u_{n_0+1}<u_{n_0}\), et \(u_{n_0+1}\in A\), contradiction. Donc une telle suite est finie.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 45]
+Si \(A\) est symétrique, alors \(x\in A\imp -x\in A\). Réciproquement, si \(-x\in A\), alors en appliquant la symétrie à \(-x\), on obtient \(x\in A\). Donc \(x\in A\ssi -x\in A\). La réciproque est immédiate. Exemples : \(\R\), \([-1,1]\), \(\{-2,0,2\}\). Contre-exemple : \([0,1]\).
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 46]
+Un exemple est \(f(x)=x\), car \(f(x)+f(1-x)=x+1-x=1\). Il n'y a pas unicité : \(f(x)=\frac12\) convient aussi. Plus généralement, on peut choisir arbitrairement \(f(x)\) pour \(x<\frac12\), poser \(f(\frac12)=\frac12\), puis définir
+\[
+f(1-x)=1-f(x).
+\]
+Cette construction donne une infinité de solutions.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 47]
+Si \(f\) et \(g\) sont injectives et si \((g\circ f)(x)=(g\circ f)(y)\), alors \(g(f(x))=g(f(y))\). Par injectivité de \(g\), \(f(x)=f(y)\), puis par injectivité de \(f\), \(x=y\). Donc \(g\circ f\) est injective.
+
+Si \(g\circ f\) est injective et \(f(x)=f(y)\), alors \(g(f(x))=g(f(y))\), donc \(x=y\). Ainsi \(f\) est injective.
+
+\(g\) n'est pas forcément injective. Exemple : \(E=\{0\}\), \(F=\{0,1\}\), \(G=\{0\}\), \(f(0)=0\), \(g(0)=g(1)=0\). Alors \(g\circ f\) est injective mais \(g\) ne l'est pas.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 48]
+Si \(f\) et \(g\) sont surjectives, soit \(z\in G\). Comme \(g\) est surjective, il existe \(y\in F\) tel que \(g(y)=z\). Comme \(f\) est surjective, il existe \(x\in E\) tel que \(f(x)=y\). Alors \((g\circ f)(x)=z\).
+
+Si \(g\circ f\) est surjective, soit \(z\in G\). Il existe \(x\in E\) tel que \(g(f(x))=z\). En posant \(y=f(x)\), on a \(g(y)=z\). Donc \(g\) est surjective.
+
+\(f\) n'est pas forcément surjective. Exemple : \(E=\{0\}\), \(F=\{0,1\}\), \(G=\{0\}\), \(f(0)=0\), \(g(0)=g(1)=0\). Alors \(g\circ f\) est surjective mais \(f\) ne l'est pas.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 49]
+Posons \(s=x+y\) et \(p=xy\). La première équation donne \(s=p\). La seconde donne
+\[
+x^2+y^2=s^2-2p=2.
+\]
+Comme \(p=s\), on obtient
+\[
+s^2-2s=2,
+\]
+soit
+\[
+s^2-2s-2=0.
+\]
+Donc
+\[
+s=1\pm\sqrt3.
+\]
+Les réels \(x,y\) sont racines de
+\[
+X^2-sX+p=0,
+\]
+avec \(p=s\), donc
+\[
+X^2-sX+s=0.
+\]
+Il faut vérifier le discriminant :
+\[
+\Delta=s^2-4s=s(s-4).
+\]
+Pour \(s=1+\sqrt3\), \(\Delta<0\). Pour \(s=1-\sqrt3<0\), on a \(\Delta=s(s-4)>0\). Les solutions sont donc obtenues avec \(s=1-\sqrt3\) :
+\[
+x,y=\frac{s\pm\sqrt{s^2-4s}}2.
+\]
+Les deux couples solutions sont les deux permutations de ces deux valeurs.
+\end{correctionbox}
+
+\begin{correctionbox}[ORAUX 50]
+\(A\) est l'injectivité. \(B\) est la surjectivité. \(C\) est une formulation équivalente de l'injectivité.
+
+Montrons \(A\ssi C\). Si \(A\) est vraie et \(x_1\neq x_2\), alors on ne peut pas avoir \(f(x_1)=f(x_2)\), car l'injectivité donnerait \(x_1=x_2\). Donc \(f(x_1)\neq f(x_2)\). Réciproquement, si \(C\) est vraie et si \(f(x_1)=f(x_2)\), alors il est impossible que \(x_1\neq x_2\). Donc \(x_1=x_2\), ce qui est l'injectivité.
+
+Négation de \(A\) :
+\[
+\exists x_1,x_2\in\R,\quad x_1\neq x_2\quad\text{et}\quad f(x_1)=f(x_2).
+\]
+Négation de \(B\) :
+\[
+\exists y\in\R,\quad \forall x\in\R,\quad f(x)\neq y.
+\]
+
+Exemple \(A\) mais pas \(B\) : \(f(x)=e^x\), de \(\R\) dans \(\R\). Elle est injective mais pas surjective sur \(\R\).
+
+Exemple \(B\) mais pas \(A\) : \(f(x)=x^3-x\) est surjective sur \(\R\) mais pas injective, car \(f(-1)=f(0)=f(1)=0\).
+
+Exemple \(A\) et \(B\) : \(f(x)=x\).
+\end{correctionbox}
+
+\end{document}

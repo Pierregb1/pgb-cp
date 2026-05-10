@@ -1,0 +1,953 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{array}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Réduction --- Chapitre 15}
+\fancyhead[R]{Valeurs propres et vecteurs propres}
+\fancyfoot[C]{\thepage}
+
+% Environnements
+\newtheorem{definition}{Définition}[section]
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollaire}[definition]{Corollaire}
+\newtheorem{lemme}[definition]{Lemme}
+\theoremstyle{remark}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem*{methode}{Méthode}
+\newtheorem*{idee}{Idée}
+
+% Commandes
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Ker}{\mathrm{Ker}}
+\newcommand{\Img}{\mathrm{Im}}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\id}{\mathrm{Id}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\Mnn}{M_n(\K)}
+\newcommand{\GLn}{GL_n(\K)}
+\newcommand{\chiA}{\chi_A}
+\newcommand{\chil}{\chi_u}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Chapitre 15 --- Valeurs propres et vecteurs propres}}\\[0.4em]
+    {\large Directions invariantes d’un endomorphisme}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\tableofcontents
+
+\newpage
+
+\section{Pourquoi ce chapitre ?}
+
+Quand on étudie un endomorphisme
+\[
+u:E\to E
+\]
+ou une matrice carrée \(A\), une question fondamentale est la suivante :
+
+\begin{center}
+\textit{existe-t-il des directions de l’espace que la transformation conserve ?}
+\end{center}
+
+Cela signifie :
+- l’image d’un vecteur reste colinéaire à ce vecteur ;
+- la transformation agit seulement par multiplication sur cette direction.
+
+C’est précisément l’idée des \textbf{valeurs propres} et des \textbf{vecteurs propres}.
+
+\begin{idee}
+Un vecteur propre est un vecteur dont l’image ne change pas de direction.
+\end{idee}
+
+Cette notion est la porte d’entrée vers :
+\begin{itemize}
+    \item la diagonalisation ;
+    \item la trigonalisation ;
+    \item l’étude des puissances d’une matrice ;
+    \item les suites récurrentes linéaires ;
+    \item la réduction des endomorphismes.
+\end{itemize}
+
+\section{Définitions fondamentales}
+
+\subsection{Valeur propre et vecteur propre}
+
+\begin{definition}
+Soit \(E\) un \(\K\)-espace vectoriel, et
+\[
+u\in \mathcal L(E,E)
+\]
+un endomorphisme.
+
+Un scalaire \(\lambda\in\K\) est appelé une \textbf{valeur propre} de \(u\) s’il existe un vecteur non nul \(x\in E\) tel que
+\[
+u(x)=\lambda x.
+\]
+
+Un tel vecteur \(x\) est appelé un \textbf{vecteur propre} de \(u\) associé à la valeur propre \(\lambda\).
+\end{definition}
+
+\begin{remarque}
+Le vecteur nul n’est jamais un vecteur propre.
+\end{remarque}
+
+\begin{remarque}
+L’égalité
+\[
+u(x)=\lambda x
+\]
+signifie que \(u\) agit sur la droite vectorielle \(\Vect(x)\) comme une homothétie de rapport \(\lambda\).
+\end{remarque}
+
+\begin{exemple}
+Dans \(\R^2\), considérons
+\[
+u(x,y)=(2x,3y).
+\]
+Alors
+\[
+u(1,0)=(2,0)=2(1,0),
+\]
+donc \(2\) est une valeur propre et \((1,0)\) est un vecteur propre associé.
+
+De même,
+\[
+u(0,1)=(0,3)=3(0,1),
+\]
+donc \(3\) est une valeur propre et \((0,1)\) est un vecteur propre associé.
+\end{exemple}
+
+\begin{exemple}
+Pour l’identité \(\id_E\), tout vecteur non nul est vecteur propre associé à la valeur propre \(1\).
+\end{exemple}
+
+\begin{exemple}
+Pour l’homothétie
+\[
+u=\lambda \id_E,
+\]
+tout vecteur non nul est vecteur propre associé à \(\lambda\).
+\end{exemple}
+
+\subsection{Sous-espace propre}
+
+\begin{definition}
+Soit \(u\in\mathcal L(E,E)\) et \(\lambda\in\K\).  
+On appelle \textbf{sous-espace propre} associé à \(\lambda\) l’ensemble
+\[
+E_\lambda(u)=\Ker(u-\lambda\id_E).
+\]
+\end{definition}
+
+\begin{proposition}
+\(E_\lambda(u)\) est un sous-espace vectoriel de \(E\).
+\end{proposition}
+
+\begin{proof}
+Comme
+\[
+E_\lambda(u)=\Ker(u-\lambda\id_E),
+\]
+c’est le noyau d’une application linéaire, donc un sous-espace vectoriel.
+\end{proof}
+
+\begin{proposition}
+\(\lambda\) est une valeur propre de \(u\) si et seulement si
+\[
+E_\lambda(u)\neq \{0\}.
+\]
+\end{proposition}
+
+\begin{proof}
+Par définition, \(\lambda\) est valeur propre si et seulement s’il existe un vecteur propre non nul \(x\), ce qui équivaut à l’existence d’un élément non nul dans \(E_\lambda(u)\).
+\end{proof}
+
+\begin{remarque}
+Les vecteurs propres associés à \(\lambda\), auxquels on ajoute \(0\), forment exactement le sous-espace propre \(E_\lambda(u)\).
+\end{remarque}
+
+\subsection{Spectre}
+
+\begin{definition}
+On appelle \textbf{spectre} de \(u\), noté \(\Sp(u)\), l’ensemble de ses valeurs propres :
+\[
+\Sp(u)=\{\lambda\in\K\mid \lambda \text{ est valeur propre de }u\}.
+\]
+\end{definition}
+
+\section{Traduction matricielle}
+
+\subsection{Valeurs propres d’une matrice}
+
+\begin{definition}
+Soit \(A\in M_n(\K)\).  
+On dit que \(\lambda\in\K\) est une valeur propre de \(A\) s’il existe un vecteur colonne non nul \(X\in\K^n\) tel que
+\[
+AX=\lambda X.
+\]
+\end{definition}
+
+\begin{remarque}
+Cela revient à dire que \(X\) appartient au noyau de
+\[
+A-\lambda I_n.
+\]
+\end{remarque}
+
+\begin{proposition}
+\(\lambda\) est une valeur propre de \(A\) si et seulement si
+\[
+\Ker(A-\lambda I_n)\neq \{0\}.
+\]
+\end{proposition}
+
+\begin{proof}
+C’est la traduction directe de la définition.
+\end{proof}
+
+\subsection{Indépendance par changement de base}
+
+\begin{proposition}
+Deux matrices semblables ont les mêmes valeurs propres.
+\end{proposition}
+
+\begin{proof}
+Supposons
+\[
+B=P^{-1}AP
+\]
+avec \(P\in GL_n(\K)\).
+
+Alors
+\[
+B-\lambda I_n=P^{-1}(A-\lambda I_n)P.
+\]
+Donc \(B-\lambda I_n\) est inversible si et seulement si \(A-\lambda I_n\) l’est. Les valeurs propres de \(A\) et \(B\) coïncident.
+\end{proof}
+
+\begin{remarque}
+Les valeurs propres dépendent donc de l’endomorphisme, pas du choix de la base.
+\end{remarque}
+
+\section{Polynôme caractéristique}
+
+\subsection{Définition}
+
+\begin{definition}
+Soit \(A\in M_n(\K)\).  
+On appelle \textbf{polynôme caractéristique} de \(A\) le polynôme
+\[
+\chiA(X)=\det(XI_n-A).
+\]
+\end{definition}
+
+\begin{remarque}
+C’est un polynôme unitaire de degré \(n\).
+\end{remarque}
+
+\begin{definition}
+Si \(u\in\mathcal L(E,E)\) et \(\mathcal B\) est une base de \(E\), on définit
+\[
+\chi_u(X)=\chi_{\mathrm{Mat}_{\mathcal B}(u)}(X).
+\]
+\end{definition}
+
+\begin{proposition}
+Cette définition ne dépend pas du choix de la base.
+\end{proposition}
+
+\begin{proof}
+Deux matrices représentant \(u\) dans deux bases différentes sont semblables. Or les matrices semblables ont même polynôme caractéristique, car
+\[
+\det(XI_n-P^{-1}AP)=\det(P^{-1}(XI_n-A)P)=\det(XI_n-A).
+\]
+\end{proof}
+
+\subsection{Caractérisation des valeurs propres}
+
+\begin{theoreme}
+Soit \(A\in M_n(\K)\). Alors \(\lambda\in\K\) est valeur propre de \(A\) si et seulement si
+\[
+\chiA(\lambda)=0.
+\]
+\end{theoreme}
+
+\begin{proof}
+\(\lambda\) est valeur propre si et seulement s’il existe \(X\neq 0\) tel que
+\[
+AX=\lambda X,
+\]
+c’est-à-dire
+\[
+(A-\lambda I_n)X=0.
+\]
+Cela équivaut à dire que \(A-\lambda I_n\) n’est pas injective, donc n’est pas inversible. Ainsi
+\[
+\det(A-\lambda I_n)=0.
+\]
+Comme
+\[
+\chiA(\lambda)=\det(\lambda I_n-A)=(-1)^n\det(A-\lambda I_n),
+\]
+on obtient l’équivalence.
+\end{proof}
+
+\begin{corollaire}
+Les valeurs propres d’une matrice sont les racines de son polynôme caractéristique.
+\end{corollaire}
+
+\begin{corollaire}
+Une matrice \(n\times n\) admet au plus \(n\) valeurs propres distinctes.
+\end{corollaire}
+
+\begin{proof}
+Le polynôme caractéristique est de degré \(n\).
+\end{proof}
+
+\subsection{Exemples}
+
+\begin{exemple}
+Pour
+\[
+A=
+\begin{pmatrix}
+2 & 0\\
+0 & 3
+\end{pmatrix},
+\]
+on a
+\[
+\chiA(X)=\det\begin{pmatrix}
+X-2 & 0\\
+0 & X-3
+\end{pmatrix}
+=(X-2)(X-3).
+\]
+Les valeurs propres sont donc \(2\) et \(3\).
+\end{exemple}
+
+\begin{exemple}
+Pour
+\[
+A=
+\begin{pmatrix}
+1 & 1\\
+0 & 1
+\end{pmatrix},
+\]
+on a
+\[
+\chiA(X)=\det\begin{pmatrix}
+X-1 & -1\\
+0 & X-1
+\end{pmatrix}
+=(X-1)^2.
+\]
+L’unique valeur propre est \(1\).
+\end{exemple}
+
+\section{Sous-espaces propres et indépendance}
+
+\subsection{Vecteurs propres associés à des valeurs propres distinctes}
+
+\begin{theoreme}
+Des vecteurs propres associés à des valeurs propres deux à deux distinctes sont linéairement indépendants.
+\end{theoreme}
+
+\begin{proof}
+Soient \(\lambda_1,\dots,\lambda_p\) des valeurs propres deux à deux distinctes, et \(x_1,\dots,x_p\) des vecteurs propres associés. Montrons que la famille \((x_1,\dots,x_p)\) est libre.
+
+On raisonne par récurrence sur \(p\).
+
+\textbf{Initialisation :} pour \(p=1\), c’est clair car \(x_1\neq 0\).
+
+\textbf{Hérédité :} supposons le résultat vrai pour \(p-1\). Supposons
+\[
+\alpha_1x_1+\cdots+\alpha_px_p=0.
+\]
+Appliquons \(u\) :
+\[
+\alpha_1\lambda_1x_1+\cdots+\alpha_p\lambda_px_p=0.
+\]
+Soustrayons \(\lambda_p\) fois la relation initiale :
+\[
+\alpha_1(\lambda_1-\lambda_p)x_1+\cdots+\alpha_{p-1}(\lambda_{p-1}-\lambda_p)x_{p-1}=0.
+\]
+Par hypothèse de récurrence, \((x_1,\dots,x_{p-1})\) est libre, donc
+\[
+\alpha_i(\lambda_i-\lambda_p)=0
+\qquad \text{pour } i=1,\dots,p-1.
+\]
+Comme les \(\lambda_i\) sont distinctes, on a
+\[
+\lambda_i-\lambda_p\neq 0,
+\]
+d’où
+\[
+\alpha_1=\cdots=\alpha_{p-1}=0.
+\]
+La relation initiale devient
+\[
+\alpha_px_p=0.
+\]
+Comme \(x_p\neq 0\), on obtient \(\alpha_p=0\). La famille est donc libre.
+\end{proof}
+
+\begin{corollaire}
+Les sous-espaces propres associés à des valeurs propres deux à deux distinctes sont en somme directe.
+\end{corollaire}
+
+\begin{proof}
+Si l’on prend des vecteurs dans des sous-espaces propres distincts, ils sont libres par le théorème précédent.
+\end{proof}
+
+\begin{corollaire}
+Si un endomorphisme de dimension \(n\) possède \(n\) valeurs propres distinctes dans \(\K\), alors il est diagonalisable.
+\end{corollaire}
+
+\begin{proof}
+On choisit un vecteur propre non nul dans chacun des \(n\) sous-espaces propres. Ils sont libres, donc forment une base de \(E\).
+\end{proof}
+
+\section{Multiplicités algébrique et géométrique}
+
+\subsection{Définitions}
+
+\begin{definition}
+Soit \(\lambda\) une valeur propre d’un endomorphisme \(u\) ou d’une matrice \(A\).
+
+La \textbf{multiplicité algébrique} de \(\lambda\) est sa multiplicité comme racine du polynôme caractéristique.
+
+La \textbf{multiplicité géométrique} de \(\lambda\) est
+\[
+\dim(E_\lambda).
+\]
+\end{definition}
+
+\begin{remarque}
+La multiplicité algébrique se lit dans le polynôme caractéristique.  
+La multiplicité géométrique se lit dans la dimension du sous-espace propre.
+\end{remarque}
+
+\subsection{Inégalité fondamentale}
+
+\begin{theoreme}
+Pour toute valeur propre \(\lambda\),
+\[
+1\le \dim(E_\lambda)\le m_\lambda,
+\]
+où \(m_\lambda\) désigne la multiplicité algébrique de \(\lambda\).
+\end{theoreme}
+
+\begin{proof}
+Comme \(\lambda\) est valeur propre, on a
+\[
+E_\lambda\neq \{0\},
+\]
+donc
+\[
+\dim(E_\lambda)\ge 1.
+\]
+
+Pour montrer que
+\[
+\dim(E_\lambda)\le m_\lambda,
+\]
+soit \(r=\dim(E_\lambda)\). Choisissons une base
+\[
+(e_1,\dots,e_r)
+\]
+de \(E_\lambda\), complétée en une base de \(E\) :
+\[
+(e_1,\dots,e_r,e_{r+1},\dots,e_n).
+\]
+Dans cette base, la matrice de \(u\) est de la forme
+\[
+\begin{pmatrix}
+\lambda I_r & *\\
+0 & B
+\end{pmatrix}.
+\]
+Donc
+\[
+\chi_u(X)=\det(XI_n-A)=(X-\lambda)^r\chi_B(X).
+\]
+Ainsi \((X-\lambda)^r\) divise \(\chi_u(X)\), donc \(r\le m_\lambda\).
+\end{proof}
+
+\begin{remarque}
+Cette inégalité est fondamentale dans toute la théorie de la diagonalisation.
+\end{remarque}
+
+\section{Premiers critères de diagonalisabilité}
+
+\subsection{Définition}
+
+\begin{definition}
+Un endomorphisme \(u\in\mathcal L(E,E)\) est dit \textbf{diagonalisable} s’il existe une base de \(E\) formée de vecteurs propres de \(u\).
+
+Une matrice \(A\in M_n(\K)\) est dite \textbf{diagonalisable} s’il existe \(P\in GL_n(\K)\) et une matrice diagonale \(D\) telles que
+\[
+A=PDP^{-1}.
+\]
+\end{definition}
+
+\subsection{Critère par somme des sous-espaces propres}
+
+\begin{theoreme}
+Un endomorphisme \(u\) est diagonalisable si et seulement si
+\[
+E=\bigoplus_{\lambda\in\Sp(u)} E_\lambda.
+\]
+\end{theoreme}
+
+\begin{proof}
+Si \(u\) est diagonalisable, il existe une base de vecteurs propres. En regroupant les vecteurs selon leur valeur propre, on obtient une base adaptée à la somme des sous-espaces propres, donc cette somme vaut \(E\).
+
+Réciproquement, si
+\[
+E=\bigoplus_{\lambda\in\Sp(u)} E_\lambda,
+\]
+on prend une base de chaque sous-espace propre, et leur réunion forme une base de \(E\) constituée de vecteurs propres.
+\end{proof}
+
+\begin{corollaire}
+Un endomorphisme \(u\) est diagonalisable si et seulement si la somme des dimensions des sous-espaces propres vaut \(\dim(E)\).
+\end{corollaire}
+
+\begin{proof}
+Les sous-espaces propres associés à des valeurs propres distinctes sont en somme directe, donc leur somme a pour dimension la somme des dimensions.
+\end{proof}
+
+\subsection{Critère des valeurs propres distinctes}
+
+\begin{corollaire}
+Si \(\dim(E)=n\) et si \(u\) possède \(n\) valeurs propres distinctes dans \(\K\), alors \(u\) est diagonalisable.
+\end{corollaire}
+
+\begin{proof}
+Les sous-espaces propres correspondants ont chacun une dimension au moins égale à \(1\). Leur somme directe a donc une dimension au moins égale à \(n\), donc égale à \(n\). Elle coïncide avec \(E\).
+\end{proof}
+
+\subsection{Critère via les multiplicités}
+
+\begin{theoreme}
+Un endomorphisme \(u\) est diagonalisable si et seulement si :
+\begin{enumerate}[label=\arabic*)]
+    \item son polynôme caractéristique est scindé sur \(\K\) ;
+    \item pour toute valeur propre \(\lambda\),
+    \[
+    \dim(E_\lambda)=m_\lambda.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{proof}
+Supposons d’abord \(u\) diagonalisable. Dans une base de vecteurs propres, sa matrice est diagonale, donc le polynôme caractéristique est scindé. La multiplicité algébrique de \(\lambda\) est alors exactement le nombre de fois où \(\lambda\) apparaît sur la diagonale, c’est-à-dire la dimension du sous-espace propre.
+
+Réciproquement, supposons que le polynôme caractéristique soit scindé :
+\[
+\chi_u(X)=\prod_{i=1}^r (X-\lambda_i)^{m_i}.
+\]
+Si pour tout \(i\),
+\[
+\dim(E_{\lambda_i})=m_i,
+\]
+alors
+\[
+\sum_{i=1}^r \dim(E_{\lambda_i})=\sum_{i=1}^r m_i=n.
+\]
+Comme les sous-espaces propres sont en somme directe, leur somme a dimension \(n\), donc c’est \(E\). L’endomorphisme est diagonalisable.
+\end{proof}
+
+\section{Lien avec les polynômes annulateurs}
+
+\subsection{Valeurs propres et polynôme annulateur}
+
+\begin{proposition}
+Si \(P\in\K[X]\) annule un endomorphisme \(u\), alors toute valeur propre \(\lambda\) de \(u\) vérifie
+\[
+P(\lambda)=0.
+\]
+\end{proposition}
+
+\begin{proof}
+Soit \(x\neq 0\) un vecteur propre associé à \(\lambda\). Alors
+\[
+u(x)=\lambda x.
+\]
+On en déduit par récurrence
+\[
+u^k(x)=\lambda^k x.
+\]
+Si
+\[
+P(X)=a_0+a_1X+\cdots+a_mX^m,
+\]
+alors
+\[
+P(u)(x)=a_0x+a_1u(x)+\cdots+a_mu^m(x)
+=(a_0+a_1\lambda+\cdots+a_m\lambda^m)x=P(\lambda)x.
+\]
+Comme \(P(u)=0\), on a
+\[
+P(\lambda)x=0.
+\]
+Et comme \(x\neq 0\), cela impose
+\[
+P(\lambda)=0.
+\]
+\end{proof}
+
+\begin{corollaire}
+Les valeurs propres de \(u\) sont parmi les racines de tout polynôme annulateur de \(u\).
+\end{corollaire}
+
+\subsection{Cas d’un polynôme annulateur scindé simple}
+
+\begin{theoreme}
+Si un endomorphisme \(u\) admet un polynôme annulateur scindé à racines simples, alors \(u\) est diagonalisable.
+\end{theoreme}
+
+\begin{proof}
+Supposons qu’il existe un polynôme
+\[
+P(X)=\prod_{i=1}^r (X-\lambda_i)
+\]
+avec les \(\lambda_i\) deux à deux distincts, tel que \(P(u)=0\).
+
+Un résultat de décomposition fondamental montre alors que
+\[
+E=\Ker(u-\lambda_1\id_E)\oplus\cdots\oplus \Ker(u-\lambda_r\id_E).
+\]
+Autrement dit,
+\[
+E=E_{\lambda_1}\oplus\cdots\oplus E_{\lambda_r}.
+\]
+Donc \(u\) est diagonalisable.
+\end{proof}
+
+\begin{remarque}
+C’est un critère extrêmement utile en pratique.
+\end{remarque}
+
+\section{Exemples détaillés}
+
+\subsection{Matrice diagonale}
+
+\begin{exemple}
+Soit
+\[
+A=
+\begin{pmatrix}
+2 & 0 & 0\\
+0 & 3 & 0\\
+0 & 0 & 3
+\end{pmatrix}.
+\]
+Alors
+\[
+\chiA(X)=(X-2)(X-3)^2.
+\]
+Les valeurs propres sont \(2\) et \(3\).
+
+Le sous-espace propre associé à \(2\) est
+\[
+E_2=\Vect\left(
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}
+\right).
+\]
+Le sous-espace propre associé à \(3\) est
+\[
+E_3=\Vect\left(
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\right).
+\]
+La somme des dimensions vaut \(3\), donc la matrice est diagonalisable, ce qui est évident puisqu’elle est déjà diagonale.
+\end{exemple}
+
+\subsection{Matrice triangulaire non diagonale mais diagonalisable}
+
+\begin{exemple}
+Soit
+\[
+A=
+\begin{pmatrix}
+1 & 1\\
+0 & 2
+\end{pmatrix}.
+\]
+Alors
+\[
+\chiA(X)=(X-1)(X-2),
+\]
+donc \(A\) possède deux valeurs propres distinctes, \(1\) et \(2\). Elle est donc diagonalisable.
+\end{exemple}
+
+\subsection{Matrice non diagonalisable}
+
+\begin{exemple}
+Soit
+\[
+A=
+\begin{pmatrix}
+1 & 1\\
+0 & 1
+\end{pmatrix}.
+\]
+Alors
+\[
+\chiA(X)=(X-1)^2.
+\]
+L’unique valeur propre est \(1\). Le sous-espace propre est
+\[
+E_1=\Ker(A-I_2)=
+\Ker\begin{pmatrix}
+0 & 1\\
+0 & 0
+\end{pmatrix}
+=
+\left\{
+\begin{pmatrix}
+x\\0
+\end{pmatrix}
+\mid x\in\R
+\right\}.
+\]
+Donc
+\[
+\dim(E_1)=1<2.
+\]
+La matrice n’est pas diagonalisable.
+\end{exemple}
+
+\section{Valeurs propres des matrices particulières}
+
+\subsection{Matrice triangulaire}
+
+\begin{proposition}
+Les valeurs propres d’une matrice triangulaire sont ses coefficients diagonaux.
+\end{proposition}
+
+\begin{proof}
+Son polynôme caractéristique vaut
+\[
+\chiA(X)=\prod_{i=1}^n (X-a_{ii}),
+\]
+car \(XI_n-A\) est triangulaire de diagonale \(X-a_{11},\dots,X-a_{nn}\).
+\end{proof}
+
+\subsection{Projecteur}
+
+\begin{proposition}
+Si \(u^2=u\), alors les valeurs propres de \(u\) sont dans \(\{0,1\}\).
+\end{proposition}
+
+\begin{proof}
+Si \(u(x)=\lambda x\) avec \(x\neq 0\), alors
+\[
+u^2(x)=u(x).
+\]
+Donc
+\[
+\lambda^2x=\lambda x,
+\]
+d’où
+\[
+\lambda(\lambda-1)x=0.
+\]
+Comme \(x\neq 0\), on obtient
+\[
+\lambda(\lambda-1)=0,
+\]
+soit \(\lambda\in\{0,1\}\).
+\end{proof}
+
+\subsection{Involution}
+
+\begin{proposition}
+Si \(u^2=\id_E\), alors les valeurs propres de \(u\) sont dans \(\{-1,1\}\).
+\end{proposition}
+
+\begin{proof}
+Si \(u(x)=\lambda x\), alors
+\[
+u^2(x)=\lambda^2x=x,
+\]
+donc
+\[
+(\lambda^2-1)x=0.
+\]
+Comme \(x\neq 0\), on obtient
+\[
+\lambda^2=1.
+\]
+\end{proof}
+
+\section{Méthode pratique de recherche}
+
+\begin{methode}
+Pour déterminer les valeurs propres et sous-espaces propres d’une matrice \(A\) :
+\begin{enumerate}
+    \item calculer le polynôme caractéristique
+    \[
+    \chiA(X)=\det(XI_n-A) ;
+    \]
+    \item résoudre l’équation
+    \[
+    \chiA(\lambda)=0 ;
+    \]
+    \item pour chaque valeur propre \(\lambda\), résoudre
+    \[
+    (A-\lambda I_n)X=0 ;
+    \]
+    \item déterminer une base du sous-espace propre.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}
+Pour étudier rapidement la diagonalisabilité :
+\begin{itemize}
+    \item si la matrice a \(n\) valeurs propres distinctes, elle est diagonalisable ;
+    \item sinon, comparer pour chaque valeur propre la multiplicité géométrique à la multiplicité algébrique.
+\end{itemize}
+\end{methode}
+
+\section{Erreurs classiques}
+
+\begin{itemize}
+    \item Oublier que le vecteur nul n’est pas un vecteur propre.
+    \item Confondre valeur propre et coefficient diagonal d’une matrice quelconque.
+    \item Croire qu’avoir une seule valeur propre empêche toujours la diagonalisabilité.
+    \item Confondre multiplicité algébrique et multiplicité géométrique.
+    \item Croire qu’un polynôme caractéristique scindé suffit toujours à assurer la diagonalisabilité.
+    \item Oublier de calculer les sous-espaces propres après avoir trouvé les valeurs propres.
+\end{itemize}
+
+\section{Résumé du chapitre}
+
+\begin{itemize}
+    \item \(\lambda\) est valeur propre de \(u\) s’il existe \(x\neq 0\) tel que
+    \[
+    u(x)=\lambda x.
+    \]
+    \item Le sous-espace propre associé est
+    \[
+    E_\lambda=\Ker(u-\lambda\id_E).
+    \]
+    \item Les valeurs propres sont les racines du polynôme caractéristique.
+    \item Des vecteurs propres associés à des valeurs propres distinctes sont libres.
+    \item Les sous-espaces propres associés à des valeurs propres distinctes sont en somme directe.
+    \item Une matrice ayant \(n\) valeurs propres distinctes est diagonalisable.
+    \item Pour toute valeur propre \(\lambda\),
+    \[
+    1\le \dim(E_\lambda)\le m_\lambda.
+    \]
+    \item Un polynôme annulateur s’annule sur toute valeur propre.
+\end{itemize}
+
+\section*{Exercices d’application immédiate}
+
+\begin{enumerate}[label=\textbf{Exercice \arabic*.}]
+    \item Déterminer les valeurs propres et les sous-espaces propres de
+    \[
+    \begin{pmatrix}
+    2 & 0\\
+    0 & 3
+    \end{pmatrix}.
+    \]
+
+    \item Déterminer le polynôme caractéristique de
+    \[
+    \begin{pmatrix}
+    1 & 1\\
+    0 & 2
+    \end{pmatrix}.
+    \]
+
+    \item Montrer que des vecteurs propres associés à des valeurs propres distinctes sont libres.
+
+    \item Étudier la diagonalisabilité de
+    \[
+    \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+    \end{pmatrix}.
+    \]
+
+    \item Déterminer les valeurs propres d’un projecteur.
+
+    \item Déterminer les valeurs propres d’un endomorphisme vérifiant
+    \[
+    u^2=\id_E.
+    \]
+
+    \item Soit
+    \[
+    A=
+    \begin{pmatrix}
+    2 & 1 & 0\\
+    0 & 2 & 0\\
+    0 & 0 & 3
+    \end{pmatrix}.
+    \]
+    Calculer son polynôme caractéristique et ses valeurs propres.
+
+    \item Pour la matrice précédente, déterminer les sous-espaces propres.
+
+    \item Montrer qu’un endomorphisme ayant \(n\) valeurs propres distinctes sur un espace de dimension \(n\) est diagonalisable.
+
+    \item Soit \(u\) tel que
+    \[
+    u^2-3u+2\id_E=0.
+    \]
+    Montrer que ses valeurs propres sont parmi \(1\) et \(2\).
+\end{enumerate}
+
+\end{document}

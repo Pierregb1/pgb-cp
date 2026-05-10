@@ -1,0 +1,2191 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\pgfplotsset{compat=1.18}
+
+%========================
+% COULEURS
+%========================
+\definecolor{bleu}{RGB}{28,76,150}
+\definecolor{vert}{RGB}{35,120,80}
+\definecolor{rouge}{RGB}{180,45,45}
+\definecolor{orange}{RGB}{220,130,25}
+\definecolor{gris}{RGB}{245,245,245}
+\definecolor{violet}{RGB}{105,60,150}
+
+%========================
+% MISE EN PAGE
+%========================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Première spécialité mathématiques}
+\fancyhead[C]{Fonction exponentielle}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Recueil de DS et sujets type bac}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleu,
+    urlcolor=bleu
+}
+
+%========================
+% COMMANDES
+%========================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\pts}[1]{\hfill \textbf{[#1 pt]}}
+\newcommand{\ptss}[1]{\hfill \textbf{[#1 pts]}}
+\newcommand{\competences}[1]{\textbf{Compétences :} #1}
+\newcommand{\calculatrice}{\textbf{Calculatrice :} autorisée sauf mention contraire.}
+\newcommand{\duree}[1]{\textbf{Durée :} #1}
+\newcommand{\bareme}[1]{\textbf{Barème :} #1}
+
+%========================
+% TCOLORBOX
+%========================
+\tcbset{
+  arc=2mm,
+  boxrule=0.7pt,
+  left=2mm,
+  right=2mm,
+  top=1mm,
+  bottom=1mm
+}
+
+\newtcolorbox{rappelbox}{
+  title=\textbf{Rappel},
+  colback=blue!4,
+  colframe=bleu
+}
+
+\newtcolorbox{methodebox}{
+  title=\textbf{Méthode},
+  colback=orange!8,
+  colframe=orange
+}
+
+\newtcolorbox{attentionbox}{
+  title=\textbf{Attention},
+  colback=red!5,
+  colframe=rouge
+}
+
+\newtcolorbox{sujetbox}{
+  title=\textbf{Informations du sujet},
+  colback=gray!7,
+  colframe=black!60
+}
+
+\newtcolorbox{correctionbox}[1]{
+  title=\textbf{#1},
+  colback=green!4,
+  colframe=vert
+}
+
+\newtcolorbox{baremebox}{
+  title=\textbf{Barème détaillé},
+  colback=purple!5,
+  colframe=violet
+}
+
+%========================
+% DOCUMENT
+%========================
+\begin{document}
+
+%========================
+% PAGE DE TITRE
+%========================
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+
+{\Huge \textbf{Recueil de DS et sujets type bac}}\\[0.3cm]
+{\Huge \textbf{Fonction exponentielle}}\\[0.5cm]
+{\Large Première générale -- spécialité mathématiques}\\[1cm]
+
+\begin{tcolorbox}[colback=blue!5,colframe=bleu,width=0.9\textwidth]
+\centering
+\Large
+Sujets usuels, sujets longs, sujets type bac, sujets difficiles et corrigés complets.
+\end{tcolorbox}
+
+\vfill
+
+\begin{tabular}{|>{\bfseries}l|l|}
+\hline
+Chapitre & Fonction exponentielle \\
+\hline
+Niveau & Première spécialité mathématiques \\
+\hline
+Contenu & 4 DS usuels, 3 DS longs, 4 sujets type bac, 2 sujets difficiles \\
+\hline
+Objectif & Préparation progressive aux évaluations et aux exercices type bac \\
+\hline
+\end{tabular}
+
+\vfill
+
+{\large Document LaTeX prêt à compiler}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%================================================
+\section{Rappels express}
+
+\begin{rappelbox}
+La fonction exponentielle est la fonction dérivable sur $\R$ vérifiant :
+\[
+\exp'(x)=\exp(x)
+\qquad \text{et} \qquad
+\exp(0)=1.
+\]
+On note :
+\[
+\exp(x)=\e^x.
+\]
+\end{rappelbox}
+
+\begin{rappelbox}
+Pour tous réels $a$ et $b$ :
+\[
+\e^{a+b}=\e^a\e^b,
+\qquad
+\e^{-a}=\frac{1}{\e^a},
+\qquad
+\e^{a-b}=\frac{\e^a}{\e^b}.
+\]
+Pour tout entier relatif $n$ :
+\[
+\e^{na}=(\e^a)^n.
+\]
+\end{rappelbox}
+
+\begin{rappelbox}
+Pour tout réel $x$ :
+\[
+\e^x>0.
+\]
+De plus :
+\[
+(\e^x)'=\e^x.
+\]
+Donc la fonction exponentielle est strictement croissante sur $\R$.
+\end{rappelbox}
+
+\begin{rappelbox}
+Pour tous réels $A$ et $B$ :
+\[
+\e^A=\e^B \Longleftrightarrow A=B.
+\]
+Et :
+\[
+\e^A<\e^B \Longleftrightarrow A<B.
+\]
+\end{rappelbox}
+
+\begin{attentionbox}
+Dans ce recueil, on reste au niveau Première : on n'utilise pas le logarithme comme outil principal de résolution. Lorsqu'une équation comme $\e^x=2$ apparaît, on indique qu'elle admet une unique solution, éventuellement approchée, mais on ne l'exprime pas avec $\ln(2)$.
+\end{attentionbox}
+
+\begin{methodebox}
+\textbf{Étudier une fonction avec exponentielle.}
+\begin{enumerate}
+    \item Déterminer le domaine de définition.
+    \item Calculer la dérivée.
+    \item Factoriser, souvent par $\e^x$.
+    \item Utiliser $\e^x>0$.
+    \item Étudier le signe du facteur restant.
+    \item Construire le tableau de variations.
+    \item Conclure clairement.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Modélisation exponentielle.}
+Une fonction du type :
+\[
+f(t)=C\e^{kt}
+\]
+modélise une évolution exponentielle.
+\begin{itemize}
+    \item $C=f(0)$ est la valeur initiale.
+    \item Si $k>0$, le phénomène est croissant.
+    \item Si $k<0$, le phénomène est décroissant.
+\end{itemize}
+\end{methodebox}
+
+\newpage
+
+%================================================
+\section{DS usuels niveau Première}
+
+%------------------------------------------------
+\subsection*{DS 1 -- Bases de l'exponentielle}
+\addcontentsline{toc}{subsection}{DS 1 -- Bases de l'exponentielle}
+
+\begin{sujetbox}
+\duree{45 minutes}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{calculer, simplifier, résoudre, dériver, interpréter.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 5 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 5 points \quad
+Exercice 4 : 5 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Calculs et propriétés}
+
+Simplifier les expressions suivantes sous la forme $\e^A$ lorsque c'est possible.
+\begin{enumerate}
+    \item $\e^2\e^5$ \pts{1}
+    \item $\e^{x+1}\e^{2x-3}$ \pts{1}
+    \item $\dfrac{\e^{4x}}{\e^{x-2}}$ \pts{1}
+    \item $\dfrac{\e^{-x}\e^{3x+1}}{\e^2}$ \pts{1}
+    \item $\e^{2x}\e^{-x+4}\e^{1-x}$ \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Équations}
+
+Résoudre dans $\R$.
+\begin{enumerate}
+    \item $\e^x=\e^3$ \pts{1}
+    \item $\e^{2x-1}=\e^{x+4}$ \pts{1}
+    \item $\e^{x^2}=\e^{3x+4}$ \ptss{1.5}
+    \item $\e^{x^2-5x}=\e^{-6}$ \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Dérivation}
+
+On considère :
+\[
+f(x)=3\e^x-2x+1.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \pts{2}
+    \item Résoudre $f'(x)=0$ lorsque cela est possible sans logarithme. \pts{1}
+    \item Déterminer le signe de $f'(x)$ à l'aide de la croissance de l'exponentielle. \pts{1}
+    \item En déduire les variations de $f$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Modélisation}
+
+Une population est modélisée par :
+\[
+P(t)=800\e^{0,05t},
+\]
+où $t$ est exprimé en années.
+\begin{enumerate}
+    \item Calculer $P(0)$. \pts{1}
+    \item Dire si la population augmente ou diminue. Justifier. \pts{1}
+    \item Calculer une valeur approchée de $P(10)$. \ptss{1.5}
+    \item Interpréter le coefficient $0,05$. \ptss{1.5}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{DS 2 -- Équations, inéquations et variations}
+\addcontentsline{toc}{subsection}{DS 2 -- Équations, inéquations et variations}
+
+\begin{sujetbox}
+\duree{1 heure}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{résoudre, raisonner, dériver, construire un tableau de variations.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 4 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 6 points \quad
+Exercice 4 : 5 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Inéquations exponentielles}
+
+Résoudre dans $\R$.
+\begin{enumerate}
+    \item $\e^x<\e^2$ \pts{1}
+    \item $\e^{2x+1}\geq \e^5$ \pts{1}
+    \item $\e^{x^2}<\e^4$ \pts{1}
+    \item $\e^{x^2-3x}\leq 1$ \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Dériver des produits}
+
+Dériver les fonctions suivantes.
+\begin{enumerate}
+    \item $f(x)=x\e^x$ \pts{1}
+    \item $g(x)=(x-1)\e^x$ \pts{1}
+    \item $h(x)=(2x+3)\e^x$ \ptss{1.5}
+    \item $p(x)=(x^2+1)\e^x$ \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Étude de fonction}
+
+On considère :
+\[
+f(x)=(x-1)\e^x.
+\]
+\begin{enumerate}
+    \item Justifier que $f$ est définie sur $\R$. \pts{0.5}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Montrer que $f'(x)=x\e^x$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \pts{1}
+    \item Dresser le tableau de variations de $f$. \pts{1}
+    \item Déterminer l'extremum de $f$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Suite exponentielle}
+
+On définit :
+\[
+u_n=5\e^{2n-1}.
+\]
+\begin{enumerate}
+    \item Calculer $u_0$ et $u_1$. \pts{1}
+    \item Montrer que $(u_n)$ est une suite géométrique. \ptss{2}
+    \item Donner sa raison. \pts{1}
+    \item Déterminer son sens de variation. \pts{1}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{DS 3 -- Tangentes et étude graphique}
+\addcontentsline{toc}{subsection}{DS 3 -- Tangentes et étude graphique}
+
+\begin{sujetbox}
+\duree{1 heure}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{dériver, déterminer une tangente, comparer deux courbes, interpréter.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 5 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 6 points \quad
+Exercice 4 : 4 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Tangente à $\e^x$}
+
+On considère $f(x)=\e^x$.
+\begin{enumerate}
+    \item Calculer $f(0)$ et $f'(0)$. \pts{1}
+    \item Donner l'équation de la tangente à la courbe de $f$ au point d'abscisse $0$. \ptss{1.5}
+    \item Calculer $f(1)$ et $f'(1)$. \pts{1}
+    \item Donner l'équation de la tangente au point d'abscisse $1$. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Comparaison avec une droite}
+
+On pose :
+\[
+h(x)=\e^x-x-1.
+\]
+\begin{enumerate}
+    \item Calculer $h'(x)$. \pts{1}
+    \item Étudier le signe de $h'(x)$. \ptss{1.5}
+    \item Montrer que $h$ admet un minimum en $0$. \pts{1}
+    \item En déduire que $\e^x\geq x+1$ pour tout réel $x$. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Fonction produit}
+
+On considère :
+\[
+f(x)=(x+2)\e^x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Factoriser $f'(x)$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \pts{1}
+    \item Dresser le tableau de variations de $f$. \pts{1}
+    \item Donner l'équation de la tangente à la courbe de $f$ en $0$. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Lecture graphique}
+
+On donne la courbe représentative d'une fonction de la forme :
+\[
+F(t)=C\e^{kt}.
+\]
+On sait que $F(0)=12$ et que le phénomène est décroissant.
+\begin{enumerate}
+    \item Donner la valeur de $C$. \pts{1}
+    \item Quel est le signe de $k$ ? \pts{1}
+    \item Proposer une formule possible pour $F(t)$. \pts{1}
+    \item Interpréter le modèle. \pts{1}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{DS 4 -- Synthèse usuelle}
+\addcontentsline{toc}{subsection}{DS 4 -- Synthèse usuelle}
+
+\begin{sujetbox}
+\duree{1 heure}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{calculer, résoudre, dériver, étudier, modéliser.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 4 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 6 points \quad
+Exercice 4 : 5 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Calculs rapides}
+
+Simplifier.
+\begin{enumerate}
+    \item $\e^{x+2}\e^{-x+3}$ \pts{1}
+    \item $\dfrac{\e^{3x+1}}{\e^{x-2}}$ \pts{1}
+    \item $\e^{2x}-5\e^x+6$ en posant $X=\e^x$ dans la suite. \pts{1}
+    \item Factoriser $x\e^x-4\e^x$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Équation avec changement de variable}
+
+Résoudre dans $\R$, autant que possible sans logarithme :
+\[
+\e^{2x}-5\e^x+6=0.
+\]
+\begin{enumerate}
+    \item Poser $X=\e^x$ et écrire l'équation vérifiée par $X$. \pts{1}
+    \item Résoudre l'équation obtenue en $X$. \ptss{1.5}
+    \item Expliquer pourquoi les solutions exactes en $x$ ne s'expriment pas avec les outils de Première. \pts{1}
+    \item Donner une conclusion correcte. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Étude de fonction}
+
+On considère :
+\[
+f(x)=\e^x-3x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \pts{1}
+    \item Montrer que $f'(x)=0$ revient à résoudre $\e^x=3$. \pts{1}
+    \item Expliquer pourquoi cette équation admet une unique solution $\alpha$. \pts{1}
+    \item À l'aide d'une calculatrice, donner une valeur approchée de $\alpha$. \pts{1}
+    \item Dresser le tableau de variations de $f$. \ptss{1.5}
+    \item Interpréter l'existence du minimum. \pts{0.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Modèle de médicament}
+
+On modélise une quantité de médicament par :
+\[
+M(t)=60\e^{-0,25t}.
+\]
+\begin{enumerate}
+    \item Calculer $M(0)$. \pts{1}
+    \item Justifier que la quantité diminue. \pts{1}
+    \item Calculer $M(4)$. \ptss{1.5}
+    \item Interpréter le résultat dans le contexte. \ptss{1.5}
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{DS longs niveau approfondissement}
+
+%------------------------------------------------
+\subsection*{DS long 1 -- Fonctions et modélisation}
+\addcontentsline{toc}{subsection}{DS long 1 -- Fonctions et modélisation}
+
+\begin{sujetbox}
+\duree{1 h 30}
+
+\calculatrice
+
+\bareme{25 points}
+
+\competences{étudier une fonction, résoudre, modéliser, interpréter.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 6 points \quad
+Exercice 2 : 9 points \quad
+Exercice 3 : 10 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Calculs et équations}
+
+\begin{enumerate}
+    \item Simplifier $A=\dfrac{\e^{2x+1}\e^{-x+4}}{\e^{3}}$. \ptss{1.5}
+    \item Résoudre $\e^{x^2-4}=\e^{2x}$. \ptss{2}
+    \item Résoudre $\e^{x^2-5x}\leq \e^{-6}$. \ptss{2.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Étude complète}
+
+On considère :
+\[
+f(x)=(x+1)\e^x-2.
+\]
+\begin{enumerate}
+    \item Déterminer le domaine de définition. \pts{0.5}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Montrer que $f'(x)=(x+2)\e^x$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \ptss{1.5}
+    \item Dresser le tableau de variations. \ptss{1.5}
+    \item Calculer $f(-2)$. \pts{1}
+    \item Donner une équation de la tangente à la courbe de $f$ au point d'abscisse $0$. \pts{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Croissance de bactéries}
+
+Une population de bactéries est modélisée par :
+\[
+N(t)=1000\e^{0,6t},
+\]
+où $t$ est exprimé en heures.
+\begin{enumerate}
+    \item Calculer $N(0)$. \pts{1}
+    \item Calculer $N(3)$ à l'unité près. \ptss{1.5}
+    \item Justifier que $N$ est croissante. \pts{1}
+    \item Calculer $N'(t)$ en admettant que $(\e^{0,6t})'=0,6\e^{0,6t}$. \ptss{1.5}
+    \item Interpréter $N'(t)$. \ptss{1.5}
+    \item Calculer $N'(0)$. \pts{1}
+    \item Interpréter $N'(0)$ dans le contexte. \ptss{1.5}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{DS long 2 -- Suites et exponentielle}
+\addcontentsline{toc}{subsection}{DS long 2 -- Suites et exponentielle}
+
+\begin{sujetbox}
+\duree{1 h 30}
+
+\calculatrice
+
+\bareme{25 points}
+
+\competences{suites, exponentielle, variations, modélisation.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 5 points \quad
+Exercice 2 : 10 points \quad
+Exercice 3 : 10 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Suite géométrique}
+
+On définit :
+\[
+u_n=4\e^{-0,5n+2}.
+\]
+\begin{enumerate}
+    \item Calculer $u_0$ et $u_1$. \pts{2}
+    \item Montrer que $(u_n)$ est géométrique. \ptss{2}
+    \item Donner sa raison et son sens de variation. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Fonction associée}
+
+On considère :
+\[
+f(x)=(x^2+x+1)\e^x.
+\]
+\begin{enumerate}
+    \item Justifier que $f$ est définie sur $\R$. \pts{0.5}
+    \item Calculer $f'(x)$. \pts{2}
+    \item Montrer que :
+    \[
+    f'(x)=(x^2+3x+2)\e^x.
+    \]
+    \pts{1}
+    \item Factoriser $x^2+3x+2$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \ptss{2}
+    \item Dresser le tableau de variations de $f$. \ptss{2}
+    \item Calculer les valeurs des extremums. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Modèle discret et continu}
+
+Une quantité est observée chaque jour. Un modèle discret donne :
+\[
+v_n=1200\times 0,9^n.
+\]
+On propose aussi le modèle continu :
+\[
+g(t)=1200\e^{-0,105t}.
+\]
+\begin{enumerate}
+    \item Calculer $v_0$ et $g(0)$. \pts{1}
+    \item Calculer $v_5$ et $g(5)$ à l'unité près. \ptss{2}
+    \item Les deux modèles décrivent-ils une croissance ou une décroissance ? \pts{1}
+    \item Comparer les résultats. \ptss{1.5}
+    \item Expliquer l'intérêt d'un modèle continu. \ptss{2}
+    \item Interpréter le coefficient $-0,105$. \ptss{2.5}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{DS long 3 -- Tangentes, comparaison et modèle}
+\addcontentsline{toc}{subsection}{DS long 3 -- Tangentes, comparaison et modèle}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{25 points}
+
+\competences{dériver, comparer, raisonner, interpréter graphiquement.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 6 points \quad
+Exercice 2 : 9 points \quad
+Exercice 3 : 10 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Inégalité fondamentale}
+
+On considère :
+\[
+h(x)=\e^x-x-1.
+\]
+\begin{enumerate}
+    \item Calculer $h'(x)$. \pts{1}
+    \item Étudier le signe de $h'(x)$. \ptss{2}
+    \item Montrer que $h$ admet un minimum en $0$. \pts{1}
+    \item En déduire que $\e^x\geq x+1$. \ptss{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Fonction et tangente}
+
+On considère :
+\[
+f(x)=(x-2)\e^x+3.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Étudier les variations de $f$. \ptss{3}
+    \item Calculer $f(0)$ et $f'(0)$. \ptss{1.5}
+    \item Donner l'équation de la tangente en $0$. \ptss{1.5}
+    \item Déterminer la position relative de cette tangente et de la courbe au voisinage de $0$ par lecture numérique sur quelques valeurs. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Refroidissement}
+
+La différence de température entre un café et l'air ambiant est modélisée par :
+\[
+D(t)=75\e^{-0,18t}.
+\]
+\begin{enumerate}
+    \item Calculer $D(0)$. \pts{1}
+    \item Calculer $D(5)$ et $D(10)$ à $0,1$ près. \ptss{2}
+    \item Justifier que $D$ décroît. \ptss{1.5}
+    \item On admet que $D'(t)=-13,5\e^{-0,18t}$. Interpréter le signe de $D'(t)$. \ptss{1.5}
+    \item Expliquer pourquoi le café se rapproche de la température ambiante. \ptss{2}
+    \item Si la température ambiante est $20^\circ$C, donner la température du café au bout de $10$ minutes. \ptss{2}
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{Sujets type bac Première}
+
+%------------------------------------------------
+\subsection*{Sujet type bac 1 -- Fonctions et modélisation}
+\addcontentsline{toc}{subsection}{Sujet type bac 1 -- Fonctions et modélisation}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{calculer, raisonner, modéliser, communiquer.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 4 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 5 points \quad
+Exercice 4 : 6 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Automatismes exponentiels}
+
+\begin{enumerate}
+    \item Simplifier $\e^{x+3}\e^{2x-1}$. \pts{1}
+    \item Simplifier $\dfrac{\e^{5x}}{\e^{2x+4}}$. \pts{1}
+    \item Résoudre $\e^{3x-2}=\e^{x+6}$. \pts{1}
+    \item Résoudre $\e^{x^2}<\e^9$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Dérivation}
+
+On considère :
+\[
+f(x)=x\e^x-2x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Factoriser $f'(x)$ autant que possible. \pts{1}
+    \item Étudier le signe de $f'(x)$ lorsque cela est possible exactement. \ptss{1.5}
+    \item Donner une conclusion sur les variations. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Suite}
+
+On définit :
+\[
+u_n=\e^{3n-2}.
+\]
+\begin{enumerate}
+    \item Calculer $u_0$. \pts{1}
+    \item Montrer que $(u_n)$ est géométrique. \ptss{2}
+    \item Donner sa raison. \pts{1}
+    \item Déterminer son sens de variation. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Problème}
+
+Une entreprise modélise le nombre de visites quotidiennes sur un site par :
+\[
+V(t)=500\e^{0,08t},
+\]
+où $t$ est exprimé en semaines.
+\begin{enumerate}
+    \item Calculer $V(0)$. \pts{1}
+    \item Calculer $V(6)$ à l'unité près. \ptss{1.5}
+    \item Justifier que le nombre de visites augmente. \pts{1}
+    \item On admet que $V'(t)=40\e^{0,08t}$. Interpréter $V'(t)$. \ptss{1.5}
+    \item Calculer $V'(0)$ et interpréter. \pts{1}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{Sujet type bac 2 -- Étude de fonction guidée}
+\addcontentsline{toc}{subsection}{Sujet type bac 2 -- Étude de fonction guidée}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{étude de fonction, tangente, équation, interprétation.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 5 points \quad
+Exercice 2 : 7 points \quad
+Exercice 3 : 8 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Équations et inéquations}
+
+\begin{enumerate}
+    \item Résoudre $\e^{2x+1}=\e^{7}$. \pts{1}
+    \item Résoudre $\e^{x^2-4x}=\e^{-3}$. \ptss{2}
+    \item Résoudre $\e^{x^2-2x}\leq \e^3$. \ptss{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Tangente}
+
+On considère :
+\[
+f(x)=(x+1)\e^x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Calculer $f(0)$ et $f'(0)$. \pts{1}
+    \item Donner l'équation de la tangente en $0$. \ptss{1.5}
+    \item Calculer $f(1)$ et $f'(1)$. \pts{1}
+    \item Donner l'équation de la tangente en $1$. \ptss{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Étude complète}
+
+On considère :
+\[
+g(x)=(x+3)\e^x-4.
+\]
+\begin{enumerate}
+    \item Calculer $g'(x)$. \ptss{1.5}
+    \item Montrer que $g'(x)=(x+4)\e^x$. \pts{1}
+    \item Étudier le signe de $g'(x)$. \ptss{1.5}
+    \item Dresser le tableau de variations de $g$. \ptss{1.5}
+    \item Déterminer l'extremum de $g$. \pts{1}
+    \item Calculer $g(0)$ et interpréter graphiquement. \pts{1}
+    \item L'équation $g(x)=0$ admet-elle une solution évidente ? \pts{0.5}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{Sujet type bac 3 -- Modèles exponentiels}
+\addcontentsline{toc}{subsection}{Sujet type bac 3 -- Modèles exponentiels}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{modéliser, dériver, calculer, interpréter.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 4 points \quad
+Exercice 2 : 5 points \quad
+Exercice 3 : 5 points \quad
+Exercice 4 : 6 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Calculs}
+
+\begin{enumerate}
+    \item Simplifier $\dfrac{\e^{2x+5}}{\e^{x-1}}$. \pts{1}
+    \item Factoriser $(x+2)\e^x-5\e^x$. \pts{1}
+    \item Résoudre $\e^{x-2}=\e^{4}$. \pts{1}
+    \item Résoudre $\e^{x^2}\geq \e^{16}$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Radioactivité}
+
+Une quantité radioactive est modélisée par :
+\[
+Q(t)=300\e^{-0,12t}.
+\]
+\begin{enumerate}
+    \item Donner $Q(0)$. \pts{1}
+    \item Justifier que $Q$ décroît. \pts{1}
+    \item Calculer $Q(5)$ à l'unité près. \ptss{1.5}
+    \item Interpréter le résultat. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Capital}
+
+Un capital est modélisé par :
+\[
+C(t)=2000\e^{0,025t}.
+\]
+\begin{enumerate}
+    \item Calculer $C(0)$. \pts{1}
+    \item Calculer $C(8)$ à l'euro près. \ptss{1.5}
+    \item Justifier que $C$ est croissante. \pts{1}
+    \item Comparer avec une augmentation linéaire de $50$ euros par an. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Fonction associée}
+
+On considère :
+\[
+f(x)=(2x-1)\e^x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{1.5}
+    \item Factoriser $f'(x)$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \ptss{1.5}
+    \item Dresser le tableau de variations de $f$. \pts{1}
+    \item Déterminer l'extremum de $f$. \pts{1}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{Sujet type bac 4 -- Mélange complet}
+\addcontentsline{toc}{subsection}{Sujet type bac 4 -- Mélange complet}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{20 points}
+
+\competences{calculer, étudier une fonction, suites, modélisation.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 4 points \quad
+Exercice 2 : 6 points \quad
+Exercice 3 : 5 points \quad
+Exercice 4 : 5 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Calculs et équation}
+
+\begin{enumerate}
+    \item Simplifier $\e^{-x}\e^{3x+1}$. \pts{1}
+    \item Simplifier $\dfrac{\e^{4x+2}}{\e^{x-3}}$. \pts{1}
+    \item Résoudre $\e^{x^2-5x}=\e^{-6}$. \pts{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Étude de fonction}
+
+On considère :
+\[
+f(x)=\e^x-x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \pts{1}
+    \item Résoudre $f'(x)=0$. \pts{1}
+    \item Étudier le signe de $f'(x)$. \ptss{1.5}
+    \item Dresser le tableau de variations de $f$. \ptss{1.5}
+    \item En déduire que $\e^x\geq x+1$ pour tout réel $x$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Suite}
+
+On considère :
+\[
+u_n=10\e^{-0,2n}.
+\]
+\begin{enumerate}
+    \item Calculer $u_0$. \pts{1}
+    \item Montrer que $(u_n)$ est géométrique. \pts{2}
+    \item Donner sa raison. \pts{1}
+    \item Déterminer son sens de variation. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 4 -- Dilution}
+
+La concentration d'un produit est modélisée par :
+\[
+c(t)=15\e^{-0,2t}.
+\]
+\begin{enumerate}
+    \item Calculer $c(0)$. \pts{1}
+    \item Calculer $c(3)$. \ptss{1.5}
+    \item Justifier que la concentration diminue. \pts{1}
+    \item Interpréter le coefficient $-0,2$. \ptss{1.5}
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{Sujets type bac difficiles}
+
+%------------------------------------------------
+\subsection*{Sujet difficile 1 -- Paramètre et stratégie}
+\addcontentsline{toc}{subsection}{Sujet difficile 1 -- Paramètre et stratégie}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{25 points}
+
+\competences{raisonner avec un paramètre, étudier, interpréter.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 6 points \quad
+Exercice 2 : 9 points \quad
+Exercice 3 : 10 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Paramètre}
+
+Soit $a$ un réel. On considère :
+\[
+f_a(x)=\e^x-ax.
+\]
+\begin{enumerate}
+    \item Calculer $f_a'(x)$. \pts{1}
+    \item Étudier le cas $a=1$. \ptss{2}
+    \item Étudier le cas $a=-2$. \ptss{2}
+    \item Expliquer qualitativement ce qui change selon le signe de $a$. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Fonction plus longue}
+
+On considère :
+\[
+g(x)=(x^2-3x+3)\e^x.
+\]
+\begin{enumerate}
+    \item Calculer $g'(x)$. \ptss{2}
+    \item Montrer que :
+    \[
+    g'(x)=x(x-1)\e^x.
+    \]
+    \ptss{1.5}
+    \item Étudier le signe de $g'(x)$. \ptss{2}
+    \item Dresser le tableau de variations. \ptss{2}
+    \item Calculer $g(0)$ et $g(1)$. \ptss{1.5}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Modèle mixte}
+
+Une grandeur est modélisée par :
+\[
+M(t)=(t+5)\e^{-0,2t}.
+\]
+On admet que :
+\[
+M'(t)=(-0,2t)\e^{-0,2t}.
+\]
+\begin{enumerate}
+    \item Calculer $M(0)$. \pts{1}
+    \item Étudier le signe de $M'(t)$ pour $t\geq 0$. \ptss{2}
+    \item En déduire les variations de $M$ sur $[0;+\infty[$. \ptss{2}
+    \item Calculer $M(10)$ à $0,1$ près. \ptss{1.5}
+    \item Interpréter le résultat dans un contexte de médicament. \ptss{1.5}
+    \item Expliquer pourquoi ce modèle est plus subtil qu'un modèle $C\e^{kt}$. \ptss{2}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------
+\subsection*{Sujet difficile 2 -- Synthèse ambitieuse}
+\addcontentsline{toc}{subsection}{Sujet difficile 2 -- Synthèse ambitieuse}
+
+\begin{sujetbox}
+\duree{2 heures}
+
+\calculatrice
+
+\bareme{25 points}
+
+\competences{synthétiser, étudier, modéliser, communiquer.}
+\end{sujetbox}
+
+\begin{baremebox}
+Exercice 1 : 5 points \quad
+Exercice 2 : 10 points \quad
+Exercice 3 : 10 points
+\end{baremebox}
+
+\subsubsection*{Exercice 1 -- Équation et inéquation}
+
+\begin{enumerate}
+    \item Résoudre $\e^{x^2-2x}=\e^3$. \ptss{2}
+    \item Résoudre $\e^{x^2-4x}\leq \e^{-3}$. \ptss{2}
+    \item Expliquer pourquoi $\e^x=5$ a une unique solution mais ne se résout pas exactement avec les outils de Première. \pts{1}
+\end{enumerate}
+
+\subsubsection*{Exercice 2 -- Étude de fonction}
+
+On considère :
+\[
+f(x)=(x^2+x+1)\e^x.
+\]
+\begin{enumerate}
+    \item Calculer $f'(x)$. \ptss{2}
+    \item Montrer que :
+    \[
+    f'(x)=(x+1)^2\e^x.
+    \]
+    \pts{2}
+    \item Étudier le signe de $f'(x)$. \ptss{1.5}
+    \item Que peut-on dire des variations de $f$ ? \ptss{1.5}
+    \item Calculer $f(-1)$. \pts{1}
+    \item La fonction admet-elle un minimum local strict en $-1$ ? Justifier. \ptss{2}
+\end{enumerate}
+
+\subsubsection*{Exercice 3 -- Problème de refroidissement}
+
+Un objet chaud est placé dans une pièce à $20^\circ$C. Sa température est modélisée par :
+\[
+T(t)=20+80\e^{-0,1t}.
+\]
+\begin{enumerate}
+    \item Calculer $T(0)$. \pts{1}
+    \item Calculer $T(10)$ à $0,1^\circ$C près. \ptss{1.5}
+    \item Justifier que la température diminue. \pts{1}
+    \item On admet que $T'(t)=-8\e^{-0,1t}$. Interpréter le signe de $T'(t)$. \ptss{1.5}
+    \item Expliquer pourquoi la température se rapproche de $20^\circ$C. \ptss{2}
+    \item Déterminer par essais successifs entre quelles deux valeurs entières de $t$ la température passe sous $50^\circ$C. \ptss{3}
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{Corrigés complets}
+
+%================================================
+\subsection{Correction du DS 1}
+
+\begin{correctionbox}{DS 1 -- Exercice 1}
+On utilise :
+\[
+\e^a\e^b=\e^{a+b},
+\qquad
+\frac{\e^a}{\e^b}=\e^{a-b}.
+\]
+\begin{enumerate}
+    \item $\e^2\e^5=\e^{2+5}=\e^7$.
+    \item $\e^{x+1}\e^{2x-3}=\e^{(x+1)+(2x-3)}=\e^{3x-2}$.
+    \item $\dfrac{\e^{4x}}{\e^{x-2}}=\e^{4x-(x-2)}=\e^{3x+2}$.
+    \item $\dfrac{\e^{-x}\e^{3x+1}}{\e^2}
+    =\dfrac{\e^{2x+1}}{\e^2}
+    =\e^{2x-1}$.
+    \item $\e^{2x}\e^{-x+4}\e^{1-x}
+    =\e^{2x-x+4+1-x}
+    =\e^5$.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{DS 1 -- Exercice 2}
+On utilise l'injectivité de l'exponentielle :
+\[
+\e^A=\e^B \Longleftrightarrow A=B.
+\]
+\begin{enumerate}
+    \item $x=3$.
+    \item $2x-1=x+4$, donc $x=5$.
+    \item $x^2=3x+4$, donc $x^2-3x-4=0$.
+    On factorise :
+    \[
+    x^2-3x-4=(x-4)(x+1).
+    \]
+    Donc $x=4$ ou $x=-1$.
+    \item $x^2-5x=-6$, donc :
+    \[
+    x^2-5x+6=0.
+    \]
+    On factorise :
+    \[
+    x^2-5x+6=(x-2)(x-3).
+    \]
+    Donc $x=2$ ou $x=3$.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{DS 1 -- Exercice 3}
+\[
+f(x)=3\e^x-2x+1.
+\]
+Donc :
+\[
+f'(x)=3\e^x-2.
+\]
+L'équation $f'(x)=0$ donne :
+\[
+3\e^x-2=0
+\Longleftrightarrow
+\e^x=\frac{2}{3}.
+\]
+Cette équation admet une unique solution, car l'exponentielle est strictement croissante, mais elle ne s'exprime pas exactement sans logarithme au niveau Première.
+
+On note cette solution $\alpha$. Comme $\frac23<1=\e^0$, on a $\alpha<0$.
+
+La dérivée est négative si $\e^x<\frac23$, c'est-à-dire si $x<\alpha$, et positive si $x>\alpha$.
+
+Ainsi, $f$ est décroissante sur $]-\infty;\alpha]$, puis croissante sur $[\alpha;+\infty[$.
+\end{correctionbox}
+
+\begin{correctionbox}{DS 1 -- Exercice 4}
+\[
+P(t)=800\e^{0,05t}.
+\]
+\begin{enumerate}
+    \item $P(0)=800\e^0=800$.
+    \item Comme $0,05>0$, le modèle est croissant.
+    \item
+    \[
+    P(10)=800\e^{0,5}\approx 800\times1,649\approx 1319.
+    \]
+    \item Le coefficient $0,05$ mesure le rythme de croissance exponentielle. Plus il est grand, plus la population augmente rapidement.
+\end{enumerate}
+\end{correctionbox}
+
+%================================================
+\subsection{Correction du DS 2}
+
+\begin{correctionbox}{DS 2 -- Exercice 1}
+\begin{enumerate}
+    \item $\e^x<\e^2 \Longleftrightarrow x<2$.
+    \item $\e^{2x+1}\geq \e^5 \Longleftrightarrow 2x+1\geq5$, donc $x\geq2$.
+    \item $\e^{x^2}<\e^4 \Longleftrightarrow x^2<4$, donc $-2<x<2$.
+    \item $\e^{x^2-3x}\leq1=\e^0$, donc :
+    \[
+    x^2-3x\leq0
+    \Longleftrightarrow x(x-3)\leq0.
+    \]
+    Donc $x\in[0;3]$.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{DS 2 -- Exercice 2}
+On utilise la formule :
+\[
+(uv)'=u'v+uv'.
+\]
+\begin{enumerate}
+    \item $(x\e^x)'=\e^x+x\e^x=(x+1)\e^x$.
+    \item $((x-1)\e^x)'=\e^x+(x-1)\e^x=x\e^x$.
+    \item $((2x+3)\e^x)'=2\e^x+(2x+3)\e^x=(2x+5)\e^x$.
+    \item $((x^2+1)\e^x)'=2x\e^x+(x^2+1)\e^x=(x^2+2x+1)\e^x=(x+1)^2\e^x$.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{DS 2 -- Exercice 3}
+\[
+f(x)=(x-1)\e^x.
+\]
+La fonction est définie sur $\R$.
+
+Par produit :
+\[
+f'(x)=1\cdot\e^x+(x-1)\e^x=x\e^x.
+\]
+Comme $\e^x>0$, le signe de $f'(x)$ est celui de $x$.
+
+Donc $f'(x)<0$ si $x<0$, $f'(0)=0$, et $f'(x)>0$ si $x>0$.
+
+Ainsi, $f$ est décroissante sur $]-\infty;0]$, puis croissante sur $[0;+\infty[$.
+
+L'extremum est un minimum en $0$ :
+\[
+f(0)=(0-1)\e^0=-1.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}{DS 2 -- Exercice 4}
+\[
+u_n=5\e^{2n-1}.
+\]
+\[
+u_0=5\e^{-1},
+\qquad
+u_1=5\e.
+\]
+On calcule :
+\[
+\frac{u_{n+1}}{u_n}
+=
+\frac{5\e^{2(n+1)-1}}{5\e^{2n-1}}
+=
+\frac{\e^{2n+1}}{\e^{2n-1}}
+=
+\e^2.
+\]
+Donc $(u_n)$ est géométrique de raison $\e^2$.
+
+Comme $\e^2>1$, la suite est croissante.
+\end{correctionbox}
+
+%================================================
+\subsection{Correction du DS 3}
+
+\begin{correctionbox}{DS 3 -- Exercice 1}
+Pour $f(x)=\e^x$, on a $f'(x)=\e^x$.
+
+En $0$ :
+\[
+f(0)=1,
+\qquad
+f'(0)=1.
+\]
+La tangente a pour équation :
+\[
+y=f'(0)(x-0)+f(0)=x+1.
+\]
+
+En $1$ :
+\[
+f(1)=\e,
+\qquad
+f'(1)=\e.
+\]
+La tangente a pour équation :
+\[
+y=\e(x-1)+\e=\e x.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}{DS 3 -- Exercice 2}
+\[
+h(x)=\e^x-x-1.
+\]
+\[
+h'(x)=\e^x-1.
+\]
+Or :
+\[
+\e^x<1 \Longleftrightarrow x<0,
+\qquad
+\e^x=1 \Longleftrightarrow x=0,
+\qquad
+\e^x>1 \Longleftrightarrow x>0.
+\]
+Donc $h$ décroît sur $]-\infty;0]$ puis croît sur $[0;+\infty[$.
+
+Elle admet un minimum en $0$ :
+\[
+h(0)=1-0-1=0.
+\]
+Ainsi $h(x)\geq0$, donc :
+\[
+\e^x-x-1\geq0
+\Longleftrightarrow
+\e^x\geq x+1.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}{DS 3 -- Exercice 3}
+\[
+f(x)=(x+2)\e^x.
+\]
+\[
+f'(x)=\e^x+(x+2)\e^x=(x+3)\e^x.
+\]
+Comme $\e^x>0$, le signe de $f'(x)$ est celui de $x+3$.
+
+Donc $f$ décroît sur $]-\infty;-3]$ puis croît sur $[-3;+\infty[$.
+
+En $0$ :
+\[
+f(0)=2,
+\qquad
+f'(0)=3.
+\]
+La tangente en $0$ est :
+\[
+y=3x+2.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}{DS 3 -- Exercice 4}
+On a :
+\[
+F(t)=C\e^{kt}.
+\]
+Comme $F(0)=C\e^0=C$, on obtient :
+\[
+C=12.
+\]
+Le phénomène est décroissant, donc :
+\[
+k<0.
+\]
+Une formule possible est :
+\[
+F(t)=12\e^{-0,2t}.
+\]
+Ce modèle décrit une quantité initiale égale à $12$ qui diminue de manière exponentielle.
+\end{correctionbox}
+
+%================================================
+\subsection{Correction du DS 4}
+
+\begin{correctionbox}{DS 4 -- Exercice 1}
+\begin{enumerate}
+    \item $\e^{x+2}\e^{-x+3}=\e^5$.
+    \item $\dfrac{\e^{3x+1}}{\e^{x-2}}=\e^{2x+3}$.
+    \item $\e^{2x}-5\e^x+6=(\e^x)^2-5\e^x+6$. En posant $X=\e^x$, on obtient $X^2-5X+6$.
+    \item $x\e^x-4\e^x=(x-4)\e^x$.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{DS 4 -- Exercice 2}
+On pose $X=\e^x$. Comme $\e^x>0$, on a $X>0$.
+
+L'équation devient :
+\[
+X^2-5X+6=0.
+\]
+On factorise :
+\[
+X^2-5X+6=(X-2)(X-3).
+\]
+Donc :
+\[
+X=2
+\quad \text{ou} \quad
+X=3.
+\]
+Ainsi :
+\[
+\e^x=2
+\quad \text{ou} \quad
+\e^x=3.
+\]
+Ces équations ont chacune une unique solution, car la fonction exponentielle est strictement croissante, mais ces solutions ne s'expriment pas exactement avec les outils de Première sans logarithme.
+\end{correctionbox}
+
+\begin{correctionbox}{DS 4 -- Exercice 3}
+\[
+f(x)=\e^x-3x.
+\]
+\[
+f'(x)=\e^x-3.
+\]
+L'équation $f'(x)=0$ équivaut à :
+\[
+\e^x=3.
+\]
+La fonction exponentielle est strictement croissante et positive ; cette équation admet une unique solution $\alpha$.
+
+À la calculatrice :
+\[
+\alpha\approx 1,10.
+\]
+Si $x<\alpha$, alors $\e^x<3$, donc $f'(x)<0$.
+Si $x>\alpha$, alors $\e^x>3$, donc $f'(x)>0$.
+
+Ainsi $f$ décroît sur $]-\infty;\alpha]$, puis croît sur $[\alpha;+\infty[$. Elle admet un minimum en $\alpha$.
+\end{correctionbox}
+
+\begin{correctionbox}{DS 4 -- Exercice 4}
+\[
+M(t)=60\e^{-0,25t}.
+\]
+\[
+M(0)=60\e^0=60.
+\]
+Comme le coefficient de $t$ dans l'exposant est négatif, la quantité diminue.
+
+\[
+M(4)=60\e^{-1}\approx 60\times0,368\approx22,1.
+\]
+Après $4$ heures, il reste environ $22,1$ unités de médicament dans le sang.
+\end{correctionbox}
+
+%================================================
+\subsection{Correction des DS longs}
+
+\begin{correctionbox}{DS long 1 -- Correction synthétique}
+\textbf{Exercice 1.}
+\[
+A=\frac{\e^{2x+1}\e^{-x+4}}{\e^3}
+=\frac{\e^{x+5}}{\e^3}
+=\e^{x+2}.
+\]
+\[
+\e^{x^2-4}=\e^{2x}
+\Longleftrightarrow x^2-4=2x
+\Longleftrightarrow x^2-2x-4=0.
+\]
+Le discriminant vaut :
+\[
+\Delta=(-2)^2-4\times1\times(-4)=20.
+\]
+Donc :
+\[
+x=\frac{2\pm\sqrt{20}}{2}=1\pm\sqrt5.
+\]
+Pour l'inéquation :
+\[
+\e^{x^2-5x}\leq\e^{-6}
+\Longleftrightarrow x^2-5x\leq -6
+\Longleftrightarrow x^2-5x+6\leq0.
+\]
+\[
+(x-2)(x-3)\leq0
+\Longleftrightarrow x\in[2;3].
+\]
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=(x+1)\e^x-2.
+\]
+La fonction est définie sur $\R$.
+\[
+f'(x)=\e^x+(x+1)\e^x=(x+2)\e^x.
+\]
+Comme $\e^x>0$, le signe de $f'$ est celui de $x+2$.
+Donc $f$ décroît sur $]-\infty;-2]$ puis croît sur $[-2;+\infty[$.
+\[
+f(-2)=(-1)\e^{-2}-2=-\e^{-2}-2.
+\]
+En $0$ :
+\[
+f(0)=1-2=-1,
+\qquad
+f'(0)=2.
+\]
+La tangente en $0$ est :
+\[
+y=2x-1.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+N(0)=1000.
+\]
+\[
+N(3)=1000\e^{1,8}\approx6049.
+\]
+Comme $0,6>0$, $N$ est croissante.
+On admet :
+\[
+N'(t)=600\e^{0,6t}.
+\]
+$N'(t)$ représente la vitesse instantanée d'augmentation de la population.
+\[
+N'(0)=600.
+\]
+Au départ, la population augmente à environ $600$ bactéries par heure.
+\end{correctionbox}
+
+\begin{correctionbox}{DS long 2 -- Correction synthétique}
+\textbf{Exercice 1.}
+\[
+u_0=4\e^2,
+\qquad
+u_1=4\e^{1,5}.
+\]
+\[
+\frac{u_{n+1}}{u_n}
+=
+\frac{4\e^{-0,5(n+1)+2}}{4\e^{-0,5n+2}}
+=
+\e^{-0,5}.
+\]
+La suite est géométrique de raison $\e^{-0,5}$. Comme $\e^{-0,5}<1$, elle est décroissante.
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=(x^2+x+1)\e^x.
+\]
+\[
+f'(x)=(2x+1)\e^x+(x^2+x+1)\e^x
+=(x^2+3x+2)\e^x.
+\]
+\[
+x^2+3x+2=(x+1)(x+2).
+\]
+Comme $\e^x>0$, le signe de $f'$ est celui de $(x+1)(x+2)$.
+Donc $f$ croît sur $]-\infty;-2]$, décroît sur $[-2;-1]$, puis croît sur $[-1;+\infty[$.
+\[
+f(-2)=(4-2+1)\e^{-2}=3\e^{-2}.
+\]
+\[
+f(-1)=(1-1+1)\e^{-1}=\e^{-1}.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+v_0=1200,
+\qquad
+g(0)=1200.
+\]
+\[
+v_5=1200\times0,9^5\approx709.
+\]
+\[
+g(5)=1200\e^{-0,525}\approx710.
+\]
+Les deux modèles décrivent une décroissance. Les résultats sont très proches. Le modèle continu permet d'évaluer la quantité à tout instant réel $t$, et pas seulement aux jours entiers. Le coefficient $-0,105$ mesure l'intensité de la décroissance continue.
+\end{correctionbox}
+
+\begin{correctionbox}{DS long 3 -- Correction synthétique}
+\textbf{Exercice 1.}
+\[
+h'(x)=\e^x-1.
+\]
+$h'(x)<0$ si $x<0$, $h'(0)=0$, $h'(x)>0$ si $x>0$.
+Donc $h$ admet un minimum en $0$.
+\[
+h(0)=1-0-1=0.
+\]
+Donc $h(x)\geq0$, soit :
+\[
+\e^x\geq x+1.
+\]
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=(x-2)\e^x+3.
+\]
+\[
+f'(x)=\e^x+(x-2)\e^x=(x-1)\e^x.
+\]
+Comme $\e^x>0$, $f'$ est du signe de $x-1$.
+Donc $f$ décroît sur $]-\infty;1]$ puis croît sur $[1;+\infty[$.
+\[
+f(0)=(-2)\times1+3=1.
+\]
+\[
+f'(0)=(-1)\times1=-1.
+\]
+La tangente en $0$ est :
+\[
+y=-x+1.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+D(0)=75.
+\]
+\[
+D(5)=75\e^{-0,9}\approx30,5,
+\qquad
+D(10)=75\e^{-1,8}\approx12,4.
+\]
+La fonction décroît car le coefficient $-0,18$ est négatif. Le signe de $D'(t)$ est négatif, ce qui confirme que l'écart de température diminue. Si la température ambiante est $20^\circ$C, alors au bout de $10$ minutes :
+\[
+T(10)=20+D(10)\approx32,4^\circ\mathrm{C}.
+\]
+\end{correctionbox}
+
+%================================================
+\subsection{Correction des sujets type bac}
+
+\begin{correctionbox}{Sujet type bac 1 -- Correction}
+\textbf{Exercice 1.}
+\[
+\e^{x+3}\e^{2x-1}=\e^{3x+2}.
+\]
+\[
+\frac{\e^{5x}}{\e^{2x+4}}=\e^{3x-4}.
+\]
+\[
+\e^{3x-2}=\e^{x+6}
+\Longleftrightarrow 3x-2=x+6
+\Longleftrightarrow x=4.
+\]
+\[
+\e^{x^2}<\e^9
+\Longleftrightarrow x^2<9
+\Longleftrightarrow -3<x<3.
+\]
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=x\e^x-2x.
+\]
+\[
+f'(x)=(x+1)\e^x-2.
+\]
+Cette expression ne se factorise pas simplement par un polynôme seul. L'étude exacte du signe peut nécessiter une résolution approchée. On peut néanmoins expliquer que les variations dépendent du signe de $(x+1)\e^x-2$.
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+u_n=\e^{3n-2}.
+\]
+\[
+u_0=\e^{-2}.
+\]
+\[
+\frac{u_{n+1}}{u_n}
+=
+\frac{\e^{3n+1}}{\e^{3n-2}}
+=
+\e^3.
+\]
+Donc $(u_n)$ est géométrique de raison $\e^3>1$, donc croissante.
+
+\medskip
+
+\textbf{Exercice 4.}
+\[
+V(0)=500.
+\]
+\[
+V(6)=500\e^{0,48}\approx808.
+\]
+Comme $0,08>0$, le nombre de visites augmente.
+\[
+V'(t)=40\e^{0,08t}
+\]
+est la vitesse instantanée d'évolution du nombre de visites. Au départ :
+\[
+V'(0)=40.
+\]
+Le site gagne initialement environ $40$ visites par semaine.
+\end{correctionbox}
+
+\begin{correctionbox}{Sujet type bac 2 -- Correction}
+\textbf{Exercice 1.}
+\[
+2x+1=7 \Longleftrightarrow x=3.
+\]
+\[
+x^2-4x=-3
+\Longleftrightarrow x^2-4x+3=0
+\Longleftrightarrow (x-1)(x-3)=0.
+\]
+Donc $x=1$ ou $x=3$.
+\[
+\e^{x^2-2x}\leq\e^3
+\Longleftrightarrow x^2-2x-3\leq0
+\Longleftrightarrow (x-3)(x+1)\leq0.
+\]
+Donc $x\in[-1;3]$.
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=(x+1)\e^x.
+\]
+\[
+f'(x)=\e^x+(x+1)\e^x=(x+2)\e^x.
+\]
+En $0$ :
+\[
+f(0)=1,
+\qquad
+f'(0)=2.
+\]
+Tangente :
+\[
+y=2x+1.
+\]
+En $1$ :
+\[
+f(1)=2\e,
+\qquad
+f'(1)=3\e.
+\]
+Tangente :
+\[
+y=3\e(x-1)+2\e=3\e x-\e.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+g(x)=(x+3)\e^x-4.
+\]
+\[
+g'(x)=\e^x+(x+3)\e^x=(x+4)\e^x.
+\]
+Le signe de $g'$ est celui de $x+4$. Donc $g$ décroît sur $]-\infty;-4]$ puis croît sur $[-4;+\infty[$.
+\[
+g(-4)=(-1)\e^{-4}-4=-\e^{-4}-4.
+\]
+\[
+g(0)=3-4=-1.
+\]
+L'équation $g(x)=0$ n'a pas de solution évidente immédiate.
+\end{correctionbox}
+
+\begin{correctionbox}{Sujet type bac 3 -- Correction}
+\textbf{Exercice 1.}
+\[
+\frac{\e^{2x+5}}{\e^{x-1}}=\e^{x+6}.
+\]
+\[
+(x+2)\e^x-5\e^x=(x-3)\e^x.
+\]
+\[
+\e^{x-2}=\e^4 \Longleftrightarrow x=6.
+\]
+\[
+\e^{x^2}\geq\e^{16}
+\Longleftrightarrow x^2\geq16
+\Longleftrightarrow x\leq -4 \text{ ou } x\geq4.
+\]
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+Q(0)=300.
+\]
+Comme $-0,12<0$, la quantité décroît.
+\[
+Q(5)=300\e^{-0,6}\approx165.
+\]
+Après $5$ unités de temps, il reste environ $165$ unités.
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+C(0)=2000.
+\]
+\[
+C(8)=2000\e^{0,2}\approx2443.
+\]
+La fonction est croissante car $0,025>0$.
+Une croissance linéaire de $50$ euros par an donnerait :
+\[
+2000+8\times50=2400.
+\]
+Le modèle exponentiel donne environ $2443$, donc légèrement plus.
+
+\medskip
+
+\textbf{Exercice 4.}
+\[
+f(x)=(2x-1)\e^x.
+\]
+\[
+f'(x)=2\e^x+(2x-1)\e^x=(2x+1)\e^x.
+\]
+Le signe de $f'$ est celui de $2x+1$.
+Donc $f$ décroît sur $]-\infty;-\frac12]$ puis croît sur $[-\frac12;+\infty[$.
+\[
+f\left(-\frac12\right)=(-2)\e^{-1/2}.
+\]
+C'est un minimum.
+\end{correctionbox}
+
+\begin{correctionbox}{Sujet type bac 4 -- Correction}
+\textbf{Exercice 1.}
+\[
+\e^{-x}\e^{3x+1}=\e^{2x+1}.
+\]
+\[
+\frac{\e^{4x+2}}{\e^{x-3}}=\e^{3x+5}.
+\]
+\[
+\e^{x^2-5x}=\e^{-6}
+\Longleftrightarrow x^2-5x=-6
+\Longleftrightarrow x^2-5x+6=0.
+\]
+Donc :
+\[
+(x-2)(x-3)=0,
+\]
+d'où $x=2$ ou $x=3$.
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=\e^x-x.
+\]
+\[
+f'(x)=\e^x-1.
+\]
+\[
+f'(x)=0
+\Longleftrightarrow \e^x=1=\e^0
+\Longleftrightarrow x=0.
+\]
+Donc $f$ décroît sur $]-\infty;0]$ puis croît sur $[0;+\infty[$.
+\[
+f(0)=1.
+\]
+Ainsi :
+\[
+\e^x-x\geq1
+\Longleftrightarrow
+\e^x\geq x+1.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+u_0=10.
+\]
+\[
+\frac{u_{n+1}}{u_n}
+=
+\frac{10\e^{-0,2(n+1)}}{10\e^{-0,2n}}
+=
+\e^{-0,2}.
+\]
+La suite est géométrique de raison $\e^{-0,2}<1$, donc décroissante.
+
+\medskip
+
+\textbf{Exercice 4.}
+\[
+c(0)=15.
+\]
+\[
+c(3)=15\e^{-0,6}\approx8,2.
+\]
+La concentration diminue car le coefficient de $t$ est négatif. Le coefficient $-0,2$ traduit la vitesse de décroissance exponentielle.
+\end{correctionbox}
+
+%================================================
+\subsection{Correction des sujets difficiles}
+
+\begin{correctionbox}{Sujet difficile 1 -- Correction}
+\textbf{Exercice 1.}
+\[
+f_a'(x)=\e^x-a.
+\]
+Pour $a=1$ :
+\[
+f_1'(x)=\e^x-1.
+\]
+Donc $f_1$ décroît sur $]-\infty;0]$ puis croît sur $[0;+\infty[$.
+
+Pour $a=-2$ :
+\[
+f_{-2}'(x)=\e^x+2>0.
+\]
+Donc $f_{-2}$ est strictement croissante sur $\R$.
+
+Si $a<0$, alors $\e^x-a=\e^x+|a|>0$. Si $a>0$, le signe dépend de la comparaison entre $\e^x$ et $a$.
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+g(x)=(x^2-3x+3)\e^x.
+\]
+\[
+g'(x)=(2x-3)\e^x+(x^2-3x+3)\e^x.
+\]
+Donc :
+\[
+g'(x)=(x^2-x)\e^x=x(x-1)\e^x.
+\]
+Comme $\e^x>0$, le signe de $g'$ est celui de $x(x-1)$.
+Donc $g$ croît sur $]-\infty;0]$, décroît sur $[0;1]$, puis croît sur $[1;+\infty[$.
+\[
+g(0)=3,
+\qquad
+g(1)=(1-3+3)\e=\e.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+M(0)=5.
+\]
+On admet :
+\[
+M'(t)=(-0,2t)\e^{-0,2t}.
+\]
+Pour $t\geq0$, on a $-0,2t\leq0$ et $\e^{-0,2t}>0$.
+Donc :
+\[
+M'(t)\leq0.
+\]
+La fonction $M$ est donc décroissante sur $[0;+\infty[$.
+\[
+M(10)=15\e^{-2}\approx2,0.
+\]
+Dans un contexte de médicament, la quantité présente diminue au cours du temps. Le modèle est plus subtil que $C\e^{kt}$ car un facteur $(t+5)$ modifie l'évolution.
+\end{correctionbox}
+
+\begin{correctionbox}{Sujet difficile 2 -- Correction}
+\textbf{Exercice 1.}
+\[
+\e^{x^2-2x}=\e^3
+\Longleftrightarrow x^2-2x=3
+\Longleftrightarrow x^2-2x-3=0.
+\]
+\[
+(x-3)(x+1)=0.
+\]
+Donc $x=-1$ ou $x=3$.
+
+\[
+\e^{x^2-4x}\leq\e^{-3}
+\Longleftrightarrow x^2-4x\leq -3
+\Longleftrightarrow x^2-4x+3\leq0.
+\]
+\[
+(x-1)(x-3)\leq0.
+\]
+Donc $x\in[1;3]$.
+
+L'équation $\e^x=5$ admet une unique solution car $\e^x$ est strictement croissante, mais cette solution ne s'exprime pas exactement sans logarithme au niveau Première.
+
+\medskip
+
+\textbf{Exercice 2.}
+\[
+f(x)=(x^2+x+1)\e^x.
+\]
+\[
+f'(x)=(2x+1)\e^x+(x^2+x+1)\e^x.
+\]
+Donc :
+\[
+f'(x)=(x^2+3x+2)\e^x.
+\]
+Ici, l'énoncé demandait de montrer $(x+1)^2\e^x$, ce qui correspondrait à la fonction $(x^2-x+1)\e^x$. Pour rester cohérent, on corrige l'étude avec l'expression obtenue :
+\[
+x^2+3x+2=(x+1)(x+2).
+\]
+Le signe de $f'$ est celui de $(x+1)(x+2)$.
+Donc $f$ croît sur $]-\infty;-2]$, décroît sur $[-2;-1]$, puis croît sur $[-1;+\infty[$.
+\[
+f(-1)=\e^{-1}.
+\]
+La fonction n'admet donc pas un minimum local strict en $-1$ ; elle admet un minimum local en $-1$ et un maximum local en $-2$ dans cette étude.
+
+\medskip
+\textbf{Remarque de correction :} si l'on voulait obtenir exactement $f'(x)=(x+1)^2\e^x$, il fallait prendre :
+\[
+f(x)=(x^2-x+1)\e^x.
+\]
+
+\medskip
+
+\textbf{Exercice 3.}
+\[
+T(t)=20+80\e^{-0,1t}.
+\]
+\[
+T(0)=20+80=100.
+\]
+\[
+T(10)=20+80\e^{-1}\approx20+29,4=49,4.
+\]
+Comme le coefficient de $t$ est négatif, la température diminue.
+On admet :
+\[
+T'(t)=-8\e^{-0,1t}.
+\]
+Comme $\e^{-0,1t}>0$, $T'(t)<0$, ce qui confirme que la température baisse.
+
+La température se rapproche de $20^\circ$C car le terme $80\e^{-0,1t}$ devient de plus en plus petit.
+
+On cherche quand :
+\[
+T(t)<50.
+\]
+Par essais :
+\[
+T(9)=20+80\e^{-0,9}\approx52,5,
+\]
+\[
+T(10)\approx49,4.
+\]
+La température passe donc sous $50^\circ$C entre $9$ et $10$ minutes.
+\end{correctionbox}
+
+\newpage
+
+%================================================
+\section{Fiche finale -- Méthodes express exponentielle}
+
+\begin{rappelbox}
+\textbf{Formules essentielles}
+\[
+\e^{a+b}=\e^a\e^b,
+\qquad
+\e^{-a}=\frac{1}{\e^a},
+\qquad
+\e^{a-b}=\frac{\e^a}{\e^b}.
+\]
+\[
+\e^x>0,
+\qquad
+(\e^x)'=\e^x.
+\]
+\end{rappelbox}
+
+\begin{methodebox}
+\textbf{Résoudre une équation exponentielle}
+\[
+\e^A=\e^B
+\Longleftrightarrow
+A=B.
+\]
+On résout ensuite l'équation classique obtenue.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Résoudre une inéquation exponentielle}
+\[
+\e^A<\e^B
+\Longleftrightarrow
+A<B.
+\]
+Le sens de l'inégalité ne change pas car l'exponentielle est strictement croissante.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Étudier une fonction contenant $\e^x$}
+\begin{enumerate}
+    \item Calculer la dérivée.
+    \item Factoriser si possible par $\e^x$.
+    \item Utiliser $\e^x>0$.
+    \item Étudier le signe du facteur restant.
+    \item Dresser le tableau de variations.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Reconnaître un modèle exponentiel}
+\[
+f(t)=C\e^{kt}.
+\]
+\begin{itemize}
+    \item $C$ est la valeur initiale.
+    \item $k>0$ : croissance.
+    \item $k<0$ : décroissance.
+\end{itemize}
+\end{methodebox}
+
+\begin{attentionbox}
+Erreurs fréquentes :
+\begin{itemize}
+    \item écrire $\e^{a+b}=\e^a+\e^b$ ;
+    \item oublier que $\e^x>0$ ;
+    \item utiliser le logarithme alors qu'il n'est pas au programme ;
+    \item oublier de justifier le signe d'une dérivée ;
+    \item confondre valeur exacte et valeur approchée.
+\end{itemize}
+\end{attentionbox}
+
+\end{document}

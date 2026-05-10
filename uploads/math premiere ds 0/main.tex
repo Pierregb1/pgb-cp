@@ -1,0 +1,257 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{DM de mathématiques -- Niveau Première}}
+\rhead{\textbf{Nom : \hspace{4cm}}}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\definecolor{bleufonce}{RGB}{25,60,120}
+\definecolor{bleuclair}{RGB}{235,242,255}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{bleufonce}}{\thesection.}{0.6em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{bleufonce}}{\thesubsection.}{0.6em}{}
+
+\tcbset{
+    colback=bleuclair,
+    colframe=bleufonce,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{DM0 de mathématiques indicatif}}\\[0.4em]
+    {\large Niveau Première spé}\\[0.8em]
+    \rule{0.9\textwidth}{0.8pt}\\[0.6em]
+\end{center}
+
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}X|}
+\hline
+\textbf{Durée} & \textbf{Barème} & \textbf{Matériel autorisé} \\
+\hline
+1 h 30 à 2 h & 20 points & stylo, feuille \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\begin{tcolorbox}[title=Consignes générales]
+\begin{itemize}[leftmargin=1.2cm]
+    \item Pensez bien à noter le temps que vous avez pris à faire le sujet
+    \item Tout résultat \textbf{non trivial} doit être \textbf{justifié}, ou au moins pouvoir être expliqué clairement à l'oral.
+    \item On attend un \textbf{raisonnement mathématique clair}, structuré et rigoureux.
+    \item Merci de n'utiliser aucune aide extérieure.
+    \item Lorsqu'une aide ou un rappel est donné, il peut être utilisé librement.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{1em}
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Exercice 1} & \textbf{Exercice 2} & \textbf{Exercice 3} & \textbf{Exercice 4} & \textbf{Exercice 5} & \textbf{Total} \\
+        \hline
+        12 pts & 4 pts & 4 pts & 3 pts & 4 pts & 27 pts \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\vspace{1.2em}
+
+% ========================= EXERCICE 1 =========================
+\section*{Exercice 1 -- Fonctions exponentielles \hfill \textnormal{12 points}}
+
+On considère la fonction $f$ définie sur $\mathbb{R}$ par :
+\[
+f(x)=3e^{0,5x}-2.
+\]
+
+\begin{enumerate}
+    \item Calculer $f(0)$ et $f(2)$. \hfill \textbf{2 pts}
+
+    \item Résoudre l’équation :
+    \[
+    f(x)=1.
+    \]
+    On donnera la valeur exacte de $x$, puis une valeur approchée au centième. \hfill \textbf{3 pts}
+
+    \item Résoudre l’inéquation :
+    \[
+    f(x)>4.
+    \]
+    \hfill \textbf{3 pts}
+
+    \item On admet que la fonction $x \mapsto e^{0,5x}$ est strictement croissante sur $\mathbb{R}$.
+
+    En déduire le sens de variation de la fonction $f$ sur $\mathbb{R}$. \hfill \textbf{2 pts}
+
+    \item Dans un contexte concret, on suppose que $f(x)$ représente une grandeur physique exprimée en unités, après $x$ heures.
+
+    Déterminer au bout de combien d’heures cette grandeur dépasse $10$. \hfill \textbf{2 pts}
+\end{enumerate}
+
+% ========================= EXERCICE 2 =========================
+\section*{Exercice 2 -- Démonstration avec des triangles \hfill /4}
+
+On considère un triangle \(ABC\) isocèle en \(A\), c'est-à-dire tel que :
+\[
+AB=AC.
+\]
+On note \(M\) le milieu du segment \([BC]\).
+
+On veut démontrer que la droite \((AM)\) est perpendiculaire à la droite \((BC)\).
+
+\begin{tcolorbox}[title=Rappels utiles]
+\begin{itemize}[leftmargin=1.2cm]
+    \item Dire que \(M\) est le milieu de \([BC]\) signifie que \(M \in [BC]\) et \(BM=MC\).
+    \item Si deux triangles ont leurs trois côtés respectivement égaux, alors ils sont isométriques.
+    \item Des triangles isométriques ont leurs angles correspondants égaux.
+    \item Deux angles adjacents dont les côtés extérieurs sont dans le prolongement l'un de l'autre sont supplémentaires.
+    \item Deux angles égaux et supplémentaires mesurent chacun \(90^\circ\).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Montrer que les triangles \(ABM\) et \(ACM\) sont isométriques.
+    \item En déduire que
+    \[
+    \widehat{BMA}=\widehat{AMC}.
+    \]
+    \item Expliquer pourquoi les angles \(\widehat{BMA}\) et \(\widehat{AMC}\) sont supplémentaires.
+    \item Conclure que
+    \[
+    (AM)\perp(BC).
+    \]
+\end{enumerate}
+
+\vspace{0.6em}
+\textbf{Barème indicatif :} 1,5 pt ; 1 pt ; 0,5 pt ; 1 pt.
+
+% ========================= EXERCICE 3 =========================
+\section*{Exercice 3 -- Démonstration à l'aide d'un schéma \hfill /4}
+
+\textbf{Consigne :} \emph{À l'aide d'un schéma, démontrer que la somme des angles d'un triangle est \(180^\circ\).}
+
+\medskip
+
+On considère un triangle quelconque \(ABC\).
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Faire un schéma clair du triangle \(ABC\).
+    \item Par le point \(A\), tracer mentalement ou sur le schéma une droite parallèle à la droite \((BC)\).
+    \item En utilisant les angles alternes-internes ou correspondants, démontrer que :
+    \[
+    \widehat{ABC}+\widehat{BAC}+\widehat{ACB}=180^\circ.
+    \]
+\end{enumerate}
+
+\begin{tcolorbox}[title=Attendus]
+La démonstration doit s'appuyer sur un schéma clair, des notations d'angles précises et un raisonnement rédigé. Il ne suffit pas d'affirmer le résultat : il faut expliquer pourquoi les angles utilisés sont égaux et pourquoi l'angle plat vaut \(180^\circ\).
+\end{tcolorbox}
+
+\vspace{0.6em}
+\textbf{Barème indicatif :} schéma et notations 1 pt ; utilisation correcte du parallélisme 1,5 pt ; conclusion rédigée 1,5 pt.
+
+% ========================= EXERCICE 4 =========================
+\section*{Exercice 4 -- Logique et démonstration \hfill /3}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.2cm]
+    \item Montrer que la somme de deux nombres pairs est paire.
+    \item Montrer que le carré d'un nombre impair est impair.
+    \item Démontrer que
+    \[
+    (x-4)(x+2)=0 \Longrightarrow x=4 \text{ ou } x=-2.
+    \]
+\end{enumerate}
+
+\begin{tcolorbox}[title=Rappels utiles]
+\begin{itemize}[leftmargin=1.2cm]
+    \item Un nombre pair s'écrit sous la forme \(2n\), avec \(n\in\mathbb{Z}\).
+    \item Un nombre impair s'écrit sous la forme \(2n+1\), avec \(n\in\mathbb{Z}\).
+    \item Si un produit est nul, alors au moins un des facteurs est nul.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.6em}
+\textbf{Barème indicatif :} 1 pt ; 1 pt ; 1 pt.
+
+% ========================= EXERCICE 5 =========================
+\section*{Exercice 5 -- Démontrer le théorème de Pythagore \hfill /4}
+
+\textbf{Consigne :} \emph{Démontrer le théorème de Pythagore sans schéma.}
+
+\medskip
+
+\textbf{Aide 1 :} vecteurs, norme d'un vecteur, produit scalaire\\
+\textbf{Aide 2 :} relation de Chasles
+
+\medskip
+
+On considère un triangle \(ABC\) rectangle en \(A\).
+
+On souhaite démontrer que :
+\[
+BC^2=AB^2+AC^2.
+\]
+
+\begin{tcolorbox}[title=Indications]
+On pourra utiliser la relation de Chasles :
+\[
+\overrightarrow{BC}=\overrightarrow{BA}+\overrightarrow{AC}.
+\]
+Puis calculer la norme au carré de \(\overrightarrow{BC}\), c'est-à-dire \(\|\overrightarrow{BC}\|^2\).
+
+On rappelle que si deux vecteurs sont perpendiculaires, alors leur produit scalaire est nul.
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[title=Attendus]
+On attend une démonstration rédigée, avec une justification claire de chaque étape : utilisation de Chasles, développement, annulation du produit scalaire, puis traduction en longueurs.
+\end{tcolorbox}
+
+\vspace{0.6em}
+
+
+\vfill
+
+\begin{center}
+    \rule{0.8\textwidth}{0.6pt}\\[0.4em]
+    \textit{Fin du sujet -- Toute réponse doit être justifiée avec soin.}
+\end{center}
+
+\end{document}
