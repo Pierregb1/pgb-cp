@@ -1,5 +1,85 @@
 [
   {
+    "titre": "10 déterminants",
+    "fichier": "docs/Algèbre lin chap 10 déterminants.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "11 red endomorphisme",
+    "fichier": "docs/Algèbre lin chap 11 red endomorphisme.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "12 espaces euclidiens",
+    "fichier": "docs/Algèbre lin chap 12 espaces euclidiens.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "13 géométrie affine et euclidienne du plan et de l’espace",
+    "fichier": "docs/Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "14 polynomes !",
+    "fichier": "docs/Algèbre lin chap 14 Polynomes !.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "15 valeurs propres vecteurs propres",
+    "fichier": "docs/Algèbre lin chap 15 valeurs propres vecteurs propres.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "16 diagonalisation",
+    "fichier": "docs/Algèbre lin chap 16 diagonalisation.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "17 trigonalisation",
+    "fichier": "docs/Algèbre lin chap 17 trigonalisation.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "18 red endo sym",
+    "fichier": "docs/Algèbre lin chap 18 red endo sym.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
+    "titre": "9 rang",
+    "fichier": "docs/Algèbre lin chap 9 rang.pdf",
+    "matiere": "algèbre",
+    "niveau": "lin",
+    "type": "chap"
+  }
+,
+  {
     "titre": "00",
     "fichier": "docs/Physique terminale ds 00.pdf",
     "matiere": "physique",
@@ -13,6 +93,38 @@
     "matiere": "maths",
     "niveau": "",
     "type": "terminale"
+  }
+,
+  {
+    "titre": "fonction exponentielle",
+    "fichier": "docs/math premiere cours fonction exponentielle.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "0",
+    "fichier": "docs/math premiere ds 0.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "exponentielle",
+    "fichier": "docs/math premiere ds exponentielle.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "exponentielle",
+    "fichier": "docs/math premiere td exponentielle.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "exercice"
   }
 ,
   {
@@ -37,6 +149,14 @@
     "matiere": "maths",
     "niveau": "superieur",
     "type": "corrigé"
+  }
+,
+  {
+    "titre": "logique et raisonnements",
+    "fichier": "docs/math superieure cours logique et raisonnements.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
   }
 ,
   {
@@ -272,6 +392,14 @@
   }
 ,
   {
+    "titre": "et raisonnement",
+    "fichier": "docs/math supérieure logique et raisonnement.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "logique"
+  }
+,
+  {
     "titre": "géométrie mid +",
     "fichier": "docs/math terminale DS géométrie mid +.pdf",
     "matiere": "maths",
@@ -472,8 +600,24 @@
   }
 ,
   {
+    "titre": "geometrie",
+    "fichier": "docs/math troisieme cours geometrie.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "cours"
+  }
+,
+  {
     "titre": "calcul numerique",
     "fichier": "docs/math troisieme ds calcul numerique.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "geometrie",
+    "fichier": "docs/math troisieme ds geometrie.pdf",
     "matiere": "maths",
     "niveau": "3eme",
     "type": "ds"
