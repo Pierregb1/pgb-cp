@@ -1,0 +1,2902 @@
+\documentclass[11pt,a4paper]{article}
+
+%=========================================================
+% PACKAGES
+%=========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+%=========================================================
+% MISE EN PAGE
+%=========================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques CPGE}
+\fancyhead[C]{Réduction d'endomorphismes}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Cours complet -- Algèbre linéaire}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+\setlist[itemize]{label=\(\triangleright\)}
+\setlist[enumerate]{label=\textbf{\arabic*.}}
+
+%=========================================================
+% COULEURS ET BOÎTES
+%=========================================================
+\definecolor{bleufonce}{RGB}{25,65,130}
+\definecolor{bleuclair}{RGB}{235,243,255}
+\definecolor{vertfonce}{RGB}{30,120,70}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougefonce}{RGB}{170,40,40}
+\definecolor{rougeclair}{RGB}{255,238,238}
+\definecolor{orangefonce}{RGB}{190,110,20}
+\definecolor{orangeclair}{RGB}{255,246,230}
+\definecolor{violetfonce}{RGB}{95,55,145}
+\definecolor{violetclair}{RGB}{246,241,255}
+
+\tcbset{
+    enhanced,
+    sharp corners,
+    boxrule=0.7pt,
+    before skip=8pt,
+    after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1][]{
+    colback=bleuclair,
+    colframe=bleufonce,
+    title=\textbf{Définition #1}
+}
+
+\newtcolorbox{theorembox}[1][]{
+    colback=vertclair,
+    colframe=vertfonce,
+    title=\textbf{Théorème / Propriété #1}
+}
+
+\newtcolorbox{methodbox}[1][]{
+    colback=orangeclair,
+    colframe=orangefonce,
+    title=\textbf{Méthode #1}
+}
+
+\newtcolorbox{retenirbox}[1][]{
+    colback=violetclair,
+    colframe=violetfonce,
+    title=\textbf{À retenir #1}
+}
+
+\newtcolorbox{erreurbox}[1][]{
+    colback=rougeclair,
+    colframe=rougefonce,
+    title=\textbf{Erreur classique #1}
+}
+
+\newtcolorbox{exercicebox}[1][]{
+    colback=white,
+    colframe=black!55,
+    title=\textbf{Exercice #1}
+}
+
+\newtcolorbox{correctionbox}[1][]{
+    colback=gray!5,
+    colframe=black!65,
+    title=\textbf{Correction #1}
+}
+
+%=========================================================
+% COMMANDES
+%=========================================================
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\M}{\mathcal M}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Imf}{\operatorname{Im}}
+\newcommand{\rg}{\operatorname{rg}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemme}[prop]{Lemme}
+\newtheorem{corollaire}[prop]{Corollaire}
+
+%=========================================================
+% DOCUMENT
+%=========================================================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Réduction d'endomorphismes}}\\[2mm]
+    {\Large Valeurs propres, polynôme caractéristique, diagonalisation et trigonalisabilité}\\[2mm]
+    {\large Cours complet pour classes préparatoires scientifiques}\\[2mm]
+    \rule{0.88\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.4cm}
+
+\tableofcontents
+
+\newpage
+
+%=========================================================
+\section*{Introduction générale}
+\addcontentsline{toc}{section}{Introduction générale}
+
+Soit \(E\) un espace vectoriel de dimension finie sur un corps \(\K\), généralement \(\R\) ou \(\C\), et soit
+\[
+u\in\Lcal(E).
+\]
+L'objectif de la réduction est de comprendre l'action de \(u\) en choisissant une base aussi adaptée que possible.
+
+Dans une base quelconque, la matrice de \(u\) peut être compliquée.  
+Mais dans une bonne base, elle peut devenir :
+\begin{itemize}
+    \item diagonale ;
+    \item triangulaire ;
+    \item ou au moins plus simple à étudier.
+\end{itemize}
+
+\begin{retenirbox}
+Réduire un endomorphisme, c'est choisir une base qui révèle sa structure.
+\[
+\text{Endomorphisme compliqué}
+\quad\longrightarrow\quad
+\text{matrice simple dans une bonne base.}
+\]
+\end{retenirbox}
+
+La diagonalisation est la situation idéale. Si
+\[
+A=PDP^{-1},
+\]
+avec \(D\) diagonale, alors :
+\[
+A^n=PD^nP^{-1},
+\]
+et les puissances de \(D\) se calculent immédiatement :
+\[
+D^n=\diag(\lambda_1^n,\dots,\lambda_p^n).
+\]
+
+La réduction intervient dans de nombreux domaines :
+\begin{itemize}
+    \item calcul des puissances de matrices ;
+    \item résolution de suites récurrentes vectorielles ;
+    \item systèmes différentiels linéaires ;
+    \item chaînes de Markov ;
+    \item géométrie linéaire ;
+    \item étude des projecteurs, symétries et endomorphismes particuliers.
+\end{itemize}
+
+%=========================================================
+\section{Pré-requis issus des applications linéaires}
+
+\subsection{Applications linéaires et endomorphismes}
+
+\begin{definitionbox}[Application linéaire]
+Soient \(E\) et \(F\) deux espaces vectoriels sur \(\K\).  
+Une application
+\[
+u:E\to F
+\]
+est linéaire si :
+\[
+\forall x,y\in E,\ \forall \lambda,\mu\in\K,
+\qquad
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Endomorphisme]
+Si \(E=F\), une application linéaire
+\[
+u:E\to E
+\]
+est appelée un \textbf{endomorphisme} de \(E\).  
+On note l'ensemble des endomorphismes de \(E\) :
+\[
+\Lcal(E).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Automorphisme]
+Un endomorphisme bijectif est appelé un \textbf{automorphisme}.
+\end{definitionbox}
+
+\begin{retenirbox}
+La réduction concerne les endomorphismes, donc les applications linéaires d'un espace vectoriel dans lui-même.
+\end{retenirbox}
+
+\subsection{Noyau, image et rang}
+
+\begin{definitionbox}[Noyau et image]
+Soit \(u:E\to F\) linéaire.  
+Le noyau de \(u\) est :
+\[
+\Ker(u)=\{x\in E:\ u(x)=0_F\}.
+\]
+L'image de \(u\) est :
+\[
+\Imf(u)=\{u(x):x\in E\}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Le noyau \(\Ker(u)\) est un sous-espace vectoriel de \(E\), et l'image \(\Imf(u)\) est un sous-espace vectoriel de \(F\).
+\end{theorembox}
+
+\begin{proof}
+On montre d'abord que le noyau est stable par combinaison linéaire.  
+Soient \(x,y\in\Ker(u)\) et \(\lambda,\mu\in\K\). Alors :
+\[
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y)=\lambda 0_F+\mu 0_F=0_F.
+\]
+Donc \(\lambda x+\mu y\in\Ker(u)\).
+
+Pour l'image, si \(z_1,z_2\in\Imf(u)\), alors il existe \(x_1,x_2\in E\) tels que :
+\[
+z_1=u(x_1),\qquad z_2=u(x_2).
+\]
+Alors :
+\[
+\lambda z_1+\mu z_2
+=
+\lambda u(x_1)+\mu u(x_2)
+=
+u(\lambda x_1+\mu x_2)\in\Imf(u).
+\]
+\end{proof}
+
+\begin{definitionbox}[Rang]
+Si \(E\) est de dimension finie, le rang de \(u\) est :
+\[
+\rg(u)=\dim(\Imf(u)).
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Théorème du rang]
+Si \(u:E\to F\) est linéaire et si \(E\) est de dimension finie, alors :
+\[
+\dim(E)=\dim(\Ker(u))+\rg(u).
+\]
+\end{theorembox}
+
+\begin{retenirbox}
+Le théorème du rang est indispensable pour calculer les dimensions des sous-espaces propres :
+\[
+E_\lambda(u)=\Ker(u-\lambda\Id_E).
+\]
+\end{retenirbox}
+
+\subsection{Matrices et changement de base}
+
+\begin{definitionbox}[Matrice d'un endomorphisme]
+Soit \(E\) de dimension \(n\), et soit
+\[
+\mathcal B=(e_1,\dots,e_n)
+\]
+une base de \(E\).  
+La matrice de \(u\in\Lcal(E)\) dans la base \(\mathcal B\), notée
+\[
+\operatorname{Mat}_{\mathcal B}(u),
+\]
+est la matrice dont la \(j\)-ième colonne est le vecteur des coordonnées de \(u(e_j)\) dans la base \(\mathcal B\).
+\end{definitionbox}
+
+\begin{theorembox}[Changement de base]
+Soient \(\mathcal B\) et \(\mathcal B'\) deux bases de \(E\).  
+Soit \(P\) la matrice de passage de \(\mathcal B'\) vers \(\mathcal B\), c'est-à-dire la matrice dont les colonnes sont les coordonnées des vecteurs de \(\mathcal B'\) exprimés dans \(\mathcal B\).
+
+Si :
+\[
+A=\operatorname{Mat}_{\mathcal B}(u),
+\qquad
+A'=\operatorname{Mat}_{\mathcal B'}(u),
+\]
+alors :
+\[
+A'=P^{-1}AP.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \(x\in E\).  
+On note \(X\) le vecteur colonne des coordonnées de \(x\) dans \(\mathcal B\), et \(X'\) celui dans \(\mathcal B'\).  
+Par définition de \(P\), on a :
+\[
+X=PX'.
+\]
+Dans la base \(\mathcal B\), les coordonnées de \(u(x)\) sont :
+\[
+AX=APX'.
+\]
+Pour revenir dans la base \(\mathcal B'\), on multiplie par \(P^{-1}\).  
+Les coordonnées de \(u(x)\) dans \(\mathcal B'\) sont donc :
+\[
+P^{-1}APX'.
+\]
+Ainsi :
+\[
+A'=P^{-1}AP.
+\]
+\end{proof}
+
+\begin{definitionbox}[Matrices semblables]
+Deux matrices \(A,B\in\M_n(\K)\) sont dites semblables s'il existe \(P\in GL_n(\K)\) tel que :
+\[
+B=P^{-1}AP.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Deux matrices semblables représentent le même endomorphisme dans deux bases différentes.
+\end{retenirbox}
+
+\begin{methodbox}[Passer du point de vue géométrique au point de vue matriciel]
+\begin{itemize}
+    \item Un endomorphisme \(u\) correspond à une matrice \(A\) dans une base.
+    \item Changer de base revient à remplacer \(A\) par une matrice semblable \(P^{-1}AP\).
+    \item Diagonaliser \(u\), c'est trouver une base où sa matrice est diagonale.
+    \item Diagonaliser \(A\), c'est trouver \(P\) inversible telle que \(P^{-1}AP\) soit diagonale.
+\end{itemize}
+\end{methodbox}
+
+%=========================================================
+\section{Valeurs propres, vecteurs propres et sous-espaces propres}
+
+\subsection{Définitions}
+
+\begin{definitionbox}[Valeur propre et vecteur propre]
+Soit \(u\in\Lcal(E)\).  
+Un scalaire \(\lambda\in\K\) est une \textbf{valeur propre} de \(u\) s'il existe un vecteur non nul \(x\in E\) tel que :
+\[
+u(x)=\lambda x.
+\]
+Un tel vecteur \(x\) est appelé \textbf{vecteur propre} associé à la valeur propre \(\lambda\).
+\end{definitionbox}
+
+\begin{erreurbox}
+Le vecteur nul n'est jamais un vecteur propre.  
+En effet, il vérifie toujours \(u(0)=\lambda 0\), quelle que soit la valeur de \(\lambda\), ce qui ne donne aucune information.
+\end{erreurbox}
+
+\begin{definitionbox}[Spectre]
+L'ensemble des valeurs propres de \(u\) est appelé le \textbf{spectre} de \(u\), et se note :
+\[
+\Sp(u).
+\]
+Pour une matrice \(A\), on note de même :
+\[
+\Sp(A).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Sous-espace propre]
+Soit \(\lambda\in\K\).  
+Le sous-espace propre associé à \(\lambda\) est :
+\[
+E_\lambda(u)=\Ker(u-\lambda\Id_E).
+\]
+Autrement dit :
+\[
+E_\lambda(u)=\{x\in E:\ u(x)=\lambda x\}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Pour tout \(\lambda\in\K\), \(E_\lambda(u)\) est un sous-espace vectoriel de \(E\).
+\end{theorembox}
+
+\begin{proof}
+On a :
+\[
+E_\lambda(u)=\Ker(u-\lambda\Id_E).
+\]
+Comme \(u-\lambda\Id_E\) est une application linéaire, son noyau est un sous-espace vectoriel de \(E\).
+\end{proof}
+
+\begin{theorembox}
+Un scalaire \(\lambda\) est une valeur propre de \(u\) si et seulement si :
+\[
+E_\lambda(u)\neq\{0\}.
+\]
+\end{theorembox}
+
+\begin{proof}
+Par définition, \(\lambda\) est une valeur propre s'il existe \(x\neq0\) tel que :
+\[
+u(x)=\lambda x.
+\]
+Cela équivaut à :
+\[
+(u-\lambda\Id_E)(x)=0.
+\]
+Donc \(x\in\Ker(u-\lambda\Id_E)=E_\lambda(u)\), avec \(x\neq0\).  
+Ainsi :
+\[
+E_\lambda(u)\neq\{0\}.
+\]
+La réciproque est immédiate.
+\end{proof}
+
+\begin{retenirbox}
+Les vecteurs propres associés à \(\lambda\), auxquels on ajoute le vecteur nul, forment exactement le sous-espace propre :
+\[
+E_\lambda(u).
+\]
+\end{retenirbox}
+
+\subsection{Traduction matricielle}
+
+Soit \(A\in\M_n(\K)\).  
+Un scalaire \(\lambda\) est valeur propre de \(A\) s'il existe une colonne non nulle \(X\in\M_{n,1}(\K)\) telle que :
+\[
+AX=\lambda X.
+\]
+Cela équivaut à :
+\[
+(A-\lambda I_n)X=0.
+\]
+
+Donc :
+\[
+E_\lambda(A)=\Ker(A-\lambda I_n).
+\]
+
+\begin{methodbox}[Calculer un sous-espace propre]
+Pour calculer \(E_\lambda(A)\) :
+\begin{enumerate}
+    \item écrire la matrice \(A-\lambda I_n\) ;
+    \item résoudre le système homogène
+    \[
+    (A-\lambda I_n)X=0 ;
+    \]
+    \item donner une base du noyau obtenu ;
+    \item la dimension de ce noyau est la multiplicité géométrique de \(\lambda\).
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Premières propriétés des valeurs propres}
+
+\subsection{Homothéties}
+
+\begin{theorembox}
+Les valeurs propres de l'homothétie
+\[
+u=\lambda\Id_E
+\]
+sont réduites à \(\lambda\), si \(E\neq\{0\}\).
+\end{theorembox}
+
+\begin{proof}
+Soit \(\mu\) une valeur propre de \(u\).  
+Il existe \(x\neq0\) tel que :
+\[
+u(x)=\mu x.
+\]
+Or :
+\[
+u(x)=\lambda x.
+\]
+Donc :
+\[
+\lambda x=\mu x,
+\]
+d'où :
+\[
+(\lambda-\mu)x=0.
+\]
+Comme \(x\neq0\), on obtient :
+\[
+\lambda-\mu=0,
+\]
+donc \(\mu=\lambda\).
+\end{proof}
+
+\subsection{Matrices triangulaires}
+
+\begin{theorembox}
+Les valeurs propres d'une matrice triangulaire sont ses coefficients diagonaux.
+\end{theorembox}
+
+\begin{proof}
+Soit \(A=(a_{ij})\) une matrice triangulaire supérieure.  
+Alors :
+\[
+XI_n-A
+\]
+est encore triangulaire supérieure, de coefficients diagonaux :
+\[
+X-a_{11},\dots,X-a_{nn}.
+\]
+Donc :
+\[
+\det(XI_n-A)=\prod_{k=1}^n (X-a_{kk}).
+\]
+Les racines sont donc exactement les coefficients diagonaux de \(A\).
+\end{proof}
+
+\begin{erreurbox}
+Une matrice triangulaire n'est pas forcément diagonalisable.  
+Elle permet de lire les valeurs propres, mais pas de conclure automatiquement à la diagonalisation.
+\end{erreurbox}
+
+%=========================================================
+\section{Polynôme caractéristique}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Polynôme caractéristique d'une matrice]
+Soit \(A\in\M_n(\K)\).  
+Le polynôme caractéristique de \(A\) est :
+\[
+\chi_A(X)=\det(XI_n-A).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Polynôme caractéristique d'un endomorphisme]
+Si \(u\in\Lcal(E)\), avec \(E\) de dimension finie, on définit :
+\[
+\chi_u(X)=\chi_A(X),
+\]
+où \(A\) est la matrice de \(u\) dans une base quelconque de \(E\).
+\end{definitionbox}
+
+\begin{theorembox}
+Le polynôme caractéristique d'un endomorphisme ne dépend pas de la base choisie.
+\end{theorembox}
+
+\begin{proof}
+Soient \(A\) et \(B\) les matrices de \(u\) dans deux bases différentes.  
+Alors \(A\) et \(B\) sont semblables : il existe \(P\in GL_n(\K)\) tel que :
+\[
+B=P^{-1}AP.
+\]
+Alors :
+\[
+XI_n-B
+=
+XI_n-P^{-1}AP
+=
+P^{-1}(XI_n-A)P.
+\]
+Donc :
+\[
+\det(XI_n-B)
+=
+\det(P^{-1})\det(XI_n-A)\det(P).
+\]
+Comme :
+\[
+\det(P^{-1})\det(P)=1,
+\]
+on obtient :
+\[
+\det(XI_n-B)=\det(XI_n-A).
+\]
+Donc :
+\[
+\chi_B=\chi_A.
+\]
+\end{proof}
+
+\subsection{Valeurs propres et polynôme caractéristique}
+
+\begin{theorembox}
+Un scalaire \(\lambda\in\K\) est une valeur propre de \(A\in\M_n(\K)\) si et seulement si :
+\[
+\chi_A(\lambda)=0.
+\]
+\end{theorembox}
+
+\begin{proof}
+On a :
+\[
+\lambda\in\Sp(A)
+\]
+si et seulement s'il existe \(X\neq0\) tel que :
+\[
+AX=\lambda X.
+\]
+Cela équivaut à :
+\[
+(A-\lambda I_n)X=0.
+\]
+Donc \(A-\lambda I_n\) n'est pas inversible, ce qui équivaut à :
+\[
+\det(A-\lambda I_n)=0.
+\]
+Or :
+\[
+\det(\lambda I_n-A)=(-1)^n\det(A-\lambda I_n).
+\]
+Donc :
+\[
+\det(\lambda I_n-A)=0.
+\]
+Autrement dit :
+\[
+\chi_A(\lambda)=0.
+\]
+\end{proof}
+
+\begin{retenirbox}
+Les valeurs propres sont exactement les racines du polynôme caractéristique.
+\[
+\lambda\in\Sp(A)
+\Longleftrightarrow
+\chi_A(\lambda)=0.
+\]
+\end{retenirbox}
+
+\subsection{Trace, déterminant et valeurs propres}
+
+\begin{theorembox}
+Si le polynôme caractéristique de \(A\in\M_n(\K)\) est scindé :
+\[
+\chi_A(X)=\prod_{k=1}^n (X-\lambda_k),
+\]
+où les valeurs propres sont répétées avec multiplicité, alors :
+\[
+\tr(A)=\lambda_1+\cdots+\lambda_n,
+\]
+et :
+\[
+\det(A)=\lambda_1\cdots\lambda_n.
+\]
+\end{theorembox}
+
+\begin{proof}
+On écrit :
+\[
+\chi_A(X)=\det(XI_n-A).
+\]
+Le coefficient de \(X^{n-1}\) dans ce polynôme est \(-\tr(A)\).  
+D'autre part :
+\[
+\prod_{k=1}^n(X-\lambda_k)
+=
+X^n-(\lambda_1+\cdots+\lambda_n)X^{n-1}+\cdots.
+\]
+En identifiant les coefficients de \(X^{n-1}\), on obtient :
+\[
+\tr(A)=\lambda_1+\cdots+\lambda_n.
+\]
+
+En évaluant en \(X=0\), on a :
+\[
+\chi_A(0)=\det(-A)=(-1)^n\det(A).
+\]
+Mais :
+\[
+\chi_A(0)=\prod_{k=1}^n(-\lambda_k)=(-1)^n\lambda_1\cdots\lambda_n.
+\]
+Donc :
+\[
+\det(A)=\lambda_1\cdots\lambda_n.
+\]
+\end{proof}
+
+%=========================================================
+\section{Familles de vecteurs propres}
+
+\subsection{Lemme fondamental}
+
+\begin{theorembox}[Liberté des vecteurs propres]
+Des vecteurs propres associés à des valeurs propres deux à deux distinctes sont linéairement indépendants.
+\end{theorembox}
+
+\begin{proof}
+Soient \(\lambda_1,\dots,\lambda_p\) des valeurs propres deux à deux distinctes, et soient
+\[
+x_1,\dots,x_p
+\]
+des vecteurs propres non nuls associés respectivement à ces valeurs propres.
+
+On montre que la famille \((x_1,\dots,x_p)\) est libre par récurrence sur \(p\).
+
+Pour \(p=1\), la famille \((x_1)\) est libre car \(x_1\neq0\).
+
+Supposons le résultat vrai au rang \(p-1\).  
+Considérons une relation linéaire :
+\[
+\alpha_1x_1+\cdots+\alpha_px_p=0.
+\]
+En appliquant \(u\), on obtient :
+\[
+\alpha_1u(x_1)+\cdots+\alpha_pu(x_p)=0,
+\]
+donc :
+\[
+\alpha_1\lambda_1x_1+\cdots+\alpha_p\lambda_px_p=0.
+\]
+Multiplions la première relation par \(\lambda_p\) :
+\[
+\alpha_1\lambda_px_1+\cdots+\alpha_p\lambda_px_p=0.
+\]
+En soustrayant, on obtient :
+\[
+\alpha_1(\lambda_1-\lambda_p)x_1+\cdots+
+\alpha_{p-1}(\lambda_{p-1}-\lambda_p)x_{p-1}=0.
+\]
+Par hypothèse de récurrence, la famille \((x_1,\dots,x_{p-1})\) est libre.  
+Donc, pour tout \(i\leq p-1\),
+\[
+\alpha_i(\lambda_i-\lambda_p)=0.
+\]
+Comme \(\lambda_i\neq\lambda_p\), on a :
+\[
+\alpha_i=0.
+\]
+La relation initiale devient :
+\[
+\alpha_px_p=0.
+\]
+Comme \(x_p\neq0\), on obtient :
+\[
+\alpha_p=0.
+\]
+Tous les coefficients sont nuls : la famille est libre.
+\end{proof}
+
+\begin{corollaire}
+Les sous-espaces propres associés à des valeurs propres deux à deux distinctes sont en somme directe.
+\end{corollaire}
+
+\begin{proof}
+Soient \(\lambda_1,\dots,\lambda_r\) des valeurs propres distinctes.  
+Pour montrer que
+\[
+E_{\lambda_1}\oplus\cdots\oplus E_{\lambda_r}
+\]
+est une somme directe, on considère une relation :
+\[
+x_1+\cdots+x_r=0,
+\]
+où \(x_i\in E_{\lambda_i}\).  
+Si certains \(x_i\) étaient non nuls, ils formeraient une famille de vecteurs propres associés à des valeurs propres distinctes, donc libre.  
+La seule relation possible est donc :
+\[
+x_1=\cdots=x_r=0.
+\]
+\end{proof}
+
+\begin{corollaire}
+Si \(E\) est de dimension \(n\) et si \(u\) admet \(n\) valeurs propres deux à deux distinctes, alors \(u\) est diagonalisable.
+\end{corollaire}
+
+\begin{proof}
+Choisissons un vecteur propre non nul associé à chacune des \(n\) valeurs propres.  
+D'après le théorème précédent, on obtient une famille libre de \(n\) vecteurs dans un espace de dimension \(n\).  
+C'est donc une base de \(E\), formée de vecteurs propres.  
+Ainsi \(u\) est diagonalisable.
+\end{proof}
+
+%=========================================================
+\section{Multiplicités algébrique et géométrique}
+
+\subsection{Définitions}
+
+\begin{definitionbox}[Multiplicité algébrique]
+Soit \(\lambda\in\Sp(u)\).  
+La multiplicité algébrique de \(\lambda\), notée \(m_\lambda\), est sa multiplicité comme racine du polynôme caractéristique :
+\[
+\chi_u(X).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Multiplicité géométrique]
+La multiplicité géométrique de \(\lambda\) est :
+\[
+\dim(E_\lambda(u)).
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Inégalité fondamentale]
+Pour toute valeur propre \(\lambda\),
+\[
+1\leq \dim(E_\lambda(u))\leq m_\lambda.
+\]
+\end{theorembox}
+
+\begin{proof}
+Comme \(\lambda\) est une valeur propre, on a :
+\[
+E_\lambda(u)\neq\{0\}.
+\]
+Donc :
+\[
+\dim(E_\lambda(u))\geq1.
+\]
+
+Posons :
+\[
+r=\dim(E_\lambda(u)).
+\]
+Choisissons une base :
+\[
+(e_1,\dots,e_r)
+\]
+de \(E_\lambda(u)\), que l'on complète en une base de \(E\) :
+\[
+(e_1,\dots,e_r,e_{r+1},\dots,e_n).
+\]
+Pour \(1\leq i\leq r\), on a :
+\[
+u(e_i)=\lambda e_i.
+\]
+Dans cette base, la matrice de \(u\) est donc de la forme :
+\[
+A=
+\begin{pmatrix}
+\lambda I_r & B\\
+0 & C
+\end{pmatrix}.
+\]
+Alors :
+\[
+XI_n-A=
+\begin{pmatrix}
+(X-\lambda)I_r & -B\\
+0 & XI_{n-r}-C
+\end{pmatrix}.
+\]
+Le déterminant d'une matrice triangulaire par blocs vaut le produit des déterminants diagonaux. Donc :
+\[
+\chi_u(X)
+=
+\det(XI_n-A)
+=
+(X-\lambda)^r\det(XI_{n-r}-C).
+\]
+Ainsi \((X-\lambda)^r\) divise \(\chi_u(X)\).  
+Donc :
+\[
+r\leq m_\lambda.
+\]
+\end{proof}
+
+\begin{erreurbox}
+Si l'on trouve :
+\[
+\dim(E_\lambda)>m_\lambda,
+\]
+alors le calcul est faux.  
+Cela ne peut jamais arriver.
+\end{erreurbox}
+
+%=========================================================
+\section{Diagonalisation}
+
+\subsection{Matrices diagonales}
+
+\begin{definitionbox}[Matrice diagonale]
+Une matrice diagonale est une matrice de la forme :
+\[
+D=
+\begin{pmatrix}
+\lambda_1&0&\cdots&0\\
+0&\lambda_2&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&\lambda_n
+\end{pmatrix}.
+\]
+On note :
+\[
+D=\diag(\lambda_1,\dots,\lambda_n).
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Si \(D=\diag(\lambda_1,\dots,\lambda_n)\), alors :
+\[
+D^k=\diag(\lambda_1^k,\dots,\lambda_n^k).
+\]
+\end{retenirbox}
+
+\subsection{Définition de la diagonalisation}
+
+\begin{definitionbox}[Endomorphisme diagonalisable]
+Un endomorphisme \(u\in\Lcal(E)\) est diagonalisable s'il existe une base de \(E\) formée de vecteurs propres de \(u\).
+\end{definitionbox}
+
+\begin{definitionbox}[Matrice diagonalisable]
+Une matrice \(A\in\M_n(\K)\) est diagonalisable s'il existe \(P\in GL_n(\K)\) et une matrice diagonale \(D\) telles que :
+\[
+A=PDP^{-1}.
+\]
+De manière équivalente :
+\[
+P^{-1}AP=D.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Dans la relation :
+\[
+A=PDP^{-1},
+\]
+les colonnes de \(P\) sont des vecteurs propres de \(A\), et les coefficients diagonaux de \(D\) sont les valeurs propres correspondantes, dans le même ordre.
+\end{retenirbox}
+
+\subsection{Critère fondamental}
+
+\begin{theorembox}[Critère géométrique de diagonalisation]
+Un endomorphisme \(u\in\Lcal(E)\) est diagonalisable si et seulement si :
+\[
+E=\bigoplus_{\lambda\in\Sp(u)} E_\lambda(u).
+\]
+\end{theorembox}
+
+\begin{proof}
+Supposons \(u\) diagonalisable.  
+Il existe une base de \(E\) formée de vecteurs propres de \(u\).  
+En regroupant les vecteurs associés à une même valeur propre, on obtient une base de chaque sous-espace propre, et la réunion de ces bases forme une base de \(E\).  
+Donc :
+\[
+E=\bigoplus_{\lambda\in\Sp(u)}E_\lambda(u).
+\]
+
+Réciproquement, supposons :
+\[
+E=\bigoplus_{\lambda\in\Sp(u)}E_\lambda(u).
+\]
+Pour chaque valeur propre \(\lambda\), choisissons une base de \(E_\lambda(u)\).  
+Comme la somme est directe et égale à \(E\), la réunion de ces bases est une base de \(E\).  
+Tous les vecteurs de cette base sont des vecteurs propres.  
+Donc \(u\) est diagonalisable.
+\end{proof}
+
+\begin{corollaire}
+Un endomorphisme \(u\) est diagonalisable si et seulement si :
+\[
+\sum_{\lambda\in\Sp(u)}\dim(E_\lambda(u))=\dim(E).
+\]
+\end{corollaire}
+
+\subsection{Critère par les multiplicités}
+
+\begin{theorembox}[Critère pratique de diagonalisation]
+Un endomorphisme \(u\in\Lcal(E)\), avec \(E\) de dimension \(n\), est diagonalisable sur \(\K\) si et seulement si :
+\begin{enumerate}
+    \item son polynôme caractéristique \(\chi_u\) est scindé sur \(\K\) ;
+    \item pour toute valeur propre \(\lambda\),
+    \[
+    \dim(E_\lambda(u))=m_\lambda.
+    \]
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+Supposons \(u\) diagonalisable.  
+Dans une base de vecteurs propres, la matrice de \(u\) est diagonale :
+\[
+D=\diag(\lambda_1,\dots,\lambda_n).
+\]
+Donc :
+\[
+\chi_u(X)=\prod_{k=1}^n(X-\lambda_k),
+\]
+ce qui montre que \(\chi_u\) est scindé.
+
+De plus, pour chaque valeur propre \(\lambda\), la multiplicité algébrique \(m_\lambda\) est le nombre d'apparitions de \(\lambda\) sur la diagonale, et la dimension de \(E_\lambda(u)\) est également ce nombre.  
+Donc :
+\[
+\dim(E_\lambda(u))=m_\lambda.
+\]
+
+Réciproquement, supposons que \(\chi_u\) soit scindé et que :
+\[
+\forall\lambda\in\Sp(u),\quad \dim(E_\lambda(u))=m_\lambda.
+\]
+Comme \(\chi_u\) est scindé de degré \(n\), la somme des multiplicités algébriques des valeurs propres vaut \(n\).  
+Donc :
+\[
+\sum_{\lambda\in\Sp(u)}\dim(E_\lambda(u))
+=
+\sum_{\lambda\in\Sp(u)}m_\lambda
+=
+n.
+\]
+Les sous-espaces propres étant en somme directe, leur somme a dimension \(n\), donc elle est égale à \(E\).  
+Ainsi \(u\) est diagonalisable.
+\end{proof}
+
+\begin{methodbox}[Méthode complète de diagonalisation]
+Pour diagonaliser une matrice \(A\in\M_n(\K)\) :
+\begin{enumerate}
+    \item Calculer le polynôme caractéristique :
+    \[
+    \chi_A(X)=\det(XI_n-A).
+    \]
+    \item Factoriser \(\chi_A\) sur le corps de base \(\K\).
+    \item Déterminer les valeurs propres.
+    \item Pour chaque valeur propre \(\lambda\), calculer :
+    \[
+    E_\lambda(A)=\Ker(A-\lambda I_n).
+    \]
+    \item Comparer :
+    \[
+    \dim(E_\lambda)
+    \quad\text{et}\quad
+    m_\lambda.
+    \]
+    \item Si la somme des dimensions des sous-espaces propres vaut \(n\), choisir une base de chaque sous-espace propre.
+    \item Former la matrice \(P\) avec ces vecteurs propres en colonnes.
+    \item Former \(D\) en mettant les valeurs propres correspondantes sur la diagonale.
+    \item Écrire :
+    \[
+    A=PDP^{-1}.
+    \]
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Exemples détaillés de diagonalisation}
+
+\subsection{Exemple 1 : deux valeurs propres distinctes}
+
+Soit :
+\[
+A=
+\begin{pmatrix}
+1&1\\
+0&2
+\end{pmatrix}.
+\]
+
+On calcule :
+\[
+\chi_A(X)
+=
+\det
+\begin{pmatrix}
+X-1&-1\\
+0&X-2
+\end{pmatrix}
+=
+(X-1)(X-2).
+\]
+Les valeurs propres sont :
+\[
+1\quad\text{et}\quad 2.
+\]
+Elles sont distinctes. Comme \(A\in\M_2(\R)\), \(A\) est diagonalisable.
+
+Calculons les sous-espaces propres.
+
+Pour \(\lambda=1\) :
+\[
+A-I_2=
+\begin{pmatrix}
+0&1\\
+0&1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+y=0.
+\]
+Donc :
+\[
+E_1=\Vect
+\begin{pmatrix}
+1\\0
+\end{pmatrix}.
+\]
+
+Pour \(\lambda=2\) :
+\[
+A-2I_2=
+\begin{pmatrix}
+-1&1\\
+0&0
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+-y+x=0,
+\]
+donc \(y=x\). Ainsi :
+\[
+E_2=\Vect
+\begin{pmatrix}
+1\\1
+\end{pmatrix}.
+\]
+
+On prend :
+\[
+P=
+\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+1&0\\
+0&2
+\end{pmatrix}.
+\]
+Alors :
+\[
+A=PDP^{-1}.
+\]
+
+\subsection{Exemple 2 : polynôme scindé mais matrice non diagonalisable}
+
+Soit :
+\[
+A=
+\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix}.
+\]
+
+On a :
+\[
+\chi_A(X)=(X-1)^2.
+\]
+L'unique valeur propre est \(1\), de multiplicité algébrique \(2\).
+
+On calcule :
+\[
+A-I_2=
+\begin{pmatrix}
+0&1\\
+0&0
+\end{pmatrix}.
+\]
+Le système :
+\[
+(A-I_2)X=0
+\]
+donne :
+\[
+y=0.
+\]
+Donc :
+\[
+E_1=\Vect
+\begin{pmatrix}
+1\\0
+\end{pmatrix}.
+\]
+Ainsi :
+\[
+\dim(E_1)=1<2=m_1.
+\]
+Donc \(A\) n'est pas diagonalisable.
+
+\begin{erreurbox}
+Un polynôme caractéristique scindé ne suffit pas à garantir la diagonalisation.  
+Il faut aussi que, pour chaque valeur propre :
+\[
+\dim(E_\lambda)=m_\lambda.
+\]
+\end{erreurbox}
+
+%=========================================================
+\section{Polynômes d'endomorphismes}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Polynôme d'un endomorphisme]
+Soit \(u\in\Lcal(E)\) et soit :
+\[
+P(X)=a_0+a_1X+\cdots+a_mX^m\in\K[X].
+\]
+On définit :
+\[
+P(u)=a_0\Id_E+a_1u+\cdots+a_mu^m.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Polynôme d'une matrice]
+Pour \(A\in\M_n(\K)\), on définit :
+\[
+P(A)=a_0I_n+a_1A+\cdots+a_mA^m.
+\]
+\end{definitionbox}
+
+\subsection{Propriétés algébriques}
+
+\begin{theorembox}
+Pour tous \(P,Q\in\K[X]\), on a :
+\[
+(P+Q)(u)=P(u)+Q(u),
+\]
+\[
+(PQ)(u)=P(u)\circ Q(u)=Q(u)\circ P(u).
+\]
+\end{theorembox}
+
+\begin{proof}
+La première égalité vient directement de l'addition terme à terme.
+
+Pour le produit, il suffit de vérifier sur les monômes :
+\[
+X^iX^j=X^{i+j}.
+\]
+Donc :
+\[
+u^i\circ u^j=u^{i+j}.
+\]
+Par bilinéarité du produit de polynômes, on obtient :
+\[
+(PQ)(u)=P(u)\circ Q(u).
+\]
+Comme les puissances de \(u\) commutent entre elles, on a aussi :
+\[
+P(u)\circ Q(u)=Q(u)\circ P(u).
+\]
+\end{proof}
+
+\subsection{Valeurs propres et polynômes}
+
+\begin{theorembox}
+Si \(x\) est vecteur propre de \(u\) associé à \(\lambda\), alors :
+\[
+P(u)(x)=P(\lambda)x.
+\]
+\end{theorembox}
+
+\begin{proof}
+Comme :
+\[
+u(x)=\lambda x,
+\]
+on montre par récurrence que :
+\[
+u^k(x)=\lambda^k x.
+\]
+Donc :
+\[
+P(u)(x)
+=
+a_0x+a_1u(x)+\cdots+a_mu^m(x)
+=
+(a_0+a_1\lambda+\cdots+a_m\lambda^m)x
+=
+P(\lambda)x.
+\]
+\end{proof}
+
+\begin{definitionbox}[Polynôme annulateur]
+Un polynôme \(P\in\K[X]\) est un polynôme annulateur de \(u\) si :
+\[
+P(u)=0.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Si \(P(u)=0\), alors toute valeur propre \(\lambda\) de \(u\) vérifie :
+\[
+P(\lambda)=0.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \(x\neq0\) un vecteur propre associé à \(\lambda\).  
+On a :
+\[
+0=P(u)(x)=P(\lambda)x.
+\]
+Comme \(x\neq0\), cela impose :
+\[
+P(\lambda)=0.
+\]
+\end{proof}
+
+\begin{erreurbox}
+Les racines d'un polynôme annulateur contiennent les valeurs propres possibles.  
+Mais toutes les racines du polynôme annulateur ne sont pas forcément des valeurs propres.
+\end{erreurbox}
+
+%=========================================================
+\section{Diagonalisation par polynômes annulateurs}
+
+\subsection{Théorème de décomposition des noyaux}
+
+\begin{theorembox}[Décomposition des noyaux]
+Soient \(P_1,\dots,P_r\in\K[X]\) deux à deux premiers entre eux.  
+Soit :
+\[
+P=P_1P_2\cdots P_r.
+\]
+Si \(u\in\Lcal(E)\), alors :
+\[
+\Ker(P(u))
+=
+\Ker(P_1(u))\oplus\cdots\oplus\Ker(P_r(u)).
+\]
+\end{theorembox}
+
+\begin{proof}
+On donne la preuve pour deux polynômes, le cas général s'obtenant par récurrence.
+
+Soient \(P,Q\in\K[X]\) premiers entre eux.  
+Par le théorème de Bézout, il existe \(A,B\in\K[X]\) tels que :
+\[
+AP+BQ=1.
+\]
+En évaluant en \(u\), on obtient :
+\[
+A(u)P(u)+B(u)Q(u)=\Id_E.
+\]
+
+Soit \(x\in\Ker((PQ)(u))\).  
+Alors :
+\[
+P(u)Q(u)(x)=0.
+\]
+On écrit :
+\[
+x=A(u)P(u)(x)+B(u)Q(u)(x).
+\]
+Posons :
+\[
+x_Q=A(u)P(u)(x),
+\qquad
+x_P=B(u)Q(u)(x).
+\]
+On montre que \(x_Q\in\Ker(Q(u))\).  
+En effet :
+\[
+Q(u)x_Q
+=
+Q(u)A(u)P(u)(x)
+=
+A(u)P(u)Q(u)(x)
+=
+0.
+\]
+De même :
+\[
+P(u)x_P
+=
+P(u)B(u)Q(u)(x)
+=
+B(u)P(u)Q(u)(x)
+=
+0.
+\]
+Donc :
+\[
+x=x_Q+x_P\in\Ker(Q(u))+\Ker(P(u)).
+\]
+
+La somme est directe.  
+Si :
+\[
+x\in\Ker(P(u))\cap\Ker(Q(u)),
+\]
+alors :
+\[
+x=A(u)P(u)(x)+B(u)Q(u)(x)=0.
+\]
+Donc l'intersection est réduite à \(\{0\}\).  
+Ainsi :
+\[
+\Ker((PQ)(u))=\Ker(P(u))\oplus\Ker(Q(u)).
+\]
+\end{proof}
+
+\subsection{Critère par polynôme annulateur scindé simple}
+
+\begin{theorembox}
+Si \(u\) admet un polynôme annulateur scindé à racines simples, alors \(u\) est diagonalisable.
+\end{theorembox}
+
+\begin{proof}
+Supposons qu'il existe :
+\[
+P(X)=\prod_{i=1}^r(X-\lambda_i),
+\]
+avec \(\lambda_1,\dots,\lambda_r\) deux à deux distincts, tel que :
+\[
+P(u)=0.
+\]
+Alors :
+\[
+E=\Ker(P(u)).
+\]
+Comme les polynômes \(X-\lambda_i\) sont deux à deux premiers entre eux, le théorème de décomposition des noyaux donne :
+\[
+E=
+\bigoplus_{i=1}^r \Ker(u-\lambda_i\Id_E).
+\]
+Autrement dit :
+\[
+E=\bigoplus_{i=1}^r E_{\lambda_i}(u).
+\]
+Donc \(E\) est somme directe de sous-espaces propres de \(u\).  
+Ainsi \(u\) est diagonalisable.
+\end{proof}
+
+\begin{methodbox}[Diagonaliser avec un polynôme annulateur]
+Pour utiliser un polynôme annulateur :
+\begin{enumerate}
+    \item trouver une relation polynomiale vérifiée par \(u\), par exemple \(u^2=u\), \(u^2=\Id\), \(u^3=\Id\), etc. ;
+    \item écrire un polynôme \(P\) tel que \(P(u)=0\) ;
+    \item factoriser \(P\) sur \(\K\) ;
+    \item si \(P\) est scindé à racines simples, conclure directement que \(u\) est diagonalisable.
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Projecteurs, symétries et cas classiques}
+
+\subsection{Projecteurs}
+
+\begin{definitionbox}[Projecteur]
+Un endomorphisme \(p\in\Lcal(E)\) est un projecteur si :
+\[
+p^2=p.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Si \(p\) est un projecteur, alors :
+\[
+E=\Ker(p)\oplus\Imf(p).
+\]
+\end{theorembox}
+
+\begin{proof}
+Pour tout \(x\in E\), on écrit :
+\[
+x=(x-p(x))+p(x).
+\]
+On a bien :
+\[
+p(x)\in\Imf(p).
+\]
+De plus :
+\[
+p(x-p(x))=p(x)-p^2(x)=p(x)-p(x)=0.
+\]
+Donc :
+\[
+x-p(x)\in\Ker(p).
+\]
+Ainsi :
+\[
+E=\Ker(p)+\Imf(p).
+\]
+
+Montrons que la somme est directe.  
+Soit :
+\[
+y\in\Ker(p)\cap\Imf(p).
+\]
+Comme \(y\in\Imf(p)\), il existe \(x\in E\) tel que :
+\[
+y=p(x).
+\]
+Alors :
+\[
+p(y)=p^2(x)=p(x)=y.
+\]
+Mais \(y\in\Ker(p)\), donc :
+\[
+p(y)=0.
+\]
+Ainsi :
+\[
+y=0.
+\]
+La somme est donc directe.
+\end{proof}
+
+\begin{theorembox}
+Tout projecteur est diagonalisable.  
+Ses seules valeurs propres possibles sont \(0\) et \(1\).
+\end{theorembox}
+
+\begin{proof}
+Puisque :
+\[
+p^2=p,
+\]
+on a :
+\[
+p^2-p=0.
+\]
+Donc :
+\[
+X(X-1)
+\]
+est un polynôme annulateur de \(p\).  
+Ce polynôme est scindé à racines simples.  
+Donc \(p\) est diagonalisable.
+
+Si \(\lambda\) est une valeur propre de \(p\), alors elle est racine de tout polynôme annulateur, donc :
+\[
+\lambda(\lambda-1)=0.
+\]
+Ainsi :
+\[
+\lambda\in\{0,1\}.
+\]
+\end{proof}
+
+\subsection{Symétries}
+
+\begin{definitionbox}[Symétrie]
+Un endomorphisme \(s\in\Lcal(E)\) est une symétrie si :
+\[
+s^2=\Id_E.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Si \(s^2=\Id_E\) et si \(\operatorname{car}(\K)\neq2\), alors \(s\) est diagonalisable.  
+Ses valeurs propres possibles sont :
+\[
+-1\quad\text{et}\quad 1.
+\]
+\end{theorembox}
+
+\begin{proof}
+On a :
+\[
+s^2-\Id_E=0.
+\]
+Donc :
+\[
+(X^2-1)(s)=0.
+\]
+Or :
+\[
+X^2-1=(X-1)(X+1).
+\]
+Si \(\operatorname{car}(\K)\neq2\), les racines \(1\) et \(-1\) sont distinctes.  
+Le polynôme est donc scindé à racines simples.  
+Ainsi \(s\) est diagonalisable.
+\end{proof}
+
+\begin{retenirbox}
+\[
+p^2=p \Longrightarrow p\text{ diagonalisable}.
+\]
+\[
+s^2=\Id_E \Longrightarrow s\text{ diagonalisable si }\operatorname{car}(\K)\neq2.
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Trigonalisabilité}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Endomorphisme trigonalisable]
+Un endomorphisme \(u\in\Lcal(E)\) est trigonalisable s'il existe une base de \(E\) dans laquelle la matrice de \(u\) est triangulaire supérieure.
+\end{definitionbox}
+
+\begin{definitionbox}[Matrice trigonalisable]
+Une matrice \(A\in\M_n(\K)\) est trigonalisable s'il existe \(P\in GL_n(\K)\) et une matrice triangulaire supérieure \(T\) telles que :
+\[
+A=PTP^{-1}.
+\]
+\end{definitionbox}
+
+\subsection{Critère de trigonalisabilité}
+
+\begin{theorembox}
+Un endomorphisme \(u\in\Lcal(E)\) est trigonalisable sur \(\K\) si et seulement si son polynôme caractéristique est scindé sur \(\K\).
+\end{theorembox}
+
+\begin{proof}
+Supposons \(u\) trigonalisable.  
+Dans une certaine base, sa matrice est triangulaire supérieure :
+\[
+T=
+\begin{pmatrix}
+\lambda_1&*&\cdots&*\\
+0&\lambda_2&\cdots&*\\
+\vdots&\ddots&\ddots&\vdots\\
+0&\cdots&0&\lambda_n
+\end{pmatrix}.
+\]
+Alors :
+\[
+\chi_u(X)=\chi_T(X)=\prod_{k=1}^n(X-\lambda_k).
+\]
+Donc \(\chi_u\) est scindé.
+
+Réciproquement, supposons \(\chi_u\) scindé.  
+On raisonne par récurrence sur \(n=\dim(E)\).
+
+Si \(n=1\), le résultat est évident.
+
+Supposons \(n\geq2\).  
+Comme \(\chi_u\) est scindé, il possède une racine \(\lambda\in\K\).  
+Donc \(u\) possède un vecteur propre non nul \(e_1\).  
+La droite :
+\[
+F=\Vect(e_1)
+\]
+est stable par \(u\), car :
+\[
+u(e_1)=\lambda e_1\in F.
+\]
+On complète \(e_1\) en une base de \(E\).  
+Dans cette base, la matrice de \(u\) est de la forme :
+\[
+\begin{pmatrix}
+\lambda&*\\
+0&B
+\end{pmatrix}.
+\]
+Le polynôme caractéristique de \(B\) est encore scindé.  
+Par hypothèse de récurrence, \(B\) est trigonalisable.  
+On obtient alors une base de \(E\) dans laquelle la matrice de \(u\) est triangulaire supérieure.
+\end{proof}
+
+\begin{corollaire}
+Sur \(\C\), toute matrice carrée est trigonalisable.
+\end{corollaire}
+
+\begin{proof}
+Sur \(\C\), tout polynôme non constant est scindé.  
+En particulier, tout polynôme caractéristique est scindé.  
+Donc toute matrice carrée complexe est trigonalisable.
+\end{proof}
+
+\begin{erreurbox}
+Sur \(\R\), toute matrice n'est pas trigonalisable.  
+Par exemple :
+\[
+A=
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+\]
+a pour polynôme caractéristique :
+\[
+\chi_A(X)=X^2+1,
+\]
+qui n'est pas scindé sur \(\R\).
+\end{erreurbox}
+
+%=========================================================
+\section{Sous-espaces stables}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Sous-espace stable]
+Soit \(u\in\Lcal(E)\).  
+Un sous-espace vectoriel \(F\subset E\) est stable par \(u\) si :
+\[
+u(F)\subset F.
+\]
+Cela signifie :
+\[
+\forall x\in F,\quad u(x)\in F.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Les sous-espaces propres sont toujours stables par \(u\).  
+En effet, si \(x\in E_\lambda(u)\), alors :
+\[
+u(x)=\lambda x\in E_\lambda(u).
+\]
+\end{retenirbox}
+
+\subsection{Lien avec les matrices par blocs}
+
+\begin{theorembox}
+Soit \(F\) un sous-espace stable par \(u\), de dimension \(r\).  
+Si l'on choisit une base de \(F\) que l'on complète en une base de \(E\), alors la matrice de \(u\) dans cette base est de la forme :
+\[
+\begin{pmatrix}
+A&B\\
+0&C
+\end{pmatrix}.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \((e_1,\dots,e_r)\) une base de \(F\), complétée en une base :
+\[
+(e_1,\dots,e_r,e_{r+1},\dots,e_n)
+\]
+de \(E\).
+
+Pour \(j\leq r\), on a \(e_j\in F\), et comme \(F\) est stable :
+\[
+u(e_j)\in F.
+\]
+Donc les coordonnées de \(u(e_j)\) selon \(e_{r+1},\dots,e_n\) sont nulles.  
+Cela signifie que le bloc inférieur gauche est nul.  
+La matrice a donc la forme annoncée.
+\end{proof}
+
+%=========================================================
+\section{Applications de la diagonalisation}
+
+\subsection{Calcul des puissances}
+
+\begin{theorembox}
+Si \(A=PDP^{-1}\), avec \(D\) diagonale, alors pour tout \(n\in\N\),
+\[
+A^n=PD^nP^{-1}.
+\]
+\end{theorembox}
+
+\begin{proof}
+On raisonne par récurrence.  
+Pour \(n=0\), on a :
+\[
+A^0=I_n=P I_n P^{-1}=PD^0P^{-1}.
+\]
+Pour \(n=1\), c'est l'hypothèse.
+
+Supposons :
+\[
+A^n=PD^nP^{-1}.
+\]
+Alors :
+\[
+A^{n+1}=A^nA
+=
+(PD^nP^{-1})(PDP^{-1})
+=
+PD^nDP^{-1}
+=
+PD^{n+1}P^{-1}.
+\]
+\end{proof}
+
+\subsection{Suites vectorielles}
+
+Si une suite vectorielle est définie par :
+\[
+X_{n+1}=AX_n,
+\]
+alors :
+\[
+X_n=A^nX_0.
+\]
+Si \(A=PDP^{-1}\), alors :
+\[
+X_n=PD^nP^{-1}X_0.
+\]
+
+\begin{methodbox}[Résoudre une récurrence vectorielle]
+Pour résoudre :
+\[
+X_{n+1}=AX_n,
+\]
+on peut :
+\begin{enumerate}
+    \item diagonaliser \(A\), si possible ;
+    \item écrire \(A=PDP^{-1}\) ;
+    \item obtenir :
+    \[
+    X_n=PD^nP^{-1}X_0 ;
+    \]
+    \item calculer explicitement \(D^n\).
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Exercices progressifs}
+
+\subsection*{Exercices du thème 1 : valeurs propres}
+
+\begin{exercicebox}[1]
+Soit :
+\[
+A=
+\begin{pmatrix}
+2&0\\
+0&3
+\end{pmatrix}.
+\]
+Déterminer les valeurs propres et les sous-espaces propres de \(A\).
+\end{exercicebox}
+
+\begin{exercicebox}[2]
+Soit :
+\[
+A=
+\begin{pmatrix}
+4&1\\
+0&4
+\end{pmatrix}.
+\]
+Déterminer les valeurs propres et les sous-espaces propres de \(A\).  
+La matrice est-elle diagonalisable ?
+\end{exercicebox}
+
+\subsection*{Exercices du thème 2 : polynôme caractéristique}
+
+\begin{exercicebox}[3]
+Calculer le polynôme caractéristique de :
+\[
+A=
+\begin{pmatrix}
+2&1&0\\
+0&2&0\\
+0&0&3
+\end{pmatrix}.
+\]
+Déterminer ses valeurs propres.
+\end{exercicebox}
+
+\begin{exercicebox}[4]
+Soit :
+\[
+A=
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}.
+\]
+Étudier les valeurs propres de \(A\) sur \(\R\), puis sur \(\C\).
+\end{exercicebox}
+
+\subsection*{Exercices du thème 3 : diagonalisation}
+
+\begin{exercicebox}[5]
+Étudier la diagonalisabilité de :
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+0&1&0\\
+0&0&2
+\end{pmatrix}.
+\]
+\end{exercicebox}
+
+\begin{exercicebox}[6]
+Diagonaliser, si possible :
+\[
+A=
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+\end{exercicebox}
+
+\subsection*{Exercices du thème 4 : polynômes annulateurs}
+
+\begin{exercicebox}[7]
+Soit \(p\in\Lcal(E)\) tel que :
+\[
+p^2=p.
+\]
+Montrer que \(p\) est diagonalisable et préciser ses valeurs propres possibles.
+\end{exercicebox}
+
+\begin{exercicebox}[8]
+Soit \(s\in\Lcal(E)\) tel que :
+\[
+s^2=\Id_E.
+\]
+Montrer que \(s\) est diagonalisable si \(\operatorname{car}(\K)\neq2\).
+\end{exercicebox}
+
+\subsection*{Exercices du thème 5 : trigonalisabilité}
+
+\begin{exercicebox}[9]
+Montrer que toute matrice de \(\M_2(\C)\) est trigonalisable.
+\end{exercicebox}
+
+\begin{exercicebox}[10]
+Soit :
+\[
+A=
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}.
+\]
+Montrer que \(A\) n'est pas trigonalisable sur \(\R\), mais qu'elle l'est sur \(\C\).
+\end{exercicebox}
+
+%=========================================================
+\newpage
+\section{Corrigés détaillés des exercices progressifs}
+
+\begin{correctionbox}[1]
+On a :
+\[
+\chi_A(X)=\det
+\begin{pmatrix}
+X-2&0\\
+0&X-3
+\end{pmatrix}
+=(X-2)(X-3).
+\]
+Les valeurs propres sont donc :
+\[
+2\quad\text{et}\quad3.
+\]
+
+Pour \(\lambda=2\),
+\[
+A-2I=
+\begin{pmatrix}
+0&0\\
+0&1
+\end{pmatrix}.
+\]
+Le système donne \(y=0\). Donc :
+\[
+E_2=\Vect
+\begin{pmatrix}
+1\\0
+\end{pmatrix}.
+\]
+
+Pour \(\lambda=3\),
+\[
+A-3I=
+\begin{pmatrix}
+-1&0\\
+0&0
+\end{pmatrix}.
+\]
+Le système donne \(x=0\). Donc :
+\[
+E_3=\Vect
+\begin{pmatrix}
+0\\1
+\end{pmatrix}.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[2]
+La matrice est triangulaire supérieure, donc :
+\[
+\chi_A(X)=(X-4)^2.
+\]
+L'unique valeur propre est \(4\).
+
+On calcule :
+\[
+A-4I=
+\begin{pmatrix}
+0&1\\
+0&0
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+y=0.
+\]
+Donc :
+\[
+E_4=\Vect
+\begin{pmatrix}
+1\\0
+\end{pmatrix}.
+\]
+Ainsi :
+\[
+\dim(E_4)=1<2.
+\]
+La matrice n'est donc pas diagonalisable.
+\end{correctionbox}
+
+\begin{correctionbox}[3]
+La matrice est triangulaire supérieure. Donc :
+\[
+\chi_A(X)=(X-2)^2(X-3).
+\]
+Les valeurs propres sont :
+\[
+2\quad\text{et}\quad3.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[4]
+On calcule :
+\[
+\chi_A(X)=\det
+\begin{pmatrix}
+X&1\\
+-1&X
+\end{pmatrix}
+=X^2+1.
+\]
+Sur \(\R\), ce polynôme n'a pas de racine.  
+Donc \(A\) n'a pas de valeur propre réelle.
+
+Sur \(\C\),
+\[
+X^2+1=(X-i)(X+i).
+\]
+Les valeurs propres complexes sont donc :
+\[
+i\quad\text{et}\quad -i.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[5]
+La matrice est triangulaire supérieure :
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+0&1&0\\
+0&0&2
+\end{pmatrix}.
+\]
+Donc :
+\[
+\chi_A(X)=(X-1)^2(X-2).
+\]
+
+Pour \(\lambda=1\),
+\[
+A-I=
+\begin{pmatrix}
+0&1&0\\
+0&0&0\\
+0&0&1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+y=0,\qquad z=0.
+\]
+Donc :
+\[
+E_1=\Vect
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}.
+\]
+Ainsi :
+\[
+\dim(E_1)=1<2=m_1.
+\]
+La matrice n'est pas diagonalisable.
+
+Pour information, pour \(\lambda=2\),
+\[
+A-2I=
+\begin{pmatrix}
+-1&1&0\\
+0&-1&0\\
+0&0&0
+\end{pmatrix},
+\]
+ce qui donne :
+\[
+E_2=\Vect
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}.
+\]
+La somme des dimensions vaut \(1+1=2<3\).
+\end{correctionbox}
+
+\begin{correctionbox}[6]
+On calcule :
+\[
+\chi_A(X)=\det
+\begin{pmatrix}
+X-1&-1\\
+-1&X-1
+\end{pmatrix}
+=(X-1)^2-1=X^2-2X.
+\]
+Donc :
+\[
+\chi_A(X)=X(X-2).
+\]
+Les valeurs propres sont :
+\[
+0\quad\text{et}\quad2.
+\]
+Elles sont distinctes, donc \(A\) est diagonalisable.
+
+Pour \(\lambda=0\),
+\[
+A=
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+Le système :
+\[
+x+y=0
+\]
+donne :
+\[
+E_0=\Vect
+\begin{pmatrix}
+1\\-1
+\end{pmatrix}.
+\]
+
+Pour \(\lambda=2\),
+\[
+A-2I=
+\begin{pmatrix}
+-1&1\\
+1&-1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+x=y.
+\]
+Donc :
+\[
+E_2=\Vect
+\begin{pmatrix}
+1\\1
+\end{pmatrix}.
+\]
+
+On peut prendre :
+\[
+P=
+\begin{pmatrix}
+1&1\\
+-1&1
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+0&0\\
+0&2
+\end{pmatrix}.
+\]
+Alors :
+\[
+A=PDP^{-1}.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[7]
+Comme :
+\[
+p^2=p,
+\]
+on obtient :
+\[
+p^2-p=0.
+\]
+Donc :
+\[
+X^2-X=X(X-1)
+\]
+est un polynôme annulateur de \(p\).  
+Il est scindé à racines simples.  
+Donc \(p\) est diagonalisable.
+
+Si \(\lambda\) est une valeur propre de \(p\), alors :
+\[
+\lambda(\lambda-1)=0.
+\]
+Donc :
+\[
+\lambda\in\{0,1\}.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[8]
+Comme :
+\[
+s^2=\Id_E,
+\]
+on a :
+\[
+s^2-\Id_E=0.
+\]
+Donc :
+\[
+X^2-1=(X-1)(X+1)
+\]
+est un polynôme annulateur de \(s\).
+
+Si \(\operatorname{car}(\K)\neq2\), les racines \(1\) et \(-1\) sont distinctes.  
+Le polynôme est donc scindé à racines simples.  
+Donc \(s\) est diagonalisable.
+\end{correctionbox}
+
+\begin{correctionbox}[9]
+Soit \(A\in\M_2(\C)\).  
+Son polynôme caractéristique est un polynôme de degré \(2\) à coefficients complexes.  
+Sur \(\C\), tout polynôme de degré \(2\) est scindé.  
+Donc \(\chi_A\) est scindé.  
+Par le critère de trigonalisabilité, \(A\) est trigonalisable.
+\end{correctionbox}
+
+\begin{correctionbox}[10]
+On a déjà calculé :
+\[
+\chi_A(X)=X^2+1.
+\]
+Sur \(\R\), ce polynôme n'est pas scindé.  
+Donc \(A\) n'est pas trigonalisable sur \(\R\).
+
+Sur \(\C\),
+\[
+X^2+1=(X-i)(X+i).
+\]
+Le polynôme caractéristique est scindé.  
+Donc \(A\) est trigonalisable sur \(\C\).  
+Comme les deux valeurs propres sont distinctes, elle est même diagonalisable sur \(\C\).
+\end{correctionbox}
+
+%=========================================================
+\newpage
+\section{Grand devoir bilan final}
+
+\begin{center}
+\Large\textbf{Devoir bilan -- Réduction d'endomorphismes}
+\end{center}
+
+\subsection*{Exercice 1 -- Questions de cours et compréhension}
+
+Soit \(E\) un espace vectoriel de dimension finie et \(u\in\Lcal(E)\).
+
+\begin{enumerate}
+    \item Définir une valeur propre et un vecteur propre.
+    \item Définir le sous-espace propre \(E_\lambda(u)\).
+    \item Montrer que \(E_\lambda(u)\) est un sous-espace vectoriel de \(E\).
+    \item Montrer que des vecteurs propres associés à des valeurs propres deux à deux distinctes sont libres.
+    \item Énoncer le critère de diagonalisation par les dimensions des sous-espaces propres.
+\end{enumerate}
+
+\subsection*{Exercice 2 -- Diagonalisation complète}
+
+Soit :
+\[
+A=
+\begin{pmatrix}
+2&0&0\\
+1&3&0\\
+0&0&4
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Calculer \(\chi_A(X)\).
+    \item Déterminer les valeurs propres de \(A\).
+    \item Calculer les sous-espaces propres.
+    \item Montrer que \(A\) est diagonalisable.
+    \item Donner une matrice \(P\) et une matrice diagonale \(D\) telles que :
+    \[
+    A=PDP^{-1}.
+    \]
+\end{enumerate}
+
+\subsection*{Exercice 3 -- Cas non diagonalisable}
+
+Soit :
+\[
+B=
+\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+0&0&1
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Calculer \(\chi_B(X)\).
+    \item Déterminer \(E_1(B)\).
+    \item La matrice \(B\) est-elle diagonalisable ?
+    \item Est-elle trigonalisable ?
+\end{enumerate}
+
+\subsection*{Exercice 4 -- Polynôme annulateur}
+
+Soit \(u\in\Lcal(E)\) tel que :
+\[
+u^3=u.
+\]
+
+\begin{enumerate}
+    \item Donner un polynôme annulateur de \(u\).
+    \item Factoriser ce polynôme.
+    \item En déduire que \(u\) est diagonalisable si \(\operatorname{car}(\K)\neq2\).
+    \item Quelles sont les valeurs propres possibles de \(u\) ?
+\end{enumerate}
+
+\subsection*{Exercice 5 -- Application aux suites}
+
+Soit :
+\[
+A=
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+On définit une suite de vecteurs \((X_n)\) par :
+\[
+X_{n+1}=AX_n,
+\qquad
+X_0=
+\begin{pmatrix}
+a\\b
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Diagonaliser \(A\).
+    \item Calculer \(A^n\).
+    \item En déduire une expression explicite de \(X_n\).
+\end{enumerate}
+
+\newpage
+
+%=========================================================
+\section{Correction détaillée du devoir bilan}
+
+\subsection*{Correction de l'exercice 1}
+
+\textbf{1.}  
+Un scalaire \(\lambda\in\K\) est une valeur propre de \(u\) s'il existe un vecteur non nul \(x\in E\) tel que :
+\[
+u(x)=\lambda x.
+\]
+Le vecteur \(x\) est appelé vecteur propre associé à \(\lambda\).
+
+\textbf{2.}  
+Le sous-espace propre associé à \(\lambda\) est :
+\[
+E_\lambda(u)=\Ker(u-\lambda\Id_E).
+\]
+
+\textbf{3.}  
+Comme \(u-\lambda\Id_E\) est linéaire, son noyau est un sous-espace vectoriel.  
+Donc \(E_\lambda(u)\) est un sous-espace vectoriel.
+
+\textbf{4.}  
+Soient \(x_1,\dots,x_p\) des vecteurs propres associés à des valeurs propres distinctes \(\lambda_1,\dots,\lambda_p\).  
+On raisonne par récurrence comme dans le cours.  
+L'idée est de partir d'une relation :
+\[
+\alpha_1x_1+\cdots+\alpha_px_p=0,
+\]
+d'appliquer \(u\), puis de soustraire \(\lambda_p\) fois la première relation.  
+On obtient :
+\[
+\alpha_1(\lambda_1-\lambda_p)x_1+\cdots+
+\alpha_{p-1}(\lambda_{p-1}-\lambda_p)x_{p-1}=0.
+\]
+Par récurrence, tous les coefficients correspondants sont nuls.  
+Puis \(\alpha_p=0\).  
+Donc la famille est libre.
+
+\textbf{5.}  
+Un endomorphisme \(u\) est diagonalisable si et seulement si :
+\[
+\sum_{\lambda\in\Sp(u)}\dim(E_\lambda(u))=\dim(E).
+\]
+
+\subsection*{Correction de l'exercice 2}
+
+La matrice est triangulaire inférieure.  
+Donc :
+\[
+\chi_A(X)=(X-2)(X-3)(X-4).
+\]
+Les valeurs propres sont :
+\[
+2,\quad3,\quad4.
+\]
+Elles sont distinctes.  
+Donc \(A\) est diagonalisable.
+
+Calculons les sous-espaces propres.
+
+Pour \(\lambda=2\),
+\[
+A-2I=
+\begin{pmatrix}
+0&0&0\\
+1&1&0\\
+0&0&2
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+x+y=0,\qquad z=0.
+\]
+Donc :
+\[
+E_2=\Vect
+\begin{pmatrix}
+1\\-1\\0
+\end{pmatrix}.
+\]
+
+Pour \(\lambda=3\),
+\[
+A-3I=
+\begin{pmatrix}
+-1&0&0\\
+1&0&0\\
+0&0&1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+x=0,\qquad z=0.
+\]
+Donc :
+\[
+E_3=\Vect
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix}.
+\]
+
+Pour \(\lambda=4\),
+\[
+A-4I=
+\begin{pmatrix}
+-2&0&0\\
+1&-1&0\\
+0&0&0
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+x=0,\qquad y=0.
+\]
+Donc :
+\[
+E_4=\Vect
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}.
+\]
+
+On peut choisir :
+\[
+P=
+\begin{pmatrix}
+1&0&0\\
+-1&1&0\\
+0&0&1
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+2&0&0\\
+0&3&0\\
+0&0&4
+\end{pmatrix}.
+\]
+Alors :
+\[
+A=PDP^{-1}.
+\]
+
+\subsection*{Correction de l'exercice 3}
+
+La matrice \(B\) est triangulaire supérieure. Donc :
+\[
+\chi_B(X)=(X-1)^3.
+\]
+L'unique valeur propre est \(1\), de multiplicité algébrique \(3\).
+
+Calculons :
+\[
+B-I=
+\begin{pmatrix}
+0&1&0\\
+0&0&1\\
+0&0&0
+\end{pmatrix}.
+\]
+Le système :
+\[
+(B-I)X=0
+\]
+donne :
+\[
+y=0,\qquad z=0.
+\]
+Donc :
+\[
+E_1(B)=\Vect
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}.
+\]
+Ainsi :
+\[
+\dim(E_1)=1<3.
+\]
+Donc \(B\) n'est pas diagonalisable.
+
+En revanche, \(B\) est déjà triangulaire supérieure.  
+Donc elle est trigonalisable.
+
+\subsection*{Correction de l'exercice 4}
+
+On a :
+\[
+u^3=u.
+\]
+Donc :
+\[
+u^3-u=0.
+\]
+Un polynôme annulateur est :
+\[
+P(X)=X^3-X.
+\]
+On factorise :
+\[
+P(X)=X(X^2-1)=X(X-1)(X+1).
+\]
+Si \(\operatorname{car}(\K)\neq2\), les racines :
+\[
+-1,\quad0,\quad1
+\]
+sont distinctes.  
+Le polynôme annulateur est donc scindé à racines simples.  
+Donc \(u\) est diagonalisable.
+
+Les valeurs propres possibles sont les racines de \(P\), donc :
+\[
+\Sp(u)\subset\{-1,0,1\}.
+\]
+
+\subsection*{Correction de l'exercice 5}
+
+On a :
+\[
+A=
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+Son polynôme caractéristique est :
+\[
+\chi_A(X)=X(X-2).
+\]
+Les valeurs propres sont :
+\[
+0\quad\text{et}\quad2.
+\]
+
+On a :
+\[
+E_0=\Vect
+\begin{pmatrix}
+1\\-1
+\end{pmatrix},
+\qquad
+E_2=\Vect
+\begin{pmatrix}
+1\\1
+\end{pmatrix}.
+\]
+
+On prend :
+\[
+P=
+\begin{pmatrix}
+1&1\\
+-1&1
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+0&0\\
+0&2
+\end{pmatrix}.
+\]
+Alors :
+\[
+A=PDP^{-1}.
+\]
+
+Calculons \(P^{-1}\).  
+On a :
+\[
+\det(P)=1\cdot1-1\cdot(-1)=2.
+\]
+Donc :
+\[
+P^{-1}
+=
+\frac12
+\begin{pmatrix}
+1&-1\\
+1&1
+\end{pmatrix}.
+\]
+
+Ainsi :
+\[
+A^n=PD^nP^{-1}.
+\]
+Pour \(n\geq1\),
+\[
+D^n=
+\begin{pmatrix}
+0&0\\
+0&2^n
+\end{pmatrix}.
+\]
+Donc :
+\[
+A^n
+=
+\begin{pmatrix}
+1&1\\
+-1&1
+\end{pmatrix}
+\begin{pmatrix}
+0&0\\
+0&2^n
+\end{pmatrix}
+\frac12
+\begin{pmatrix}
+1&-1\\
+1&1
+\end{pmatrix}.
+\]
+On obtient :
+\[
+A^n
+=
+2^{n-1}
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+Donc :
+\[
+X_n=A^nX_0
+=
+2^{n-1}
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}
+\begin{pmatrix}
+a\\b
+\end{pmatrix}.
+\]
+Ainsi, pour \(n\geq1\),
+\[
+X_n=
+2^{n-1}
+\begin{pmatrix}
+a+b\\
+a+b
+\end{pmatrix}.
+\]
+
+%=========================================================
+\newpage
+\section{Fiche de synthèse finale}
+
+\subsection*{1. Vocabulaire}
+
+\[
+u\in\Lcal(E)
+\]
+signifie que \(u\) est un endomorphisme de \(E\).
+
+\[
+\lambda\in\Sp(u)
+\]
+signifie que \(\lambda\) est une valeur propre de \(u\).
+
+\[
+u(x)=\lambda x,\qquad x\neq0
+\]
+signifie que \(x\) est un vecteur propre associé à \(\lambda\).
+
+\[
+E_\lambda(u)=\Ker(u-\lambda\Id_E)
+\]
+est le sous-espace propre associé à \(\lambda\).
+
+\subsection*{2. Polynôme caractéristique}
+
+Pour \(A\in\M_n(\K)\) :
+\[
+\chi_A(X)=\det(XI_n-A).
+\]
+
+\[
+\lambda\in\Sp(A)
+\Longleftrightarrow
+\chi_A(\lambda)=0.
+\]
+
+Pour une matrice triangulaire, les valeurs propres sont les coefficients diagonaux.
+
+\subsection*{3. Multiplicités}
+
+\[
+m_\lambda=\text{multiplicité algébrique de }\lambda.
+\]
+
+\[
+\dim(E_\lambda)=\text{multiplicité géométrique de }\lambda.
+\]
+
+Toujours :
+\[
+1\leq \dim(E_\lambda)\leq m_\lambda.
+\]
+
+\subsection*{4. Familles de vecteurs propres}
+
+Des vecteurs propres associés à des valeurs propres deux à deux distinctes sont libres.
+
+Les sous-espaces propres associés à des valeurs propres distinctes sont en somme directe.
+
+\subsection*{5. Diagonalisation}
+
+\(u\) est diagonalisable si et seulement s'il existe une base de \(E\) formée de vecteurs propres.
+
+Critère géométrique :
+\[
+u\text{ diagonalisable}
+\Longleftrightarrow
+E=\bigoplus_{\lambda\in\Sp(u)}E_\lambda(u).
+\]
+
+Critère dimensionnel :
+\[
+u\text{ diagonalisable}
+\Longleftrightarrow
+\sum_{\lambda\in\Sp(u)}\dim(E_\lambda)=\dim(E).
+\]
+
+Critère avec multiplicités :
+\[
+u\text{ diagonalisable}
+\Longleftrightarrow
+\chi_u\text{ est scindé et }
+\forall\lambda,\ \dim(E_\lambda)=m_\lambda.
+\]
+
+Cas rapide :
+\[
+\dim(E)=n,\quad u\text{ a }n\text{ valeurs propres distinctes}
+\Longrightarrow
+u\text{ diagonalisable}.
+\]
+
+\subsection*{6. Matrices diagonalisables}
+
+\[
+A\text{ diagonalisable}
+\Longleftrightarrow
+\exists P\in GL_n(\K),\ \exists D\text{ diagonale},\quad A=PDP^{-1}.
+\]
+
+Les colonnes de \(P\) sont les vecteurs propres.
+
+Les coefficients diagonaux de \(D\) sont les valeurs propres correspondantes.
+
+\subsection*{7. Polynômes annulateurs}
+
+\[
+P(u)=0
+\]
+signifie que \(P\) est un polynôme annulateur de \(u\).
+
+Si \(P(u)=0\) et \(\lambda\in\Sp(u)\), alors :
+\[
+P(\lambda)=0.
+\]
+
+Si \(u\) admet un polynôme annulateur scindé à racines simples, alors \(u\) est diagonalisable.
+
+\subsection*{8. Projecteurs et symétries}
+
+Projecteur :
+\[
+p^2=p.
+\]
+Alors :
+\[
+p\text{ diagonalisable},\qquad \Sp(p)\subset\{0,1\}.
+\]
+
+Symétrie :
+\[
+s^2=\Id_E.
+\]
+Si \(\operatorname{car}(\K)\neq2\), alors :
+\[
+s\text{ diagonalisable},\qquad \Sp(s)\subset\{-1,1\}.
+\]
+
+\subsection*{9. Trigonalisabilité}
+
+\(u\) est trigonalisable si et seulement s'il existe une base dans laquelle sa matrice est triangulaire supérieure.
+
+Critère :
+\[
+u\text{ trigonalisable}
+\Longleftrightarrow
+\chi_u\text{ est scindé sur }\K.
+\]
+
+Sur \(\C\), toute matrice carrée est trigonalisable.
+
+\subsection*{10. Sous-espaces stables}
+
+Un sous-espace \(F\subset E\) est stable par \(u\) si :
+\[
+u(F)\subset F.
+\]
+
+Si \(F\) est stable et si une base de \(F\) est complétée en une base de \(E\), alors la matrice de \(u\) est de la forme :
+\[
+\begin{pmatrix}
+A&B\\
+0&C
+\end{pmatrix}.
+\]
+
+%=========================================================
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+La réduction des endomorphismes est l'un des chapitres centraux de l'algèbre linéaire en classe préparatoire.  
+Elle repose sur deux idées complémentaires :
+
+\begin{itemize}
+    \item une idée géométrique : chercher des droites ou sous-espaces stables, notamment les sous-espaces propres ;
+    \item une idée algébrique : exploiter le polynôme caractéristique et les polynômes annulateurs.
+\end{itemize}
+
+La diagonalisation est la forme la plus efficace de réduction, mais elle n'est pas toujours possible.  
+La trigonalisabilité constitue une forme plus souple, possible dès que le polynôme caractéristique est scindé.
+
+Le point essentiel à retenir est le suivant :
+\[
+\text{Réduire, c'est choisir une base adaptée.}
+\]
+
+\end{document}

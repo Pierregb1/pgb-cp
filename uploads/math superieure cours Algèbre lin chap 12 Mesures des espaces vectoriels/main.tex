@@ -1,0 +1,2200 @@
+\documentclass[11pt,a4paper]{article}
+
+%=========================================================
+% PACKAGES
+%=========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+%=========================================================
+% MISE EN PAGE
+%=========================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques CPGE}
+\fancyhead[C]{Espaces vectoriels normés et produit scalaire}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Cours complet -- Niveau prépa scientifique}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+\setlist[itemize]{label=\(\triangleright\)}
+\setlist[enumerate]{label=\textbf{\arabic*.}}
+
+%=========================================================
+% COULEURS ET BOÎTES
+%=========================================================
+\definecolor{bleufonce}{RGB}{30,70,130}
+\definecolor{bleuclair}{RGB}{235,243,255}
+\definecolor{vertfonce}{RGB}{40,120,70}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougefonce}{RGB}{170,50,50}
+\definecolor{rougeclair}{RGB}{255,238,238}
+\definecolor{orangefonce}{RGB}{190,110,20}
+\definecolor{orangeclair}{RGB}{255,246,230}
+
+\tcbset{
+    enhanced,
+    sharp corners,
+    boxrule=0.7pt,
+    colback=white,
+    colframe=black!40,
+    before skip=8pt,
+    after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1][]{
+    colback=bleuclair,
+    colframe=bleufonce,
+    title=\textbf{Définition #1}
+}
+
+\newtcolorbox{theorembox}[1][]{
+    colback=vertclair,
+    colframe=vertfonce,
+    title=\textbf{Théorème / Propriété #1}
+}
+
+\newtcolorbox{methodbox}[1][]{
+    colback=orangeclair,
+    colframe=orangefonce,
+    title=\textbf{Méthode #1}
+}
+
+\newtcolorbox{retenirbox}[1][]{
+    colback=blue!4,
+    colframe=blue!60!black,
+    title=\textbf{À retenir #1}
+}
+
+\newtcolorbox{erreurbox}[1][]{
+    colback=rougeclair,
+    colframe=rougefonce,
+    title=\textbf{Erreur classique #1}
+}
+
+\newtcolorbox{exercicebox}[1][]{
+    colback=white,
+    colframe=black!50,
+    title=\textbf{Exercice #1}
+}
+
+\newtcolorbox{correctionbox}[1][]{
+    colback=gray!4,
+    colframe=black!60,
+    title=\textbf{Correction #1}
+}
+
+%=========================================================
+% ENVIRONNEMENTS
+%=========================================================
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemme}[prop]{Lemme}
+\newtheorem{corollaire}[prop]{Corollaire}
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\norme}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\scal}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\adh}{\overline}
+\newcommand{\interieur}{\mathring}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Imf}{\operatorname{Im}}
+\newcommand{\Id}{\operatorname{Id}}
+
+%=========================================================
+% DOCUMENT
+%=========================================================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Espaces vectoriels normés}}\\[2mm]
+    {\Large \textbf{Produit scalaire, topologie, continuité, compacité}}\\[2mm]
+    {\large Cours complet pour classes préparatoires scientifiques}\\[2mm]
+    \rule{0.8\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.5cm}
+
+\tableofcontents
+
+\newpage
+
+%=========================================================
+\section*{Introduction générale}
+\addcontentsline{toc}{section}{Introduction générale}
+
+L'objectif de ce cours est de construire un cadre abstrait permettant de traiter de manière unifiée des notions déjà rencontrées en analyse réelle :
+\[
+\text{distance, convergence, limite, continuité, compacité, approximation.}
+\]
+En première année, on étudie principalement des suites réelles ou complexes. En seconde année, on travaille avec des suites de vecteurs, de matrices, de fonctions, ou encore avec des applications entre espaces vectoriels.
+
+La notion centrale est celle de \textbf{norme}. Une norme permet de mesurer la taille d'un vecteur. Dès qu'on sait mesurer la taille de \(x-y\), on sait mesurer la distance entre \(x\) et \(y\), donc parler de convergence.
+
+\begin{retenirbox}
+Un espace vectoriel normé est un espace vectoriel dans lequel on dispose d'une notion de longueur.  
+Cette notion de longueur permet ensuite de définir :
+\[
+\text{suites convergentes, ouverts, fermés, continuité, compacité.}
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Normes et espaces vectoriels normés}
+
+\subsection{Définition d'une norme}
+
+\begin{definitionbox}[Norme]
+Soit \(E\) un espace vectoriel sur \(\K=\R\) ou \(\C\).  
+Une application
+\[
+N:E\longrightarrow \R_+
+\]
+est appelée une \textbf{norme} sur \(E\) si, pour tous \(x,y\in E\) et tout \(\lambda\in\K\), elle vérifie :
+
+\begin{enumerate}
+    \item \textbf{Séparation :}
+    \[
+    N(x)=0 \Longleftrightarrow x=0.
+    \]
+    \item \textbf{Homogénéité :}
+    \[
+    N(\lambda x)=|\lambda|N(x).
+    \]
+    \item \textbf{Inégalité triangulaire :}
+    \[
+    N(x+y)\leq N(x)+N(y).
+    \]
+\end{enumerate}
+
+On note souvent \(N(x)=\norme{x}\).  
+Le couple \((E,\norme{\cdot})\) est appelé un \textbf{espace vectoriel normé}.
+\end{definitionbox}
+
+\begin{erreurbox}
+Il ne suffit pas qu'une application soit positive pour être une norme.  
+Il faut impérativement vérifier les trois axiomes : séparation, homogénéité et inégalité triangulaire.
+\end{erreurbox}
+
+\subsection{Premiers exemples fondamentaux}
+
+\begin{theorembox}[Normes usuelles sur \(\K^n\)]
+Pour \(x=(x_1,\dots,x_n)\in\K^n\), on définit :
+\[
+\norme{x}_1=\sum_{k=1}^n |x_k|,
+\]
+\[
+\norme{x}_2=\left(\sum_{k=1}^n |x_k|^2\right)^{1/2},
+\]
+\[
+\norme{x}_\infty=\max_{1\leq k\leq n}|x_k|.
+\]
+Ces trois applications sont des normes sur \(\K^n\).
+\end{theorembox}
+
+\begin{proof}
+On démontre le résultat pour chacune.
+
+\textbf{1. Norme \(\norme{\cdot}_1\).}  
+La positivité est immédiate. Si
+\[
+\norme{x}_1=\sum_{k=1}^n |x_k|=0,
+\]
+alors chaque terme positif est nul, donc \(x_k=0\) pour tout \(k\), donc \(x=0\).  
+L'homogénéité vient de :
+\[
+\norme{\lambda x}_1=\sum_{k=1}^n |\lambda x_k|
+=|\lambda|\sum_{k=1}^n |x_k|
+=|\lambda|\norme{x}_1.
+\]
+Enfin :
+\[
+\norme{x+y}_1
+=\sum_{k=1}^n |x_k+y_k|
+\leq \sum_{k=1}^n (|x_k|+|y_k|)
+=\norme{x}_1+\norme{y}_1.
+\]
+
+\textbf{2. Norme \(\norme{\cdot}_2\).}  
+La séparation et l'homogénéité sont immédiates. L'inégalité triangulaire repose sur l'inégalité de Cauchy-Schwarz :
+\[
+\left|\sum_{k=1}^n x_k\overline{y_k}\right|
+\leq
+\left(\sum_{k=1}^n |x_k|^2\right)^{1/2}
+\left(\sum_{k=1}^n |y_k|^2\right)^{1/2}.
+\]
+Alors :
+\[
+\norme{x+y}_2^2
+=
+\norme{x}_2^2+2\operatorname{Re}\left(\sum_{k=1}^n x_k\overline{y_k}\right)+\norme{y}_2^2
+\leq
+\norme{x}_2^2+2\norme{x}_2\norme{y}_2+\norme{y}_2^2.
+\]
+Donc :
+\[
+\norme{x+y}_2^2\leq (\norme{x}_2+\norme{y}_2)^2,
+\]
+d'où :
+\[
+\norme{x+y}_2\leq \norme{x}_2+\norme{y}_2.
+\]
+
+\textbf{3. Norme \(\norme{\cdot}_\infty\).}  
+La séparation et l'homogénéité sont immédiates. Pour tout \(k\),
+\[
+|x_k+y_k|\leq |x_k|+|y_k|
+\leq \norme{x}_\infty+\norme{y}_\infty.
+\]
+En prenant le maximum sur \(k\), on obtient :
+\[
+\norme{x+y}_\infty\leq \norme{x}_\infty+\norme{y}_\infty.
+\]
+\end{proof}
+
+\subsection{Normes sur des espaces de fonctions}
+
+Soit \(I\) un intervalle réel. On note \(\mathcal C(I,\K)\) l'espace des fonctions continues de \(I\) dans \(\K\).
+
+\begin{theorembox}[Norme uniforme]
+Si \(I=[a,b]\) est un segment, l'application
+\[
+\norme{f}_\infty=\sup_{t\in[a,b]}|f(t)|
+\]
+est une norme sur \(\mathcal C([a,b],\K)\).
+\end{theorembox}
+
+\begin{proof}
+Comme \(f\) est continue sur le compact \([a,b]\), la fonction \(|f|\) est continue et atteint son maximum. La quantité \(\sup_{[a,b]}|f|\) est donc finie.
+
+Si \(\norme{f}_\infty=0\), alors pour tout \(t\in[a,b]\),
+\[
+|f(t)|\leq 0,
+\]
+donc \(f(t)=0\), et donc \(f=0\).
+
+Pour \(\lambda\in\K\),
+\[
+\norme{\lambda f}_\infty
+=\sup_{t\in[a,b]}|\lambda f(t)|
+=|\lambda|\sup_{t\in[a,b]}|f(t)|
+=|\lambda|\norme{f}_\infty.
+\]
+
+Enfin, pour tout \(t\in[a,b]\),
+\[
+|f(t)+g(t)|\leq |f(t)|+|g(t)|
+\leq \norme{f}_\infty+\norme{g}_\infty.
+\]
+En prenant le supremum :
+\[
+\norme{f+g}_\infty\leq \norme{f}_\infty+\norme{g}_\infty.
+\]
+\end{proof}
+
+\begin{theorembox}[Normes intégrales]
+Sur \(\mathcal C([a,b],\K)\), les applications
+\[
+\norme{f}_1=\int_a^b |f(t)|\,dt,
+\qquad
+\norme{f}_2=\left(\int_a^b |f(t)|^2\,dt\right)^{1/2}
+\]
+sont des normes.
+\end{theorembox}
+
+\begin{proof}
+La positivité et l'homogénéité sont immédiates.
+
+Pour la séparation de \(\norme{\cdot}_1\), si
+\[
+\int_a^b |f(t)|\,dt=0,
+\]
+alors \(|f|\) est continue, positive, et d'intégrale nulle. Si elle était strictement positive en un point \(t_0\), par continuité elle serait strictement positive sur un petit intervalle autour de \(t_0\), ce qui donnerait une intégrale strictement positive. Contradiction. Donc \(f=0\).
+
+L'inégalité triangulaire vient de :
+\[
+|f(t)+g(t)|\leq |f(t)|+|g(t)|.
+\]
+En intégrant :
+\[
+\norme{f+g}_1\leq \norme{f}_1+\norme{g}_1.
+\]
+
+Pour \(\norme{\cdot}_2\), l'inégalité triangulaire se démontre avec Cauchy-Schwarz intégral :
+\[
+\left|\int_a^b f(t)\overline{g(t)}\,dt\right|
+\leq
+\left(\int_a^b |f(t)|^2\,dt\right)^{1/2}
+\left(\int_a^b |g(t)|^2\,dt\right)^{1/2}.
+\]
+On développe alors \(\norme{f+g}_2^2\) comme dans le cas de \(\K^n\).
+\end{proof}
+
+\begin{methodbox}[Montrer qu'une application est une norme]
+Pour montrer qu'une application \(N:E\to\R_+\) est une norme, on suit toujours le plan :
+\begin{enumerate}
+    \item Vérifier que \(N(x)\geq 0\).
+    \item Montrer que \(N(x)=0\Rightarrow x=0\).
+    \item Montrer que \(N(\lambda x)=|\lambda|N(x)\).
+    \item Montrer que \(N(x+y)\leq N(x)+N(y)\).
+\end{enumerate}
+L'étape la plus difficile est presque toujours l'inégalité triangulaire.
+\end{methodbox}
+
+\subsection{Distance associée à une norme}
+
+\begin{definitionbox}[Distance associée]
+Soit \((E,\norme{\cdot})\) un espace vectoriel normé.  
+On définit :
+\[
+d(x,y)=\norme{x-y}.
+\]
+Alors \(d\) est une distance sur \(E\), c'est-à-dire :
+\[
+d(x,y)\geq 0,\qquad d(x,y)=0\Longleftrightarrow x=y,
+\]
+\[
+d(x,y)=d(y,x),
+\]
+\[
+d(x,z)\leq d(x,y)+d(y,z).
+\]
+\end{definitionbox}
+
+\begin{proof}
+On vérifie les trois propriétés.
+
+La positivité vient de celle de la norme.  
+De plus :
+\[
+d(x,y)=0 \Longleftrightarrow \norme{x-y}=0
+\Longleftrightarrow x-y=0
+\Longleftrightarrow x=y.
+\]
+
+La symétrie vient de :
+\[
+d(y,x)=\norme{y-x}
+=\norme{-(x-y)}
+=|-1|\norme{x-y}
+=d(x,y).
+\]
+
+Enfin :
+\[
+d(x,z)=\norme{x-z}
+=\norme{(x-y)+(y-z)}
+\leq \norme{x-y}+\norme{y-z}
+=d(x,y)+d(y,z).
+\]
+\end{proof}
+
+%=========================================================
+\subsection{Exercices d'application}
+
+\begin{exercicebox}[1 -- Vérifier une norme]
+Soit \(E=\R^2\). On définit :
+\[
+N(x,y)=|x|+2|y|.
+\]
+Montrer que \(N\) est une norme sur \(\R^2\).
+\end{exercicebox}
+
+\begin{exercicebox}[2 -- Une fausse norme]
+Sur \(\R^2\), on pose :
+\[
+N(x,y)=|x+y|.
+\]
+Cette application est-elle une norme ?
+\end{exercicebox}
+
+\begin{exercicebox}[3 -- Norme sur un espace de polynômes]
+Soit \(E=\R[X]\). Pour \(P\in E\), on définit :
+\[
+N(P)=|P(0)|+|P(1)|+|P(2)|.
+\]
+L'application \(N\) est-elle une norme sur \(\R[X]\) ?
+\end{exercicebox}
+
+\begin{correctionbox}[1]
+Pour tout \((x,y)\), \(N(x,y)\geq 0\).  
+Si \(N(x,y)=0\), alors :
+\[
+|x|+2|y|=0.
+\]
+Comme les deux termes sont positifs, ils sont nuls. Donc \(x=0\) et \(y=0\).
+
+Pour \(\lambda\in\R\),
+\[
+N(\lambda x,\lambda y)
+=|\lambda x|+2|\lambda y|
+=|\lambda|(|x|+2|y|)
+=|\lambda|N(x,y).
+\]
+
+Enfin :
+\[
+N((x,y)+(x',y'))
+=|x+x'|+2|y+y'|
+\leq |x|+|x'|+2|y|+2|y'|.
+\]
+Donc :
+\[
+N((x,y)+(x',y'))\leq N(x,y)+N(x',y').
+\]
+Ainsi \(N\) est une norme.
+\end{correctionbox}
+
+\begin{correctionbox}[2]
+On a bien \(N(x,y)\geq 0\).  
+Mais la séparation échoue. Par exemple :
+\[
+N(1,-1)=|1-1|=0,
+\]
+alors que \((1,-1)\neq(0,0)\).  
+Donc \(N\) n'est pas une norme.
+\end{correctionbox}
+
+\begin{correctionbox}[3]
+L'application n'est pas une norme sur \(\R[X]\).  
+En effet, considérons :
+\[
+P(X)=X(X-1)(X-2).
+\]
+Alors \(P(0)=P(1)=P(2)=0\), donc :
+\[
+N(P)=0.
+\]
+Pourtant \(P\neq 0\).  
+La propriété de séparation échoue.
+\end{correctionbox}
+
+%=========================================================
+\section{Produit scalaire et norme euclidienne}
+
+\subsection{Définition générale}
+
+\begin{definitionbox}[Produit scalaire réel]
+Soit \(E\) un espace vectoriel réel.  
+Un \textbf{produit scalaire} sur \(E\) est une application
+\[
+\langle\cdot,\cdot\rangle:E\times E\to\R
+\]
+telle que, pour tous \(x,y,z\in E\) et tout \(\lambda\in\R\) :
+
+\begin{enumerate}
+    \item \textbf{Bilinéarité :}
+    \[
+    \scal{\lambda x+y}{z}=\lambda\scal{x}{z}+\scal{y}{z},
+    \]
+    et de même par rapport à la seconde variable.
+    \item \textbf{Symétrie :}
+    \[
+    \scal{x}{y}=\scal{y}{x}.
+    \]
+    \item \textbf{Positivité :}
+    \[
+    \scal{x}{x}\geq 0.
+    \]
+    \item \textbf{Séparation :}
+    \[
+    \scal{x}{x}=0\Longleftrightarrow x=0.
+    \]
+\end{enumerate}
+\end{definitionbox}
+
+\begin{definitionbox}[Norme associée]
+Si \(E\) est muni d'un produit scalaire, on définit :
+\[
+\norme{x}=\sqrt{\scal{x}{x}}.
+\]
+Cette norme est appelée \textbf{norme euclidienne} associée au produit scalaire.
+\end{definitionbox}
+
+\subsection{Inégalité de Cauchy-Schwarz}
+
+\begin{theorembox}[Cauchy-Schwarz]
+Dans un espace préhilbertien réel, pour tous \(x,y\in E\),
+\[
+|\scal{x}{y}|\leq \norme{x}\,\norme{y}.
+\]
+De plus, il y a égalité si et seulement si \(x\) et \(y\) sont liés.
+\end{theorembox}
+
+\begin{proof}
+Si \(y=0\), le résultat est immédiat. Supposons \(y\neq 0\).
+
+Pour tout \(t\in\R\), on a :
+\[
+0\leq \norme{x+ty}^2.
+\]
+En développant :
+\[
+0\leq \scal{x+ty}{x+ty}
+=\norme{x}^2+2t\scal{x}{y}+t^2\norme{y}^2.
+\]
+Le trinôme réel
+\[
+P(t)=\norme{y}^2t^2+2\scal{x}{y}t+\norme{x}^2
+\]
+est toujours positif. Son discriminant est donc négatif ou nul :
+\[
+\Delta=4\scal{x}{y}^2-4\norme{x}^2\norme{y}^2\leq 0.
+\]
+Ainsi :
+\[
+\scal{x}{y}^2\leq \norme{x}^2\norme{y}^2,
+\]
+d'où :
+\[
+|\scal{x}{y}|\leq \norme{x}\norme{y}.
+\]
+
+Le cas d'égalité correspond à \(\Delta=0\). Le trinôme admet alors une racine réelle \(t_0\), et :
+\[
+\norme{x+t_0y}^2=0,
+\]
+donc :
+\[
+x+t_0y=0.
+\]
+Ainsi \(x\) et \(y\) sont liés. La réciproque est immédiate.
+\end{proof}
+
+\subsection{La norme associée est une norme}
+
+\begin{theorembox}
+L'application
+\[
+x\mapsto \sqrt{\scal{x}{x}}
+\]
+est une norme sur \(E\).
+\end{theorembox}
+
+\begin{proof}
+La positivité et la séparation découlent directement des axiomes du produit scalaire.
+
+Pour l'homogénéité :
+\[
+\norme{\lambda x}
+=\sqrt{\scal{\lambda x}{\lambda x}}
+=\sqrt{\lambda^2\scal{x}{x}}
+=|\lambda|\norme{x}.
+\]
+
+Pour l'inégalité triangulaire :
+\[
+\norme{x+y}^2
+=\norme{x}^2+2\scal{x}{y}+\norme{y}^2.
+\]
+Par Cauchy-Schwarz :
+\[
+\scal{x}{y}\leq |\scal{x}{y}|
+\leq \norme{x}\norme{y}.
+\]
+Donc :
+\[
+\norme{x+y}^2
+\leq \norme{x}^2+2\norme{x}\norme{y}+\norme{y}^2
+=(\norme{x}+\norme{y})^2.
+\]
+En prenant la racine :
+\[
+\norme{x+y}\leq \norme{x}+\norme{y}.
+\]
+\end{proof}
+
+\subsection{Orthogonalité}
+
+\begin{definitionbox}[Orthogonalité]
+Deux vecteurs \(x,y\in E\) sont dits \textbf{orthogonaux} si :
+\[
+\scal{x}{y}=0.
+\]
+On note :
+\[
+x\perp y.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Pythagore]
+Si \(x\perp y\), alors :
+\[
+\norme{x+y}^2=\norme{x}^2+\norme{y}^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+On développe :
+\[
+\norme{x+y}^2
+=\scal{x+y}{x+y}
+=\norme{x}^2+2\scal{x}{y}+\norme{y}^2.
+\]
+Si \(x\perp y\), alors \(\scal{x}{y}=0\), d'où le résultat.
+\end{proof}
+
+\subsection{Projection orthogonale}
+
+\begin{theorembox}[Projection sur une droite]
+Soit \(E\) un espace euclidien et soit \(a\in E\), \(a\neq0\).  
+La projection orthogonale de \(x\) sur la droite \(\R a\) est :
+\[
+p(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+\end{theorembox}
+
+\begin{proof}
+On cherche \(p(x)=\lambda a\) tel que :
+\[
+x-p(x)\perp a.
+\]
+Donc :
+\[
+\scal{x-\lambda a}{a}=0.
+\]
+Par bilinéarité :
+\[
+\scal{x}{a}-\lambda\scal{a}{a}=0.
+\]
+Comme \(\scal{a}{a}=\norme{a}^2\neq0\), on obtient :
+\[
+\lambda=\frac{\scal{x}{a}}{\norme{a}^2}.
+\]
+Donc :
+\[
+p(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+\end{proof}
+
+\begin{methodbox}[Calculer une projection orthogonale]
+Pour projeter \(x\) sur une droite \(\R a\) :
+\begin{enumerate}
+    \item Écrire \(p(x)=\lambda a\).
+    \item Imposer \(x-p(x)\perp a\).
+    \item Traduire par \(\scal{x-\lambda a}{a}=0\).
+    \item Résoudre en \(\lambda\).
+\end{enumerate}
+\end{methodbox}
+
+\subsection{Exercices}
+
+\begin{exercicebox}[4 -- Cauchy-Schwarz concret]
+Dans \(\R^3\) muni du produit scalaire usuel, vérifier l'inégalité de Cauchy-Schwarz pour
+\[
+x=(1,2,-1),\qquad y=(3,0,4).
+\]
+\end{exercicebox}
+
+\begin{exercicebox}[5 -- Projection]
+Dans \(\R^3\), calculer la projection orthogonale de
+\[
+x=(2,1,3)
+\]
+sur la droite dirigée par
+\[
+a=(1,1,0).
+\]
+\end{exercicebox}
+
+\begin{correctionbox}[4]
+On calcule :
+\[
+\scal{x}{y}=1\cdot3+2\cdot0+(-1)\cdot4=-1.
+\]
+Donc :
+\[
+|\scal{x}{y}|=1.
+\]
+Ensuite :
+\[
+\norme{x}=\sqrt{1^2+2^2+(-1)^2}=\sqrt6,
+\]
+\[
+\norme{y}=\sqrt{3^2+0^2+4^2}=5.
+\]
+Ainsi :
+\[
+|\scal{x}{y}|=1\leq 5\sqrt6=\norme{x}\norme{y}.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[5]
+On applique :
+\[
+p(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+Or :
+\[
+\scal{x}{a}=2\cdot1+1\cdot1+3\cdot0=3,
+\]
+et :
+\[
+\norme{a}^2=1^2+1^2+0^2=2.
+\]
+Donc :
+\[
+p(x)=\frac32(1,1,0)=\left(\frac32,\frac32,0\right).
+\]
+\end{correctionbox}
+
+%=========================================================
+\section{Suites dans un espace vectoriel normé}
+
+\subsection{Définition de la convergence}
+
+\begin{definitionbox}[Suite convergente]
+Soit \((E,\norme{\cdot})\) un espace vectoriel normé.  
+Une suite \((u_n)\) d'éléments de \(E\) converge vers \(\ell\in E\) si :
+\[
+\forall \varepsilon>0,\ \exists N\in\N,\ \forall n\geq N,\quad \norme{u_n-\ell}\leq \varepsilon.
+\]
+On note :
+\[
+u_n\longrightarrow \ell.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+La définition est exactement la même que pour les suites réelles, sauf que la valeur absolue est remplacée par une norme.
+\[
+|u_n-\ell|\quad \leadsto \quad \norme{u_n-\ell}.
+\]
+\end{retenirbox}
+
+\subsection{Unicité de la limite}
+
+\begin{theorembox}
+Dans un espace vectoriel normé, une suite convergente admet une unique limite.
+\end{theorembox}
+
+\begin{proof}
+Supposons que :
+\[
+u_n\to \ell
+\qquad\text{et}\qquad
+u_n\to m.
+\]
+On veut montrer que \(\ell=m\).
+
+Par inégalité triangulaire :
+\[
+\norme{\ell-m}
+=\norme{(\ell-u_n)+(u_n-m)}
+\leq \norme{\ell-u_n}+\norme{u_n-m}.
+\]
+Soit \(\varepsilon>0\). Comme \(u_n\to \ell\), il existe \(N_1\) tel que, pour \(n\geq N_1\),
+\[
+\norme{u_n-\ell}\leq \frac{\varepsilon}{2}.
+\]
+Comme \(u_n\to m\), il existe \(N_2\) tel que, pour \(n\geq N_2\),
+\[
+\norme{u_n-m}\leq \frac{\varepsilon}{2}.
+\]
+Donc, pour \(n\geq \max(N_1,N_2)\),
+\[
+\norme{\ell-m}\leq \varepsilon.
+\]
+Comme cela vaut pour tout \(\varepsilon>0\), on obtient :
+\[
+\norme{\ell-m}=0.
+\]
+Donc \(\ell=m\).
+\end{proof}
+
+\subsection{Suite convergente donc bornée}
+
+\begin{theorembox}
+Toute suite convergente dans un espace vectoriel normé est bornée.
+\end{theorembox}
+
+\begin{proof}
+Supposons \(u_n\to \ell\).  
+Avec \(\varepsilon=1\), il existe \(N\in\N\) tel que :
+\[
+n\geq N\Rightarrow \norme{u_n-\ell}\leq 1.
+\]
+Alors, pour \(n\geq N\),
+\[
+\norme{u_n}
+=\norme{(u_n-\ell)+\ell}
+\leq \norme{u_n-\ell}+\norme{\ell}
+\leq 1+\norme{\ell}.
+\]
+Les termes \(u_0,\dots,u_{N-1}\) sont en nombre fini. On pose :
+\[
+M=\max\left(\norme{u_0},\dots,\norme{u_{N-1}},1+\norme{\ell}\right).
+\]
+Alors :
+\[
+\forall n\in\N,\quad \norme{u_n}\leq M.
+\]
+Donc \((u_n)\) est bornée.
+\end{proof}
+
+\subsection{Opérations sur les limites}
+
+\begin{theorembox}
+Soient \((u_n)\) et \((v_n)\) deux suites d'un espace vectoriel normé \(E\), et \((\lambda_n)\) une suite scalaire.  
+Si :
+\[
+u_n\to u,\qquad v_n\to v,\qquad \lambda_n\to \lambda,
+\]
+alors :
+\[
+u_n+v_n\to u+v,
+\]
+\[
+\lambda_n u_n\to \lambda u.
+\]
+\end{theorembox}
+
+\begin{proof}
+Pour la somme :
+\[
+\norme{(u_n+v_n)-(u+v)}
+=\norme{(u_n-u)+(v_n-v)}
+\leq \norme{u_n-u}+\norme{v_n-v}.
+\]
+Les deux termes tendent vers \(0\), donc la somme tend vers \(0\).
+
+Pour le produit par un scalaire :
+\[
+\lambda_n u_n-\lambda u
+=
+\lambda_n(u_n-u)+(\lambda_n-\lambda)u.
+\]
+Donc :
+\[
+\norme{\lambda_n u_n-\lambda u}
+\leq |\lambda_n|\norme{u_n-u}+|\lambda_n-\lambda|\norme{u}.
+\]
+La suite \((\lambda_n)\) est convergente donc bornée. Ainsi le premier terme tend vers \(0\), et le second aussi.
+\end{proof}
+
+\subsection{Valeurs d'adhérence}
+
+\begin{definitionbox}[Valeur d'adhérence]
+Soit \((u_n)\) une suite de \(E\).  
+Un élément \(a\in E\) est une \textbf{valeur d'adhérence} de \((u_n)\) s'il existe une suite extraite \((u_{\varphi(n)})\) telle que :
+\[
+u_{\varphi(n)}\to a.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Si une suite converge vers \(\ell\), alors toutes ses suites extraites convergent vers \(\ell\).  
+En particulier, une suite convergente possède une seule valeur d'adhérence.
+\end{theorembox}
+
+\begin{proof}
+Soit \(u_n\to\ell\), et soit \(\varphi:\N\to\N\) strictement croissante.  
+Pour tout \(\varepsilon>0\), il existe \(N\) tel que :
+\[
+n\geq N\Rightarrow \norme{u_n-\ell}\leq\varepsilon.
+\]
+Comme \(\varphi(n)\to+\infty\), il existe \(N'\) tel que :
+\[
+n\geq N'\Rightarrow \varphi(n)\geq N.
+\]
+Alors :
+\[
+n\geq N'\Rightarrow \norme{u_{\varphi(n)}-\ell}\leq\varepsilon.
+\]
+Donc :
+\[
+u_{\varphi(n)}\to\ell.
+\]
+\end{proof}
+
+\begin{erreurbox}
+Avoir une seule valeur d'adhérence ne suffit pas toujours à garantir la convergence dans un espace général sans hypothèse supplémentaire.  
+En revanche, si la suite est compacte ou si l'on travaille dans certaines situations finies, la discussion peut être affinée.
+\end{erreurbox}
+
+%=========================================================
+\section{Normes équivalentes}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Normes équivalentes]
+Soient \(N_1\) et \(N_2\) deux normes sur un même espace vectoriel \(E\).  
+On dit que \(N_1\) et \(N_2\) sont \textbf{équivalentes} s'il existe deux constantes \(\alpha,\beta>0\) telles que :
+\[
+\forall x\in E,\qquad
+\alpha N_1(x)\leq N_2(x)\leq \beta N_1(x).
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Deux normes équivalentes définissent les mêmes suites convergentes, les mêmes ouverts, les mêmes fermés et la même notion de continuité.
+\end{retenirbox}
+
+\subsection{Exemple fondamental sur \(\K^n\)}
+
+\begin{theorembox}
+Sur \(\K^n\), les normes \(\norme{\cdot}_1\), \(\norme{\cdot}_2\) et \(\norme{\cdot}_\infty\) sont équivalentes.
+\end{theorembox}
+
+\begin{proof}
+Pour tout \(x=(x_1,\dots,x_n)\), on a :
+\[
+\norme{x}_\infty\leq \norme{x}_1
+\]
+car le maximum d'une famille de nombres positifs est inférieur à leur somme.
+
+De plus :
+\[
+\norme{x}_1=\sum_{k=1}^n |x_k|
+\leq n\max_k |x_k|
+=n\norme{x}_\infty.
+\]
+Donc :
+\[
+\norme{x}_\infty\leq \norme{x}_1\leq n\norme{x}_\infty.
+\]
+Ainsi \(\norme{\cdot}_1\) et \(\norme{\cdot}_\infty\) sont équivalentes.
+
+Ensuite :
+\[
+\norme{x}_\infty^2
+=\max_k |x_k|^2
+\leq \sum_{k=1}^n |x_k|^2
+=\norme{x}_2^2.
+\]
+Donc :
+\[
+\norme{x}_\infty\leq \norme{x}_2.
+\]
+Par ailleurs :
+\[
+\norme{x}_2^2=\sum_{k=1}^n |x_k|^2
+\leq \sum_{k=1}^n \norme{x}_\infty^2
+=n\norme{x}_\infty^2.
+\]
+Donc :
+\[
+\norme{x}_2\leq \sqrt n\norme{x}_\infty.
+\]
+Les normes sont donc équivalentes.
+\end{proof}
+
+\subsection{Théorème fondamental en dimension finie}
+
+\begin{theorembox}[Équivalence des normes en dimension finie]
+Sur un espace vectoriel de dimension finie, toutes les normes sont équivalentes.
+\end{theorembox}
+
+\begin{proof}
+Soit \(E\) de dimension \(n\), et soit \((e_1,\dots,e_n)\) une base de \(E\).  
+Pour \(x=\sum_{k=1}^n x_ke_k\), on définit :
+\[
+N_\infty(x)=\max_{1\leq k\leq n}|x_k|.
+\]
+C'est une norme sur \(E\).
+
+Soit \(N\) une norme quelconque sur \(E\). On montre d'abord qu'il existe \(C>0\) tel que :
+\[
+N(x)\leq C N_\infty(x).
+\]
+En effet :
+\[
+N(x)
+=N\left(\sum_{k=1}^n x_ke_k\right)
+\leq \sum_{k=1}^n |x_k|N(e_k)
+\leq N_\infty(x)\sum_{k=1}^n N(e_k).
+\]
+On pose :
+\[
+C=\sum_{k=1}^n N(e_k).
+\]
+
+Il reste à montrer qu'il existe \(c>0\) tel que :
+\[
+cN_\infty(x)\leq N(x).
+\]
+On considère la sphère unité :
+\[
+S=\{x\in E: N_\infty(x)=1\}.
+\]
+Dans les coordonnées de la base, \(S\) correspond à une partie fermée et bornée de \(\K^n\), donc compacte.  
+L'application \(x\mapsto N(x)\) est continue pour \(N_\infty\), grâce à l'inégalité déjà démontrée :
+\[
+|N(x)-N(y)|\leq N(x-y)\leq C N_\infty(x-y).
+\]
+Ainsi \(N\) atteint son minimum sur \(S\). Notons-le \(m\).  
+Comme aucun élément de \(S\) n'est nul, \(N(x)>0\) sur \(S\), donc \(m>0\).
+
+Pour \(x\neq0\), posons :
+\[
+u=\frac{x}{N_\infty(x)}.
+\]
+Alors \(u\in S\), donc :
+\[
+N(u)\geq m.
+\]
+Par homogénéité :
+\[
+\frac{N(x)}{N_\infty(x)}\geq m.
+\]
+Donc :
+\[
+mN_\infty(x)\leq N(x).
+\]
+On a donc :
+\[
+mN_\infty(x)\leq N(x)\leq CN_\infty(x).
+\]
+Ainsi \(N\) et \(N_\infty\) sont équivalentes. Comme toute norme est équivalente à \(N_\infty\), toutes les normes sont équivalentes.
+\end{proof}
+
+\begin{erreurbox}
+Ce théorème est faux en dimension infinie.  
+Sur des espaces de fonctions, les normes \(\norme{\cdot}_1\), \(\norme{\cdot}_2\) et \(\norme{\cdot}_\infty\) ne sont pas toujours équivalentes.
+\end{erreurbox}
+
+%=========================================================
+\section{Ouverts, fermés, adhérence, intérieur}
+
+\subsection{Boules}
+
+\begin{definitionbox}[Boules]
+Soit \((E,\norme{\cdot})\) un EVN, \(a\in E\), et \(r>0\).  
+La boule ouverte de centre \(a\) et de rayon \(r\) est :
+\[
+B(a,r)=\{x\in E:\norme{x-a}<r\}.
+\]
+La boule fermée de centre \(a\) et de rayon \(r\) est :
+\[
+\overline B(a,r)=\{x\in E:\norme{x-a}\leq r\}.
+\]
+\end{definitionbox}
+
+\subsection{Ouverts}
+
+\begin{definitionbox}[Ouvert]
+Une partie \(U\subset E\) est dite \textbf{ouverte} si :
+\[
+\forall a\in U,\ \exists r>0,\quad B(a,r)\subset U.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Toute boule ouverte est un ouvert.
+\end{theorembox}
+
+\begin{proof}
+Soit \(B(a,R)\) une boule ouverte, et soit \(x\in B(a,R)\).  
+On a :
+\[
+\norme{x-a}<R.
+\]
+Posons :
+\[
+r=R-\norme{x-a}>0.
+\]
+Si \(y\in B(x,r)\), alors :
+\[
+\norme{y-a}
+\leq \norme{y-x}+\norme{x-a}
+<r+\norme{x-a}
+=R.
+\]
+Donc \(y\in B(a,R)\).  
+Ainsi :
+\[
+B(x,r)\subset B(a,R).
+\]
+Donc \(B(a,R)\) est ouvert.
+\end{proof}
+
+\subsection{Fermés}
+
+\begin{definitionbox}[Fermé]
+Une partie \(F\subset E\) est dite \textbf{fermée} si son complémentaire \(E\setminus F\) est ouvert.
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation séquentielle des fermés]
+Une partie \(F\subset E\) est fermée si et seulement si, pour toute suite \((x_n)\) d'éléments de \(F\), si \(x_n\to x\), alors \(x\in F\).
+\end{theorembox}
+
+\begin{proof}
+\textbf{Sens direct.}  
+Supposons \(F\) fermé. Soit \((x_n)\) une suite de \(F\) telle que \(x_n\to x\).  
+Si \(x\notin F\), alors \(x\in E\setminus F\), qui est ouvert.  
+Il existe donc \(r>0\) tel que :
+\[
+B(x,r)\subset E\setminus F.
+\]
+Comme \(x_n\to x\), il existe \(N\) tel que :
+\[
+n\geq N\Rightarrow x_n\in B(x,r).
+\]
+Alors \(x_n\notin F\), contradiction.
+
+Donc \(x\in F\).
+
+\textbf{Sens réciproque.}  
+Supposons que \(F\) soit stable par passage à la limite de suites. Montrons que \(E\setminus F\) est ouvert.  
+Soit \(a\in E\setminus F\). Si aucune boule centrée en \(a\) n'était incluse dans \(E\setminus F\), alors pour tout \(n\geq1\), il existerait :
+\[
+x_n\in F\cap B(a,1/n).
+\]
+Donc :
+\[
+\norme{x_n-a}<\frac1n,
+\]
+ce qui implique \(x_n\to a\).  
+Comme \(x_n\in F\) et \(F\) est stable par limites, on aurait \(a\in F\), contradiction.  
+Donc il existe \(r>0\) tel que :
+\[
+B(a,r)\subset E\setminus F.
+\]
+Ainsi \(E\setminus F\) est ouvert, et \(F\) est fermé.
+\end{proof}
+
+\subsection{Intérieur et adhérence}
+
+\begin{definitionbox}[Intérieur]
+Soit \(A\subset E\).  
+L'intérieur de \(A\), noté \(\mathring A\), est l'ensemble des points \(a\in A\) pour lesquels il existe \(r>0\) tel que :
+\[
+B(a,r)\subset A.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Adhérence]
+L'adhérence de \(A\), notée \(\overline A\), est l'ensemble des points \(x\in E\) tels que :
+\[
+\forall r>0,\quad B(x,r)\cap A\neq\varnothing.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation séquentielle de l'adhérence]
+Soit \(A\subset E\).  
+Alors :
+\[
+x\in\overline A
+\Longleftrightarrow
+\exists (a_n)\in A^\N,\quad a_n\to x.
+\]
+\end{theorembox}
+
+\begin{proof}
+Supposons \(x\in\overline A\).  
+Pour tout \(n\geq1\),
+\[
+B(x,1/n)\cap A\neq\varnothing.
+\]
+On choisit donc \(a_n\in A\) tel que :
+\[
+\norme{a_n-x}<\frac1n.
+\]
+Alors \(a_n\to x\).
+
+Réciproquement, s'il existe \(a_n\in A\) tel que \(a_n\to x\), alors pour tout \(r>0\), il existe \(N\) tel que :
+\[
+n\geq N\Rightarrow a_n\in B(x,r).
+\]
+Donc :
+\[
+B(x,r)\cap A\neq\varnothing.
+\]
+Ainsi \(x\in\overline A\).
+\end{proof}
+
+\begin{methodbox}[Montrer qu'une partie est fermée]
+Méthodes usuelles :
+\begin{enumerate}
+    \item Montrer que son complémentaire est ouvert.
+    \item Utiliser une caractérisation séquentielle.
+    \item L'écrire comme image réciproque d'un fermé par une application continue.
+    \item L'écrire comme intersection de fermés.
+\end{enumerate}
+\end{methodbox}
+
+\begin{methodbox}[Montrer qu'une partie est ouverte]
+Méthodes usuelles :
+\begin{enumerate}
+    \item Revenir à la définition avec une boule.
+    \item L'écrire comme image réciproque d'un ouvert par une application continue.
+    \item L'écrire comme réunion d'ouverts.
+    \item Utiliser une inégalité stricte stable par petite perturbation.
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Continuité dans un EVN}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Continuité en un point]
+Soient \((E,\norme{\cdot}_E)\) et \((F,\norme{\cdot}_F)\) deux EVN.  
+Une application \(f:E\to F\) est continue en \(a\in E\) si :
+\[
+\forall \varepsilon>0,\ \exists \eta>0,\ \forall x\in E,\quad
+\norme{x-a}_E\leq\eta\Rightarrow \norme{f(x)-f(a)}_F\leq\varepsilon.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation séquentielle]
+Une application \(f:E\to F\) est continue en \(a\) si et seulement si, pour toute suite \((x_n)\) de \(E\),
+\[
+x_n\to a \Rightarrow f(x_n)\to f(a).
+\]
+\end{theorembox}
+
+\begin{proof}
+\textbf{Sens direct.}  
+Supposons \(f\) continue en \(a\), et soit \(x_n\to a\).  
+Soit \(\varepsilon>0\). Il existe \(\eta>0\) tel que :
+\[
+\norme{x-a}_E\leq \eta \Rightarrow \norme{f(x)-f(a)}_F\leq\varepsilon.
+\]
+Comme \(x_n\to a\), il existe \(N\) tel que :
+\[
+n\geq N\Rightarrow \norme{x_n-a}_E\leq \eta.
+\]
+Donc :
+\[
+n\geq N\Rightarrow \norme{f(x_n)-f(a)}_F\leq\varepsilon.
+\]
+Ainsi \(f(x_n)\to f(a)\).
+
+\textbf{Sens réciproque.}  
+On raisonne par contraposée. Supposons que \(f\) ne soit pas continue en \(a\).  
+Alors il existe \(\varepsilon_0>0\) tel que, pour tout \(\eta>0\), il existe \(x\in E\) vérifiant :
+\[
+\norme{x-a}_E\leq \eta
+\quad\text{et}\quad
+\norme{f(x)-f(a)}_F>\varepsilon_0.
+\]
+En prenant \(\eta=1/n\), on construit \(x_n\) tel que :
+\[
+\norme{x_n-a}_E\leq \frac1n,
+\]
+mais :
+\[
+\norme{f(x_n)-f(a)}_F>\varepsilon_0.
+\]
+Alors \(x_n\to a\), mais \(f(x_n)\) ne tend pas vers \(f(a)\).  
+Donc la caractérisation séquentielle est démontrée.
+\end{proof}
+
+\subsection{Applications lipschitziennes}
+
+\begin{definitionbox}[Application lipschitzienne]
+Une application \(f:E\to F\) est dite \textbf{lipschitzienne} s'il existe \(L\geq0\) tel que :
+\[
+\forall x,y\in E,\quad \norme{f(x)-f(y)}_F\leq L\norme{x-y}_E.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Toute application lipschitzienne est continue.
+\end{theorembox}
+
+\begin{proof}
+Soit \(a\in E\).  
+Si \(f\) est \(L\)-lipschitzienne, alors :
+\[
+\norme{f(x)-f(a)}_F\leq L\norme{x-a}_E.
+\]
+Si \(L=0\), \(f\) est constante donc continue.  
+Si \(L>0\), pour un \(\varepsilon>0\), il suffit de prendre :
+\[
+\eta=\frac{\varepsilon}{L}.
+\]
+Alors :
+\[
+\norme{x-a}_E\leq \eta
+\Rightarrow
+\norme{f(x)-f(a)}_F\leq L\eta=\varepsilon.
+\]
+\end{proof}
+
+\subsection{Applications linéaires continues}
+
+\begin{theorembox}[Caractérisation]
+Soit \(u:E\to F\) une application linéaire entre EVN.  
+Les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+    \item \(u\) est continue sur \(E\).
+    \item \(u\) est continue en \(0\).
+    \item Il existe \(C\geq0\) tel que :
+    \[
+    \forall x\in E,\quad \norme{u(x)}_F\leq C\norme{x}_E.
+    \]
+    \item \(u\) est lipschitzienne.
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+\textbf{1 implique 2.} Évident.
+
+\textbf{2 implique 3.}  
+Supposons \(u\) continue en \(0\).  
+Pour \(\varepsilon=1\), il existe \(\eta>0\) tel que :
+\[
+\norme{x}_E\leq \eta \Rightarrow \norme{u(x)}_F\leq 1.
+\]
+Soit \(x\neq0\). Posons :
+\[
+y=\frac{\eta}{2\norme{x}_E}x.
+\]
+Alors :
+\[
+\norme{y}_E=\frac{\eta}{2}.
+\]
+Donc :
+\[
+\norme{u(y)}_F\leq1.
+\]
+Par linéarité :
+\[
+u(y)=\frac{\eta}{2\norme{x}_E}u(x).
+\]
+Donc :
+\[
+\frac{\eta}{2\norme{x}_E}\norme{u(x)}_F\leq1,
+\]
+d'où :
+\[
+\norme{u(x)}_F\leq \frac{2}{\eta}\norme{x}_E.
+\]
+On prend \(C=2/\eta\).
+
+\textbf{3 implique 4.}  
+Pour tous \(x,y\),
+\[
+\norme{u(x)-u(y)}_F=\norme{u(x-y)}_F\leq C\norme{x-y}_E.
+\]
+Donc \(u\) est lipschitzienne.
+
+\textbf{4 implique 1.}  
+Toute application lipschitzienne est continue.
+\end{proof}
+
+\begin{theorembox}
+Toute application linéaire définie sur un espace vectoriel normé de dimension finie est continue.
+\end{theorembox}
+
+\begin{proof}
+Soit \(E\) de dimension finie, avec une base \((e_1,\dots,e_n)\).  
+Pour \(x=\sum x_ke_k\), on utilise la norme :
+\[
+N_\infty(x)=\max_k |x_k|.
+\]
+Soit \(u:E\to F\) linéaire. Alors :
+\[
+\norme{u(x)}_F
+=
+\norme{\sum_{k=1}^n x_ku(e_k)}_F
+\leq
+\sum_{k=1}^n |x_k|\norme{u(e_k)}_F
+\leq
+N_\infty(x)\sum_{k=1}^n \norme{u(e_k)}_F.
+\]
+Comme toutes les normes sont équivalentes sur \(E\), il existe \(A>0\) tel que :
+\[
+N_\infty(x)\leq A\norme{x}_E.
+\]
+Donc :
+\[
+\norme{u(x)}_F\leq A\left(\sum_{k=1}^n \norme{u(e_k)}_F\right)\norme{x}_E.
+\]
+Ainsi \(u\) est continue.
+\end{proof}
+
+%=========================================================
+\section{Compacité}
+
+\subsection{Définition séquentielle}
+
+\begin{definitionbox}[Partie compacte]
+Une partie \(K\subset E\) est dite \textbf{compacte} si toute suite d'éléments de \(K\) admet une suite extraite convergente vers un élément de \(K\).
+\end{definitionbox}
+
+\subsection{Compact donc fermé et borné}
+
+\begin{theorembox}
+Toute partie compacte d'un EVN est fermée et bornée.
+\end{theorembox}
+
+\begin{proof}
+\textbf{Bornée.}  
+Supposons par l'absurde que \(K\) ne soit pas bornée.  
+Alors pour tout \(n\geq1\), il existe \(x_n\in K\) tel que :
+\[
+\norme{x_n}\geq n.
+\]
+Par compacité, il existe une suite extraite \((x_{\varphi(n)})\) qui converge vers un élément \(\ell\in K\).  
+Toute suite convergente est bornée, contradiction avec :
+\[
+\norme{x_{\varphi(n)}}\geq \varphi(n)\to+\infty.
+\]
+
+\textbf{Fermée.}  
+Soit \((x_n)\) une suite d'éléments de \(K\) qui converge vers \(x\in E\).  
+Par compacité, elle admet une suite extraite \((x_{\varphi(n)})\) qui converge vers un élément \(\ell\in K\).  
+Mais comme \(x_n\to x\), toute suite extraite converge vers \(x\).  
+Par unicité de la limite :
+\[
+x=\ell.
+\]
+Donc \(x\in K\).  
+Ainsi \(K\) est fermé.
+\end{proof}
+
+\subsection{Théorème de Heine-Borel en dimension finie}
+
+\begin{theorembox}[Compacts en dimension finie]
+Dans un espace vectoriel normé de dimension finie, les parties compactes sont exactement les parties fermées et bornées.
+\end{theorembox}
+
+\begin{proof}
+On a déjà montré qu'un compact est fermé et borné.
+
+Réciproquement, soit \(K\) une partie fermée et bornée d'un espace \(E\) de dimension finie \(n\).  
+On choisit une base de \(E\), ce qui identifie \(E\) à \(\K^n\).  
+Comme toutes les normes sont équivalentes en dimension finie, être borné ne dépend pas de la norme choisie.
+
+Soit \((x_p)\) une suite d'éléments de \(K\).  
+En coordonnées :
+\[
+x_p=(x_{p,1},\dots,x_{p,n}).
+\]
+Chaque suite coordonnée est bornée. Par le théorème de Bolzano-Weierstrass réel ou complexe, on extrait successivement une sous-suite pour la première coordonnée, puis pour la seconde, etc. On obtient une suite extraite \((x_{\varphi(p)})\) dont toutes les coordonnées convergent.  
+Elle converge donc dans \(\K^n\), donc dans \(E\), vers un certain \(x\).
+
+Comme \(K\) est fermé et que \(x_{\varphi(p)}\in K\), la limite \(x\) appartient à \(K\).  
+Donc \(K\) est compact.
+\end{proof}
+
+\subsection{Image continue d'un compact}
+
+\begin{theorembox}
+Soit \(f:E\to F\) continue.  
+Si \(K\subset E\) est compact, alors \(f(K)\) est compact.
+\end{theorembox}
+
+\begin{proof}
+Soit \((y_n)\) une suite d'éléments de \(f(K)\).  
+Pour tout \(n\), il existe \(x_n\in K\) tel que :
+\[
+y_n=f(x_n).
+\]
+Comme \(K\) est compact, il existe une suite extraite \((x_{\varphi(n)})\) convergeant vers un élément \(x\in K\).  
+Par continuité de \(f\),
+\[
+f(x_{\varphi(n)})\to f(x).
+\]
+Donc :
+\[
+y_{\varphi(n)}\to f(x)\in f(K).
+\]
+Ainsi toute suite de \(f(K)\) admet une suite extraite convergente dans \(f(K)\).  
+Donc \(f(K)\) est compact.
+\end{proof}
+
+\begin{corollaire}
+Toute fonction réelle continue sur un compact est bornée et atteint ses bornes.
+\end{corollaire}
+
+\begin{proof}
+Si \(f:K\to\R\) est continue et \(K\) compact, alors \(f(K)\) est un compact de \(\R\).  
+Or les compacts de \(\R\) sont les fermés bornés.  
+Donc \(f(K)\) est borné et fermé.  
+Ainsi \(f\) admet un minimum et un maximum sur \(K\).
+\end{proof}
+
+%=========================================================
+\section{Exercices bilan par thème}
+
+\subsection*{Bilan 1 -- Normes}
+
+\begin{exercicebox}[Bilan 1]
+Soit \(E=\mathcal C([0,1],\R)\).  
+On définit :
+\[
+N(f)=|f(0)|+\int_0^1 |f'(t)|\,dt
+\]
+sur l'espace \(E=\mathcal C^1([0,1],\R)\).
+
+\begin{enumerate}
+    \item Montrer que \(N\) est une norme.
+    \item Comparer \(N(f)\) et \(\norme{f}_\infty\).
+    \item Montrer que :
+    \[
+    \norme{f}_\infty\leq N(f).
+    \]
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Bilan 1]
+\textbf{1.}  
+Positivité évidente.  
+Si \(N(f)=0\), alors :
+\[
+|f(0)|=0
+\quad\text{et}\quad
+\int_0^1 |f'(t)|\,dt=0.
+\]
+Donc \(f(0)=0\) et, puisque \(|f'|\) est continue positive d'intégrale nulle, \(f'=0\).  
+Ainsi \(f\) est constante. Comme \(f(0)=0\), \(f=0\).
+
+Homogénéité :
+\[
+N(\lambda f)=|\lambda f(0)|+\int_0^1 |\lambda f'(t)|\,dt
+=|\lambda|N(f).
+\]
+
+Inégalité triangulaire :
+\[
+N(f+g)
+=|f(0)+g(0)|+\int_0^1 |f'(t)+g'(t)|\,dt
+\leq N(f)+N(g).
+\]
+
+\textbf{2 et 3.}  
+Pour tout \(x\in[0,1]\),
+\[
+f(x)=f(0)+\int_0^x f'(t)\,dt.
+\]
+Donc :
+\[
+|f(x)|\leq |f(0)|+\int_0^x |f'(t)|\,dt
+\leq |f(0)|+\int_0^1 |f'(t)|\,dt
+=N(f).
+\]
+En prenant le maximum :
+\[
+\norme{f}_\infty\leq N(f).
+\]
+\end{correctionbox}
+
+\subsection*{Bilan 2 -- Ouverts et fermés}
+
+\begin{exercicebox}[Bilan 2]
+Dans \(M_n(\R)\), muni d'une norme quelconque, on considère :
+\[
+GL_n(\R)=\{A\in M_n(\R):\det(A)\neq0\}.
+\]
+
+\begin{enumerate}
+    \item Montrer que \(GL_n(\R)\) est un ouvert de \(M_n(\R)\).
+    \item Montrer que \(SL_n(\R)=\{A\in M_n(\R):\det(A)=1\}\) est fermé.
+    \item L'ensemble des matrices non inversibles est-il ouvert ou fermé ?
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Bilan 2]
+L'application déterminant :
+\[
+\det:M_n(\R)\to\R
+\]
+est polynomiale en les coefficients de la matrice. Elle est donc continue.
+
+\textbf{1.}  
+On a :
+\[
+GL_n(\R)=\det^{-1}(\R\setminus\{0\}).
+\]
+Or \(\R\setminus\{0\}\) est ouvert dans \(\R\).  
+Par continuité du déterminant, \(GL_n(\R)\) est ouvert.
+
+\textbf{2.}  
+On a :
+\[
+SL_n(\R)=\det^{-1}(\{1\}).
+\]
+Comme \(\{1\}\) est fermé dans \(\R\), \(SL_n(\R)\) est fermé.
+
+\textbf{3.}  
+L'ensemble des matrices non inversibles est :
+\[
+M_n(\R)\setminus GL_n(\R)=\det^{-1}(\{0\}).
+\]
+Il est fermé.  
+Il n'est pas ouvert : par exemple, toute matrice non inversible peut être approchée par des matrices inversibles dans de nombreux cas, et en particulier la matrice nulle est limite de \(\frac1k I_n\), qui est inversible pour tout \(k\), mais tend vers \(0\).
+\end{correctionbox}
+
+\subsection*{Bilan 3 -- Compacité}
+
+\begin{exercicebox}[Bilan 3]
+Soit \(A\in M_n(\R)\). On considère l'application :
+\[
+f:\R^n\to\R,\qquad f(x)=\norme{Ax}_2.
+\]
+
+\begin{enumerate}
+    \item Montrer que \(f\) est continue.
+    \item Montrer que \(f\) atteint un maximum sur la sphère unité :
+    \[
+    S=\{x\in\R^n:\norme{x}_2=1\}.
+    \]
+    \item En déduire qu'il existe \(C\geq0\) tel que :
+    \[
+    \forall x\in\R^n,\quad \norme{Ax}_2\leq C\norme{x}_2.
+    \]
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}[Bilan 3]
+\textbf{1.}  
+L'application \(x\mapsto Ax\) est linéaire en dimension finie, donc continue.  
+La norme \(y\mapsto\norme{y}_2\) est continue.  
+Donc \(f\) est continue comme composée d'applications continues.
+
+\textbf{2.}  
+La sphère unité \(S\) est fermée car :
+\[
+S=\{x:\norme{x}_2=1\}
+\]
+est image réciproque du fermé \(\{1\}\) par l'application continue \(x\mapsto\norme{x}_2\).  
+Elle est bornée par définition.  
+En dimension finie, fermée et bornée implique compacte.  
+Donc \(S\) est compacte.  
+Comme \(f\) est continue, elle atteint son maximum sur \(S\).  
+Il existe donc \(C\geq0\) tel que :
+\[
+C=\max_{x\in S} \norme{Ax}_2.
+\]
+
+\textbf{3.}  
+Si \(x=0\), l'inégalité est évidente.  
+Si \(x\neq0\), alors :
+\[
+u=\frac{x}{\norme{x}_2}\in S.
+\]
+Donc :
+\[
+\norme{Au}_2\leq C.
+\]
+Or :
+\[
+Au=A\left(\frac{x}{\norme{x}_2}\right)=\frac{Ax}{\norme{x}_2}.
+\]
+Ainsi :
+\[
+\frac{\norme{Ax}_2}{\norme{x}_2}\leq C.
+\]
+Donc :
+\[
+\norme{Ax}_2\leq C\norme{x}_2.
+\]
+\end{correctionbox}
+
+%=========================================================
+\section{Grand devoir bilan final}
+
+\begin{center}
+\Large\textbf{Devoir bilan -- Espaces vectoriels normés et produit scalaire}
+\end{center}
+
+\subsection*{Exercice 1 -- Normes et équivalence}
+
+Soit \(E=\R^2\). Pour \(x=(a,b)\), on pose :
+\[
+N(x)=\max(|a|,|a+b|).
+\]
+
+\begin{enumerate}
+    \item Montrer que \(N\) est une norme sur \(\R^2\).
+    \item Montrer que \(N\) est équivalente à \(\norme{\cdot}_\infty\).
+    \item Déterminer explicitement des constantes \(\alpha,\beta>0\) telles que :
+    \[
+    \alpha\norme{x}_\infty\leq N(x)\leq \beta\norme{x}_\infty.
+    \]
+\end{enumerate}
+
+\subsection*{Exercice 2 -- Produit scalaire et projection}
+
+Dans \(\R^3\), on considère :
+\[
+u=(1,1,1),\qquad v=(1,-1,0).
+\]
+On note :
+\[
+F=\Vect(u,v).
+\]
+
+\begin{enumerate}
+    \item Montrer que \((u,v)\) est une famille orthogonale.
+    \item Calculer la projection orthogonale de \(x=(2,0,1)\) sur \(F\).
+    \item Calculer la distance de \(x\) à \(F\).
+\end{enumerate}
+
+\subsection*{Exercice 3 -- Topologie matricielle}
+
+Dans \(M_n(\R)\), on considère :
+\[
+\mathcal S_n^+(\R)=\{A\in M_n(\R): A^T=A\ \text{et}\ \forall x\in\R^n,\ x^TAx\geq0\}.
+\]
+
+\begin{enumerate}
+    \item Montrer que l'ensemble des matrices symétriques est fermé.
+    \item Montrer que, pour un \(x\in\R^n\) fixé, l'application
+    \[
+    A\mapsto x^TAx
+    \]
+    est continue.
+    \item Montrer que \(\mathcal S_n^+(\R)\) est fermé.
+\end{enumerate}
+
+\subsection*{Exercice 4 -- Compacité et optimisation}
+
+Soit \(A\in M_n(\R)\) symétrique. On définit :
+\[
+q(x)=x^TAx.
+\]
+Sur la sphère unité :
+\[
+S=\{x\in\R^n:\norme{x}_2=1\},
+\]
+on pose :
+\[
+m=\min_{x\in S}q(x),
+\qquad
+M=\max_{x\in S}q(x).
+\]
+
+\begin{enumerate}
+    \item Justifier l'existence de \(m\) et \(M\).
+    \item Montrer que :
+    \[
+    \forall x\in\R^n,\quad m\norme{x}_2^2\leq q(x)\leq M\norme{x}_2^2.
+    \]
+    \item En déduire une caractérisation de la positivité de \(A\).
+\end{enumerate}
+
+\newpage
+
+\section{Correction détaillée du devoir bilan}
+
+\subsection*{Correction exercice 1}
+
+\textbf{1. Montrons que \(N\) est une norme.}
+
+Pour tout \(x=(a,b)\),
+\[
+N(x)=\max(|a|,|a+b|)\geq0.
+\]
+
+Si \(N(x)=0\), alors :
+\[
+|a|=0
+\quad\text{et}\quad
+|a+b|=0.
+\]
+Donc :
+\[
+a=0
+\quad\text{et}\quad
+a+b=0.
+\]
+Comme \(a=0\), on obtient \(b=0\).  
+Ainsi \(x=0\).
+
+Pour \(\lambda\in\R\),
+\[
+N(\lambda a,\lambda b)
+=\max(|\lambda a|,|\lambda a+\lambda b|)
+=|\lambda|\max(|a|,|a+b|)
+=|\lambda|N(a,b).
+\]
+
+Enfin, pour \(x=(a,b)\) et \(y=(c,d)\),
+\[
+N(x+y)=\max(|a+c|,|a+b+c+d|).
+\]
+Or :
+\[
+|a+c|\leq |a|+|c|\leq N(x)+N(y),
+\]
+et :
+\[
+|a+b+c+d|\leq |a+b|+|c+d|\leq N(x)+N(y).
+\]
+Donc le maximum des deux termes est inférieur à \(N(x)+N(y)\).  
+Ainsi :
+\[
+N(x+y)\leq N(x)+N(y).
+\]
+Donc \(N\) est une norme.
+
+\textbf{2 et 3. Équivalence avec \(\norme{\cdot}_\infty\).}
+
+On a :
+\[
+|a|\leq \norme{(a,b)}_\infty.
+\]
+Et :
+\[
+|a+b|\leq |a|+|b|\leq 2\norme{(a,b)}_\infty.
+\]
+Donc :
+\[
+N(a,b)\leq 2\norme{(a,b)}_\infty.
+\]
+
+Réciproquement :
+\[
+|a|\leq N(a,b).
+\]
+De plus :
+\[
+|b|=|(a+b)-a|\leq |a+b|+|a|\leq 2N(a,b).
+\]
+Donc :
+\[
+\norme{(a,b)}_\infty=\max(|a|,|b|)\leq 2N(a,b).
+\]
+Ainsi :
+\[
+\frac12\norme{(a,b)}_\infty\leq N(a,b)\leq 2\norme{(a,b)}_\infty.
+\]
+
+\subsection*{Correction exercice 2}
+
+On calcule :
+\[
+\scal{u}{v}=1\cdot1+1\cdot(-1)+1\cdot0=0.
+\]
+Donc \(u\perp v\).
+
+Comme \(u\) et \(v\) sont orthogonaux non nuls, la projection orthogonale de \(x\) sur \(F=\Vect(u,v)\) est :
+\[
+p_F(x)=\frac{\scal{x}{u}}{\norme{u}^2}u+
+\frac{\scal{x}{v}}{\norme{v}^2}v.
+\]
+
+On calcule :
+\[
+\scal{x}{u}=2+0+1=3,
+\qquad
+\norme{u}^2=1+1+1=3.
+\]
+Donc :
+\[
+\frac{\scal{x}{u}}{\norme{u}^2}=1.
+\]
+
+Puis :
+\[
+\scal{x}{v}=2\cdot1+0\cdot(-1)+1\cdot0=2,
+\qquad
+\norme{v}^2=1+1=2.
+\]
+Donc :
+\[
+\frac{\scal{x}{v}}{\norme{v}^2}=1.
+\]
+
+Ainsi :
+\[
+p_F(x)=u+v=(1,1,1)+(1,-1,0)=(2,0,1).
+\]
+Donc \(x\in F\), et :
+\[
+\dist(x,F)=\norme{x-p_F(x)}=0.
+\]
+
+\subsection*{Correction exercice 3}
+
+\textbf{1.}  
+L'ensemble des matrices symétriques est :
+\[
+\{A\in M_n(\R): A^T-A=0\}.
+\]
+L'application :
+\[
+A\mapsto A^T-A
+\]
+est linéaire, donc continue en dimension finie.  
+L'ensemble des matrices symétriques est donc l'image réciproque du fermé \(\{0\}\) par une application continue. Il est fermé.
+
+\textbf{2.}  
+Pour \(x\) fixé, \(x^TAx\) est une expression polynomiale en les coefficients de \(A\).  
+Elle est donc continue.
+
+\textbf{3.}  
+On écrit :
+\[
+\mathcal S_n^+(\R)
+=
+\{A:A^T=A\}\cap
+\bigcap_{x\in\R^n}\{A:x^TAx\geq0\}.
+\]
+Pour chaque \(x\), l'ensemble :
+\[
+\{A:x^TAx\geq0\}
+\]
+est l'image réciproque du fermé \([0,+\infty[\) par l'application continue \(A\mapsto x^TAx\).  
+Il est donc fermé.
+
+Une intersection quelconque de fermés est fermée.  
+Donc \(\mathcal S_n^+(\R)\) est fermé.
+
+\subsection*{Correction exercice 4}
+
+\textbf{1.}  
+La sphère unité :
+\[
+S=\{x:\norme{x}_2=1\}
+\]
+est fermée et bornée dans \(\R^n\), donc compacte.  
+L'application :
+\[
+q(x)=x^TAx
+\]
+est polynomiale en les coordonnées de \(x\), donc continue.  
+Une fonction continue sur un compact atteint ses bornes.  
+Donc \(m\) et \(M\) existent.
+
+\textbf{2.}  
+Si \(x=0\), l'inégalité est immédiate.
+
+Si \(x\neq0\), posons :
+\[
+u=\frac{x}{\norme{x}_2}.
+\]
+Alors \(u\in S\), donc :
+\[
+m\leq q(u)\leq M.
+\]
+Or :
+\[
+q(u)
+=
+q\left(\frac{x}{\norme{x}_2}\right)
+=
+\frac{1}{\norme{x}_2^2}q(x),
+\]
+car \(q\) est homogène de degré \(2\).  
+Donc :
+\[
+m\leq \frac{q(x)}{\norme{x}_2^2}\leq M.
+\]
+En multipliant par \(\norme{x}_2^2\), on obtient :
+\[
+m\norme{x}_2^2\leq q(x)\leq M\norme{x}_2^2.
+\]
+
+\textbf{3.}  
+La matrice \(A\) est positive si et seulement si :
+\[
+\forall x\in\R^n,\quad x^TAx\geq0.
+\]
+D'après l'inégalité précédente, cela équivaut à :
+\[
+m\geq0.
+\]
+En effet, si \(m\geq0\), alors :
+\[
+q(x)\geq m\norme{x}_2^2\geq0.
+\]
+Réciproquement, si \(q(x)\geq0\) pour tout \(x\), alors en particulier \(q(x)\geq0\) sur \(S\), donc son minimum \(m\) sur \(S\) est positif ou nul.
+
+%=========================================================
+\newpage
+\section{Fiche de synthèse finale}
+
+\subsection*{1. Norme}
+
+Une norme sur \(E\) est une application \(\norme{\cdot}:E\to\R_+\) telle que :
+\[
+\norme{x}=0\Longleftrightarrow x=0,
+\]
+\[
+\norme{\lambda x}=|\lambda|\norme{x},
+\]
+\[
+\norme{x+y}\leq\norme{x}+\norme{y}.
+\]
+
+\subsection*{2. Normes usuelles}
+
+Sur \(\K^n\) :
+\[
+\norme{x}_1=\sum |x_i|,
+\qquad
+\norme{x}_2=\left(\sum |x_i|^2\right)^{1/2},
+\qquad
+\norme{x}_\infty=\max |x_i|.
+\]
+
+Sur \(\mathcal C([a,b],\K)\) :
+\[
+\norme{f}_\infty=\sup_{[a,b]}|f|,
+\]
+\[
+\norme{f}_1=\int_a^b |f(t)|\,dt,
+\]
+\[
+\norme{f}_2=\left(\int_a^b |f(t)|^2\,dt\right)^{1/2}.
+\]
+
+\subsection*{3. Produit scalaire}
+
+Un produit scalaire réel est une forme bilinéaire, symétrique, positive et définie.
+
+La norme associée est :
+\[
+\norme{x}=\sqrt{\scal{x}{x}}.
+\]
+
+Cauchy-Schwarz :
+\[
+|\scal{x}{y}|\leq\norme{x}\norme{y}.
+\]
+
+Pythagore :
+\[
+x\perp y\Rightarrow \norme{x+y}^2=\norme{x}^2+\norme{y}^2.
+\]
+
+Projection sur une droite :
+\[
+p_{\R a}(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+
+\subsection*{4. Suites}
+
+\[
+u_n\to\ell
+\Longleftrightarrow
+\forall\varepsilon>0,\exists N,\forall n\geq N,\quad \norme{u_n-\ell}\leq\varepsilon.
+\]
+
+Toute suite convergente est bornée.
+
+Une limite est unique.
+
+Si \(u_n\to u\) et \(v_n\to v\), alors :
+\[
+u_n+v_n\to u+v.
+\]
+
+Si \(\lambda_n\to\lambda\), alors :
+\[
+\lambda_nu_n\to\lambda u.
+\]
+
+\subsection*{5. Normes équivalentes}
+
+Deux normes \(N_1,N_2\) sont équivalentes s'il existe \(\alpha,\beta>0\) telles que :
+\[
+\alpha N_1(x)\leq N_2(x)\leq \beta N_1(x).
+\]
+
+En dimension finie, toutes les normes sont équivalentes.
+
+\subsection*{6. Ouverts et fermés}
+
+Une partie \(U\) est ouverte si :
+\[
+\forall a\in U,\exists r>0,\quad B(a,r)\subset U.
+\]
+
+Une partie \(F\) est fermée si son complémentaire est ouvert.
+
+Caractérisation séquentielle :
+\[
+F\text{ fermé}
+\Longleftrightarrow
+\left(x_n\in F,\ x_n\to x\Rightarrow x\in F\right).
+\]
+
+\subsection*{7. Adhérence}
+
+\[
+x\in\overline A
+\Longleftrightarrow
+\forall r>0,\quad B(x,r)\cap A\neq\varnothing.
+\]
+
+Caractérisation séquentielle :
+\[
+x\in\overline A
+\Longleftrightarrow
+\exists a_n\in A,\quad a_n\to x.
+\]
+
+\subsection*{8. Continuité}
+
+\[
+f\text{ continue en }a
+\Longleftrightarrow
+x_n\to a\Rightarrow f(x_n)\to f(a).
+\]
+
+Toute application lipschitzienne est continue.
+
+Une application linéaire \(u:E\to F\) est continue si et seulement s'il existe \(C\geq0\) tel que :
+\[
+\norme{u(x)}_F\leq C\norme{x}_E.
+\]
+
+En dimension finie, toute application linéaire est continue.
+
+\subsection*{9. Compacité}
+
+Une partie \(K\) est compacte si toute suite de \(K\) admet une suite extraite convergente vers un élément de \(K\).
+
+Dans un EVN quelconque :
+\[
+K\text{ compact}\Rightarrow K\text{ fermé et borné}.
+\]
+
+En dimension finie :
+\[
+K\text{ compact}
+\Longleftrightarrow
+K\text{ fermé et borné}.
+\]
+
+Image continue d'un compact :
+\[
+K\text{ compact},\ f\text{ continue}
+\Rightarrow
+f(K)\text{ compact}.
+\]
+
+Conséquence :
+une fonction réelle continue sur un compact est bornée et atteint ses bornes.
+
+%=========================================================
+\section*{Conclusion pédagogique}
+\addcontentsline{toc}{section}{Conclusion pédagogique}
+
+Les espaces vectoriels normés fournissent le langage naturel de l'analyse moderne en prépa.  
+Le point essentiel est de comprendre que la norme remplace la valeur absolue, et permet donc de généraliser la convergence, la continuité et la compacité à des objets plus riches : vecteurs, matrices, fonctions, suites de fonctions.
+
+Le produit scalaire ajoute une structure géométrique plus fine : angles, orthogonalité, projections, distances à des sous-espaces.  
+En dimension finie, le théorème d'équivalence des normes simplifie fortement la théorie : beaucoup de propriétés ne dépendent pas du choix de la norme.
+
+\end{document}

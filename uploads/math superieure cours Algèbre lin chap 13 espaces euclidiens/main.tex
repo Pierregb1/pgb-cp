@@ -1,0 +1,3236 @@
+\documentclass[11pt,a4paper]{article}
+
+%=========================================================
+% PACKAGES
+%=========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+%=========================================================
+% MISE EN PAGE
+%=========================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques CPGE}
+\fancyhead[C]{Espaces euclidiens}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Cours complet -- Algèbre euclidienne}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+\setlist[itemize]{label=\(\triangleright\)}
+\setlist[enumerate]{label=\textbf{\arabic*.}}
+
+%=========================================================
+% COULEURS
+%=========================================================
+\definecolor{bleufonce}{RGB}{25,65,130}
+\definecolor{bleuclair}{RGB}{235,243,255}
+\definecolor{vertfonce}{RGB}{30,120,70}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougefonce}{RGB}{170,40,40}
+\definecolor{rougeclair}{RGB}{255,238,238}
+\definecolor{orangefonce}{RGB}{190,110,20}
+\definecolor{orangeclair}{RGB}{255,246,230}
+\definecolor{violetfonce}{RGB}{95,55,145}
+\definecolor{violetclair}{RGB}{246,241,255}
+
+\tcbset{
+    enhanced,
+    sharp corners,
+    boxrule=0.7pt,
+    before skip=8pt,
+    after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1][]{
+    colback=bleuclair,
+    colframe=bleufonce,
+    title=\textbf{Définition #1}
+}
+
+\newtcolorbox{theorembox}[1][]{
+    colback=vertclair,
+    colframe=vertfonce,
+    title=\textbf{Théorème / Propriété #1}
+}
+
+\newtcolorbox{methodbox}[1][]{
+    colback=orangeclair,
+    colframe=orangefonce,
+    title=\textbf{Méthode #1}
+}
+
+\newtcolorbox{retenirbox}[1][]{
+    colback=violetclair,
+    colframe=violetfonce,
+    title=\textbf{À retenir #1}
+}
+
+\newtcolorbox{erreurbox}[1][]{
+    colback=rougeclair,
+    colframe=rougefonce,
+    title=\textbf{Erreur classique #1}
+}
+
+\newtcolorbox{exercicebox}[1][]{
+    colback=white,
+    colframe=black!55,
+    title=\textbf{Exercice #1}
+}
+
+\newtcolorbox{correctionbox}[1][]{
+    colback=gray!5,
+    colframe=black!65,
+    title=\textbf{Correction #1}
+}
+
+%=========================================================
+% COMMANDES
+%=========================================================
+\newcommand{\R}{\mathbb R}
+\newcommand{\K}{\mathbb K}
+\newcommand{\N}{\mathbb N}
+\newcommand{\M}{\mathcal M}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Imf}{\operatorname{Im}}
+\newcommand{\rg}{\operatorname{rg}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\OO}{\operatorname{O}}
+\newcommand{\norme}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\scal}[2]{\left\langle #1,#2\right\rangle}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemme}[prop]{Lemme}
+\newtheorem{corollaire}[prop]{Corollaire}
+
+%=========================================================
+% DOCUMENT
+%=========================================================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Espaces euclidiens}}\\[2mm]
+    {\Large Produit scalaire, orthogonalité, projections, isométries et matrices symétriques}\\[2mm]
+    {\large Cours complet pour classes préparatoires scientifiques}\\[2mm]
+    \rule{0.88\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.4cm}
+
+\tableofcontents
+
+\newpage
+
+%=========================================================
+\section*{Introduction générale}
+\addcontentsline{toc}{section}{Introduction générale}
+
+Dans un espace vectoriel général, on sait parler de combinaisons linéaires, de bases, de dimension, d'applications linéaires et de réduction.  
+Avec les espaces vectoriels normés, on sait aussi parler de longueur, de distance, de convergence et de continuité.
+
+Mais en géométrie, une notion manque encore : l'angle.  
+Pour parler rigoureusement d'orthogonalité, de projection, de distance à un sous-espace, de symétrie orthogonale, d'isométrie ou encore de matrice orthogonale, il faut enrichir l'espace vectoriel par un \textbf{produit scalaire}.
+
+\begin{retenirbox}
+Un espace euclidien est un espace vectoriel réel de dimension finie muni d'un produit scalaire.  
+Le produit scalaire permet de faire de la géométrie dans un cadre algébrique.
+\end{retenirbox}
+
+Ce chapitre évite de refaire toute la théorie des espaces vectoriels normés.  
+On utilisera seulement le fait qu'un produit scalaire définit une norme :
+\[
+\norme{x}=\sqrt{\scal{x}{x}},
+\]
+et donc une distance :
+\[
+d(x,y)=\norme{x-y}.
+\]
+
+%=========================================================
+\section{Produit scalaire et espace euclidien}
+
+\subsection{Produit scalaire}
+
+\begin{definitionbox}[Produit scalaire réel]
+Soit \(E\) un espace vectoriel réel.  
+Un \textbf{produit scalaire} sur \(E\) est une application
+\[
+\scal{\cdot}{\cdot}:E\times E\longrightarrow \R
+\]
+vérifiant, pour tous \(x,y,z\in E\) et tout \(\lambda\in\R\) :
+
+\begin{enumerate}
+    \item \textbf{Bilinéarité :}
+    \[
+    \scal{\lambda x+y}{z}
+    =
+    \lambda\scal{x}{z}+\scal{y}{z},
+    \]
+    et
+    \[
+    \scal{x}{\lambda y+z}
+    =
+    \lambda\scal{x}{y}+\scal{x}{z}.
+    \]
+
+    \item \textbf{Symétrie :}
+    \[
+    \scal{x}{y}=\scal{y}{x}.
+    \]
+
+    \item \textbf{Positivité :}
+    \[
+    \scal{x}{x}\geq 0.
+    \]
+
+    \item \textbf{Définie positivité :}
+    \[
+    \scal{x}{x}=0\Longleftrightarrow x=0.
+    \]
+\end{enumerate}
+\end{definitionbox}
+
+\begin{definitionbox}[Espace euclidien]
+Un \textbf{espace euclidien} est un espace vectoriel réel de dimension finie muni d'un produit scalaire.
+\end{definitionbox}
+
+\begin{erreurbox}
+Un produit scalaire est toujours défini sur un espace vectoriel réel dans ce chapitre.  
+Sur un espace vectoriel complexe, on parle plutôt de produit hermitien, avec une sesquilinéarité.
+\end{erreurbox}
+
+\subsection{Exemples fondamentaux}
+
+\begin{theorembox}[Produit scalaire canonique de \(\R^n\)]
+Sur \(\R^n\), l'application
+\[
+\scal{x}{y}=x_1y_1+\cdots+x_ny_n,
+\]
+où
+\[
+x=(x_1,\dots,x_n),\qquad y=(y_1,\dots,y_n),
+\]
+est un produit scalaire.
+\end{theorembox}
+
+\begin{proof}
+La bilinéarité vient de la distributivité de la somme et du produit réel.  
+La symétrie vient de la commutativité du produit réel :
+\[
+x_iy_i=y_ix_i.
+\]
+De plus :
+\[
+\scal{x}{x}=x_1^2+\cdots+x_n^2\geq0.
+\]
+Enfin :
+\[
+x_1^2+\cdots+x_n^2=0
+\]
+si et seulement si chaque terme positif est nul, donc si et seulement si :
+\[
+x_1=\cdots=x_n=0.
+\]
+Ainsi \(x=0\).  
+L'application est donc un produit scalaire.
+\end{proof}
+
+\begin{theorembox}[Produit scalaire sur un espace de polynômes]
+Sur \(\R_2[X]\), l'application
+\[
+\scal{P}{Q}=P(0)Q(0)+P(1)Q(1)+P(2)Q(2)
+\]
+est un produit scalaire.
+\end{theorembox}
+
+\begin{proof}
+La bilinéarité et la symétrie sont immédiates.
+
+Pour tout \(P\in\R_2[X]\),
+\[
+\scal{P}{P}=P(0)^2+P(1)^2+P(2)^2\geq0.
+\]
+Si :
+\[
+\scal{P}{P}=0,
+\]
+alors :
+\[
+P(0)=P(1)=P(2)=0.
+\]
+Le polynôme \(P\) est de degré au plus \(2\) et possède trois racines distinctes.  
+Donc :
+\[
+P=0.
+\]
+L'application est donc définie positive.
+\end{proof}
+
+\begin{erreurbox}
+Sur \(\R[X]\), la formule
+\[
+\scal{P}{Q}=P(0)Q(0)+P(1)Q(1)+P(2)Q(2)
+\]
+n'est pas un produit scalaire, car un polynôme non nul de degré supérieur ou égal à \(3\) peut s'annuler en \(0,1,2\).  
+Par exemple :
+\[
+P(X)=X(X-1)(X-2).
+\]
+\end{erreurbox}
+
+\subsection{Norme associée}
+
+\begin{definitionbox}[Norme euclidienne]
+Si \(E\) est un espace euclidien, la norme associée au produit scalaire est :
+\[
+\norme{x}=\sqrt{\scal{x}{x}}.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+Dans un espace euclidien :
+\[
+\norme{x}^2=\scal{x}{x}.
+\]
+Cette égalité est utilisée constamment.
+\end{retenirbox}
+
+%=========================================================
+\section{Inégalité de Cauchy-Schwarz et conséquences}
+
+\subsection{Inégalité de Cauchy-Schwarz}
+
+\begin{theorembox}[Cauchy-Schwarz]
+Pour tous \(x,y\in E\),
+\[
+|\scal{x}{y}|\leq \norme{x}\norme{y}.
+\]
+De plus, il y a égalité si et seulement si \(x\) et \(y\) sont colinéaires.
+\end{theorembox}
+
+\begin{proof}
+Si \(y=0\), l'inégalité est immédiate.
+
+Supposons \(y\neq0\).  
+Pour tout \(t\in\R\), on a :
+\[
+0\leq \norme{x-ty}^2.
+\]
+En développant :
+\[
+\norme{x-ty}^2
+=
+\scal{x-ty}{x-ty}
+=
+\norme{x}^2-2t\scal{x}{y}+t^2\norme{y}^2.
+\]
+Le polynôme réel
+\[
+P(t)=\norme{y}^2t^2-2\scal{x}{y}t+\norme{x}^2
+\]
+est positif pour tout réel \(t\).  
+Son discriminant est donc négatif ou nul :
+\[
+\Delta
+=
+4\scal{x}{y}^2-4\norme{x}^2\norme{y}^2
+\leq0.
+\]
+Ainsi :
+\[
+\scal{x}{y}^2\leq\norme{x}^2\norme{y}^2.
+\]
+En prenant la racine carrée :
+\[
+|\scal{x}{y}|\leq\norme{x}\norme{y}.
+\]
+
+Le cas d'égalité correspond à \(\Delta=0\), donc à l'existence d'un réel \(t_0\) tel que :
+\[
+\norme{x-t_0y}^2=0.
+\]
+Cela équivaut à :
+\[
+x=t_0y.
+\]
+Donc \(x\) et \(y\) sont colinéaires.  
+La réciproque est immédiate.
+\end{proof}
+
+\subsection{Inégalité triangulaire}
+
+\begin{theorembox}[Inégalité triangulaire]
+Pour tous \(x,y\in E\),
+\[
+\norme{x+y}\leq\norme{x}+\norme{y}.
+\]
+\end{theorembox}
+
+\begin{proof}
+On développe :
+\[
+\norme{x+y}^2
+=
+\norme{x}^2+2\scal{x}{y}+\norme{y}^2.
+\]
+Par Cauchy-Schwarz :
+\[
+\scal{x}{y}\leq |\scal{x}{y}|\leq\norme{x}\norme{y}.
+\]
+Donc :
+\[
+\norme{x+y}^2
+\leq
+\norme{x}^2+2\norme{x}\norme{y}+\norme{y}^2
+=
+(\norme{x}+\norme{y})^2.
+\]
+Comme les deux membres sont positifs :
+\[
+\norme{x+y}\leq\norme{x}+\norme{y}.
+\]
+\end{proof}
+
+\subsection{Identités remarquables}
+
+\begin{theorembox}[Identité de polarisation]
+Pour tous \(x,y\in E\),
+\[
+\scal{x}{y}
+=
+\frac12\left(\norme{x+y}^2-\norme{x}^2-\norme{y}^2\right).
+\]
+On a aussi :
+\[
+\scal{x}{y}
+=
+\frac14\left(\norme{x+y}^2-\norme{x-y}^2\right).
+\]
+\end{theorembox}
+
+\begin{proof}
+On développe :
+\[
+\norme{x+y}^2
+=
+\norme{x}^2+2\scal{x}{y}+\norme{y}^2.
+\]
+D'où la première formule.
+
+De même :
+\[
+\norme{x-y}^2
+=
+\norme{x}^2-2\scal{x}{y}+\norme{y}^2.
+\]
+En soustrayant :
+\[
+\norme{x+y}^2-\norme{x-y}^2=4\scal{x}{y}.
+\]
+D'où la seconde formule.
+\end{proof}
+
+\begin{theorembox}[Identité du parallélogramme]
+Pour tous \(x,y\in E\),
+\[
+\norme{x+y}^2+\norme{x-y}^2
+=
+2\norme{x}^2+2\norme{y}^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+On additionne les deux développements :
+\[
+\norme{x+y}^2
+=
+\norme{x}^2+2\scal{x}{y}+\norme{y}^2,
+\]
+\[
+\norme{x-y}^2
+=
+\norme{x}^2-2\scal{x}{y}+\norme{y}^2.
+\]
+Les termes en produit scalaire se compensent.
+\end{proof}
+
+\begin{methodbox}[Exploiter Cauchy-Schwarz]
+Cauchy-Schwarz sert à :
+\begin{enumerate}
+    \item majorer un produit scalaire ;
+    \item prouver qu'une expression est bien définie ;
+    \item démontrer l'inégalité triangulaire ;
+    \item reconnaître les cas d'égalité par colinéarité ;
+    \item établir des inégalités sur des sommes ou des intégrales.
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Orthogonalité}
+
+\subsection{Vecteurs orthogonaux}
+
+\begin{definitionbox}[Orthogonalité]
+Deux vecteurs \(x,y\in E\) sont dits orthogonaux si :
+\[
+\scal{x}{y}=0.
+\]
+On note :
+\[
+x\perp y.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Pythagore]
+Si \(x\perp y\), alors :
+\[
+\norme{x+y}^2=\norme{x}^2+\norme{y}^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+On développe :
+\[
+\norme{x+y}^2
+=
+\norme{x}^2+2\scal{x}{y}+\norme{y}^2.
+\]
+Si \(x\perp y\), alors \(\scal{x}{y}=0\), d'où :
+\[
+\norme{x+y}^2=\norme{x}^2+\norme{y}^2.
+\]
+\end{proof}
+
+\begin{theorembox}[Pythagore généralisé]
+Si \(x_1,\dots,x_p\) sont deux à deux orthogonaux, alors :
+\[
+\norme{x_1+\cdots+x_p}^2
+=
+\norme{x_1}^2+\cdots+\norme{x_p}^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+On développe :
+\[
+\norme{x_1+\cdots+x_p}^2
+=
+\scal{\sum_{i=1}^p x_i}{\sum_{j=1}^p x_j}
+=
+\sum_{i=1}^p\sum_{j=1}^p\scal{x_i}{x_j}.
+\]
+Les termes avec \(i\neq j\) sont nuls par orthogonalité.  
+Il reste :
+\[
+\sum_{i=1}^p\scal{x_i}{x_i}
+=
+\sum_{i=1}^p\norme{x_i}^2.
+\]
+\end{proof}
+
+\subsection{Orthogonal d'une partie}
+
+\begin{definitionbox}[Orthogonal d'une partie]
+Soit \(A\subset E\).  
+L'orthogonal de \(A\), noté \(A^\perp\), est :
+\[
+A^\perp=\{x\in E:\ \forall a\in A,\ \scal{x}{a}=0\}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Pour toute partie \(A\subset E\), \(A^\perp\) est un sous-espace vectoriel de \(E\).
+\end{theorembox}
+
+\begin{proof}
+On a \(0\in A^\perp\), car :
+\[
+\scal{0}{a}=0
+\]
+pour tout \(a\in A\).
+
+Soient \(x,y\in A^\perp\) et \(\lambda,\mu\in\R\).  
+Pour tout \(a\in A\),
+\[
+\scal{\lambda x+\mu y}{a}
+=
+\lambda\scal{x}{a}+\mu\scal{y}{a}
+=
+0.
+\]
+Donc :
+\[
+\lambda x+\mu y\in A^\perp.
+\]
+Ainsi \(A^\perp\) est un sous-espace vectoriel.
+\end{proof}
+
+\begin{retenirbox}
+Même si \(A\) n'est pas un sous-espace vectoriel, \(A^\perp\) est toujours un sous-espace vectoriel.
+\end{retenirbox}
+
+\subsection{Orthogonal d'une somme et inclusion}
+
+\begin{theorembox}
+Si \(A\subset B\), alors :
+\[
+B^\perp\subset A^\perp.
+\]
+\end{theorembox}
+
+\begin{proof}
+Si \(x\in B^\perp\), alors \(x\) est orthogonal à tout élément de \(B\).  
+Comme \(A\subset B\), \(x\) est en particulier orthogonal à tout élément de \(A\).  
+Donc :
+\[
+x\in A^\perp.
+\]
+\end{proof}
+
+\begin{theorembox}
+Si \(F\) et \(G\) sont deux sous-espaces vectoriels de \(E\), alors :
+\[
+(F+G)^\perp=F^\perp\cap G^\perp.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \(x\in(F+G)^\perp\).  
+Alors \(x\) est orthogonal à tout vecteur de \(F+G\).  
+Comme \(F\subset F+G\) et \(G\subset F+G\), on a :
+\[
+x\in F^\perp
+\quad\text{et}\quad
+x\in G^\perp.
+\]
+Donc :
+\[
+x\in F^\perp\cap G^\perp.
+\]
+
+Réciproquement, soit \(x\in F^\perp\cap G^\perp\).  
+Tout élément de \(F+G\) s'écrit \(f+g\), avec \(f\in F\) et \(g\in G\).  
+Alors :
+\[
+\scal{x}{f+g}=\scal{x}{f}+\scal{x}{g}=0+0=0.
+\]
+Donc \(x\in(F+G)^\perp\).
+\end{proof}
+
+%=========================================================
+\section{Familles orthogonales et bases orthonormées}
+
+\subsection{Définitions}
+
+\begin{definitionbox}[Famille orthogonale]
+Une famille \((e_1,\dots,e_p)\) est orthogonale si :
+\[
+\forall i\neq j,\qquad \scal{e_i}{e_j}=0.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Famille orthonormée]
+Une famille \((e_1,\dots,e_p)\) est orthonormée si :
+\[
+\forall i,j,\qquad \scal{e_i}{e_j}=\delta_{ij},
+\]
+c'est-à-dire :
+\[
+\scal{e_i}{e_j}=0\quad\text{si }i\neq j,
+\]
+et :
+\[
+\norme{e_i}=1\quad\text{pour tout }i.
+\]
+\end{definitionbox}
+
+\subsection{Liberté}
+
+\begin{theorembox}
+Toute famille orthogonale de vecteurs non nuls est libre.
+\end{theorembox}
+
+\begin{proof}
+Soit \((e_1,\dots,e_p)\) une famille orthogonale de vecteurs non nuls.  
+Supposons :
+\[
+\lambda_1e_1+\cdots+\lambda_pe_p=0.
+\]
+On prend le produit scalaire avec \(e_k\).  
+On obtient :
+\[
+\scal{\lambda_1e_1+\cdots+\lambda_pe_p}{e_k}=0.
+\]
+Par bilinéarité :
+\[
+\sum_{i=1}^p\lambda_i\scal{e_i}{e_k}=0.
+\]
+Par orthogonalité, tous les termes sont nuls sauf celui correspondant à \(i=k\).  
+Donc :
+\[
+\lambda_k\norme{e_k}^2=0.
+\]
+Comme \(e_k\neq0\), on a \(\norme{e_k}^2>0\).  
+Donc :
+\[
+\lambda_k=0.
+\]
+Ceci vaut pour tout \(k\), donc la famille est libre.
+\end{proof}
+
+\begin{corollaire}
+Dans un espace euclidien de dimension \(n\), toute famille orthogonale de vecteurs non nuls possède au plus \(n\) vecteurs.
+\end{corollaire}
+
+\subsection{Coordonnées dans une base orthonormée}
+
+\begin{theorembox}[Coordonnées dans une base orthonormée]
+Soit \(\mathcal B=(e_1,\dots,e_n)\) une base orthonormée de \(E\).  
+Alors, pour tout \(x\in E\),
+\[
+x=\sum_{k=1}^n \scal{x}{e_k}e_k.
+\]
+\end{theorembox}
+
+\begin{proof}
+Comme \(\mathcal B\) est une base, il existe des réels \(\lambda_1,\dots,\lambda_n\) tels que :
+\[
+x=\sum_{k=1}^n\lambda_ke_k.
+\]
+Prenons le produit scalaire avec \(e_j\).  
+On obtient :
+\[
+\scal{x}{e_j}
+=
+\sum_{k=1}^n\lambda_k\scal{e_k}{e_j}.
+\]
+Comme la base est orthonormée :
+\[
+\scal{e_k}{e_j}=\delta_{kj}.
+\]
+Donc :
+\[
+\scal{x}{e_j}=\lambda_j.
+\]
+Ainsi :
+\[
+x=\sum_{k=1}^n\scal{x}{e_k}e_k.
+\]
+\end{proof}
+
+\begin{corollaire}[Formule de Parseval]
+Dans une base orthonormée \((e_1,\dots,e_n)\),
+\[
+\norme{x}^2
+=
+\sum_{k=1}^n\scal{x}{e_k}^2.
+\]
+\end{corollaire}
+
+\begin{proof}
+On écrit :
+\[
+x=\sum_{k=1}^n\scal{x}{e_k}e_k.
+\]
+La famille étant orthonormée, les vecteurs de cette somme sont deux à deux orthogonaux.  
+Par Pythagore généralisé :
+\[
+\norme{x}^2
+=
+\sum_{k=1}^n\norme{\scal{x}{e_k}e_k}^2
+=
+\sum_{k=1}^n\scal{x}{e_k}^2\norme{e_k}^2.
+\]
+Comme \(\norme{e_k}=1\),
+\[
+\norme{x}^2
+=
+\sum_{k=1}^n\scal{x}{e_k}^2.
+\]
+\end{proof}
+
+\begin{methodbox}[Utiliser une base orthonormée]
+Dans une base orthonormée, les calculs deviennent simples :
+\[
+x=\sum_{k=1}^n \scal{x}{e_k}e_k,
+\]
+\[
+\scal{x}{y}=\sum_{k=1}^n x_ky_k,
+\]
+\[
+\norme{x}^2=\sum_{k=1}^n x_k^2.
+\]
+C'est pourquoi on cherche souvent à construire des bases orthonormées.
+\end{methodbox}
+
+%=========================================================
+\section{Procédé de Gram-Schmidt}
+
+\subsection{Énoncé}
+
+\begin{theorembox}[Orthogonalisation de Gram-Schmidt]
+Soit \((u_1,\dots,u_n)\) une famille libre de \(E\).  
+On définit :
+\[
+v_1=u_1,
+\]
+puis, pour \(k\geq2\),
+\[
+v_k
+=
+u_k
+-
+\sum_{j=1}^{k-1}
+\frac{\scal{u_k}{v_j}}{\norme{v_j}^2}v_j.
+\]
+Alors \((v_1,\dots,v_n)\) est une famille orthogonale de vecteurs non nuls et, pour tout \(k\),
+\[
+\Vect(v_1,\dots,v_k)=\Vect(u_1,\dots,u_k).
+\]
+En posant :
+\[
+e_k=\frac{v_k}{\norme{v_k}},
+\]
+on obtient une famille orthonormée.
+\end{theorembox}
+
+\begin{proof}
+On raisonne par récurrence.
+
+Pour \(k=1\), on a \(v_1=u_1\neq0\), et :
+\[
+\Vect(v_1)=\Vect(u_1).
+\]
+
+Supposons \(v_1,\dots,v_{k-1}\) construits, orthogonaux, non nuls, et tels que :
+\[
+\Vect(v_1,\dots,v_{k-1})=\Vect(u_1,\dots,u_{k-1}).
+\]
+On définit :
+\[
+v_k
+=
+u_k
+-
+\sum_{j=1}^{k-1}
+\frac{\scal{u_k}{v_j}}{\norme{v_j}^2}v_j.
+\]
+
+Montrons que \(v_k\) est orthogonal à \(v_i\) pour \(i<k\).  
+On calcule :
+\[
+\scal{v_k}{v_i}
+=
+\scal{u_k}{v_i}
+-
+\sum_{j=1}^{k-1}
+\frac{\scal{u_k}{v_j}}{\norme{v_j}^2}
+\scal{v_j}{v_i}.
+\]
+Comme les \(v_j\) sont orthogonaux, \(\scal{v_j}{v_i}=0\) si \(j\neq i\), et :
+\[
+\scal{v_i}{v_i}=\norme{v_i}^2.
+\]
+Donc :
+\[
+\scal{v_k}{v_i}
+=
+\scal{u_k}{v_i}
+-
+\frac{\scal{u_k}{v_i}}{\norme{v_i}^2}
+\norme{v_i}^2
+=0.
+\]
+
+Montrons que \(v_k\neq0\).  
+Si \(v_k=0\), alors :
+\[
+u_k
+=
+\sum_{j=1}^{k-1}
+\frac{\scal{u_k}{v_j}}{\norme{v_j}^2}v_j
+\in
+\Vect(v_1,\dots,v_{k-1})
+=
+\Vect(u_1,\dots,u_{k-1}),
+\]
+ce qui contredit la liberté de \((u_1,\dots,u_k)\).  
+Donc \(v_k\neq0\).
+
+Enfin, comme \(v_k\) est obtenu à partir de \(u_k\) en ajoutant une combinaison linéaire de \(v_1,\dots,v_{k-1}\), on a :
+\[
+\Vect(v_1,\dots,v_k)=\Vect(u_1,\dots,u_k).
+\]
+\end{proof}
+
+\begin{corollaire}[Existence de bases orthonormées]
+Tout espace euclidien admet une base orthonormée.
+\end{corollaire}
+
+\begin{proof}
+On part d'une base quelconque de \(E\), puis on applique le procédé de Gram-Schmidt et on normalise les vecteurs obtenus.
+\end{proof}
+
+\begin{methodbox}[Appliquer Gram-Schmidt]
+Pour orthonormaliser une famille libre \((u_1,\dots,u_n)\) :
+\begin{enumerate}
+    \item poser \(v_1=u_1\), puis \(e_1=\dfrac{v_1}{\norme{v_1}}\) ;
+    \item retirer à \(u_2\) sa projection sur \(\Vect(v_1)\) ;
+    \item retirer à \(u_k\) sa projection sur \(\Vect(v_1,\dots,v_{k-1})\) ;
+    \item normaliser chaque \(v_k\).
+\end{enumerate}
+\end{methodbox}
+
+\begin{erreurbox}
+Dans Gram-Schmidt, on projette sur les vecteurs déjà orthogonaux \(v_j\), pas directement sur les vecteurs initiaux \(u_j\), sauf au premier rang.
+\end{erreurbox}
+
+%=========================================================
+\section{Orthogonal d'un sous-espace et somme directe orthogonale}
+
+\subsection{Théorème fondamental}
+
+\begin{theorembox}[Décomposition orthogonale]
+Soit \(F\) un sous-espace vectoriel d'un espace euclidien \(E\).  
+Alors :
+\[
+E=F\oplus F^\perp.
+\]
+\end{theorembox}
+
+\begin{proof}
+Comme \(F\) est un espace euclidien pour le produit scalaire induit, il admet une base orthonormée :
+\[
+(e_1,\dots,e_p).
+\]
+On complète cette famille orthonormée en une base orthonormée de \(E\) :
+\[
+(e_1,\dots,e_p,e_{p+1},\dots,e_n).
+\]
+Alors :
+\[
+F=\Vect(e_1,\dots,e_p).
+\]
+Montrons que :
+\[
+F^\perp=\Vect(e_{p+1},\dots,e_n).
+\]
+
+D'abord, tout vecteur de \(\Vect(e_{p+1},\dots,e_n)\) est orthogonal à \(F\), car la base est orthonormée.  
+Donc :
+\[
+\Vect(e_{p+1},\dots,e_n)\subset F^\perp.
+\]
+
+Réciproquement, soit \(x\in F^\perp\).  
+Écrivons :
+\[
+x=\sum_{k=1}^n\lambda_ke_k.
+\]
+Pour \(1\leq i\leq p\), comme \(x\in F^\perp\),
+\[
+0=\scal{x}{e_i}=\lambda_i.
+\]
+Donc :
+\[
+x=\sum_{k=p+1}^n\lambda_ke_k.
+\]
+Ainsi :
+\[
+F^\perp=\Vect(e_{p+1},\dots,e_n).
+\]
+
+On obtient donc :
+\[
+E=F\oplus F^\perp.
+\]
+\end{proof}
+
+\begin{corollaire}
+Pour tout sous-espace \(F\) de \(E\),
+\[
+\dim(F)+\dim(F^\perp)=\dim(E).
+\]
+\end{corollaire}
+
+\begin{corollaire}
+Pour tout sous-espace \(F\) de \(E\),
+\[
+(F^\perp)^\perp=F.
+\]
+\end{corollaire}
+
+\begin{proof}
+On a toujours :
+\[
+F\subset (F^\perp)^\perp.
+\]
+En effet, tout vecteur de \(F\) est orthogonal à tout vecteur de \(F^\perp\).
+
+De plus :
+\[
+\dim((F^\perp)^\perp)
+=
+\dim(E)-\dim(F^\perp).
+\]
+Or :
+\[
+\dim(F^\perp)=\dim(E)-\dim(F).
+\]
+Donc :
+\[
+\dim((F^\perp)^\perp)=\dim(F).
+\]
+L'inclusion entre deux sous-espaces de même dimension est donc une égalité.
+\end{proof}
+
+\begin{retenirbox}
+Dans un espace euclidien de dimension finie :
+\[
+E=F\oplus F^\perp,
+\qquad
+\dim(F^\perp)=\dim(E)-\dim(F),
+\qquad
+(F^\perp)^\perp=F.
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Projection orthogonale}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Projection orthogonale]
+Soit \(F\) un sous-espace vectoriel de \(E\).  
+Comme :
+\[
+E=F\oplus F^\perp,
+\]
+tout vecteur \(x\in E\) s'écrit de manière unique :
+\[
+x=p_F(x)+r_F(x),
+\]
+avec :
+\[
+p_F(x)\in F,
+\qquad
+r_F(x)\in F^\perp.
+\]
+Le vecteur \(p_F(x)\) est appelé le \textbf{projeté orthogonal} de \(x\) sur \(F\).
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation du projeté orthogonal]
+Le vecteur \(p_F(x)\) est l'unique vecteur \(y\in F\) tel que :
+\[
+x-y\in F^\perp.
+\]
+\end{theorembox}
+
+\begin{proof}
+Par définition, dans la décomposition :
+\[
+x=p_F(x)+r_F(x),
+\]
+on a :
+\[
+p_F(x)\in F,
+\qquad
+r_F(x)=x-p_F(x)\in F^\perp.
+\]
+Donc \(p_F(x)\) vérifie bien la propriété.
+
+Réciproquement, si \(y\in F\) vérifie :
+\[
+x-y\in F^\perp,
+\]
+alors :
+\[
+x=y+(x-y)
+\]
+est une décomposition de \(x\) comme somme d'un élément de \(F\) et d'un élément de \(F^\perp\).  
+Par unicité de la décomposition dans la somme directe :
+\[
+E=F\oplus F^\perp,
+\]
+on a :
+\[
+y=p_F(x).
+\]
+\end{proof}
+
+\subsection{Formule dans une base orthonormée}
+
+\begin{theorembox}[Formule de projection]
+Si \((e_1,\dots,e_p)\) est une base orthonormée de \(F\), alors :
+\[
+p_F(x)=\sum_{k=1}^p \scal{x}{e_k}e_k.
+\]
+\end{theorembox}
+
+\begin{proof}
+Posons :
+\[
+y=\sum_{k=1}^p \scal{x}{e_k}e_k.
+\]
+Alors \(y\in F\).  
+Montrons que \(x-y\in F^\perp\).  
+Comme \((e_1,\dots,e_p)\) est une base de \(F\), il suffit de montrer que \(x-y\) est orthogonal à chaque \(e_j\).
+
+On calcule :
+\[
+\scal{x-y}{e_j}
+=
+\scal{x}{e_j}
+-
+\sum_{k=1}^p\scal{x}{e_k}\scal{e_k}{e_j}.
+\]
+Comme la base est orthonormée :
+\[
+\scal{e_k}{e_j}=\delta_{kj}.
+\]
+Donc :
+\[
+\scal{x-y}{e_j}
+=
+\scal{x}{e_j}-\scal{x}{e_j}=0.
+\]
+Ainsi \(x-y\in F^\perp\).  
+Par caractérisation du projeté orthogonal :
+\[
+y=p_F(x).
+\]
+\end{proof}
+
+\subsection{Projection sur une droite}
+
+\begin{corollaire}
+Si \(F=\R a\), avec \(a\neq0\), alors :
+\[
+p_F(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+\end{corollaire}
+
+\begin{proof}
+Une base orthonormée de \(\R a\) est formée du vecteur :
+\[
+e=\frac{a}{\norme{a}}.
+\]
+Donc :
+\[
+p_F(x)=\scal{x}{e}e.
+\]
+Or :
+\[
+\scal{x}{e}=\frac{\scal{x}{a}}{\norme{a}},
+\]
+et :
+\[
+e=\frac{a}{\norme{a}}.
+\]
+Donc :
+\[
+p_F(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+\end{proof}
+
+\begin{methodbox}[Calculer un projeté orthogonal]
+Pour calculer \(p_F(x)\) :
+\begin{enumerate}
+    \item trouver une base de \(F\) ;
+    \item si elle n'est pas orthonormée, l'orthonormaliser avec Gram-Schmidt ;
+    \item appliquer :
+    \[
+    p_F(x)=\sum_{k=1}^p\scal{x}{e_k}e_k.
+    \]
+\end{enumerate}
+\end{methodbox}
+
+\begin{methodbox}[Autre méthode : système normal]
+Si \(F=\Vect(u_1,\dots,u_p)\), on peut chercher :
+\[
+p_F(x)=\lambda_1u_1+\cdots+\lambda_pu_p.
+\]
+La condition :
+\[
+x-p_F(x)\in F^\perp
+\]
+équivaut au système :
+\[
+\forall i,\qquad
+\scal{x-\sum_{j=1}^p\lambda_ju_j}{u_i}=0.
+\]
+C'est un système linéaire en \(\lambda_1,\dots,\lambda_p\).
+\end{methodbox}
+
+%=========================================================
+\section{Distance à un sous-espace}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Distance à un sous-espace]
+Soit \(F\) un sous-espace de \(E\).  
+La distance de \(x\in E\) à \(F\) est :
+\[
+d(x,F)=\inf_{y\in F}\norme{x-y}.
+\]
+\end{definitionbox}
+
+\subsection{Théorème du projeté orthogonal}
+
+\begin{theorembox}[Distance à un sous-espace]
+Pour tout \(x\in E\),
+\[
+d(x,F)=\norme{x-p_F(x)}.
+\]
+De plus, \(p_F(x)\) est l'unique point de \(F\) qui réalise cette distance.
+\end{theorembox}
+
+\begin{proof}
+Soit \(y\in F\).  
+On écrit :
+\[
+x-y=(x-p_F(x))+(p_F(x)-y).
+\]
+Or :
+\[
+x-p_F(x)\in F^\perp,
+\]
+et :
+\[
+p_F(x)-y\in F.
+\]
+Ces deux vecteurs sont donc orthogonaux.  
+Par le théorème de Pythagore :
+\[
+\norme{x-y}^2
+=
+\norme{x-p_F(x)}^2+\norme{p_F(x)-y}^2.
+\]
+Donc :
+\[
+\norme{x-y}^2\geq \norme{x-p_F(x)}^2.
+\]
+Ainsi :
+\[
+\norme{x-y}\geq \norme{x-p_F(x)}.
+\]
+L'égalité a lieu si et seulement si :
+\[
+\norme{p_F(x)-y}^2=0,
+\]
+c'est-à-dire :
+\[
+y=p_F(x).
+\]
+Donc le minimum est atteint uniquement en \(p_F(x)\), et :
+\[
+d(x,F)=\norme{x-p_F(x)}.
+\]
+\end{proof}
+
+\begin{retenirbox}
+Le projeté orthogonal est le point du sous-espace le plus proche de \(x\).  
+La distance à \(F\) est la norme du résidu orthogonal :
+\[
+x-p_F(x).
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Matrices de Gram et produit scalaire en base quelconque}
+
+\subsection{Matrice de Gram}
+
+\begin{definitionbox}[Matrice de Gram]
+Soit \(\mathcal B=(e_1,\dots,e_n)\) une base de \(E\).  
+La matrice de Gram de \(\mathcal B\) est :
+\[
+G_{\mathcal B}=(\scal{e_i}{e_j})_{1\leq i,j\leq n}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+La matrice de Gram est symétrique définie positive.
+\end{theorembox}
+
+\begin{proof}
+Elle est symétrique car :
+\[
+(G_{\mathcal B})_{ij}=\scal{e_i}{e_j}=\scal{e_j}{e_i}=(G_{\mathcal B})_{ji}.
+\]
+
+Soit \(X=(x_1,\dots,x_n)^T\neq0\).  
+Posons :
+\[
+x=\sum_{i=1}^n x_ie_i.
+\]
+Comme \(X\neq0\) et \(\mathcal B\) est une base, on a \(x\neq0\).  
+Alors :
+\[
+X^TG_{\mathcal B}X
+=
+\sum_{i,j}x_ix_j\scal{e_i}{e_j}
+=
+\scal{\sum_i x_ie_i}{\sum_j x_je_j}
+=
+\scal{x}{x}
+=
+\norme{x}^2>0.
+\]
+Donc \(G_{\mathcal B}\) est définie positive.
+\end{proof}
+
+\begin{theorembox}[Expression matricielle du produit scalaire]
+Si \(X\) et \(Y\) sont les colonnes des coordonnées de \(x\) et \(y\) dans la base \(\mathcal B\), alors :
+\[
+\scal{x}{y}=X^TG_{\mathcal B}Y.
+\]
+\end{theorembox}
+
+\begin{proof}
+Écrivons :
+\[
+x=\sum_{i=1}^n x_ie_i,
+\qquad
+y=\sum_{j=1}^n y_je_j.
+\]
+Alors :
+\[
+\scal{x}{y}
+=
+\sum_{i=1}^n\sum_{j=1}^n x_iy_j\scal{e_i}{e_j}.
+\]
+C'est exactement le produit matriciel :
+\[
+X^TG_{\mathcal B}Y.
+\]
+\end{proof}
+
+\begin{retenirbox}
+Dans une base orthonormée :
+\[
+G_{\mathcal B}=I_n.
+\]
+Donc :
+\[
+\scal{x}{y}=X^TY.
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Formes linéaires et représentation par produit scalaire}
+
+\begin{theorembox}[Représentation des formes linéaires]
+Soit \(E\) un espace euclidien.  
+Pour toute forme linéaire \(\varphi:E\to\R\), il existe un unique vecteur \(a\in E\) tel que :
+\[
+\forall x\in E,\qquad \varphi(x)=\scal{x}{a}.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \((e_1,\dots,e_n)\) une base orthonormée de \(E\).  
+Posons :
+\[
+a=\sum_{k=1}^n \varphi(e_k)e_k.
+\]
+Pour tout \(x\in E\), on écrit :
+\[
+x=\sum_{k=1}^n x_ke_k.
+\]
+Alors :
+\[
+\varphi(x)
+=
+\sum_{k=1}^n x_k\varphi(e_k).
+\]
+D'autre part :
+\[
+\scal{x}{a}
+=
+\scal{\sum_{k=1}^n x_ke_k}{\sum_{j=1}^n\varphi(e_j)e_j}
+=
+\sum_{k=1}^n x_k\varphi(e_k).
+\]
+Donc :
+\[
+\varphi(x)=\scal{x}{a}.
+\]
+
+Montrons l'unicité.  
+Si \(a,b\in E\) conviennent, alors :
+\[
+\forall x\in E,\quad \scal{x}{a}=\scal{x}{b}.
+\]
+Donc :
+\[
+\forall x\in E,\quad \scal{x}{a-b}=0.
+\]
+En prenant \(x=a-b\), on obtient :
+\[
+\norme{a-b}^2=0.
+\]
+Donc :
+\[
+a=b.
+\]
+\end{proof}
+
+\begin{corollaire}[Équation d'un hyperplan]
+Tout hyperplan \(H\) d'un espace euclidien \(E\) peut s'écrire :
+\[
+H=a^\perp=\{x\in E:\scal{x}{a}=0\},
+\]
+pour un certain vecteur non nul \(a\).
+\end{corollaire}
+
+\begin{proof}
+Un hyperplan est le noyau d'une forme linéaire non nulle \(\varphi\).  
+D'après le théorème précédent, il existe \(a\neq0\) tel que :
+\[
+\varphi(x)=\scal{x}{a}.
+\]
+Donc :
+\[
+H=\Ker(\varphi)=\{x\in E:\scal{x}{a}=0\}=a^\perp.
+\]
+\end{proof}
+
+%=========================================================
+\section{Matrices orthogonales et isométries}
+
+\subsection{Matrices orthogonales}
+
+\begin{definitionbox}[Matrice orthogonale]
+Une matrice \(A\in\M_n(\R)\) est orthogonale si :
+\[
+A^TA=I_n.
+\]
+On note l'ensemble des matrices orthogonales :
+\[
+O(n).
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisations]
+Pour \(A\in\M_n(\R)\), les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+    \item \(A\) est orthogonale ;
+    \item \(A^TA=I_n\) ;
+    \item \(AA^T=I_n\) ;
+    \item les colonnes de \(A\) forment une base orthonormée de \(\R^n\) ;
+    \item les lignes de \(A\) forment une base orthonormée de \(\R^n\).
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+La matrice \(A^TA\) a pour coefficient \((i,j)\) le produit scalaire de la colonne \(i\) de \(A\) avec la colonne \(j\) de \(A\).  
+Ainsi :
+\[
+A^TA=I_n
+\]
+si et seulement si les colonnes de \(A\) forment une famille orthonormée.  
+Comme il y en a \(n\) dans \(\R^n\), elles forment une base orthonormée.
+
+Si \(A^TA=I_n\), alors \(A\) est inversible et :
+\[
+A^{-1}=A^T.
+\]
+Donc :
+\[
+AA^T=I_n.
+\]
+La caractérisation par les lignes s'obtient de la même façon à partir de \(AA^T=I_n\).
+\end{proof}
+
+\begin{corollaire}
+Si \(A\in O(n)\), alors :
+\[
+\det(A)=\pm1.
+\]
+\end{corollaire}
+
+\begin{proof}
+Comme :
+\[
+A^TA=I_n,
+\]
+en prenant les déterminants :
+\[
+\det(A^T)\det(A)=1.
+\]
+Or :
+\[
+\det(A^T)=\det(A).
+\]
+Donc :
+\[
+\det(A)^2=1.
+\]
+Ainsi :
+\[
+\det(A)=\pm1.
+\]
+\end{proof}
+
+\begin{definitionbox}[Groupe spécial orthogonal]
+On note :
+\[
+SO(n)=\{A\in O(n):\det(A)=1\}.
+\]
+\end{definitionbox}
+
+\subsection{Isométries vectorielles}
+
+\begin{definitionbox}[Isométrie vectorielle]
+Soit \(E\) un espace euclidien.  
+Un endomorphisme \(u\in\Lcal(E)\) est une isométrie vectorielle si :
+\[
+\forall x\in E,\qquad \norme{u(x)}=\norme{x}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisations des isométries]
+Pour \(u\in\Lcal(E)\), les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+    \item \(u\) conserve la norme :
+    \[
+    \forall x\in E,\quad \norme{u(x)}=\norme{x};
+    \]
+    \item \(u\) conserve le produit scalaire :
+    \[
+    \forall x,y\in E,\quad \scal{u(x)}{u(y)}=\scal{x}{y};
+    \]
+    \item l'image d'une base orthonormée par \(u\) est une base orthonormée ;
+    \item dans une base orthonormée, la matrice de \(u\) est orthogonale.
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+\textbf{1 implique 2.}  
+On utilise l'identité de polarisation :
+\[
+\scal{u(x)}{u(y)}
+=
+\frac14\left(\norme{u(x)+u(y)}^2-\norme{u(x)-u(y)}^2\right).
+\]
+Comme \(u\) est linéaire :
+\[
+u(x)+u(y)=u(x+y),
+\qquad
+u(x)-u(y)=u(x-y).
+\]
+Comme \(u\) conserve la norme :
+\[
+\norme{u(x+y)}=\norme{x+y},
+\qquad
+\norme{u(x-y)}=\norme{x-y}.
+\]
+Donc :
+\[
+\scal{u(x)}{u(y)}
+=
+\frac14\left(\norme{x+y}^2-\norme{x-y}^2\right)
+=
+\scal{x}{y}.
+\]
+
+\textbf{2 implique 1.}  
+En prenant \(y=x\), on obtient :
+\[
+\norme{u(x)}^2=\scal{u(x)}{u(x)}=\scal{x}{x}=\norme{x}^2.
+\]
+Donc :
+\[
+\norme{u(x)}=\norme{x}.
+\]
+
+\textbf{2 implique 3.}  
+Si \((e_1,\dots,e_n)\) est orthonormée, alors :
+\[
+\scal{u(e_i)}{u(e_j)}=\scal{e_i}{e_j}=\delta_{ij}.
+\]
+Donc \((u(e_1),\dots,u(e_n))\) est orthonormée.  
+Elle contient \(n\) vecteurs dans un espace de dimension \(n\), donc c'est une base.
+
+\textbf{3 implique 4.}  
+Dans une base orthonormée, les colonnes de la matrice de \(u\) sont les coordonnées des vecteurs \(u(e_j)\).  
+Si ces vecteurs forment une base orthonormée, alors les colonnes de la matrice sont orthonormées.  
+Donc la matrice est orthogonale.
+
+\textbf{4 implique 2.}  
+Si \(A\) est la matrice de \(u\) dans une base orthonormée, alors :
+\[
+A^TA=I_n.
+\]
+Pour des colonnes de coordonnées \(X,Y\), on a :
+\[
+\scal{u(x)}{u(y)}
+=
+(AX)^T(AY)
+=
+X^TA^TAY
+=
+X^TY
+=
+\scal{x}{y}.
+\]
+\end{proof}
+
+\begin{retenirbox}
+Une isométrie vectorielle conserve simultanément :
+\[
+\text{normes, distances, produits scalaires, angles et orthogonalité.}
+\]
+\end{retenirbox}
+
+\subsection{Stabilité de l'orthogonal}
+
+\begin{theorembox}
+Soit \(u\) une isométrie vectorielle de \(E\).  
+Si \(F\) est un sous-espace stable par \(u\), alors \(F^\perp\) est stable par \(u\).
+\end{theorembox}
+
+\begin{proof}
+Soit \(x\in F^\perp\).  
+On veut montrer que \(u(x)\in F^\perp\).
+
+Soit \(y\in F\).  
+Comme \(F\) est stable par \(u\), on a :
+\[
+u^{-1}(y)\in F,
+\]
+car une isométrie est bijective et \(F\) est stable par \(u\), donc stable par \(u^{-1}\).  
+Comme \(x\in F^\perp\),
+\[
+\scal{x}{u^{-1}(y)}=0.
+\]
+Or \(u\) conserve le produit scalaire :
+\[
+\scal{u(x)}{y}
+=
+\scal{u(x)}{u(u^{-1}(y))}
+=
+\scal{x}{u^{-1}(y)}
+=
+0.
+\]
+Donc \(u(x)\) est orthogonal à tout \(y\in F\), d'où :
+\[
+u(x)\in F^\perp.
+\]
+\end{proof}
+
+%=========================================================
+\section{Projections et symétries orthogonales}
+
+\subsection{Projecteurs orthogonaux}
+
+\begin{definitionbox}[Projecteur orthogonal]
+Un projecteur \(p\) est dit orthogonal si :
+\[
+\Ker(p)=\Imf(p)^\perp.
+\]
+De manière équivalente, \(p\) est la projection orthogonale sur \(\Imf(p)\).
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation]
+Un endomorphisme \(p\) est un projecteur orthogonal si et seulement si :
+\[
+p^2=p
+\]
+et :
+\[
+\forall x,y\in E,\qquad \scal{p(x)}{y}=\scal{x}{p(y)}.
+\]
+\end{theorembox}
+
+\begin{proof}
+Supposons \(p\) projecteur orthogonal sur \(F\).  
+Alors \(p^2=p\).  
+Écrivons :
+\[
+x=p(x)+r_x,
+\qquad r_x\in F^\perp,
+\]
+et :
+\[
+y=p(y)+r_y,
+\qquad r_y\in F^\perp.
+\]
+Comme \(p(x),p(y)\in F\), et \(r_x,r_y\in F^\perp\), on a :
+\[
+\scal{p(x)}{y}
+=
+\scal{p(x)}{p(y)+r_y}
+=
+\scal{p(x)}{p(y)}.
+\]
+De même :
+\[
+\scal{x}{p(y)}
+=
+\scal{p(x)+r_x}{p(y)}
+=
+\scal{p(x)}{p(y)}.
+\]
+Donc :
+\[
+\scal{p(x)}{y}=\scal{x}{p(y)}.
+\]
+
+Réciproquement, supposons \(p^2=p\) et la relation de symétrie.  
+On sait que :
+\[
+E=\Imf(p)\oplus\Ker(p).
+\]
+Montrons que :
+\[
+\Ker(p)\subset\Imf(p)^\perp.
+\]
+Soit \(x\in\Ker(p)\) et \(y\in\Imf(p)\).  
+Il existe \(z\in E\) tel que :
+\[
+y=p(z).
+\]
+Alors :
+\[
+\scal{x}{y}
+=
+\scal{x}{p(z)}
+=
+\scal{p(x)}{z}
+=
+\scal{0}{z}
+=
+0.
+\]
+Donc :
+\[
+x\in\Imf(p)^\perp.
+\]
+Comme :
+\[
+\dim(\Ker(p))+\dim(\Imf(p))=\dim(E),
+\]
+et :
+\[
+\dim(\Imf(p)^\perp)=\dim(E)-\dim(\Imf(p)),
+\]
+les deux sous-espaces ont même dimension.  
+Donc :
+\[
+\Ker(p)=\Imf(p)^\perp.
+\]
+\end{proof}
+
+\subsection{Symétries orthogonales}
+
+\begin{definitionbox}[Symétrie orthogonale]
+Soit \(F\) un sous-espace de \(E\).  
+La symétrie orthogonale par rapport à \(F\) est l'endomorphisme \(s\) défini par :
+\[
+x=x_F+x_{F^\perp}
+\quad\Longrightarrow\quad
+s(x)=x_F-x_{F^\perp},
+\]
+où :
+\[
+x_F\in F,
+\qquad
+x_{F^\perp}\in F^\perp.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+La symétrie orthogonale par rapport à \(F\) est une isométrie vectorielle.
+\end{theorembox}
+
+\begin{proof}
+Soit :
+\[
+x=x_F+x_{F^\perp}.
+\]
+Alors :
+\[
+s(x)=x_F-x_{F^\perp}.
+\]
+Comme \(x_F\perp x_{F^\perp}\), on a :
+\[
+\norme{x}^2=\norme{x_F}^2+\norme{x_{F^\perp}}^2.
+\]
+De même :
+\[
+\norme{s(x)}^2
+=
+\norme{x_F-x_{F^\perp}}^2
+=
+\norme{x_F}^2+\norme{x_{F^\perp}}^2.
+\]
+Donc :
+\[
+\norme{s(x)}=\norme{x}.
+\]
+Ainsi \(s\) est une isométrie vectorielle.
+\end{proof}
+
+\begin{retenirbox}
+Une réflexion est une symétrie orthogonale par rapport à un hyperplan.
+\end{retenirbox}
+
+%=========================================================
+\section{Endomorphismes symétriques et théorème spectral}
+
+\subsection{Endomorphismes symétriques}
+
+\begin{definitionbox}[Endomorphisme symétrique]
+Soit \(E\) un espace euclidien.  
+Un endomorphisme \(u\in\Lcal(E)\) est dit symétrique si :
+\[
+\forall x,y\in E,\qquad
+\scal{u(x)}{y}=\scal{x}{u(y)}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}[Caractérisation matricielle]
+Dans une base orthonormée, \(u\) est symétrique si et seulement si sa matrice \(A\) vérifie :
+\[
+A^T=A.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit \(A\) la matrice de \(u\) dans une base orthonormée.  
+Pour des colonnes de coordonnées \(X,Y\), on a :
+\[
+\scal{u(x)}{y}=(AX)^TY=X^TA^TY.
+\]
+Et :
+\[
+\scal{x}{u(y)}=X^T(AY)=X^TAY.
+\]
+L'égalité pour tous \(x,y\) équivaut à :
+\[
+X^TA^TY=X^TAY
+\]
+pour tous \(X,Y\), donc à :
+\[
+A^T=A.
+\]
+\end{proof}
+
+\subsection{Orthogonalité des sous-espaces propres}
+
+\begin{theorembox}
+Si \(u\) est symétrique, alors les sous-espaces propres associés à des valeurs propres distinctes sont orthogonaux.
+\end{theorembox}
+
+\begin{proof}
+Soient \(x\in E_\lambda(u)\) et \(y\in E_\mu(u)\), avec \(\lambda\neq\mu\).  
+Alors :
+\[
+u(x)=\lambda x,
+\qquad
+u(y)=\mu y.
+\]
+Comme \(u\) est symétrique :
+\[
+\scal{u(x)}{y}=\scal{x}{u(y)}.
+\]
+Donc :
+\[
+\scal{\lambda x}{y}
+=
+\scal{x}{\mu y}.
+\]
+Par bilinéarité :
+\[
+\lambda\scal{x}{y}
+=
+\mu\scal{x}{y}.
+\]
+Donc :
+\[
+(\lambda-\mu)\scal{x}{y}=0.
+\]
+Comme \(\lambda\neq\mu\), on obtient :
+\[
+\scal{x}{y}=0.
+\]
+Donc :
+\[
+E_\lambda(u)\perp E_\mu(u).
+\]
+\end{proof}
+
+\subsection{Théorème spectral}
+
+\begin{theorembox}[Théorème spectral réel]
+Tout endomorphisme symétrique d'un espace euclidien est diagonalisable dans une base orthonormée.
+
+Sous forme matricielle : toute matrice symétrique réelle \(A\) est orthogonalement diagonalisable, c'est-à-dire qu'il existe une matrice orthogonale \(P\) et une matrice diagonale réelle \(D\) telles que :
+\[
+A=PDP^T.
+\]
+\end{theorembox}
+
+\begin{proof}
+On donne une démonstration adaptée au niveau prépa.
+
+Soit \(u\) un endomorphisme symétrique de \(E\), avec \(\dim(E)=n\).  
+On raisonne par récurrence sur \(n\).
+
+Si \(n=1\), le résultat est immédiat.
+
+Supposons \(n\geq2\).  
+On admet ici le fait qu'un endomorphisme symétrique réel possède au moins une valeur propre réelle.  
+Soit donc \(\lambda\) une valeur propre réelle, et soit \(e_1\) un vecteur propre unitaire associé :
+\[
+u(e_1)=\lambda e_1,
+\qquad
+\norme{e_1}=1.
+\]
+
+Considérons :
+\[
+F=e_1^\perp.
+\]
+Montrons que \(F\) est stable par \(u\).  
+Soit \(x\in F\).  
+On veut montrer que \(u(x)\in F\), c'est-à-dire :
+\[
+\scal{u(x)}{e_1}=0.
+\]
+Comme \(u\) est symétrique :
+\[
+\scal{u(x)}{e_1}
+=
+\scal{x}{u(e_1)}
+=
+\scal{x}{\lambda e_1}
+=
+\lambda\scal{x}{e_1}.
+\]
+Or \(x\in e_1^\perp\), donc :
+\[
+\scal{x}{e_1}=0.
+\]
+Ainsi :
+\[
+\scal{u(x)}{e_1}=0,
+\]
+donc \(u(x)\in F\).  
+Le sous-espace \(F\) est stable par \(u\).
+
+La restriction de \(u\) à \(F\) est encore symétrique.  
+Par hypothèse de récurrence, il existe une base orthonormée de \(F\) formée de vecteurs propres de \(u_{\mid F}\).  
+En ajoutant \(e_1\), on obtient une base orthonormée de \(E\) formée de vecteurs propres de \(u\).  
+Donc \(u\) est diagonalisable dans une base orthonormée.
+\end{proof}
+
+\begin{retenirbox}
+Une matrice symétrique réelle est toujours diagonalisable, et la matrice de passage peut être choisie orthogonale.
+\[
+A=A^T
+\quad\Longrightarrow\quad
+A=PDP^T.
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Endomorphismes symétriques positifs}
+
+\begin{definitionbox}[Endomorphisme symétrique positif]
+Un endomorphisme symétrique \(u\) est dit positif si :
+\[
+\forall x\in E,\qquad \scal{u(x)}{x}\geq0.
+\]
+Il est dit défini positif si :
+\[
+\forall x\neq0,\qquad \scal{u(x)}{x}>0.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+Soit \(u\) un endomorphisme symétrique.  
+Alors \(u\) est positif si et seulement si toutes ses valeurs propres sont positives ou nulles.
+\end{theorembox}
+
+\begin{proof}
+Par le théorème spectral, il existe une base orthonormée \((e_1,\dots,e_n)\) formée de vecteurs propres de \(u\).  
+On note :
+\[
+u(e_i)=\lambda_i e_i.
+\]
+
+Soit :
+\[
+x=\sum_{i=1}^n x_ie_i.
+\]
+Alors :
+\[
+u(x)=\sum_{i=1}^n \lambda_i x_ie_i.
+\]
+Donc :
+\[
+\scal{u(x)}{x}
+=
+\sum_{i=1}^n \lambda_i x_i^2.
+\]
+
+Si tous les \(\lambda_i\) sont positifs ou nuls, alors :
+\[
+\scal{u(x)}{x}\geq0.
+\]
+
+Réciproquement, si \(u\) est positif, alors pour chaque vecteur propre unitaire \(e_i\),
+\[
+\lambda_i=\scal{u(e_i)}{e_i}\geq0.
+\]
+Donc toutes les valeurs propres sont positives ou nulles.
+\end{proof}
+
+\begin{corollaire}
+Un endomorphisme symétrique est défini positif si et seulement si toutes ses valeurs propres sont strictement positives.
+\end{corollaire}
+
+\begin{proof}
+Avec les notations précédentes :
+\[
+\scal{u(x)}{x}
+=
+\sum_{i=1}^n \lambda_i x_i^2.
+\]
+Cette quantité est strictement positive pour tout \(x\neq0\) si et seulement si tous les \(\lambda_i\) sont strictement positifs.
+\end{proof}
+
+%=========================================================
+\section{Exercices progressifs avec corrigés}
+
+\subsection*{Exercice 1 -- Vérifier un produit scalaire}
+
+\begin{exercicebox}
+Sur \(\R^2\), on définit :
+\[
+\scal{(x,y)}{(x',y')}=2xx'+xy'+x'y+3yy'.
+\]
+Montrer que cette application est un produit scalaire.
+\end{exercicebox}
+
+\begin{correctionbox}
+La bilinéarité est immédiate car l'expression est linéaire par rapport à chaque couple de variables.
+
+La symétrie est vérifiée :
+\[
+2xx'+xy'+x'y+3yy'
+=
+2x'x+x'y+xy'+3y'y.
+\]
+
+Il reste à vérifier la positivité définie.  
+Pour \((x,y)\in\R^2\),
+\[
+\scal{(x,y)}{(x,y)}
+=
+2x^2+2xy+3y^2.
+\]
+On complète le carré :
+\[
+2x^2+2xy+3y^2
+=
+2\left(x+\frac y2\right)^2+\frac52y^2.
+\]
+Cette quantité est positive.  
+Si elle est nulle, alors :
+\[
+2\left(x+\frac y2\right)^2=0
+\quad\text{et}\quad
+\frac52y^2=0.
+\]
+Donc \(y=0\), puis \(x=0\).  
+Ainsi l'application est définie positive.  
+C'est donc un produit scalaire.
+\end{correctionbox}
+
+\subsection*{Exercice 2 -- Orthogonal d'un plan}
+
+\begin{exercicebox}
+Dans \(\R^3\) muni du produit scalaire usuel, soit :
+\[
+F=\{(x,y,z)\in\R^3:\ x+y+z=0\}.
+\]
+Déterminer \(F^\perp\).
+\end{exercicebox}
+
+\begin{correctionbox}
+Le plan \(F\) est donné par :
+\[
+x+y+z=0.
+\]
+Cette équation s'écrit :
+\[
+\scal{(x,y,z)}{(1,1,1)}=0.
+\]
+Donc :
+\[
+F=(1,1,1)^\perp.
+\]
+Ainsi :
+\[
+F^\perp=\Vect((1,1,1)).
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 3 -- Gram-Schmidt}
+
+\begin{exercicebox}
+Dans \(\R^3\), appliquer Gram-Schmidt à la famille :
+\[
+u_1=(1,1,0),\qquad u_2=(1,0,1),\qquad u_3=(0,1,1).
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On pose :
+\[
+v_1=u_1=(1,1,0).
+\]
+Alors :
+\[
+\norme{v_1}^2=2.
+\]
+
+Ensuite :
+\[
+v_2=u_2-\frac{\scal{u_2}{v_1}}{\norme{v_1}^2}v_1.
+\]
+On calcule :
+\[
+\scal{u_2}{v_1}=1.
+\]
+Donc :
+\[
+v_2=(1,0,1)-\frac12(1,1,0)
+=
+\left(\frac12,-\frac12,1\right).
+\]
+On peut multiplier par \(2\) pour simplifier :
+\[
+w_2=(1,-1,2).
+\]
+Alors \(w_2\) est orthogonal à \(v_1\).
+
+Pour le troisième vecteur, on utilise \(v_1\) et \(w_2\).  
+On pose :
+\[
+v_3=u_3-\frac{\scal{u_3}{v_1}}{\norme{v_1}^2}v_1
+-\frac{\scal{u_3}{w_2}}{\norme{w_2}^2}w_2.
+\]
+On calcule :
+\[
+\scal{u_3}{v_1}=1,
+\qquad
+\norme{v_1}^2=2.
+\]
+Et :
+\[
+\scal{u_3}{w_2}=(-1)+2=1,
+\qquad
+\norme{w_2}^2=1+1+4=6.
+\]
+Donc :
+\[
+v_3=(0,1,1)-\frac12(1,1,0)-\frac16(1,-1,2).
+\]
+On obtient :
+\[
+v_3=
+\left(-\frac23,\frac23,\frac23\right).
+\]
+On peut multiplier par \(3/2\) :
+\[
+w_3=(-1,1,1).
+\]
+Une famille orthogonale associée est donc :
+\[
+(1,1,0),\qquad (1,-1,2),\qquad (-1,1,1).
+\]
+Après normalisation :
+\[
+e_1=\frac1{\sqrt2}(1,1,0),
+\]
+\[
+e_2=\frac1{\sqrt6}(1,-1,2),
+\]
+\[
+e_3=\frac1{\sqrt3}(-1,1,1).
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 4 -- Projection orthogonale}
+
+\begin{exercicebox}
+Dans \(\R^3\), soit :
+\[
+F=\Vect((1,1,0),(1,-1,2)).
+\]
+Calculer le projeté orthogonal de :
+\[
+x=(2,0,1)
+\]
+sur \(F\).
+\end{exercicebox}
+
+\begin{correctionbox}
+On remarque que :
+\[
+u=(1,1,0),
+\qquad
+v=(1,-1,2)
+\]
+sont orthogonaux, car :
+\[
+\scal{u}{v}=1-1+0=0.
+\]
+Donc une base orthonormée de \(F\) est :
+\[
+e_1=\frac1{\sqrt2}(1,1,0),
+\qquad
+e_2=\frac1{\sqrt6}(1,-1,2).
+\]
+Alors :
+\[
+p_F(x)=\scal{x}{e_1}e_1+\scal{x}{e_2}e_2.
+\]
+On calcule :
+\[
+\scal{x}{e_1}
+=
+\frac1{\sqrt2}(2+0)=\sqrt2.
+\]
+Donc :
+\[
+\scal{x}{e_1}e_1=(1,1,0).
+\]
+Ensuite :
+\[
+\scal{x}{e_2}
+=
+\frac1{\sqrt6}(2+0+2)=\frac4{\sqrt6}.
+\]
+Donc :
+\[
+\scal{x}{e_2}e_2
+=
+\frac4{\sqrt6}\cdot\frac1{\sqrt6}(1,-1,2)
+=
+\frac23(1,-1,2).
+\]
+Ainsi :
+\[
+p_F(x)
+=
+(1,1,0)+\left(\frac23,-\frac23,\frac43\right)
+=
+\left(\frac53,\frac13,\frac43\right).
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 5 -- Distance à un plan}
+
+\begin{exercicebox}
+Dans \(\R^3\), calculer la distance du point :
+\[
+x=(1,2,3)
+\]
+au plan :
+\[
+F=\{(a,b,c):a+b+c=0\}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On a :
+\[
+F=(1,1,1)^\perp.
+\]
+Donc \(F^\perp=\Vect((1,1,1))\).  
+La distance de \(x\) à \(F\) est la norme de la projection de \(x\) sur \(F^\perp\).
+
+La projection de \(x\) sur la droite \(\R n\), avec \(n=(1,1,1)\), vaut :
+\[
+p_{F^\perp}(x)=\frac{\scal{x}{n}}{\norme{n}^2}n.
+\]
+On calcule :
+\[
+\scal{x}{n}=1+2+3=6,
+\qquad
+\norme{n}^2=3.
+\]
+Donc :
+\[
+p_{F^\perp}(x)=2(1,1,1)=(2,2,2).
+\]
+La distance vaut :
+\[
+d(x,F)=\norme{p_{F^\perp}(x)}=\norme{(2,2,2)}=2\sqrt3.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 6 -- Matrice orthogonale}
+
+\begin{exercicebox}
+Montrer que la matrice :
+\[
+A=
+\frac{1}{\sqrt2}
+\begin{pmatrix}
+1&-1\\
+1&1
+\end{pmatrix}
+\]
+est orthogonale. Interpréter géométriquement.
+\end{exercicebox}
+
+\begin{correctionbox}
+Les colonnes de \(A\) sont :
+\[
+C_1=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix},
+\qquad
+C_2=\frac1{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}.
+\]
+On a :
+\[
+\norme{C_1}=1,
+\qquad
+\norme{C_2}=1,
+\]
+et :
+\[
+\scal{C_1}{C_2}
+=
+\frac12(-1+1)=0.
+\]
+Les colonnes forment donc une base orthonormée de \(\R^2\).  
+La matrice est orthogonale.
+
+De plus :
+\[
+\det(A)=1.
+\]
+C'est donc une rotation du plan.  
+On reconnaît :
+\[
+A=
+\begin{pmatrix}
+\cos\theta&-\sin\theta\\
+\sin\theta&\cos\theta
+\end{pmatrix}
+\]
+avec :
+\[
+\cos\theta=\sin\theta=\frac1{\sqrt2}.
+\]
+Donc :
+\[
+\theta=\frac\pi4.
+\]
+C'est la rotation d'angle \(\pi/4\).
+\end{correctionbox}
+
+\subsection*{Exercice 7 -- Théorème spectral}
+
+\begin{exercicebox}
+Diagonaliser orthogonalement :
+\[
+A=
+\begin{pmatrix}
+2&1\\
+1&2
+\end{pmatrix}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+La matrice est symétrique réelle, donc orthogonalement diagonalisable.
+
+On calcule :
+\[
+\chi_A(X)
+=
+\det
+\begin{pmatrix}
+X-2&-1\\
+-1&X-2
+\end{pmatrix}
+=
+(X-2)^2-1
+=
+X^2-4X+3.
+\]
+Donc :
+\[
+\chi_A(X)=(X-1)(X-3).
+\]
+Les valeurs propres sont \(1\) et \(3\).
+
+Pour \(\lambda=1\),
+\[
+A-I=
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}.
+\]
+On obtient :
+\[
+x+y=0.
+\]
+Donc :
+\[
+E_1=\Vect((1,-1)).
+\]
+Un vecteur unitaire est :
+\[
+e_1=\frac1{\sqrt2}(1,-1).
+\]
+
+Pour \(\lambda=3\),
+\[
+A-3I=
+\begin{pmatrix}
+-1&1\\
+1&-1
+\end{pmatrix}.
+\]
+On obtient :
+\[
+x=y.
+\]
+Donc :
+\[
+E_3=\Vect((1,1)).
+\]
+Un vecteur unitaire est :
+\[
+e_2=\frac1{\sqrt2}(1,1).
+\]
+
+On pose :
+\[
+P=
+\frac1{\sqrt2}
+\begin{pmatrix}
+1&1\\
+-1&1
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+1&0\\
+0&3
+\end{pmatrix}.
+\]
+Alors :
+\[
+A=PDP^T.
+\]
+\end{correctionbox}
+
+%=========================================================
+\newpage
+\section{Grand devoir bilan final}
+
+\begin{center}
+\Large\textbf{Devoir bilan -- Espaces euclidiens}
+\end{center}
+
+\subsection*{Exercice 1 -- Produit scalaire et Gram-Schmidt}
+
+Sur \(\R^3\), on considère le produit scalaire usuel et les vecteurs :
+\[
+u_1=(1,1,1),
+\qquad
+u_2=(1,1,0),
+\qquad
+u_3=(1,0,0).
+\]
+
+\begin{enumerate}
+    \item Montrer que \((u_1,u_2,u_3)\) est une base de \(\R^3\).
+    \item Appliquer le procédé de Gram-Schmidt à cette base.
+    \item En déduire une base orthonormée de \(\R^3\).
+\end{enumerate}
+
+\subsection*{Exercice 2 -- Projection et distance}
+
+On considère le plan :
+\[
+F=\Vect((1,1,0),(1,0,1)).
+\]
+Soit :
+\[
+x=(1,2,3).
+\]
+
+\begin{enumerate}
+    \item Trouver une base orthonormée de \(F\).
+    \item Calculer le projeté orthogonal de \(x\) sur \(F\).
+    \item Calculer la distance de \(x\) à \(F\).
+\end{enumerate}
+
+\subsection*{Exercice 3 -- Matrice orthogonale}
+
+Soit :
+\[
+A=
+\begin{pmatrix}
+0&-1&0\\
+1&0&0\\
+0&0&1
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Montrer que \(A\) est orthogonale.
+    \item Calculer \(\det(A)\).
+    \item Interpréter géométriquement l'endomorphisme associé.
+\end{enumerate}
+
+\subsection*{Exercice 4 -- Théorème spectral}
+
+Soit :
+\[
+B=
+\begin{pmatrix}
+3&0&0\\
+0&2&1\\
+0&1&2
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Montrer que \(B\) est symétrique.
+    \item Justifier que \(B\) est orthogonalement diagonalisable.
+    \item Déterminer ses valeurs propres.
+    \item Donner une base orthonormée de vecteurs propres.
+    \item Écrire une diagonalisation orthogonale de \(B\).
+\end{enumerate}
+
+\subsection*{Exercice 5 -- Positivité}
+
+Soit :
+\[
+C=
+\begin{pmatrix}
+2&1\\
+1&2
+\end{pmatrix}.
+\]
+\begin{enumerate}
+    \item Montrer que \(C\) est symétrique.
+    \item Déterminer ses valeurs propres.
+    \item Montrer que \(C\) est définie positive.
+    \item En déduire que :
+    \[
+    2x^2+2xy+2y^2>0
+    \]
+    pour tout \((x,y)\neq(0,0)\).
+\end{enumerate}
+
+\newpage
+
+%=========================================================
+\section{Correction détaillée du devoir bilan}
+
+\subsection*{Correction de l'exercice 1}
+
+On considère :
+\[
+u_1=(1,1,1),
+\qquad
+u_2=(1,1,0),
+\qquad
+u_3=(1,0,0).
+\]
+
+\textbf{1.}  
+La matrice ayant ces vecteurs pour colonnes est :
+\[
+M=
+\begin{pmatrix}
+1&1&1\\
+1&1&0\\
+1&0&0
+\end{pmatrix}.
+\]
+Son déterminant vaut :
+\[
+\det(M)
+=
+1\begin{vmatrix}1&0\\0&0\end{vmatrix}
+-
+1\begin{vmatrix}1&0\\1&0\end{vmatrix}
++
+1\begin{vmatrix}1&1\\1&0\end{vmatrix}
+=
+0-0-1=-1.
+\]
+Il est non nul.  
+Donc \((u_1,u_2,u_3)\) est une base de \(\R^3\).
+
+\textbf{2. Gram-Schmidt.}
+
+On pose :
+\[
+v_1=u_1=(1,1,1).
+\]
+Alors :
+\[
+\norme{v_1}^2=3.
+\]
+
+Ensuite :
+\[
+v_2=u_2-\frac{\scal{u_2}{v_1}}{\norme{v_1}^2}v_1.
+\]
+On a :
+\[
+\scal{u_2}{v_1}=2.
+\]
+Donc :
+\[
+v_2=(1,1,0)-\frac23(1,1,1)
+=
+\left(\frac13,\frac13,-\frac23\right).
+\]
+On peut prendre :
+\[
+w_2=(1,1,-2).
+\]
+
+Enfin :
+\[
+v_3=u_3-\frac{\scal{u_3}{v_1}}{\norme{v_1}^2}v_1
+-\frac{\scal{u_3}{w_2}}{\norme{w_2}^2}w_2.
+\]
+On calcule :
+\[
+\scal{u_3}{v_1}=1,
+\qquad
+\norme{v_1}^2=3,
+\]
+\[
+\scal{u_3}{w_2}=1,
+\qquad
+\norme{w_2}^2=1+1+4=6.
+\]
+Donc :
+\[
+v_3=(1,0,0)-\frac13(1,1,1)-\frac16(1,1,-2).
+\]
+On obtient :
+\[
+v_3=
+\left(\frac12,-\frac12,0\right).
+\]
+On peut prendre :
+\[
+w_3=(1,-1,0).
+\]
+
+Une famille orthogonale est donc :
+\[
+(1,1,1),
+\qquad
+(1,1,-2),
+\qquad
+(1,-1,0).
+\]
+
+\textbf{3. Normalisation.}
+
+On obtient :
+\[
+e_1=\frac1{\sqrt3}(1,1,1),
+\]
+\[
+e_2=\frac1{\sqrt6}(1,1,-2),
+\]
+\[
+e_3=\frac1{\sqrt2}(1,-1,0).
+\]
+La famille \((e_1,e_2,e_3)\) est une base orthonormée de \(\R^3\).
+
+\subsection*{Correction de l'exercice 2}
+
+On pose :
+\[
+a=(1,1,0),
+\qquad
+b=(1,0,1).
+\]
+
+On applique Gram-Schmidt.  
+On prend :
+\[
+v_1=a=(1,1,0),
+\qquad
+\norme{v_1}^2=2.
+\]
+Puis :
+\[
+v_2=b-\frac{\scal{b}{v_1}}{\norme{v_1}^2}v_1.
+\]
+On a :
+\[
+\scal{b}{v_1}=1.
+\]
+Donc :
+\[
+v_2=(1,0,1)-\frac12(1,1,0)
+=
+\left(\frac12,-\frac12,1\right).
+\]
+On peut prendre :
+\[
+w_2=(1,-1,2).
+\]
+Alors :
+\[
+\norme{w_2}^2=1+1+4=6.
+\]
+Une base orthonormée de \(F\) est donc :
+\[
+e_1=\frac1{\sqrt2}(1,1,0),
+\qquad
+e_2=\frac1{\sqrt6}(1,-1,2).
+\]
+
+Soit :
+\[
+x=(1,2,3).
+\]
+Le projeté orthogonal est :
+\[
+p_F(x)=\scal{x}{e_1}e_1+\scal{x}{e_2}e_2.
+\]
+On calcule :
+\[
+\scal{x}{e_1}=\frac1{\sqrt2}(1+2)=\frac3{\sqrt2}.
+\]
+Donc :
+\[
+\scal{x}{e_1}e_1
+=
+\frac32(1,1,0)
+=
+\left(\frac32,\frac32,0\right).
+\]
+Ensuite :
+\[
+\scal{x}{e_2}
+=
+\frac1{\sqrt6}(1-2+6)
+=
+\frac5{\sqrt6}.
+\]
+Donc :
+\[
+\scal{x}{e_2}e_2
+=
+\frac56(1,-1,2)
+=
+\left(\frac56,-\frac56,\frac53\right).
+\]
+Ainsi :
+\[
+p_F(x)
+=
+\left(\frac32+\frac56,\frac32-\frac56,\frac53\right)
+=
+\left(\frac73,\frac23,\frac53\right).
+\]
+
+La distance est :
+\[
+d(x,F)=\norme{x-p_F(x)}.
+\]
+On calcule :
+\[
+x-p_F(x)
+=
+\left(1-\frac73,2-\frac23,3-\frac53\right)
+=
+\left(-\frac43,\frac43,\frac43\right).
+\]
+Donc :
+\[
+d(x,F)
+=
+\sqrt{
+\frac{16}{9}+\frac{16}{9}+\frac{16}{9}
+}
+=
+\frac{4\sqrt3}{3}.
+\]
+
+\subsection*{Correction de l'exercice 3}
+
+Les colonnes de \(A\) sont :
+\[
+C_1=(0,1,0),
+\qquad
+C_2=(-1,0,0),
+\qquad
+C_3=(0,0,1).
+\]
+Elles sont unitaires et deux à deux orthogonales.  
+Donc \(A\) est orthogonale.
+
+On calcule :
+\[
+\det(A)=1.
+\]
+Cette matrice représente une rotation d'angle \(\pi/2\) dans le plan \((xOy)\), laissant fixe l'axe \(Oz\).
+
+\subsection*{Correction de l'exercice 4}
+
+La matrice :
+\[
+B=
+\begin{pmatrix}
+3&0&0\\
+0&2&1\\
+0&1&2
+\end{pmatrix}
+\]
+est symétrique, car :
+\[
+B^T=B.
+\]
+Donc, par le théorème spectral, elle est orthogonalement diagonalisable.
+
+Calculons son polynôme caractéristique :
+\[
+\chi_B(X)
+=
+\det
+\begin{pmatrix}
+X-3&0&0\\
+0&X-2&-1\\
+0&-1&X-2
+\end{pmatrix}.
+\]
+Donc :
+\[
+\chi_B(X)
+=
+(X-3)\left((X-2)^2-1\right).
+\]
+Or :
+\[
+(X-2)^2-1=X^2-4X+3=(X-1)(X-3).
+\]
+Ainsi :
+\[
+\chi_B(X)=(X-3)^2(X-1).
+\]
+Les valeurs propres sont :
+\[
+1
+\quad\text{et}\quad
+3.
+\]
+
+Pour \(\lambda=1\),
+\[
+B-I=
+\begin{pmatrix}
+2&0&0\\
+0&1&1\\
+0&1&1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+x=0,
+\qquad
+y+z=0.
+\]
+Donc :
+\[
+E_1=\Vect((0,1,-1)).
+\]
+Un vecteur unitaire est :
+\[
+e_1=\frac1{\sqrt2}(0,1,-1).
+\]
+
+Pour \(\lambda=3\),
+\[
+B-3I=
+\begin{pmatrix}
+0&0&0\\
+0&-1&1\\
+0&1&-1
+\end{pmatrix}.
+\]
+Le système donne :
+\[
+-y+z=0,
+\]
+donc \(y=z\).  
+Ainsi :
+\[
+E_3=\{(x,y,y):x,y\in\R\}
+=
+\Vect((1,0,0),(0,1,1)).
+\]
+Une base orthonormée de \(E_3\) est :
+\[
+e_2=(1,0,0),
+\qquad
+e_3=\frac1{\sqrt2}(0,1,1).
+\]
+
+On pose :
+\[
+P=
+\begin{pmatrix}
+0&1&0\\
+\frac1{\sqrt2}&0&\frac1{\sqrt2}\\
+-\frac1{\sqrt2}&0&\frac1{\sqrt2}
+\end{pmatrix},
+\qquad
+D=
+\begin{pmatrix}
+1&0&0\\
+0&3&0\\
+0&0&3
+\end{pmatrix}.
+\]
+Alors :
+\[
+B=PDP^T.
+\]
+
+\subsection*{Correction de l'exercice 5}
+
+La matrice :
+\[
+C=
+\begin{pmatrix}
+2&1\\
+1&2
+\end{pmatrix}
+\]
+est symétrique.
+
+On a déjà calculé dans le cours :
+\[
+\chi_C(X)=(X-1)(X-3).
+\]
+Les valeurs propres sont donc :
+\[
+1
+\quad\text{et}\quad
+3.
+\]
+Elles sont toutes strictement positives.  
+Comme \(C\) est symétrique réelle, elle est définie positive.
+
+Pour tout \((x,y)\neq(0,0)\),
+\[
+\begin{pmatrix}x&y\end{pmatrix}
+C
+\begin{pmatrix}x\\y\end{pmatrix}
+=
+2x^2+2xy+2y^2.
+\]
+Comme \(C\) est définie positive, cette quantité est strictement positive pour tout \((x,y)\neq(0,0)\).  
+Donc :
+\[
+2x^2+2xy+2y^2>0.
+\]
+
+%=========================================================
+\newpage
+\section{Fiche de synthèse finale}
+
+\subsection*{1. Produit scalaire}
+
+Un produit scalaire sur un espace vectoriel réel \(E\) est une application :
+\[
+\scal{\cdot}{\cdot}:E\times E\to\R
+\]
+bilinéaire, symétrique, positive et définie positive.
+
+La norme associée est :
+\[
+\norme{x}=\sqrt{\scal{x}{x}}.
+\]
+
+\subsection*{2. Cauchy-Schwarz}
+
+\[
+|\scal{x}{y}|\leq\norme{x}\norme{y}.
+\]
+
+Égalité si et seulement si \(x\) et \(y\) sont colinéaires.
+
+\subsection*{3. Identités}
+
+Polarisation :
+\[
+\scal{x}{y}
+=
+\frac12(\norme{x+y}^2-\norme{x}^2-\norme{y}^2).
+\]
+
+Autre forme :
+\[
+\scal{x}{y}
+=
+\frac14(\norme{x+y}^2-\norme{x-y}^2).
+\]
+
+Parallélogramme :
+\[
+\norme{x+y}^2+\norme{x-y}^2
+=
+2\norme{x}^2+2\norme{y}^2.
+\]
+
+\subsection*{4. Orthogonalité}
+
+\[
+x\perp y
+\Longleftrightarrow
+\scal{x}{y}=0.
+\]
+
+Pythagore :
+\[
+x\perp y
+\Longrightarrow
+\norme{x+y}^2=\norme{x}^2+\norme{y}^2.
+\]
+
+Orthogonal d'une partie :
+\[
+A^\perp=\{x\in E:\forall a\in A,\ \scal{x}{a}=0\}.
+\]
+
+\subsection*{5. Familles orthonormées}
+
+Une famille orthonormée vérifie :
+\[
+\scal{e_i}{e_j}=\delta_{ij}.
+\]
+
+Toute famille orthogonale de vecteurs non nuls est libre.
+
+Dans une base orthonormée :
+\[
+x=\sum_{k=1}^n\scal{x}{e_k}e_k.
+\]
+
+Parseval :
+\[
+\norme{x}^2=\sum_{k=1}^n\scal{x}{e_k}^2.
+\]
+
+\subsection*{6. Gram-Schmidt}
+
+À partir d'une famille libre \((u_1,\dots,u_n)\), on construit :
+\[
+v_1=u_1,
+\]
+\[
+v_k=u_k-\sum_{j=1}^{k-1}
+\frac{\scal{u_k}{v_j}}{\norme{v_j}^2}v_j.
+\]
+Puis :
+\[
+e_k=\frac{v_k}{\norme{v_k}}.
+\]
+
+\subsection*{7. Sous-espaces orthogonaux}
+
+Pour tout sous-espace \(F\) :
+\[
+E=F\oplus F^\perp.
+\]
+
+\[
+\dim(F)+\dim(F^\perp)=\dim(E).
+\]
+
+\[
+(F^\perp)^\perp=F.
+\]
+
+\subsection*{8. Projection orthogonale}
+
+Si \((e_1,\dots,e_p)\) est une base orthonormée de \(F\), alors :
+\[
+p_F(x)=\sum_{k=1}^p\scal{x}{e_k}e_k.
+\]
+
+Sur une droite \(\R a\) :
+\[
+p_{\R a}(x)=\frac{\scal{x}{a}}{\norme{a}^2}a.
+\]
+
+Distance à un sous-espace :
+\[
+d(x,F)=\norme{x-p_F(x)}.
+\]
+
+\subsection*{9. Matrices de Gram}
+
+Dans une base \(\mathcal B\),
+\[
+G_{\mathcal B}=(\scal{e_i}{e_j}).
+\]
+Si \(X,Y\) sont les coordonnées de \(x,y\), alors :
+\[
+\scal{x}{y}=X^TG_{\mathcal B}Y.
+\]
+
+Dans une base orthonormée :
+\[
+G_{\mathcal B}=I_n.
+\]
+
+\subsection*{10. Matrices orthogonales}
+
+\[
+A\in O(n)
+\Longleftrightarrow
+A^TA=I_n.
+\]
+
+Équivalent :
+les colonnes de \(A\) forment une base orthonormée.
+
+\[
+A^{-1}=A^T.
+\]
+
+\[
+\det(A)=\pm1.
+\]
+
+\[
+SO(n)=\{A\in O(n):\det(A)=1\}.
+\]
+
+\subsection*{11. Isométries}
+
+Un endomorphisme \(u\) est une isométrie si :
+\[
+\norme{u(x)}=\norme{x}.
+\]
+
+Équivalent :
+\[
+\scal{u(x)}{u(y)}=\scal{x}{y}.
+\]
+
+Dans une base orthonormée, sa matrice est orthogonale.
+
+\subsection*{12. Endomorphismes symétriques}
+
+\[
+u\text{ symétrique}
+\Longleftrightarrow
+\forall x,y,\quad
+\scal{u(x)}{y}=\scal{x}{u(y)}.
+\]
+
+Dans une base orthonormée :
+\[
+u\text{ symétrique}
+\Longleftrightarrow
+A^T=A.
+\]
+
+Théorème spectral :
+\[
+A=A^T
+\Longrightarrow
+\exists P\in O(n),\exists D\text{ diagonale},\quad
+A=PDP^T.
+\]
+
+\subsection*{13. Positivité}
+
+Un endomorphisme symétrique \(u\) est positif si :
+\[
+\forall x,\quad \scal{u(x)}{x}\geq0.
+\]
+
+Il est défini positif si :
+\[
+\forall x\neq0,\quad \scal{u(x)}{x}>0.
+\]
+
+Pour un endomorphisme symétrique :
+\[
+u\text{ positif}
+\Longleftrightarrow
+\text{toutes ses valeurs propres sont positives ou nulles}.
+\]
+
+\[
+u\text{ défini positif}
+\Longleftrightarrow
+\text{toutes ses valeurs propres sont strictement positives}.
+\]
+
+%=========================================================
+\section*{Conclusion pédagogique}
+\addcontentsline{toc}{section}{Conclusion pédagogique}
+
+Les espaces euclidiens donnent un cadre algébrique rigoureux à la géométrie.  
+Le produit scalaire permet de définir l'orthogonalité, les angles, les distances à des sous-espaces, les projections, les symétries orthogonales et les isométries.
+
+Le chapitre repose sur une idée centrale : les bases orthonormées simplifient tous les calculs.  
+Dans une base orthonormée, les coordonnées, les produits scalaires, les projections et les matrices orthogonales prennent leur forme la plus simple.
+
+Enfin, le théorème spectral relie profondément l'orthogonalité et la réduction : toute matrice symétrique réelle est diagonalisable dans une base orthonormée.  
+C'est l'un des résultats majeurs de l'algèbre linéaire euclidienne.
+
+\end{document}
+``
+::contentReference[oaicite:3]{index=3}
+`

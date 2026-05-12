@@ -1,0 +1,1621 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+%========================
+% STYLE
+%========================
+\definecolor{bleu}{RGB}{20,70,140}
+\definecolor{rouge}{RGB}{160,30,30}
+\definecolor{vert}{RGB}{20,120,60}
+\definecolor{gris}{RGB}{245,245,245}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleu,
+    urlcolor=bleu,
+    citecolor=bleu
+}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Pré-requis}
+\fancyhead[C]{Avant un cours de topologie générale}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+
+%========================
+% ENVIRONNEMENTS
+%========================
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[section]
+\newtheorem{exemple}[definition]{Exemple}
+\newtheorem{remarque}[definition]{Remarque}
+\newtheorem{methode}[definition]{Méthode}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theoreme}[definition]{Théorème}
+\newtheorem{lemme}[definition]{Lemme}
+\newtheorem{corollaire}[definition]{Corollaire}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\id}{\mathrm{Id}}
+\newcommand{\card}{\mathrm{Card}}
+\newcommand{\adh}{\overline}
+\newcommand{\interieur}[1]{\mathring{#1}}
+\newcommand{\norme}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\dist}{\mathrm{d}}
+
+%========================
+% DOCUMENT
+%========================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Pré-requis mathématiques}}\\[0.2cm]
+    {\Large \textbf{Avant de comprendre un cours de topologie générale}}\\[0.3cm]
+    {\large Niveau : bac+3}\\[0.3cm]
+    \rule{0.85\textwidth}{0.5pt}
+\end{center}
+
+\vspace{0.5cm}
+
+\tableofcontents
+
+\newpage
+
+%================================================
+\section*{Objectif du document}
+\addcontentsline{toc}{section}{Objectif du document}
+
+Ce document rassemble les notions qu'il faut maîtriser avant d'aborder sérieusement un cours de topologie générale.
+
+Le but n'est pas encore de refaire tout le cours de topologie, mais de préparer les outils indispensables :
+\begin{itemize}
+    \item logique et quantificateurs ;
+    \item ensembles et applications ;
+    \item relations d'équivalence et quotients ;
+    \item suites et limites ;
+    \item espaces vectoriels normés ;
+    \item normes, distances, boules ;
+    \item continuité ;
+    \item compacité dans $\R^n$ ;
+    \item connexité intuitive ;
+    \item suites de Cauchy et complétude.
+\end{itemize}
+
+Le cours de topologie générale abstrait toutes ces notions. Par exemple, les ouverts ne seront plus forcément des intervalles ou des boules : ils seront définis par une famille $\tau$ de parties d'un ensemble $E$ vérifiant certaines propriétés.
+
+\newpage
+
+%================================================
+\section{Logique, implications et quantificateurs}
+
+\subsection{Propositions mathématiques}
+
+\begin{definition}
+Une \textbf{proposition} est une phrase mathématique ayant une valeur de vérité : vraie ou fausse.
+\end{definition}
+
+\begin{exemple}
+Les phrases suivantes sont des propositions :
+\[
+2+2=4,
+\qquad
+\forall x\in\R,\ x^2\geq 0,
+\qquad
+\exists x\in\R,\ x^2=-1.
+\]
+La première et la deuxième sont vraies, la troisième est fausse.
+\end{exemple}
+
+\subsection{Implication}
+
+\begin{definition}
+L'implication
+\[
+P \Rightarrow Q
+\]
+signifie : \og si $P$ est vraie, alors $Q$ est vraie \fg.
+\end{definition}
+
+\begin{remarque}
+Une implication n'affirme pas que $P$ est vraie. Elle affirme seulement que, dans le cas où $P$ est vraie, alors $Q$ l'est aussi.
+\end{remarque}
+
+\begin{exemple}
+\[
+x>2 \Rightarrow x>0.
+\]
+Cette implication est vraie. Elle ne dit pas que tous les réels sont strictement supérieurs à $2$.
+\end{exemple}
+
+\subsection{Réciproque, contraposée, négation}
+
+\begin{definition}
+À partir de l'implication $P\Rightarrow Q$, on définit :
+\begin{itemize}
+    \item la \textbf{réciproque} : $Q\Rightarrow P$ ;
+    \item la \textbf{contraposée} : $\neg Q\Rightarrow \neg P$ ;
+    \item la \textbf{négation} : $P$ est vraie et $Q$ est fausse.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Une implication est équivalente à sa contraposée :
+\[
+(P\Rightarrow Q)\quad \Longleftrightarrow \quad (\neg Q\Rightarrow \neg P).
+\]
+\end{proposition}
+
+\begin{exemple}
+L'implication
+\[
+x>2 \Rightarrow x>0
+\]
+a pour contraposée
+\[
+x\leq 0 \Rightarrow x\leq 2.
+\]
+Elle est vraie.
+
+Sa réciproque est
+\[
+x>0 \Rightarrow x>2,
+\]
+qui est fausse.
+\end{exemple}
+
+\subsection{Équivalence}
+
+\begin{definition}
+On écrit
+\[
+P\Longleftrightarrow Q
+\]
+si $P\Rightarrow Q$ et $Q\Rightarrow P$.
+\end{definition}
+
+\begin{methode}
+Pour démontrer une équivalence $P\Longleftrightarrow Q$, on démontre généralement deux implications :
+\[
+P\Rightarrow Q,
+\qquad
+Q\Rightarrow P.
+\]
+\end{methode}
+
+\subsection{Quantificateurs}
+
+\begin{definition}
+Les deux quantificateurs fondamentaux sont :
+\[
+\forall : \text{ pour tout},
+\qquad
+\exists : \text{ il existe}.
+\]
+\end{definition}
+
+\begin{exemple}
+\[
+\forall x\in\R,\ x^2\geq 0
+\]
+signifie : pour tout réel $x$, on a $x^2\geq 0$.
+
+\[
+\exists x\in\R,\ x^2=2
+\]
+signifie : il existe au moins un réel $x$ tel que $x^2=2$.
+\end{exemple}
+
+\subsection{Ordre des quantificateurs}
+
+\begin{remarque}
+L'ordre des quantificateurs est essentiel.
+\end{remarque}
+
+\begin{exemple}
+La proposition
+\[
+\forall x\in\R,\ \exists y\in\R,\ y>x
+\]
+est vraie : pour chaque réel $x$, on peut trouver un réel plus grand que lui.
+
+Mais
+\[
+\exists y\in\R,\ \forall x\in\R,\ y>x
+\]
+est fausse : il n'existe pas de réel plus grand que tous les autres.
+\end{exemple}
+
+\subsection{Négation des quantificateurs}
+
+\begin{proposition}
+On a les règles fondamentales :
+\[
+\neg(\forall x\in E,\ P(x))
+\Longleftrightarrow
+\exists x\in E,\ \neg P(x),
+\]
+et
+\[
+\neg(\exists x\in E,\ P(x))
+\Longleftrightarrow
+\forall x\in E,\ \neg P(x).
+\]
+\end{proposition}
+
+\begin{exemple}
+La négation de
+\[
+\forall x\in\R,\ f(x)>0
+\]
+est
+\[
+\exists x\in\R,\ f(x)\leq 0.
+\]
+\end{exemple}
+
+\begin{exemple}
+La négation de
+\[
+\forall \eps>0,\ \exists \eta>0,\ \forall x\in E,\ d(x,a)<\eta \Rightarrow d(f(x),f(a))<\eps
+\]
+est
+\[
+\exists \eps>0,\ \forall \eta>0,\ \exists x\in E,\ d(x,a)<\eta
+\quad \text{et}\quad
+d(f(x),f(a))\geq \eps.
+\]
+Cette forme est typique lorsqu'on veut nier la continuité.
+\end{exemple}
+
+%================================================
+\section{Ensembles et opérations ensemblistes}
+
+\subsection{Ensembles, appartenance, inclusion}
+
+\begin{definition}
+Si $E$ est un ensemble et $x$ un objet, on écrit
+\[
+x\in E
+\]
+pour dire que $x$ appartient à $E$.
+\end{definition}
+
+\begin{definition}
+Si $A$ et $B$ sont deux parties d'un ensemble $E$, on dit que $A$ est incluse dans $B$, et on écrit
+\[
+A\subset B,
+\]
+si
+\[
+\forall x\in E,\ x\in A \Rightarrow x\in B.
+\]
+\end{definition}
+
+\begin{remarque}
+Pour démontrer une inclusion $A\subset B$, on prend un élément quelconque $x\in A$ et on démontre que $x\in B$.
+\end{remarque}
+
+\subsection{Égalité d'ensembles}
+
+\begin{proposition}
+Pour montrer que deux ensembles $A$ et $B$ sont égaux, on montre souvent :
+\[
+A\subset B
+\qquad \text{et} \qquad
+B\subset A.
+\]
+\end{proposition}
+
+\subsection{Réunion et intersection}
+
+\begin{definition}
+Soient $A,B\subset E$.
+\[
+A\cup B=\{x\in E,\ x\in A \text{ ou } x\in B\},
+\]
+\[
+A\cap B=\{x\in E,\ x\in A \text{ et } x\in B\}.
+\]
+\end{definition}
+
+\begin{definition}
+Pour une famille de parties $(A_i)_{i\in I}$, on définit :
+\[
+\bigcup_{i\in I}A_i
+=
+\{x\in E,\ \exists i\in I,\ x\in A_i\},
+\]
+\[
+\bigcap_{i\in I}A_i
+=
+\{x\in E,\ \forall i\in I,\ x\in A_i\}.
+\]
+\end{definition}
+
+\subsection{Complémentaire}
+
+\begin{definition}
+Si $A\subset E$, le complémentaire de $A$ dans $E$ est
+\[
+A^c=E\setminus A=\{x\in E,\ x\notin A\}.
+\]
+\end{definition}
+
+\subsection{Lois de De Morgan}
+
+\begin{proposition}
+Pour une famille $(A_i)_{i\in I}$ de parties de $E$, on a :
+\[
+\left(\bigcup_{i\in I} A_i\right)^c
+=
+\bigcap_{i\in I} A_i^c,
+\]
+et
+\[
+\left(\bigcap_{i\in I} A_i\right)^c
+=
+\bigcup_{i\in I} A_i^c.
+\]
+\end{proposition}
+
+\begin{remarque}
+Ces formules sont fondamentales en topologie, car les fermés sont définis comme les complémentaires des ouverts.
+\end{remarque}
+
+%================================================
+\section{Applications, images et images réciproques}
+
+\subsection{Applications}
+
+\begin{definition}
+Une application
+\[
+f:E\to F
+\]
+associe à tout élément $x\in E$ un unique élément $f(x)\in F$.
+\end{definition}
+
+\subsection{Image directe}
+
+\begin{definition}
+Si $A\subset E$, l'image directe de $A$ par $f$ est
+\[
+f(A)=\{f(x),\ x\in A\}.
+\]
+\end{definition}
+
+\subsection{Image réciproque}
+
+\begin{definition}
+Si $B\subset F$, l'image réciproque de $B$ par $f$ est
+\[
+f^{-1}(B)=\{x\in E,\ f(x)\in B\}.
+\]
+\end{definition}
+
+\begin{remarque}
+Attention : $f^{-1}(B)$ est défini même si $f$ n'est pas bijective. Il ne s'agit pas forcément de l'application réciproque.
+\end{remarque}
+
+\subsection{Propriétés fondamentales}
+
+\begin{proposition}
+Pour toute famille $(B_i)_{i\in I}$ de parties de $F$, on a :
+\[
+f^{-1}\left(\bigcup_{i\in I}B_i\right)
+=
+\bigcup_{i\in I}f^{-1}(B_i),
+\]
+\[
+f^{-1}\left(\bigcap_{i\in I}B_i\right)
+=
+\bigcap_{i\in I}f^{-1}(B_i),
+\]
+\[
+f^{-1}(B^c)=\left(f^{-1}(B)\right)^c.
+\]
+\end{proposition}
+
+\begin{remarque}
+Ces propriétés expliquent pourquoi la continuité topologique se définit avec les images réciproques d'ouverts, et non avec les images directes.
+\end{remarque}
+
+\subsection{Injection, surjection, bijection}
+
+\begin{definition}
+Une application $f:E\to F$ est :
+\begin{itemize}
+    \item \textbf{injective} si
+    \[
+    \forall x,y\in E,\ f(x)=f(y)\Rightarrow x=y ;
+    \]
+    \item \textbf{surjective} si
+    \[
+    \forall z\in F,\ \exists x\in E,\ f(x)=z ;
+    \]
+    \item \textbf{bijective} si elle est injective et surjective.
+\end{itemize}
+\end{definition}
+
+\begin{remarque}
+Un homéomorphisme est une bijection continue dont la réciproque est continue.
+C'est l'analogue topologique d'un isomorphisme.
+\end{remarque}
+
+%================================================
+\section{Relations d'équivalence et ensembles quotients}
+
+\subsection{Relations d'équivalence}
+
+\begin{definition}
+Une relation $\mathcal R$ sur un ensemble $E$ est une relation d'équivalence si elle est :
+\begin{itemize}
+    \item réflexive :
+    \[
+    \forall x\in E,\ x\mathcal R x ;
+    \]
+    \item symétrique :
+    \[
+    \forall x,y\in E,\ x\mathcal R y\Rightarrow y\mathcal R x ;
+    \]
+    \item transitive :
+    \[
+    \forall x,y,z\in E,\ x\mathcal R y \text{ et } y\mathcal R z
+    \Rightarrow x\mathcal R z.
+    \]
+\end{itemize}
+\end{definition}
+
+\subsection{Classes d'équivalence}
+
+\begin{definition}
+La classe d'équivalence d'un élément $x\in E$ est
+\[
+[x]=\{y\in E,\ y\mathcal R x\}.
+\]
+\end{definition}
+
+\begin{proposition}
+Les classes d'équivalence forment une partition de $E$ :
+\begin{itemize}
+    \item elles sont non vides ;
+    \item deux classes sont soit égales, soit disjointes ;
+    \item leur réunion vaut $E$.
+\end{itemize}
+\end{proposition}
+
+\subsection{Ensemble quotient}
+
+\begin{definition}
+L'ensemble quotient de $E$ par $\mathcal R$ est l'ensemble des classes d'équivalence :
+\[
+E/\mathcal R=\{[x],\ x\in E\}.
+\]
+\end{definition}
+
+\begin{exemple}
+Sur $[0,1]$, on peut identifier $0$ et $1$.
+On obtient intuitivement un cercle :
+\[
+[0,1]/(0\sim 1)\simeq \mathbb S^1.
+\]
+\end{exemple}
+
+\begin{remarque}
+Les quotients sont essentiels en topologie : ils permettent de construire un cercle, un cylindre, un tore ou encore une bouteille de Klein en identifiant certains points.
+\end{remarque}
+
+%================================================
+\section{Suites réelles et limites}
+
+\subsection{Définition d'une suite}
+
+\begin{definition}
+Une suite réelle est une application
+\[
+u:\N\to\R.
+\]
+On note généralement $u_n$ au lieu de $u(n)$.
+\end{definition}
+
+\subsection{Convergence}
+
+\begin{definition}
+Une suite $(u_n)$ converge vers $\ell\in\R$ si
+\[
+\forall \eps>0,\ \exists N\in\N,\ \forall n\geq N,\ |u_n-\ell|<\eps.
+\]
+On note alors
+\[
+u_n\longrightarrow \ell.
+\]
+\end{definition}
+
+\begin{remarque}
+La topologie généralise précisément cette idée :
+\[
+u_n\to \ell
+\]
+signifie qu'à partir d'un certain rang, $u_n$ appartient à tout voisinage de $\ell$.
+\end{remarque}
+
+\subsection{Unicité de la limite}
+
+\begin{proposition}
+Si une suite réelle converge, alors sa limite est unique.
+\end{proposition}
+
+\begin{proof}
+Supposons que $u_n\to \ell$ et $u_n\to m$ avec $\ell\neq m$.
+Posons
+\[
+\eps=\frac{|\ell-m|}{3}>0.
+\]
+À partir d'un certain rang,
+\[
+|u_n-\ell|<\eps
+\qquad\text{et}\qquad
+|u_n-m|<\eps.
+\]
+Alors, par inégalité triangulaire,
+\[
+|\ell-m|
+\leq |\ell-u_n|+|u_n-m|
+<2\eps
+=
+\frac{2}{3}|\ell-m|,
+\]
+ce qui est impossible. Donc $\ell=m$.
+\end{proof}
+
+\subsection{Suites extraites}
+
+\begin{definition}
+Une suite extraite de $(u_n)$ est une suite de la forme
+\[
+u_{\varphi(n)},
+\]
+où $\varphi:\N\to\N$ est strictement croissante.
+\end{definition}
+
+\begin{proposition}
+Si $u_n\to \ell$, alors toute suite extraite converge aussi vers $\ell$.
+\end{proposition}
+
+\subsection{Valeurs d'adhérence}
+
+\begin{definition}
+Un réel $\ell$ est une valeur d'adhérence de $(u_n)$ s'il existe une suite extraite $u_{\varphi(n)}$ telle que
+\[
+u_{\varphi(n)}\to \ell.
+\]
+\end{definition}
+
+\begin{exemple}
+La suite $u_n=(-1)^n$ admet deux valeurs d'adhérence :
+\[
+-1
+\qquad\text{et}\qquad
+1.
+\]
+\end{exemple}
+
+%================================================
+\section{Bornes, intervalles et propriétés de $\R$}
+
+\subsection{Majorants, minorants}
+
+\begin{definition}
+Soit $A\subset\R$.
+\begin{itemize}
+    \item $M$ est un majorant de $A$ si
+    \[
+    \forall x\in A,\ x\leq M.
+    \]
+    \item $m$ est un minorant de $A$ si
+    \[
+    \forall x\in A,\ m\leq x.
+    \]
+\end{itemize}
+\end{definition}
+
+\subsection{Borne supérieure}
+
+\begin{definition}
+Si $A\subset\R$ est non vide et majorée, sa borne supérieure, notée $\sup A$, est le plus petit des majorants de $A$.
+\end{definition}
+
+\begin{proposition}
+Si $s=\sup A$, alors :
+\[
+\forall x\in A,\ x\leq s,
+\]
+et
+\[
+\forall \eps>0,\ \exists x\in A,\ s-\eps<x\leq s.
+\]
+\end{proposition}
+
+\subsection{Intervalles}
+
+\begin{definition}
+Une partie $I\subset\R$ est un intervalle si
+\[
+\forall a,b\in I,\ \forall x\in\R,\ a\leq x\leq b \Rightarrow x\in I.
+\]
+\end{definition}
+
+\begin{remarque}
+Les intervalles sont exactement les parties connexes de $\R$. Cette idée devient un théorème important en topologie.
+\end{remarque}
+
+%================================================
+\section{Espaces vectoriels et normes}
+
+\subsection{Espaces vectoriels}
+
+\begin{definition}
+Un espace vectoriel sur $\K=\R$ ou $\C$ est un ensemble $E$ muni :
+\begin{itemize}
+    \item d'une addition $(x,y)\mapsto x+y$ ;
+    \item d'une multiplication externe $(\lambda,x)\mapsto \lambda x$ ;
+\end{itemize}
+vérifiant les règles usuelles de calcul vectoriel.
+\end{definition}
+
+\subsection{Norme}
+
+\begin{definition}
+Soit $E$ un espace vectoriel sur $\K$.
+Une norme sur $E$ est une application
+\[
+\norme{\cdot}:E\to\R_+
+\]
+telle que, pour tous $x,y\in E$ et tout $\lambda\in\K$ :
+\begin{itemize}
+    \item $\norme{x}=0 \Longleftrightarrow x=0$ ;
+    \item $\norme{\lambda x}=|\lambda|\norme{x}$ ;
+    \item $\norme{x+y}\leq \norme{x}+\norme{y}$.
+\end{itemize}
+\end{definition}
+
+\begin{exemple}
+Sur $\R^n$, on définit :
+\[
+\norme{x}_1=\sum_{i=1}^n |x_i|,
+\]
+\[
+\norme{x}_2=\left(\sum_{i=1}^n x_i^2\right)^{1/2},
+\]
+\[
+\norme{x}_\infty=\max_{1\leq i\leq n}|x_i|.
+\]
+\end{exemple}
+
+\subsection{Inégalité triangulaire inversée}
+
+\begin{proposition}
+Dans un espace vectoriel normé,
+\[
+\left|\norme{x}-\norme{y}\right|
+\leq
+\norme{x-y}.
+\]
+\end{proposition}
+
+\begin{proof}
+Par inégalité triangulaire,
+\[
+\norme{x}=\norme{x-y+y}\leq \norme{x-y}+\norme{y},
+\]
+donc
+\[
+\norme{x}-\norme{y}\leq \norme{x-y}.
+\]
+En échangeant $x$ et $y$, on obtient
+\[
+\norme{y}-\norme{x}\leq \norme{x-y}.
+\]
+D'où le résultat.
+\end{proof}
+
+%================================================
+\section{Distances et espaces métriques}
+
+\subsection{Distance}
+
+\begin{definition}
+Une distance sur un ensemble $E$ est une application
+\[
+d:E\times E\to\R_+
+\]
+telle que, pour tous $x,y,z\in E$ :
+\begin{itemize}
+    \item $d(x,y)=0\Longleftrightarrow x=y$ ;
+    \item $d(x,y)=d(y,x)$ ;
+    \item $d(x,z)\leq d(x,y)+d(y,z)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Un couple $(E,d)$ est appelé espace métrique.
+\end{definition}
+
+\subsection{Distance associée à une norme}
+
+\begin{proposition}
+Si $(E,\norme{\cdot})$ est un espace vectoriel normé, alors
+\[
+d(x,y)=\norme{x-y}
+\]
+définit une distance sur $E$.
+\end{proposition}
+
+\subsection{Boules ouvertes et fermées}
+
+\begin{definition}
+Dans un espace métrique $(E,d)$, la boule ouverte de centre $a$ et de rayon $r>0$ est
+\[
+B(a,r)=\{x\in E,\ d(x,a)<r\}.
+\]
+La boule fermée de centre $a$ et de rayon $r\geq 0$ est
+\[
+\overline B(a,r)=\{x\in E,\ d(x,a)\leq r\}.
+\]
+\end{definition}
+
+\begin{exemple}
+Dans $\R$ muni de la distance usuelle,
+\[
+B(a,r)=]a-r,a+r[.
+\]
+\end{exemple}
+
+\subsection{Suites dans un espace métrique}
+
+\begin{definition}
+Une suite $(x_n)$ d'un espace métrique $(E,d)$ converge vers $a\in E$ si
+\[
+\forall \eps>0,\ \exists N\in\N,\ \forall n\geq N,\ d(x_n,a)<\eps.
+\]
+\end{definition}
+
+\begin{remarque}
+Cette définition est exactement la définition usuelle dans $\R^n$, avec $d(x,a)=\norme{x-a}$.
+\end{remarque}
+
+%================================================
+\section{Ouverts et fermés dans un espace métrique}
+
+\subsection{Ouverts}
+
+\begin{definition}
+Une partie $U\subset E$ est ouverte si
+\[
+\forall x\in U,\ \exists r>0,\ B(x,r)\subset U.
+\]
+\end{definition}
+
+\begin{exemple}
+Dans $\R$, les intervalles ouverts $]a,b[$ sont des ouverts.
+\end{exemple}
+
+\begin{exemple}
+Dans $\R^2$, un disque ouvert est un ouvert.
+\end{exemple}
+
+\subsection{Fermés}
+
+\begin{definition}
+Une partie $F\subset E$ est fermée si son complémentaire $E\setminus F$ est ouvert.
+\end{definition}
+
+\begin{proposition}
+Dans un espace métrique, $F$ est fermé si et seulement si pour toute suite $(x_n)$ d'éléments de $F$ convergeant vers $x\in E$, on a $x\in F$.
+\end{proposition}
+
+\begin{proof}
+On donne l'idée de la preuve.
+
+Si $F$ est fermé et si $x\notin F$, alors $F^c$ est ouvert. Comme $x\in F^c$, il existe $r>0$ tel que
+\[
+B(x,r)\subset F^c.
+\]
+Une suite de points de $F$ ne peut donc pas converger vers $x$.
+
+Réciproquement, si $F$ n'est pas fermé, alors $F^c$ n'est pas ouvert. Il existe donc un point $x\in F^c$ tel que toute boule centrée en $x$ rencontre $F$. On construit alors une suite $(x_n)$ dans $F$ vérifiant
+\[
+d(x_n,x)<\frac1n.
+\]
+Donc $x_n\to x$, mais $x\notin F$.
+\end{proof}
+
+\subsection{Adhérence}
+
+\begin{definition}
+L'adhérence d'une partie $A\subset E$, notée $\overline A$, est l'ensemble des points $x\in E$ tels que toute boule ouverte centrée en $x$ rencontre $A$ :
+\[
+x\in\overline A
+\Longleftrightarrow
+\forall r>0,\ B(x,r)\cap A\neq \varnothing.
+\]
+\end{definition}
+
+\begin{proposition}
+Dans un espace métrique,
+\[
+x\in\overline A
+\Longleftrightarrow
+\exists (a_n)\in A^\N,\ a_n\to x.
+\]
+\end{proposition}
+
+\subsection{Intérieur}
+
+\begin{definition}
+L'intérieur de $A$, noté $\mathring A$, est l'ensemble des points $x\in A$ tels qu'il existe une boule centrée en $x$ incluse dans $A$ :
+\[
+x\in\mathring A
+\Longleftrightarrow
+\exists r>0,\ B(x,r)\subset A.
+\]
+\end{definition}
+
+\subsection{Frontière}
+
+\begin{definition}
+La frontière de $A$ est
+\[
+\partial A=\overline A\setminus \mathring A.
+\]
+\end{definition}
+
+\begin{remarque}
+Un point est sur la frontière de $A$ si toute boule autour de ce point rencontre à la fois $A$ et son complémentaire.
+\end{remarque}
+
+%================================================
+\section{Continuité}
+
+\subsection{Continuité en un point}
+
+\begin{definition}
+Soient $(E,d_E)$ et $(F,d_F)$ deux espaces métriques.
+Une application $f:E\to F$ est continue en $a\in E$ si
+\[
+\forall \eps>0,\ \exists \eta>0,\ \forall x\in E,\ d_E(x,a)<\eta
+\Rightarrow
+d_F(f(x),f(a))<\eps.
+\]
+\end{definition}
+
+\subsection{Continuité globale}
+
+\begin{definition}
+$f$ est continue sur $E$ si elle est continue en tout point de $E$.
+\end{definition}
+
+\subsection{Caractérisation séquentielle}
+
+\begin{proposition}
+Dans les espaces métriques, $f:E\to F$ est continue en $a$ si et seulement si
+\[
+x_n\to a \Rightarrow f(x_n)\to f(a).
+\]
+\end{proposition}
+
+\begin{remarque}
+Cette caractérisation est très utile en prépa, mais en topologie générale elle ne suffit plus toujours. Certains espaces topologiques ne sont pas entièrement décrits par les suites.
+\end{remarque}
+
+\subsection{Continuité et ouverts}
+
+\begin{theoreme}
+Soient $(E,d_E)$ et $(F,d_F)$ deux espaces métriques.
+Une application $f:E\to F$ est continue si et seulement si pour tout ouvert $V$ de $F$, $f^{-1}(V)$ est un ouvert de $E$.
+\end{theoreme}
+
+\begin{remarque}
+Cette propriété devient la définition de la continuité en topologie générale.
+\end{remarque}
+
+\subsection{Continuité uniforme}
+
+\begin{definition}
+Une application $f:E\to F$ est uniformément continue si
+\[
+\forall \eps>0,\ \exists \eta>0,\ \forall x,y\in E,\ d_E(x,y)<\eta
+\Rightarrow
+d_F(f(x),f(y))<\eps.
+\]
+\end{definition}
+
+\begin{remarque}
+La différence avec la continuité simple est que $\eta$ ne dépend pas du point $a$, mais seulement de $\eps$.
+\end{remarque}
+
+\subsection{Applications lipschitziennes}
+
+\begin{definition}
+Une application $f:E\to F$ est lipschitzienne s'il existe $K\geq 0$ tel que
+\[
+\forall x,y\in E,\ d_F(f(x),f(y))\leq Kd_E(x,y).
+\]
+\end{definition}
+
+\begin{proposition}
+Toute application lipschitzienne est uniformément continue, donc continue.
+\end{proposition}
+
+%================================================
+\section{Applications linéaires continues}
+
+\subsection{Applications linéaires}
+
+\begin{definition}
+Soient $E$ et $F$ deux espaces vectoriels sur $\K$.
+Une application $u:E\to F$ est linéaire si
+\[
+\forall x,y\in E,\ \forall \lambda,\mu\in\K,\ 
+u(\lambda x+\mu y)=\lambda u(x)+\mu u(y).
+\]
+\end{definition}
+
+\subsection{Continuité des applications linéaires}
+
+\begin{theoreme}
+Soient $(E,\norme{\cdot}_E)$ et $(F,\norme{\cdot}_F)$ deux espaces vectoriels normés.
+Pour une application linéaire $u:E\to F$, les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+    \item $u$ est continue sur $E$ ;
+    \item $u$ est continue en $0$ ;
+    \item il existe $C\geq 0$ tel que
+    \[
+    \forall x\in E,\ \norme{u(x)}_F\leq C\norme{x}_E ;
+    \]
+    \item $u$ est lipschitzienne.
+\end{enumerate}
+\end{theoreme}
+
+\begin{proof}
+On donne l'idée principale.
+
+Si $u$ est continue en $0$, alors pour $\eps=1$, il existe $\eta>0$ tel que
+\[
+\norme{x}_E<\eta \Rightarrow \norme{u(x)}_F<1.
+\]
+Pour $x\neq 0$, on applique cette propriété à
+\[
+\frac{\eta}{2}\frac{x}{\norme{x}_E}.
+\]
+On obtient
+\[
+\norme{u(x)}_F
+\leq
+\frac{2}{\eta}\norme{x}_E.
+\]
+Donc $u$ est bornée par une constante fois $\norme{x}_E$, ce qui donne la continuité lipschitzienne.
+\end{proof}
+
+\subsection{Cas de la dimension finie}
+
+\begin{theoreme}
+Toute application linéaire entre espaces vectoriels normés de dimension finie est continue.
+\end{theoreme}
+
+\begin{remarque}
+En dimension infinie, ce résultat est faux : il existe des applications linéaires non continues.
+\end{remarque}
+
+%================================================
+\section{Équivalence des normes en dimension finie}
+
+\begin{definition}
+Deux normes $N_1$ et $N_2$ sur un espace vectoriel $E$ sont équivalentes s'il existe deux constantes $c,C>0$ telles que
+\[
+\forall x\in E,\ cN_1(x)\leq N_2(x)\leq C N_1(x).
+\]
+\end{definition}
+
+\begin{theoreme}
+Sur un espace vectoriel de dimension finie, toutes les normes sont équivalentes.
+\end{theoreme}
+
+\begin{remarque}
+C'est un résultat très important : en dimension finie, la topologie ne dépend pas du choix de la norme.
+\end{remarque}
+
+\begin{exemple}
+Sur $\R^n$, les normes $\norme{\cdot}_1$, $\norme{\cdot}_2$ et $\norme{\cdot}_\infty$ sont équivalentes.
+On a par exemple
+\[
+\norme{x}_\infty\leq \norme{x}_2\leq \sqrt n \norme{x}_\infty.
+\]
+\end{exemple}
+
+%================================================
+\section{Compacité en analyse réelle}
+
+\subsection{Définition intuitive}
+
+\begin{remarque}
+En prépa, on rencontre souvent la compacité sous la forme suivante :
+dans $\R^n$, les compacts sont exactement les fermés bornés.
+\end{remarque}
+
+\begin{theoreme}[Heine-Borel]
+Une partie $K\subset\R^n$ est compacte si et seulement si elle est fermée et bornée.
+\end{theoreme}
+
+\subsection{Caractérisation séquentielle}
+
+\begin{theoreme}[Bolzano-Weierstrass]
+Une partie $K\subset\R^n$ est compacte si et seulement si toute suite d'éléments de $K$ admet une suite extraite convergeant vers un élément de $K$.
+\end{theoreme}
+
+\subsection{Image continue d'un compact}
+
+\begin{theoreme}
+Si $K$ est compact et si $f:K\to F$ est continue, alors $f(K)$ est compact.
+\end{theoreme}
+
+\begin{corollaire}
+Si $K$ est compact et si $f:K\to\R$ est continue, alors $f$ est bornée et atteint ses bornes :
+\[
+\exists x_{\min},x_{\max}\in K,\quad
+f(x_{\min})=\min_K f,
+\qquad
+f(x_{\max})=\max_K f.
+\]
+\end{corollaire}
+
+\begin{remarque}
+En topologie générale, la compacité sera définie non pas avec les suites, mais avec les recouvrements par ouverts.
+\end{remarque}
+
+%================================================
+\section{Connexité}
+
+\subsection{Idée intuitive}
+
+\begin{remarque}
+Un espace est connexe s'il est \og en un seul morceau \fg.
+Par exemple, un intervalle de $\R$ est connexe, mais
+\[
+[0,1]\cup [2,3]
+\]
+ne l'est pas.
+\end{remarque}
+
+\subsection{Connexité dans $\R$}
+
+\begin{theoreme}
+Les parties connexes de $\R$ sont exactement les intervalles.
+\end{theoreme}
+
+\subsection{Image continue d'un connexe}
+
+\begin{theoreme}
+L'image continue d'un connexe est connexe.
+\end{theoreme}
+
+\begin{corollaire}[Théorème des valeurs intermédiaires]
+Si $I$ est un intervalle de $\R$ et si $f:I\to\R$ est continue, alors $f(I)$ est un intervalle.
+\end{corollaire}
+
+\subsection{Connexité par arcs}
+
+\begin{definition}
+Une partie $A$ d'un espace vectoriel normé est connexe par arcs si pour tous $x,y\in A$, il existe une application continue
+\[
+\gamma:[0,1]\to A
+\]
+telle que
+\[
+\gamma(0)=x,
+\qquad
+\gamma(1)=y.
+\]
+\end{definition}
+
+\begin{proposition}
+Toute partie connexe par arcs est connexe.
+\end{proposition}
+
+\begin{exemple}
+Tout convexe d'un espace vectoriel normé est connexe par arcs, donc connexe.
+\end{exemple}
+
+\begin{proof}
+Si $C$ est convexe et $x,y\in C$, le chemin
+\[
+\gamma(t)=(1-t)x+ty
+\]
+reste dans $C$ pour tout $t\in[0,1]$.
+\end{proof}
+
+%================================================
+\section{Suites de Cauchy et complétude}
+
+\subsection{Suites de Cauchy}
+
+\begin{definition}
+Soit $(E,d)$ un espace métrique.
+Une suite $(x_n)$ est de Cauchy si
+\[
+\forall \eps>0,\ \exists N\in\N,\ \forall p,q\geq N,\ d(x_p,x_q)<\eps.
+\]
+\end{definition}
+
+\begin{remarque}
+Une suite convergente est toujours de Cauchy.
+\end{remarque}
+
+\begin{proposition}
+Toute suite convergente dans un espace métrique est de Cauchy.
+\end{proposition}
+
+\begin{proof}
+Supposons $x_n\to \ell$.
+Soit $\eps>0$.
+Il existe $N$ tel que, pour tout $n\geq N$,
+\[
+d(x_n,\ell)<\frac{\eps}{2}.
+\]
+Alors, pour $p,q\geq N$,
+\[
+d(x_p,x_q)
+\leq d(x_p,\ell)+d(\ell,x_q)
+<\eps.
+\]
+\end{proof}
+
+\subsection{Espaces complets}
+
+\begin{definition}
+Un espace métrique $(E,d)$ est complet si toute suite de Cauchy d'éléments de $E$ converge vers un élément de $E$.
+\end{definition}
+
+\begin{exemple}
+$\R$ est complet.
+\end{exemple}
+
+\begin{exemple}
+$\Q$ muni de la distance usuelle n'est pas complet.
+Par exemple, une suite rationnelle convergeant vers $\sqrt 2$ est de Cauchy dans $\Q$, mais ne converge pas dans $\Q$.
+\end{exemple}
+
+\subsection{Complétude et fermés}
+
+\begin{proposition}
+Si $(E,d)$ est complet et si $F\subset E$ est fermé, alors $F$ est complet.
+\end{proposition}
+
+\begin{proof}
+Soit $(x_n)$ une suite de Cauchy dans $F$.
+Comme $E$ est complet, $(x_n)$ converge vers un certain $x\in E$.
+Comme $F$ est fermé et que tous les $x_n$ sont dans $F$, on a $x\in F$.
+Donc $F$ est complet.
+\end{proof}
+
+%================================================
+\section{Topologie : passage de l'analyse à l'abstraction}
+
+\subsection{Pourquoi généraliser ?}
+
+En analyse de prépa, on travaille surtout dans :
+\[
+\R,\quad \R^n,\quad \C,\quad \text{ou des espaces vectoriels normés}.
+\]
+Dans ces espaces, la notion de proximité est donnée par une distance ou une norme.
+
+Mais en topologie générale, on veut parler de continuité, de voisinage, de convergence, de compacité et de connexité sans forcément disposer d'une distance.
+
+\subsection{Idée centrale}
+
+\begin{definition}
+Une topologie sur un ensemble $E$ est une famille $\tau\subset \mathcal P(E)$ telle que :
+\begin{itemize}
+    \item $\varnothing\in\tau$ et $E\in\tau$ ;
+    \item toute réunion d'éléments de $\tau$ appartient à $\tau$ ;
+    \item toute intersection finie d'éléments de $\tau$ appartient à $\tau$.
+\end{itemize}
+Les éléments de $\tau$ sont appelés ouverts.
+\end{definition}
+
+\begin{remarque}
+Dans un espace métrique, les ouverts définis par les boules vérifient exactement ces trois propriétés.
+\end{remarque}
+
+\subsection{Topologie associée à une distance}
+
+\begin{definition}
+Si $(E,d)$ est un espace métrique, on définit une topologie $\tau_d$ par :
+\[
+U\in\tau_d
+\Longleftrightarrow
+\forall x\in U,\ \exists r>0,\ B(x,r)\subset U.
+\]
+\end{definition}
+
+\begin{remarque}
+Ainsi, les espaces métriques sont des cas particuliers d'espaces topologiques.
+\end{remarque}
+
+%================================================
+\section{Voisinages}
+
+\begin{definition}
+Soit $(E,\tau)$ un espace topologique et $x\in E$.
+Une partie $V\subset E$ est un voisinage de $x$ s'il existe un ouvert $U\in\tau$ tel que
+\[
+x\in U\subset V.
+\]
+\end{definition}
+
+\begin{remarque}
+Dans un espace métrique, dire que $V$ est un voisinage de $x$ signifie que $V$ contient une boule ouverte centrée en $x$.
+\end{remarque}
+
+\begin{exemple}
+Dans $\R$, $[0,2]$ est un voisinage de $1$, car il contient par exemple l'ouvert
+\[
+]1/2,3/2[.
+\]
+Mais $[0,2]$ n'est pas un voisinage de $0$ dans $\R$, car il ne contient aucun intervalle ouvert centré en $0$.
+\end{exemple}
+
+%================================================
+\section{Bases d'ouverts}
+
+\begin{definition}
+Une famille $\mathcal B$ d'ouverts d'un espace topologique $(E,\tau)$ est une base d'ouverts si tout ouvert de $E$ est réunion d'éléments de $\mathcal B$.
+\end{definition}
+
+\begin{exemple}
+Dans un espace métrique, les boules ouvertes forment une base d'ouverts.
+\end{exemple}
+
+\begin{exemple}
+Dans $\R$, les intervalles ouverts forment une base d'ouverts.
+\end{exemple}
+
+\begin{remarque}
+Les bases d'ouverts permettent de décrire une topologie sans avoir besoin de lister tous les ouverts.
+\end{remarque}
+
+%================================================
+\section{Séparation}
+
+\begin{definition}
+Un espace topologique $(E,\tau)$ est séparé, ou de Hausdorff, si pour tous $x,y\in E$ avec $x\neq y$, il existe deux ouverts $U,V$ tels que
+\[
+x\in U,\qquad y\in V,
+\qquad U\cap V=\varnothing.
+\]
+\end{definition}
+
+\begin{proposition}
+Tout espace métrique est séparé.
+\end{proposition}
+
+\begin{proof}
+Soient $x\neq y$.
+Alors $d(x,y)>0$.
+Posons
+\[
+r=\frac{d(x,y)}{3}.
+\]
+Alors les boules
+\[
+B(x,r)
+\qquad\text{et}\qquad
+B(y,r)
+\]
+sont disjointes.
+\end{proof}
+
+\begin{remarque}
+Dans un espace séparé, une suite ne peut pas avoir deux limites différentes.
+\end{remarque}
+
+%================================================
+\section{Topologie induite, produit et quotient}
+
+\subsection{Topologie induite}
+
+\begin{definition}
+Soit $(E,\tau)$ un espace topologique et $A\subset E$.
+La topologie induite sur $A$ est
+\[
+\tau_A=\{U\cap A,\ U\in\tau\}.
+\]
+\end{definition}
+
+\begin{exemple}
+Dans $\R$, l'intervalle $[0,1]$ hérite d'une topologie.
+Par exemple,
+\[
+[0,1/2[
+=
+]-1,1/2[\cap [0,1]
+\]
+est ouvert dans $[0,1]$ pour la topologie induite, même s'il n'est pas ouvert dans $\R$.
+\end{exemple}
+
+\subsection{Topologie produit}
+
+\begin{definition}
+Si $(E,\tau_E)$ et $(F,\tau_F)$ sont deux espaces topologiques, la topologie produit sur $E\times F$ est celle dont les ouverts de base sont les produits
+\[
+U\times V,
+\qquad
+U\in\tau_E,
+\quad
+V\in\tau_F.
+\]
+\end{definition}
+
+\begin{exemple}
+La topologie usuelle de $\R^2$ est la topologie produit de $\R\times\R$.
+\end{exemple}
+
+\subsection{Topologie quotient}
+
+\begin{definition}
+Soit $(E,\tau)$ un espace topologique et $\mathcal R$ une relation d'équivalence sur $E$.
+On note
+\[
+\pi:E\to E/\mathcal R
+\]
+la projection canonique.
+
+La topologie quotient sur $E/\mathcal R$ est définie par :
+\[
+U\subset E/\mathcal R \text{ est ouvert}
+\Longleftrightarrow
+\pi^{-1}(U)\text{ est ouvert dans }E.
+\]
+\end{definition}
+
+\begin{remarque}
+La topologie quotient est la bonne topologie pour rendre la projection canonique continue.
+\end{remarque}
+
+%================================================
+\section{Résumé des prérequis à maîtriser}
+
+Avant d'attaquer un cours de topologie générale, il faut être à l'aise avec :
+
+\begin{enumerate}
+    \item les quantificateurs $\forall$, $\exists$ ;
+    \item les négations d'énoncés complexes ;
+    \item les ensembles, réunions, intersections, complémentaires ;
+    \item les images réciproques d'applications ;
+    \item les relations d'équivalence et les quotients ;
+    \item la convergence des suites ;
+    \item les suites extraites et valeurs d'adhérence ;
+    \item les espaces vectoriels normés ;
+    \item les normes usuelles de $\R^n$ ;
+    \item les distances et boules ouvertes ;
+    \item les ouverts, fermés, adhérences, intérieurs, frontières ;
+    \item la continuité métrique ;
+    \item la continuité via image réciproque d'ouverts ;
+    \item les applications linéaires continues ;
+    \item l'équivalence des normes en dimension finie ;
+    \item la compacité de $\R^n$ ;
+    \item la connexité des intervalles ;
+    \item la connexité par arcs ;
+    \item les suites de Cauchy ;
+    \item la complétude.
+\end{enumerate}
+
+%================================================
+\section{Mini-fiche : dictionnaire prépa vers topologie générale}
+
+\[
+\begin{array}{|c|c|}
+\hline
+\textbf{Analyse de prépa} & \textbf{Topologie générale}\\
+\hline
+\text{Intervalle ouvert, boule ouverte} & \text{Ouvert abstrait}\\
+\hline
+\text{Boule autour de }x & \text{Voisinage de }x\\
+\hline
+|x_n-\ell|\to 0 & x_n\to \ell \text{ au sens des voisinages}\\
+\hline
+\text{Fonction continue avec }\eps,\eta
+&
+\text{Image réciproque d'un ouvert ouverte}\\
+\hline
+\text{Fermé stable par limite de suites}
+&
+\text{Complémentaire d'un ouvert}\\
+\hline
+\text{Compact = fermé borné dans }\R^n
+&
+\text{Recouvrement ouvert extractible fini}\\
+\hline
+\text{Intervalle}
+&
+\text{Connexe}\\
+\hline
+\text{Suite de Cauchy}
+&
+\text{Complétude métrique}\\
+\hline
+\text{Identifier }0\text{ et }1
+&
+\text{Topologie quotient}\\
+\hline
+\end{array}
+\]
+
+%================================================
+\section{Exercices de vérification}
+
+\subsection*{Exercice 1}
+Écrire la négation de :
+\[
+\forall \eps>0,\ \exists N\in\N,\ \forall n\geq N,\ |u_n-\ell|<\eps.
+\]
+
+\subsection*{Exercice 2}
+Montrer que si $A\subset B$, alors
+\[
+\overline A\subset \overline B
+\]
+dans un espace métrique.
+
+\subsection*{Exercice 3}
+Montrer que dans un espace métrique, toute boule ouverte est un ouvert.
+
+\subsection*{Exercice 4}
+Soit $f:E\to F$ une application continue entre espaces métriques.
+Montrer que pour tout fermé $C$ de $F$, $f^{-1}(C)$ est fermé dans $E$.
+
+\subsection*{Exercice 5}
+Montrer que toute application linéaire de $\R^n$ dans $\R^p$ est continue.
+
+\subsection*{Exercice 6}
+Montrer que $[0,1]$ est compact dans $\R$.
+
+\subsection*{Exercice 7}
+Montrer que $]0,1[$ n'est pas compact.
+
+\subsection*{Exercice 8}
+Montrer que $[0,1]\cup[2,3]$ n'est pas connexe.
+
+\subsection*{Exercice 9}
+Montrer qu'un convexe de $\R^n$ est connexe par arcs.
+
+\subsection*{Exercice 10}
+Montrer que $\Q$ n'est pas complet pour la distance usuelle.
+
+%================================================
+\section{Corrigés rapides}
+
+\subsection*{Correction 1}
+La négation est :
+\[
+\exists \eps>0,\ \forall N\in\N,\ \exists n\geq N,\ |u_n-\ell|\geq \eps.
+\]
+
+\subsection*{Correction 2}
+Soit $x\in\overline A$.
+Alors toute boule centrée en $x$ rencontre $A$.
+Comme $A\subset B$, toute boule centrée en $x$ rencontre aussi $B$.
+Donc $x\in\overline B$.
+
+\subsection*{Correction 3}
+Soit $B(a,r)$ une boule ouverte.
+Soit $x\in B(a,r)$.
+Alors
+\[
+d(a,x)<r.
+\]
+Posons
+\[
+\rho=r-d(a,x)>0.
+\]
+Si $y\in B(x,\rho)$, alors
+\[
+d(a,y)\leq d(a,x)+d(x,y)<d(a,x)+\rho=r.
+\]
+Donc
+\[
+B(x,\rho)\subset B(a,r).
+\]
+Ainsi $B(a,r)$ est ouverte.
+
+\subsection*{Correction 4}
+Si $C$ est fermé, alors $F\setminus C$ est ouvert.
+Comme $f$ est continue,
+\[
+f^{-1}(F\setminus C)
+\]
+est ouvert.
+Mais
+\[
+f^{-1}(F\setminus C)=E\setminus f^{-1}(C).
+\]
+Donc $f^{-1}(C)$ est fermé.
+
+\subsection*{Correction 5}
+En dimension finie, toutes les normes sont équivalentes.
+Si $u:\R^n\to\R^p$ est linéaire, elle est représentée par une matrice.
+On peut majorer chaque coordonnée de $u(x)$ par une constante fois $\norme{x}$.
+Il existe donc $C>0$ tel que
+\[
+\norme{u(x)}\leq C\norme{x}.
+\]
+Donc $u$ est lipschitzienne, donc continue.
+
+\subsection*{Correction 6}
+Dans $\R$, le segment $[0,1]$ est fermé et borné.
+Par le théorème de Heine-Borel, il est compact.
+
+\subsection*{Correction 7}
+La suite
+\[
+u_n=\frac1n
+\]
+appartient à $]0,1[$ et converge vers $0$.
+Or $0\notin ]0,1[$.
+Donc $]0,1[$ n'est pas compact, car une suite d'éléments de cet intervalle n'admet pas nécessairement de sous-suite convergeant dans l'intervalle.
+
+\subsection*{Correction 8}
+On écrit
+\[
+[0,1]\cup[2,3]
+=
+\left([0,1]\cup[2,3]\right)\cap ]-\infty,3/2[
+\ \cup\
+\left([0,1]\cup[2,3]\right)\cap ]3/2,+\infty[.
+\]
+Ces deux ensembles sont ouverts dans la topologie induite, non vides et disjoints.
+Donc l'ensemble n'est pas connexe.
+
+\subsection*{Correction 9}
+Soit $C$ un convexe de $\R^n$.
+Pour $x,y\in C$, on pose
+\[
+\gamma(t)=(1-t)x+ty.
+\]
+Comme $C$ est convexe, $\gamma(t)\in C$ pour tout $t\in[0,1]$.
+De plus, $\gamma$ est continue.
+Donc $C$ est connexe par arcs.
+
+\subsection*{Correction 10}
+On peut construire une suite de rationnels $(q_n)$ convergeant vers $\sqrt2$ dans $\R$.
+Alors $(q_n)$ est de Cauchy dans $\Q$.
+Mais elle ne converge vers aucun rationnel, car sa limite dans $\R$ est $\sqrt2\notin\Q$.
+Donc $\Q$ n'est pas complet.
+
+\end{document}

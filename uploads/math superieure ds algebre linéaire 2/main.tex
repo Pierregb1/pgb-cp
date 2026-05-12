@@ -1,0 +1,412 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PACKAGES
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+
+%====================================================
+% MISE EN PAGE
+%====================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Classe préparatoire}
+\fancyhead[C]{Devoir surveillé -- Algèbre linéaire}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\definecolor{bleu}{RGB}{20,60,120}
+\definecolor{gris}{RGB}{85,85,85}
+
+\newcommand{\pts}[1]{\hfill \textbf{[#1 pts]}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Img}{\operatorname{Im}}
+\newcommand{\rg}{\operatorname{rg}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Id}{\operatorname{Id}}
+
+\newcounter{probleme}
+\newenvironment{probleme}[2]{
+    \refstepcounter{probleme}
+    \vspace{0.5cm}
+    {\Large\color{bleu}\textbf{Problème \theprobleme{} -- #1}}\hfill \textbf{#2 pts}
+    \par\medskip
+    \hrule
+    \medskip
+}{\vspace{0.4cm}}
+
+\newcommand{\partie}[1]{
+    \vspace{0.25cm}
+    {\large\color{gris}\textbf{#1}}
+    \par\smallskip
+}
+
+\setlist[enumerate,1]{label=\textbf{\arabic*.}, leftmargin=1.1cm}
+\setlist[enumerate,2]{label=\textbf{\alph*)}, leftmargin=1cm}
+\setlist[itemize]{leftmargin=1cm}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Devoir surveillé}}\\[0.2cm]
+    {\Large \textbf{Algèbre linéaire}}\\[0.2cm]
+    {\large Systèmes linéaires, matrices, applications linéaires, rang et déterminants}\\[0.4cm]
+\end{center}
+
+\begin{center}
+\begin{tabular}{|>{\bfseries}c|c|}
+\hline
+Durée indicative & 3h \\
+\hline
+Niveau & Bac + 1 -- classe préparatoire scientifique \\
+\hline
+Total & 85 points \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Consignes.}
+\begin{itemize}
+    \item La qualité de la rédaction, la clarté des raisonnements et la justification des réponses seront prises en compte.
+    \item Les calculs doivent être menés proprement. Toute réponse non justifiée peut ne pas recevoir la totalité des points.
+    \item Les trois problèmes sont indépendants.
+    \item Aucune notion de réduction, valeur propre, diagonalisation, polynôme d'endomorphisme ou produit scalaire n'est attendue.
+    \item Les dernières questions de chaque problème sont plus ouvertes et demandent davantage de recul.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Problème & Thème principal & Barème \\
+\hline
+1 & Systèmes linéaires, matrices, rang et compatibilité & 28 pts \\
+\hline
+2 & Machine linéaire, inverse et pertes d'information & 27 pts \\
+\hline
+3 & Noyau, image, rang, déterminant et généralisation & 30 pts \\
+\hline
+\textbf{Total} & & \textbf{85 pts} \\
+\hline
+\end{tabular}
+\end{center}
+
+%====================================================
+% PROBLEME 1
+%====================================================
+\begin{probleme}{Un système linéaire à paramètre}{28}
+
+On considère, pour un réel \(m\), le système linéaire \((S_m)\) d'inconnues \(x,y,z\) :
+\[
+(S_m)\qquad
+\begin{cases}
+x+y+z=1,\\
+x+my+z=2,\\
+x+y+mz=3.
+\end{cases}
+\]
+
+On note
+\[
+A_m=
+\begin{pmatrix}
+1&1&1\\
+1&m&1\\
+1&1&m
+\end{pmatrix},
+\qquad
+X=
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+1\\2\\3
+\end{pmatrix}.
+\]
+
+\partie{Partie A -- Étude classique du système}
+
+\begin{enumerate}
+    \item Écrire le système \((S_m)\) sous la forme matricielle
+    \[
+    A_mX=B.
+    \]
+    \pts{1}
+
+    \item Calculer le déterminant de \(A_m\). \pts{3}
+
+    \item Pour quelles valeurs de \(m\) la matrice \(A_m\) est-elle inversible ? \pts{2}
+
+    \item On suppose dans cette question que \(m\neq 1\).
+    Résoudre le système \((S_m)\). \pts{5}
+
+    \item Étudier séparément le cas \(m=1\).
+    Le système est-il compatible ? Si oui, donner l'ensemble de ses solutions. \pts{3}
+
+    \item En déduire, selon les valeurs de \(m\), si le système \((S_m)\) admet :
+    \begin{itemize}
+        \item une unique solution ;
+        \item aucune solution ;
+        \item une infinité de solutions.
+    \end{itemize}
+    \pts{2}
+\end{enumerate}
+
+\partie{Partie B -- Rang et système homogène associé}
+
+On considère le système homogène associé :
+\[
+(H_m)\qquad A_mX=0.
+\]
+
+\begin{enumerate}[resume]
+    \item Déterminer le rang de \(A_m\) selon les valeurs de \(m\). \pts{3}
+
+    \item Résoudre le système homogène \((H_m)\) selon les valeurs de \(m\). \pts{3}
+
+    \item Expliquer pourquoi le résultat obtenu est cohérent avec le théorème du rang appliqué à l'application linéaire
+    \[
+    u_m:\R^3\longrightarrow\R^3,
+    \qquad
+    X\longmapsto A_mX.
+    \]
+    \pts{3}
+\end{enumerate}
+
+\partie{Partie C -- Généralisation}
+
+On remplace maintenant le second membre \(B\) par un second membre quelconque
+\[
+Y=
+\begin{pmatrix}
+a\\b\\c
+\end{pmatrix}
+\in\R^3.
+\]
+On considère donc le système
+\[
+A_mX=Y.
+\]
+
+\begin{enumerate}[resume]
+    \item Lorsque \(m\neq 1\), justifier que le système admet une unique solution pour tout \(Y\in\R^3\). \pts{2}
+
+    \item On suppose maintenant \(m=1\). Donner une condition nécessaire et suffisante portant sur \(a,b,c\) pour que le système
+    \[
+    A_1X=Y
+    \]
+    soit compatible. \pts{3}
+
+    \item Dans le cas \(m=1\), interpréter géométriquement l'ensemble des seconds membres \(Y\) pour lesquels le système est compatible. \pts{1}
+\end{enumerate}
+
+\end{probleme}
+
+%====================================================
+% PROBLEME 2
+%====================================================
+\begin{probleme}{La machine à mélanger les jetons}{27}
+
+Une petite machine reçoit trois nombres réels \(x,y,z\), représentant les quantités de trois types de jetons : rouges, bleus et verts. Elle renvoie trois nouvelles quantités \(a,b,c\) selon la règle :
+\[
+\begin{cases}
+a=x+y,\\
+b=y+z,\\
+c=x+z.
+\end{cases}
+\]
+
+On définit ainsi une application
+\[
+T:\R^3\longrightarrow \R^3,
+\qquad
+T(x,y,z)=(x+y,\ y+z,\ x+z).
+\]
+
+\partie{Partie A -- Étude de la machine complète}
+
+\begin{enumerate}
+    \item Montrer que \(T\) est une application linéaire. \pts{2}
+
+    \item Donner la matrice \(M\) de \(T\) dans la base canonique de \(\R^3\). \pts{2}
+
+    \item Calculer le déterminant de \(M\). \pts{3}
+
+    \item En déduire que \(T\) est bijective. \pts{2}
+
+    \item La machine affiche en sortie
+    \[
+    (a,b,c)=(7,8,9).
+    \]
+    Déterminer les valeurs initiales \(x,y,z\). \pts{3}
+
+    \item Résoudre plus généralement le système
+    \[
+    T(x,y,z)=(a,b,c),
+    \]
+    où \(a,b,c\) sont trois réels quelconques. \pts{4}
+
+    \item En déduire la matrice \(M^{-1}\). \pts{3}
+\end{enumerate}
+
+\partie{Partie B -- Machine avec perte d'information}
+
+On modifie maintenant la machine. Elle renvoie seulement les deux nombres
+\[
+u=x+y,
+\qquad
+v=y+z.
+\]
+On définit donc
+\[
+F:\R^3\longrightarrow \R^2,
+\qquad
+F(x,y,z)=(x+y,\ y+z).
+\]
+
+\begin{enumerate}[resume]
+    \item Donner la matrice \(N\) de \(F\) dans les bases canoniques. \pts{1}
+
+    \item Déterminer \(\Ker(F)\). \pts{3}
+
+    \item En déduire le rang de \(F\) à l'aide du théorème du rang. \pts{2}
+
+    \item L'application \(F\) est-elle injective ? Est-elle surjective ? Justifier. \pts{3}
+\end{enumerate}
+
+\partie{Partie C -- Une généralisation à paramètre}
+
+Pour un réel \(\lambda\), on définit une nouvelle machine
+\[
+T_\lambda:\R^3\longrightarrow\R^3
+\]
+par
+\[
+T_\lambda(x,y,z)=(x+y,\ y+z,\ x+\lambda z).
+\]
+
+\begin{enumerate}[resume]
+    \item Donner la matrice \(M_\lambda\) de \(T_\lambda\) dans la base canonique. \pts{1}
+
+    \item Calculer \(\det(M_\lambda)\). \pts{2}
+
+    \item Pour quelles valeurs de \(\lambda\) la machine \(T_\lambda\) permet-elle toujours de retrouver les valeurs initiales \(x,y,z\) à partir de la sortie ? \pts{2}
+\end{enumerate}
+
+\end{probleme}
+
+%====================================================
+% PROBLEME 3
+%====================================================
+\begin{probleme}{Une application linéaire presque symétrique}{30}
+
+On considère l'application
+\[
+u:\R^3\longrightarrow \R^3
+\]
+définie par
+\[
+u(x,y,z)=(x+y,\ y+z,\ x+z).
+\]
+
+On note \(B\) la base canonique de \(\R^3\).
+
+\partie{Partie A -- Une application bijective}
+
+\begin{enumerate}
+    \item Justifier que \(u\) est linéaire. \pts{1}
+
+    \item Donner la matrice \(A=\Mat_B(u)\). \pts{2}
+
+    \item Calculer \(\det(A)\). \pts{3}
+
+    \item En déduire que \(u\) est un automorphisme de \(\R^3\). \pts{2}
+
+    \item Calculer explicitement \(\Ker(u)\). Vérifier que le résultat est cohérent avec la question précédente. \pts{3}
+
+    \item Déterminer \(\Img(u)\). \pts{2}
+\end{enumerate}
+
+\partie{Partie B -- Une application proche mais non bijective}
+
+On considère maintenant l'application
+\[
+v:\R^3\longrightarrow \R^3
+\]
+définie par
+\[
+v(x,y,z)=(x+y,\ y+z,\ x+2y+z).
+\]
+
+\begin{enumerate}[resume]
+    \item Montrer que \(v\) est linéaire et donner sa matrice \(C\) dans la base canonique. \pts{2}
+
+    \item Calculer \(\det(C)\). \pts{2}
+
+    \item Déterminer \(\Ker(v)\). \pts{3}
+
+    \item En déduire le rang de \(v\) à l'aide du théorème du rang. \pts{2}
+
+    \item Donner une base de \(\Img(v)\). \pts{3}
+
+    \item Expliquer clairement pourquoi \(v\) n'est pas bijective. \pts{2}
+\end{enumerate}
+
+\partie{Partie C -- Une généralisation élégante}
+
+Pour un réel \(\alpha\), on définit
+\[
+w_\alpha:\R^3\longrightarrow\R^3
+\]
+par
+\[
+w_\alpha(x,y,z)=(x+y,\ y+z,\ x+\alpha y+z).
+\]
+
+\begin{enumerate}[resume]
+    \item Donner la matrice \(D_\alpha\) de \(w_\alpha\) dans la base canonique. \pts{1}
+
+    \item Calculer \(\det(D_\alpha)\). \pts{3}
+
+    \item Pour quelles valeurs de \(\alpha\) l'application \(w_\alpha\) est-elle un automorphisme de \(\R^3\) ? \pts{2}
+
+    \item Dans le cas où \(w_\alpha\) n'est pas un automorphisme, déterminer \(\Ker(w_\alpha)\). \pts{3}
+
+    \item Dans ce même cas, donner le rang de \(w_\alpha\), puis une base de \(\Img(w_\alpha)\). \pts{3}
+
+    \item Comparer les applications \(u\), \(v\) et \(w_\alpha\) du point de vue de l'inversibilité, du noyau et du rang. Rédiger une conclusion synthétique. \pts{2}
+\end{enumerate}
+
+\end{probleme}
+
+\vfill
+
+\begin{center}
+    \textbf{Fin du sujet}
+\end{center}
+
+\end{document}
