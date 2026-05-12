@@ -8,70 +8,6 @@
   }
 ,
   {
-    "titre": "11 red endomorphisme",
-    "fichier": "docs/Algèbre lin chap 11 red endomorphisme.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "12 espaces euclidiens",
-    "fichier": "docs/Algèbre lin chap 12 espaces euclidiens.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "13 géométrie affine et euclidienne du plan et de l’espace",
-    "fichier": "docs/Algèbre lin chap 13 Géométrie affine et euclidienne du plan et de l’espace.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "14 polynomes !",
-    "fichier": "docs/Algèbre lin chap 14 Polynomes !.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "15 valeurs propres vecteurs propres",
-    "fichier": "docs/Algèbre lin chap 15 valeurs propres vecteurs propres.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "16 diagonalisation",
-    "fichier": "docs/Algèbre lin chap 16 diagonalisation.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "17 trigonalisation",
-    "fichier": "docs/Algèbre lin chap 17 trigonalisation.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
-    "titre": "18 red endo sym",
-    "fichier": "docs/Algèbre lin chap 18 red endo sym.pdf",
-    "matiere": "algèbre",
-    "niveau": "lin",
-    "type": "chap"
-  }
-,
-  {
     "titre": "9 rang",
     "fichier": "docs/Algèbre lin chap 9 rang.pdf",
     "matiere": "algèbre",
@@ -152,6 +88,62 @@
   }
 ,
   {
+    "titre": "ds algèbre linéaire 2",
+    "fichier": "docs/math superieure corrigé ds algèbre linéaire 2.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "corrigé"
+  }
+,
+  {
+    "titre": "algèbre lin chap 11 valeurs propres vecteurs propres",
+    "fichier": "docs/math superieure cours Algèbre lin chap 11 valeurs propres vecteurs propres.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 12 mesures des espaces vectoriels",
+    "fichier": "docs/math superieure cours Algèbre lin chap 12 Mesures des espaces vectoriels.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 13 espaces euclidiens",
+    "fichier": "docs/math superieure cours Algèbre lin chap 13 espaces euclidiens.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 14 polynomes !",
+    "fichier": "docs/math superieure cours Algèbre lin chap 14 Polynomes !.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 15 red endomorphisme",
+    "fichier": "docs/math superieure cours Algèbre lin chap 15 red endomorphisme.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "algèbre lin chap 16 diag trig",
+    "fichier": "docs/math superieure cours Algèbre lin chap 16 diag trig.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
     "titre": "logique et raisonnements",
     "fichier": "docs/math superieure cours logique et raisonnements.pdf",
     "matiere": "maths",
@@ -160,8 +152,24 @@
   }
 ,
   {
+    "titre": "pré requis topologiques",
+    "fichier": "docs/math superieure cours pré requis topologiques.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
     "titre": "algebre linéaine 1",
     "fichier": "docs/math superieure ds algebre linéaine 1.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "algebre linéaire 2",
+    "fichier": "docs/math superieure ds algebre linéaire 2.pdf",
     "matiere": "maths",
     "niveau": "superieur",
     "type": "ds"
