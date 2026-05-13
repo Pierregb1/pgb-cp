@@ -1,0 +1,1295 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=1.85cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usetikzlibrary{arrows.meta}
+
+%========================
+% COULEURS
+%========================
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,100,20}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+%========================
+% PAGE
+%========================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Troisième -- TD complet}
+\fancyhead[C]{Données, probabilités, proportionnalité, grandeurs}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Pierre Garcia-Buscaylet -- Mathématiques}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlist[enumerate]{label=\textbf{\alph*)},leftmargin=*,itemsep=0.2em}
+
+%========================
+% COMMANDES
+%========================
+\newcommand{\classe}[2]{\ensuremath{[#1\,;#2[}}
+\newcommand{\etoiles}[1]{\textcolor{orangeprepa}{#1}}
+\newcommand{\Prob}{\mathbb{P}}
+
+\newcounter{exo}
+\newcounter{corr}
+
+\newtcolorbox{exobox}[3]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=bleuprepa,
+  boxrule=0.7pt,
+  arc=1mm,
+  title={\stepcounter{exo}\textbf{Exercice \theexo\ -- #1}\hfill \etoiles{#2}\quad \textsc{#3}},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{corrbox}[1]{
+  enhanced,
+  breakable,
+  colback=vertprepa!3!white,
+  colframe=vertprepa,
+  boxrule=0.7pt,
+  arc=1mm,
+  title={\stepcounter{corr}\textbf{Correction de l'exercice \thecorr\ -- #1}},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{bilanbox}[1]{
+  enhanced,
+  breakable,
+  colback=grisclair,
+  colframe=black!60,
+  boxrule=0.7pt,
+  arc=1mm,
+  title={\textbf{#1}},
+  fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{TD complet de mathématiques}}\\[0.2cm]
+{\Large \textbf{Classe de troisième}}\\[0.15cm]
+{\Large Données -- Probabilités -- Proportionnalité -- Grandeurs mesurables}\\[0.2cm]
+\rule{0.92\linewidth}{0.6pt}\\[0.15cm]
+{\itshape 50 exercices progressifs avec corrigé complet}\\[0.15cm]
+\rule{0.92\linewidth}{0.6pt}
+\end{center}
+
+\begin{bilanbox}{Objectif du TD}
+Ce TD entraîne les élèves à lire, représenter et traiter des données, calculer des probabilités simples ou à deux épreuves, utiliser la proportionnalité et les pourcentages d'évolution, calculer avec des grandeurs mesurables et vérifier les unités. Les exercices sont organisés par familles : application, méthode, justification, réflexion et exercices longs.
+\end{bilanbox}
+
+\tableofcontents
+\newpage
+
+%================================================
+\section{Exercices d'application}
+
+\begin{exobox}{Effectifs et fréquences dans une classe}{$\star$}{APP}
+Dans une classe de $28$ élèves, on relève le moyen principal utilisé pour venir au collège.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Moyen de transport} & \text{Effectif} \\
+\hline
+\text{À pied} & 7 \\
+\text{Bus} & 12 \\
+\text{Voiture} & 6 \\
+\text{Vélo} & 3 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Vérifier que l'effectif total est bien $28$.
+\item Calculer la fréquence des élèves venant en bus.
+\item Calculer la fréquence des élèves venant à pied ou à vélo.
+\item Écrire les deux fréquences précédentes en pourcentage.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Étendue d'une série brute}{$\star$}{APP}
+On a relevé les températures maximales, en degrés Celsius, pendant dix jours :
+\[
+18,\ 21,\ 17,\ 23,\ 25,\ 20,\ 19,\ 24,\ 22,\ 16.
+\]
+\begin{enumerate}
+\item Donner la valeur minimale de la série.
+\item Donner la valeur maximale de la série.
+\item Calculer l'étendue.
+\item Interpréter cette étendue par une phrase précise.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Fréquences dans un tableau}{$\star$}{APP}
+Une enquête porte sur la couleur préférée de $60$ élèves.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Couleur} & \text{Effectif} \\
+\hline
+\text{Bleu} & 18 \\
+\text{Rouge} & 12 \\
+\text{Vert} & 9 \\
+\text{Noir} & 15 \\
+\text{Autre} & 6 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer la fréquence de la modalité « Bleu ».
+\item Calculer la fréquence de la modalité « Noir ».
+\item Calculer la fréquence des élèves ayant répondu « Rouge » ou « Vert ».
+\item Vérifier que la somme des fréquences vaut $1$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Histogramme à classes de même amplitude}{$\star$}{APP}
+On mesure la durée quotidienne de lecture de $100$ élèves.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Durée en minutes} & \text{Effectif} \\
+\hline
+\classe{0}{10} & 8 \\
+\classe{10}{20} & 22 \\
+\classe{20}{30} & 34 \\
+\classe{30}{40} & 26 \\
+\classe{40}{50} & 10 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Vérifier l'effectif total.
+\item Donner l'amplitude commune des classes.
+\item Expliquer pourquoi un histogramme est adapté.
+\item Calculer la fréquence des élèves lisant entre $20$ et $40$ minutes par jour.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Diagramme circulaire}{$\star\star$}{APP}
+Un club compte $80$ adhérents. La répartition par activité est donnée ci-dessous.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Activité} & \text{Effectif} \\
+\hline
+\text{Football} & 32 \\
+\text{Basket} & 20 \\
+\text{Tennis} & 16 \\
+\text{Athlétisme} & 12 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer la fréquence de chaque activité.
+\item Calculer l'angle du secteur correspondant à chaque activité dans un diagramme circulaire.
+\item Vérifier que la somme des angles vaut $360^\circ$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Probabilité avec un dé équilibré}{$\star$}{APP}
+On lance un dé équilibré à six faces numérotées de $1$ à $6$.
+\begin{enumerate}
+\item Donner l'univers de l'expérience.
+\item Calculer la probabilité d'obtenir $5$.
+\item Calculer la probabilité d'obtenir un nombre pair.
+\item Calculer la probabilité d'obtenir un nombre supérieur ou égal à $4$.
+\item Calculer la probabilité de ne pas obtenir $1$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Probabilité dans une urne}{$\star$}{APP}
+Une urne contient $4$ boules rouges, $3$ boules bleues et $5$ boules vertes. On tire une boule au hasard.
+\begin{enumerate}
+\item Calculer le nombre total de boules.
+\item Calculer la probabilité de tirer une boule rouge.
+\item Calculer la probabilité de tirer une boule bleue ou verte.
+\item Calculer la probabilité de ne pas tirer une boule verte.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Deux pièces équilibrées}{$\star\star$}{APP}
+On lance deux pièces équilibrées. On note $P$ pour pile et $F$ pour face.
+\begin{enumerate}
+\item Lister toutes les issues possibles sous forme de couples.
+\item Calculer la probabilité d'obtenir deux piles.
+\item Calculer la probabilité d'obtenir exactement une pile.
+\item Calculer la probabilité d'obtenir au moins une face.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Fonction linéaire et vitesse constante}{$\star$}{APP}
+Un mobile avance à vitesse constante de $5$ mètres par seconde. On note $x$ le temps en secondes et $d(x)$ la distance parcourue en mètres.
+\begin{enumerate}
+\item Écrire la fonction linéaire qui modélise la situation.
+\item Calculer $d(8)$.
+\item Déterminer la distance parcourue en $1$ minute.
+\item Déterminer le temps nécessaire pour parcourir $250$ mètres.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Pourcentages d'évolution}{$\star\star$}{APP}
+Un article coûte $120$ euros.
+\begin{enumerate}
+\item Calculer son prix après une augmentation de $15\%$.
+\item Calculer son prix après une diminution de $20\%$.
+\item Donner le coefficient multiplicateur d'une hausse de $8\%$.
+\item Donner le coefficient multiplicateur d'une baisse de $35\%$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Volume d'une boule}{$\star$}{APP}
+On considère une boule de rayon $6$ cm.
+\begin{enumerate}
+\item Rappeler la formule du volume d'une boule de rayon $r$.
+\item Calculer son volume exact.
+\item Donner une valeur approchée au dixième de cm$^3$ près.
+\item Vérifier que l'unité finale est cohérente.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Vitesse et conversion}{$\star\star$}{APP}
+Une voiture roule à $72$ km/h.
+\begin{enumerate}
+\item Convertir cette vitesse en m/s.
+\item Calculer la distance parcourue en $3$ secondes.
+\item Calculer la distance parcourue en $12$ secondes.
+\item Expliquer pourquoi il fallait convertir la vitesse avant de calculer ces distances.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de méthode}
+
+\begin{exobox}{Retrouver des effectifs à partir de fréquences}{$\star\star$}{METH}
+Dans un collège de $480$ élèves, une enquête donne les fréquences suivantes pour le trajet du matin.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Moyen} & \text{Fréquence} \\
+\hline
+\text{Bus} & 0{,}45 \\
+\text{Voiture} & 0{,}25 \\
+\text{À pied} & 0{,}20 \\
+\text{Vélo} & 0{,}10 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Vérifier que les fréquences forment une série complète.
+\item Calculer l'effectif correspondant à chaque moyen de transport.
+\item Contrôler que la somme des effectifs obtenus vaut $480$.
+\item Présenter les résultats dans un tableau d'effectifs.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Lire un diagramme en bâtons décrit par un tableau}{$\star\star$}{METH}
+Le tableau suivant correspond à un diagramme en bâtons donnant les pointures de $36$ élèves.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Pointure} & \text{Effectif} \\
+\hline
+37 & 2 \\
+38 & 5 \\
+39 & 7 \\
+40 & 8 \\
+41 & 6 \\
+42 & 5 \\
+43 & 3 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer le nombre d'élèves chaussant au moins du $40$.
+\item Calculer le nombre d'élèves chaussant au plus du $42$.
+\item Calculer le nombre d'élèves chaussant entre $38$ et $41$, bornes incluses.
+\item Calculer la fréquence des élèves chaussant au moins du $41$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Construire un histogramme complet}{$\star\star$}{METH}
+On regroupe les masses, en kilogrammes, de $50$ colis dans le tableau suivant.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Masse en kg} & \text{Effectif} \\
+\hline
+\classe{0}{5} & 6 \\
+\classe{5}{10} & 14 \\
+\classe{10}{15} & 18 \\
+\classe{15}{20} & 9 \\
+\classe{20}{25} & 3 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Vérifier que les classes ont même amplitude.
+\item Donner l'échelle possible pour tracer l'axe vertical.
+\item Construire l'histogramme sur papier.
+\item Calculer la fréquence des colis de masse au moins $10$ kg.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Étendue à partir d'un histogramme}{$\star\star$}{METH}
+Un histogramme de tailles regroupe des élèves dans les classes suivantes :
+\[
+\classe{140}{150},\quad \classe{150}{160},\quad \classe{160}{170},\quad \classe{170}{180},\quad \classe{180}{190}.
+\]
+Les effectifs correspondants sont $3$, $9$, $15$, $10$, $3$.
+\begin{enumerate}
+\item Construire le tableau de la série.
+\item Calculer l'effectif total.
+\item Donner une estimation de l'étendue à partir des bornes des classes.
+\item Expliquer pourquoi cette étendue est une estimation et non forcément l'étendue exacte des données brutes.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Deux tirages avec remise}{$\star\star$}{METH}
+Une urne contient une boule bleue $B$ et deux boules violettes $V_1$ et $V_2$. On tire deux fois avec remise.
+\begin{enumerate}
+\item Construire un tableau à double entrée des issues possibles.
+\item Compter le nombre total d'issues.
+\item Identifier les issues correspondant à deux boules violettes.
+\item En déduire la probabilité de tirer deux boules violettes.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Deux enfants}{$\star\star$}{METH}
+On suppose que, pour chaque naissance, la probabilité d'avoir une fille ou un garçon est la même. Un couple a deux enfants.
+\begin{enumerate}
+\item Lister toutes les issues possibles en tenant compte de l'ordre des naissances.
+\item Calculer la probabilité d'avoir deux garçons.
+\item Calculer directement la probabilité d'avoir au moins une fille.
+\item Retrouver ce résultat avec l'événement contraire.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Simulation d'un dé}{$\star\star$}{METH}
+On lance un dé équilibré $10\,000$ fois. Les effectifs obtenus sont les suivants.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Face} & \text{Effectif observé} \\
+\hline
+1 & 1650 \\
+2 & 1712 \\
+3 & 1640 \\
+4 & 1688 \\
+5 & 1661 \\
+6 & 1649 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer la fréquence observée de chaque face au millième près.
+\item Donner la probabilité théorique d'obtenir une face donnée.
+\item Comparer les fréquences observées à la probabilité théorique.
+\item Expliquer en une phrase le phénomène de stabilisation des fréquences.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Coefficient multiplicateur global}{$\star\star\star$}{METH}
+Un prix subit successivement une hausse de $10\%$, puis une baisse de $10\%$.
+\begin{enumerate}
+\item Donner le coefficient multiplicateur de la hausse.
+\item Donner le coefficient multiplicateur de la baisse.
+\item Calculer le coefficient multiplicateur global.
+\item Dire si le prix final est égal au prix initial, puis justifier.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Fonction linéaire et tableau}{$\star\star$}{METH}
+Une grandeur $y$ est proportionnelle à une grandeur $x$. On sait que $y=18$ lorsque $x=6$.
+\begin{enumerate}
+\item Calculer le coefficient de proportionnalité.
+\item Écrire la fonction linéaire associée.
+\item Compléter le tableau :
+\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+x & 2 & 5 & 9 & 12 \\
+\hline
+y & & & & \\
+\hline
+\end{array}
+\]
+\item Déterminer $x$ lorsque $y=45$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Thalès et proportionnalité}{$\star\star\star$}{METH}
+Dans un triangle $ABC$, les points $M$ et $N$ appartiennent respectivement aux segments $[AB]$ et $[AC]$, et les droites $(MN)$ et $(BC)$ sont parallèles. On donne $AM=4$ cm, $AB=10$ cm et $AC=15$ cm.
+\begin{enumerate}
+\item Écrire l'égalité de Thalès utile.
+\item Calculer le rapport $\dfrac{AM}{AB}$.
+\item Calculer $AN$.
+\item Interpréter le résultat comme une réduction du triangle $ABC$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Débit et unités}{$\star\star$}{METH}
+Un robinet a un débit constant de $18$ L/min.
+\begin{enumerate}
+\item Calculer le volume écoulé en $7$ minutes.
+\item Convertir ce volume en m$^3$.
+\item Calculer le temps nécessaire pour remplir une cuve de $540$ L.
+\item Vérifier la cohérence des unités dans chaque calcul.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Assemblage de solides}{$\star\star\star$}{METH}
+Un solide est composé d'un cylindre de rayon $3$ cm et de hauteur $12$ cm, surmonté d'une demi-boule de même rayon.
+\begin{enumerate}
+\item Calculer le volume du cylindre.
+\item Calculer le volume de la demi-boule.
+\item Calculer le volume total exact.
+\item Donner une valeur approchée au cm$^3$ près.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de justification et de démonstration}
+
+\begin{exobox}{Justifier une formule de fréquence}{$\star\star$}{DEM}
+Dans une série statistique d'effectif total $N$, une valeur possède un effectif $n$.
+\begin{enumerate}
+\item Expliquer pourquoi la fréquence associée est $f=\dfrac{n}{N}$.
+\item Justifier que $0\leq f\leq 1$.
+\item Expliquer pourquoi la somme des fréquences de toutes les modalités vaut $1$.
+\item Donner une interprétation lorsque $f=0{,}25$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Justifier l'étendue}{$\star\star$}{DEM}
+On considère une série statistique de plus petite valeur $m$ et de plus grande valeur $M$.
+\begin{enumerate}
+\item Rappeler la définition de l'étendue.
+\item Expliquer pourquoi l'étendue est toujours positive ou nulle.
+\item Donner une situation où l'étendue vaut $0$.
+\item Expliquer ce que mesure l'étendue et ce qu'elle ne mesure pas.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Justifier l'événement contraire}{$\star\star$}{DEM}
+On considère un événement $A$ dans une expérience aléatoire finie en situation d'équiprobabilité.
+\begin{enumerate}
+\item Expliquer ce que signifie l'événement contraire $\overline A$.
+\item Justifier que les issues favorables à $A$ et celles favorables à $\overline A$ ne se recouvrent pas.
+\item Justifier que toutes les issues appartiennent soit à $A$, soit à $\overline A$.
+\item En déduire que $\Prob(\overline A)=1-\Prob(A)$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Justifier une situation de proportionnalité}{$\star\star$}{DEM}
+On donne le tableau suivant.
+\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+x & 3 & 5 & 8 & 12 \\
+\hline
+y & 7{,}5 & 12{,}5 & 20 & 30 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer chaque quotient $\dfrac{y}{x}$.
+\item Conclure sur la proportionnalité.
+\item Donner le coefficient de proportionnalité.
+\item Écrire la fonction linéaire associée.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Prouver qu'une situation n'est pas proportionnelle}{$\star\star$}{DEM}
+On donne le tableau suivant.
+\[
+\begin{array}{|c|c|c|c|}
+\hline
+x & 2 & 4 & 8 \\
+\hline
+y & 5 & 9 & 17 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer $\dfrac{5}{2}$, $\dfrac{9}{4}$ et $\dfrac{17}{8}$.
+\item Comparer ces quotients.
+\item Justifier rigoureusement que le tableau n'est pas proportionnel.
+\item Expliquer pourquoi il ne suffit pas que $y$ augmente quand $x$ augmente.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Démontrer le coefficient d'une hausse}{$\star\star$}{DEM}
+On considère une valeur initiale $V$.
+\begin{enumerate}
+\item Écrire la quantité ajoutée lors d'une hausse de $p\%$.
+\item Écrire la valeur finale sous la forme $V+\dfrac{p}{100}V$.
+\item Factoriser par $V$.
+\item En déduire que le coefficient multiplicateur est $1+\dfrac{p}{100}$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Démontrer le coefficient d'une baisse}{$\star\star$}{DEM}
+On considère une valeur initiale $V$.
+\begin{enumerate}
+\item Écrire la quantité retirée lors d'une baisse de $p\%$.
+\item Écrire la valeur finale sous la forme $V-\dfrac{p}{100}V$.
+\item Factoriser par $V$.
+\item En déduire que le coefficient multiplicateur est $1-\dfrac{p}{100}$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Contrôle d'unités dans une vitesse}{$\star\star\star$}{DEM}
+On rappelle que $v=\dfrac{d}{t}$.
+\begin{enumerate}
+\item Si $d$ est en mètres et $t$ en secondes, donner l'unité de $v$.
+\item Si $v$ est en m/s et $t$ en secondes, expliquer pourquoi $d=v\times t$ est en mètres.
+\item Convertir $1$ km/h en m/s en partant de $1$ km $=1000$ m et $1$ h $=3600$ s.
+\item En déduire pourquoi on divise par $3{,}6$ pour passer de km/h à m/s.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de réflexion}
+
+\begin{exobox}{Histogramme et piège de lecture}{$\star\star\star$}{PREP}
+Une enquête porte sur $120$ temps d'attente à un guichet.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Temps en minutes} & \text{Effectif} \\
+\hline
+\classe{0}{5} & 10 \\
+\classe{5}{10} & 18 \\
+\classe{10}{15} & 42 \\
+\classe{15}{20} & 30 \\
+\classe{20}{25} & 20 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Quelle est la classe modale, c'est-à-dire la classe de plus grand effectif ?
+\item Calculer la fréquence des temps d'attente inférieurs à $10$ minutes.
+\item Calculer la fréquence des temps d'attente au moins égaux à $15$ minutes.
+\item Peut-on connaître exactement le nombre de personnes ayant attendu exactement $12$ minutes ? Justifier.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Probabilités et dénombrement non ordonné}{$\star\star\star$}{PREP}
+Un sac contient $2$ jetons rouges $R_1,R_2$ et $2$ jetons bleus $B_1,B_2$. On tire deux jetons successivement avec remise.
+\begin{enumerate}
+\item Construire l'ensemble des $16$ issues en distinguant les jetons.
+\item Calculer la probabilité d'obtenir deux jetons rouges.
+\item Calculer la probabilité d'obtenir deux jetons de même couleur.
+\item Expliquer pourquoi il faut distinguer les jetons pour un dénombrement parfaitement clair.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Comparer deux simulations}{$\star\star\star$}{PREP}
+Deux élèves simulent des lancers de dé. Le premier effectue $60$ lancers et obtient $14$ fois la face $6$. Le second effectue $6000$ lancers et obtient $1015$ fois la face $6$.
+\begin{enumerate}
+\item Calculer la fréquence d'apparition du $6$ dans chaque simulation.
+\item Donner la probabilité théorique d'obtenir $6$.
+\item Quelle simulation est la plus proche de la probabilité théorique ?
+\item Expliquer pourquoi le second résultat est généralement plus fiable pour estimer la probabilité.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Hausse puis baisse}{$\star\star\star$}{PREP}
+Un prix initial de $200$ euros augmente de $25\%$, puis diminue de $20\%$.
+\begin{enumerate}
+\item Calculer le prix après la hausse.
+\item Calculer le prix final après la baisse.
+\item Calculer le coefficient multiplicateur global.
+\item Expliquer pourquoi une hausse de $25\%$ suivie d'une baisse de $20\%$ ramène ici au prix initial.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Baisse puis hausse inverse ?}{$\star\star\star$}{PREP}
+Un prix baisse de $30\%$.
+\begin{enumerate}
+\item Donner le coefficient multiplicateur de la baisse.
+\item On veut retrouver le prix initial par une hausse. Si le prix après baisse est $70$, quel était le prix initial ?
+\item Quel pourcentage de hausse faut-il appliquer à $70$ pour revenir à $100$ ?
+\item Expliquer pourquoi ce pourcentage n'est pas $30\%$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Thalès avec retour à la longueur initiale}{$\star\star\star$}{PREP}
+Dans une configuration de Thalès, on a $(MN)\parallel(BC)$, $AM=6$ cm, $MB=9$ cm, $AN=8$ cm.
+\begin{enumerate}
+\item Calculer $AB$.
+\item Écrire le rapport de réduction $\dfrac{AM}{AB}$.
+\item Utiliser Thalès pour calculer $AC$.
+\item En déduire $NC$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Boîte cylindrique et boules}{$\star\star\star\star$}{PREP}
+Une boîte cylindrique de hauteur $30$ cm et de rayon $5$ cm contient trois boules identiques de rayon $5$ cm empilées verticalement.
+\begin{enumerate}
+\item Calculer le volume de la boîte cylindrique.
+\item Calculer le volume total des trois boules.
+\item Calculer le volume restant dans la boîte.
+\item Donner une valeur approchée au cm$^3$ près et expliquer si le résultat est cohérent.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Débit important}{$\star\star\star$}{PREP}
+Le débit moyen d'une rivière est $328$ m$^3$/s.
+\begin{enumerate}
+\item Convertir $3$ minutes en secondes.
+\item Calculer le volume d'eau écoulé en $3$ minutes en m$^3$.
+\item Convertir ce volume en litres.
+\item Écrire le résultat en notation scientifique.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Choisir la bonne méthode}{$\star\star\star\star$}{PREP}
+Un collège organise un sondage auprès de $300$ élèves. $42\%$ pratiquent un sport en club. Parmi eux, $\frac{2}{7}$ pratiquent un sport collectif.
+\begin{enumerate}
+\item Calculer le nombre d'élèves pratiquant un sport en club.
+\item Calculer le nombre d'élèves pratiquant un sport collectif parmi ceux qui pratiquent en club.
+\item Calculer la fréquence, parmi tous les élèves interrogés, des élèves pratiquant un sport collectif en club.
+\item Expliquer quelles opérations relèvent de la proportionnalité.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Données regroupées et incertitude}{$\star\star\star\star$}{PREP}
+On étudie les durées de connexion de $200$ utilisateurs.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Durée en minutes} & \text{Effectif} \\
+\hline
+\classe{0}{20} & 25 \\
+\classe{20}{40} & 50 \\
+\classe{40}{60} & 70 \\
+\classe{60}{80} & 40 \\
+\classe{80}{100} & 15 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Calculer la fréquence de la classe \classe{40}{60}.
+\item Donner une estimation de l'étendue.
+\item Peut-on savoir combien d'utilisateurs se sont connectés exactement $50$ minutes ?
+\item Peut-on savoir combien se sont connectés au moins $40$ minutes ? Justifier.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices longs}
+
+\begin{exobox}{Enquête statistique complète}{$\star\star\star\star$}{ORAUX}
+Une mairie interroge $2500$ personnes : « À quel âge avez-vous trouvé un emploi correspondant à votre qualification ? »
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Âge} & \text{Effectif} \\
+\hline
+\classe{18}{22} & 100 \\
+\classe{22}{26} & 200 \\
+\classe{26}{30} & 400 \\
+\classe{30}{34} & 1100 \\
+\classe{34}{38} & 700 \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Vérifier l'effectif total.
+\item Calculer la fréquence de chaque classe.
+\item Représenter les résultats par un histogramme.
+\item Déterminer la classe la plus représentée.
+\item Donner une estimation de l'étendue.
+\item Rédiger une interprétation globale des résultats en trois phrases.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Jeu à deux épreuves}{$\star\star\star\star$}{ORAUX}
+Une urne contient $1$ boule bleue et $2$ boules violettes. On tire deux fois avec remise. On gagne si l'on obtient au moins une boule violette.
+\begin{enumerate}
+\item Nommer les boules violettes $V_1,V_2$ et construire un tableau à double entrée.
+\item Calculer la probabilité d'obtenir deux boules violettes.
+\item Calculer la probabilité d'obtenir aucune boule violette.
+\item En déduire la probabilité de gagner.
+\item Vérifier le résultat par un dénombrement direct des issues gagnantes.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Trajet, vitesse et temps de réaction}{$\star\star\star\star$}{ORAUX}
+Un conducteur roule à $80$ km/h. Lorsqu'il voit un obstacle, il met $1$ seconde avant de commencer à freiner. La distance de freinage est ensuite de $38$ m.
+\begin{enumerate}
+\item Convertir $80$ km/h en m/s.
+\item Calculer la distance parcourue pendant le temps de réaction.
+\item Calculer la distance totale d'arrêt.
+\item Si le conducteur roulait à $90$ km/h avec la même distance de freinage, quelle serait la nouvelle distance de réaction ?
+\item Comparer les deux situations.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Réservoir composé}{$\star\star\star\star$}{ORAUX}
+Un réservoir est formé d'un cylindre de rayon $4$ dm et de hauteur $10$ dm, surmonté d'une demi-boule de même rayon.
+\begin{enumerate}
+\item Calculer le volume exact du cylindre en dm$^3$.
+\item Calculer le volume exact de la demi-boule en dm$^3$.
+\item Calculer le volume total en dm$^3$.
+\item Convertir ce volume en litres.
+\item Donner une valeur approchée au litre près.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Sondage, fréquences et évolution}{$\star\star\star\star$}{ORAUX}
+Une association compte $600$ adhérents. La première année, $35\%$ des adhérents ont moins de $18$ ans. L'année suivante, le nombre total d'adhérents augmente de $12\%$ et la fréquence des moins de $18$ ans devient $40\%$.
+\begin{enumerate}
+\item Calculer le nombre d'adhérents de moins de $18$ ans la première année.
+\item Calculer le nombre total d'adhérents l'année suivante.
+\item Calculer le nombre d'adhérents de moins de $18$ ans l'année suivante.
+\item Calculer l'augmentation en effectif des moins de $18$ ans.
+\item Interpréter les résultats.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Fonction linéaire et géométrie}{$\star\star\star\star\star$}{ORAUX}
+Une figure est agrandie par homothétie de coefficient $1{,}8$.
+\begin{enumerate}
+\item Écrire la fonction linéaire donnant une longueur agrandie $L'$ en fonction d'une longueur initiale $L$.
+\item Calculer les images des longueurs $4$ cm, $7{,}5$ cm et $12$ cm.
+\item Une longueur agrandie mesure $45$ cm. Retrouver la longueur initiale.
+\item Expliquer pourquoi les longueurs sont proportionnelles.
+\item Dire ce qui arriverait aux volumes si tous les solides étaient agrandis par le même coefficient, sans effectuer de calcul hors programme.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Interprétation d'une expérience simulée}{$\star\star\star\star\star$}{ORAUX}
+Une simulation informatique lance une pièce équilibrée. Trois séries sont obtenues :
+\[
+\begin{array}{|c|c|c|}
+\hline
+\text{Nombre de lancers} & \text{Nombre de piles} & \text{Fréquence de piles} \\
+\hline
+20 & 14 &  \\
+200 & 107 &  \\
+20000 & 10084 &  \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+\item Compléter la colonne des fréquences.
+\item Donner la probabilité théorique d'obtenir pile.
+\item Comparer chaque fréquence à la probabilité théorique.
+\item Expliquer pourquoi la troisième simulation est la plus convaincante.
+\item Rédiger une conclusion sur la stabilisation des fréquences.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Problème bilan transversal}{$\star\star\star\star\star$}{ORAUX}
+Une course solidaire regroupe $800$ participants. Les âges sont regroupés ainsi :
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Âge} & \text{Effectif} \\
+\hline
+\classe{10}{20} & 120 \\
+\classe{20}{30} & 260 \\
+\classe{30}{40} & 220 \\
+\classe{40}{50} & 140 \\
+\classe{50}{60} & 60 \\
+\hline
+\end{array}
+\]
+Chaque participant parcourt $5$ km. On estime qu'un participant met en moyenne $36$ minutes.
+\begin{enumerate}
+\item Calculer la fréquence de chaque classe d'âge.
+\item Donner une estimation de l'étendue des âges.
+\item Calculer la vitesse moyenne en km/h d'un participant.
+\item Si le nombre de participants augmente de $15\%$ l'année suivante, calculer le nouvel effectif total.
+\item Rédiger une synthèse mathématique des résultats obtenus.
+\end{enumerate}
+\end{exobox}
+
+\newpage
+\section{Corrigé complet}
+\setcounter{corr}{0}
+
+\begin{corrbox}{Effectifs et fréquences dans une classe}
+\begin{enumerate}
+\item $7+12+6+3=28$, donc l'effectif total est bien $28$.
+\item La fréquence des élèves venant en bus vaut $\dfrac{12}{28}=\dfrac{3}{7}\approx0{,}429$, soit environ $42{,}9\%$.
+\item À pied ou à vélo : $7+3=10$ élèves, donc la fréquence vaut $\dfrac{10}{28}=\dfrac{5}{14}\approx0{,}357$.
+\item Les fréquences en pourcentage sont environ $42{,}9\%$ et $35{,}7\%$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Étendue d'une série brute}
+\begin{enumerate}
+\item La valeur minimale est $16$.
+\item La valeur maximale est $25$.
+\item L'étendue vaut $25-16=9$.
+\item Les températures maximales observées varient sur un intervalle de $9^\circ$C.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Fréquences dans un tableau}
+\begin{enumerate}
+\item Bleu : $\dfrac{18}{60}=0{,}30=30\%$.
+\item Noir : $\dfrac{15}{60}=0{,}25=25\%$.
+\item Rouge ou vert : $\dfrac{12+9}{60}=\dfrac{21}{60}=0{,}35=35\%$.
+\item Somme : $\dfrac{18+12+9+15+6}{60}=\dfrac{60}{60}=1$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Histogramme à classes de même amplitude}
+\begin{enumerate}
+\item $8+22+34+26+10=100$.
+\item L'amplitude commune est $10$ minutes.
+\item Les données sont regroupées en intervalles de même amplitude : l'histogramme est donc adapté.
+\item Entre $20$ et $40$ minutes : $34+26=60$ élèves, donc $\dfrac{60}{100}=60\%$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Diagramme circulaire}
+\begin{enumerate}
+\item Fréquences : football $\frac{32}{80}=0{,}4$, basket $0{,}25$, tennis $0{,}20$, athlétisme $0{,}15$.
+\item Angles : $0{,}4\times360=144^\circ$, $0{,}25\times360=90^\circ$, $0{,}20\times360=72^\circ$, $0{,}15\times360=54^\circ$.
+\item $144+90+72+54=360$ : le diagramme est complet.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Probabilité avec un dé équilibré}
+\begin{enumerate}
+\item $\Omega=\{1,2,3,4,5,6\}$.
+\item $\Prob(5)=\dfrac16$.
+\item Les nombres pairs sont $2,4,6$, donc $\Prob=\dfrac36=\dfrac12$.
+\item Les nombres supérieurs ou égaux à $4$ sont $4,5,6$, donc $\Prob=\dfrac36=\dfrac12$.
+\item Ne pas obtenir $1$ : $1-\dfrac16=\dfrac56$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Probabilité dans une urne}
+\begin{enumerate}
+\item Total : $4+3+5=12$ boules.
+\item Rouge : $\dfrac{4}{12}=\dfrac13$.
+\item Bleue ou verte : $\dfrac{3+5}{12}=\dfrac{8}{12}=\dfrac23$.
+\item Ne pas tirer vert : $1-\dfrac{5}{12}=\dfrac{7}{12}$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Deux pièces équilibrées}
+\begin{enumerate}
+\item Issues : $(P,P),(P,F),(F,P),(F,F)$.
+\item Deux piles : $\dfrac14$.
+\item Exactement une pile : deux issues, donc $\dfrac24=\dfrac12$.
+\item Au moins une face : tout sauf $(P,P)$, donc $\dfrac34$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Fonction linéaire et vitesse constante}
+\begin{enumerate}
+\item La distance est $d(x)=5x$.
+\item $d(8)=5\times8=40$ m.
+\item $1$ minute vaut $60$ s, donc $d(60)=300$ m.
+\item $5x=250$, donc $x=50$ s.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Pourcentages d'évolution}
+\begin{enumerate}
+\item Hausse de $15\%$ : coefficient $1{,}15$, prix $120\times1{,}15=138$ euros.
+\item Baisse de $20\%$ : coefficient $0{,}80$, prix $120\times0{,}8=96$ euros.
+\item Hausse de $8\%$ : coefficient $1{,}08$.
+\item Baisse de $35\%$ : coefficient $0{,}65$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Volume d'une boule}
+\begin{enumerate}
+\item $V=\dfrac43\pi r^3$.
+\item Pour $r=6$, $V=\dfrac43\pi\times216=288\pi$ cm$^3$.
+\item $288\pi\approx904{,}8$ cm$^3$.
+\item Le rayon est en cm, donc le volume est en cm$^3$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Vitesse et conversion}
+\begin{enumerate}
+\item $72\div3{,}6=20$, donc $72$ km/h $=20$ m/s.
+\item En $3$ s : $20\times3=60$ m.
+\item En $12$ s : $20\times12=240$ m.
+\item Le temps est en secondes ; il faut donc une vitesse en m/s pour obtenir directement des mètres.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Retrouver des effectifs à partir de fréquences}
+\begin{enumerate}
+\item $0{,}45+0{,}25+0{,}20+0{,}10=1$.
+\item Bus : $480\times0{,}45=216$ ; voiture : $120$ ; à pied : $96$ ; vélo : $48$.
+\item $216+120+96+48=480$.
+\item Le tableau d'effectifs est donc : bus $216$, voiture $120$, à pied $96$, vélo $48$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Lire un diagramme en bâtons décrit par un tableau}
+\begin{enumerate}
+\item Au moins $40$ : $8+6+5+3=22$.
+\item Au plus $42$ : $2+5+7+8+6+5=33$.
+\item De $38$ à $41$ inclus : $5+7+8+6=26$.
+\item Au moins $41$ : $6+5+3=14$, fréquence $\dfrac{14}{36}=\dfrac{7}{18}$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Construire un histogramme complet}
+\begin{enumerate}
+\item Chaque classe a une amplitude de $5$ kg.
+\item Une échelle possible : $1$ cm pour $5$ colis sur l'axe vertical.
+\item Les rectangles accolés ont pour bases les classes et pour hauteurs les effectifs $6,14,18,9,3$.
+\item Masse au moins $10$ kg : $18+9+3=30$, fréquence $\dfrac{30}{50}=60\%$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Étendue à partir d'un histogramme}
+\begin{enumerate}
+\item Tableau : classes données et effectifs $3,9,15,10,3$.
+\item Total : $3+9+15+10+3=40$.
+\item Estimation de l'étendue : $190-140=50$ cm.
+\item Les données exactes ne sont pas connues ; on ne connaît que les classes, donc l'étendue exacte peut être plus petite.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Deux tirages avec remise}
+\begin{enumerate}
+\item Le tableau contient les couples $(B,B)$, $(B,V_1)$, $(B,V_2)$, $(V_1,B)$, $(V_1,V_1)$, $(V_1,V_2)$, $(V_2,B)$, $(V_2,V_1)$, $(V_2,V_2)$.
+\item Il y a $3\times3=9$ issues.
+\item Deux violettes : $(V_1,V_1)$, $(V_1,V_2)$, $(V_2,V_1)$, $(V_2,V_2)$.
+\item La probabilité est donc $\dfrac49$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Deux enfants}
+\begin{enumerate}
+\item Issues : $(F,F),(F,G),(G,F),(G,G)$.
+\item Deux garçons : $\dfrac14$.
+\item Au moins une fille : $(F,F),(F,G),(G,F)$, donc $\dfrac34$.
+\item L'événement contraire est « deux garçons », donc $1-\dfrac14=\dfrac34$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Simulation d'un dé}
+\begin{enumerate}
+\item Fréquences : $0{,}165$, $0{,}171$, $0{,}164$, $0{,}169$, $0{,}166$, $0{,}165$ au millième près.
+\item Probabilité théorique : $\dfrac16\approx0{,}167$.
+\item Les fréquences sont toutes proches de $0{,}167$.
+\item Sur un grand nombre de lancers, les fréquences observées se stabilisent autour des probabilités théoriques.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Coefficient multiplicateur global}
+\begin{enumerate}
+\item Hausse de $10\%$ : $1{,}10$.
+\item Baisse de $10\%$ : $0{,}90$.
+\item Coefficient global : $1{,}10\times0{,}90=0{,}99$.
+\item Le prix final vaut $99\%$ du prix initial ; il n'est donc pas égal au prix initial.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Fonction linéaire et tableau}
+\begin{enumerate}
+\item Coefficient : $18\div6=3$.
+\item Fonction : $y=3x$.
+\item Pour $x=2,5,9,12$, on obtient $y=6,15,27,36$.
+\item $3x=45$, donc $x=15$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Thalès et proportionnalité}
+\begin{enumerate}
+\item $\dfrac{AM}{AB}=\dfrac{AN}{AC}$.
+\item $\dfrac{AM}{AB}=\dfrac4{10}=0{,}4$.
+\item $\dfrac{AN}{15}=0{,}4$, donc $AN=6$ cm.
+\item Le triangle $AMN$ est une réduction du triangle $ABC$ de coefficient $0{,}4$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Débit et unités}
+\begin{enumerate}
+\item En $7$ min : $18\times7=126$ L.
+\item $126$ L $=0{,}126$ m$^3$.
+\item $540\div18=30$ min.
+\item L/min multiplié par min donne L ; L divisé par L/min donne min.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Assemblage de solides}
+\begin{enumerate}
+\item Cylindre : $V_1=\pi\times3^2\times12=108\pi$ cm$^3$.
+\item Demi-boule : $V_2=\dfrac12\times\dfrac43\pi\times3^3=18\pi$ cm$^3$.
+\item Total : $126\pi$ cm$^3$.
+\item $126\pi\approx396$ cm$^3$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Justifier une formule de fréquence}
+\begin{enumerate}
+\item Une fréquence mesure la part d'une modalité dans le total, donc $f=n/N$.
+\item Comme $0\leq n\leq N$, en divisant par $N>0$, $0\leq n/N\leq1$.
+\item Si les effectifs sont $n_1,\ldots,n_k$, alors $n_1+\cdots+n_k=N$, donc $\frac{n_1}{N}+\cdots+\frac{n_k}{N}=1$.
+\item $f=0{,}25$ signifie que la modalité représente un quart de la série, soit $25\%$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Justifier l'étendue}
+\begin{enumerate}
+\item L'étendue est $M-m$.
+\item Comme $M\geq m$, on a $M-m\geq0$.
+\item Si toutes les valeurs sont égales, par exemple $7,7,7$, l'étendue vaut $0$.
+\item Elle mesure l'écart entre les extrêmes, mais ne renseigne pas sur la répartition intérieure des valeurs.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Justifier l'événement contraire}
+\begin{enumerate}
+\item $\overline A$ se réalise exactement lorsque $A$ ne se réalise pas.
+\item Une issue ne peut pas à la fois réaliser $A$ et ne pas réaliser $A$.
+\item Toute issue réalise soit $A$, soit son contraire.
+\item Les probabilités des deux événements se complètent pour faire $1$, donc $\Prob(\overline A)=1-\Prob(A)$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Justifier une situation de proportionnalité}
+\begin{enumerate}
+\item $7{,}5/3=2{,}5$, $12{,}5/5=2{,}5$, $20/8=2{,}5$, $30/12=2{,}5$.
+\item Les quotients sont égaux : le tableau est proportionnel.
+\item Le coefficient vaut $2{,}5$.
+\item La fonction est $y=2{,}5x$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Prouver qu'une situation n'est pas proportionnelle}
+\begin{enumerate}
+\item $5/2=2{,}5$, $9/4=2{,}25$, $17/8=2{,}125$.
+\item Ces quotients ne sont pas égaux.
+\item Il n'existe donc pas de coefficient constant : le tableau n'est pas proportionnel.
+\item Deux grandeurs peuvent augmenter ensemble sans que leur quotient reste constant.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Démontrer le coefficient d'une hausse}
+\begin{enumerate}
+\item La quantité ajoutée est $\dfrac{p}{100}V$.
+\item La valeur finale est $V+\dfrac{p}{100}V$.
+\item On factorise : $V\left(1+\dfrac{p}{100}\right)$.
+\item Le coefficient multiplicateur est donc $1+\dfrac{p}{100}$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Démontrer le coefficient d'une baisse}
+\begin{enumerate}
+\item La quantité retirée est $\dfrac{p}{100}V$.
+\item La valeur finale est $V-\dfrac{p}{100}V$.
+\item On factorise : $V\left(1-\dfrac{p}{100}\right)$.
+\item Le coefficient multiplicateur est donc $1-\dfrac{p}{100}$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Contrôle d'unités dans une vitesse}
+\begin{enumerate}
+\item L'unité est m/s.
+\item m/s multiplié par s donne m, car les secondes se simplifient.
+\item $1$ km/h $=\dfrac{1000\text{ m}}{3600\text{ s}}=\dfrac1{3{,}6}$ m/s.
+\item Ainsi, pour convertir une vitesse de km/h en m/s, on divise par $3{,}6$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Histogramme et piège de lecture}
+\begin{enumerate}
+\item La classe modale est \classe{10}{15}, d'effectif $42$.
+\item Inférieurs à $10$ min : $10+18=28$, fréquence $\frac{28}{120}=\frac{7}{30}$.
+\item Au moins $15$ min : $30+20=50$, fréquence $\frac{50}{120}=\frac{5}{12}$.
+\item Non : les données sont regroupées ; on ne connaît pas les valeurs individuelles exactes.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Probabilités et dénombrement non ordonné}
+\begin{enumerate}
+\item Il y a $4\times4=16$ couples possibles, car il y a remise.
+\item Deux rouges : $2\times2=4$ issues, donc $4/16=1/4$.
+\item Même couleur : rouges $4$ issues ou bleus $4$ issues, donc $8/16=1/2$.
+\item Distinguer les jetons rend les issues équiprobables et évite les doubles comptages imprécis.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Comparer deux simulations}
+\begin{enumerate}
+\item Premier : $14/60\approx0{,}233$ ; second : $1015/6000\approx0{,}169$.
+\item Théorie : $1/6\approx0{,}167$.
+\item La seconde fréquence est plus proche de $1/6$.
+\item Un grand nombre d'essais donne généralement une fréquence plus stabilisée.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Hausse puis baisse}
+\begin{enumerate}
+\item Après hausse : $200\times1{,}25=250$ euros.
+\item Après baisse : $250\times0{,}80=200$ euros.
+\item Coefficient global : $1{,}25\times0{,}80=1$.
+\item Comme le coefficient global vaut $1$, le prix final est égal au prix initial.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Baisse puis hausse inverse ?}
+\begin{enumerate}
+\item Baisse de $30\%$ : coefficient $0{,}70$.
+\item Si $70$ est le prix après baisse, le prix initial était $70/0{,}70=100$.
+\item Il faut passer de $70$ à $100$, soit une hausse de $30$ sur $70$ : $30/70\approx42{,}86\%$.
+\item Le pourcentage est calculé sur la nouvelle base $70$, pas sur l'ancienne base $100$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Thalès avec retour à la longueur initiale}
+\begin{enumerate}
+\item $AB=AM+MB=6+9=15$ cm.
+\item $AM/AB=6/15=2/5$.
+\item $AN/AC=2/5$, donc $8/AC=2/5$, d'où $AC=20$ cm.
+\item $NC=AC-AN=20-8=12$ cm.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Boîte cylindrique et boules}
+\begin{enumerate}
+\item Boîte : $V_c=\pi\times5^2\times30=750\pi$ cm$^3$.
+\item Trois boules : $3\times\frac43\pi\times5^3=500\pi$ cm$^3$.
+\item Volume restant : $750\pi-500\pi=250\pi$ cm$^3$.
+\item $250\pi\approx785$ cm$^3$ ; le résultat est positif et inférieur au volume de la boîte, il est cohérent.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Débit important}
+\begin{enumerate}
+\item $3$ min $=180$ s.
+\item Volume : $328\times180=59040$ m$^3$.
+\item En litres : $59040\times1000=59\,040\,000$ L.
+\item $59\,040\,000=5{,}904\times10^7$ L.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Choisir la bonne méthode}
+\begin{enumerate}
+\item $300\times0{,}42=126$ élèves.
+\item $\frac27\times126=36$ élèves.
+\item Parmi tous les élèves : $36/300=0{,}12=12\%$.
+\item Les calculs de pourcentage et de fraction d'une quantité relèvent de la proportionnalité.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Données regroupées et incertitude}
+\begin{enumerate}
+\item $70/200=0{,}35=35\%$.
+\item Estimation : $100-0=100$ minutes.
+\item Non, car les données sont regroupées par classes.
+\item Oui : les classes à partir de $40$ minutes sont \classe{40}{60}, \classe{60}{80}, \classe{80}{100}, donc $70+40+15=125$ utilisateurs.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Enquête statistique complète}
+\begin{enumerate}
+\item $100+200+400+1100+700=2500$.
+\item Fréquences : $4\%$, $8\%$, $16\%$, $44\%$, $28\%$.
+\item Les rectangles accolés ont même largeur $4$ ans et hauteurs $100,200,400,1100,700$.
+\item La classe la plus représentée est \classe{30}{34}.
+\item Estimation de l'étendue : $38-18=20$ ans.
+\item La majorité des personnes répondantes ont trouvé un emploi correspondant à leur qualification entre $30$ et $38$ ans. La classe \classe{30}{34} est dominante. Les données étant regroupées, les âges exacts ne sont pas connus.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Jeu à deux épreuves}
+\begin{enumerate}
+\item Les issues sont les $9$ couples formés avec $B,V_1,V_2$.
+\item Deux violettes : $4$ issues sur $9$, donc $4/9$.
+\item Aucune violette signifie $(B,B)$, donc $1/9$.
+\item Gagner signifie au moins une violette : $1-1/9=8/9$.
+\item Les issues gagnantes sont toutes sauf $(B,B)$ : il y en a $8$, donc $8/9$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Trajet, vitesse et temps de réaction}
+\begin{enumerate}
+\item $80/3{,}6\approx22{,}2$ m/s.
+\item Distance de réaction : $22{,}2\times1\approx22{,}2$ m.
+\item Distance totale : $22{,}2+38\approx60{,}2$ m.
+\item $90/3{,}6=25$ m/s, donc distance de réaction $25$ m.
+\item À $90$ km/h, la distance de réaction est plus grande ; la distance totale serait donc plus grande si la distance de freinage restait identique.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Réservoir composé}
+\begin{enumerate}
+\item Cylindre : $\pi\times4^2\times10=160\pi$ dm$^3$.
+\item Demi-boule : $\frac12\times\frac43\pi\times4^3=\frac{128}{3}\pi$ dm$^3$.
+\item Total : $160\pi+\frac{128}{3}\pi=\frac{608}{3}\pi$ dm$^3$.
+\item Comme $1$ dm$^3=1$ L, le volume est $\frac{608}{3}\pi$ L.
+\item Valeur approchée : environ $637$ L.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Sondage, fréquences et évolution}
+\begin{enumerate}
+\item $600\times0{,}35=210$ adhérents.
+\item $600\times1{,}12=672$ adhérents.
+\item $672\times0{,}40=268{,}8$. Dans un contexte réel, cela correspondrait à environ $269$ adhérents ; les données en pourcentage peuvent être arrondies.
+\item Augmentation approximative : $269-210=59$ adhérents.
+\item Le total augmente et la proportion de jeunes augmente aussi ; l'effectif des moins de $18$ ans augmente fortement.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Fonction linéaire et géométrie}
+\begin{enumerate}
+\item $L'=1{,}8L$.
+\item $4\mapsto7{,}2$ cm ; $7{,}5\mapsto13{,}5$ cm ; $12\mapsto21{,}6$ cm.
+\item $1{,}8L=45$, donc $L=25$ cm.
+\item Toutes les longueurs sont multipliées par le même coefficient $1{,}8$ : elles sont proportionnelles.
+\item Les volumes augmenteraient plus vite que les longueurs ; il ne suffit pas de les multiplier par $1{,}8$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Interprétation d'une expérience simulée}
+\begin{enumerate}
+\item Fréquences : $14/20=0{,}70$, $107/200=0{,}535$, $10084/20000=0{,}5042$.
+\item Probabilité théorique de pile : $1/2=0{,}5$.
+\item Les fréquences se rapprochent globalement de $0{,}5$ quand le nombre de lancers augmente.
+\item La troisième simulation repose sur $20000$ essais ; elle est donc plus stabilisée.
+\item Les fréquences observées peuvent varier sur de petits échantillons, mais elles tendent à se stabiliser autour de la probabilité théorique sur un grand nombre d'essais.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Problème bilan transversal}
+\begin{enumerate}
+\item Fréquences : $120/800=15\%$, $260/800=32{,}5\%$, $220/800=27{,}5\%$, $140/800=17{,}5\%$, $60/800=7{,}5\%$.
+\item Estimation de l'étendue : $60-10=50$ ans.
+\item $36$ min $=0{,}6$ h, donc $v=5/0{,}6=8{,}33$ km/h environ.
+\item Nouvel effectif : $800\times1{,}15=920$ participants.
+\item La course rassemble surtout les $20$-$40$ ans, avec une vitesse moyenne d'environ $8{,}33$ km/h. Une hausse de $15\%$ porterait l'effectif à $920$ participants.
+\end{enumerate}
+\end{corrbox}
+
+\end{document}

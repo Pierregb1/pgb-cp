@@ -1,0 +1,370 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+
+%========================
+% COULEURS
+%========================
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{grisclair}{RGB}{245,247,250}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+
+%========================
+% MISE EN PAGE
+%========================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques -- Troisième}
+\fancyhead[C]{Devoir surveillé}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Statistiques -- Probabilités -- Proportionnalité -- Grandeurs}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+%========================
+% COMMANDES
+%========================
+\newcommand{\pts}[1]{\hfill \textbf{(#1 pt)}}
+\newcommand{\ptss}[1]{\hfill \textbf{(#1 pts)}}
+\newcommand{\classe}[2]{\ensuremath{[#1\,;#2[}}
+
+\setlist[enumerate]{
+  label=\textbf{\arabic*.},
+  leftmargin=*,
+  itemsep=0.4em
+}
+
+%========================
+% BOÎTES
+%========================
+\newtcolorbox{consignesbox}{
+  enhanced,
+  breakable,
+  colback=grisclair,
+  colframe=bleuprepa,
+  boxrule=0.7pt,
+  arc=1mm,
+  title=\textbf{Consignes générales}
+}
+
+\newtcolorbox{exercicebox}[2]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=bleuprepa,
+  boxrule=0.7pt,
+  arc=1mm,
+  title=\textbf{#1}\hfill\textbf{#2},
+  fonttitle=\bfseries
+}
+
+%========================
+% DOCUMENT
+%========================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Devoir surveillé de mathématiques}}\\[0.2cm]
+    {\Large \textbf{Niveau troisième}}\\[0.2cm]
+    {\large Statistiques, probabilités, proportionnalité et grandeurs mesurables}\\[0.3cm]
+    \rule{0.9\linewidth}{0.6pt}\\[0.2cm]
+    \textbf{Durée conseillée : 1 h 45}\\
+    \textbf{Total : 52 points + 6 points bonus}\\[0.2cm]
+    \rule{0.9\linewidth}{0.6pt}
+\end{center}
+
+\vspace{0.4cm}
+
+\begin{consignesbox}
+La calculatrice est autorisée.
+
+Toute réponse doit être justifiée par un calcul, une phrase ou un raisonnement clair.
+
+Les unités doivent être indiquées lorsque c’est nécessaire.
+
+Les résultats décimaux seront arrondis au dixième si l’énoncé le demande, sinon on pourra donner une valeur exacte.
+
+Le soin, la clarté de la rédaction et la cohérence des unités seront pris en compte.
+\end{consignesbox}
+
+\vspace{0.4cm}
+
+%================================================
+\begin{exercicebox}{Exercice 1 -- Statistiques de base}{7 points}
+
+Dans une classe de troisième, on interroge les élèves sur le nombre de livres lus depuis le début de l’année scolaire.
+
+\[
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+\text{Nombre de livres lus} & 0 & 1 & 2 & 3 & 4 & 5 \\
+\hline
+\text{Effectif} & 3 & 5 & 8 & 7 & 4 & 3 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+    \item Calculer l’effectif total de la classe. \pts{1}
+
+    \item Calculer la fréquence des élèves ayant lu exactement $2$ livres. Donner le résultat sous forme décimale puis en pourcentage. \ptss{2}
+
+    \item Calculer le nombre d’élèves ayant lu au moins $3$ livres. \pts{1,5}
+
+    \item Calculer la fréquence des élèves ayant lu au moins $3$ livres. Donner le résultat en pourcentage. \pts{1,5}
+
+    \item Calculer l’étendue de cette série statistique et interpréter le résultat par une phrase. \pts{1}
+\end{enumerate}
+
+\textbf{Total exercice 1 : 7 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 2 -- Histogramme et données regroupées}{8 points}
+
+Une enquête a été réalisée auprès de $120$ élèves sur le temps passé chaque soir à faire leurs devoirs. Les résultats sont regroupés dans le tableau suivant :
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Temps de travail en minutes} & \text{Effectif} \\
+\hline
+\classe{0}{15} & 12 \\
+\classe{15}{30} & 30 \\
+\classe{30}{45} & 42 \\
+\classe{45}{60} & 24 \\
+\classe{60}{75} & 12 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+    \item Vérifier que l’effectif total est bien égal à $120$. \pts{1}
+
+    \item Quelle est l’amplitude de chaque classe ? \pts{1}
+
+    \item Expliquer pourquoi on peut représenter cette série par un histogramme. \pts{1}
+
+    \item Représenter cette série par un histogramme sur votre copie. \ptss{3}
+
+    \item Calculer la fréquence des élèves travaillant entre $30$ et $60$ minutes chaque soir. Donner le résultat sous forme décimale puis en pourcentage. \pts{1,5}
+
+    \item Donner une estimation de l’étendue de la série à partir des classes. Expliquer pourquoi il s’agit seulement d’une estimation. \pts{0,5}
+\end{enumerate}
+
+\textbf{Total exercice 2 : 8 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 3 -- Probabilités et dénombrement}{8 points}
+
+Une urne contient une boule bleue notée $B$, deux boules rouges notées $R_1$ et $R_2$, et une boule verte notée $V$.
+
+On tire une boule au hasard, on la remet dans l’urne, puis on tire une deuxième boule.
+
+\begin{enumerate}
+    \item Combien y a-t-il de boules dans l’urne ? \pts{0,5}
+
+    \item Expliquer pourquoi il y a remise et pourquoi la composition de l’urne ne change pas entre les deux tirages. \pts{1}
+
+    \item Construire un tableau à double entrée permettant de représenter toutes les issues possibles. \ptss{2}
+
+    \item Combien y a-t-il d’issues possibles au total ? \pts{1}
+
+    \item Calculer la probabilité d’obtenir deux boules rouges. \pts{1,5}
+
+    \item Calculer la probabilité d’obtenir au moins une boule rouge. On pourra utiliser l’événement contraire. \pts{1,5}
+
+    \item Si on répète cette expérience un très grand nombre de fois, la fréquence d’apparition de deux boules rouges sera-t-elle exactement égale à la probabilité trouvée ? Expliquer. \pts{0,5}
+\end{enumerate}
+
+\textbf{Total exercice 3 : 8 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 4 -- Proportionnalité, fonction linéaire et pourcentages}{8 points}
+
+Un cycliste roule à vitesse constante. Il parcourt $18$ km en $1$ heure.
+
+\begin{enumerate}
+    \item Expliquer pourquoi la distance parcourue est proportionnelle au temps de trajet. \pts{1}
+
+    \item On note $t$ le temps en heures et $d(t)$ la distance parcourue en kilomètres. Modéliser la situation par une fonction linéaire $d(t)=at$. \pts{1}
+
+    \item Calculer la distance parcourue en $2$ h $30$ min. \pts{1,5}
+
+    \item Calculer le temps nécessaire pour parcourir $63$ km. \pts{1,5}
+\end{enumerate}
+
+Le vélo du cycliste coûte initialement $420$ euros. Pendant les soldes, son prix diminue de $15\%$, puis augmente ensuite de $10\%$.
+
+\begin{enumerate}[resume]
+    \item Donner le coefficient multiplicateur correspondant à la baisse de $15\%$. \pts{1}
+
+    \item Calculer le prix après la baisse. \pts{1}
+
+    \item Calculer le prix final après l’augmentation de $10\%$. \pts{1}
+
+    \item Le prix final est-il égal au prix initial ? Justifier par un calcul ou une phrase claire. \pts{1}
+\end{enumerate}
+
+\textbf{Total exercice 4 : 8 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 5 -- Grandeurs mesurables : vitesse, débit et unités}{7 points}
+
+Un automobiliste roule à $90$ km/h. Lorsqu’il voit un obstacle, il met $1$ seconde avant de commencer à freiner.
+
+\begin{enumerate}
+    \item Convertir $90$ km/h en m/s. \pts{1,5}
+
+    \item Calculer la distance parcourue pendant le temps de réaction. \pts{1}
+
+    \item Expliquer pourquoi il est nécessaire d’avoir une vitesse en m/s pour effectuer ce calcul. \pts{1}
+\end{enumerate}
+
+Un robinet a un débit constant de $24$ L/min.
+
+\begin{enumerate}[resume]
+    \item Calculer le volume d’eau écoulé en $8$ minutes. \pts{1}
+
+    \item Convertir ce volume en m$^3$. \pts{1}
+
+    \item Combien de temps faut-il pour remplir une cuve de $600$ L ? \pts{1}
+
+    \item Vérifier la cohérence de l’unité obtenue à la question précédente. \pts{0,5}
+\end{enumerate}
+
+\textbf{Total exercice 5 : 7 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 6 -- Problème contextualisé transversal}{8 points}
+
+Une association organise une course solidaire. Elle interroge les participants sur leur âge. Les résultats sont regroupés ci-dessous :
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Âge des participants} & \text{Effectif} \\
+\hline
+\classe{10}{20} & 45 \\
+\classe{20}{30} & 90 \\
+\classe{30}{40} & 75 \\
+\classe{40}{50} & 60 \\
+\classe{50}{60} & 30 \\
+\hline
+\end{array}
+\]
+
+Chaque participant parcourt $6$ km. On estime que la durée moyenne du parcours est de $45$ minutes.
+
+\begin{enumerate}
+    \item Calculer le nombre total de participants. \pts{1}
+
+    \item Calculer la fréquence des participants ayant entre $20$ et $40$ ans. Donner le résultat en pourcentage. \pts{1,5}
+
+    \item Donner une estimation de l’étendue des âges des participants. \pts{1}
+
+    \item Convertir $45$ minutes en heures. \pts{1}
+
+    \item Calculer la vitesse moyenne d’un participant en km/h. \pts{1,5}
+\end{enumerate}
+
+L’année suivante, les organisateurs prévoient une augmentation de $12\%$ du nombre de participants.
+
+\begin{enumerate}[resume]
+    \item Donner le coefficient multiplicateur correspondant à cette augmentation. \pts{1}
+
+    \item Calculer le nombre prévu de participants l’année suivante. \pts{1}
+\end{enumerate}
+
+\textbf{Total exercice 6 : 8 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 7 -- Exercice difficile : retrouver et critiquer un raisonnement}{6 points}
+
+Un magasin vend un casque audio. Pendant une promotion, le prix baisse de $20\%$. Un élève affirme :
+
+\begin{center}
+\itshape
+« Comme le prix a baissé de $20\%$, il suffit ensuite de l’augmenter de $20\%$ pour retrouver exactement le prix de départ. »
+\end{center}
+
+On suppose que le prix initial du casque est $150$ euros.
+
+\begin{enumerate}
+    \item Calculer le prix du casque après la baisse de $20\%$. \pts{1,5}
+
+    \item Calculer le prix obtenu si on augmente ensuite ce nouveau prix de $20\%$. \pts{1,5}
+
+    \item L’élève a-t-il raison ? Justifier clairement. \pts{1}
+
+    \item Calculer le pourcentage d’augmentation qu’il faudrait appliquer au prix après baisse pour retrouver le prix initial de $150$ euros. Donner une valeur arrondie au dixième de pourcent. \pts{1,5}
+
+    \item Expliquer en une phrase pourquoi une baisse de $20\%$ suivie d’une hausse de $20\%$ ne ramène pas au prix initial. \pts{0,5}
+\end{enumerate}
+
+\textbf{Total exercice 7 : 6 points.}
+
+\end{exercicebox}
+
+%================================================
+\begin{exercicebox}{Exercice 8 -- Défi bonus : volume, débit et interprétation}{6 points bonus}
+
+Un réservoir est constitué d’un cylindre de rayon $5$ dm et de hauteur $12$ dm, surmonté d’une demi-boule de même rayon.
+
+On rappelle les formules suivantes :
+
+\[
+V_{\text{cylindre}}=\pi r^2h
+\]
+
+\[
+V_{\text{boule}}=\frac{4}{3}\pi r^3
+\]
+
+\begin{enumerate}
+    \item Calculer le volume exact du cylindre en dm$^3$. \pts{1}
+
+    \item Calculer le volume exact de la demi-boule en dm$^3$. \pts{1,5}
+
+    \item Calculer le volume total exact du réservoir en dm$^3$. \pts{1}
+
+    \item Sachant que $1\ \text{dm}^3=1\ \text{L}$, donner le volume du réservoir en litres, arrondi au litre près. \pts{1}
+
+    \item On remplit ce réservoir avec un tuyau ayant un débit de $30$ L/min. Estimer le temps nécessaire pour remplir entièrement le réservoir. Donner le résultat en minutes, arrondi à l’unité. \pts{1}
+
+    \item Expliquer pourquoi le résultat obtenu est cohérent ou non avec la taille du réservoir. \pts{0,5}
+\end{enumerate}
+
+\textbf{Total exercice 8 : 6 points bonus.}
+
+\end{exercicebox}
+
+\end{document}

@@ -1,0 +1,2148 @@
+\documentclass[11pt,a4paper]{article}
+
+%========================
+% PACKAGES
+%========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+
+%========================
+% COULEURS
+%========================
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,100,20}
+\definecolor{violetprepa}{RGB}{90,40,130}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+%========================
+% MISE EN PAGE
+%========================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mathématiques -- Troisième}
+\fancyhead[C]{Données, probabilités, proportionnalité, grandeurs}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Cours complet -- Cycle 4}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+%========================
+% BOÎTES
+%========================
+\tcbset{
+  enhanced,
+  breakable,
+  boxrule=0.7pt,
+  arc=1mm,
+  colback=white,
+  fonttitle=\bfseries,
+  before skip=8pt,
+  after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1]{
+  colframe=bleuprepa,
+  colback=bleuprepa!4!white,
+  title={Définition -- #1}
+}
+
+\newtcolorbox{propositionbox}[1]{
+  colframe=vertprepa,
+  colback=vertprepa!4!white,
+  title={Propriété -- #1}
+}
+
+\newtcolorbox{methodbox}[1]{
+  colframe=orangeprepa,
+  colback=orangeprepa!5!white,
+  title={Méthode -- #1}
+}
+
+\newtcolorbox{warningbox}[1]{
+  colframe=rougeprepa,
+  colback=rougeprepa!4!white,
+  title={Erreur classique -- #1}
+}
+
+\newtcolorbox{retenirbox}[1]{
+  colframe=violetprepa,
+  colback=violetprepa!5!white,
+  title={À retenir -- #1}
+}
+
+\newtcolorbox{examplebox}[1]{
+  colframe=black!60,
+  colback=grisclair,
+  title={Exemple corrigé -- #1}
+}
+
+\newtcolorbox{exercisebox}[1]{
+  colframe=black,
+  colback=white,
+  title={Exercice -- #1}
+}
+
+\newtcolorbox{correctionbox}[1]{
+  colframe=vertprepa,
+  colback=vertprepa!3!white,
+  title={Correction -- #1}
+}
+
+%========================
+% COMMANDES
+%========================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\freq}{\mathrm{f}}
+\newcommand{\eff}{\mathrm{n}}
+\newcommand{\intervalle}[2]{\ensuremath{[#1\,;#2[}}
+
+%========================
+% DOCUMENT
+%========================
+\begin{document}
+
+%========================
+% PAGE DE TITRE
+%========================
+\begin{center}
+    {\Huge \textbf{Cours complet de mathématiques}}\\[0.3cm]
+    {\Large Classe de troisième}\\[0.3cm]
+    {\Large \textbf{Données, probabilités, proportionnalité et grandeurs}}\\[0.5cm]
+    \rule{0.9\linewidth}{0.5pt}\\[0.3cm]
+    \textit{Lire, représenter, calculer, modéliser et interpréter}\\[0.3cm]
+    \rule{0.9\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{retenirbox}{Objectifs du chapitre}
+À la fin de ce cours, l'élève doit savoir :
+\begin{itemize}
+    \item lire et représenter des données à l'aide de tableaux, diagrammes et histogrammes ;
+    \item calculer des effectifs, fréquences, pourcentages et étendues ;
+    \item interpréter une série statistique ;
+    \item calculer des probabilités dans des expériences simples ou à deux épreuves ;
+    \item faire le lien entre fréquence observée et probabilité théorique ;
+    \item reconnaître et utiliser une situation de proportionnalité ;
+    \item modéliser une proportionnalité par une fonction linéaire ;
+    \item utiliser les coefficients multiplicateurs pour les évolutions en pourcentage ;
+    \item calculer avec des grandeurs mesurables : longueurs, aires, volumes, vitesses, débits ;
+    \item convertir correctement des unités simples ou composées ;
+    \item vérifier la cohérence d'un résultat grâce aux unités.
+\end{itemize}
+\end{retenirbox}
+
+\tableofcontents
+\newpage
+
+%================================================
+\section{Interpréter, représenter et traiter des données}
+
+\subsection{Vocabulaire statistique de base}
+
+\begin{definitionbox}{Série statistique}
+Une \textbf{série statistique} est un ensemble de données recueillies lors d'une enquête, d'une mesure ou d'une observation.
+
+Chaque donnée correspond à une \textbf{valeur} ou à une \textbf{modalité}. Le nombre total de données s'appelle l'\textbf{effectif total}.
+\end{definitionbox}
+
+\begin{examplebox}{Pointures d'une classe}
+On interroge $12$ élèves sur leur pointure :
+\[
+38,\ 39,\ 40,\ 42,\ 41,\ 40,\ 39,\ 38,\ 43,\ 41,\ 40,\ 42.
+\]
+Cette liste est une série statistique.
+
+L'effectif total est :
+\[
+N=12.
+\]
+La valeur $40$ apparaît $3$ fois : son effectif est donc $3$.
+\end{examplebox}
+
+\begin{definitionbox}{Effectif}
+L'\textbf{effectif} d'une valeur est le nombre de fois où cette valeur apparaît dans la série.
+\end{definitionbox}
+
+\begin{definitionbox}{Fréquence}
+La \textbf{fréquence} d'une valeur est le quotient :
+\[
+\text{fréquence}=\frac{\text{effectif de la valeur}}{\text{effectif total}}.
+\]
+Si l'effectif d'une valeur est $n$ et l'effectif total est $N$, alors :
+\[
+f=\frac{n}{N}.
+\]
+La fréquence peut être écrite sous forme décimale, fractionnaire ou en pourcentage.
+\end{definitionbox}
+
+\begin{examplebox}{Calculer une fréquence}
+Dans une classe de $25$ élèves, $10$ élèves viennent au collège en bus.
+
+La fréquence des élèves venant en bus est :
+\[
+f=\frac{10}{25}=\frac{2}{5}=0{,}4.
+\]
+En pourcentage :
+\[
+0{,}4=40\%.
+\]
+
+Donc $40\%$ des élèves viennent en bus.
+\end{examplebox}
+
+\begin{methodbox}{Calculer une fréquence}
+Pour calculer une fréquence :
+\begin{enumerate}
+    \item identifier l'effectif de la valeur étudiée ;
+    \item identifier l'effectif total ;
+    \item calculer le quotient :
+    \[
+    f=\frac{\text{effectif}}{\text{effectif total}} ;
+    \]
+    \item convertir en pourcentage si nécessaire.
+\end{enumerate}
+\end{methodbox}
+
+\begin{warningbox}{Confondre effectif et fréquence}
+L'effectif est un \textbf{nombre d'individus}.  
+La fréquence est une \textbf{proportion}.  
+
+Par exemple, si $8$ élèves sur $20$ ont réussi, $8$ est un effectif, tandis que :
+\[
+\frac{8}{20}=0{,}4=40\%
+\]
+est une fréquence.
+\end{warningbox}
+
+\subsection{Tableaux statistiques}
+
+Un tableau statistique permet de ranger les données pour les rendre plus lisibles.
+
+\begin{examplebox}{Tableau d'effectifs et de fréquences}
+On relève les notes obtenues par $20$ élèves à un test noté sur $5$.
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+\text{Note} & \text{Effectif} & \text{Fréquence} \\
+\hline
+1 & 2 & \frac{2}{20}=0{,}10=10\% \\
+2 & 4 & \frac{4}{20}=0{,}20=20\% \\
+3 & 6 & \frac{6}{20}=0{,}30=30\% \\
+4 & 5 & \frac{5}{20}=0{,}25=25\% \\
+5 & 3 & \frac{3}{20}=0{,}15=15\% \\
+\hline
+\text{Total} & 20 & 1=100\% \\
+\hline
+\end{array}
+\]
+
+On vérifie :
+\[
+2+4+6+5+3=20
+\]
+et
+\[
+10\%+20\%+30\%+25\%+15\%=100\%.
+\]
+\end{examplebox}
+
+\begin{retenirbox}{Somme des fréquences}
+Dans une série statistique complète, la somme des fréquences vaut toujours :
+\[
+1.
+\]
+En pourcentage, la somme vaut :
+\[
+100\%.
+\]
+\end{retenirbox}
+
+\subsection{Diagramme en bâtons}
+
+\begin{definitionbox}{Diagramme en bâtons}
+Un \textbf{diagramme en bâtons} est une représentation graphique adaptée aux données discrètes.
+
+Chaque valeur est représentée par un bâton dont la hauteur est proportionnelle à l'effectif ou à la fréquence.
+\end{definitionbox}
+
+\begin{examplebox}{Diagramme en bâtons}
+On considère le tableau suivant :
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Nombre de frères et sœurs} & \text{Effectif} \\
+\hline
+0 & 4 \\
+1 & 8 \\
+2 & 6 \\
+3 & 2 \\
+\hline
+\end{array}
+\]
+
+Le diagramme en bâtons correspondant est :
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\draw[->] (-0.5,0) -- (4,0) node[right]{Nombre};
+\draw[->] (0,-0.2) -- (0,9) node[above]{Effectif};
+
+\foreach \y in {0,1,2,3,4,5,6,7,8}
+{
+  \draw (-0.1,\y) -- (0.1,\y);
+  \node[left] at (-0.1,\y) {\small \y};
+}
+
+\foreach \x/\h in {0/4,1/8,2/6,3/2}
+{
+  \draw[line width=3pt,bleuprepa] (\x+0.5,0) -- (\x+0.5,\h);
+  \node[below] at (\x+0.5,0) {\x};
+}
+\end{tikzpicture}
+\end{center}
+\end{examplebox}
+
+\subsection{Diagramme circulaire}
+
+\begin{definitionbox}{Diagramme circulaire}
+Un \textbf{diagramme circulaire} représente les fréquences par des secteurs d'un disque.
+
+L'angle d'un secteur est proportionnel à la fréquence de la valeur représentée.
+\end{definitionbox}
+
+\begin{propositionbox}{Calcul de l'angle d'un secteur}
+Si une valeur a pour fréquence $f$, alors l'angle du secteur correspondant est :
+\[
+\theta=f\times 360^\circ.
+\]
+
+Si la fréquence est donnée en pourcentage $p\%$, alors :
+\[
+\theta=\frac{p}{100}\times 360^\circ.
+\]
+\end{propositionbox}
+
+\begin{examplebox}{Construire un diagramme circulaire}
+Dans un collège, on interroge $100$ élèves sur leur sport préféré.
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+\text{Sport} & \text{Fréquence} & \text{Angle} \\
+\hline
+Football & 40\% & 0{,}40\times 360^\circ=144^\circ \\
+Basket & 25\% & 0{,}25\times 360^\circ=90^\circ \\
+Tennis & 15\% & 0{,}15\times 360^\circ=54^\circ \\
+Autres & 20\% & 0{,}20\times 360^\circ=72^\circ \\
+\hline
+\end{array}
+\]
+
+On vérifie :
+\[
+144^\circ+90^\circ+54^\circ+72^\circ=360^\circ.
+\]
+\end{examplebox}
+
+\subsection{Histogrammes}
+
+\begin{definitionbox}{Classes}
+Lorsque les données sont nombreuses ou continues, on peut les regrouper en \textbf{classes}.
+
+Par exemple :
+\[
+\intervalle{18}{22},\quad \intervalle{22}{26},\quad \intervalle{26}{30}
+\]
+sont des classes d'âges.
+
+La notation $\intervalle{18}{22}$ signifie :
+\[
+18 \leq x < 22.
+\]
+Le nombre $18$ est inclus, mais le nombre $22$ ne l'est pas.
+\end{definitionbox}
+
+\begin{definitionbox}{Histogramme pour classes de même amplitude}
+Un \textbf{histogramme} représente des données regroupées en classes.
+
+Lorsque les classes ont la même amplitude, chaque classe est représentée par un rectangle :
+\begin{itemize}
+    \item la largeur du rectangle correspond à l'amplitude de la classe ;
+    \item la hauteur du rectangle est proportionnelle à l'effectif de la classe.
+\end{itemize}
+\end{definitionbox}
+
+\begin{warningbox}{Histogramme et diagramme en bâtons}
+Un diagramme en bâtons convient pour des valeurs séparées : $0$, $1$, $2$, $3$.
+
+Un histogramme convient pour des intervalles :
+\[
+\intervalle{18}{22},\ \intervalle{22}{26},\ \intervalle{26}{30}.
+\]
+
+Dans un histogramme, les rectangles sont accolés.
+\end{warningbox}
+
+\begin{examplebox}{Représenter une enquête par un histogramme}
+Une enquête a été réalisée auprès de $2500$ personnes à partir de la question :
+
+\og À quel âge avez-vous trouvé un emploi correspondant à votre qualification ? \fg
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Âge} & \text{Effectif} \\
+\hline
+\intervalle{18}{22} & 100 \\
+\intervalle{22}{26} & 200 \\
+\intervalle{26}{30} & 400 \\
+\intervalle{30}{34} & 1100 \\
+\intervalle{34}{38} & 700 \\
+\hline
+\end{array}
+\]
+
+Toutes les classes ont la même amplitude :
+\[
+22-18=26-22=30-26=34-30=38-34=4.
+\]
+
+On peut donc représenter les effectifs directement par les hauteurs des rectangles.
+
+\begin{center}
+\begin{tikzpicture}[xscale=0.35,yscale=0.006]
+\draw[->] (17,0) -- (39,0) node[right]{Âge};
+\draw[->] (18,0) -- (18,1250) node[above]{Effectif};
+
+\foreach \x in {18,22,26,30,34,38}
+{
+  \draw (\x,0) -- (\x,-30);
+  \node[below] at (\x,-30) {\small \x};
+}
+
+\foreach \y in {0,200,400,600,800,1000,1200}
+{
+  \draw (17.8,\y) -- (18.2,\y);
+  \node[left] at (17.8,\y) {\small \y};
+}
+
+\draw[fill=blue!20,draw=bleuprepa] (18,0) rectangle (22,100);
+\draw[fill=blue!20,draw=bleuprepa] (22,0) rectangle (26,200);
+\draw[fill=blue!20,draw=bleuprepa] (26,0) rectangle (30,400);
+\draw[fill=blue!20,draw=bleuprepa] (30,0) rectangle (34,1100);
+\draw[fill=blue!20,draw=bleuprepa] (34,0) rectangle (38,700);
+
+\node at (20,160) {\small 100};
+\node at (24,260) {\small 200};
+\node at (28,460) {\small 400};
+\node at (32,1160) {\small 1100};
+\node at (36,760) {\small 700};
+\end{tikzpicture}
+\end{center}
+\end{examplebox}
+
+\subsection{Étendue d'une série}
+
+\begin{definitionbox}{Étendue}
+L'\textbf{étendue} d'une série statistique est la différence entre la plus grande valeur et la plus petite valeur :
+\[
+\text{étendue}=\text{valeur maximale}-\text{valeur minimale}.
+\]
+\end{definitionbox}
+
+\begin{examplebox}{Calculer une étendue avec des données brutes}
+On considère la série :
+\[
+12,\ 15,\ 9,\ 18,\ 11,\ 20,\ 14.
+\]
+
+La plus petite valeur est $9$ et la plus grande est $20$.
+
+Donc :
+\[
+\text{étendue}=20-9=11.
+\]
+
+L'étendue est $11$.
+\end{examplebox}
+
+\begin{examplebox}{Étendue avec des classes}
+On considère des âges regroupés ainsi :
+\[
+\intervalle{18}{22},\quad \intervalle{22}{26},\quad \intervalle{26}{30},\quad \intervalle{30}{34}.
+\]
+
+Dans ce cas, on ne connaît pas les valeurs exactes. On peut seulement dire que les âges vont de $18$ jusqu'à moins de $34$.
+
+Une étendue approximative ou maximale raisonnable est :
+\[
+34-18=16.
+\]
+
+Mais il faut dire clairement que l'on travaille avec des données regroupées.
+\end{examplebox}
+
+\begin{warningbox}{Étendue et données regroupées}
+Lorsque les données sont regroupées en classes, on ne connaît pas les valeurs individuelles exactes. L'étendue calculée à partir des bornes des classes est donc une estimation ou une interprétation selon le contexte.
+\end{warningbox}
+
+%================================================
+\subsection{Exercices progressifs -- Données}
+
+\begin{exercisebox}{Effectifs et fréquences}
+Dans une classe de $30$ élèves, on relève le moyen de transport utilisé pour venir au collège.
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Transport} & \text{Effectif} \\
+\hline
+À pied & 6 \\
+Bus & 12 \\
+Voiture & 9 \\
+Vélo & 3 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+    \item Calculer la fréquence des élèves venant en bus.
+    \item Calculer la fréquence des élèves venant à pied.
+    \item Donner ces fréquences en pourcentage.
+    \item Vérifier que la somme des fréquences vaut $1$.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Étendue}
+Voici les températures maximales relevées pendant une semaine :
+\[
+18,\ 21,\ 20,\ 16,\ 23,\ 19,\ 25.
+\]
+\begin{enumerate}
+    \item Donner la température minimale.
+    \item Donner la température maximale.
+    \item Calculer l'étendue.
+    \item Interpréter le résultat par une phrase.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Histogramme}
+On a interrogé $80$ personnes sur le temps quotidien passé à lire.
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Temps en minutes} & \text{Effectif} \\
+\hline
+\intervalle{0}{15} & 12 \\
+\intervalle{15}{30} & 20 \\
+\intervalle{30}{45} & 28 \\
+\intervalle{45}{60} & 16 \\
+\intervalle{60}{75} & 4 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+    \item Vérifier que l'effectif total est bien $80$.
+    \item Quelle est l'amplitude de chaque classe ?
+    \item Représenter les données par un histogramme.
+    \item Calculer la fréquence des personnes lisant entre $30$ et $45$ minutes.
+\end{enumerate}
+\end{exercisebox}
+
+\newpage
+
+%================================================
+\section{Comprendre et utiliser des probabilités élémentaires}
+
+\subsection{Expérience aléatoire}
+
+\begin{definitionbox}{Expérience aléatoire}
+Une \textbf{expérience aléatoire} est une expérience dont on connaît les résultats possibles, mais dont on ne peut pas prévoir avec certitude le résultat qui va se produire.
+\end{definitionbox}
+
+\begin{examplebox}{Expériences aléatoires}
+\begin{itemize}
+    \item Lancer une pièce est une expérience aléatoire : les résultats possibles sont pile et face.
+    \item Lancer un dé équilibré est une expérience aléatoire : les résultats possibles sont $1$, $2$, $3$, $4$, $5$, $6$.
+    \item Tirer une carte au hasard dans un jeu est une expérience aléatoire.
+\end{itemize}
+\end{examplebox}
+
+\begin{definitionbox}{Issue}
+Une \textbf{issue} est un résultat possible d'une expérience aléatoire.
+\end{definitionbox}
+
+\begin{definitionbox}{Univers}
+L'\textbf{univers} d'une expérience aléatoire est l'ensemble de toutes les issues possibles. On le note souvent $\Omega$.
+\end{definitionbox}
+
+\begin{examplebox}{Univers d'un lancer de dé}
+Lorsqu'on lance un dé à six faces, l'univers est :
+\[
+\Omega=\{1,2,3,4,5,6\}.
+\]
+\end{examplebox}
+
+\subsection{Événements}
+
+\begin{definitionbox}{Événement}
+Un \textbf{événement} est un ensemble d'issues.
+
+Dire qu'un événement est réalisé signifie que le résultat obtenu appartient à cet événement.
+\end{definitionbox}
+
+\begin{examplebox}{Événement avec un dé}
+On lance un dé équilibré.
+
+L'événement $A$ : \og obtenir un nombre pair \fg{} est :
+\[
+A=\{2,4,6\}.
+\]
+
+L'événement $B$ : \og obtenir un nombre supérieur ou égal à $5$ \fg{} est :
+\[
+B=\{5,6\}.
+\]
+\end{examplebox}
+
+\begin{definitionbox}{Événement contraire}
+L'\textbf{événement contraire} de $A$, noté $\overline{A}$, est l'événement qui se réalise lorsque $A$ ne se réalise pas.
+\end{definitionbox}
+
+\begin{examplebox}{Événement contraire}
+On lance un dé.
+
+Si $A$ est l'événement \og obtenir un nombre pair \fg, alors :
+\[
+A=\{2,4,6\}.
+\]
+Son contraire est :
+\[
+\overline{A}=\{1,3,5\}.
+\]
+\end{examplebox}
+
+\subsection{Probabilité}
+
+\begin{definitionbox}{Probabilité}
+La \textbf{probabilité} d'un événement mesure la chance qu'a cet événement de se produire.
+
+Une probabilité est un nombre compris entre $0$ et $1$.
+\[
+0\leq \Prob(A)\leq 1.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}{Cas particuliers}
+\begin{itemize}
+    \item Si $\Prob(A)=0$, l'événement est impossible.
+    \item Si $\Prob(A)=1$, l'événement est certain.
+    \item Plus $\Prob(A)$ est proche de $1$, plus l'événement a de chances de se produire.
+    \item Plus $\Prob(A)$ est proche de $0$, moins l'événement a de chances de se produire.
+\end{itemize}
+\end{retenirbox}
+
+\begin{propositionbox}{Situation d'équiprobabilité}
+Lorsque toutes les issues ont la même probabilité, on dit qu'il y a \textbf{équiprobabilité}.
+
+Dans ce cas :
+\[
+\Prob(A)=\frac{\text{nombre d'issues favorables à }A}{\text{nombre total d'issues}}.
+\]
+\end{propositionbox}
+
+\begin{examplebox}{Probabilité avec un dé équilibré}
+On lance un dé équilibré. On cherche la probabilité d'obtenir un nombre pair.
+
+Les issues possibles sont :
+\[
+\Omega=\{1,2,3,4,5,6\}.
+\]
+
+Les issues favorables sont :
+\[
+\{2,4,6\}.
+\]
+
+Il y a donc $3$ issues favorables sur $6$ issues possibles.
+
+Ainsi :
+\[
+\Prob(A)=\frac{3}{6}=\frac{1}{2}.
+\]
+\end{examplebox}
+
+\begin{propositionbox}{Probabilité de l'événement contraire}
+Pour tout événement $A$ :
+\[
+\Prob(\overline{A})=1-\Prob(A).
+\]
+
+De façon équivalente :
+\[
+\Prob(A)=1-\Prob(\overline{A}).
+\]
+\end{propositionbox}
+
+\begin{examplebox}{Utiliser l'événement contraire}
+On lance un dé. On cherche la probabilité d'obtenir au moins $2$.
+
+L'événement contraire est : obtenir strictement moins que $2$, c'est-à-dire obtenir $1$.
+
+Donc :
+\[
+\Prob(\text{obtenir }1)=\frac{1}{6}.
+\]
+
+Ainsi :
+\[
+\Prob(\text{obtenir au moins }2)=1-\frac{1}{6}=\frac{5}{6}.
+\]
+\end{examplebox}
+
+\subsection{Expériences à deux épreuves}
+
+\begin{examplebox}{Deux enfants}
+On suppose que, pour un couple, la probabilité d'avoir une fille ou un garçon est la même. Un couple souhaite avoir deux enfants.
+
+On note $F$ pour fille et $G$ pour garçon.
+
+Les issues possibles sont :
+\[
+(F,F),\quad (F,G),\quad (G,F),\quad (G,G).
+\]
+
+Il y a $4$ issues équiprobables.
+
+La probabilité d'avoir deux garçons est :
+\[
+\Prob(G,G)=\frac{1}{4}.
+\]
+
+La probabilité d'avoir au moins une fille peut être calculée avec l'événement contraire.
+
+L'événement contraire de \og avoir au moins une fille \fg{} est \og avoir deux garçons \fg.
+
+Donc :
+\[
+\Prob(\text{au moins une fille})=1-\Prob(G,G)=1-\frac{1}{4}=\frac{3}{4}.
+\]
+\end{examplebox}
+
+\begin{methodbox}{Étudier une expérience à deux épreuves}
+Pour une expérience à deux épreuves :
+\begin{enumerate}
+    \item lister les résultats possibles de la première épreuve ;
+    \item lister les résultats possibles de la seconde épreuve ;
+    \item construire un tableau à double entrée ou un arbre ;
+    \item compter toutes les issues possibles ;
+    \item compter les issues favorables ;
+    \item calculer la probabilité.
+\end{enumerate}
+\end{methodbox}
+
+\begin{examplebox}{Tirage avec remise}
+On tire deux fois de suite, avec remise, une boule dans une urne contenant :
+\begin{itemize}
+    \item une boule bleue notée $B$ ;
+    \item deux boules violettes notées $V_1$ et $V_2$.
+\end{itemize}
+
+Comme il y a remise, la composition de l'urne est la même au deuxième tirage.
+
+On peut construire le tableau :
+
+\[
+\begin{array}{|c|c|c|c|}
+\hline
+ & B & V_1 & V_2 \\
+\hline
+B & (B,B) & (B,V_1) & (B,V_2) \\
+\hline
+V_1 & (V_1,B) & (V_1,V_1) & (V_1,V_2) \\
+\hline
+V_2 & (V_2,B) & (V_2,V_1) & (V_2,V_2) \\
+\hline
+\end{array}
+\]
+
+Il y a $9$ issues équiprobables.
+
+Tirer deux boules violettes correspond aux issues :
+\[
+(V_1,V_1),\quad (V_1,V_2),\quad (V_2,V_1),\quad (V_2,V_2).
+\]
+
+Il y a donc $4$ issues favorables.
+
+Ainsi :
+\[
+\Prob(\text{deux violettes})=\frac{4}{9}.
+\]
+\end{examplebox}
+
+\subsection{Fréquences et probabilités}
+
+\begin{definitionbox}{Fréquence observée}
+Lorsqu'on répète une expérience aléatoire un grand nombre de fois, la \textbf{fréquence observée} d'un événement est :
+\[
+f=\frac{\text{nombre de réalisations de l'événement}}{\text{nombre total d'expériences}}.
+\]
+\end{definitionbox}
+
+\begin{retenirbox}{Stabilisation des fréquences}
+Lorsqu'on répète une expérience aléatoire un très grand nombre de fois, la fréquence observée d'un événement tend à se stabiliser autour de sa probabilité théorique.
+
+Par exemple, pour un dé équilibré, la probabilité d'obtenir $6$ est :
+\[
+\frac{1}{6}\approx 0{,}167.
+\]
+
+Sur un petit nombre de lancers, la fréquence peut être éloignée de $0{,}167$.
+
+Sur un grand nombre de lancers, elle se rapproche généralement de $0{,}167$.
+\end{retenirbox}
+
+\begin{warningbox}{Probabilité et certitude}
+Dire qu'un événement a une probabilité $\frac{1}{6}$ ne signifie pas qu'il se produit exactement une fois tous les six essais.
+
+Cela signifie qu'à long terme, sa fréquence tend à se rapprocher de $\frac{1}{6}$.
+\end{warningbox}
+
+%================================================
+\subsection{Exercices progressifs -- Probabilités}
+
+\begin{exercisebox}{Dé équilibré}
+On lance un dé équilibré à six faces.
+
+\begin{enumerate}
+    \item Donner l'univers de l'expérience.
+    \item Calculer la probabilité d'obtenir $4$.
+    \item Calculer la probabilité d'obtenir un nombre pair.
+    \item Calculer la probabilité d'obtenir un nombre strictement supérieur à $4$.
+    \item Calculer la probabilité de ne pas obtenir $6$.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Deux pièces}
+On lance deux pièces équilibrées.
+
+\begin{enumerate}
+    \item Lister toutes les issues possibles.
+    \item Calculer la probabilité d'obtenir deux piles.
+    \item Calculer la probabilité d'obtenir exactement une fois pile.
+    \item Calculer la probabilité d'obtenir au moins une fois face.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Urne}
+Une urne contient $3$ boules rouges, $2$ boules bleues et $5$ boules vertes. On tire une boule au hasard.
+
+\begin{enumerate}
+    \item Combien y a-t-il de boules au total ?
+    \item Calculer la probabilité de tirer une boule rouge.
+    \item Calculer la probabilité de tirer une boule bleue ou verte.
+    \item Calculer la probabilité de ne pas tirer une boule verte.
+\end{enumerate}
+\end{exercisebox}
+
+\newpage
+
+%================================================
+\section{Résoudre des problèmes de proportionnalité}
+
+\subsection{Reconnaître une situation de proportionnalité}
+
+\begin{definitionbox}{Proportionnalité}
+Deux grandeurs sont \textbf{proportionnelles} lorsque l'on obtient toujours les valeurs de l'une en multipliant les valeurs de l'autre par un même nombre non nul.
+
+Ce nombre s'appelle le \textbf{coefficient de proportionnalité}.
+\end{definitionbox}
+
+\begin{examplebox}{Situation proportionnelle}
+Un mobile avance à vitesse constante de $5$ mètres par seconde.
+
+\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+\text{Temps en s} & 1 & 2 & 3 & 10 \\
+\hline
+\text{Distance en m} & 5 & 10 & 15 & 50 \\
+\hline
+\end{array}
+\]
+
+La distance est toujours égale au temps multiplié par $5$.
+
+Il s'agit donc d'une situation de proportionnalité.
+\end{examplebox}
+
+\begin{warningbox}{Toutes les situations ne sont pas proportionnelles}
+Une situation n'est pas proportionnelle simplement parce que les deux grandeurs augmentent en même temps.
+
+Par exemple, l'âge d'un enfant et sa taille ne sont pas proportionnels.
+\end{warningbox}
+
+\subsection{Fonction linéaire}
+
+\begin{definitionbox}{Fonction linéaire}
+Une fonction linéaire est une fonction de la forme :
+\[
+f(x)=ax
+\]
+où $a$ est un nombre fixé.
+
+Le nombre $a$ est appelé \textbf{coefficient}.
+\end{definitionbox}
+
+\begin{propositionbox}{Proportionnalité et fonction linéaire}
+Une situation de proportionnalité peut être modélisée par une fonction linéaire :
+\[
+f(x)=ax.
+\]
+
+Le coefficient $a$ est le coefficient de proportionnalité.
+\end{propositionbox}
+
+\begin{examplebox}{Mobile à vitesse constante}
+Un mobile se déplace à $5$ m/s.
+
+Si $x$ désigne le temps en secondes et $d(x)$ la distance parcourue en mètres, alors :
+\[
+d(x)=5x.
+\]
+
+Ainsi :
+\[
+d(8)=5\times 8=40.
+\]
+
+En $8$ secondes, le mobile parcourt $40$ mètres.
+\end{examplebox}
+
+\subsection{Pourcentages d'évolution}
+
+\begin{definitionbox}{Augmentation en pourcentage}
+Augmenter une quantité de $p\%$, c'est la multiplier par :
+\[
+1+\frac{p}{100}.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}{Diminution en pourcentage}
+Diminuer une quantité de $p\%$, c'est la multiplier par :
+\[
+1-\frac{p}{100}.
+\]
+\end{definitionbox}
+
+\begin{examplebox}{Augmentation de $5\%$}
+Un prix de $80$ euros augmente de $5\%$.
+
+Le coefficient multiplicateur est :
+\[
+1+\frac{5}{100}=1{,}05.
+\]
+
+Le nouveau prix est :
+\[
+80\times 1{,}05=84.
+\]
+
+Le nouveau prix est $84$ euros.
+\end{examplebox}
+
+\begin{examplebox}{Diminution de $20\%$}
+Un article coûte $50$ euros. Il diminue de $20\%$.
+
+Le coefficient multiplicateur est :
+\[
+1-\frac{20}{100}=0{,}8.
+\]
+
+Le nouveau prix est :
+\[
+50\times 0{,}8=40.
+\]
+
+Le nouveau prix est $40$ euros.
+\end{examplebox}
+
+\begin{warningbox}{Ajouter ou enlever le pourcentage}
+Augmenter de $5\%$ ne signifie pas ajouter $5$.
+
+Cela signifie ajouter $5\%$ de la valeur initiale.
+
+Par exemple, $5\%$ de $80$ vaut :
+\[
+0{,}05\times 80=4.
+\]
+Donc $80$ augmenté de $5\%$ vaut :
+\[
+80+4=84.
+\]
+\end{warningbox}
+
+\begin{methodbox}{Résoudre un problème d'évolution}
+Pour résoudre un problème avec pourcentage d'évolution :
+\begin{enumerate}
+    \item identifier s'il s'agit d'une augmentation ou d'une diminution ;
+    \item écrire le coefficient multiplicateur ;
+    \item multiplier la valeur initiale par ce coefficient ;
+    \item vérifier que le résultat est cohérent.
+\end{enumerate}
+\end{methodbox}
+
+\subsection{Proportionnalité en géométrie}
+
+\begin{retenirbox}{Géométrie}
+La proportionnalité intervient dans plusieurs situations géométriques :
+\begin{itemize}
+    \item théorème de Thalès ;
+    \item triangles semblables ;
+    \item agrandissements et réductions ;
+    \item homothéties.
+\end{itemize}
+\end{retenirbox}
+
+\begin{examplebox}{Triangles semblables}
+Deux triangles sont semblables. Les longueurs du deuxième triangle sont obtenues en multipliant celles du premier par $1{,}5$.
+
+Si un côté du premier triangle mesure $8$ cm, alors le côté correspondant du second mesure :
+\[
+8\times 1{,}5=12\text{ cm}.
+\]
+\end{examplebox}
+
+\begin{examplebox}{Thalès}
+Dans une configuration de Thalès, on obtient :
+\[
+\frac{AM}{AB}=\frac{AN}{AC}.
+\]
+
+Si :
+\[
+AM=3,\quad AB=9,\quad AC=12,
+\]
+alors :
+\[
+\frac{3}{9}=\frac{AN}{12}.
+\]
+
+Comme :
+\[
+\frac{3}{9}=\frac{1}{3},
+\]
+on a :
+\[
+\frac{AN}{12}=\frac{1}{3}.
+\]
+
+Donc :
+\[
+AN=12\times \frac{1}{3}=4.
+\]
+\end{examplebox}
+
+%================================================
+\subsection{Exercices progressifs -- Proportionnalité}
+
+\begin{exercisebox}{Vitesse constante}
+Un cycliste roule à vitesse constante. Il parcourt $18$ km en $1$ heure.
+
+\begin{enumerate}
+    \item Quelle distance parcourt-il en $2$ heures ?
+    \item Quelle distance parcourt-il en $3{,}5$ heures ?
+    \item Modéliser la distance $d(t)$ parcourue en fonction du temps $t$ exprimé en heures.
+    \item Calculer $d(5)$.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Prix et pourcentage}
+Un ordinateur coûte $650$ euros. Son prix baisse de $12\%$.
+
+\begin{enumerate}
+    \item Donner le coefficient multiplicateur correspondant.
+    \item Calculer le nouveau prix.
+    \item Calculer le montant de la réduction.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Agrandissement}
+Une figure est agrandie avec un coefficient $2{,}4$.
+
+\begin{enumerate}
+    \item Une longueur de $5$ cm devient quelle longueur ?
+    \item Une longueur de $12$ cm devient quelle longueur ?
+    \item Si une longueur de la figure agrandie mesure $36$ cm, quelle était la longueur initiale ?
+\end{enumerate}
+\end{exercisebox}
+
+\newpage
+
+%================================================
+\section{Calculer avec des grandeurs mesurables}
+
+\subsection{Grandeurs simples et grandeurs composées}
+
+\begin{definitionbox}{Grandeur}
+Une \textbf{grandeur} est une quantité que l'on peut mesurer.
+
+Exemples :
+\begin{itemize}
+    \item une longueur ;
+    \item une aire ;
+    \item un volume ;
+    \item une durée ;
+    \item une masse ;
+    \item une vitesse ;
+    \item un débit.
+\end{itemize}
+\end{definitionbox}
+
+\begin{definitionbox}{Grandeur composée}
+Une \textbf{grandeur composée} est une grandeur qui dépend de plusieurs grandeurs simples.
+
+Exemples :
+\[
+\text{vitesse}=\frac{\text{distance}}{\text{temps}},
+\]
+\[
+\text{débit}=\frac{\text{volume}}{\text{temps}}.
+\]
+\end{definitionbox}
+
+\subsection{Unités usuelles}
+
+\begin{retenirbox}{Unités}
+\begin{center}
+\begin{tabularx}{0.9\linewidth}{|X|X|}
+\hline
+\textbf{Grandeur} & \textbf{Unités usuelles} \\
+\hline
+Longueur & mm, cm, m, km \\
+\hline
+Aire & mm$^2$, cm$^2$, m$^2$, km$^2$ \\
+\hline
+Volume & mm$^3$, cm$^3$, m$^3$, L \\
+\hline
+Durée & s, min, h \\
+\hline
+Vitesse & m/s, km/h \\
+\hline
+Débit & m$^3$/s, L/min, L/h \\
+\hline
+\end{tabularx}
+\end{center}
+\end{retenirbox}
+
+\subsection{Conversions}
+
+\begin{retenirbox}{Conversions de base}
+\[
+1\text{ km}=1000\text{ m}
+\]
+\[
+1\text{ m}=100\text{ cm}
+\]
+\[
+1\text{ h}=60\text{ min}=3600\text{ s}
+\]
+\[
+1\text{ L}=1\text{ dm}^3
+\]
+\[
+1\text{ m}^3=1000\text{ L}
+\]
+\end{retenirbox}
+
+\begin{methodbox}{Convertir une vitesse de km/h en m/s}
+Pour convertir une vitesse de km/h en m/s :
+\[
+1\text{ km}=1000\text{ m}
+\]
+et
+\[
+1\text{ h}=3600\text{ s}.
+\]
+
+Donc :
+\[
+1\text{ km/h}=\frac{1000}{3600}\text{ m/s}=\frac{1}{3{,}6}\text{ m/s}.
+\]
+
+Ainsi, pour passer de km/h à m/s, on divise par $3{,}6$.
+\end{methodbox}
+
+\begin{examplebox}{Distance de réaction}
+Un conducteur met $1$ seconde avant de commencer à freiner lorsqu'il voit un obstacle. Quelle distance parcourt-il pendant cette durée s'il roule à $80$ km/h ?
+
+On convertit :
+\[
+80\text{ km/h}=\frac{80}{3{,}6}\text{ m/s}\approx 22{,}2\text{ m/s}.
+\]
+
+En $1$ seconde, il parcourt donc environ :
+\[
+22{,}2\times 1=22{,}2\text{ m}.
+\]
+
+Il parcourt environ $22$ mètres avant de commencer à freiner.
+\end{examplebox}
+
+\subsection{Volumes usuels}
+
+\begin{retenirbox}{Formules de volume}
+\[
+\text{Volume d'un pavé droit}=L\times l\times h
+\]
+\[
+\text{Volume d'un prisme droit}=\text{aire de la base}\times \text{hauteur}
+\]
+\[
+\text{Volume d'un cylindre}=\pi r^2 h
+\]
+\[
+\text{Volume d'une pyramide}=\frac{1}{3}\times \text{aire de la base}\times \text{hauteur}
+\]
+\[
+\text{Volume d'un cône}=\frac{1}{3}\pi r^2 h
+\]
+\[
+\text{Volume d'une boule}=\frac{4}{3}\pi r^3
+\]
+\end{retenirbox}
+
+\begin{examplebox}{Volume d'une boule}
+Calculer le volume d'une boule de rayon $3$ cm.
+
+\[
+V=\frac{4}{3}\pi r^3.
+\]
+
+Donc :
+\[
+V=\frac{4}{3}\pi \times 3^3.
+\]
+
+Or :
+\[
+3^3=27.
+\]
+
+Ainsi :
+\[
+V=\frac{4}{3}\pi \times 27=36\pi.
+\]
+
+Le volume exact est :
+\[
+36\pi\text{ cm}^3.
+\]
+
+Une valeur approchée est :
+\[
+36\pi\approx 113{,}1\text{ cm}^3.
+\]
+\end{examplebox}
+
+\begin{examplebox}{Cylindre surmonté d'une demi-boule}
+On considère un cylindre de rayon $4$ cm et de hauteur $10$ cm surmonté d'une demi-boule de même rayon.
+
+Volume du cylindre :
+\[
+V_1=\pi r^2h=\pi\times 4^2\times 10=160\pi.
+\]
+
+Volume de la boule complète :
+\[
+V_{\text{boule}}=\frac{4}{3}\pi r^3=\frac{4}{3}\pi\times 4^3
+=\frac{256}{3}\pi.
+\]
+
+Volume de la demi-boule :
+\[
+V_2=\frac{1}{2}\times \frac{256}{3}\pi=\frac{128}{3}\pi.
+\]
+
+Volume total :
+\[
+V=V_1+V_2=160\pi+\frac{128}{3}\pi.
+\]
+
+On met au même dénominateur :
+\[
+160\pi=\frac{480}{3}\pi.
+\]
+
+Donc :
+\[
+V=\frac{480}{3}\pi+\frac{128}{3}\pi=\frac{608}{3}\pi.
+\]
+
+Le volume total est :
+\[
+\frac{608}{3}\pi\text{ cm}^3.
+\]
+\end{examplebox}
+
+\subsection{Débits}
+
+\begin{definitionbox}{Débit}
+Le \textbf{débit} est le volume écoulé par unité de temps.
+
+\[
+\text{débit}=\frac{\text{volume}}{\text{durée}}.
+\]
+
+Donc :
+\[
+\text{volume}=\text{débit}\times \text{durée}.
+\]
+\end{definitionbox}
+
+\begin{examplebox}{Débit de la Seine}
+Le débit moyen de la Seine sous le pont de l'Alma est $328$ m$^3$/s.
+
+Combien de litres d'eau sont passés sous ce pont en $3$ minutes ?
+
+On convertit d'abord la durée :
+\[
+3\text{ min}=3\times 60=180\text{ s}.
+\]
+
+Le volume écoulé est :
+\[
+V=328\times 180=59040\text{ m}^3.
+\]
+
+Or :
+\[
+1\text{ m}^3=1000\text{ L}.
+\]
+
+Donc :
+\[
+59040\text{ m}^3=59040\times 1000=59040000\text{ L}.
+\]
+
+Il est passé :
+\[
+59\,040\,000\text{ L}
+\]
+d'eau sous le pont en $3$ minutes.
+\end{examplebox}
+
+\begin{warningbox}{Oublier les unités}
+Dans un calcul de grandeurs, les unités sont indispensables.
+
+Écrire seulement :
+\[
+328\times 180=59040
+\]
+ne suffit pas.
+
+Il faut écrire :
+\[
+328\text{ m}^3/\text{s}\times 180\text{ s}=59040\text{ m}^3.
+\]
+\end{warningbox}
+
+%================================================
+\subsection{Exercices progressifs -- Grandeurs}
+
+\begin{exercisebox}{Volume d'une boule}
+Calculer le volume exact puis une valeur approchée au dixième d'une boule de rayon $6$ cm.
+\end{exercisebox}
+
+\begin{exercisebox}{Vitesse et distance}
+Une voiture roule à $90$ km/h.
+
+\begin{enumerate}
+    \item Convertir cette vitesse en m/s.
+    \item Quelle distance parcourt-elle en $2$ secondes ?
+    \item Quelle distance parcourt-elle en $5$ secondes ?
+\end{enumerate}
+\end{exercisebox}
+
+\begin{exercisebox}{Débit}
+Un robinet a un débit de $15$ L/min.
+
+\begin{enumerate}
+    \item Quel volume d'eau s'écoule en $8$ minutes ?
+    \item Convertir ce volume en m$^3$.
+    \item Combien de temps faut-il pour remplir une cuve de $450$ L ?
+\end{enumerate}
+\end{exercisebox}
+
+\newpage
+
+%================================================
+\section{Corrections détaillées des exercices}
+
+\subsection{Corrections -- Données}
+
+\begin{correctionbox}{Effectifs et fréquences}
+L'effectif total est :
+\[
+N=30.
+\]
+
+\begin{enumerate}
+    \item Pour les élèves venant en bus :
+    \[
+    f=\frac{12}{30}=\frac{2}{5}=0{,}4.
+    \]
+    \item Pour les élèves venant à pied :
+    \[
+    f=\frac{6}{30}=\frac{1}{5}=0{,}2.
+    \]
+    \item En pourcentage :
+    \[
+    0{,}4=40\%,\qquad 0{,}2=20\%.
+    \]
+    \item Les fréquences sont :
+    \[
+    \frac{6}{30},\quad \frac{12}{30},\quad \frac{9}{30},\quad \frac{3}{30}.
+    \]
+    Leur somme vaut :
+    \[
+    \frac{6+12+9+3}{30}=\frac{30}{30}=1.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Étendue}
+La série est :
+\[
+18,\ 21,\ 20,\ 16,\ 23,\ 19,\ 25.
+\]
+
+La température minimale est :
+\[
+16.
+\]
+
+La température maximale est :
+\[
+25.
+\]
+
+L'étendue est :
+\[
+25-16=9.
+\]
+
+Interprétation : durant cette semaine, l'écart entre la température maximale la plus basse et la température maximale la plus haute est de $9^\circ$C.
+\end{correctionbox}
+
+\begin{correctionbox}{Histogramme}
+\begin{enumerate}
+    \item On calcule l'effectif total :
+    \[
+    12+20+28+16+4=80.
+    \]
+    L'effectif total est bien $80$.
+    
+    \item L'amplitude de chaque classe est :
+    \[
+    15-0=30-15=45-30=60-45=75-60=15.
+    \]
+    Chaque classe a une amplitude de $15$ minutes.
+    
+    \item Les classes ont même amplitude. On peut donc construire un histogramme dont les hauteurs sont les effectifs.
+    
+    \item La fréquence des personnes lisant entre $30$ et $45$ minutes est :
+    \[
+    f=\frac{28}{80}=\frac{7}{20}=0{,}35=35\%.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\subsection{Corrections -- Probabilités}
+
+\begin{correctionbox}{Dé équilibré}
+On lance un dé équilibré.
+
+\begin{enumerate}
+    \item L'univers est :
+    \[
+    \Omega=\{1,2,3,4,5,6\}.
+    \]
+    
+    \item La probabilité d'obtenir $4$ est :
+    \[
+    \Prob(4)=\frac{1}{6}.
+    \]
+    
+    \item Les nombres pairs sont :
+    \[
+    2,\ 4,\ 6.
+    \]
+    Il y a donc $3$ issues favorables sur $6$ :
+    \[
+    \Prob(\text{pair})=\frac{3}{6}=\frac{1}{2}.
+    \]
+    
+    \item Les nombres strictement supérieurs à $4$ sont :
+    \[
+    5,\ 6.
+    \]
+    Donc :
+    \[
+    \Prob(>4)=\frac{2}{6}=\frac{1}{3}.
+    \]
+    
+    \item L'événement contraire de \og obtenir $6$ \fg{} est \og ne pas obtenir $6$ \fg.
+    \[
+    \Prob(\text{ne pas obtenir }6)=1-\frac{1}{6}=\frac{5}{6}.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Deux pièces}
+On note $P$ pour pile et $F$ pour face.
+
+\begin{enumerate}
+    \item Les issues possibles sont :
+    \[
+    (P,P),\quad (P,F),\quad (F,P),\quad (F,F).
+    \]
+    
+    \item L'issue \og deux piles \fg{} est seulement :
+    \[
+    (P,P).
+    \]
+    Donc :
+    \[
+    \Prob(\text{deux piles})=\frac{1}{4}.
+    \]
+    
+    \item Exactement une fois pile correspond à :
+    \[
+    (P,F),\quad (F,P).
+    \]
+    Donc :
+    \[
+    \Prob(\text{exactement une fois pile})=\frac{2}{4}=\frac{1}{2}.
+    \]
+    
+    \item L'événement contraire de \og au moins une fois face \fg{} est \og aucune face \fg, c'est-à-dire \og deux piles \fg.
+    Donc :
+    \[
+    \Prob(\text{au moins une face})=1-\frac{1}{4}=\frac{3}{4}.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Urne}
+L'urne contient :
+\[
+3+2+5=10
+\]
+boules.
+
+\begin{enumerate}
+    \item Il y a $10$ boules au total.
+    
+    \item La probabilité de tirer une boule rouge est :
+    \[
+    \frac{3}{10}.
+    \]
+    
+    \item Il y a :
+    \[
+    2+5=7
+    \]
+    boules bleues ou vertes.
+    Donc :
+    \[
+    \Prob(\text{bleue ou verte})=\frac{7}{10}.
+    \]
+    
+    \item Ne pas tirer une boule verte signifie tirer une boule rouge ou bleue.
+    Il y a :
+    \[
+    3+2=5
+    \]
+    boules favorables.
+    Donc :
+    \[
+    \Prob(\text{pas verte})=\frac{5}{10}=\frac{1}{2}.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\subsection{Corrections -- Proportionnalité}
+
+\begin{correctionbox}{Vitesse constante}
+Le cycliste parcourt $18$ km en $1$ heure.
+
+\begin{enumerate}
+    \item En $2$ heures :
+    \[
+    18\times 2=36.
+    \]
+    Il parcourt $36$ km.
+    
+    \item En $3{,}5$ heures :
+    \[
+    18\times 3{,}5=63.
+    \]
+    Il parcourt $63$ km.
+    
+    \item Si $t$ désigne le temps en heures, alors :
+    \[
+    d(t)=18t.
+    \]
+    
+    \item
+    \[
+    d(5)=18\times 5=90.
+    \]
+    En $5$ heures, il parcourt $90$ km.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Prix et pourcentage}
+Le prix initial est $650$ euros. Il baisse de $12\%$.
+
+\begin{enumerate}
+    \item Le coefficient multiplicateur est :
+    \[
+    1-\frac{12}{100}=1-0{,}12=0{,}88.
+    \]
+    
+    \item Le nouveau prix est :
+    \[
+    650\times 0{,}88=572.
+    \]
+    Le nouveau prix est $572$ euros.
+    
+    \item Le montant de la réduction est :
+    \[
+    650-572=78.
+    \]
+    La réduction est de $78$ euros.
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Agrandissement}
+Le coefficient d'agrandissement est $2{,}4$.
+
+\begin{enumerate}
+    \item Une longueur de $5$ cm devient :
+    \[
+    5\times 2{,}4=12\text{ cm}.
+    \]
+    
+    \item Une longueur de $12$ cm devient :
+    \[
+    12\times 2{,}4=28{,}8\text{ cm}.
+    \]
+    
+    \item Si la longueur agrandie est $36$ cm, alors la longueur initiale vaut :
+    \[
+    \frac{36}{2{,}4}=15\text{ cm}.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\subsection{Corrections -- Grandeurs}
+
+\begin{correctionbox}{Volume d'une boule}
+Le rayon est :
+\[
+r=6\text{ cm}.
+\]
+
+Le volume d'une boule est :
+\[
+V=\frac{4}{3}\pi r^3.
+\]
+
+Donc :
+\[
+V=\frac{4}{3}\pi\times 6^3.
+\]
+
+Or :
+\[
+6^3=216.
+\]
+
+Donc :
+\[
+V=\frac{4}{3}\pi\times 216.
+\]
+
+Comme :
+\[
+\frac{216}{3}=72,
+\]
+on obtient :
+\[
+V=4\times 72\pi=288\pi.
+\]
+
+Le volume exact est :
+\[
+288\pi\text{ cm}^3.
+\]
+
+Une valeur approchée est :
+\[
+288\pi\approx 904{,}8\text{ cm}^3.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}{Vitesse et distance}
+La voiture roule à $90$ km/h.
+
+\begin{enumerate}
+    \item Pour convertir en m/s, on divise par $3{,}6$ :
+    \[
+    90\div 3{,}6=25.
+    \]
+    Donc :
+    \[
+    90\text{ km/h}=25\text{ m/s}.
+    \]
+    
+    \item En $2$ secondes, elle parcourt :
+    \[
+    25\times 2=50\text{ m}.
+    \]
+    
+    \item En $5$ secondes, elle parcourt :
+    \[
+    25\times 5=125\text{ m}.
+    \]
+\end{enumerate}
+\end{correctionbox}
+
+\begin{correctionbox}{Débit}
+Le débit est $15$ L/min.
+
+\begin{enumerate}
+    \item En $8$ minutes, le volume écoulé est :
+    \[
+    V=15\times 8=120\text{ L}.
+    \]
+    
+    \item Comme :
+    \[
+    1\text{ m}^3=1000\text{ L},
+    \]
+    on a :
+    \[
+    120\text{ L}=0{,}120\text{ m}^3.
+    \]
+    
+    \item Pour remplir $450$ L :
+    \[
+    t=\frac{450}{15}=30.
+    \]
+    Il faut $30$ minutes.
+\end{enumerate}
+\end{correctionbox}
+
+\newpage
+
+%================================================
+\section{Grand devoir bilan}
+
+\begin{center}
+{\Large \textbf{Devoir bilan -- Données, probabilités, proportionnalité et grandeurs}}\\
+Durée conseillée : 1 h 30
+\end{center}
+
+\subsection*{Exercice 1 -- Statistiques et histogramme}
+
+Une enquête est réalisée auprès de $200$ élèves sur leur temps quotidien de trajet entre leur domicile et le collège.
+
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Temps en minutes} & \text{Effectif} \\
+\hline
+\intervalle{0}{10} & 24 \\
+\intervalle{10}{20} & 56 \\
+\intervalle{20}{30} & 72 \\
+\intervalle{30}{40} & 32 \\
+\intervalle{40}{50} & 16 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+    \item Vérifier l'effectif total.
+    \item Calculer la fréquence des élèves ayant un trajet entre $20$ et $30$ minutes.
+    \item Calculer la fréquence des élèves ayant un trajet strictement inférieur à $20$ minutes.
+    \item Représenter cette série par un histogramme.
+    \item Donner une interprétation de la classe la plus représentée.
+    \item Donner une estimation de l'étendue à partir des bornes des classes.
+\end{enumerate}
+
+\subsection*{Exercice 2 -- Probabilités}
+
+Une urne contient $2$ boules rouges, $3$ boules bleues et $1$ boule verte.
+
+On tire une boule au hasard, on la remet dans l'urne, puis on tire une deuxième boule.
+
+\begin{enumerate}
+    \item Combien y a-t-il de boules dans l'urne ?
+    \item Quelle est la probabilité de tirer une boule rouge au premier tirage ?
+    \item Construire un raisonnement permettant de calculer la probabilité de tirer deux boules bleues.
+    \item Calculer la probabilité de ne pas tirer de boule verte au premier tirage.
+    \item Expliquer pourquoi, si l'on répète l'expérience un très grand nombre de fois, la fréquence d'apparition d'une boule verte au premier tirage devrait se stabiliser autour de $\frac{1}{6}$.
+\end{enumerate}
+
+\subsection*{Exercice 3 -- Proportionnalité et pourcentages}
+
+Un magasin vend une tablette au prix initial de $240$ euros.
+
+Pendant les soldes, son prix baisse de $15\%$.
+
+Une semaine plus tard, le nouveau prix augmente de $10\%$.
+
+\begin{enumerate}
+    \item Calculer le prix après la baisse de $15\%$.
+    \item Calculer le prix après l'augmentation de $10\%$.
+    \item Le prix final est-il égal au prix initial ? Justifier.
+    \item Donner le coefficient multiplicateur global.
+    \item En déduire le pourcentage global d'évolution.
+\end{enumerate}
+
+\subsection*{Exercice 4 -- Grandeurs et volumes}
+
+Un réservoir est formé d'un cylindre de rayon $5$ cm et de hauteur $20$ cm, surmonté d'une demi-boule de même rayon.
+
+\begin{enumerate}
+    \item Calculer le volume du cylindre.
+    \item Calculer le volume de la demi-boule.
+    \item Calculer le volume total exact.
+    \item Donner une valeur approchée au cm$^3$ près.
+    \item Convertir ce volume en litres.
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{Correction détaillée du devoir bilan}
+
+\subsection*{Correction de l'exercice 1}
+
+\begin{enumerate}
+    \item L'effectif total est :
+    \[
+    24+56+72+32+16=200.
+    \]
+    L'effectif total est bien $200$.
+    
+    \item La fréquence des élèves ayant un trajet entre $20$ et $30$ minutes est :
+    \[
+    f=\frac{72}{200}=0{,}36=36\%.
+    \]
+    
+    \item Les élèves ayant un trajet strictement inférieur à $20$ minutes sont dans les classes :
+    \[
+    \intervalle{0}{10}\quad \text{et}\quad \intervalle{10}{20}.
+    \]
+    Leur effectif est :
+    \[
+    24+56=80.
+    \]
+    La fréquence est :
+    \[
+    \frac{80}{200}=0{,}4=40\%.
+    \]
+    
+    \item Les classes ont toutes une amplitude de $10$ minutes. On peut donc tracer un histogramme avec les effectifs comme hauteurs.
+    
+    \item La classe la plus représentée est $\intervalle{20}{30}$ avec $72$ élèves. Cela signifie que le temps de trajet le plus fréquent dans cette enquête est compris entre $20$ et $30$ minutes.
+    
+    \item Les données vont de $0$ à moins de $50$ minutes. Une estimation de l'étendue est donc :
+    \[
+    50-0=50\text{ minutes}.
+    \]
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 2}
+
+\begin{enumerate}
+    \item Il y a :
+    \[
+    2+3+1=6
+    \]
+    boules dans l'urne.
+    
+    \item La probabilité de tirer une boule rouge au premier tirage est :
+    \[
+    \frac{2}{6}=\frac{1}{3}.
+    \]
+    
+    \item Comme le tirage est fait avec remise, la composition de l'urne ne change pas.
+    
+    La probabilité de tirer une boule bleue à chaque tirage est :
+    \[
+    \frac{3}{6}=\frac{1}{2}.
+    \]
+    
+    Pour tirer deux boules bleues :
+    \[
+    \frac{1}{2}\times \frac{1}{2}=\frac{1}{4}.
+    \]
+    
+    On peut aussi raisonner par dénombrement : il y a $6\times 6=36$ couples possibles de boules distinguées. Les boules bleues sont au nombre de $3$, donc il y a $3\times 3=9$ couples favorables.
+    \[
+    \Prob(\text{deux bleues})=\frac{9}{36}=\frac{1}{4}.
+    \]
+    
+    \item La probabilité de tirer une boule verte est :
+    \[
+    \frac{1}{6}.
+    \]
+    Donc la probabilité de ne pas tirer une boule verte est :
+    \[
+    1-\frac{1}{6}=\frac{5}{6}.
+    \]
+    
+    \item La probabilité théorique de tirer une boule verte au premier tirage est :
+    \[
+    \frac{1}{6}.
+    \]
+    Si on répète l'expérience un très grand nombre de fois, la fréquence observée d'apparition d'une boule verte devrait se stabiliser autour de cette probabilité.
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 3}
+
+\begin{enumerate}
+    \item Une baisse de $15\%$ correspond au coefficient :
+    \[
+    1-\frac{15}{100}=0{,}85.
+    \]
+    Le prix après baisse est :
+    \[
+    240\times 0{,}85=204.
+    \]
+    Le prix devient $204$ euros.
+    
+    \item Une augmentation de $10\%$ correspond au coefficient :
+    \[
+    1+\frac{10}{100}=1{,}10.
+    \]
+    Le prix final est :
+    \[
+    204\times 1{,}10=224{,}40.
+    \]
+    
+    \item Le prix final est $224{,}40$ euros, alors que le prix initial était $240$ euros. Ils ne sont donc pas égaux.
+    
+    \item Le coefficient multiplicateur global est :
+    \[
+    0{,}85\times 1{,}10=0{,}935.
+    \]
+    
+    \item Le coefficient $0{,}935$ correspond à :
+    \[
+    1-0{,}935=0{,}065.
+    \]
+    Donc l'évolution globale est une baisse de :
+    \[
+    6{,}5\%.
+    \]
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 4}
+
+Le rayon est :
+\[
+r=5\text{ cm}.
+\]
+
+La hauteur du cylindre est :
+\[
+h=20\text{ cm}.
+\]
+
+\begin{enumerate}
+    \item Volume du cylindre :
+    \[
+    V_1=\pi r^2h=\pi\times 5^2\times 20.
+    \]
+    Donc :
+    \[
+    V_1=500\pi\text{ cm}^3.
+    \]
+    
+    \item Volume d'une boule complète :
+    \[
+    V_{\text{boule}}=\frac{4}{3}\pi r^3.
+    \]
+    Donc :
+    \[
+    V_{\text{boule}}=\frac{4}{3}\pi\times 5^3
+    =\frac{4}{3}\pi\times 125
+    =\frac{500}{3}\pi.
+    \]
+    Le volume d'une demi-boule est :
+    \[
+    V_2=\frac{1}{2}\times \frac{500}{3}\pi=\frac{250}{3}\pi.
+    \]
+    
+    \item Le volume total exact est :
+    \[
+    V=500\pi+\frac{250}{3}\pi.
+    \]
+    On met au même dénominateur :
+    \[
+    500\pi=\frac{1500}{3}\pi.
+    \]
+    Donc :
+    \[
+    V=\frac{1500}{3}\pi+\frac{250}{3}\pi=\frac{1750}{3}\pi.
+    \]
+    
+    \item Valeur approchée :
+    \[
+    V=\frac{1750}{3}\pi\approx 1832{,}6.
+    \]
+    Au cm$^3$ près :
+    \[
+    V\approx 1833\text{ cm}^3.
+    \]
+    
+    \item Comme :
+    \[
+    1\text{ L}=1000\text{ cm}^3,
+    \]
+    on obtient :
+    \[
+    1833\text{ cm}^3\approx 1{,}833\text{ L}.
+    \]
+\end{enumerate}
+
+\newpage
+
+%================================================
+\section{Fiche de synthèse finale}
+
+\begin{retenirbox}{Statistiques}
+\begin{itemize}
+    \item L'effectif total est le nombre total de données.
+    \item L'effectif d'une valeur est le nombre de fois où cette valeur apparaît.
+    \item La fréquence est :
+    \[
+    f=\frac{\text{effectif}}{\text{effectif total}}.
+    \]
+    \item La somme des fréquences vaut $1$, c'est-à-dire $100\%$.
+    \item L'étendue est :
+    \[
+    \text{max}-\text{min}.
+    \]
+    \item Un diagramme en bâtons représente des valeurs séparées.
+    \item Un histogramme représente des classes d'intervalles.
+\end{itemize}
+\end{retenirbox}
+
+\begin{retenirbox}{Probabilités}
+\begin{itemize}
+    \item Une probabilité est comprise entre $0$ et $1$.
+    \item En équiprobabilité :
+    \[
+    \Prob(A)=\frac{\text{nombre d'issues favorables}}{\text{nombre total d'issues}}.
+    \]
+    \item Pour l'événement contraire :
+    \[
+    \Prob(\overline{A})=1-\Prob(A).
+    \]
+    \item Pour une expérience à deux épreuves, on peut utiliser un tableau à double entrée ou un arbre.
+    \item Lorsque le nombre d'essais augmente, les fréquences observées se stabilisent autour des probabilités théoriques.
+\end{itemize}
+\end{retenirbox}
+
+\begin{retenirbox}{Proportionnalité}
+\begin{itemize}
+    \item Deux grandeurs sont proportionnelles si l'une s'obtient en multipliant l'autre par un coefficient constant.
+    \item Une situation de proportionnalité se modélise par :
+    \[
+    f(x)=ax.
+    \]
+    \item Augmenter de $p\%$ revient à multiplier par :
+    \[
+    1+\frac{p}{100}.
+    \]
+    \item Diminuer de $p\%$ revient à multiplier par :
+    \[
+    1-\frac{p}{100}.
+    \]
+\end{itemize}
+\end{retenirbox}
+
+\begin{retenirbox}{Grandeurs}
+\begin{itemize}
+    \item Volume d'une boule :
+    \[
+    V=\frac{4}{3}\pi r^3.
+    \]
+    \item Volume d'un cylindre :
+    \[
+    V=\pi r^2h.
+    \]
+    \item Vitesse :
+    \[
+    v=\frac{d}{t}.
+    \]
+    \item Débit :
+    \[
+    D=\frac{V}{t}.
+    \]
+    \item Conversions importantes :
+    \[
+    1\text{ h}=3600\text{ s},
+    \qquad
+    1\text{ m}^3=1000\text{ L},
+    \qquad
+    1\text{ km/h}=\frac{1}{3{,}6}\text{ m/s}.
+    \]
+\end{itemize}
+\end{retenirbox}
+
+\begin{warningbox}{Derniers points de vigilance}
+\begin{itemize}
+    \item Toujours distinguer effectif et fréquence.
+    \item Ne pas confondre histogramme et diagramme en bâtons.
+    \item Toujours vérifier que les fréquences totalisent $1$ ou $100\%$.
+    \item Toujours lister clairement les issues en probabilités.
+    \item Toujours convertir les unités avant de calculer.
+    \item Toujours donner l'unité finale d'une grandeur.
+    \item Une baisse de $20\%$ suivie d'une hausse de $20\%$ ne ramène pas à la valeur initiale.
+\end{itemize}
+\end{warningbox}
+
+\end{document}
