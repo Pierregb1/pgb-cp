@@ -80,6 +80,14 @@
   }
 ,
   {
+    "titre": "correction colle",
+    "fichier": "docs/math superieure corrigé correction colle.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "corrigé"
+  }
+,
+  {
     "titre": "ds algebre linéaine 1",
     "fichier": "docs/math superieure corrigé ds algebre linéaine 1.pdf",
     "matiere": "maths",
@@ -138,6 +146,14 @@
   {
     "titre": "algèbre lin chap 16 diag trig",
     "fichier": "docs/math superieure cours Algèbre lin chap 16 diag trig.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "bases logique et raisonnement",
+    "fichier": "docs/math superieure cours bases logique et raisonnement.pdf",
     "matiere": "maths",
     "niveau": "superieur",
     "type": "cours"
@@ -616,6 +632,14 @@
   }
 ,
   {
+    "titre": "stat proba mesures",
+    "fichier": "docs/math troisieme cours stat proba mesures.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "cours"
+  }
+,
+  {
     "titre": "calcul numerique",
     "fichier": "docs/math troisieme ds calcul numerique.pdf",
     "matiere": "maths",
@@ -632,8 +656,24 @@
   }
 ,
   {
+    "titre": "stat proba mesures",
+    "fichier": "docs/math troisieme ds stat proba mesures.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "ds"
+  }
+,
+  {
     "titre": "calcul numerique",
     "fichier": "docs/math troisieme exercice calcul numerique.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "stat proba mesure",
+    "fichier": "docs/math troisieme td stat proba mesure.pdf",
     "matiere": "maths",
     "niveau": "3eme",
     "type": "exercice"
