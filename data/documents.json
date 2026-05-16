@@ -712,6 +712,14 @@
   }
 ,
   {
+    "titre": "onde et signaux",
+    "fichier": "docs/physique premiere cours onde et signaux.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
     "titre": "physiqechimie première",
     "fichier": "docs/physique premiere cours physiqechimie première.pdf",
     "matiere": "physique",
@@ -722,6 +730,14 @@
   {
     "titre": "spectro cohesion (chimie) prem spé",
     "fichier": "docs/physique premiere cours spectro cohesion (chimie) prem spé.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "transfo chimique",
+    "fichier": "docs/physique premiere cours transfo chimique.pdf",
     "matiere": "physique",
     "niveau": "premiere",
     "type": "cours"
@@ -754,6 +770,22 @@
   {
     "titre": "prem specto coh",
     "fichier": "docs/physique premiere exo prem specto coh.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "ondes",
+    "fichier": "docs/physique premiere td ondes.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "transfo chimique",
+    "fichier": "docs/physique premiere td transfo chimique.pdf",
     "matiere": "physique",
     "niveau": "premiere",
     "type": "exercice"
