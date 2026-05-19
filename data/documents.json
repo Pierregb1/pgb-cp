@@ -152,6 +152,38 @@
   }
 ,
   {
+    "titre": "analyse 1 fondements ana",
+    "fichier": "docs/math superieure cours analyse 1 fondements ana.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "analyse 2 suite numérique",
+    "fichier": "docs/math superieure cours analyse 2 suite numérique.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "analyse 3 limites continuités de fonctions",
+    "fichier": "docs/math superieure cours analyse 3 limites continuités de fonctions.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "analyse 4 dérivée de fonctions",
+    "fichier": "docs/math superieure cours analyse 4 dérivée de fonctions.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
     "titre": "bases logique et raisonnement",
     "fichier": "docs/math superieure cours bases logique et raisonnement.pdf",
     "matiere": "maths",
@@ -226,6 +258,14 @@
   {
     "titre": "alg lin chap 9",
     "fichier": "docs/math superieure td alg lin chap 9.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "analyse chap 2",
+    "fichier": "docs/math superieure td analyse chap 2.pdf",
     "matiere": "maths",
     "niveau": "superieur",
     "type": "exercice"
