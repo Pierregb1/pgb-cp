@@ -1,0 +1,2287 @@
+\documentclass[11pt,a4paper]{article}
+
+%=========================================================
+% PACKAGES
+%=========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.15cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+%=========================================================
+% MISE EN PAGE
+%=========================================================
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Analyse CPGE}
+\fancyhead[C]{Fondements de l'analyse réelle}
+\fancyhead[R]{Page \thepage/\pageref{LastPage}}
+\fancyfoot[C]{Nombres réels -- Ordre -- Bornes -- Inégalités}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+
+\setlist[itemize]{label=\(\triangleright\)}
+\setlist[enumerate]{label=\textbf{\arabic*.}}
+
+%=========================================================
+% COULEURS ET BOÎTES
+%=========================================================
+\definecolor{bleufonce}{RGB}{25,65,130}
+\definecolor{bleuclair}{RGB}{235,243,255}
+\definecolor{vertfonce}{RGB}{30,120,70}
+\definecolor{vertclair}{RGB}{235,250,240}
+\definecolor{rougefonce}{RGB}{170,40,40}
+\definecolor{rougeclair}{RGB}{255,238,238}
+\definecolor{orangefonce}{RGB}{190,110,20}
+\definecolor{orangeclair}{RGB}{255,246,230}
+\definecolor{violetfonce}{RGB}{95,55,145}
+\definecolor{violetclair}{RGB}{246,241,255}
+
+\tcbset{
+    enhanced,
+    sharp corners,
+    boxrule=0.75pt,
+    before skip=8pt,
+    after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1][]{
+    colback=bleuclair,
+    colframe=bleufonce,
+    title=\textbf{Définition #1}
+}
+
+\newtcolorbox{theorembox}[1][]{
+    colback=vertclair,
+    colframe=vertfonce,
+    title=\textbf{Théorème / Propriété #1}
+}
+
+\newtcolorbox{methodbox}[1][]{
+    colback=orangeclair,
+    colframe=orangefonce,
+    title=\textbf{Méthode #1}
+}
+
+\newtcolorbox{retenirbox}[1][]{
+    colback=violetclair,
+    colframe=violetfonce,
+    title=\textbf{À retenir #1}
+}
+
+\newtcolorbox{erreurbox}[1][]{
+    colback=rougeclair,
+    colframe=rougefonce,
+    title=\textbf{Erreur classique #1}
+}
+
+\newtcolorbox{exercicebox}[1][]{
+    colback=white,
+    colframe=black!60,
+    title=\textbf{Exercice #1}
+}
+
+\newtcolorbox{correctionbox}[1][]{
+    colback=gray!5,
+    colframe=black!65,
+    title=\textbf{Correction #1}
+}
+
+%=========================================================
+% COMMANDES
+%=========================================================
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\D}{\mathbb D}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\intervalle}[2]{\left[#1\,;#2\right]}
+\newcommand{\ouvert}[2]{\left]#1\,;#2\right[}
+\newcommand{\semiouvg}[2]{\left]#1\,;#2\right]}
+\newcommand{\semiouvd}[2]{\left[#1\,;#2\right[}
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\implique}{\Longrightarrow}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemme}[prop]{Lemme}
+\newtheorem{corollaire}[prop]{Corollaire}
+
+%=========================================================
+% DOCUMENT
+%=========================================================
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Fondements de l'analyse réelle}}\\[2mm]
+    {\Large Nombres réels, ordre, intervalles, bornes et inégalités}\\[2mm]
+    {\large Cours complet pour classes préparatoires scientifiques}\\[2mm]
+    \rule{0.88\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.4cm}
+
+\tableofcontents
+
+\newpage
+
+%=========================================================
+\section*{Introduction générale}
+\addcontentsline{toc}{section}{Introduction générale}
+
+L'analyse mathématique repose sur l'étude des nombres réels, des suites, des fonctions, des limites, de la continuité, de la dérivation, de l'intégration et des séries.  
+Avant de parler de limite ou de convergence, il faut comprendre précisément l'ensemble \(\R\), son ordre, ses intervalles, les notions de majoration, de minoration et surtout la propriété fondamentale de la borne supérieure.
+
+Ce chapitre est donc un chapitre fondateur. Il installe le langage et les méthodes qui seront utilisés dans tout le cours d'analyse.
+
+\begin{retenirbox}
+L'analyse commence avec deux idées simples mais profondes :
+\begin{itemize}
+    \item comparer des nombres ;
+    \item contrôler des quantités par des majorations et des minorations.
+\end{itemize}
+\end{retenirbox}
+
+Les objectifs du chapitre sont :
+\begin{itemize}
+    \item connaître les ensembles usuels de nombres ;
+    \item manipuler rigoureusement l'ordre sur \(\R\) ;
+    \item comprendre les intervalles ;
+    \item maîtriser la valeur absolue ;
+    \item définir majorant, minorant, maximum, minimum ;
+    \item comprendre la borne supérieure et la borne inférieure ;
+    \item utiliser les quantificateurs en analyse ;
+    \item savoir démontrer des inégalités ;
+    \item apprendre les méthodes de majoration et de minoration.
+\end{itemize}
+
+%=========================================================
+\section{Ensembles de nombres}
+
+\subsection{Les ensembles usuels}
+
+\begin{definitionbox}[Ensembles de nombres]
+On utilise les notations suivantes :
+\[
+\N=\{0,1,2,3,\dots\}
+\]
+ensemble des entiers naturels ;
+\[
+\Z=\{\dots,-2,-1,0,1,2,\dots\}
+\]
+ensemble des entiers relatifs ;
+\[
+\Q=\left\{\frac pq : p\in\Z,\ q\in\N^*\right\}
+\]
+ensemble des nombres rationnels ;
+\[
+\R
+\]
+ensemble des nombres réels ;
+\[
+\C
+\]
+ensemble des nombres complexes.
+\]
+\end{definitionbox}
+
+On a les inclusions :
+\[
+\N\subset\Z\subset\Q\subset\R\subset\C.
+\]
+
+\begin{retenirbox}
+Les rationnels sont les nombres qui peuvent s'écrire comme quotient de deux entiers :
+\[
+\frac pq,\qquad p\in\Z,\quad q\in\N^*.
+\]
+Les réels contiennent aussi des nombres irrationnels, par exemple :
+\[
+\sqrt2,\quad \pi,\quad e.
+\]
+\end{retenirbox}
+
+\subsection{Nombres décimaux}
+
+\begin{definitionbox}[Nombre décimal]
+Un nombre réel \(x\) est décimal s'il existe \(a\in\Z\) et \(n\in\N\) tels que :
+\[
+x=\frac{a}{10^n}.
+\]
+L'ensemble des nombres décimaux est noté \(\D\).
+\end{definitionbox}
+
+On a :
+\[
+\Z\subset\D\subset\Q\subset\R.
+\]
+
+\begin{exercicebox}[Ensembles de nombres]
+Dire à quel plus petit ensemble parmi \(\N,\Z,\D,\Q,\R\) appartient chacun des nombres suivants :
+\[
+3,\qquad -4,\qquad 0,25,\qquad \frac{7}{3},\qquad \sqrt2.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On a :
+\[
+3\in\N.
+\]
+Le nombre \(-4\) est un entier relatif mais pas un entier naturel :
+\[
+-4\in\Z.
+\]
+Le nombre :
+\[
+0,25=\frac{25}{100}=\frac14
+\]
+est décimal :
+\[
+0,25\in\D.
+\]
+Le nombre :
+\[
+\frac73
+\]
+est rationnel mais pas décimal :
+\[
+\frac73\in\Q.
+\]
+Enfin :
+\[
+\sqrt2
+\]
+est irrationnel, donc :
+\[
+\sqrt2\in\R.
+\]
+\end{correctionbox}
+
+%=========================================================
+\section{Ordre sur \(\R\)}
+
+\subsection{Relation d'ordre}
+
+\begin{definitionbox}[Ordre naturel sur \(\R\)]
+Sur \(\R\), on dispose d'une relation d'ordre notée :
+\[
+\leq.
+\]
+Pour \(x,y\in\R\), l'écriture :
+\[
+x\leq y
+\]
+signifie que \(x\) est inférieur ou égal à \(y\).
+\end{definitionbox}
+
+Cette relation vérifie trois propriétés fondamentales.
+
+\begin{theorembox}[Propriétés de l'ordre]
+Pour tous \(x,y,z\in\R\) :
+\begin{enumerate}
+    \item réflexivité :
+    \[
+    x\leq x ;
+    \]
+    \item antisymétrie :
+    \[
+    x\leq y\ \text{et}\ y\leq x \implique x=y ;
+    \]
+    \item transitivité :
+    \[
+    x\leq y\ \text{et}\ y\leq z \implique x\leq z.
+    \]
+\end{enumerate}
+\end{theorembox}
+
+\subsection{Compatibilité avec les opérations}
+
+\begin{theorembox}[Addition]
+Pour tous \(x,y,z\in\R\),
+\[
+x\leq y \implique x+z\leq y+z.
+\]
+\end{theorembox}
+
+\begin{proof}
+Ajouter le même réel aux deux membres d'une inégalité conserve l'ordre.  
+En effet :
+\[
+x\leq y
+\]
+équivaut à :
+\[
+y-x\geq0.
+\]
+Or :
+\[
+(y+z)-(x+z)=y-x\geq0.
+\]
+Donc :
+\[
+x+z\leq y+z.
+\]
+\end{proof}
+
+\begin{theorembox}[Multiplication par un réel positif ou négatif]
+Soient \(x,y\in\R\).
+\begin{enumerate}
+    \item Si \(a\geq0\), alors :
+    \[
+    x\leq y \implique ax\leq ay.
+    \]
+    \item Si \(a\leq0\), alors :
+    \[
+    x\leq y \implique ax\geq ay.
+    \]
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+Supposons \(x\leq y\). Alors :
+\[
+y-x\geq0.
+\]
+
+Si \(a\geq0\), alors :
+\[
+a(y-x)\geq0.
+\]
+Donc :
+\[
+ay-ax\geq0,
+\]
+c'est-à-dire :
+\[
+ax\leq ay.
+\]
+
+Si \(a\leq0\), alors :
+\[
+a(y-x)\leq0.
+\]
+Donc :
+\[
+ay-ax\leq0.
+\]
+Ainsi :
+\[
+ay\leq ax,
+\]
+c'est-à-dire :
+\[
+ax\geq ay.
+\]
+\end{proof}
+
+\begin{erreurbox}
+Quand on multiplie une inégalité par un nombre négatif, le sens de l'inégalité change :
+\[
+x\leq y,\quad a<0
+\quad\implique\quad
+ax\geq ay.
+\]
+\end{erreurbox}
+
+\subsection{Passage au carré}
+
+\begin{theorembox}
+Pour tous \(x,y\in\R_+\),
+\[
+x\leq y \ssi x^2\leq y^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+Si :
+\[
+0\leq x\leq y,
+\]
+alors :
+\[
+y^2-x^2=(y-x)(y+x).
+\]
+Or :
+\[
+y-x\geq0
+\]
+et :
+\[
+y+x\geq0.
+\]
+Donc :
+\[
+y^2-x^2\geq0,
+\]
+ce qui donne :
+\[
+x^2\leq y^2.
+\]
+
+Réciproquement, si :
+\[
+x^2\leq y^2
+\]
+avec \(x,y\geq0\), alors :
+\[
+y^2-x^2\geq0,
+\]
+donc :
+\[
+(y-x)(y+x)\geq0.
+\]
+Comme :
+\[
+y+x\geq0,
+\]
+et même \(y+x>0\) sauf si \(x=y=0\), on obtient :
+\[
+y-x\geq0.
+\]
+Donc :
+\[
+x\leq y.
+\]
+\end{proof}
+
+\begin{erreurbox}
+L'implication :
+\[
+x\leq y \implique x^2\leq y^2
+\]
+est fausse si \(x\) et \(y\) ne sont pas positifs.  
+Exemple :
+\[
+-3\leq 2,
+\]
+mais :
+\[
+(-3)^2=9>4=2^2.
+\]
+\end{erreurbox}
+
+%=========================================================
+\section{Intervalles de \(\R\)}
+
+\subsection{Définition intuitive}
+
+Un intervalle est une partie de \(\R\) sans trou.
+
+\begin{definitionbox}[Intervalle]
+Une partie \(I\subset\R\) est un intervalle si :
+\[
+\forall x,y\in I,\quad \forall t\in\R,\quad
+x\leq t\leq y \implique t\in I.
+\]
+Autrement dit, dès que deux points appartiennent à \(I\), tous les réels situés entre eux appartiennent aussi à \(I\).
+\end{definitionbox}
+
+\subsection{Intervalles bornés}
+
+Soient \(a,b\in\R\) avec \(a<b\). On définit :
+
+\[
+[a,b]=\{x\in\R:\ a\leq x\leq b\}
+\]
+intervalle fermé ;
+
+\[
+]a,b[=\{x\in\R:\ a<x<b\}
+\]
+intervalle ouvert ;
+
+\[
+[a,b[=\{x\in\R:\ a\leq x<b\},
+\qquad
+]a,b]=\{x\in\R:\ a<x\leq b\}
+\]
+intervalles semi-ouverts ou semi-fermés.
+
+\subsection{Intervalles non bornés}
+
+On définit aussi :
+\[
+[a,+\infty[=\{x\in\R:\ x\geq a\},
+\]
+\[
+]a,+\infty[=\{x\in\R:\ x>a\},
+\]
+\[
+]-\infty,a]=\{x\in\R:\ x\leq a\},
+\]
+\[
+]-\infty,a[=\{x\in\R:\ x<a\}.
+\]
+
+\begin{retenirbox}
+Les symboles \(+\infty\) et \(-\infty\) ne sont pas des nombres réels.  
+On ne doit pas écrire :
+\[
++\infty\in\R.
+\]
+\end{retenirbox}
+
+\begin{exercicebox}[Intervalles]
+Écrire sous forme d'inégalités les ensembles suivants :
+\[
+[-2,5[,\qquad ]-\infty,3],\qquad ]1,+\infty[.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On a :
+\[
+[-2,5[=\{x\in\R:\ -2\leq x<5\}.
+\]
+Ensuite :
+\[
+]-\infty,3]=\{x\in\R:\ x\leq3\}.
+\]
+Enfin :
+\[
+]1,+\infty[=\{x\in\R:\ x>1\}.
+\]
+\end{correctionbox}
+
+%=========================================================
+\section{Valeur absolue}
+
+\subsection{Définition}
+
+\begin{definitionbox}[Valeur absolue]
+Pour \(x\in\R\), la valeur absolue de \(x\) est définie par :
+\[
+\abs{x}=
+\begin{cases}
+x & \text{si } x\geq0,\\
+-x & \text{si } x<0.
+\end{cases}
+\]
+\end{definitionbox}
+
+\begin{retenirbox}
+La valeur absolue mesure la distance à \(0\) :
+\[
+\abs{x}=\text{distance entre }x\text{ et }0.
+\]
+Plus généralement :
+\[
+\abs{x-y}
+\]
+est la distance entre \(x\) et \(y\).
+\end{retenirbox}
+
+\subsection{Propriétés fondamentales}
+
+\begin{theorembox}[Propriétés de la valeur absolue]
+Pour tous \(x,y\in\R\) :
+\begin{enumerate}
+    \item \(\abs{x}\geq0\) ;
+    \item \(\abs{x}=0 \ssi x=0\) ;
+    \item \(\abs{-x}=\abs{x}\) ;
+    \item \(\abs{xy}=\abs{x}\abs{y}\) ;
+    \item si \(y\neq0\), alors :
+    \[
+    \abs{\frac xy}=\frac{\abs{x}}{\abs{y}}.
+    \]
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+Les trois premières propriétés découlent immédiatement de la définition.
+
+Pour le produit, on raisonne selon les signes de \(x\) et \(y\).  
+Si \(xy\geq0\), alors \(x\) et \(y\) ont même signe, et on vérifie que :
+\[
+\abs{xy}=\abs{x}\abs{y}.
+\]
+Si \(xy<0\), alors \(x\) et \(y\) ont des signes opposés, et la même égalité se vérifie.
+
+La propriété du quotient se déduit du produit en écrivant :
+\[
+x=\frac xy\cdot y.
+\]
+Donc :
+\[
+\abs{x}=\abs{\frac xy}\abs{y}.
+\]
+Comme \(y\neq0\), on a \(\abs{y}>0\), donc :
+\[
+\abs{\frac xy}=\frac{\abs{x}}{\abs{y}}.
+\]
+\end{proof}
+
+\subsection{Valeur absolue et inégalités}
+
+\begin{theorembox}
+Pour tous \(x\in\R\) et \(a\geq0\),
+\[
+\abs{x}\leq a \ssi -a\leq x\leq a.
+\]
+\end{theorembox}
+
+\begin{proof}
+Supposons :
+\[
+\abs{x}\leq a.
+\]
+Comme :
+\[
+-\abs{x}\leq x\leq \abs{x},
+\]
+on obtient :
+\[
+-a\leq x\leq a.
+\]
+
+Réciproquement, supposons :
+\[
+-a\leq x\leq a.
+\]
+Si \(x\geq0\), alors :
+\[
+\abs{x}=x\leq a.
+\]
+Si \(x<0\), alors :
+\[
+-a\leq x
+\]
+donc :
+\[
+-x\leq a.
+\]
+Or :
+\[
+\abs{x}=-x.
+\]
+Donc :
+\[
+\abs{x}\leq a.
+\]
+\end{proof}
+
+\begin{theorembox}
+Pour tous \(x\in\R\) et \(a\geq0\),
+\[
+\abs{x}\geq a \ssi x\leq -a\ \text{ou}\ x\geq a.
+\]
+\end{theorembox}
+
+\begin{methodbox}[Résoudre une inéquation avec valeur absolue]
+Pour résoudre :
+\[
+\abs{u(x)}\leq a,
+\quad a\geq0,
+\]
+on écrit :
+\[
+-a\leq u(x)\leq a.
+\]
+
+Pour résoudre :
+\[
+\abs{u(x)}\geq a,
+\quad a\geq0,
+\]
+on écrit :
+\[
+u(x)\leq -a
+\quad\text{ou}\quad
+u(x)\geq a.
+\]
+\end{methodbox}
+
+\begin{exercicebox}[Valeur absolue]
+Résoudre dans \(\R\) :
+\[
+\abs{2x-1}\leq 3.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On écrit :
+\[
+\abs{2x-1}\leq3
+\ssi
+-3\leq2x-1\leq3.
+\]
+On ajoute \(1\) :
+\[
+-2\leq2x\leq4.
+\]
+On divise par \(2>0\) :
+\[
+-1\leq x\leq2.
+\]
+Donc l'ensemble des solutions est :
+\[
+[-1,2].
+\]
+\end{correctionbox}
+
+\subsection{Inégalité triangulaire}
+
+\begin{theorembox}[Inégalité triangulaire]
+Pour tous \(x,y\in\R\),
+\[
+\abs{x+y}\leq\abs{x}+\abs{y}.
+\]
+\end{theorembox}
+
+\begin{proof}
+On sait que :
+\[
+-\abs{x}\leq x\leq \abs{x},
+\]
+et :
+\[
+-\abs{y}\leq y\leq \abs{y}.
+\]
+En additionnant ces deux encadrements :
+\[
+-(\abs{x}+\abs{y})\leq x+y\leq \abs{x}+\abs{y}.
+\]
+Donc :
+\[
+\abs{x+y}\leq \abs{x}+\abs{y}.
+\]
+\end{proof}
+
+\begin{corollaire}[Inégalité triangulaire renversée]
+Pour tous \(x,y\in\R\),
+\[
+\bigl|\abs{x}-\abs{y}\bigr|\leq \abs{x-y}.
+\]
+\end{corollaire}
+
+\begin{proof}
+On écrit :
+\[
+x=x-y+y.
+\]
+Par inégalité triangulaire :
+\[
+\abs{x}\leq \abs{x-y}+\abs{y}.
+\]
+Donc :
+\[
+\abs{x}-\abs{y}\leq \abs{x-y}.
+\]
+En échangeant les rôles de \(x\) et \(y\), on obtient :
+\[
+\abs{y}-\abs{x}\leq \abs{x-y}.
+\]
+Ainsi :
+\[
+-\abs{x-y}\leq \abs{x}-\abs{y}\leq \abs{x-y}.
+\]
+Donc :
+\[
+\bigl|\abs{x}-\abs{y}\bigr|\leq \abs{x-y}.
+\]
+\end{proof}
+
+%=========================================================
+\section{Majorants, minorants, maximum et minimum}
+
+\subsection{Majorant et minorant}
+
+\begin{definitionbox}[Majorant]
+Soit \(A\subset\R\).  
+Un réel \(M\) est un majorant de \(A\) si :
+\[
+\forall x\in A,\qquad x\leq M.
+\]
+On dit alors que \(A\) est majorée.
+\end{definitionbox}
+
+\begin{definitionbox}[Minorant]
+Soit \(A\subset\R\).  
+Un réel \(m\) est un minorant de \(A\) si :
+\[
+\forall x\in A,\qquad m\leq x.
+\]
+On dit alors que \(A\) est minorée.
+\end{definitionbox}
+
+\begin{definitionbox}[Partie bornée]
+Une partie \(A\subset\R\) est bornée si elle est à la fois majorée et minorée.
+\end{definitionbox}
+
+\begin{retenirbox}
+Dire que \(A\) est bornée signifie qu'il existe \(M\geq0\) tel que :
+\[
+\forall x\in A,\qquad \abs{x}\leq M.
+\]
+\end{retenirbox}
+
+\begin{proof}
+Supposons \(A\) bornée.  
+Il existe \(m,M\in\R\) tels que :
+\[
+\forall x\in A,\qquad m\leq x\leq M.
+\]
+Posons :
+\[
+R=\max(\abs{m},\abs{M}).
+\]
+Alors :
+\[
+\forall x\in A,\qquad \abs{x}\leq R.
+\]
+
+Réciproquement, s'il existe \(R\geq0\) tel que :
+\[
+\forall x\in A,\qquad \abs{x}\leq R,
+\]
+alors :
+\[
+-R\leq x\leq R.
+\]
+Donc \(A\) est minorée par \(-R\) et majorée par \(R\).
+\end{proof}
+
+\subsection{Maximum et minimum}
+
+\begin{definitionbox}[Maximum]
+Soit \(A\subset\R\).  
+Un réel \(M\) est le maximum de \(A\) si :
+\[
+M\in A
+\]
+et :
+\[
+\forall x\in A,\qquad x\leq M.
+\]
+On note alors :
+\[
+M=\max A.
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Minimum]
+Soit \(A\subset\R\).  
+Un réel \(m\) est le minimum de \(A\) si :
+\[
+m\in A
+\]
+et :
+\[
+\forall x\in A,\qquad m\leq x.
+\]
+On note alors :
+\[
+m=\min A.
+\]
+\end{definitionbox}
+
+\begin{erreurbox}
+Un majorant n'appartient pas forcément à l'ensemble.  
+Un maximum est un majorant qui appartient à l'ensemble.
+\end{erreurbox}
+
+\begin{exercicebox}[Majorants et maximum]
+On considère :
+\[
+A=]0,1[.
+\]
+\begin{enumerate}
+    \item Donner un majorant de \(A\).
+    \item Donner un minorant de \(A\).
+    \item \(A\) admet-il un maximum ?
+    \item \(A\) admet-il un minimum ?
+\end{enumerate}
+\end{exercicebox}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item Le réel \(1\) est un majorant de \(A\), car :
+    \[
+    \forall x\in]0,1[,\quad x\leq1.
+    \]
+    \item Le réel \(0\) est un minorant de \(A\), car :
+    \[
+    \forall x\in]0,1[,\quad 0\leq x.
+    \]
+    \item L'ensemble \(A\) n'a pas de maximum. En effet, \(1\) est un majorant, mais :
+    \[
+    1\notin A.
+    \]
+    De plus, pour tout \(x\in A\), le réel :
+    \[
+    \frac{x+1}{2}
+    \]
+    appartient encore à \(A\) et est strictement supérieur à \(x\). Aucun élément de \(A\) n'est donc maximal.
+    \item De même, \(A\) n'a pas de minimum.
+\end{enumerate}
+\end{correctionbox}
+
+%=========================================================
+\section{Borne supérieure et borne inférieure}
+
+\subsection{Borne supérieure}
+
+\begin{definitionbox}[Borne supérieure]
+Soit \(A\subset\R\) une partie non vide et majorée.  
+Un réel \(s\) est la borne supérieure de \(A\) si :
+\begin{enumerate}
+    \item \(s\) est un majorant de \(A\) ;
+    \item \(s\) est le plus petit des majorants de \(A\).
+\end{enumerate}
+On note :
+\[
+s=\sup A.
+\]
+\end{definitionbox}
+
+Autrement dit :
+\[
+s=\sup A
+\]
+si :
+\[
+\forall x\in A,\quad x\leq s,
+\]
+et :
+\[
+\forall M\in\R,\quad
+\left(\forall x\in A,\ x\leq M\right)\implique s\leq M.
+\]
+
+\begin{definitionbox}[Borne inférieure]
+Soit \(A\subset\R\) une partie non vide et minorée.  
+Un réel \(i\) est la borne inférieure de \(A\) si :
+\begin{enumerate}
+    \item \(i\) est un minorant de \(A\) ;
+    \item \(i\) est le plus grand des minorants de \(A\).
+\end{enumerate}
+On note :
+\[
+i=\inf A.
+\]
+\end{definitionbox}
+
+\subsection{Propriété fondamentale de \(\R\)}
+
+\begin{theorembox}[Propriété de la borne supérieure]
+Toute partie non vide et majorée de \(\R\) admet une borne supérieure dans \(\R\).
+\end{theorembox}
+
+\begin{retenirbox}
+La propriété de la borne supérieure est une propriété fondamentale des nombres réels.  
+Elle distingue \(\R\) de \(\Q\).
+\end{retenirbox}
+
+\begin{theorembox}[Propriété de la borne inférieure]
+Toute partie non vide et minorée de \(\R\) admet une borne inférieure dans \(\R\).
+\end{theorembox}
+
+\begin{proof}
+Soit \(A\subset\R\) non vide et minorée.  
+Considérons :
+\[
+B=-A=\{-x:\ x\in A\}.
+\]
+Comme \(A\) est minorée, \(B\) est majorée.  
+Comme \(A\) est non vide, \(B\) est non vide.  
+Par propriété de la borne supérieure, \(B\) admet une borne supérieure :
+\[
+s=\sup B.
+\]
+On montre alors que :
+\[
+-\sup B
+\]
+est la borne inférieure de \(A\).  
+Donc :
+\[
+\inf A=-\sup(-A).
+\]
+\end{proof}
+
+\subsection{Caractérisation pratique de la borne supérieure}
+
+\begin{theorembox}[Caractérisation par \(\varepsilon\)]
+Soit \(A\subset\R\) non vide et majorée, et soit \(s\in\R\).  
+Alors :
+\[
+s=\sup A
+\]
+si et seulement si :
+\begin{enumerate}
+    \item \(\forall x\in A,\ x\leq s\) ;
+    \item \(\forall \varepsilon>0,\ \exists x_\varepsilon\in A,\ s-\varepsilon<x_\varepsilon\leq s.\)
+\end{enumerate}
+\end{theorembox}
+
+\begin{proof}
+Supposons :
+\[
+s=\sup A.
+\]
+Alors \(s\) est un majorant de \(A\), donc :
+\[
+\forall x\in A,\quad x\leq s.
+\]
+Soit \(\varepsilon>0\).  
+Le réel :
+\[
+s-\varepsilon
+\]
+est strictement inférieur à \(s\).  
+Comme \(s\) est le plus petit majorant de \(A\), le réel \(s-\varepsilon\) n'est pas un majorant de \(A\).  
+Il existe donc \(x_\varepsilon\in A\) tel que :
+\[
+x_\varepsilon>s-\varepsilon.
+\]
+Comme \(s\) est un majorant :
+\[
+x_\varepsilon\leq s.
+\]
+Donc :
+\[
+s-\varepsilon<x_\varepsilon\leq s.
+\]
+
+Réciproquement, supposons les deux propriétés vraies.  
+La première dit que \(s\) est un majorant de \(A\).  
+Montrons que c'est le plus petit.  
+Soit \(M<s\).  
+Posons :
+\[
+\varepsilon=s-M>0.
+\]
+Par la deuxième propriété, il existe \(x_\varepsilon\in A\) tel que :
+\[
+s-\varepsilon<x_\varepsilon.
+\]
+Mais :
+\[
+s-\varepsilon=s-(s-M)=M.
+\]
+Donc :
+\[
+M<x_\varepsilon.
+\]
+Ainsi \(M\) n'est pas un majorant de \(A\).  
+Tout réel strictement inférieur à \(s\) n'est pas majorant.  
+Donc \(s\) est le plus petit majorant :
+\[
+s=\sup A.
+\]
+\end{proof}
+
+\begin{methodbox}[Montrer que \(s=\sup A\)]
+Pour démontrer que :
+\[
+s=\sup A,
+\]
+on montre deux choses :
+\begin{enumerate}
+    \item \(s\) majore \(A\) :
+    \[
+    \forall x\in A,\quad x\leq s ;
+    \]
+    \item on peut approcher \(s\) par des éléments de \(A\) :
+    \[
+    \forall \varepsilon>0,\quad \exists x\in A,\quad s-\varepsilon<x\leq s.
+    \]
+\end{enumerate}
+\end{methodbox}
+
+\begin{exercicebox}[Borne supérieure]
+Montrer que :
+\[
+\sup ]0,1[=1.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+Posons :
+\[
+A=]0,1[.
+\]
+
+D'abord, \(1\) est un majorant de \(A\), car :
+\[
+\forall x\in A,\quad x<1\leq1.
+\]
+
+Montrons maintenant que \(1\) est le plus petit majorant.  
+Soit \(\varepsilon>0\).  
+On cherche \(x_\varepsilon\in]0,1[\) tel que :
+\[
+1-\varepsilon<x_\varepsilon<1.
+\]
+On peut prendre par exemple :
+\[
+x_\varepsilon=1-\frac{\varepsilon}{2}
+\]
+si \(0<\varepsilon<2\).  
+Si \(\varepsilon\geq2\), on peut prendre :
+\[
+x_\varepsilon=\frac12.
+\]
+Dans tous les cas, il existe un élément de \(A\) strictement supérieur à \(1-\varepsilon\).  
+Donc :
+\[
+\sup A=1.
+\]
+\end{correctionbox}
+
+\subsection{Lien entre maximum et borne supérieure}
+
+\begin{theorembox}
+Si une partie \(A\subset\R\) admet un maximum, alors :
+\[
+\sup A=\max A.
+\]
+\end{theorembox}
+
+\begin{proof}
+Soit :
+\[
+M=\max A.
+\]
+Alors \(M\in A\) et :
+\[
+\forall x\in A,\quad x\leq M.
+\]
+Donc \(M\) est un majorant de \(A\).
+
+Soit \(N\) un autre majorant de \(A\).  
+Comme \(M\in A\), on a :
+\[
+M\leq N.
+\]
+Donc \(M\) est le plus petit majorant de \(A\).  
+Ainsi :
+\[
+M=\sup A.
+\]
+\end{proof}
+
+\begin{erreurbox}
+La réciproque est fausse.  
+Une partie peut avoir une borne supérieure sans avoir de maximum.  
+Exemple :
+\[
+]0,1[
+\]
+admet \(1\) pour borne supérieure, mais n'a pas de maximum.
+\end{erreurbox}
+
+%=========================================================
+\section{Quantificateurs utiles en analyse}
+
+\subsection{Les quantificateurs}
+
+\begin{definitionbox}[Quantificateurs]
+Le symbole :
+\[
+\forall
+\]
+signifie « pour tout ».
+
+Le symbole :
+\[
+\exists
+\]
+signifie « il existe ».
+\end{definitionbox}
+
+Exemples :
+\[
+\forall x\in\R,\quad x^2\geq0.
+\]
+Cette phrase signifie : pour tout réel \(x\), le réel \(x^2\) est positif ou nul.
+
+\[
+\exists x\in\R,\quad x^2=2.
+\]
+Cette phrase signifie : il existe au moins un réel \(x\) tel que \(x^2=2\).
+
+\subsection{Ordre des quantificateurs}
+
+L'ordre des quantificateurs est essentiel.
+
+Comparer :
+\[
+\forall x\in\R,\quad \exists M\in\R,\quad x\leq M,
+\]
+et :
+\[
+\exists M\in\R,\quad \forall x\in\R,\quad x\leq M.
+\]
+
+La première phrase est vraie : pour chaque réel \(x\), on peut prendre \(M=x\).  
+La deuxième est fausse : il n'existe pas de réel qui majore tous les réels.
+
+\begin{erreurbox}
+Changer l'ordre des quantificateurs change le sens de l'énoncé.
+\[
+\forall x,\exists y
+\]
+ne signifie pas la même chose que :
+\[
+\exists y,\forall x.
+\]
+\end{erreurbox}
+
+\subsection{Négation des quantificateurs}
+
+\begin{theorembox}[Négation]
+On a :
+\[
+\neg(\forall x,\ P(x))
+\ssi
+\exists x,\ \neg P(x).
+\]
+Et :
+\[
+\neg(\exists x,\ P(x))
+\ssi
+\forall x,\ \neg P(x).
+\]
+\end{theorembox}
+
+\begin{exercicebox}[Négation]
+Donner la négation de :
+\[
+\forall x\in\R,\quad x^2\geq1.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+La négation de :
+\[
+\forall x\in\R,\quad x^2\geq1
+\]
+est :
+\[
+\exists x\in\R,\quad x^2<1.
+\]
+Cette négation est vraie, par exemple avec :
+\[
+x=0.
+\]
+\end{correctionbox}
+
+\subsection{Quantificateurs et majoration}
+
+Dire que \(A\subset\R\) est majorée signifie :
+\[
+\exists M\in\R,\quad \forall x\in A,\quad x\leq M.
+\]
+
+Dire que \(A\) n'est pas majorée signifie :
+\[
+\forall M\in\R,\quad \exists x\in A,\quad x>M.
+\]
+
+\begin{retenirbox}
+La négation de « \(A\) est majorée » n'est pas « tous les éléments de \(A\) sont grands ».  
+C'est :
+\[
+\forall M\in\R,\quad \exists x\in A,\quad x>M.
+\]
+\end{retenirbox}
+
+%=========================================================
+\section{Inégalités classiques}
+
+\subsection{Inégalités élémentaires}
+
+\begin{theorembox}
+Pour tout \(x\in\R\),
+\[
+x^2\geq0.
+\]
+\end{theorembox}
+
+\begin{proof}
+Si \(x\geq0\), alors :
+\[
+x^2=x\cdot x\geq0.
+\]
+Si \(x<0\), alors \(-x>0\), et :
+\[
+x^2=(-x)^2\geq0.
+\]
+\end{proof}
+
+\begin{theorembox}
+Pour tous \(x,y\in\R\),
+\[
+2xy\leq x^2+y^2.
+\]
+\end{theorembox}
+
+\begin{proof}
+On part d'un carré :
+\[
+(x-y)^2\geq0.
+\]
+En développant :
+\[
+x^2-2xy+y^2\geq0.
+\]
+Donc :
+\[
+2xy\leq x^2+y^2.
+\]
+\end{proof}
+
+\begin{corollaire}
+Pour tous \(x,y\in\R\),
+\[
+\abs{xy}\leq \frac{x^2+y^2}{2}.
+\]
+\end{corollaire}
+
+\begin{proof}
+On applique l'inégalité précédente à \(\abs{x}\) et \(\abs{y}\) :
+\[
+2\abs{x}\abs{y}\leq \abs{x}^2+\abs{y}^2.
+\]
+Donc :
+\[
+2\abs{xy}\leq x^2+y^2.
+\]
+\end{proof}
+
+\subsection{Inégalité arithmético-géométrique}
+
+\begin{theorembox}[Inégalité arithmético-géométrique à deux termes]
+Pour tous \(a,b\geq0\),
+\[
+\sqrt{ab}\leq \frac{a+b}{2}.
+\]
+\end{theorembox}
+
+\begin{proof}
+Comme \(a,b\geq0\), les réels \(\sqrt a\) et \(\sqrt b\) sont bien définis.  
+On utilise :
+\[
+(\sqrt a-\sqrt b)^2\geq0.
+\]
+En développant :
+\[
+a-2\sqrt{ab}+b\geq0.
+\]
+Donc :
+\[
+2\sqrt{ab}\leq a+b.
+\]
+Ainsi :
+\[
+\sqrt{ab}\leq \frac{a+b}{2}.
+\]
+\end{proof}
+
+\subsection{Inégalité de Bernoulli}
+
+\begin{theorembox}[Inégalité de Bernoulli]
+Pour tout \(x\geq -1\) et tout \(n\in\N\),
+\[
+(1+x)^n\geq 1+nx.
+\]
+\end{theorembox}
+
+\begin{proof}
+On raisonne par récurrence sur \(n\).
+
+Pour \(n=0\), on a :
+\[
+(1+x)^0=1
+\]
+et :
+\[
+1+0x=1.
+\]
+La propriété est vraie.
+
+Supposons la propriété vraie pour un certain \(n\in\N\) :
+\[
+(1+x)^n\geq1+nx.
+\]
+Comme \(x\geq-1\), on a :
+\[
+1+x\geq0.
+\]
+En multipliant par \(1+x\), on obtient :
+\[
+(1+x)^{n+1}\geq (1+nx)(1+x).
+\]
+Or :
+\[
+(1+nx)(1+x)=1+(n+1)x+nx^2.
+\]
+Comme :
+\[
+nx^2\geq0,
+\]
+on obtient :
+\[
+(1+x)^{n+1}\geq1+(n+1)x.
+\]
+La propriété est donc héréditaire.  
+Par récurrence, elle est vraie pour tout \(n\in\N\).
+\end{proof}
+
+\begin{methodbox}[Démontrer une inégalité]
+Pour démontrer une inégalité, on peut :
+\begin{enumerate}
+    \item partir d'un carré positif ;
+    \item factoriser la différence des deux membres ;
+    \item utiliser une inégalité déjà connue ;
+    \item étudier le signe d'une fonction ;
+    \item procéder par encadrement ;
+    \item utiliser une récurrence si un entier \(n\) intervient.
+\end{enumerate}
+\end{methodbox}
+
+%=========================================================
+\section{Méthodes de majoration et de minoration}
+
+\subsection{Majorations simples}
+
+\begin{methodbox}[Majorer une expression]
+Pour majorer une expression, on cherche à la remplacer par une quantité plus grande mais plus simple.
+
+Exemples de réflexes :
+\[
+\abs{x+y}\leq \abs{x}+\abs{y},
+\]
+\[
+2\abs{xy}\leq x^2+y^2,
+\]
+\[
+\abs{\sin x}\leq1,
+\qquad
+\abs{\cos x}\leq1.
+\]
+\end{methodbox}
+
+\begin{exercicebox}[Majoration]
+Montrer que pour tous \(x,y\in\R\),
+\[
+\abs{x+y}^2\leq2x^2+2y^2.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On utilise l'inégalité triangulaire :
+\[
+\abs{x+y}\leq\abs{x}+\abs{y}.
+\]
+Donc :
+\[
+\abs{x+y}^2\leq(\abs{x}+\abs{y})^2.
+\]
+On développe :
+\[
+(\abs{x}+\abs{y})^2=x^2+2\abs{xy}+y^2.
+\]
+Or :
+\[
+2\abs{xy}\leq x^2+y^2.
+\]
+Donc :
+\[
+x^2+2\abs{xy}+y^2\leq2x^2+2y^2.
+\]
+Ainsi :
+\[
+\abs{x+y}^2\leq2x^2+2y^2.
+\]
+\end{correctionbox}
+
+\subsection{Encadrement}
+
+\begin{methodbox}[Encadrer une expression]
+Pour encadrer une expression \(f(x)\), on cherche deux expressions simples \(m(x)\) et \(M(x)\) telles que :
+\[
+m(x)\leq f(x)\leq M(x).
+\]
+Cette méthode est fondamentale pour les limites, les suites et les intégrales.
+\end{methodbox}
+
+\begin{exercicebox}[Encadrement]
+Montrer que pour tout \(x\in\R\),
+\[
+-\abs{x}\leq x\leq \abs{x}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+Si \(x\geq0\), alors :
+\[
+\abs{x}=x.
+\]
+Donc :
+\[
+-\abs{x}=-x\leq x=\abs{x}.
+\]
+
+Si \(x<0\), alors :
+\[
+\abs{x}=-x.
+\]
+Donc :
+\[
+-\abs{x}=x\leq x\leq -x=\abs{x}.
+\]
+Dans tous les cas :
+\[
+-\abs{x}\leq x\leq \abs{x}.
+\]
+\end{correctionbox}
+
+\subsection{Minoration}
+
+\begin{methodbox}[Minorer une expression]
+Pour minorer une expression, on peut :
+\begin{enumerate}
+    \item utiliser la positivité d'un carré ;
+    \item supprimer des termes positifs ;
+    \item factoriser ;
+    \item utiliser une borne inférieure ;
+    \item utiliser une inégalité classique.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exercicebox}[Minoration]
+Montrer que pour tout \(x\in\R\),
+\[
+x^2-4x+7\geq3.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On met sous forme canonique :
+\[
+x^2-4x+7=(x-2)^2+3.
+\]
+Or :
+\[
+(x-2)^2\geq0.
+\]
+Donc :
+\[
+(x-2)^2+3\geq3.
+\]
+Ainsi :
+\[
+x^2-4x+7\geq3.
+\]
+\end{correctionbox}
+
+%=========================================================
+\newpage
+\section{Exercices progressifs avec corrigés}
+
+\subsection*{Exercice 1 — Ensembles de nombres}
+
+\begin{exercicebox}
+Classer les nombres suivants dans le plus petit ensemble parmi \(\N,\Z,\D,\Q,\R\) :
+\[
+5,\quad -8,\quad 0,125,\quad \frac{11}{6},\quad \sqrt3.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+\[
+5\in\N.
+\]
+\[
+-8\in\Z.
+\]
+\[
+0,125=\frac{125}{1000}=\frac18\in\D.
+\]
+\[
+\frac{11}{6}\in\Q.
+\]
+\[
+\sqrt3\in\R\setminus\Q.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 2 — Intervalles}
+
+\begin{exercicebox}
+Écrire sous forme d'intervalle l'ensemble :
+\[
+\{x\in\R:\ -3\leq 2x+1<5\}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On résout :
+\[
+-3\leq2x+1<5.
+\]
+On soustrait \(1\) :
+\[
+-4\leq2x<4.
+\]
+On divise par \(2\) :
+\[
+-2\leq x<2.
+\]
+Donc l'ensemble est :
+\[
+[-2,2[.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 3 — Valeur absolue}
+
+\begin{exercicebox}
+Résoudre :
+\[
+\abs{x-4}<2.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On écrit :
+\[
+\abs{x-4}<2
+\ssi
+-2<x-4<2.
+\]
+On ajoute \(4\) :
+\[
+2<x<6.
+\]
+Donc l'ensemble des solutions est :
+\[
+]2,6[.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 4 — Majorants et bornes}
+
+\begin{exercicebox}
+Soit :
+\[
+A=\left\{1-\frac1n:\ n\in\N^*\right\}.
+\]
+Déterminer \(\inf A\), \(\sup A\), et dire si \(A\) admet un minimum ou un maximum.
+\end{exercicebox}
+
+\begin{correctionbox}
+Les premiers termes sont :
+\[
+0,\quad \frac12,\quad \frac23,\quad \frac34,\dots
+\]
+On a :
+\[
+1-\frac1n<1
+\]
+pour tout \(n\in\N^*\).  
+Donc \(1\) est un majorant de \(A\).
+
+Montrons que :
+\[
+\sup A=1.
+\]
+Soit \(\varepsilon>0\).  
+On veut trouver \(n\in\N^*\) tel que :
+\[
+1-\varepsilon<1-\frac1n.
+\]
+Cela équivaut à :
+\[
+\frac1n<\varepsilon.
+\]
+Il suffit de choisir :
+\[
+n>\frac1\varepsilon.
+\]
+Donc \(1\) est bien la borne supérieure.
+
+Le minimum est atteint pour \(n=1\) :
+\[
+1-\frac11=0.
+\]
+Donc :
+\[
+\min A=0.
+\]
+Ainsi :
+\[
+\inf A=0.
+\]
+L'ensemble n'a pas de maximum, car \(1\notin A\).
+\end{correctionbox}
+
+\subsection*{Exercice 5 — Borne supérieure}
+
+\begin{exercicebox}
+Montrer que :
+\[
+\sup\left\{\frac{n}{n+1}: n\in\N^*\right\}=1.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+Posons :
+\[
+A=\left\{\frac{n}{n+1}:n\in\N^*\right\}.
+\]
+Pour tout \(n\in\N^*\),
+\[
+\frac{n}{n+1}<1.
+\]
+Donc \(1\) est un majorant de \(A\).
+
+Soit \(\varepsilon>0\).  
+On cherche \(n\) tel que :
+\[
+1-\varepsilon<\frac{n}{n+1}.
+\]
+Or :
+\[
+\frac{n}{n+1}=1-\frac1{n+1}.
+\]
+Donc on veut :
+\[
+1-\varepsilon<1-\frac1{n+1},
+\]
+c'est-à-dire :
+\[
+\frac1{n+1}<\varepsilon.
+\]
+Il suffit de choisir :
+\[
+n+1>\frac1\varepsilon.
+\]
+Un tel entier existe.  
+Donc :
+\[
+\sup A=1.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 6 — Inégalité}
+
+\begin{exercicebox}
+Montrer que pour tous \(a,b\geq0\),
+\[
+ab\leq \frac{a^2+b^2}{2}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On part du carré :
+\[
+(a-b)^2\geq0.
+\]
+En développant :
+\[
+a^2-2ab+b^2\geq0.
+\]
+Donc :
+\[
+2ab\leq a^2+b^2.
+\]
+Ainsi :
+\[
+ab\leq\frac{a^2+b^2}{2}.
+\]
+\end{correctionbox}
+
+\subsection*{Exercice 7 — Quantificateurs}
+
+\begin{exercicebox}
+Donner la négation de :
+\[
+\exists M\in\R,\quad \forall x\in A,\quad x\leq M.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+La phrase signifie : « \(A\) est majorée ».
+
+Sa négation est :
+\[
+\forall M\in\R,\quad \exists x\in A,\quad x>M.
+\]
+Cela signifie : aucun réel ne majore \(A\).
+\end{correctionbox}
+
+%=========================================================
+\newpage
+\section{Grand devoir bilan final}
+
+\begin{center}
+\Large\textbf{Devoir bilan — Fondements de l'analyse réelle}
+\end{center}
+
+\subsection*{Exercice 1 — Questions de cours}
+
+\begin{enumerate}
+    \item Définir un majorant d'une partie \(A\subset\R\).
+    \item Définir le maximum d'une partie \(A\subset\R\).
+    \item Définir la borne supérieure d'une partie non vide et majorée de \(\R\).
+    \item Énoncer la caractérisation de la borne supérieure par \(\varepsilon\).
+    \item Énoncer et démontrer l'inégalité triangulaire.
+\end{enumerate}
+
+\subsection*{Exercice 2 — Intervalles et valeur absolue}
+
+Résoudre dans \(\R\) :
+\[
+\abs{3x-2}\leq 4.
+\]
+
+\subsection*{Exercice 3 — Bornes}
+
+On considère :
+\[
+A=\left\{\frac{2n+1}{n+1}: n\in\N\right\}.
+\]
+
+\begin{enumerate}
+    \item Simplifier l'expression de l'élément général.
+    \item Déterminer \(\inf A\) et \(\sup A\).
+    \item L'ensemble \(A\) admet-il un minimum ?
+    \item L'ensemble \(A\) admet-il un maximum ?
+\end{enumerate}
+
+\subsection*{Exercice 4 — Inégalité}
+
+Montrer que pour tout \(x\in\R\),
+\[
+x^2+2x+5\geq4.
+\]
+
+\subsection*{Exercice 5 — Quantificateurs}
+
+Donner la négation de :
+\[
+\forall \varepsilon>0,\quad \exists x\in A,\quad s-\varepsilon<x\leq s.
+\]
+
+\newpage
+
+%=========================================================
+\section{Correction détaillée du devoir bilan}
+
+\subsection*{Correction de l'exercice 1}
+
+\textbf{1.}  
+Un réel \(M\) est un majorant de \(A\) si :
+\[
+\forall x\in A,\quad x\leq M.
+\]
+
+\textbf{2.}  
+Un réel \(M\) est le maximum de \(A\) si :
+\[
+M\in A
+\]
+et :
+\[
+\forall x\in A,\quad x\leq M.
+\]
+
+\textbf{3.}  
+La borne supérieure de \(A\), notée \(\sup A\), est le plus petit des majorants de \(A\).
+
+\textbf{4.}  
+On a :
+\[
+s=\sup A
+\]
+si et seulement si :
+\[
+\forall x\in A,\quad x\leq s,
+\]
+et :
+\[
+\forall \varepsilon>0,\quad \exists x_\varepsilon\in A,\quad s-\varepsilon<x_\varepsilon\leq s.
+\]
+
+\textbf{5.}  
+L'inégalité triangulaire est :
+\[
+\abs{x+y}\leq \abs{x}+\abs{y}.
+\]
+Démonstration :
+\[
+-\abs{x}\leq x\leq\abs{x},
+\qquad
+-\abs{y}\leq y\leq\abs{y}.
+\]
+En additionnant :
+\[
+-(\abs{x}+\abs{y})\leq x+y\leq \abs{x}+\abs{y}.
+\]
+Donc :
+\[
+\abs{x+y}\leq \abs{x}+\abs{y}.
+\]
+
+\subsection*{Correction de l'exercice 2}
+
+On résout :
+\[
+\abs{3x-2}\leq4.
+\]
+Cela équivaut à :
+\[
+-4\leq3x-2\leq4.
+\]
+On ajoute \(2\) :
+\[
+-2\leq3x\leq6.
+\]
+On divise par \(3>0\) :
+\[
+-\frac23\leq x\leq2.
+\]
+Donc l'ensemble des solutions est :
+\[
+\left[-\frac23,2\right].
+\]
+
+\subsection*{Correction de l'exercice 3}
+
+On a :
+\[
+\frac{2n+1}{n+1}
+=
+\frac{2(n+1)-1}{n+1}
+=
+2-\frac1{n+1}.
+\]
+Donc :
+\[
+A=\left\{2-\frac1{n+1}: n\in\N\right\}.
+\]
+
+Pour \(n=0\), on obtient :
+\[
+2-\frac1{1}=1.
+\]
+La suite des éléments augmente vers \(2\), sans jamais atteindre \(2\).
+
+On a :
+\[
+\inf A=1.
+\]
+Comme \(1\in A\), on a même :
+\[
+\min A=1.
+\]
+
+On a :
+\[
+\sup A=2.
+\]
+En effet, pour tout \(n\in\N\),
+\[
+2-\frac1{n+1}<2.
+\]
+Donc \(2\) est un majorant.  
+Pour tout \(\varepsilon>0\), on choisit \(n\) assez grand pour que :
+\[
+\frac1{n+1}<\varepsilon.
+\]
+Alors :
+\[
+2-\varepsilon<2-\frac1{n+1}<2.
+\]
+Donc \(2\) est la borne supérieure.
+
+Mais :
+\[
+2\notin A.
+\]
+Donc \(A\) n'admet pas de maximum.
+
+\subsection*{Correction de l'exercice 4}
+
+On met sous forme canonique :
+\[
+x^2+2x+5=(x+1)^2+4.
+\]
+Or :
+\[
+(x+1)^2\geq0.
+\]
+Donc :
+\[
+(x+1)^2+4\geq4.
+\]
+Ainsi :
+\[
+x^2+2x+5\geq4.
+\]
+
+\subsection*{Correction de l'exercice 5}
+
+On veut nier :
+\[
+\forall \varepsilon>0,\quad \exists x\in A,\quad s-\varepsilon<x\leq s.
+\]
+La négation est :
+\[
+\exists \varepsilon>0,\quad \forall x\in A,\quad \neg(s-\varepsilon<x\leq s).
+\]
+Or :
+\[
+\neg(s-\varepsilon<x\leq s)
+\]
+signifie :
+\[
+x\leq s-\varepsilon
+\quad\text{ou}\quad
+x>s.
+\]
+Donc la négation est :
+\[
+\exists \varepsilon>0,\quad \forall x\in A,\quad
+\left(x\leq s-\varepsilon\ \text{ou}\ x>s\right).
+\]
+
+%=========================================================
+\newpage
+\section{Fiche de synthèse finale}
+
+\subsection*{1. Ensembles de nombres}
+
+\[
+\N\subset\Z\subset\D\subset\Q\subset\R\subset\C.
+\]
+
+\[
+\Q=\left\{\frac pq:\ p\in\Z,\ q\in\N^*\right\}.
+\]
+
+\subsection*{2. Ordre sur \(\R\)}
+
+\[
+x\leq y\implique x+z\leq y+z.
+\]
+
+Si \(a\geq0\) :
+\[
+x\leq y\implique ax\leq ay.
+\]
+
+Si \(a\leq0\) :
+\[
+x\leq y\implique ax\geq ay.
+\]
+
+\subsection*{3. Intervalles}
+
+Un intervalle est une partie sans trou :
+\[
+x,y\in I,\quad x\leq t\leq y
+\implique
+t\in I.
+\]
+
+\subsection*{4. Valeur absolue}
+
+\[
+\abs{x}=
+\begin{cases}
+x & \text{si }x\geq0,\\
+-x & \text{si }x<0.
+\end{cases}
+\]
+
+\[
+\abs{x}\leq a
+\ssi
+-a\leq x\leq a
+\quad(a\geq0).
+\]
+
+\[
+\abs{x+y}\leq\abs{x}+\abs{y}.
+\]
+
+\[
+\bigl|\abs{x}-\abs{y}\bigr|\leq\abs{x-y}.
+\]
+
+\subsection*{5. Majorants et minorants}
+
+\(M\) est un majorant de \(A\) si :
+\[
+\forall x\in A,\quad x\leq M.
+\]
+
+\(m\) est un minorant de \(A\) si :
+\[
+\forall x\in A,\quad m\leq x.
+\]
+
+\(A\) est bornée si :
+\[
+\exists R\geq0,\quad \forall x\in A,\quad \abs{x}\leq R.
+\]
+
+\subsection*{6. Maximum et minimum}
+
+\[
+M=\max A
+\]
+si :
+\[
+M\in A
+\quad\text{et}\quad
+\forall x\in A,\ x\leq M.
+\]
+
+\[
+m=\min A
+\]
+si :
+\[
+m\in A
+\quad\text{et}\quad
+\forall x\in A,\ m\leq x.
+\]
+
+\subsection*{7. Borne supérieure}
+
+\[
+s=\sup A
+\]
+si :
+\[
+s\text{ est le plus petit majorant de }A.
+\]
+
+Caractérisation :
+\[
+s=\sup A
+\]
+si et seulement si :
+\[
+\forall x\in A,\quad x\leq s,
+\]
+et :
+\[
+\forall \varepsilon>0,\quad \exists x\in A,\quad s-\varepsilon<x\leq s.
+\]
+
+\subsection*{8. Borne inférieure}
+
+\[
+i=\inf A
+\]
+si :
+\[
+i\text{ est le plus grand minorant de }A.
+\]
+
+\[
+\inf A=-\sup(-A).
+\]
+
+\subsection*{9. Quantificateurs}
+
+\[
+\neg(\forall x,\ P(x))
+\ssi
+\exists x,\ \neg P(x).
+\]
+
+\[
+\neg(\exists x,\ P(x))
+\ssi
+\forall x,\ \neg P(x).
+\]
+
+\[
+A\text{ majorée}
+\ssi
+\exists M\in\R,\quad \forall x\in A,\quad x\leq M.
+\]
+
+\[
+A\text{ non majorée}
+\ssi
+\forall M\in\R,\quad \exists x\in A,\quad x>M.
+\]
+
+\subsection*{10. Inégalités classiques}
+
+\[
+x^2\geq0.
+\]
+
+\[
+2xy\leq x^2+y^2.
+\]
+
+\[
+\abs{xy}\leq\frac{x^2+y^2}{2}.
+\]
+
+Si \(a,b\geq0\) :
+\[
+\sqrt{ab}\leq\frac{a+b}{2}.
+\]
+
+Si \(x\geq -1\) et \(n\in\N\) :
+\[
+(1+x)^n\geq1+nx.
+\]
+
+%=========================================================
+\section*{Conclusion pédagogique}
+\addcontentsline{toc}{section}{Conclusion pédagogique}
+
+Ce premier chapitre installe les fondations de toute l'analyse réelle.
+
+Les notions de majorant, minorant, borne supérieure et borne inférieure seront omniprésentes dans l'étude :
+\begin{itemize}
+    \item des suites monotones ;
+    \item des suites bornées ;
+    \item de la convergence ;
+    \item des séries ;
+    \item de l'intégration ;
+    \item de la compacité ;
+    \item des espaces vectoriels normés.
+\end{itemize}
+
+La valeur absolue et les inégalités sont les premiers outils permettant de contrôler des quantités.  
+Elles seront au cœur des démonstrations de limites, de continuité et de convergence.
+
+\begin{center}
+\[
+\boxed{
+\text{Faire de l'analyse, c'est souvent savoir majorer, minorer et encadrer.}
+}
+\]
+\end{center}
+
+\end{document}
