@@ -1979,7 +1979,6 @@ Le fait qu'il existe une suite \((a_n)\) d'éléments de \(A\) telle que \(a_n\t
 s=\sup A.
 \]
 Il faut aussi prouver que \(s\) est un majorant de \(A\).
-\]
 Par exemple, pour :
 \[
 A=[0,2],
@@ -2409,18 +2408,60 @@ Lorsque \(n\to+\infty\), on a :
 n+1\sim n,
 \]
 \[
-an^p+o(n^p)\sim an^p
-\quad(a\neq0),
+n+a\sim n\qquad (a\in\R),
 \]
+\[
+an^p+o(n^p)\sim an^p
+\qquad (a\neq0),
+\]
+\[
+P(n)\sim a_p n^p,
+\]
+où \(P\) est un polynôme de degré \(p\) et de coefficient dominant \(a_p\neq0\).
+
+Si \(P\) et \(Q\) sont deux polynômes de degrés respectifs \(p\) et \(q\), de coefficients dominants \(a_p\) et \(b_q\), avec \(b_q\neq0\), alors :
 \[
 \frac{P(n)}{Q(n)}
 \sim
 \frac{a_p n^p}{b_q n^q}
 =
-\frac{a_p}{b_q}n^{p-q},
+\frac{a_p}{b_q}n^{p-q}.
 \]
-où \(P\) et \(Q\) sont des polynômes de degrés respectifs \(p\) et \(q\), de coefficients dominants \(a_p\) et \(b_q\).
 \end{theorembox}
+
+\begin{proof}
+Pour un polynôme :
+\[
+P(n)=a_p n^p+a_{p-1}n^{p-1}+\cdots+a_0,
+\]
+avec \(a_p\neq0\). On factorise par le terme dominant :
+\[
+P(n)=a_p n^p\left(1+\frac{a_{p-1}}{a_p}\frac1n+\cdots+\frac{a_0}{a_p}\frac1{n^p}\right).
+\]
+Le facteur entre parenthèses tend vers \(1\). Donc :
+\[
+\frac{P(n)}{a_p n^p}\to1,
+\]
+ce qui donne :
+\[
+P(n)\sim a_p n^p.
+\]
+
+Le résultat sur le quotient de deux polynômes s'obtient en appliquant cet équivalent au numérateur et au dénominateur.
+\end{proof}
+
+\begin{methodbox}[Trouver un équivalent d'une expression rationnelle]
+Pour une expression de la forme :
+\[
+\frac{P(n)}{Q(n)},
+\]
+on garde uniquement les termes dominants de \(P\) et de \(Q\). Ainsi :
+\[
+\frac{a_p n^p+\text{termes de plus bas degré}}{b_q n^q+\text{termes de plus bas degré}}
+\sim
+\frac{a_p}{b_q}n^{p-q}.
+\]
+\end{methodbox}
 
 \begin{exercicebox}[Équivalent simple]
 Donner un équivalent de :
@@ -2443,6 +2484,251 @@ Donc :
 u_n\sim \frac{3n^2}{5n^3}
 =
 \frac{3}{5n}.
+\]
+\end{correctionbox}
+
+%---------------------------------------------------------
+\subsection{Équivalents avec racines carrées}
+
+\begin{methodbox}[Factoriser le terme dominant sous une racine]
+Pour étudier une suite du type :
+\[
+\sqrt{n^2+an+b},
+\]
+on factorise \(n^2\) sous la racine :
+\[
+\sqrt{n^2+an+b}
+=
+ n\sqrt{1+\frac{a}{n}+\frac{b}{n^2}},
+\]
+puis on utilise la continuité de la fonction racine carrée en \(1\).
+\end{methodbox}
+
+\begin{theorembox}[Racines carrées usuelles]
+Lorsque \(n\to+\infty\), on a :
+\[
+\sqrt{n^2+an+b}\sim n.
+\]
+Plus généralement, si \(a>0\), alors :
+\[
+\sqrt{a n^2+bn+c}\sim \sqrt a\,n.
+\]
+\end{theorembox}
+
+\begin{proof}
+On écrit :
+\[
+\sqrt{a n^2+bn+c}
+=
+n\sqrt{a+\frac bn+\frac c{n^2}}.
+\]
+Comme :
+\[
+a+\frac bn+\frac c{n^2}\to a,
+\]
+et comme \(x\mapsto\sqrt{x}\) est continue en \(a>0\), on obtient :
+\[
+\sqrt{a+\frac bn+\frac c{n^2}}\to\sqrt a.
+\]
+Donc :
+\[
+\sqrt{a n^2+bn+c}\sim \sqrt a\,n.
+\]
+\end{proof}
+
+\begin{exercicebox}[Racine carrée]
+Donner un équivalent de :
+\[
+u_n=\sqrt{4n^2+3n+7}.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On factorise \(n^2\) sous la racine :
+\[
+u_n=n\sqrt{4+\frac3n+\frac7{n^2}}.
+\]
+Le facteur sous la racine tend vers \(4\), donc :
+\[
+\sqrt{4+\frac3n+\frac7{n^2}}\to2.
+\]
+Ainsi :
+\[
+u_n\sim2n.
+\]
+\end{correctionbox}
+
+%---------------------------------------------------------
+\subsection{Développements asymptotiques très simples}
+
+\begin{theorembox}[Équivalents issus des fonctions usuelles]
+Lorsque \(x\to0\), on a :
+\[
+\sin x\sim x,
+\qquad
+\tan x\sim x,
+\qquad
+1-\cos x\sim \frac{x^2}{2},
+\]
+\[
+\ln(1+x)\sim x,
+\qquad
+e^x-1\sim x,
+\qquad
+(1+x)^\alpha-1\sim \alpha x.
+\]
+En particulier, lorsque \(n\to+\infty\), on peut poser \(x=\frac1n\) pour obtenir des équivalents de suites.
+\end{theorembox}
+
+\begin{exercicebox}[Équivalent trigonométrique]
+Donner un équivalent de :
+\[
+u_n=\sin\left(\frac1n\right).
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+Comme :
+\[
+\frac1n\to0
+\]
+et :
+\[
+\sin x\sim x\quad(x\to0),
+\]
+on obtient :
+\[
+\sin\left(\frac1n\right)\sim \frac1n.
+\]
+\end{correctionbox}
+
+\begin{exercicebox}[Équivalent logarithmique]
+Donner un équivalent de :
+\[
+v_n=\ln\left(1+\frac3n\right).
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+Comme :
+\[
+\frac3n\to0
+\]
+et :
+\[
+\ln(1+x)\sim x\quad(x\to0),
+\]
+on obtient :
+\[
+\ln\left(1+\frac3n\right)\sim \frac3n.
+\]
+\end{correctionbox}
+
+%---------------------------------------------------------
+\subsection{Règles de calcul avec les équivalents}
+
+\begin{theorembox}[Produit, quotient, puissance]
+Soient \((u_n),(v_n),(a_n),(b_n)\) des suites non nulles à partir d'un certain rang.
+Si :
+\[
+u_n\sim v_n
+\qquad\text{et}\qquad
+a_n\sim b_n,
+\]
+alors :
+\[
+u_n a_n\sim v_n b_n,
+\]
+et :
+\[
+\frac{u_n}{a_n}\sim \frac{v_n}{b_n}.
+\]
+Si \(k\in\Z\), et si les puissances considérées sont bien définies à partir d'un certain rang, alors :
+\[
+u_n^k\sim v_n^k.
+\]
+\end{theorembox}
+
+\begin{proof}
+On utilise les quotients. Par exemple :
+\[
+\frac{u_n a_n}{v_n b_n}
+=
+\frac{u_n}{v_n}\cdot\frac{a_n}{b_n}.
+\]
+Or chacun des deux facteurs tend vers \(1\). Donc le produit tend vers \(1\), ce qui donne :
+\[
+u_n a_n\sim v_n b_n.
+\]
+Le quotient se démontre de la même manière.
+\end{proof}
+
+\begin{erreurbox}
+Les équivalents se multiplient et se divisent bien, mais ils ne s'additionnent pas toujours.
+Par exemple :
+\[
+n+1\sim n
+\qquad\text{et}\qquad
+-n\sim -n,
+\]
+mais :
+\[
+(n+1)+(-n)=1,
+\]
+tandis que :
+\[
+n+(-n)=0.
+\]
+On ne peut donc pas conclure à un équivalent par addition.
+\end{erreurbox}
+
+\begin{methodbox}[Éviter les compensations]
+Lorsqu'une expression contient une différence de termes équivalents, il faut éviter de remplacer brutalement chaque terme par son équivalent. On utilise plutôt :
+\begin{enumerate}
+    \item une factorisation ;
+    \item la quantité conjuguée ;
+    \item un développement limité ;
+    \item une mise au même dénominateur.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exercicebox}[Différence avec racines]
+Déterminer la limite de :
+\[
+u_n=\sqrt{n^2+n}-n.
+\]
+\end{exercicebox}
+
+\begin{correctionbox}
+On ne peut pas écrire simplement :
+\[
+\sqrt{n^2+n}\sim n
+\]
+et conclure que :
+\[
+\sqrt{n^2+n}-n\sim0.
+\]
+Il y a compensation.
+
+On multiplie par la quantité conjuguée :
+\[
+u_n
+=
+\frac{(n^2+n)-n^2}{\sqrt{n^2+n}+n}
+=
+\frac{n}{\sqrt{n^2+n}+n}.
+\]
+On factorise \(n\) au dénominateur :
+\[
+u_n
+=
+\frac{n}{n\sqrt{1+\frac1n}+n}
+=
+\frac1{\sqrt{1+\frac1n}+1}.
+\]
+Donc :
+\[
+u_n\to\frac12.
 \]
 \end{correctionbox}
 
@@ -2473,7 +2759,7 @@ Montrer que :
 \]
 \end{exercicebox}
 
-\subsection*{Thème 2 -- Monotonie}
+\subsection*{Thème 2 -- Monotonie et convergence}
 
 \begin{exercicebox}[4]
 Étudier la monotonie et la convergence de :
@@ -2515,7 +2801,7 @@ u_n\to\ell.
 \]
 \end{exercicebox}
 
-\subsection*{Thème 4 -- Comparaisons}
+\subsection*{Thème 4 -- Comparaisons asymptotiques}
 
 \begin{exercicebox}[8]
 Donner un équivalent de :
@@ -2531,9 +2817,23 @@ Montrer que :
 \]
 \end{exercicebox}
 
+\begin{exercicebox}[10]
+Donner un équivalent de :
+\[
+w_n=\ln\left(1+\frac2n\right)+\sin\left(\frac1n\right).
+\]
+\end{exercicebox}
+
+\begin{exercicebox}[11]
+Déterminer la limite de :
+\[
+x_n=n\left(\sqrt{1+\frac1n}-1\right).
+\]
+\end{exercicebox}
+
 \subsection*{Thème 5 -- Bilan}
 
-\begin{exercicebox}[10]
+\begin{exercicebox}[12]
 Soit :
 \[
 u_n=\sum_{k=1}^n\frac1{k^2}.
@@ -2554,8 +2854,7 @@ Donc :
 \[
 \left|\frac{2n+1}{n}-2\right|=\frac1n.
 \]
-Soit \(\varepsilon>0\).  
-On choisit \(N\in\N^*\) tel que :
+Soit \(\varepsilon>0\). On choisit \(N\in\N^*\) tel que :
 \[
 N\geq\frac1\varepsilon.
 \]
@@ -2584,7 +2883,7 @@ Comme :
 \]
 on obtient par opérations sur les limites :
 \[
-\frac{1+\frac1{n^2}}{1+\frac1n}\to\frac{1}{1}=1.
+\frac{1+\frac1{n^2}}{1+\frac1n}\to1.
 \]
 \end{correctionbox}
 
@@ -2593,15 +2892,11 @@ On a :
 \[
 \left|\frac{(-1)^n}{n}\right|=\frac1n.
 \]
-Comme :
+Ainsi :
 \[
--\frac1n\leq\frac{(-1)^n}{n}\leq\frac1n,
+-\frac1n\leq\frac{(-1)^n}{n}\leq\frac1n.
 \]
-et que :
-\[
--\frac1n\to0,\qquad \frac1n\to0,
-\]
-le théorème des gendarmes donne :
+Les deux bornes tendent vers \(0\). Par le théorème des gendarmes :
 \[
 \frac{(-1)^n}{n}\to0.
 \]
@@ -2616,11 +2911,7 @@ On calcule :
 \[
 u_{n+1}-u_n
 =
-\frac{n+1}{n+3}-\frac{n}{n+2}.
-\]
-On met au même dénominateur :
-\[
-u_{n+1}-u_n
+\frac{n+1}{n+3}-\frac{n}{n+2}
 =
 \frac{(n+1)(n+2)-n(n+3)}{(n+3)(n+2)}.
 \]
@@ -2632,7 +2923,7 @@ Donc :
 \[
 u_{n+1}-u_n=\frac{2}{(n+2)(n+3)}>0.
 \]
-La suite est croissante.
+La suite est strictement croissante.
 
 De plus :
 \[
@@ -2642,8 +2933,7 @@ Donc la suite converge vers \(1\).
 \end{correctionbox}
 
 \begin{correctionbox}[5]
-On cherche d'abord la limite éventuelle.  
-Si \(u_n\to\ell\), alors :
+On cherche d'abord la limite éventuelle. Si \(u_n\to\ell\), alors :
 \[
 \ell=\frac{\ell+3}{2}.
 \]
@@ -2711,13 +3001,11 @@ et :
 \[
 u_{2n+1}=-1.
 \]
-Les deux sous-suites convergent vers deux limites différentes.  
-Donc \((u_n)\) ne converge pas.
+Les deux sous-suites convergent vers deux limites différentes. Donc \((u_n)\) ne converge pas.
 \end{correctionbox}
 
 \begin{correctionbox}[7]
-Soit \(\varepsilon>0\).  
-Il existe \(N_1\) tel que :
+Soit \(\varepsilon>0\). Il existe \(N_1\) tel que :
 \[
 n\geq N_1\implique \abs{u_{2n}-\ell}\leq\varepsilon.
 \]
@@ -2729,8 +3017,7 @@ Posons :
 \[
 N=2\max(N_1,N_2)+1.
 \]
-Si \(k\geq N\), alors \(k\) est soit pair, soit impair.  
-Dans les deux cas, il s'écrit :
+Si \(k\geq N\), alors \(k\) est soit pair, soit impair. Dans les deux cas, il s'écrit :
 \[
 k=2n
 \quad\text{ou}\quad
@@ -2761,9 +3048,7 @@ Au dénominateur :
 \]
 Donc :
 \[
-u_n\sim\frac{2n^3}{7n^2}
-=
-\frac27 n.
+u_n\sim\frac{2n^3}{7n^2}=\frac27 n.
 \]
 \end{correctionbox}
 
@@ -2789,14 +3074,53 @@ Donc :
 \end{correctionbox}
 
 \begin{correctionbox}[10]
+On utilise :
+\[
+\ln(1+x)\sim x
+\quad\text{et}\quad
+\sin x\sim x
+\qquad(x\to0).
+\]
+Ainsi :
+\[
+\ln\left(1+\frac2n\right)\sim\frac2n
+\]
+et :
+\[
+\sin\left(\frac1n\right)\sim\frac1n.
+\]
+Ici il n'y a pas compensation puisque les deux termes sont positifs à partir d'un certain rang. On obtient donc :
+\[
+w_n\sim\frac2n+\frac1n=\frac3n.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[11]
+On multiplie par la quantité conjuguée :
+\[
+x_n=n\left(\sqrt{1+\frac1n}-1\right)
+=
+n\frac{\left(1+\frac1n\right)-1}{\sqrt{1+\frac1n}+1}.
+\]
+Donc :
+\[
+x_n=
+\frac{1}{\sqrt{1+\frac1n}+1}.
+\]
+Ainsi :
+\[
+x_n\to\frac12.
+\]
+\end{correctionbox}
+
+\begin{correctionbox}[12]
 On a :
 \[
 u_{n+1}-u_n=\frac1{(n+1)^2}>0.
 \]
 Donc la suite \((u_n)\) est croissante.
 
-Montrons qu'elle est majorée.  
-Pour tout \(k\geq2\),
+Montrons qu'elle est majorée. Pour tout \(k\geq2\),
 \[
 \frac1{k^2}\leq \frac1{k(k-1)}.
 \]
@@ -2808,10 +3132,6 @@ Donc, pour \(n\geq2\),
 \[
 \sum_{k=2}^n\frac1{k^2}
 \leq
-\sum_{k=2}^n\left(\frac1{k-1}-\frac1k\right).
-\]
-La somme télescope :
-\[
 \sum_{k=2}^n\left(\frac1{k-1}-\frac1k\right)
 =
 1-\frac1n.
@@ -2822,11 +3142,10 @@ u_n
 =
 1+\sum_{k=2}^n\frac1{k^2}
 \leq
-1+1-\frac1n
+2-\frac1n
 <2.
 \]
-Donc \((u_n)\) est majorée par \(2\).  
-Elle est croissante et majorée, donc convergente.
+Donc \((u_n)\) est majorée par \(2\). Elle est croissante et majorée, donc convergente.
 \end{correctionbox}
 
 %=========================================================
@@ -2884,7 +3203,7 @@ u_{n+1}=\frac{u_n+1}{2}.
 
 \subsection*{Exercice 4 -- Suites extraites}
 
-Soit \((u_n)\) une suite réelle bornée.  
+Soit \((u_n)\) une suite réelle bornée.
 \begin{enumerate}
     \item Énoncer le théorème de Bolzano-Weierstrass.
     \item Montrer que \((u_n)\) possède une suite extraite convergente.
@@ -2909,7 +3228,7 @@ b_n=\sqrt{n^2+2n+3}.
 
 \subsection*{Correction de l'exercice 1}
 
-\textbf{1.}  
+\textbf{1.}
 On dit que :
 \[
 u_n\to\ell
@@ -2919,15 +3238,14 @@ si :
 \forall \varepsilon>0,\quad \exists N\in\N,\quad \forall n\geq N,\quad \abs{u_n-\ell}\leq\varepsilon.
 \]
 
-\textbf{2.}  
+\textbf{2.}
 Supposons :
 \[
 u_n\to\ell
 \quad\text{et}\quad
 u_n\to m.
 \]
-Soit \(\varepsilon>0\).  
-À partir d'un certain rang :
+Soit \(\varepsilon>0\). À partir d'un certain rang :
 \[
 \abs{u_n-\ell}\leq\frac\varepsilon2
 \]
@@ -2948,7 +3266,7 @@ Comme ceci est vrai pour tout \(\varepsilon>0\), on obtient :
 \ell=m.
 \]
 
-\textbf{3.}  
+\textbf{3.}
 Si \(u_n\to\ell\), alors à partir d'un certain rang :
 \[
 \abs{u_n-\ell}\leq1.
@@ -2957,17 +3275,18 @@ Donc :
 \[
 \abs{u_n}\leq\abs{\ell}+1.
 \]
-Les premiers termes étant en nombre fini, ils sont bornés.  
-La suite entière est donc bornée.
+Les premiers termes étant en nombre fini, ils sont bornés. La suite entière est donc bornée.
 
-\textbf{4.}  
+\textbf{4.}
 Le théorème des gendarmes affirme que si :
 \[
 u_n\leq v_n\leq w_n
 \]
 à partir d'un certain rang, et si :
 \[
-u_n\to\ell,\qquad w_n\to\ell,
+u_n\to\ell,
+\qquad
+w_n\to\ell,
 \]
 alors :
 \[
@@ -2979,9 +3298,8 @@ La démonstration repose sur l'encadrement :
 \]
 à partir d'un certain rang.
 
-\textbf{5.}  
-Toute suite réelle croissante et majorée converge.  
-Toute suite réelle décroissante et minorée converge.
+\textbf{5.}
+Toute suite réelle croissante et majorée converge. Toute suite réelle décroissante et minorée converge.
 
 \subsection*{Correction de l'exercice 2}
 
@@ -3042,13 +3360,12 @@ On considère :
 u_{n+1}=\frac{u_n+1}{2}.
 \]
 
-\textbf{1.}  
+\textbf{1.}
 La fonction :
 \[
 f(x)=\frac{x+1}{2}
 \]
-envoie \([0,1]\) dans \([0,1]\).  
-En effet, si :
+envoie \([0,1]\) dans \([0,1]\). En effet, si :
 \[
 0\leq x\leq1,
 \]
@@ -3069,7 +3386,7 @@ on obtient par récurrence :
 u_n\in[0,1].
 \]
 
-\textbf{2.}  
+\textbf{2.}
 On calcule :
 \[
 u_{n+1}-u_n
@@ -3092,13 +3409,11 @@ u_{n+1}-u_n\geq0.
 \]
 La suite est croissante.
 
-\textbf{3.}  
-La suite est croissante et majorée par \(1\).  
-Donc elle converge.
+\textbf{3.}
+La suite est croissante et majorée par \(1\). Donc elle converge.
 
-\textbf{4.}  
-Soit \(\ell\) sa limite.  
-Par continuité de \(f\), on obtient :
+\textbf{4.}
+Soit \(\ell\) sa limite. Par continuité de \(f\), on obtient :
 \[
 \ell=\frac{\ell+1}{2}.
 \]
@@ -3113,17 +3428,16 @@ d'où :
 
 \subsection*{Correction de l'exercice 4}
 
-\textbf{1.}  
+\textbf{1.}
 Le théorème de Bolzano-Weierstrass affirme que toute suite réelle bornée possède une suite extraite convergente.
 
-\textbf{2.}  
-Comme \((u_n)\) est bornée, le théorème de Bolzano-Weierstrass s'applique directement.  
-Donc il existe une extractrice \(\varphi:\N\to\N\) strictement croissante et un réel \(\ell\) tels que :
+\textbf{2.}
+Comme \((u_n)\) est bornée, le théorème de Bolzano-Weierstrass s'applique directement. Donc il existe une extractrice \(\varphi:\N\to\N\) strictement croissante et un réel \(\ell\) tels que :
 \[
 u_{\varphi(n)}\to\ell.
 \]
 
-\textbf{3.}  
+\textbf{3.}
 La suite :
 \[
 u_n=(-1)^n
@@ -3207,7 +3521,9 @@ Une suite bornée n'est pas forcément convergente.
 
 Si :
 \[
-u_n\to\ell,\qquad v_n\to m,
+u_n\to\ell,
+\qquad
+v_n\to m,
 \]
 alors :
 \[
@@ -3229,7 +3545,9 @@ u_n\leq v_n
 \]
 à partir d'un certain rang, et si :
 \[
-u_n\to\ell,\qquad v_n\to m,
+u_n\to\ell,
+\qquad
+v_n\to m,
 \]
 alors :
 \[
@@ -3244,7 +3562,9 @@ u_n\leq v_n\leq w_n
 \]
 à partir d'un certain rang, et si :
 \[
-u_n\to\ell,\qquad w_n\to\ell,
+u_n\to\ell,
+\qquad
+w_n\to\ell,
 \]
 alors :
 \[
@@ -3340,25 +3660,28 @@ Si \(P\) est un polynôme de degré \(p\) et de coefficient dominant \(a_p\), al
 P(n)\sim a_p n^p.
 \]
 
-Si :
+Si \(a>0\), alors :
 \[
-u_n\sim v_n
+\sqrt{a n^2+bn+c}\sim \sqrt a\,n.
 \]
-et :
+
 \[
-v_n\to\ell,
+\sin\left(\frac1n\right)\sim\frac1n,
+\qquad
+\ln\left(1+\frac1n\right)\sim\frac1n,
+\qquad
+e^{1/n}-1\sim\frac1n.
 \]
-alors :
-\[
-u_n\to\ell.
-\]
+
+\subsection*{13. Règles avec les équivalents}
+
+On peut multiplier, diviser et élever à une puissance des équivalents, mais il faut se méfier des additions et des soustractions à cause des compensations.
 
 %=========================================================
 \section*{Conclusion pédagogique}
 \addcontentsline{toc}{section}{Conclusion pédagogique}
 
-Les suites numériques constituent le premier outil fondamental de l'analyse.  
-Elles permettent de comprendre rigoureusement la notion de limite et préparent directement :
+Les suites numériques constituent le premier outil fondamental de l'analyse. Elles permettent de comprendre rigoureusement la notion de limite et préparent directement :
 \begin{itemize}
     \item l'étude des fonctions ;
     \item les séries numériques ;
@@ -3374,7 +3697,8 @@ Les méthodes essentielles à retenir sont :
     \item encadrer avec le théorème des gendarmes ;
     \item exploiter la monotonie et les bornes ;
     \item extraire des sous-suites pour prouver une divergence ;
-    \item utiliser les équivalents pour simplifier les calculs asymptotiques.
+    \item utiliser les équivalents pour simplifier les calculs asymptotiques ;
+    \item éviter les additions d'équivalents lorsqu'il peut y avoir compensation.
 \end{itemize}
 
 \begin{center}

@@ -1,0 +1,1985 @@
+\documentclass[11pt,a4paper]{article}
+
+%================================================
+% PACKAGES
+%================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\geometry{margin=2.1cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+%================================================
+% COULEURS
+%================================================
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,100,20}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+%================================================
+% EN-TÊTE
+%================================================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textsc{Première générale -- Spécialité mathématiques}}
+\rhead{\textsc{TD -- Suites numériques}}
+\cfoot{\thepage}
+
+%================================================
+% BOÎTES
+%================================================
+\tcbset{
+  enhanced,
+  breakable,
+  sharp corners=downhill,
+  boxrule=0.7pt,
+  colback=white,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{methodbox}[1]{
+  colframe=bleuprepa,
+  colback=blue!3!white,
+  title={Méthode -- #1}
+}
+
+\newtcolorbox{rememberbox}[1]{
+  colframe=vertprepa,
+  colback=green!3!white,
+  title={À retenir -- #1}
+}
+
+\newtcolorbox{warningbox}[1]{
+  colframe=rougeprepa,
+  colback=red!3!white,
+  title={Erreur classique -- #1}
+}
+
+\newtcolorbox{exobox}[2]{
+  colframe=bleuprepa,
+  colback=grisclair,
+  title={Exercice #1 \hfill Difficulté : #2}
+}
+
+\newtcolorbox{solbox}[1]{
+  colframe=vertprepa,
+  colback=green!2!white,
+  title={Correction de l'exercice #1}
+}
+
+%================================================
+% COMMANDES
+%================================================
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\etoile}{\(\star\)}
+\newcommand{\deuxetoiles}{\(\star\star\)}
+\newcommand{\troisetoiles}{\(\star\star\star\)}
+\newcommand{\quatreetoiles}{\(\star\star\star\star\)}
+\newcommand{\cinqetoiles}{\(\star\star\star\star\star\)}
+
+%================================================
+% TITRE
+%================================================
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}
+\node[
+  fill=bleuprepa,
+  text=white,
+  rounded corners=3mm,
+  inner sep=7mm,
+  text width=0.92\linewidth,
+  align=center
+]{
+  {\Huge \textbf{TD complet -- Suites numériques}}\\[2mm]
+  {\Large Première générale -- Spécialité mathématiques}\\[1mm]
+  {\large Poly d'entraînement progressif, rigoureux et corrigé}\\[1mm]
+  {\small Niveau exigeant : applications, méthodes, démonstrations, problèmes longs}
+};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{rememberbox}{Objectif du TD}
+Ce TD vise à maîtriser les suites numériques au programme de Première spécialité mathématiques :
+\begin{itemize}
+  \item définition d'une suite par formule explicite ou par récurrence ;
+  \item calcul de termes ;
+  \item suites arithmétiques et géométriques ;
+  \item étude du sens de variation ;
+  \item somme des termes d'une suite géométrique ;
+  \item modélisation de phénomènes discrets : évolution de population, placement financier, phénomènes répétés.
+\end{itemize}
+\end{rememberbox}
+
+\begin{warningbox}{Consigne de rigueur}
+Une suite n'est pas une fonction continue. Son indice est un entier naturel. On raisonne donc sur les termes \(u_n\), \(u_{n+1}\), \(u_{n+1}-u_n\), ou éventuellement \(\frac{u_{n+1}}{u_n}\) lorsque les termes sont strictement positifs.
+\end{warningbox}
+
+\tableofcontents
+\newpage
+
+%================================================
+\section{Rappels de méthodes essentiels}
+
+\begin{methodbox}{Calculer les termes d'une suite}
+Pour calculer les premiers termes d'une suite :
+\begin{itemize}
+  \item si la suite est définie explicitement par \(u_n=f(n)\), on remplace \(n\) par \(0,1,2,\ldots\) ;
+  \item si la suite est définie par récurrence, on part du terme initial puis on applique la relation de passage.
+\end{itemize}
+\end{methodbox}
+
+\begin{methodbox}{Reconnaître une suite arithmétique}
+Une suite \((u_n)\) est arithmétique lorsqu'il existe un réel \(r\) tel que, pour tout \(n\),
+\[
+u_{n+1}=u_n+r.
+\]
+Le nombre \(r\) s'appelle la raison. On a alors :
+\[
+u_n=u_0+nr.
+\]
+\end{methodbox}
+
+\begin{methodbox}{Reconnaître une suite géométrique}
+Une suite \((u_n)\) est géométrique lorsqu'il existe un réel \(q\) tel que, pour tout \(n\),
+\[
+u_{n+1}=q u_n.
+\]
+Le nombre \(q\) s'appelle la raison. On a alors :
+\[
+u_n=u_0 q^n.
+\]
+\end{methodbox}
+
+\begin{methodbox}{Étudier les variations}
+Pour étudier les variations de \((u_n)\), on peut :
+\begin{itemize}
+  \item étudier le signe de \(u_{n+1}-u_n\) ;
+  \item si tous les termes sont strictement positifs, comparer \(\frac{u_{n+1}}{u_n}\) à \(1\).
+\end{itemize}
+\end{methodbox}
+
+\begin{rememberbox}{Somme géométrique}
+Si \(q\neq 1\), alors :
+\[
+1+q+q^2+\cdots+q^n=\frac{1-q^{n+1}}{1-q}.
+\]
+Plus généralement,
+\[
+u_0+u_1+\cdots+u_n=u_0\frac{1-q^{n+1}}{1-q}
+\]
+pour une suite géométrique de premier terme \(u_0\) et de raison \(q\neq 1\).
+\end{rememberbox}
+
+\newpage
+
+%================================================
+\section{Exercices d'application directe (APP)}
+
+\begin{exobox}{1 -- Suite explicite}{\etoile}
+On considère la suite définie pour tout \(n\in\N\) par
+\[
+u_n=3n^2-2n+5.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_0,u_1,u_2,u_3\).
+  \item Calculer \(u_{10}\).
+  \item Déterminer \(u_{n+1}\) en fonction de \(n\).
+  \item Calculer \(u_{n+1}-u_n\), puis étudier le sens de variation de \((u_n)\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{2 -- Suite récurrente simple}{\etoile}
+On définit la suite \((u_n)\) par
+\[
+u_0=4,\qquad u_{n+1}=2u_n-1.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_1,u_2,u_3,u_4\).
+  \item La suite semble-t-elle croissante ?
+  \item Calculer \(u_{n+1}-u_n\).
+  \item Que faudrait-il savoir sur \(u_n\) pour conclure rigoureusement ?
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{3 -- Suite arithmétique donnée par récurrence}{\etoile}
+Soit \((u_n)\) définie par
+\[
+u_0=7,\qquad u_{n+1}=u_n-3.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que \((u_n)\) est arithmétique.
+  \item Donner sa raison.
+  \item Donner une formule explicite de \(u_n\).
+  \item Calculer \(u_{25}\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{4 -- Suite géométrique donnée par récurrence}{\etoile}
+Soit \((v_n)\) définie par
+\[
+v_0=5,\qquad v_{n+1}=1{,}2v_n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que \((v_n)\) est géométrique.
+  \item Donner sa raison.
+  \item Exprimer \(v_n\) en fonction de \(n\).
+  \item Calculer \(v_6\), puis interpréter le résultat comme une hausse répétée de \(20\%\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{5 -- Identifier le type d'une suite}{\deuxetoiles}
+Pour chacune des suites suivantes, dire si elle est arithmétique, géométrique ou ni l'une ni l'autre.
+\[
+a_n=4+5n,\qquad b_n=3\cdot 2^n,\qquad c_n=n^2+1,\qquad d_0=2,\ d_{n+1}=d_n+7.
+\]
+Justifier chaque réponse.
+\end{exobox}
+
+\begin{exobox}{6 -- Rang d'un dépassement}{\deuxetoiles}
+Une suite arithmétique est définie par
+\[
+u_0=12,\qquad r=5.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(u_n\).
+  \item Résoudre l'inéquation \(u_n\geq 100\).
+  \item Déterminer le premier rang à partir duquel \(u_n\geq 100\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{7 -- Placement avec intérêts composés}{\deuxetoiles}
+On place \(800\) euros sur un compte rémunéré à \(3\%\) par an. On note \(C_n\) le capital après \(n\) années.
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(C_0\).
+  \item Exprimer \(C_{n+1}\) en fonction de \(C_n\).
+  \item Identifier la nature de la suite \((C_n)\).
+  \item Exprimer \(C_n\) en fonction de \(n\).
+  \item Calculer le capital après \(10\) ans, à l'euro près.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{8 -- Somme arithmétique}{\deuxetoiles}
+Une suite arithmétique \((u_n)\) vérifie \(u_0=6\) et \(r=4\).
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_{20}\).
+  \item Calculer \(S= u_0+u_1+\cdots+u_{20}\).
+  \item Expliquer pourquoi on peut utiliser la formule :
+  \[
+  S=\frac{21(u_0+u_{20})}{2}.
+  \]
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{9 -- Somme géométrique}{\deuxetoiles}
+On considère la suite géométrique \((u_n)\) définie par
+\[
+u_0=2,\qquad q=3.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(u_n\).
+  \item Calculer \(S_n=u_0+u_1+\cdots+u_n\).
+  \item Calculer \(S_5\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{10 -- Variation par différence}{\deuxetoiles}
+On considère la suite définie par
+\[
+u_n=n^2-6n+8.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_{n+1}-u_n\).
+  \item Déterminer pour quels entiers \(n\) on a \(u_{n+1}-u_n\geq 0\).
+  \item En déduire le sens de variation de la suite.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de méthode (METH)}
+
+\begin{exobox}{11 -- Passage explicite/récurrent}{\deuxetoiles}
+Soit \((u_n)\) définie par
+\[
+u_n=5-2n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_{n+1}\).
+  \item Montrer que \(u_{n+1}=u_n-2\).
+  \item Donner une définition par récurrence de la suite.
+  \item Préciser son sens de variation.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{12 -- Suite géométrique et seuil}{\deuxetoiles}
+On considère
+\[
+u_0=150,\qquad u_{n+1}=0{,}8u_n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(u_n\).
+  \item Interpréter la raison \(0{,}8\) comme une baisse en pourcentage.
+  \item Déterminer le plus petit entier \(n\) tel que \(u_n<50\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{13 -- Population avec augmentation constante}{\deuxetoiles}
+Une ville compte \(12\,000\) habitants. Chaque année, sa population augmente de \(350\) habitants. On note \(P_n\) la population après \(n\) années.
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(P_0\).
+  \item Donner une relation de récurrence.
+  \item Identifier la nature de la suite.
+  \item Exprimer \(P_n\) en fonction de \(n\).
+  \item Déterminer au bout de combien d'années la population dépassera \(20\,000\) habitants.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{14 -- Population avec croissance en pourcentage}{\deuxetoiles}
+Une population de bactéries vaut initialement \(5000\). Elle augmente de \(12\%\) par heure. On note \(B_n\) le nombre de bactéries après \(n\) heures.
+\begin{enumerate}[label=\alph*)]
+  \item Donner \(B_0\).
+  \item Donner \(B_{n+1}\) en fonction de \(B_n\).
+  \item Exprimer \(B_n\) en fonction de \(n\).
+  \item Calculer \(B_8\), arrondi à l'unité.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{15 -- Comparaison de deux placements}{\troisetoiles}
+On compare deux placements.
+\[
+A_n=1000+60n,\qquad B_n=1000\cdot 1{,}04^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Interpréter chaque placement.
+  \item Calculer \(A_5\) et \(B_5\).
+  \item Déterminer à l'aide d'un tableau le premier rang \(n\) tel que \(B_n>A_n\).
+  \item Expliquer pourquoi le placement géométrique finit par devenir plus avantageux.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{16 -- Suite auxiliaire}{\troisetoiles}
+On considère la suite
+\[
+u_0=2,\qquad u_{n+1}=3u_n+4.
+\]
+On définit
+\[
+v_n=u_n+2.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(v_{n+1}\) en fonction de \(v_n\).
+  \item Montrer que \((v_n)\) est géométrique.
+  \item Exprimer \(v_n\), puis \(u_n\), en fonction de \(n\).
+  \item Calculer \(u_5\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{17 -- Étude d'une suite quadratique}{\troisetoiles}
+Soit
+\[
+u_n=n^2-4n+7.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_0,u_1,u_2,u_3,u_4\).
+  \item Calculer \(u_{n+1}-u_n\).
+  \item Étudier le signe de cette différence.
+  \item En déduire le tableau de variations de \((u_n)\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{18 -- Somme des puissances de deux}{\troisetoiles}
+On pose
+\[
+S_n=1+2+2^2+\cdots+2^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(S_0,S_1,S_2,S_3\).
+  \item Conjecturer une formule explicite pour \(S_n\).
+  \item Démontrer cette formule en utilisant la formule de la somme géométrique.
+  \item Résoudre \(S_n\geq 1000\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{19 -- Suite décroissante positive}{\troisetoiles}
+Soit
+\[
+u_n=\frac{5}{n+1}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_0,u_1,u_2\).
+  \item Montrer que \(u_{n+1}<u_n\) pour tout \(n\in\N\).
+  \item La suite est-elle arithmétique ? géométrique ?
+  \item Déterminer le premier rang \(n\) tel que \(u_n\leq 0{,}1\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{20 -- Algorithmique et suites}{\troisetoiles}
+On considère l'algorithme suivant :
+\[
+\begin{array}{l}
+u\leftarrow 3\\
+\text{Pour } k \text{ allant de } 1 \text{ à } 6\\
+\quad u\leftarrow 2u+1\\
+\text{Fin Pour}
+\end{array}
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Écrire les six valeurs successives prises par \(u\).
+  \item Identifier la suite calculée.
+  \item Définir cette suite par récurrence.
+  \item Montrer que la suite auxiliaire \(v_n=u_n+1\) est géométrique.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de démonstration (DEM)}
+
+\begin{exobox}{21 -- Démonstration de la formule arithmétique}{\troisetoiles}
+Soit \((u_n)\) une suite arithmétique de premier terme \(u_0\) et de raison \(r\).
+\begin{enumerate}[label=\alph*)]
+  \item Écrire \(u_1,u_2,u_3\) en fonction de \(u_0\) et \(r\).
+  \item Conjecturer la formule générale.
+  \item Démontrer que pour tout \(n\in\N\),
+  \[
+  u_n=u_0+nr.
+  \]
+  \item Appliquer avec \(u_0=-2\) et \(r=5\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{22 -- Démonstration de la formule géométrique}{\troisetoiles}
+Soit \((u_n)\) une suite géométrique de premier terme \(u_0\) et de raison \(q\).
+\begin{enumerate}[label=\alph*)]
+  \item Écrire \(u_1,u_2,u_3\).
+  \item Conjecturer une formule explicite.
+  \item Démontrer que
+  \[
+  u_n=u_0q^n.
+  \]
+  \item Appliquer avec \(u_0=4\) et \(q=-2\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{23 -- Somme géométrique}{\troisetoiles}
+Soit \(q\neq 1\). On pose
+\[
+S_n=1+q+q^2+\cdots+q^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(qS_n\).
+  \item Calculer \(S_n-qS_n\).
+  \item En déduire la formule de \(S_n\).
+  \item Appliquer avec \(q=\frac12\) et \(n=5\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{24 -- Variations d'une suite arithmétique}{\troisetoiles}
+Soit \((u_n)\) arithmétique de raison \(r\).
+\begin{enumerate}[label=\alph*)]
+  \item Exprimer \(u_{n+1}-u_n\).
+  \item Montrer que si \(r>0\), alors la suite est strictement croissante.
+  \item Montrer que si \(r<0\), alors la suite est strictement décroissante.
+  \item Que se passe-t-il si \(r=0\) ?
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{25 -- Variations d'une suite géométrique positive}{\troisetoiles}
+Soit \((u_n)\) une suite géométrique de premier terme \(u_0>0\) et de raison \(q>0\).
+\begin{enumerate}[label=\alph*)]
+  \item Exprimer \(u_{n+1}-u_n\).
+  \item Montrer que si \(q>1\), la suite est strictement croissante.
+  \item Montrer que si \(0<q<1\), la suite est strictement décroissante.
+  \item Illustrer par deux exemples numériques.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{26 -- Suite affine transformée}{\quatreetoiles}
+On considère
+\[
+u_0=1,\qquad u_{n+1}=2u_n+3.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Chercher un réel \(\alpha\) tel que la suite \(v_n=u_n+\alpha\) soit géométrique.
+  \item Déterminer \(\alpha\).
+  \item Exprimer \(u_n\) en fonction de \(n\).
+  \item Vérifier la formule pour \(n=0,1,2\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{27 -- Inégalité par récurrence intuitive}{\quatreetoiles}
+On considère
+\[
+u_0=1,\qquad u_{n+1}=u_n+2n+1.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_0,u_1,u_2,u_3,u_4\).
+  \item Conjecturer une formule pour \(u_n\).
+  \item Vérifier que cette formule est compatible avec la relation de récurrence.
+  \item En déduire une formule explicite pour \(u_n\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{28 -- Monotonie d'une suite rationnelle}{\quatreetoiles}
+Soit
+\[
+u_n=\frac{2n+3}{n+2}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_0,u_1,u_2\).
+  \item Calculer \(u_{n+1}-u_n\).
+  \item Étudier le signe de cette différence.
+  \item En déduire le sens de variation de \((u_n)\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{29 -- Encadrement}{\quatreetoiles}
+Soit
+\[
+u_n=3+\frac{2}{n+1}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Montrer que pour tout \(n\in\N\), \(u_n>3\).
+  \item Montrer que \(u_n\leq 5\).
+  \item Étudier le sens de variation.
+  \item Interpréter graphiquement l'idée d'une suite qui se rapproche de \(3\) sans jamais l'atteindre.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{30 -- Somme pondérée}{\quatreetoiles}
+Soit \((u_n)\) géométrique de premier terme \(u_0=6\) et de raison \(q=\frac13\).
+\begin{enumerate}[label=\alph*)]
+  \item Exprimer \(u_n\).
+  \item Calculer \(S_n=u_0+\cdots+u_n\).
+  \item Montrer que \(S_n<9\) pour tout \(n\).
+  \item Expliquer pourquoi les termes ajoutés deviennent de plus en plus petits.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices de réflexion et de préparation approfondie (PREP)}
+
+\begin{exobox}{31 -- Comparaison entre arithmétique et géométrique}{\quatreetoiles}
+On considère
+\[
+u_n=10+5n,\qquad v_n=10\cdot 1{,}2^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer les cinq premiers termes de chaque suite.
+  \item Déterminer expérimentalement le premier rang pour lequel \(v_n>u_n\).
+  \item Justifier que \((u_n)\) croît par ajout constant et que \((v_n)\) croît par multiplication constante.
+  \item Expliquer pourquoi une croissance géométrique peut dépasser une croissance arithmétique.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{32 -- Modèle de population avec pertes}{\quatreetoiles}
+Une population initiale de \(10\,000\) individus diminue chaque année de \(4\%\), mais reçoit aussi \(200\) nouveaux individus par an. On note \(P_n\) la population après \(n\) années.
+\begin{enumerate}[label=\alph*)]
+  \item Écrire la relation de récurrence.
+  \item Calculer \(P_1,P_2,P_3\).
+  \item Cette suite est-elle arithmétique ? géométrique ?
+  \item On pose \(Q_n=P_n-5000\). Montrer que \((Q_n)\) est géométrique.
+  \item En déduire \(P_n\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{33 -- Remboursement d'une dette}{\quatreetoiles}
+Une personne emprunte \(5000\) euros. Chaque mois, la dette augmente de \(1\%\), puis la personne rembourse \(150\) euros. On note \(D_n\) la dette après \(n\) mois.
+\begin{enumerate}[label=\alph*)]
+  \item Écrire \(D_{n+1}\) en fonction de \(D_n\).
+  \item Calculer \(D_1,D_2,D_3\).
+  \item On pose \(E_n=D_n-15000\). Montrer que \((E_n)\) est géométrique.
+  \item Exprimer \(D_n\).
+  \item Déterminer si la dette peut s'annuler dans ce modèle.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{34 -- Suite définie par une moyenne}{\quatreetoiles}
+Soit
+\[
+u_0=10,\qquad u_{n+1}=\frac{u_n+4}{2}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_1,u_2,u_3\).
+  \item Montrer que si \(u_n>4\), alors \(u_{n+1}>4\).
+  \item Montrer que \(u_{n+1}-u_n=\frac{4-u_n}{2}\).
+  \item En déduire le sens de variation.
+  \item Poser \(v_n=u_n-4\) et déterminer une formule explicite.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{35 -- Phénomène répété}{\quatreetoiles}
+Un médicament est injecté dans le sang. Chaque heure, \(30\%\) de la quantité présente est éliminée. On injecte ensuite \(5\) mg supplémentaires. On note \(M_n\) la quantité de médicament après \(n\) heures, juste après injection.
+\begin{enumerate}[label=\alph*)]
+  \item Donner une relation de récurrence.
+  \item Calculer \(M_1,M_2,M_3\) si \(M_0=5\).
+  \item Chercher une valeur stable \(L\) vérifiant \(L=0{,}7L+5\).
+  \item Poser \(V_n=M_n-L\) et montrer que \((V_n)\) est géométrique.
+  \item Exprimer \(M_n\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{36 -- Suite et inéquation exponentielle discrète}{\quatreetoiles}
+On considère
+\[
+u_n=2\cdot 1{,}15^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Interpréter la suite comme une augmentation de \(15\%\).
+  \item Déterminer par essais successifs le premier rang \(n\) tel que \(u_n\geq 10\).
+  \item Écrire un algorithme permettant de trouver ce rang.
+  \item Justifier que ce rang existe.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{37 -- Recherche d'une raison}{\quatreetoiles}
+Une suite géométrique vérifie
+\[
+u_2=18,\qquad u_5=486.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Exprimer \(u_5\) en fonction de \(u_2\) et de la raison \(q\).
+  \item Déterminer \(q^3\).
+  \item Trouver les raisons possibles si l'on travaille dans \(\R\).
+  \item Donner une expression de \(u_n\) dans chacun des cas.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{38 -- Suite arithmétique à partir de deux termes}{\quatreetoiles}
+Une suite arithmétique vérifie
+\[
+u_4=17,\qquad u_{12}=49.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Exprimer \(u_{12}-u_4\) en fonction de la raison \(r\).
+  \item Déterminer \(r\).
+  \item Déterminer \(u_0\).
+  \item Exprimer \(u_n\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{39 -- Somme et équation}{\quatreetoiles}
+On considère la suite géométrique \(u_n=3\cdot 2^n\).
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(S_n=u_0+\cdots+u_n\).
+  \item Résoudre \(S_n=381\).
+  \item Résoudre \(S_n\geq 1000\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{40 -- Étude complète d'un modèle discret}{\quatreetoiles}
+Une entreprise produit \(1000\) objets le premier mois. Chaque mois, sa production augmente de \(8\%\), mais elle perd ensuite \(30\) objets à cause de défauts de production. On note \(P_n\) la production nette du mois \(n\).
+\begin{enumerate}[label=\alph*)]
+  \item Écrire une relation de récurrence.
+  \item Montrer que cette suite n'est ni arithmétique ni géométrique.
+  \item Déterminer une constante \(L\) telle que \(P_{n+1}-L=1{,}08(P_n-L)\).
+  \item En déduire une formule explicite de \(P_n\).
+  \item Étudier le sens de variation.
+\end{enumerate}
+\end{exobox}
+
+%================================================
+\section{Exercices type oraux exigeants}
+
+\begin{exobox}{41 -- Oral type CCP : suite affine}{\quatreetoiles}
+On considère
+\[
+u_0=0,\qquad u_{n+1}=0{,}6u_n+8.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer les quatre premiers termes.
+  \item Trouver la valeur \(L\) vérifiant \(L=0{,}6L+8\).
+  \item Montrer que \(v_n=u_n-L\) est géométrique.
+  \item Exprimer \(u_n\).
+  \item Déterminer le plus petit \(n\) tel que \(u_n>19\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{42 -- Oral type CCP : somme et modélisation}{\quatreetoiles}
+Une personne verse \(100\) euros au début de chaque mois sur un compte rémunéré à \(0{,}5\%\) par mois. On note \(C_n\) le capital après \(n\) mois, juste après le versement.
+\begin{enumerate}[label=\alph*)]
+  \item Écrire une relation de récurrence.
+  \item Calculer \(C_0,C_1,C_2\).
+  \item Exprimer \(C_n\) à l'aide d'une somme géométrique.
+  \item Simplifier cette expression.
+  \item Calculer le capital après \(24\) mois.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{43 -- Oral type Mines : seuil double}{\cinqetoiles}
+On considère deux suites :
+\[
+u_n=500+30n,\qquad v_n=200\cdot 1{,}08^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Interpréter les deux modèles.
+  \item Déterminer expérimentalement le premier rang \(n\) tel que \(v_n>u_n\).
+  \item Montrer que \((v_n)\) est croissante.
+  \item Expliquer pourquoi une comparaison exacte est délicate en Première.
+  \item Proposer un algorithme de recherche du rang.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{44 -- Oral type Centrale : suite avec paramètre}{\cinqetoiles}
+Soit \(a\) un réel positif. On définit
+\[
+u_0=a,\qquad u_{n+1}=2u_n+1.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_1,u_2,u_3\) en fonction de \(a\).
+  \item Poser \(v_n=u_n+1\). Montrer que \((v_n)\) est géométrique.
+  \item Exprimer \(u_n\).
+  \item Déterminer pour quelles valeurs de \(a\) on a \(u_5>100\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{45 -- Oral type Mines : suite et encadrement}{\cinqetoiles}
+Soit
+\[
+u_0=12,\qquad u_{n+1}=\frac{u_n+6}{2}.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_1,u_2,u_3\).
+  \item Montrer que \(u_n>6\) pour tout \(n\).
+  \item Montrer que \((u_n)\) est décroissante.
+  \item Déterminer une expression explicite de \(u_n\).
+  \item Trouver le premier rang tel que \(u_n<6{,}1\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{46 -- Oral type Centrale : suite géométrique alternée}{\cinqetoiles}
+On considère
+\[
+u_n=3(-2)^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer les six premiers termes.
+  \item La suite est-elle croissante ? décroissante ?
+  \item Montrer qu'elle est géométrique.
+  \item Calculer \(S_n=u_0+\cdots+u_n\).
+  \item Discuter le signe de \(u_n\) selon la parité de \(n\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{47 -- Oral type CCP : modèle d'abonnement}{\quatreetoiles}
+Un service en ligne possède \(2000\) abonnés. Chaque mois, \(5\%\) des abonnés se désabonnent, puis \(180\) nouveaux abonnés arrivent.
+\begin{enumerate}[label=\alph*)]
+  \item Définir une suite modélisant la situation.
+  \item Calculer les trois premiers termes.
+  \item Déterminer une valeur stable \(L\).
+  \item Obtenir une formule explicite.
+  \item Interpréter le résultat à long terme.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{48 -- Oral type Mines : somme d'épargne}{\cinqetoiles}
+Une personne économise \(50\) euros la première semaine, puis augmente son épargne de \(5\) euros chaque semaine.
+\begin{enumerate}[label=\alph*)]
+  \item Modéliser l'épargne hebdomadaire par une suite.
+  \item Calculer la somme économisée pendant \(20\) semaines.
+  \item Déterminer le nombre minimal de semaines nécessaires pour économiser au moins \(2000\) euros.
+  \item Proposer une méthode algorithmique.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{49 -- Oral type Centrale : formule cachée}{\cinqetoiles}
+On considère
+\[
+u_0=2,\qquad u_{n+1}=u_n+3\cdot 2^n.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Calculer \(u_1,u_2,u_3,u_4\).
+  \item Écrire \(u_n\) comme une somme.
+  \item Utiliser la somme géométrique pour obtenir une formule explicite.
+  \item Vérifier la formule pour \(n=0,1,2\).
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{50 -- Grand exercice final type concours adapté Première}{\cinqetoiles}
+On considère une suite \((u_n)\) définie par
+\[
+u_0=100,\qquad u_{n+1}=0{,}9u_n+12.
+\]
+\begin{enumerate}[label=\alph*)]
+  \item Interpréter cette suite dans un contexte de stock : perte de \(10\%\), puis ajout de \(12\) unités.
+  \item Calculer \(u_1,u_2,u_3\).
+  \item Trouver la valeur stable \(L\) vérifiant \(L=0{,}9L+12\).
+  \item Poser \(v_n=u_n-L\) et montrer que \((v_n)\) est géométrique.
+  \item Exprimer \(u_n\) en fonction de \(n\).
+  \item Étudier le sens de variation de \((u_n)\).
+  \item Déterminer le premier rang \(n\) tel que \(u_n>119\).
+\end{enumerate}
+\end{exobox}
+
+\newpage
+
+%================================================
+\section{Corrigé complet}
+
+\begin{solbox}{1}
+\[
+u_0=5,\quad u_1=3-2+5=6,\quad u_2=12-4+5=13,\quad u_3=27-6+5=26.
+\]
+\[
+u_{10}=3\cdot 100-20+5=285.
+\]
+Puis
+\[
+u_{n+1}=3(n+1)^2-2(n+1)+5=3n^2+4n+6.
+\]
+Donc
+\[
+u_{n+1}-u_n=(3n^2+4n+6)-(3n^2-2n+5)=6n+1.
+\]
+Pour tout \(n\in\N\), \(6n+1>0\). La suite est donc strictement croissante.
+\end{solbox}
+
+\begin{solbox}{2}
+\[
+u_1=2\cdot4-1=7,\quad u_2=13,\quad u_3=25,\quad u_4=49.
+\]
+La suite semble croissante. On a :
+\[
+u_{n+1}-u_n=2u_n-1-u_n=u_n-1.
+\]
+Pour conclure que la suite est croissante, il faut savoir que \(u_n\geq 1\) pour tout \(n\). Ici, les premiers termes le suggèrent et la relation \(u_{n+1}=2u_n-1\) conserve la propriété \(u_n\geq1\).
+\end{solbox}
+
+\begin{solbox}{3}
+La relation \(u_{n+1}=u_n-3\) est de la forme \(u_{n+1}=u_n+r\) avec \(r=-3\). La suite est arithmétique de raison \(-3\). Donc :
+\[
+u_n=u_0+nr=7-3n.
+\]
+Ainsi :
+\[
+u_{25}=7-75=-68.
+\]
+\end{solbox}
+
+\begin{solbox}{4}
+On a \(v_{n+1}=1{,}2v_n\). La suite est géométrique de raison \(q=1{,}2\) et de premier terme \(v_0=5\). Donc :
+\[
+v_n=5\cdot 1{,}2^n.
+\]
+Puis
+\[
+v_6=5\cdot1{,}2^6\approx14{,}93.
+\]
+Multiplier chaque année par \(1{,}2\) correspond à une hausse de \(20\%\).
+\end{solbox}
+
+\begin{solbox}{5}
+\[
+a_n=4+5n
+\]
+est arithmétique de raison \(5\).  
+\[
+b_n=3\cdot 2^n
+\]
+est géométrique de raison \(2\).  
+\[
+c_n=n^2+1
+\]
+n'est ni arithmétique ni géométrique : les différences ne sont pas constantes et les quotients non plus.  
+Enfin, \(d_{n+1}=d_n+7\) définit une suite arithmétique de raison \(7\).
+\end{solbox}
+
+\begin{solbox}{6}
+La suite est arithmétique :
+\[
+u_n=12+5n.
+\]
+On résout :
+\[
+12+5n\geq100
+\]
+soit
+\[
+5n\geq88,
+\]
+donc
+\[
+n\geq17{,}6.
+\]
+Comme \(n\) est entier, le premier rang est \(n=18\).
+\end{solbox}
+
+\begin{solbox}{7}
+On a \(C_0=800\). Une hausse de \(3\%\) correspond à une multiplication par \(1{,}03\), donc :
+\[
+C_{n+1}=1{,}03C_n.
+\]
+La suite est géométrique de raison \(1{,}03\). Donc :
+\[
+C_n=800\cdot1{,}03^n.
+\]
+Après \(10\) ans :
+\[
+C_{10}=800\cdot1{,}03^{10}\approx1075.
+\]
+Le capital est donc environ \(1075\) euros.
+\end{solbox}
+
+\begin{solbox}{8}
+\[
+u_{20}=6+20\cdot4=86.
+\]
+Il y a \(21\) termes de \(u_0\) à \(u_{20}\). Pour une suite arithmétique :
+\[
+S=\frac{\text{nombre de termes}\times(\text{premier}+\text{dernier})}{2}.
+\]
+Ainsi :
+\[
+S=\frac{21(6+86)}2=21\cdot46=966.
+\]
+\end{solbox}
+
+\begin{solbox}{9}
+\[
+u_n=2\cdot3^n.
+\]
+Donc :
+\[
+S_n=2(1+3+\cdots+3^n)=2\frac{1-3^{n+1}}{1-3}=3^{n+1}-1.
+\]
+Ainsi :
+\[
+S_5=3^6-1=729-1=728.
+\]
+\end{solbox}
+
+\begin{solbox}{10}
+\[
+u_{n+1}=(n+1)^2-6(n+1)+8=n^2-4n+3.
+\]
+Donc :
+\[
+u_{n+1}-u_n=(n^2-4n+3)-(n^2-6n+8)=2n-5.
+\]
+On a \(2n-5\geq0\) si \(n\geq3\). La suite décroît donc jusqu'au rang \(3\), puis croît à partir du rang \(3\).
+\end{solbox}
+
+\begin{solbox}{11}
+\[
+u_{n+1}=5-2(n+1)=5-2n-2=3-2n.
+\]
+Or
+\[
+u_n-2=(5-2n)-2=3-2n.
+\]
+Donc :
+\[
+u_{n+1}=u_n-2.
+\]
+Une définition par récurrence est :
+\[
+u_0=5,\qquad u_{n+1}=u_n-2.
+\]
+La suite est arithmétique de raison \(-2\), donc strictement décroissante.
+\end{solbox}
+
+\begin{solbox}{12}
+\[
+u_n=150\cdot0{,}8^n.
+\]
+Multiplier par \(0{,}8\), c'est conserver \(80\%\), donc subir une baisse de \(20\%\).  
+On cherche :
+\[
+150\cdot0{,}8^n<50.
+\]
+Par essais :
+\[
+u_4=150\cdot0{,}8^4=61{,}44,\qquad u_5=49{,}152.
+\]
+Le premier rang est donc \(n=5\).
+\end{solbox}
+
+\begin{solbox}{13}
+\[
+P_0=12000,\qquad P_{n+1}=P_n+350.
+\]
+La suite est arithmétique de raison \(350\). Donc :
+\[
+P_n=12000+350n.
+\]
+On cherche :
+\[
+12000+350n>20000.
+\]
+Donc :
+\[
+350n>8000,
+\]
+et
+\[
+n>22{,}857.
+\]
+Le premier entier convenable est \(n=23\).
+\end{solbox}
+
+\begin{solbox}{14}
+\[
+B_0=5000,\qquad B_{n+1}=1{,}12B_n.
+\]
+La suite est géométrique de raison \(1{,}12\). Donc :
+\[
+B_n=5000\cdot1{,}12^n.
+\]
+Ainsi :
+\[
+B_8=5000\cdot1{,}12^8\approx12380.
+\]
+\end{solbox}
+
+\begin{solbox}{15}
+\(A_n\) représente un placement avec gain fixe de \(60\) euros par an.  
+\(B_n\) représente un placement avec hausse annuelle de \(4\%\).  
+\[
+A_5=1000+300=1300,
+\]
+\[
+B_5=1000\cdot1{,}04^5\approx1217.
+\]
+En testant :
+\[
+A_{15}=1900,\quad B_{15}\approx1801,
+\]
+\[
+A_{20}=2200,\quad B_{20}\approx2191,
+\]
+\[
+A_{21}=2260,\quad B_{21}\approx2279.
+\]
+Le premier rang est \(n=21\). Une croissance géométrique finit par dépasser une croissance arithmétique car elle applique un pourcentage à une base de plus en plus grande.
+\end{solbox}
+
+\begin{solbox}{16}
+On a :
+\[
+v_{n+1}=u_{n+1}+2=3u_n+4+2=3u_n+6=3(u_n+2)=3v_n.
+\]
+Donc \((v_n)\) est géométrique de raison \(3\). Comme
+\[
+v_0=u_0+2=4,
+\]
+on obtient :
+\[
+v_n=4\cdot3^n.
+\]
+Ainsi :
+\[
+u_n=v_n-2=4\cdot3^n-2.
+\]
+Donc :
+\[
+u_5=4\cdot243-2=970.
+\]
+\end{solbox}
+
+\begin{solbox}{17}
+\[
+u_0=7,\quad u_1=4,\quad u_2=3,\quad u_3=4,\quad u_4=7.
+\]
+Puis :
+\[
+u_{n+1}-u_n=((n+1)^2-4(n+1)+7)-(n^2-4n+7).
+\]
+Donc :
+\[
+u_{n+1}-u_n=2n-3.
+\]
+Cette quantité est négative pour \(n=0,1\), positive pour \(n\geq2\). La suite décroît jusqu'à \(u_2\), puis croît à partir de \(u_2\).
+\end{solbox}
+
+\begin{solbox}{18}
+\[
+S_0=1,\quad S_1=3,\quad S_2=7,\quad S_3=15.
+\]
+On conjecture :
+\[
+S_n=2^{n+1}-1.
+\]
+C'est une somme géométrique de raison \(2\), donc :
+\[
+S_n=\frac{1-2^{n+1}}{1-2}=2^{n+1}-1.
+\]
+On cherche :
+\[
+2^{n+1}-1\geq1000,
+\]
+soit
+\[
+2^{n+1}\geq1001.
+\]
+Or \(2^9=512\) et \(2^{10}=1024\). Donc \(n+1=10\), soit \(n=9\).
+\end{solbox}
+
+\begin{solbox}{19}
+\[
+u_0=5,\quad u_1=\frac52,\quad u_2=\frac53.
+\]
+On a :
+\[
+u_{n+1}=\frac{5}{n+2}<\frac{5}{n+1}=u_n
+\]
+car \(n+2>n+1>0\). La suite est donc strictement décroissante.  
+Elle n'est pas arithmétique car les différences ne sont pas constantes ; elle n'est pas géométrique car les quotients ne sont pas constants.  
+On cherche :
+\[
+\frac{5}{n+1}\leq0{,}1.
+\]
+Donc :
+\[
+5\leq0{,}1(n+1),
+\]
+\[
+50\leq n+1,
+\]
+d'où \(n\geq49\).
+\end{solbox}
+
+\begin{solbox}{20}
+Les valeurs successives sont :
+\[
+3,\ 7,\ 15,\ 31,\ 63,\ 127,\ 255.
+\]
+La suite vérifie :
+\[
+u_0=3,\qquad u_{n+1}=2u_n+1.
+\]
+Avec \(v_n=u_n+1\), on obtient :
+\[
+v_{n+1}=u_{n+1}+1=2u_n+2=2(u_n+1)=2v_n.
+\]
+Donc \((v_n)\) est géométrique de raison \(2\).
+\end{solbox}
+
+\begin{solbox}{21}
+On a :
+\[
+u_1=u_0+r,\quad u_2=u_0+2r,\quad u_3=u_0+3r.
+\]
+La formule conjecturée est :
+\[
+u_n=u_0+nr.
+\]
+En effet, à chaque passage d'un rang au suivant, on ajoute \(r\). Après \(n\) passages à partir de \(u_0\), on a ajouté \(n\) fois \(r\).  
+Application :
+\[
+u_n=-2+5n.
+\]
+\end{solbox}
+
+\begin{solbox}{22}
+\[
+u_1=u_0q,\quad u_2=u_0q^2,\quad u_3=u_0q^3.
+\]
+Donc :
+\[
+u_n=u_0q^n.
+\]
+À chaque passage d'un rang au suivant, on multiplie par \(q\). Après \(n\) passages, on a multiplié \(n\) fois par \(q\).  
+Avec \(u_0=4\) et \(q=-2\) :
+\[
+u_n=4(-2)^n.
+\]
+\end{solbox}
+
+\begin{solbox}{23}
+\[
+S_n=1+q+q^2+\cdots+q^n.
+\]
+Alors :
+\[
+qS_n=q+q^2+\cdots+q^{n+1}.
+\]
+Donc :
+\[
+S_n-qS_n=1-q^{n+1}.
+\]
+Ainsi :
+\[
+(1-q)S_n=1-q^{n+1}.
+\]
+Comme \(q\neq1\),
+\[
+S_n=\frac{1-q^{n+1}}{1-q}.
+\]
+Avec \(q=\frac12\) et \(n=5\) :
+\[
+S_5=\frac{1-(1/2)^6}{1-1/2}=2\left(1-\frac1{64}\right)=\frac{63}{32}.
+\]
+\end{solbox}
+
+\begin{solbox}{24}
+Pour une suite arithmétique :
+\[
+u_{n+1}=u_n+r.
+\]
+Donc :
+\[
+u_{n+1}-u_n=r.
+\]
+Si \(r>0\), cette différence est strictement positive, donc la suite est strictement croissante.  
+Si \(r<0\), elle est strictement négative, donc la suite est strictement décroissante.  
+Si \(r=0\), la suite est constante.
+\end{solbox}
+
+\begin{solbox}{25}
+Pour une suite géométrique :
+\[
+u_{n+1}=qu_n.
+\]
+Donc :
+\[
+u_{n+1}-u_n=qu_n-u_n=(q-1)u_n.
+\]
+Comme \(u_0>0\) et \(q>0\), tous les termes sont positifs.  
+Si \(q>1\), alors \(q-1>0\), donc \(u_{n+1}-u_n>0\) : la suite est croissante.  
+Si \(0<q<1\), alors \(q-1<0\), donc elle est décroissante.
+\end{solbox}
+
+\begin{solbox}{26}
+On cherche \(\alpha\) tel que \(v_n=u_n+\alpha\) vérifie \(v_{n+1}=2v_n\).  
+Or :
+\[
+v_{n+1}=u_{n+1}+\alpha=2u_n+3+\alpha.
+\]
+On veut :
+\[
+2u_n+3+\alpha=2(u_n+\alpha)=2u_n+2\alpha.
+\]
+Donc :
+\[
+3+\alpha=2\alpha,
+\]
+d'où \(\alpha=3\).  
+Ainsi \(v_n=u_n+3\) et
+\[
+v_{n+1}=2v_n.
+\]
+Comme \(v_0=4\), on a :
+\[
+v_n=4\cdot2^n,
+\]
+donc :
+\[
+u_n=4\cdot2^n-3.
+\]
+\end{solbox}
+
+\begin{solbox}{27}
+\[
+u_0=1,\quad u_1=2,\quad u_2=5,\quad u_3=10,\quad u_4=17.
+\]
+On reconnaît :
+\[
+u_n=n^2+1.
+\]
+Vérification :
+\[
+u_{n+1}=(n+1)^2+1=n^2+2n+2.
+\]
+Et :
+\[
+u_n+2n+1=n^2+1+2n+1=n^2+2n+2.
+\]
+La formule est compatible avec la récurrence et avec \(u_0=1\).
+\end{solbox}
+
+\begin{solbox}{28}
+\[
+u_{n+1}=\frac{2n+5}{n+3}.
+\]
+Donc :
+\[
+u_{n+1}-u_n=\frac{2n+5}{n+3}-\frac{2n+3}{n+2}.
+\]
+On met au même dénominateur :
+\[
+u_{n+1}-u_n=\frac{(2n+5)(n+2)-(2n+3)(n+3)}{(n+3)(n+2)}.
+\]
+Le numérateur vaut :
+\[
+2n^2+9n+10-(2n^2+9n+9)=1.
+\]
+Donc :
+\[
+u_{n+1}-u_n=\frac{1}{(n+3)(n+2)}>0.
+\]
+La suite est strictement croissante.
+\end{solbox}
+
+\begin{solbox}{29}
+Pour tout \(n\in\N\),
+\[
+\frac{2}{n+1}>0,
+\]
+donc
+\[
+u_n=3+\frac{2}{n+1}>3.
+\]
+De plus, comme \(n+1\geq1\),
+\[
+\frac{2}{n+1}\leq2,
+\]
+donc
+\[
+u_n\leq5.
+\]
+Enfin,
+\[
+u_{n+1}=3+\frac{2}{n+2}<3+\frac{2}{n+1}=u_n.
+\]
+La suite est décroissante et reste au-dessus de \(3\).
+\end{solbox}
+
+\begin{solbox}{30}
+\[
+u_n=6\left(\frac13\right)^n.
+\]
+Donc :
+\[
+S_n=6\frac{1-\left(\frac13\right)^{n+1}}{1-\frac13}
+=6\frac{1-\left(\frac13\right)^{n+1}}{\frac23}
+=9\left(1-\left(\frac13\right)^{n+1}\right).
+\]
+Comme \(\left(\frac13\right)^{n+1}>0\),
+\[
+S_n<9.
+\]
+Les termes ajoutés diminuent car la raison \(\frac13\) est comprise entre \(0\) et \(1\).
+\end{solbox}
+
+\begin{solbox}{31}
+\[
+u_0=10,\ u_1=15,\ u_2=20,\ u_3=25,\ u_4=30.
+\]
+\[
+v_0=10,\ v_1=12,\ v_2=14{,}4,\ v_3=17{,}28,\ v_4=20{,}736.
+\]
+Par essais :
+\[
+v_{10}\approx61{,}92,\quad u_{10}=60,
+\]
+donc le dépassement se produit vers \(n=10\).  
+La suite \(u\) augmente par addition de \(5\), tandis que \(v\) augmente de \(20\%\) à chaque rang. La croissance en pourcentage s'amplifie car elle s'applique à un terme de plus en plus grand.
+\end{solbox}
+
+\begin{solbox}{32}
+La perte de \(4\%\) donne une multiplication par \(0{,}96\), puis on ajoute \(200\) :
+\[
+P_{n+1}=0{,}96P_n+200.
+\]
+On calcule :
+\[
+P_1=9800,\quad P_2=9608,\quad P_3=9423{,}68.
+\]
+La suite n'est ni arithmétique ni géométrique.  
+Posons \(Q_n=P_n-5000\). Alors :
+\[
+Q_{n+1}=P_{n+1}-5000=0{,}96P_n+200-5000
+=0{,}96P_n-4800=0{,}96(P_n-5000)=0{,}96Q_n.
+\]
+Donc \((Q_n)\) est géométrique. Comme \(Q_0=5000\),
+\[
+Q_n=5000\cdot0{,}96^n.
+\]
+Ainsi :
+\[
+P_n=5000+5000\cdot0{,}96^n.
+\]
+\end{solbox}
+
+\begin{solbox}{33}
+\[
+D_{n+1}=1{,}01D_n-150.
+\]
+\[
+D_1=4900,\quad D_2=4799,\quad D_3=4696{,}99.
+\]
+On pose \(E_n=D_n-15000\). Alors :
+\[
+E_{n+1}=D_{n+1}-15000=1{,}01D_n-150-15000
+=1{,}01D_n-15150=1{,}01(D_n-15000)=1{,}01E_n.
+\]
+Donc :
+\[
+E_n=E_0\cdot1{,}01^n=(-10000)\cdot1{,}01^n.
+\]
+Ainsi :
+\[
+D_n=15000-10000\cdot1{,}01^n.
+\]
+La dette finit par devenir négative dans le modèle, ce qui signifie qu'elle s'annule avant ce moment. En pratique, on arrête le modèle lorsque la dette atteint \(0\).
+\end{solbox}
+
+\begin{solbox}{34}
+\[
+u_1=7,\quad u_2=\frac{11}{2}=5{,}5,\quad u_3=4{,}75.
+\]
+Si \(u_n>4\), alors :
+\[
+u_{n+1}=\frac{u_n+4}{2}>\frac{4+4}{2}=4.
+\]
+De plus :
+\[
+u_{n+1}-u_n=\frac{u_n+4}{2}-u_n=\frac{4-u_n}{2}.
+\]
+Comme \(u_n>4\), cette différence est négative : la suite est décroissante.  
+Avec \(v_n=u_n-4\),
+\[
+v_{n+1}=u_{n+1}-4=\frac{u_n+4}{2}-4=\frac{u_n-4}{2}=\frac12v_n.
+\]
+Donc :
+\[
+v_n=6\left(\frac12\right)^n.
+\]
+Ainsi :
+\[
+u_n=4+6\left(\frac12\right)^n.
+\]
+\end{solbox}
+
+\begin{solbox}{35}
+Chaque heure, il reste \(70\%\), puis on ajoute \(5\) :
+\[
+M_{n+1}=0{,}7M_n+5.
+\]
+Avec \(M_0=5\),
+\[
+M_1=8{,}5,\quad M_2=10{,}95,\quad M_3=12{,}665.
+\]
+La valeur stable \(L\) vérifie :
+\[
+L=0{,}7L+5.
+\]
+Donc :
+\[
+0{,}3L=5,\quad L=\frac{50}{3}.
+\]
+Avec \(V_n=M_n-\frac{50}{3}\),
+\[
+V_{n+1}=0{,}7V_n.
+\]
+Donc :
+\[
+M_n=\frac{50}{3}+\left(5-\frac{50}{3}\right)0{,}7^n.
+\]
+\end{solbox}
+
+\begin{solbox}{36}
+La suite modélise une quantité initiale \(2\), augmentée de \(15\%\) à chaque rang.  
+Par essais :
+\[
+u_{10}=2\cdot1{,}15^{10}\approx8{,}09,
+\]
+\[
+u_{12}=2\cdot1{,}15^{12}\approx10{,}70.
+\]
+On vérifie \(u_{11}\approx9{,}30\). Le premier rang est donc \(n=12\).  
+Algorithme :
+\[
+\begin{array}{l}
+n\leftarrow0,\ u\leftarrow2\\
+\text{Tant que }u<10\\
+\quad u\leftarrow1{,}15u\\
+\quad n\leftarrow n+1\\
+\text{Fin Tant que}
+\end{array}
+\]
+Le rang existe car la suite géométrique de raison \(1{,}15>1\) croît sans cesse.
+\end{solbox}
+
+\begin{solbox}{37}
+Pour une suite géométrique :
+\[
+u_5=u_2q^3.
+\]
+Donc :
+\[
+486=18q^3.
+\]
+Ainsi :
+\[
+q^3=27.
+\]
+Dans \(\R\), on obtient \(q=3\). Donc :
+\[
+u_n=u_2q^{n-2}=18\cdot3^{n-2}.
+\]
+\end{solbox}
+
+\begin{solbox}{38}
+Pour une suite arithmétique :
+\[
+u_{12}-u_4=(12-4)r=8r.
+\]
+Donc :
+\[
+49-17=8r,
+\]
+\[
+32=8r,
+\]
+d'où
+\[
+r=4.
+\]
+Puis :
+\[
+u_4=u_0+4r,
+\]
+donc :
+\[
+17=u_0+16,
+\]
+et
+\[
+u_0=1.
+\]
+Ainsi :
+\[
+u_n=1+4n.
+\]
+\end{solbox}
+
+\begin{solbox}{39}
+\[
+S_n=3(1+2+\cdots+2^n)=3(2^{n+1}-1).
+\]
+Pour \(S_n=381\),
+\[
+3(2^{n+1}-1)=381.
+\]
+Donc :
+\[
+2^{n+1}-1=127,
+\]
+\[
+2^{n+1}=128=2^7.
+\]
+Donc :
+\[
+n+1=7,\quad n=6.
+\]
+Pour \(S_n\geq1000\),
+\[
+3(2^{n+1}-1)\geq1000.
+\]
+Par essais :
+\[
+S_8=3(512-1)=1533,
+\]
+\[
+S_7=3(256-1)=765.
+\]
+Le premier rang est \(n=8\).
+\end{solbox}
+
+\begin{solbox}{40}
+La relation est :
+\[
+P_{n+1}=1{,}08P_n-30.
+\]
+Elle n'est pas arithmétique à cause du facteur \(1{,}08\), ni géométrique à cause du terme \(-30\).  
+On cherche \(L\) tel que :
+\[
+P_{n+1}-L=1{,}08(P_n-L).
+\]
+Cela revient à imposer :
+\[
+1{,}08P_n-30-L=1{,}08P_n-1{,}08L.
+\]
+Donc :
+\[
+-30-L=-1{,}08L,
+\]
+\[
+30=0{,}08L,
+\]
+\[
+L=375.
+\]
+Ainsi :
+\[
+P_n-375=(P_0-375)1{,}08^n.
+\]
+Donc :
+\[
+P_n=375+625\cdot1{,}08^n.
+\]
+Comme \(1{,}08>1\) et \(625>0\), la suite est croissante.
+\end{solbox}
+
+\begin{solbox}{41}
+\[
+u_1=8,\quad u_2=12{,}8,\quad u_3=15{,}68,\quad u_4=17{,}408.
+\]
+La valeur stable \(L\) vérifie :
+\[
+L=0{,}6L+8.
+\]
+Donc :
+\[
+0{,}4L=8,\quad L=20.
+\]
+Avec \(v_n=u_n-20\),
+\[
+v_{n+1}=u_{n+1}-20=0{,}6u_n+8-20=0{,}6u_n-12=0{,}6(u_n-20)=0{,}6v_n.
+\]
+Donc :
+\[
+v_n=v_0\cdot0{,}6^n=-20\cdot0{,}6^n.
+\]
+Ainsi :
+\[
+u_n=20-20\cdot0{,}6^n.
+\]
+On cherche :
+\[
+20-20\cdot0{,}6^n>19,
+\]
+soit
+\[
+0{,}6^n<0{,}05.
+\]
+Par essais, \(0{,}6^5\approx0{,}0778\) et \(0{,}6^6\approx0{,}0467\). Le premier rang est \(n=6\).
+\end{solbox}
+
+\begin{solbox}{42}
+Si \(C_n\) est le capital juste après le versement du mois \(n\), alors :
+\[
+C_{n+1}=1{,}005C_n+100.
+\]
+On peut aussi écrire, après \(n\) mois :
+\[
+C_n=100(1+1{,}005+1{,}005^2+\cdots+1{,}005^n).
+\]
+Donc :
+\[
+C_n=100\frac{1-1{,}005^{n+1}}{1-1{,}005}.
+\]
+Pour \(24\) mois :
+\[
+C_{24}=100\frac{1-1{,}005^{25}}{1-1{,}005}\approx2654.
+\]
+\end{solbox}
+
+\begin{solbox}{43}
+\(u_n\) est une croissance arithmétique de \(30\) unités par rang.  
+\(v_n\) est une croissance géométrique de \(8\%\) par rang.  
+Par essais :
+\[
+u_{20}=1100,\quad v_{20}\approx932,
+\]
+\[
+u_{30}=1400,\quad v_{30}\approx2013.
+\]
+Le dépassement a lieu entre \(20\) et \(30\). Un algorithme naturel consiste à initialiser \(n=0\), puis à augmenter \(n\) jusqu'à obtenir \(v_n>u_n\).  
+La suite \((v_n)\) est croissante car sa raison \(1{,}08>1\) et son premier terme est positif.
+\end{solbox}
+
+\begin{solbox}{44}
+\[
+u_1=2a+1,\quad u_2=2(2a+1)+1=4a+3,\quad u_3=8a+7.
+\]
+Avec \(v_n=u_n+1\),
+\[
+v_{n+1}=u_{n+1}+1=2u_n+2=2(u_n+1)=2v_n.
+\]
+Donc :
+\[
+v_n=(a+1)2^n.
+\]
+Ainsi :
+\[
+u_n=(a+1)2^n-1.
+\]
+On cherche :
+\[
+u_5>100.
+\]
+Donc :
+\[
+32(a+1)-1>100.
+\]
+\[
+32(a+1)>101.
+\]
+\[
+a+1>\frac{101}{32}.
+\]
+\[
+a>\frac{69}{32}.
+\]
+\end{solbox}
+
+\begin{solbox}{45}
+\[
+u_1=9,\quad u_2=7{,}5,\quad u_3=6{,}75.
+\]
+Si \(u_n>6\), alors :
+\[
+u_{n+1}=\frac{u_n+6}{2}>6.
+\]
+De plus :
+\[
+u_{n+1}-u_n=\frac{u_n+6}{2}-u_n=\frac{6-u_n}{2}<0.
+\]
+Donc la suite est décroissante.  
+Avec \(v_n=u_n-6\),
+\[
+v_{n+1}=\frac12v_n.
+\]
+Comme \(v_0=6\),
+\[
+v_n=6\left(\frac12\right)^n.
+\]
+Donc :
+\[
+u_n=6+6\left(\frac12\right)^n.
+\]
+On cherche :
+\[
+6+6\left(\frac12\right)^n<6{,}1.
+\]
+Donc :
+\[
+6\left(\frac12\right)^n<0{,}1,
+\]
+\[
+\left(\frac12\right)^n<\frac1{60}.
+\]
+Or \(2^5=32\) et \(2^6=64\). Le premier rang est \(n=6\).
+\end{solbox}
+
+\begin{solbox}{46}
+Les premiers termes sont :
+\[
+3,\ -6,\ 12,\ -24,\ 48,\ -96.
+\]
+La suite n'est ni croissante ni décroissante car les signes alternent.  
+Elle est géométrique car :
+\[
+u_{n+1}=3(-2)^{n+1}=-2\cdot3(-2)^n=-2u_n.
+\]
+Sa raison est \(-2\).  
+La somme vaut :
+\[
+S_n=3\frac{1-(-2)^{n+1}}{1-(-2)}
+=1-(-2)^{n+1}.
+\]
+Si \(n\) est pair, \((-2)^n>0\), donc \(u_n>0\). Si \(n\) est impair, \(u_n<0\).
+\end{solbox}
+
+\begin{solbox}{47}
+La relation est :
+\[
+A_{n+1}=0{,}95A_n+180,\qquad A_0=2000.
+\]
+\[
+A_1=2080,\quad A_2=2156,\quad A_3=2228{,}2.
+\]
+La valeur stable \(L\) vérifie :
+\[
+L=0{,}95L+180.
+\]
+Donc :
+\[
+0{,}05L=180,\quad L=3600.
+\]
+Avec \(V_n=A_n-3600\),
+\[
+V_{n+1}=0{,}95V_n.
+\]
+Donc :
+\[
+A_n=3600+(2000-3600)0{,}95^n
+=3600-1600\cdot0{,}95^n.
+\]
+La suite se rapproche de \(3600\) abonnés.
+\end{solbox}
+
+\begin{solbox}{48}
+L'épargne hebdomadaire est une suite arithmétique :
+\[
+u_1=50,\qquad r=5.
+\]
+Donc :
+\[
+u_n=50+5(n-1).
+\]
+La somme sur \(20\) semaines vaut :
+\[
+S_{20}=\frac{20(u_1+u_{20})}{2}.
+\]
+Or :
+\[
+u_{20}=50+5\cdot19=145.
+\]
+Donc :
+\[
+S_{20}=10(50+145)=1950.
+\]
+Pour atteindre \(2000\), il faut une semaine de plus car \(S_{20}=1950\) et \(u_{21}=150\). Donc le nombre minimal est \(21\).
+\end{solbox}
+
+\begin{solbox}{49}
+On calcule :
+\[
+u_1=2+3=5,
+\]
+\[
+u_2=5+6=11,
+\]
+\[
+u_3=11+12=23,
+\]
+\[
+u_4=23+24=47.
+\]
+On a :
+\[
+u_n=2+3(1+2+2^2+\cdots+2^{n-1})
+\]
+pour \(n\geq1\).  
+La somme vaut :
+\[
+1+2+\cdots+2^{n-1}=2^n-1.
+\]
+Donc :
+\[
+u_n=2+3(2^n-1)=3\cdot2^n-1.
+\]
+Vérification :
+\[
+u_0=3-1=2,\quad u_1=6-1=5.
+\]
+\end{solbox}
+
+\begin{solbox}{50}
+Le modèle dit qu'il reste \(90\%\) du stock, puis qu'on ajoute \(12\) unités :
+\[
+u_{n+1}=0{,}9u_n+12.
+\]
+\[
+u_1=0{,}9\cdot100+12=102,
+\]
+\[
+u_2=0{,}9\cdot102+12=103{,}8,
+\]
+\[
+u_3=0{,}9\cdot103{,}8+12=105{,}42.
+\]
+La valeur stable \(L\) vérifie :
+\[
+L=0{,}9L+12.
+\]
+Donc :
+\[
+0{,}1L=12,
+\]
+\[
+L=120.
+\]
+Posons \(v_n=u_n-120\). Alors :
+\[
+v_{n+1}=u_{n+1}-120=0{,}9u_n+12-120=0{,}9u_n-108=0{,}9(u_n-120)=0{,}9v_n.
+\]
+Donc \((v_n)\) est géométrique de raison \(0{,}9\). Comme :
+\[
+v_0=100-120=-20,
+\]
+on obtient :
+\[
+v_n=-20\cdot0{,}9^n.
+\]
+Ainsi :
+\[
+u_n=120-20\cdot0{,}9^n.
+\]
+La suite est croissante car \(0{,}9^n\) décroît, donc \(-20\cdot0{,}9^n\) augmente vers \(0\).  
+On cherche :
+\[
+120-20\cdot0{,}9^n>119.
+\]
+Donc :
+\[
+20\cdot0{,}9^n<1,
+\]
+\[
+0{,}9^n<0{,}05.
+\]
+Par essais :
+\[
+0{,}9^{28}\approx0{,}0523,\qquad 0{,}9^{29}\approx0{,}0471.
+\]
+Le premier rang est donc \(n=29\).
+\end{solbox}
+
+\newpage
+
+%================================================
+\section{Fiche de synthèse finale}
+
+\begin{rememberbox}{Formules essentielles}
+\[
+\boxed{\text{Suite arithmétique : } u_{n+1}=u_n+r}
+\]
+\[
+\boxed{u_n=u_0+nr}
+\]
+\[
+\boxed{\text{Suite géométrique : } u_{n+1}=qu_n}
+\]
+\[
+\boxed{u_n=u_0q^n}
+\]
+\[
+\boxed{1+q+\cdots+q^n=\frac{1-q^{n+1}}{1-q}\quad(q\neq1)}
+\]
+\end{rememberbox}
+
+\begin{methodbox}{Étudier une suite}
+Pour étudier une suite, on peut suivre le plan suivant :
+\begin{enumerate}
+  \item Identifier le type de définition : explicite ou récurrente.
+  \item Calculer quelques premiers termes pour comprendre le comportement.
+  \item Chercher si la suite est arithmétique ou géométrique.
+  \item Pour les variations, calculer \(u_{n+1}-u_n\).
+  \item Pour un modèle en pourcentage, traduire la variation par un coefficient multiplicateur.
+  \item Pour une suite du type \(u_{n+1}=au_n+b\), chercher une valeur stable \(L\) telle que \(L=aL+b\).
+\end{enumerate}
+\end{methodbox}
+
+\begin{warningbox}{Erreurs fréquentes}
+\begin{itemize}
+  \item Confondre augmentation de \(20\%\) et multiplication par \(20\).
+  \item Oublier que \(n\) est un entier naturel.
+  \item Dire qu'une suite est croissante après avoir seulement calculé quelques termes.
+  \item Utiliser la formule d'une suite arithmétique pour une suite géométrique.
+  \item Oublier le nombre exact de termes dans une somme.
+\end{itemize}
+\end{warningbox}
+
+\end{document}

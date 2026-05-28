@@ -1,0 +1,2410 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% LIVRET INTENSIF BAC 2026
+% MATHÉMATIQUES SPÉCIALITÉ + PHYSIQUE-CHIMIE SPÉCIALITÉ
+% Version longue structurée, prête à compiler.
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1.65cm}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{pifont}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Programme intensif Bac 2026}
+\rhead{Maths + Physique-Chimie}
+\cfoot{\thepage}
+
+\setlist[itemize]{leftmargin=1.25em}
+\setlist[enumerate]{leftmargin=1.55em}
+
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,95,20}
+\definecolor{violetprepa}{RGB}{95,45,130}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+\newcommand{\checkbox}{\ding{113}}
+\newcommand{\important}[1]{\textbf{\textcolor{rougeprepa}{#1}}}
+\newcommand{\sujetlink}[2]{\hyperlink{#1}{\textcolor{blue!60!black}{\textbf{#2}}}}
+
+\tcbset{
+  enhanced,
+  breakable,
+  sharp corners=downhill,
+  boxrule=0.7pt,
+  colback=white,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{objectifjour}[1][]{
+  colframe=bleuprepa,
+  colback=blue!2!white,
+  title={Objectif du jour #1}
+}
+
+\newtcolorbox{methode}[1][]{
+  colframe=vertprepa,
+  colback=green!2!white,
+  title={Méthode #1}
+}
+
+\newtcolorbox{alerte}[1][]{
+  colframe=rougeprepa,
+  colback=red!2!white,
+  title={Alerte #1}
+}
+
+\newtcolorbox{sujetofficiel}[1][]{
+  colframe=bleuprepa,
+  colback=cyan!2!white,
+  title={Annale officielle à faire #1}
+}
+
+\newtcolorbox{sujettype}[1][]{
+  colframe=bleuprepa,
+  colback=blue!1!white,
+  title={Sujet type bac inventé #1}
+}
+
+\newtcolorbox{geipi}[1][]{
+  colframe=violetprepa,
+  colback=violet!3!white,
+  title={Sujet type GEIPI inventé #1}
+}
+
+\newtcolorbox{difficile}[1][]{
+  colframe=orangeprepa,
+  colback=orange!3!white,
+  title={Sujet plus difficile que bac #1}
+}
+
+\newtcolorbox{corrige}[1][]{
+  colframe=vertprepa,
+  colback=green!1!white,
+  title={Correction synthétique #1}
+}
+
+\title{
+  \Huge\textbf{Programme intensif de révision du baccalauréat 2026}\\[2mm]
+  \Large Mathématiques spécialité et Physique-Chimie spécialité\\[1mm]
+  \large Objectif : préparation d'excellence, mention très bien, 20/20
+}
+\author{Livret professeur — Terminale générale}
+\date{Départ : jeudi 28 mai 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{alerte}[Important — annales officielles]
+Ce livret ne recopie pas mot pour mot les annales officielles. Il donne des références précises et des liens cliquables vers des sujets existants, puis propose des sujets originaux inventés. Un sujet inventé est toujours indiqué comme tel.
+\end{alerte}
+
+\begin{alerte}[Objectif 20/20]
+Ce programme est conçu pour viser 20/20 : il ne garantit pas automatiquement la note, mais il met l'élève dans les meilleures conditions possibles s'il suit le planning, travaille en temps limité, corrige activement ses erreurs et refait les exercices ratés.
+\end{alerte}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Sources officielles et liens utiles}
+% ============================================================
+
+\begin{sujetofficiel}[calendrier officiel 2026]
+\begin{itemize}
+  \item \href{https://www.education.gouv.fr/reussir-au-lycee/baccalaureat-brevet-cap-parcoursup-le-calendrier-2026-341384}{Calendrier national 2026 — ministère de l'Éducation nationale}.
+  \item Épreuves écrites de spécialité du bac général : mardi 16, mercredi 17 et jeudi 18 juin 2026.
+  \item Grand oral : à partir du lundi 22 juin 2026 selon les académies.
+  \item Toujours vérifier la convocation personnelle de l'élève.
+\end{itemize}
+\end{sujetofficiel}
+
+\begin{sujetofficiel}[annales de mathématiques]
+\begin{itemize}
+  \item \href{https://www.apmep.fr/Annales-Terminale-Generale}{APMEP — Annales Terminale générale}.
+  \item \href{https://www.apmep.fr/Annee-2025}{APMEP — Année 2025}.
+  \item \href{https://www.apmep.fr/IMG/pdf/Metro_J1_17_06_2025_DV.pdf}{APMEP — Métropole Sujet 1 — 17 juin 2025 — spécialité mathématiques}.
+  \item \href{https://www.apmep.fr/Annee-2024}{APMEP — Année 2024}.
+  \item Ces sujets doivent être faits en temps limité, sans recopier les corrections.
+\end{itemize}
+\end{sujetofficiel}
+
+\begin{sujetofficiel}[annales de physique-chimie]
+\begin{itemize}
+  \item \href{https://www.labolycee.org/}{Labolycée — banque d'exercices corrigés de bac physique-chimie}.
+  \item \href{https://www.labolycee.org/bac-2025-metropole-jour-2}{Labolycée — Bac 2025 Métropole Jour 2}.
+  \item \href{https://labolycee.org/bac-2025-metropole-jour-1}{Labolycée — Bac 2025 Métropole Jour 1}.
+  \item \href{https://www.labolycee.org/tale-specialite-physique-chimie?page=2}{Labolycée — Terminale spécialité physique-chimie}.
+\end{itemize}
+\end{sujetofficiel}
+
+\begin{sujetofficiel}[concours post-bac]
+\begin{itemize}
+  \item \href{https://www.geipi-polytech.org/annales-du-concours-geipi-polytech/}{Geipi Polytech — annales officielles du concours}.
+  \item \href{https://www.geipi-polytech.org/telechargement/}{Geipi Polytech — documents à télécharger}.
+  \item Ces ressources servent pour des entraînements plus rapides, plus calculatoires et parfois plus difficiles que le bac.
+\end{itemize}
+\end{sujetofficiel}
+
+% ============================================================
+\section{Stratégie générale pour viser l'excellence}
+% ============================================================
+
+\subsection{Ce que signifie viser 20/20}
+
+Viser 20/20 ne signifie pas simplement connaître son cours. Cela signifie être capable de :
+\begin{itemize}
+  \item reconnaître rapidement un exercice type ;
+  \item choisir un ordre de traitement efficace ;
+  \item rédiger proprement ;
+  \item gérer le temps ;
+  \item ne pas perdre de points sur les unités, domaines, signes et calculs ;
+  \item traiter les questions difficiles sans paniquer ;
+  \item relire intelligemment ;
+  \item refaire les erreurs 48 heures plus tard.
+\end{itemize}
+
+\begin{methode}[lecture stratégique du sujet]
+\begin{enumerate}
+  \item Lire tout le sujet en 5 minutes sans écrire.
+  \item Identifier les chapitres de chaque exercice.
+  \item Repérer les exercices avec des premières questions directes.
+  \item Commencer par l'exercice le plus rentable.
+  \item Ne pas rester plus de 3 minutes bloqué sans produire.
+  \item Marquer les questions à reprendre.
+  \item Garder un temps final incompressible de relecture.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[relecture mathématique]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Domaine de définition.
+  \item Conditions du logarithme.
+  \item Signe de la dérivée.
+  \item Tableau de variations cohérent.
+  \item Initialisation d'une récurrence.
+  \item Hérédité complète.
+  \item Conclusion de récurrence.
+  \item Probabilité entre 0 et 1.
+  \item Somme des probabilités égale à 1.
+  \item Distance positive.
+  \item Aire positive.
+  \item Valeur test simple.
+  \item Unité si modélisation.
+  \item Résultat plausible.
+\end{itemize}
+\end{multicols}
+\end{methode}
+
+\begin{methode}[relecture physique-chimie]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Homogénéité.
+  \item Conversions.
+  \item Volumes en litres.
+  \item Unités SI.
+  \item Chiffres significatifs.
+  \item Système étudié.
+  \item Référentiel.
+  \item Bilan des forces.
+  \item Équation chimique équilibrée.
+  \item Relation d'équivalence.
+  \item Schéma propre.
+  \item Conclusion physique.
+  \item Comparaison au seuil.
+  \item Incertitude si demandée.
+\end{itemize}
+\end{multicols}
+\end{methode}
+
+% ============================================================
+\section{Hiérarchie des chapitres}
+% ============================================================
+
+\subsection{Mathématiques}
+
+\footnotesize
+\begin{longtable}{|p{3cm}|p{2.6cm}|p{2.6cm}|p{4.2cm}|p{4.2cm}|}
+\hline
+\textbf{Chapitre} & \textbf{Priorité} & \textbf{Fréquence} & \textbf{Exercices types} & \textbf{Niveau 20/20}\\
+\hline
+Suites & Absolue & Très fréquent & Récurrence, monotonie, convergence, seuil Python & Rédiger une récurrence parfaite et transformer une suite affine en géométrique.\\
+\hline
+Fonctions & Absolue & Très fréquent & Étude complète, limites, dérivée, variations & Aucun oubli de domaine, tableau propre, interprétation graphique.\\
+\hline
+Exponentielle & Absolue & Très fréquent & Modélisation, équations, limites, dérivation & Maîtriser croissance comparée et fonction composée.\\
+\hline
+Logarithme & Absolue & Très fréquent & Équations, inéquations, limites, domaines & Toujours annoncer les conditions d'existence.\\
+\hline
+Convexité & Très important & Fréquent & Tangentes, inégalités, point d'inflexion & Savoir justifier par $f''$ et interpréter.\\
+\hline
+Intégrales & Très important & Fréquent & Aire, valeur moyenne, primitive & Interpréter l'intégrale et vérifier le signe.\\
+\hline
+Équations différentielles & Très important & Régulier & $y'=ay+b$, condition initiale & Passer du modèle à la solution sans erreur.\\
+\hline
+Probabilités conditionnelles & Absolue & Très fréquent & Arbres, Bayes, probabilités totales & Distinguer $P(A\cap B)$ et $P_A(B)$.\\
+\hline
+Loi binomiale & Très important & Fréquent & Bernoulli, espérance, seuil & Identifier $n$, $p$, $X$ et interpréter.\\
+\hline
+Géométrie dans l'espace & Très important & Régulier & Droites, plans, distances & Calcul vectoriel propre et conclusion géométrique.\\
+\hline
+Python & Important & Régulier & Boucles, seuils, simulations & Expliquer l'algorithme avec des phrases.\\
+\hline
+\end{longtable}
+\normalsize
+
+\subsection{Physique-Chimie}
+
+\footnotesize
+\begin{longtable}{|p{3cm}|p{2.6cm}|p{2.6cm}|p{4.2cm}|p{4.2cm}|}
+\hline
+\textbf{Chapitre} & \textbf{Priorité} & \textbf{Fréquence} & \textbf{Exercices types} & \textbf{Niveau 20/20}\\
+\hline
+Titrages acide-base & Absolue & Très fréquent & pH-métrie, équivalence, concentration & Relation stœchiométrique exacte, unités parfaites.\\
+\hline
+Oxydo-réduction & Très important & Fréquent & Demi-équations, titrage redox & Charges, électrons, coefficients maîtrisés.\\
+\hline
+Cinétique & Absolue & Très fréquent & Temps de demi-réaction, Beer-Lambert & Exploitation graphique et modèle exponentiel.\\
+\hline
+Synthèse organique & Très important & Fréquent & Rendement, purification, spectroscopie & Protocole, rendement et identification.\\
+\hline
+Mécanique & Absolue & Très fréquent & Newton, projectile, chute & Système, référentiel, forces, projection.\\
+\hline
+Énergie mécanique & Très important & Fréquent & Travail, puissance, conservation & Signe et unités irréprochables.\\
+\hline
+Circuit RC & Très important & Régulier & Charge, décharge, constante de temps & Équation différentielle et lecture graphique.\\
+\hline
+Ondes & Très important & Fréquent & Période, fréquence, longueur d'onde & Ordres de grandeur et unités.\\
+\hline
+Diffraction/interférences & Très important & Fréquent & Tache centrale, interfrange & Schéma et formule adaptés.\\
+\hline
+Thermique & Important & Régulier & Bilan d'énergie, flux & Homogénéité et interprétation.\\
+\hline
+Incertitudes & Très important & Régulier & Écart relatif, z-score, précision & Conclusion quantitative et critique.\\
+\hline
+\end{longtable}
+\normalsize
+
+% ============================================================
+\section{Planning intensif prescriptif avec annales existantes cliquables}
+% ============================================================
+
+\begin{alerte}[principe du planning]
+Dans ce planning, les \textbf{annales officielles ou existantes} sont données avec des liens internet cliquables.  
+Les sujets inventés restent indiqués clairement comme \textbf{sujets inventés} et renvoient aux sections internes du livret grâce à des liens cliquables.
+\end{alerte}
+
+\begin{alerte}[attention aux anciennes annales]
+Les anciennes annales du type \href{https://www.sujetdebac.fr/annales/s-mathematiques-specialite-2003-metropole}{Bac S Mathématiques spécialité 2003 Métropole} peuvent être intéressantes pour des exercices isolés, mais elles ne correspondent pas exactement au format actuel du bac général spécialité mathématiques. Pour le planning principal, on privilégie les sujets récents de spécialité Terminale générale.
+\end{alerte}
+
+\footnotesize
+\begin{longtable}{|p{2.2cm}|p{2.8cm}|p{5.3cm}|p{5.3cm}|p{1.5cm}|}
+\hline
+\textbf{Date} & \textbf{Objectif} & \textbf{Mathématiques} & \textbf{Physique-Chimie} & \textbf{Fait}\\
+\hline
+
+Jeu. 28 mai &
+Diagnostic initial &
+\textbf{Annale existante à parcourir :}
+\href{https://www.sujetdebac.fr/annales/specialites/spe-mathematiques/2025/}{Sujetdebac — Annales spécialité mathématiques 2025}.  
+Choisir un sujet récent et lire les 4 exercices sans rédiger.  
+Puis faire le sujet inventé \sujetlink{M-LONG-01}{M-LONG-01 — Réserve d'eau}.  
+Durée : 2 h 30. &
+\textbf{Annale existante à parcourir :}
+\href{https://www.sujetdebac.fr/annales/specialites/spe-physique-chimie/2025/}{Sujetdebac — Annales spécialité physique-chimie 2025}.  
+Lire un sujet complet pour repérer les thèmes.  
+Puis faire \sujetlink{PC-LONG-01}{PC-LONG-01 — Vinaigre artisanal}.  
+Durée : 2 h. &
+\checkbox\\
+\hline
+
+Ven. 29 mai &
+Suites, fonctions et mécanique &
+Faire \sujetlink{M-LONG-02}{M-LONG-02 — Application de révision}.  
+Objectif : suites, logarithme, seuil, loi binomiale.  
+Puis consulter :
+\href{https://www.sujetdebac.fr/annales/spe-mathematiques-2025-metropole-1}{Sujetdebac — Spécialité Mathématiques Métropole France 1 — Bac 2025}.  
+Noter les chapitres qui apparaissent dans le sujet. &
+Faire \sujetlink{PC-LONG-02}{PC-LONG-02 — Freinage d'urgence}.  
+Objectif : énergie, travail d'une force, distance d'arrêt.  
+Puis consulter :
+\href{https://www.sujetdebac.fr/annales/spe-physique-chimie-2025-metropole-1}{Sujetdebac — Spécialité Physique-Chimie Métropole France 1 — Bac 2025}. &
+\checkbox\\
+\hline
+
+Sam. 30 mai &
+Sujet complet maths en temps limité &
+Faire en entier :
+\href{https://www.sujetdebac.fr/annales/spe-mathematiques-2025-metropole-1}{Spécialité Mathématiques — Métropole France 1 — Bac 2025}.  
+Durée : 4 h.  
+Objectif 20/20 : finir en 3 h 15 et garder 45 min de relecture.  
+Correction active : erreurs de cours, méthode, calcul, rédaction. &
+Réactivation courte : titrage, mécanique, cinétique.  
+Faire 30 min de calculs d'unités et d'homogénéité. &
+\checkbox\\
+\hline
+
+Dim. 31 mai &
+Correction active &
+Reprendre le sujet :
+\href{https://www.sujetdebac.fr/annales/spe-mathematiques-2025-metropole-1}{Mathématiques Métropole France 1 — Bac 2025}.  
+Refaire toutes les questions perdues.  
+Remplir le carnet d'erreurs.  
+Puis faire \sujetlink{M-LONG-03}{M-LONG-03 — Test de dépistage}. &
+Faire \sujetlink{PC-LONG-03}{PC-LONG-03 — Fermentation}.  
+Objectif : cinétique, exponentielle, temps de demi-réaction.  
+Compléter par un exercice Labolycée dans la rubrique :
+\href{https://www.labolycee.org/cinetique}{Labolycée — Cinétique}. &
+\checkbox\\
+\hline
+
+Lun. 1 juin &
+Probabilités et titrage &
+Faire \sujetlink{M-LONG-03}{M-LONG-03 — Fiabilité d'un test de dépistage}.  
+Objectif : arbre pondéré, probabilités totales, probabilité inverse, loi binomiale.  
+À la fin, comparer avec un exercice de probabilité d'une annale récente sur :
+\href{https://www.apmep.fr/Annales-Terminale-Generale}{APMEP — Annales Terminale générale}. &
+Faire \sujetlink{PC-LONG-01}{PC-LONG-01 — Contrôle qualité d'un vinaigre}.  
+Puis consulter :
+\href{https://www.labolycee.org/tale-specialite-physique-chimie?page=2}{Labolycée — Terminale spécialité physique-chimie}.  
+Choisir un exercice de titrage acide-base. &
+\checkbox\\
+\hline
+
+Mar. 2 juin &
+Géométrie et RC &
+Faire \sujetlink{M-LONG-04}{M-LONG-04 — Drone de livraison}.  
+Objectif : droite, plan, vecteur normal, distance.  
+Puis chercher dans :
+\href{https://www.apmep.fr/Annee-2025}{APMEP — Année 2025}  
+un exercice de géométrie dans l'espace. &
+Faire \sujetlink{PC-LONG-04}{PC-LONG-04 — Capteur de pluie RC}.  
+Objectif : constante de temps, équation différentielle, exploitation graphique.  
+Compléter avec un exercice de bac sur les circuits RC depuis :
+\href{https://www.labolycee.org/}{Labolycée}. &
+\checkbox\\
+\hline
+
+Mer. 3 juin &
+Sujet complet physique-chimie &
+Réactivation courte : fonctions, dérivation, probabilités.  
+Durée : 45 min. &
+Faire en entier :
+\href{https://www.sujetdebac.fr/annales/spe-physique-chimie-2025-metropole-1}{Spécialité Physique-Chimie — Métropole France 1 — Bac 2025}.  
+Durée : 3 h 30.  
+Correction active : unités, formules, exploitation graphique, rédaction. &
+\checkbox\\
+\hline
+
+Jeu. 4 juin &
+Correction PC et intégrales &
+Faire \sujetlink{M-LONG-05}{M-LONG-05 — Pollution d'une rivière}.  
+Objectif : exponentielle, dérivée, TVI, intégrale. &
+Reprendre :
+\href{https://www.sujetdebac.fr/annales/spe-physique-chimie-2025-metropole-1}{Physique-Chimie Métropole France 1 — Bac 2025}.  
+Refaire les questions ratées.  
+Noter les erreurs d'unités, d'homogénéité et de conclusion. &
+\checkbox\\
+\hline
+
+Ven. 5 juin &
+Entraînement GEIPI &
+Faire \sujetlink{M-GEIPI-01}{M-GEIPI-01 — Optimisation rapide}.  
+Puis consulter :
+\href{https://www.geipi-polytech.org/annales-du-concours-geipi-polytech/}{Geipi Polytech — Annales officielles}.  
+Choisir 2 exercices courts de mathématiques. &
+Faire \sujetlink{PC-GEIPI-01}{PC-GEIPI-01 — Homogénéité et énergie}.  
+Puis consulter :
+\href{https://www.geipi-polytech.org/annales-du-concours-geipi-polytech/}{Geipi Polytech — Annales officielles}.  
+Choisir 2 exercices courts de physique-chimie. &
+\checkbox\\
+\hline
+
+Sam. 6 juin &
+Sujet complet maths 2 &
+Faire en entier :
+\href{https://www.sujetdebac.fr/annales/spe-mathematiques-2025-metropole-2}{Spécialité Mathématiques — Métropole France 2 — Bac 2025}.  
+Durée : 4 h.  
+Objectif : traiter tout le sujet et garder 45 min de relecture. &
+Réactivation courte : mécanique, titrage, RC.  
+Durée : 45 min. &
+\checkbox\\
+\hline
+
+Dim. 7 juin &
+Correction maths 2 &
+Reprendre :
+\href{https://www.sujetdebac.fr/annales/spe-mathematiques-2025-metropole-2}{Mathématiques Métropole France 2 — Bac 2025}.  
+Refaire toutes les questions perdues.  
+Puis faire \sujetlink{M-DIFF-01}{M-DIFF-01 — Fonction avec paramètre}. &
+Faire \sujetlink{PC-LONG-05}{PC-LONG-05 — Épaisseur d'un cheveu par diffraction}.  
+Objectif : schéma, diffraction, ordre de grandeur, incertitude. &
+\checkbox\\
+\hline
+
+Lun. 8 juin &
+Sujet complet PC 2 &
+Faire \sujetlink{M-LONG-06}{M-LONG-06 — Prix dynamique d'un festival}.  
+Objectif : optimisation, contrainte, probabilités. &
+Faire en entier :
+\href{https://www.sujetdebac.fr/annales/spe-physique-chimie-2025-metropole-2}{Spécialité Physique-Chimie — Métropole France 2 — Bac 2025}.  
+Durée : 3 h 30.  
+Correction : 1 h. &
+\checkbox\\
+\hline
+
+Mar. 9 juin &
+Sujet transversal difficile &
+Faire \sujetlink{M-LONG-07}{M-LONG-07 — Parc photovoltaïque municipal}.  
+Objectif : sujet plus difficile que bac, intégrale, rentabilité, suite géométrique. &
+Faire \sujetlink{PC-LONG-07}{PC-LONG-07 — Batterie d'un vélo électrique en montagne}.  
+Objectif : énergie, rendement, puissance, capacité électrique. &
+\checkbox\\
+\hline
+
+Mer. 10 juin &
+Annales variées &
+Choisir un sujet dans :
+\href{https://www.sujetdebac.fr/annales/specialites/spe-mathematiques/2024/}{Sujetdebac — Annales spécialité mathématiques 2024}.  
+Ne faire que deux exercices : un exercice de fonctions et un exercice de probabilités. &
+Choisir un sujet dans :
+\href{https://www.sujetdebac.fr/annales/specialites/spe-physique-chimie/2024/}{Sujetdebac — Annales spécialité physique-chimie 2024}.  
+Ne faire que deux exercices : un exercice de chimie et un exercice de mécanique/ondes. &
+\checkbox\\
+\hline
+
+Jeu. 11 juin &
+Consolidation ciblée &
+Refaire les exercices ratés des sujets 2025.  
+Puis faire 30 min de relecture : domaines, signes, convexité, récurrence. &
+Refaire les exercices ratés des sujets 2025.  
+Puis faire 30 min : unités, titrage, Newton, RC, ondes. &
+\checkbox\\
+\hline
+
+Ven. 12 juin &
+Anciennes annales en complément &
+Faire un extrait d'ancienne annale si besoin, par exemple :
+\href{https://www.sujetdebac.fr/annales/s-mathematiques-specialite-2003-metropole}{Bac S Mathématiques spécialité 2003 Métropole}.  
+À utiliser seulement comme complément : choisir une question intéressante, pas comme sujet principal. &
+Faire un exercice Labolycée plus ancien dans un chapitre faible :
+\href{https://www.labolycee.org/}{Labolycée — exercices corrigés}.  
+Objectif : automatiser les méthodes. &
+\checkbox\\
+\hline
+
+Sam. 13 juin &
+Dernier vrai entraînement &
+Faire un sujet au choix parmi :
+\href{https://www.sujetdebac.fr/annales/specialites/spe-mathematiques/2025/}{Sujetdebac — Maths 2025}.  
+Ne pas chercher la difficulté maximale : choisir un sujet représentatif. &
+Faire un sujet au choix parmi :
+\href{https://www.sujetdebac.fr/annales/specialites/spe-physique-chimie/2025/}{Sujetdebac — Physique-Chimie 2025}.  
+Objectif : rédaction propre et gestion du temps. &
+\checkbox\\
+\hline
+
+Dim. 14 juin &
+Repos intelligent &
+Pas de nouveau sujet.  
+Relire les fiches : suites, fonctions, probabilités, géométrie.  
+Refaire 3 questions déjà corrigées. &
+Pas de nouveau sujet.  
+Relire les fiches : titrages, mécanique, RC, ondes, thermique.  
+Refaire 3 questions déjà corrigées. &
+\checkbox\\
+\hline
+
+Lun. 15 juin &
+Sécurisation finale &
+Relecture méthode : ordre des exercices, domaines, signes, valeurs tests, relecture 45 min. &
+Relecture méthode : homogénéité, unités, chiffres significatifs, schémas, conclusions physiques. &
+\checkbox\\
+\hline
+
+Mar. 16 juin &
+Épreuve possible &
+Si épreuve : appliquer la stratégie.  
+Sinon : relecture légère uniquement. &
+Si épreuve : appliquer la stratégie.  
+Sinon : relecture légère uniquement. &
+\checkbox\\
+\hline
+
+Mer. 17 juin &
+Épreuve possible &
+Commencer par l'exercice le plus rentable.  
+Ne pas bloquer.  
+Garder 45 min de relecture. &
+Garder 30 min de relecture : unités, homogénéité, conclusions. &
+\checkbox\\
+\hline
+
+Jeu. 18 juin &
+Épreuve possible &
+Dernière journée possible selon convocation.  
+Pas de nouveau contenu. &
+Dernière journée possible selon convocation.  
+Pas de nouveau contenu. &
+\checkbox\\
+\hline
+
+\end{longtable}
+\normalsize
+
+% ============================================================
+\section{Sujets inventés de mathématiques}
+% ============================================================
+
+\hypertarget{M-LONG-01}{}
+\begin{sujettype}[M-LONG-01 — Réserve d'eau pendant une sécheresse]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} suites, logarithme, algorithme, équation différentielle.  
+
+Une commune possède une réserve d'eau de volume initial $u_0=9000$ m$^3$. Chaque jour, 6 \% du volume est consommé, puis une source apporte 420 m$^3$. On note $u_n$ le volume disponible après $n$ jours.
+
+\textbf{Partie A — Modélisation discrète}
+\begin{enumerate}
+  \item Justifier que $u_{n+1}=0{,}94u_n+420$.
+  \item Calculer $u_1$ et $u_2$.
+  \item Déterminer le volume d'équilibre $L$ vérifiant $L=0{,}94L+420$.
+  \item Poser $v_n=u_n-L$ et montrer que $(v_n)$ est géométrique.
+  \item En déduire une expression explicite de $u_n$.
+\end{enumerate}
+
+\textbf{Partie B — Seuil critique}
+Le seuil critique est fixé à 7600 m$^3$.
+\begin{enumerate}
+  \item Résoudre l'inéquation $u_n<7600$.
+  \item Déterminer le premier jour critique.
+  \item Écrire un algorithme Python qui renvoie ce jour.
+  \item Expliquer pourquoi la suite converge.
+  \item Interpréter la limite dans le contexte.
+\end{enumerate}
+
+\textbf{Partie C — Modèle continu}
+On modélise le volume par $V'(t)=-0{,}061V(t)+420$ avec $V(0)=9000$.
+\begin{enumerate}
+  \item Résoudre l'équation différentielle.
+  \item Déterminer la limite de $V(t)$.
+  \item Comparer les modèles discret et continu.
+  \item Donner une limite concrète du modèle.
+  \item Rédiger une recommandation au maire.
+\end{enumerate}
+\end{sujettype}
+
+\begin{corrige}[M-LONG-01]
+On obtient $L=7000$. Puis $v_{n+1}=0{,}94v_n$, donc $u_n=7000+2000(0{,}94)^n$. Le seuil se résout par $7000+2000(0{,}94)^n<7600$, soit $(0{,}94)^n<0{,}3$. On utilise le logarithme en inversant le sens si nécessaire avec prudence car $\ln(0{,}94)<0$.
+\end{corrige}
+
+\hypertarget{M-LONG-02}{}
+\begin{sujettype}[M-LONG-02 — Application de révision et mémoire espacée]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} suites, probabilités, loi binomiale, logarithme.
+
+Une application de révision estime qu'après chaque séance, la proportion de notions maîtrisées augmente selon
+\[
+u_0=0{,}42,\qquad u_{n+1}=u_n+0{,}18(1-u_n).
+\]
+
+\textbf{Partie A — Étude de la suite}
+\begin{enumerate}
+  \item Calculer $u_1$ et $u_2$.
+  \item Montrer que $0<u_n<1$ pour tout $n$.
+  \item Montrer que $(u_n)$ est croissante.
+  \item Poser $v_n=1-u_n$ et montrer que $(v_n)$ est géométrique.
+  \item Donner l'expression de $u_n$ en fonction de $n$.
+\end{enumerate}
+
+\textbf{Partie B — Objectif 95 \%}
+\begin{enumerate}
+  \item Résoudre $u_n\geq0{,}95$.
+  \item Déterminer le nombre minimal de séances.
+  \item Écrire un algorithme Python donnant ce nombre.
+  \item Expliquer pourquoi on utilise un logarithme.
+  \item Interpréter le résultat pour un élève.
+\end{enumerate}
+
+\textbf{Partie C — Contrôle aléatoire}
+Un contrôle comporte 25 questions indépendantes. Chaque question est réussie avec probabilité $u_n$.
+\begin{enumerate}
+  \item Pour $n=10$, calculer une valeur approchée de $u_{10}$.
+  \item Modéliser le nombre de questions réussies.
+  \item Donner l'espérance.
+  \item Interpréter $P(X\geq22)$.
+  \item Expliquer pourquoi 95 \% de maîtrise ne garantit pas 20/20.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{M-LONG-03}{}
+\begin{sujettype}[M-LONG-03 — Fiabilité d'un test de dépistage dans un lycée]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} probabilités conditionnelles, loi binomiale.
+
+Dans un lycée, 4 \% des élèves sont infectés par un virus. Le test est positif chez 96 \% des élèves infectés et chez 7 \% des élèves non infectés. On note $I$ l'événement « l'élève est infecté » et $T$ l'événement « le test est positif ».
+
+\textbf{Partie A — Arbre pondéré}
+\begin{enumerate}
+  \item Donner $P(I)$ et $P(\overline I)$.
+  \item Donner $P_I(T)$ et $P_{\overline I}(T)$.
+  \item Construire un arbre pondéré complet.
+  \item Calculer $P(I\cap T)$.
+  \item Calculer $P(T)$.
+\end{enumerate}
+
+\textbf{Partie B — Probabilité inverse}
+\begin{enumerate}
+  \item Calculer $P_T(I)$.
+  \item Interpréter le résultat.
+  \item Calculer la probabilité d'un faux positif.
+  \item Calculer la probabilité d'un faux négatif.
+  \item Expliquer pourquoi un test positif ne suffit pas toujours.
+\end{enumerate}
+
+\textbf{Partie C — Campagne de tests}
+On teste 300 élèves.
+\begin{enumerate}
+  \item Modéliser le nombre d'élèves infectés.
+  \item Calculer l'espérance.
+  \item Modéliser le nombre de tests positifs avec une loi binomiale.
+  \item Calculer l'espérance du nombre de tests positifs.
+  \item Discuter la limite du modèle d'indépendance.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{M-LONG-04}{}
+\begin{sujettype}[M-LONG-04 — Drone de livraison et géométrie dans l'espace]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide / GEIPI.  
+\textbf{Durée :} 1 h 50.  
+\textbf{Chapitres :} géométrie dans l'espace, distance, produit scalaire.
+
+La trajectoire d'un drone est modélisée par
+\[
+\Delta:
+\begin{cases}
+x=2+t,\\
+y=1+2t,\\
+z=8-t.
+\end{cases}
+\]
+La terrasse de livraison est contenue dans le plan
+\[
+\Pi:x-y+2z-12=0.
+\]
+
+\textbf{Partie A — Trajectoire}
+\begin{enumerate}
+  \item Donner un point de $\Delta$.
+  \item Donner un vecteur directeur de $\Delta$.
+  \item Donner un vecteur normal à $\Pi$.
+  \item Déterminer si $\Delta$ est parallèle à $\Pi$.
+  \item Trouver le point d'intersection de $\Delta$ et $\Pi$.
+\end{enumerate}
+
+\textbf{Partie B — Sécurité}
+Un pylône est assimilé au point $A(4,5,6)$.
+\begin{enumerate}
+  \item Écrire les coordonnées de $M(t)$ sur $\Delta$.
+  \item Calculer $AM(t)^2$.
+  \item Déterminer la distance minimale entre le drone et le pylône.
+  \item Comparer à une distance réglementaire de 2 m.
+  \item Expliquer pourquoi on minimise le carré de la distance.
+\end{enumerate}
+
+\textbf{Partie C — Livraison}
+Le point idéal est $B(6,9,4)$.
+\begin{enumerate}
+  \item Vérifier si $B$ appartient à $\Delta$.
+  \item Calculer la distance de $B$ à $\Pi$.
+  \item Déterminer le projeté orthogonal de $B$ sur $\Pi$.
+  \item Proposer une correction de trajectoire.
+  \item Discuter les limites du modèle.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{M-LONG-05}{}
+\begin{sujettype}[M-LONG-05 — Pollution d'une rivière]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile.  
+\textbf{Durée :} 2 h.  
+\textbf{Chapitres :} fonctions, exponentielle, intégrales, TVI.
+
+Après un incident industriel, la concentration d'un polluant est modélisée par
+\[
+C(t)=18te^{-0{,}4t},\qquad t\geq0.
+\]
+
+\textbf{Partie A — Étude de la concentration}
+\begin{enumerate}
+  \item Calculer $C(0)$.
+  \item Déterminer la limite de $C(t)$ en $+\infty$.
+  \item Calculer $C'(t)$.
+  \item Étudier les variations de $C$.
+  \item Déterminer la concentration maximale.
+\end{enumerate}
+
+\textbf{Partie B — Seuil sanitaire}
+Le seuil d'alerte est 8 mg.L$^{-1}$.
+\begin{enumerate}
+  \item Montrer que $C(t)=8$ admet deux solutions.
+  \item Interpréter ces deux instants.
+  \item Proposer une méthode d'approximation.
+  \item Justifier l'utilisation du TVI.
+  \item Rédiger une conclusion sanitaire.
+\end{enumerate}
+
+\textbf{Partie C — Pollution cumulée}
+On étudie
+\[
+I=\int_0^{10}C(t)\,dt.
+\]
+\begin{enumerate}
+  \item Interpréter l'intégrale.
+  \item Calculer une primitive de $te^{-0{,}4t}$ par parties.
+  \item En déduire une valeur de $I$.
+  \item Comparer à une approximation par rectangles.
+  \item Proposer une stratégie de surveillance.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{M-LONG-06}{}
+\begin{sujettype}[M-LONG-06 — Prix dynamique d'un festival]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile / GEIPI.  
+\textbf{Durée :} 1 h 50.  
+\textbf{Chapitres :} exponentielle, dérivation, optimisation, probabilités.
+
+Si le prix d'un billet est $p$, le nombre attendu d'acheteurs est
+\[
+N(p)=1200e^{-0{,}015p},\qquad p\in[20,160].
+\]
+La recette est $R(p)=pN(p)$.
+
+\textbf{Partie A — Recette}
+\begin{enumerate}
+  \item Interpréter $N(p)$.
+  \item Donner l'expression de $R(p)$.
+  \item Calculer $R'(p)$.
+  \item Déterminer le prix maximisant la recette.
+  \item Vérifier que ce prix appartient à l'intervalle.
+\end{enumerate}
+
+\textbf{Partie B — Capacité}
+La salle contient 900 places.
+\begin{enumerate}
+  \item Résoudre $N(p)\leq900$.
+  \item Interpréter la contrainte.
+  \item Déterminer le prix optimal sous contrainte.
+  \item Comparer au prix sans contrainte.
+  \item Discuter l'effet d'un prix trop faible.
+\end{enumerate}
+
+\textbf{Partie C — Absences}
+Chaque acheteur a 4 \% de probabilité de ne pas venir.
+\begin{enumerate}
+  \item Modéliser le nombre d'absents parmi 900 acheteurs.
+  \item Calculer l'espérance.
+  \item Interpréter $P(X\geq50)$.
+  \item Expliquer le principe du surbooking.
+  \item Proposer une politique raisonnable.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{M-LONG-07}{}
+\begin{difficile}[M-LONG-07 — Parc photovoltaïque municipal]
+\textbf{Type :} problème transversal inventé.  
+\textbf{Niveau :} plus difficile que bac.  
+\textbf{Durée :} 2 h.  
+\textbf{Chapitres :} exponentielle, intégrale, suites, rentabilité.
+
+La puissance produite par un parc photovoltaïque est
+\[
+P(t)=A\,t(12-t)e^{-0{,}08(t-6)^2},\qquad t\in[0,12].
+\]
+
+\textbf{Partie A — Modèle}
+\begin{enumerate}
+  \item Justifier $P(0)=P(12)=0$.
+  \item Montrer que $P(t)>0$ sur $]0,12[$.
+  \item Interpréter $t(12-t)$.
+  \item Calculer $P(6)$.
+  \item Donner une limite du modèle.
+\end{enumerate}
+
+\textbf{Partie B — Maximum}
+On pose $g(t)=\ln(P(t))$.
+\begin{enumerate}
+  \item Justifier l'utilisation du logarithme.
+  \item Calculer $g'(t)$.
+  \item Vérifier que $t=6$ annule $g'$.
+  \item Étudier le signe autour de 6.
+  \item Conclure sur l'heure du maximum.
+\end{enumerate}
+
+\textbf{Partie C — Rentabilité}
+On admet $\int_0^{12}P(t)\,dt=13{,}7$ pour $A=0{,}08$.
+\begin{enumerate}
+  \item Interpréter l'intégrale.
+  \item Calculer la recette journalière si 1 MWh vaut 95 euros.
+  \item Déterminer le seuil de rentabilité pour 720000 euros.
+  \item Écrire un algorithme de seuil.
+  \item Ajouter une perte annuelle de rendement de 0,6 \% et discuter.
+\end{enumerate}
+\end{difficile}
+
+% ============================================================
+\section{Sujets inventés longs de physique-chimie}
+% ============================================================
+
+\hypertarget{PC-LONG-01}{}
+\begin{sujettype}[PC-LONG-01 — Contrôle qualité d'un vinaigre artisanal]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} titrage acide-base, dilution, incertitudes.
+
+Un producteur veut vérifier l'acidité de son vinaigre. On prélève 10,0 mL de vinaigre, dilué dans une fiole de 100,0 mL. On dose 20,0 mL de solution diluée par une solution de soude de concentration $C_B=5{,}00\times10^{-2}$ mol.L$^{-1}$. L'équivalence est atteinte pour $V_E=15{,}4$ mL.
+
+\textbf{Partie A — Préparation}
+\begin{enumerate}
+  \item Déterminer le facteur de dilution.
+  \item Expliquer pourquoi on dilue le vinaigre.
+  \item Écrire l'équation support du titrage.
+  \item Définir l'équivalence.
+  \item Décrire le repérage pH-métrique de l'équivalence.
+\end{enumerate}
+
+\textbf{Partie B — Calcul de concentration}
+\begin{enumerate}
+  \item Calculer la quantité de matière de soude à l'équivalence.
+  \item En déduire la quantité d'acide dans les 20,0 mL dosés.
+  \item Calculer la concentration de la solution diluée.
+  \item Calculer la concentration du vinaigre initial.
+  \item Vérifier les unités et chiffres significatifs.
+\end{enumerate}
+
+\textbf{Partie C — Analyse critique}
+\begin{enumerate}
+  \item Citer deux sources d'incertitude.
+  \item Expliquer l'effet d'une mauvaise lecture de $V_E$.
+  \item Proposer une amélioration du protocole.
+  \item Discuter l'effet d'autres acides présents.
+  \item Rédiger une conclusion de laboratoire.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-02}{}
+\begin{sujettype}[PC-LONG-02 — Freinage d'urgence sur route mouillée]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile.  
+\textbf{Durée :} 1 h 50.  
+\textbf{Chapitres :} énergie mécanique, travail, sécurité routière.
+
+Une voiture laisse une trace de freinage rectiligne de 42 m avant de s'arrêter. La route est horizontale. La force de freinage est modélisée par une force constante $F=fmg$ avec $f=0{,}72$.
+
+\textbf{Partie A — Énergie}
+\begin{enumerate}
+  \item Définir le système.
+  \item Écrire l'énergie cinétique initiale.
+  \item Exprimer le travail de la force de freinage.
+  \item Utiliser le théorème de l'énergie cinétique.
+  \item Exprimer $v_0$ en fonction de $f$, $g$ et $d$.
+\end{enumerate}
+
+\textbf{Partie B — Exploitation}
+\begin{enumerate}
+  \item Calculer $v_0$ en m.s$^{-1}$.
+  \item Convertir en km.h$^{-1}$.
+  \item Dire si la masse intervient.
+  \item Refaire le calcul avec $f=0{,}55$.
+  \item Comparer route sèche et route mouillée.
+\end{enumerate}
+
+\textbf{Partie C — Temps de réaction}
+Le temps de réaction est 1,1 s.
+\begin{enumerate}
+  \item Calculer la distance parcourue avant freinage.
+  \item Calculer la distance totale d'arrêt.
+  \item Comparer à une limitation à 80 km.h$^{-1}$.
+  \item Citer deux limites du modèle.
+  \item Rédiger une conclusion d'expert.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-03}{}
+\begin{sujettype}[PC-LONG-03 — Cinétique d'une fermentation]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac difficile.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} cinétique, gaz, exponentielle, quantité de matière.
+
+Lors d'une fermentation, le volume de dioxyde de carbone produit est modélisé par
+\[
+V(t)=V_{\max}(1-e^{-kt}),\qquad V_{\max}=1{,}80\ \text{L}.
+\]
+
+\textbf{Partie A — Modèle}
+\begin{enumerate}
+  \item Interpréter $V_{\max}$.
+  \item Calculer $V(0)$.
+  \item Déterminer la limite de $V(t)$.
+  \item Expliquer pourquoi le modèle est croissant.
+  \item Donner une limite expérimentale du modèle.
+\end{enumerate}
+
+\textbf{Partie B — Cinétique}
+\begin{enumerate}
+  \item Montrer que $V_{\max}-V(t)=V_{\max}e^{-kt}$.
+  \item Proposer une linéarisation.
+  \item Déterminer $t_{1/2}$ en fonction de $k$.
+  \item Calculer $t_{1/2}$ pour $k=0{,}035$ min$^{-1}$.
+  \item Interpréter le temps de demi-réaction.
+\end{enumerate}
+
+\textbf{Partie C — Gaz produit}
+Le volume molaire vaut 24,0 L.mol$^{-1}$.
+\begin{enumerate}
+  \item Calculer la quantité maximale de CO$_2$.
+  \item Donner l'unité du résultat.
+  \item Expliquer l'effet de la température.
+  \item Citer une cause d'erreur.
+  \item Rédiger une conclusion expérimentale.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-04}{}
+\begin{sujettype}[PC-LONG-04 — Capteur de pluie à circuit RC]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide.  
+\textbf{Durée :} 1 h 45.  
+\textbf{Chapitres :} circuit RC, capteurs, équation différentielle.
+
+Un capteur de pluie utilise un condensateur de capacité $C=47\,\mu$F. Par temps sec, $R=220$ k$\Omega$. Par temps humide, $R=55$ k$\Omega$.
+
+\textbf{Partie A — Constante de temps}
+\begin{enumerate}
+  \item Rappeler $\tau=RC$.
+  \item Calculer $\tau$ par temps sec.
+  \item Calculer $\tau$ par temps humide.
+  \item Expliquer pourquoi le capteur détecte l'humidité.
+  \item Donner l'allure de $u_C(t)$.
+\end{enumerate}
+
+\textbf{Partie B — Équation différentielle}
+\begin{enumerate}
+  \item Écrire l'équation différentielle de charge.
+  \item Donner la solution pour $u_C(0)=0$.
+  \item Montrer que $u_C(\tau)\approx0{,}63E$.
+  \item Déterminer le temps pour atteindre 95 \%.
+  \item Comparer les deux situations.
+\end{enumerate}
+
+\textbf{Partie C — Mesure}
+Le microcontrôleur mesure $\tau=2{,}6$ s.
+\begin{enumerate}
+  \item Estimer la résistance.
+  \item Déduire l'état du capteur.
+  \item Citer deux incertitudes.
+  \item Proposer un seuil de décision.
+  \item Expliquer l'intérêt d'un étalonnage.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-05}{}
+\begin{sujettype}[PC-LONG-05 — Épaisseur d'un cheveu par diffraction]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide.  
+\textbf{Durée :} 1 h 20.  
+\textbf{Chapitres :} diffraction, ondes, incertitudes.
+
+Un laser rouge de longueur d'onde $\lambda=650$ nm éclaire un cheveu. L'écran est à $D=2{,}40$ m. La largeur de la tache centrale vaut $L=3{,}8$ cm.
+
+\textbf{Partie A — Modèle}
+\begin{enumerate}
+  \item Rappeler la relation entre $\theta$, $\lambda$ et $a$.
+  \item Faire un schéma.
+  \item Relier $\theta$, $L$ et $D$.
+  \item Justifier l'approximation des petits angles.
+  \item Écrire l'expression de $a$.
+\end{enumerate}
+
+\textbf{Partie B — Calcul}
+\begin{enumerate}
+  \item Convertir les données.
+  \item Calculer l'épaisseur du cheveu.
+  \item Vérifier l'ordre de grandeur.
+  \item Donner le résultat en micromètres.
+  \item Vérifier l'homogénéité.
+\end{enumerate}
+
+\textbf{Partie C — Incertitude}
+\begin{enumerate}
+  \item Citer une incertitude sur $L$.
+  \item Expliquer son influence sur $a$.
+  \item Dire pourquoi le schéma est indispensable.
+  \item Proposer une amélioration de mesure.
+  \item Conclure.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-06}{}
+\begin{sujettype}[PC-LONG-06 — Isolation thermique d'une salle de classe]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac / transition prépa.  
+\textbf{Durée :} 1 h 50.  
+\textbf{Chapitres :} thermique, flux, puissance, énergie.
+
+Une salle perd de l'énergie à travers un mur de surface $S=35$ m$^2$. La température intérieure est 20 $^\circ$C et extérieure 5 $^\circ$C. Avant isolation, $R_s=0{,}80$ m$^2$.K.W$^{-1}$. Après isolation, $R_s=3{,}2$ m$^2$.K.W$^{-1}$.
+
+\textbf{Partie A — Flux thermique}
+\begin{enumerate}
+  \item Rappeler la relation de flux.
+  \item Calculer la puissance perdue avant isolation.
+  \item Calculer la puissance perdue après isolation.
+  \item Déterminer le gain de puissance.
+  \item Interpréter.
+\end{enumerate}
+
+\textbf{Partie B — Économie}
+Le chauffage fonctionne 8 h par jour pendant 120 jours.
+\begin{enumerate}
+  \item Calculer l'énergie économisée en joules.
+  \item Convertir en kWh.
+  \item Calculer l'économie si le kWh vaut 0,25 euro.
+  \item Estimer le temps de retour pour un coût de 1800 euros.
+  \item Donner deux limites du calcul.
+\end{enumerate}
+
+\textbf{Partie C — Modèle dynamique}
+On considère
+\[
+C\frac{dT}{dt}=P-\frac{S}{R_s}(T-T_e).
+\]
+\begin{enumerate}
+  \item Identifier les termes.
+  \item Déterminer la température d'équilibre.
+  \item Expliquer l'effet de $R_s$.
+  \item Relier à une équation différentielle.
+  \item Rédiger un avis pour le lycée.
+\end{enumerate}
+\end{sujettype}
+
+\hypertarget{PC-LONG-07}{}
+\begin{difficile}[PC-LONG-07 — Batterie d'un vélo électrique en montagne]
+\textbf{Type :} problème contextualisé inventé.  
+\textbf{Niveau :} plus difficile que bac / GEIPI.  
+\textbf{Durée :} 2 h.  
+\textbf{Chapitres :} énergie, puissance, rendement, électricité.
+
+Un cycliste veut monter 1600 m de dénivelé avec un vélo électrique. La masse totale est $m=92$ kg. Le rendement global est $\eta=0{,}78$. La batterie a une tension nominale $U=36$ V.
+
+\textbf{Partie A — Énergie}
+\begin{enumerate}
+  \item Calculer le gain d'énergie potentielle.
+  \item Convertir en Wh.
+  \item Expliquer pourquoi c'est un minimum.
+  \item Citer deux pertes réelles.
+  \item Comparer à une batterie de 500 Wh.
+\end{enumerate}
+
+\textbf{Partie B — Rendement}
+\begin{enumerate}
+  \item Calculer l'énergie électrique nécessaire.
+  \item Refaire le calcul si le cycliste fournit 35 \%.
+  \item Déduire la capacité minimale en Ah.
+  \item Tester une batterie 36 V -- 14 Ah.
+  \item Discuter l'effet du froid.
+\end{enumerate}
+
+\textbf{Partie C — Puissance}
+La montée dure 2 h 15.
+\begin{enumerate}
+  \item Calculer la puissance mécanique moyenne.
+  \item Calculer la puissance électrique moyenne.
+  \item Comparer à un moteur de 250 W.
+  \item Discuter la légalité de l'assistance.
+  \item Rédiger une recommandation.
+\end{enumerate}
+\end{difficile}
+
+\hypertarget{PC-LONG-08}{}
+\begin{sujettype}[PC-LONG-08 — Synthèse d'un arôme de banane]
+\textbf{Type :} sujet type bac inventé.  
+\textbf{Niveau :} bac solide.  
+\textbf{Durée :} 1 h 50.  
+\textbf{Chapitres :} synthèse organique, rendement, extraction, spectroscopie.
+
+On synthétise un ester à odeur de banane à partir d'un alcool et d'un acide carboxylique. La masse théorique de produit est 6,4 g. La masse obtenue après purification est 4,7 g.
+
+\textbf{Partie A — Synthèse}
+\begin{enumerate}
+  \item Identifier les familles chimiques.
+  \item Nommer le type de réaction.
+  \item Expliquer le rôle du chauffage à reflux.
+  \item Expliquer le rôle d'un catalyseur acide.
+  \item Donner une limite du protocole.
+\end{enumerate}
+
+\textbf{Partie B — Rendement}
+\begin{enumerate}
+  \item Définir le rendement.
+  \item Calculer le rendement.
+  \item Interpréter le résultat.
+  \item Citer deux causes de perte.
+  \item Proposer une amélioration.
+\end{enumerate}
+
+\textbf{Partie C — Identification}
+\begin{enumerate}
+  \item Expliquer l'intérêt d'une CCM.
+  \item Expliquer l'intérêt d'un spectre IR.
+  \item Identifier la bande C=O d'un ester.
+  \item Comparer produit brut et produit purifié.
+  \item Rédiger une conclusion.
+\end{enumerate}
+\end{sujettype}
+
+% ============================================================
+\section{Sujets type GEIPI inventés}
+% ============================================================
+
+\hypertarget{M-GEIPI-01}{}
+\begin{geipi}[M-GEIPI-01 — Optimisation rapide]
+\textbf{Type :} exercice type GEIPI inventé.  
+\textbf{Durée :} 35 min.  
+On considère $f(x)=xe^{-0{,}2x}$ sur $[0,+\infty[$.
+\begin{enumerate}
+  \item Calculer $f'(x)$.
+  \item Déterminer le maximum.
+  \item Résoudre $f(x)\geq1$ graphiquement.
+  \item Interpréter le résultat dans un modèle de demande.
+  \item Donner une limite du modèle.
+\end{enumerate}
+\end{geipi}
+
+\hypertarget{M-GEIPI-02}{}
+\begin{geipi}[M-GEIPI-02 — Probabilités rapides]
+\textbf{Type :} exercice type GEIPI inventé.  
+\textbf{Durée :} 35 min.  
+Une variable $X$ suit $\mathcal{B}(20,0{,}12)$.
+\begin{enumerate}
+  \item Donner l'espérance.
+  \item Calculer $P(X=0)$.
+  \item Interpréter $P(X\leq2)$.
+  \item Donner une méthode pour calculer $P(X\geq3)$.
+  \item Expliquer pourquoi le modèle peut être discutable.
+\end{enumerate}
+\end{geipi}
+
+\hypertarget{PC-GEIPI-01}{}
+\begin{geipi}[PC-GEIPI-01 — Homogénéité et énergie]
+\textbf{Type :} exercice type GEIPI inventé.  
+\textbf{Durée :} 35 min.
+\begin{enumerate}
+  \item Vérifier l'homogénéité de $E=\frac12mv^2$.
+  \item Calculer l'énergie cinétique d'une masse de 1200 kg à 90 km.h$^{-1}$.
+  \item Convertir le résultat en kJ.
+  \item Expliquer l'effet d'une vitesse doublée.
+  \item Conclure sur la sécurité routière.
+\end{enumerate}
+\end{geipi}
+
+\hypertarget{PC-GEIPI-02}{}
+\begin{geipi}[PC-GEIPI-02 — Quantité de matière et dosage]
+\textbf{Type :} exercice type GEIPI inventé.  
+\textbf{Durée :} 35 min.
+\begin{enumerate}
+  \item Calculer la quantité de matière dans 5,85 g de NaCl.
+  \item Préparer 250 mL d'une solution à $0{,}100$ mol.L$^{-1}$.
+  \item Calculer la masse nécessaire.
+  \item Expliquer le rôle de la fiole jaugée.
+  \item Donner une source d'incertitude.
+\end{enumerate}
+\end{geipi}
+
+% ============================================================
+\section{Si tout est trop facile : sujets d'excellence type Concours général}
+% ============================================================
+
+\begin{alerte}[philosophie de cette section]
+Les sujets de cette section sont \textbf{inventés}. Ils sont inspirés de l'esprit des sujets longs de type Concours général : un problème central, des parties qui construisent progressivement un résultat, des questions de prise d'initiative, des raisonnements élégants et une vraie exigence de rédaction. 
+
+Ils ne sont pas conçus pour ``faire réciter le cours'', mais pour pousser un excellent élève de Terminale dans ses retranchements tout en restant dans un cadre accessible avec les outils du programme de spécialité mathématiques et physique-chimie, enrichis par une exigence de niveau prépa.
+
+Chaque sujet est prévu pour une durée de \textbf{4 heures}. Le but n'est pas nécessairement de tout terminer, mais de produire une copie rigoureuse, structurée et intelligente.
+\end{alerte}
+
+\begin{methode}[conseils d'utilisation]
+\begin{itemize}
+  \item Donner ces sujets seulement après une maîtrise solide du programme de Terminale.
+  \item Exiger une rédaction complète : définitions, théorèmes utilisés, unités, interprétations.
+  \item Valoriser les idées partielles, les changements de variable, les encadrements et les schémas.
+  \item Corriger comme un sujet de concours : la méthode compte autant que le résultat.
+  \item Les sujets peuvent être utilisés comme DM ambitieux, bac blanc d'excellence ou entraînement prépa.
+\end{itemize}
+\end{methode}
+
+% ============================================================
+\subsection{Mathématiques — 5 sujets de 4 heures}
+% ============================================================
+
+% ------------------------------------------------------------
+\hypertarget{M-EXCELLENCE-01}{}
+\begin{difficile}[M-EXCELLENCE-01 — Une fonction logistique cachée : propagation, seuils et contrôle]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile mais accessible à un excellent élève de Terminale.  
+\textbf{Thèmes :} suites, fonctions, logarithme, exponentielle, probabilités, algorithmique.  
+\textbf{But du sujet :} comprendre comment une dynamique de propagation peut se stabiliser, puis déterminer comment agir pour contrôler cette propagation.
+
+\medskip
+
+Une information se diffuse dans un lycée de 1200 élèves. On note $u_n$ la proportion d'élèves ayant reçu l'information après $n$ heures. On propose le modèle
+\[
+u_{n+1}=u_n+\lambda u_n(1-u_n),
+\qquad u_0\in]0,1[,
+\]
+où $\lambda\in]0,1[$ mesure l'intensité de diffusion.
+
+% -------------------------
+\subsubsection*{Problème 1 — Analyse qualitative de la dynamique}
+
+\textbf{Partie A — Premières observations}
+\begin{enumerate}
+  \item Expliquer pourquoi le facteur $u_n(1-u_n)$ est raisonnable pour modéliser une diffusion.
+  \item Calculer $u_1$ et $u_2$ lorsque $u_0=0{,}05$ et $\lambda=0{,}4$.
+  \item Montrer que si $0<u_n<1$, alors $0<u_{n+1}<1$.
+  \item Déterminer le signe de $u_{n+1}-u_n$.
+  \item En déduire que la suite $(u_n)$ est monotone et bornée.
+  \item Conclure que $(u_n)$ converge.
+\end{enumerate}
+
+\textbf{Partie B — Recherche de la limite}
+\begin{enumerate}
+  \item On note $\ell$ la limite de $(u_n)$. Justifier que $\ell$ vérifie
+  \[
+  \ell=\ell+\lambda \ell(1-\ell).
+  \]
+  \item Déterminer les limites possibles.
+  \item Expliquer pourquoi la limite ne peut pas être $0$.
+  \item Conclure sur la valeur de $\ell$.
+  \item Interpréter ce résultat dans le contexte.
+  \item Donner une limite concrète du modèle.
+\end{enumerate}
+
+\textbf{Partie C — Vitesse de convergence}
+On pose $v_n=1-u_n$.
+\begin{enumerate}
+  \item Exprimer $v_{n+1}$ en fonction de $v_n$ et $u_n$.
+  \item Montrer que
+  \[
+  v_{n+1}=v_n(1-\lambda u_n).
+  \]
+  \item Montrer qu'à partir du moment où $u_n\geq 0{,}5$, on a
+  \[
+  v_{n+1}\leq \left(1-\frac{\lambda}{2}\right)v_n.
+  \]
+  \item En déduire une majoration de $v_n$ à partir d'un certain rang.
+  \item Expliquer pourquoi la fin de la propagation peut être très rapide.
+  \item Proposer une méthode numérique pour trouver le premier $n$ tel que $u_n>0{,}95$.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Comparaison avec un modèle continu}
+
+On considère la fonction $f$ définie par
+\[
+f(t)=\frac{1}{1+Ae^{-\lambda t}},
+\]
+où $A>0$.
+
+\textbf{Partie A — Étude de la fonction}
+\begin{enumerate}
+  \item Calculer $\lim_{t\to+\infty} f(t)$.
+  \item Calculer $f'(t)$.
+  \item Montrer que
+  \[
+  f'(t)=\lambda f(t)(1-f(t)).
+  \]
+  \item Interpréter cette équation différentielle.
+  \item Déterminer $A$ pour que $f(0)=u_0$.
+  \item Comparer qualitativement le modèle discret et le modèle continu.
+\end{enumerate}
+
+\textbf{Partie B — Seuil de 90 \%}
+\begin{enumerate}
+  \item Résoudre $f(t)\geq 0{,}9$.
+  \item Exprimer le temps minimal en fonction de $u_0$ et $\lambda$.
+  \item Calculer ce temps pour $u_0=0{,}05$ et $\lambda=0{,}4$.
+  \item Comparer au modèle discret.
+  \item Expliquer pourquoi les deux modèles ne donnent pas exactement le même résultat.
+  \item Rédiger une phrase d'interprétation compréhensible par un non-spécialiste.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Contrôle de la diffusion}
+
+L'administration peut envoyer une correction officielle. On suppose qu'à partir de l'heure $N$, la diffusion est freinée et le modèle devient
+\[
+u_{n+1}=u_n+\lambda u_n(1-u_n)-\mu u_n,
+\]
+où $\mu>0$ représente l'efficacité de la correction.
+
+\textbf{Partie A — Équilibres du nouveau modèle}
+\begin{enumerate}
+  \item Interpréter le terme $-\mu u_n$.
+  \item Déterminer les points fixes du nouveau modèle.
+  \item Montrer qu'un équilibre strictement positif existe si et seulement si $\mu<\lambda$.
+  \item Exprimer cet équilibre en fonction de $\lambda$ et $\mu$.
+  \item Pour $\lambda=0{,}4$, déterminer $\mu$ pour que l'équilibre soit inférieur à $0{,}25$.
+  \item Interpréter ce résultat.
+\end{enumerate}
+
+\textbf{Partie B — Décision}
+\begin{enumerate}
+  \item Expliquer pourquoi agir tôt est plus efficace qu'agir tard.
+  \item Proposer un algorithme simulant l'action à partir d'un rang $N$.
+  \item Comparer deux stratégies : agir à $N=3$ ou agir à $N=8$.
+  \item Définir un critère de réussite.
+  \item Rédiger une conclusion mathématique.
+  \item Rédiger une conclusion destinée au proviseur.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{M-EXCELLENCE-02}{}
+\begin{difficile}[M-EXCELLENCE-02 — Une inégalité élégante et ses conséquences intégrales]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} type Concours général accessible Terminale.  
+\textbf{Thèmes :} logarithme, convexité, tangentes, intégrales, suites.  
+\textbf{But du sujet :} démontrer une inégalité fondamentale, puis l'utiliser pour encadrer une intégrale sans primitive usuelle.
+
+\medskip
+
+On souhaite étudier l'intégrale
+\[
+I=\int_0^1 e^{-x^2}\,dx,
+\]
+qui ne possède pas de primitive usuelle au programme. L'objectif est d'obtenir des encadrements efficaces en utilisant des méthodes élémentaires.
+
+% -------------------------
+\subsubsection*{Problème 1 — Une inégalité fondamentale}
+
+\textbf{Partie A — Convexité de l'exponentielle}
+\begin{enumerate}
+  \item Rappeler la définition géométrique de la convexité.
+  \item Montrer que la fonction $x\mapsto e^x$ est convexe sur $\mathbb R$.
+  \item Écrire l'équation de la tangente à la courbe de $e^x$ au point d'abscisse $0$.
+  \item En déduire que pour tout réel $x$,
+  \[
+  e^x\geq 1+x.
+  \]
+  \item Déterminer le cas d'égalité.
+  \item Expliquer pourquoi cette inégalité est très utile en approximation.
+\end{enumerate}
+
+\textbf{Partie B — Application à $e^{-x^2}$}
+\begin{enumerate}
+  \item Appliquer l'inégalité précédente avec $x$ remplacé par $-t$.
+  \item En déduire que pour tout $t\geq0$,
+  \[
+  e^{-t}\geq 1-t.
+  \]
+  \item En déduire que pour $x\in[0,1]$,
+  \[
+  e^{-x^2}\geq 1-x^2.
+  \]
+  \item Montrer également que $e^{-x^2}\leq 1$.
+  \item En déduire un premier encadrement de $I$.
+  \item Calculer explicitement les deux bornes.
+\end{enumerate}
+
+\textbf{Partie C — Comparaison avec une autre borne}
+\begin{enumerate}
+  \item Montrer que pour $x\in[0,1]$, on a $x^2\leq x$.
+  \item En déduire que $e^{-x}\leq e^{-x^2}$.
+  \item En déduire un nouvel encadrement de $I$.
+  \item Comparer les deux minorations obtenues.
+  \item Dire laquelle est la meilleure.
+  \item Justifier sans calculatrice l'ordre de grandeur de $I$.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Encadrement par rectangles}
+
+On découpe $[0,1]$ en $n$ intervalles de même longueur. On pose
+\[
+S_n=\frac1n\sum_{k=1}^{n} e^{-(k/n)^2},
+\qquad
+T_n=\frac1n\sum_{k=0}^{n-1} e^{-(k/n)^2}.
+\]
+
+\textbf{Partie A — Interprétation géométrique}
+\begin{enumerate}
+  \item Montrer que $x\mapsto e^{-x^2}$ est décroissante sur $[0,1]$.
+  \item Interpréter $S_n$ comme une somme de rectangles.
+  \item Interpréter $T_n$ comme une autre somme de rectangles.
+  \item Montrer que
+  \[
+  S_n\leq I\leq T_n.
+  \]
+  \item Faire un schéma qualitatif.
+  \item Expliquer pourquoi l'encadrement devient plus précis quand $n$ augmente.
+\end{enumerate}
+
+\textbf{Partie B — Largeur de l'encadrement}
+\begin{enumerate}
+  \item Calculer $T_n-S_n$.
+  \item Montrer que
+  \[
+  T_n-S_n=\frac{1-e^{-1}}{n}.
+  \]
+  \item Déterminer une condition sur $n$ pour obtenir une précision inférieure à $10^{-2}$.
+  \item Donner une valeur de $n$ suffisante.
+  \item Expliquer pourquoi cette méthode est coûteuse à la main.
+  \item Écrire un algorithme Python calculant $S_n$ et $T_n$.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Une suite d'approximation élégante}
+
+On définit
+\[
+a_n=\int_0^1 (1-x^2)^n\,dx.
+\]
+
+\textbf{Partie A — Premiers termes}
+\begin{enumerate}
+  \item Calculer $a_0$.
+  \item Calculer $a_1$.
+  \item Montrer que $0\leq a_{n+1}\leq a_n$.
+  \item En déduire que $(a_n)$ converge.
+  \item Montrer que sa limite est positive ou nulle.
+  \item Interpréter graphiquement $a_n$.
+\end{enumerate}
+
+\textbf{Partie B — Lien avec l'exponentielle}
+\begin{enumerate}
+  \item Montrer que pour $u\in[0,1]$ et $n\geq1$,
+  \[
+  \left(1-\frac{u}{n}\right)^n\leq e^{-u}.
+  \]
+  \item Appliquer cette inégalité à $u=x^2$.
+  \item En déduire une famille de minorations de $I$.
+  \item Comparer avec la minoration $1-\frac13$.
+  \item Expliquer l'intérêt d'introduire un paramètre $n$.
+  \item Conclure sur la stratégie d'approximation.
+\end{enumerate}
+
+\textbf{Partie C — Question de synthèse}
+\begin{enumerate}
+  \item Rassembler les encadrements obtenus.
+  \item Donner le meilleur encadrement explicite sans calculatrice.
+  \item Proposer une méthode numérique plus précise.
+  \item Dire quelles propriétés de la fonction ont été utilisées.
+  \item Rédiger une conclusion mathématique structurée.
+  \item Expliquer pourquoi ce sujet dépasse un exercice classique de bac.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{M-EXCELLENCE-03}{}
+\begin{difficile}[M-EXCELLENCE-03 — Géométrie d'un tétraèdre et optimisation de distance]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale / transition prépa.  
+\textbf{Thèmes :} géométrie dans l'espace, produit scalaire, distance, fonctions, optimisation.  
+\textbf{But du sujet :} construire une solution géométrique complète autour d'un tétraèdre, puis minimiser une distance.
+
+\medskip
+
+Dans un repère orthonormé, on considère les points
+\[
+A(1,0,2),\quad B(4,1,0),\quad C(0,3,1),\quad D(2,2,5).
+\]
+
+% -------------------------
+\subsubsection*{Problème 1 — Structure du tétraèdre}
+
+\textbf{Partie A — Non-coplanarité}
+\begin{enumerate}
+  \item Calculer les vecteurs $\overrightarrow{AB}$, $\overrightarrow{AC}$ et $\overrightarrow{AD}$.
+  \item Déterminer un vecteur normal au plan $(ABC)$.
+  \item Donner une équation cartésienne du plan $(ABC)$.
+  \item Vérifier si $D$ appartient au plan $(ABC)$.
+  \item Conclure sur le volume du tétraèdre.
+  \item Interpréter géométriquement la non-coplanarité.
+\end{enumerate}
+
+\textbf{Partie B — Hauteur issue de $D$}
+\begin{enumerate}
+  \item Calculer la distance de $D$ au plan $(ABC)$.
+  \item Déterminer une représentation paramétrique de la droite passant par $D$ et orthogonale à $(ABC)$.
+  \item Trouver le projeté orthogonal $H$ de $D$ sur $(ABC)$.
+  \item Vérifier que $H$ appartient bien au plan.
+  \item Vérifier que $\overrightarrow{DH}$ est orthogonal à deux vecteurs du plan.
+  \item Interpréter $DH$ comme hauteur du tétraèdre.
+\end{enumerate}
+
+\textbf{Partie C — Volume}
+\begin{enumerate}
+  \item Calculer l'aire du triangle $ABC$.
+  \item En déduire le volume du tétraèdre $ABCD$.
+  \item Donner une autre méthode possible de calcul.
+  \item Comparer les deux méthodes.
+  \item Expliquer laquelle est la plus élégante ici.
+  \item Conclure.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Point mobile sur une arête}
+
+On considère un point $M_t$ de l'arête $[AB]$ défini par
+\[
+M_t=A+t\overrightarrow{AB},\qquad t\in[0,1].
+\]
+
+\textbf{Partie A — Coordonnées}
+\begin{enumerate}
+  \item Donner les coordonnées de $M_t$.
+  \item Calculer $\overrightarrow{CM_t}$.
+  \item Exprimer $CM_t^2$ en fonction de $t$.
+  \item Montrer que $CM_t^2$ est un polynôme du second degré.
+  \item Déterminer le minimum de $CM_t^2$ sur $[0,1]$.
+  \item En déduire la distance minimale de $C$ à l'arête $[AB]$.
+\end{enumerate}
+
+\textbf{Partie B — Interprétation géométrique}
+\begin{enumerate}
+  \item Déterminer le point $M$ réalisant le minimum.
+  \item Vérifier que $\overrightarrow{CM}$ est orthogonal à $\overrightarrow{AB}$.
+  \item Expliquer pourquoi cette condition est attendue.
+  \item Comparer avec le projeté orthogonal sur la droite $(AB)$.
+  \item Vérifier que le projeté appartient bien au segment $[AB]$.
+  \item Conclure.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Optimisation d'un trajet dans l'espace}
+
+Un drone doit partir de $C$, toucher l'arête $[AB]$ en un point $M_t$, puis rejoindre $D$.
+
+\textbf{Partie A — Longueur du trajet}
+\begin{enumerate}
+  \item Exprimer $CM_t^2$.
+  \item Exprimer $DM_t^2$.
+  \item Expliquer pourquoi minimiser $CM_t+DM_t$ est plus difficile que minimiser une somme de carrés.
+  \item Calculer numériquement la longueur pour $t=0$, $t=1$ et $t=\frac12$.
+  \item Proposer une stratégie pour approcher le minimum.
+  \item Interpréter le résultat comme un problème de réflexion.
+\end{enumerate}
+
+\textbf{Partie B — Question finale}
+\begin{enumerate}
+  \item On admet que la fonction $L(t)=CM_t+DM_t$ admet un minimum sur $[0,1]$. Justifier cette affirmation.
+  \item Expliquer pourquoi ce minimum est unique ou presque unique dans cette configuration.
+  \item Proposer un algorithme de balayage pour approcher le minimum.
+  \item Donner un critère d'arrêt.
+  \item Rédiger une synthèse reliant géométrie, calcul et optimisation.
+  \item Dire en quoi ce problème est plus riche qu'un exercice standard de géométrie.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{M-EXCELLENCE-04}{}
+\begin{difficile}[M-EXCELLENCE-04 — Prix dynamique, probabilités et optimisation sous contrainte]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale.  
+\textbf{Thèmes :} fonctions, exponentielle, logarithme, probabilités, loi binomiale, optimisation.  
+\textbf{But du sujet :} optimiser une recette sous contraintes de capacité et de risque.
+
+\medskip
+
+Une salle de concert de 900 places vend des billets à un prix $p$ compris entre 20 et 160 euros. Le nombre moyen de personnes souhaitant acheter un billet est modélisé par
+\[
+N(p)=1400e^{-0{,}012p}.
+\]
+La recette théorique est
+\[
+R(p)=p\min(N(p),900).
+\]
+
+% -------------------------
+\subsubsection*{Problème 1 — Étude sans contrainte de capacité}
+
+\textbf{Partie A — Fonction de demande}
+\begin{enumerate}
+  \item Interpréter le modèle $N(p)$.
+  \item Calculer $N(20)$ et $N(160)$.
+  \item Montrer que $N$ est décroissante.
+  \item Déterminer le prix $p_0$ tel que $N(p_0)=900$.
+  \item Interpréter ce prix.
+  \item Expliquer pourquoi la contrainte de capacité change le problème.
+\end{enumerate}
+
+\textbf{Partie B — Recette sans contrainte}
+On étudie d'abord
+\[
+r(p)=pN(p).
+\]
+\begin{enumerate}
+  \item Calculer $r'(p)$.
+  \item Déterminer le prix maximisant $r$ sur $[20,160]$.
+  \item Vérifier que ce prix appartient à l'intervalle.
+  \item Calculer la recette maximale théorique.
+  \item Interpréter.
+  \item Discuter la sensibilité au prix.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Optimisation avec capacité}
+
+\textbf{Partie A — Fonction par morceaux}
+\begin{enumerate}
+  \item Écrire $R(p)$ lorsque $N(p)\geq900$.
+  \item Écrire $R(p)$ lorsque $N(p)<900$.
+  \item Préciser les intervalles correspondants.
+  \item Étudier $R$ sur chaque intervalle.
+  \item Déterminer le prix optimal.
+  \item Comparer au modèle sans contrainte.
+\end{enumerate}
+
+\textbf{Partie B — Interprétation économique}
+\begin{enumerate}
+  \item Expliquer pourquoi un prix trop faible peut réduire la recette.
+  \item Expliquer pourquoi un prix trop élevé peut réduire la recette.
+  \item Dire si remplir la salle suffit à maximiser la recette.
+  \item Déterminer une fourchette de prix raisonnable.
+  \item Proposer une recommandation.
+  \item Rédiger une conclusion claire.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Absences et surbooking}
+
+Chaque acheteur a une probabilité $q=0{,}04$ de ne pas venir le soir du concert. On vend $m$ billets, avec $m\geq900$.
+
+\textbf{Partie A — Modélisation}
+\begin{enumerate}
+  \item Modéliser le nombre $X$ d'absents.
+  \item Donner l'espérance et l'écart-type de $X$.
+  \item Expliquer le risque associé au surbooking.
+  \item Traduire l'événement « il y a plus de spectateurs présents que de places ».
+  \item Écrire cet événement avec $X$.
+  \item Proposer une méthode de calcul de sa probabilité.
+\end{enumerate}
+
+\textbf{Partie B — Décision}
+\begin{enumerate}
+  \item Tester le cas $m=930$.
+  \item Calculer l'espérance du nombre d'absents.
+  \item Comparer avec le nombre de billets vendus en trop.
+  \item Discuter le risque.
+  \item Proposer un critère : risque inférieur à 1 \%.
+  \item Rédiger une décision argumentée.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{M-EXCELLENCE-05}{}
+\begin{difficile}[M-EXCELLENCE-05 — Suite définie implicitement et aire sous une courbe]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale / transition prépa.  
+\textbf{Thèmes :} fonctions, logarithme, suites implicites, intégrales, convexité.  
+\textbf{But du sujet :} étudier une suite définie comme solution d'une équation, puis relier ses propriétés à une aire.
+
+\medskip
+
+Pour tout entier $n\geq1$, on considère l'équation
+\[
+x+\ln(x)=n
+\qquad \text{d'inconnue } x>0.
+\]
+On note $u_n$ son unique solution.
+
+% -------------------------
+\subsubsection*{Problème 1 — Existence et unicité}
+
+\textbf{Partie A — Étude de la fonction}
+\begin{enumerate}
+  \item Étudier la fonction $f(x)=x+\ln(x)$ sur $]0,+\infty[$.
+  \item Déterminer ses limites aux bornes du domaine.
+  \item Montrer que $f$ est strictement croissante.
+  \item En déduire que l'équation $f(x)=n$ admet une unique solution.
+  \item Justifier que $u_n$ est bien défini.
+  \item Donner un encadrement simple de $u_1$.
+\end{enumerate}
+
+\textbf{Partie B — Premiers encadrements}
+\begin{enumerate}
+  \item Montrer que $u_n<n$.
+  \item Montrer que $u_n>n-\ln(n)$ pour $n\geq2$.
+  \item Interpréter ces deux inégalités.
+  \item Donner un encadrement de $u_{10}$.
+  \item Proposer une méthode numérique pour approcher $u_n$.
+  \item Expliquer pourquoi la dichotomie est adaptée.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Étude de la suite}
+
+\textbf{Partie A — Monotonie}
+\begin{enumerate}
+  \item Montrer que $u_{n+1}>u_n$.
+  \item Interpréter graphiquement.
+  \item Montrer que $u_n\to+\infty$.
+  \item Étudier le comportement de $u_n/n$.
+  \item Conjecturer la limite de $u_n/n$.
+  \item Démontrer cette conjecture à l'aide des encadrements précédents.
+\end{enumerate}
+
+\textbf{Partie B — Écart à $n$}
+On pose $d_n=n-u_n$.
+\begin{enumerate}
+  \item Montrer que $d_n=\ln(u_n)$.
+  \item En déduire que $d_n$ tend vers $+\infty$.
+  \item Montrer que $d_n/n\to0$.
+  \item Interpréter : $u_n$ est proche de $n$, mais pas à distance bornée.
+  \item Donner une approximation de $u_n$ pour $n$ grand.
+  \item Discuter la précision de cette approximation.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Aire et interprétation}
+
+On considère l'aire
+\[
+A_n=\int_{u_n}^{n}\frac{1}{x}\,dx.
+\]
+
+\textbf{Partie A — Calcul}
+\begin{enumerate}
+  \item Calculer $A_n$.
+  \item Utiliser la relation vérifiée par $u_n$.
+  \item Montrer que $A_n=\ln(n)-\ln(u_n)$.
+  \item Relier $A_n$ à $d_n$.
+  \item Donner une interprétation graphique.
+  \item Étudier la limite de $A_n$.
+\end{enumerate}
+
+\textbf{Partie B — Synthèse}
+\begin{enumerate}
+  \item Résumer les propriétés de $u_n$.
+  \item Expliquer pourquoi la suite est définie implicitement.
+  \item Expliquer ce qui rend le problème plus difficile qu'une suite explicite.
+  \item Proposer une question supplémentaire de niveau prépa.
+  \item Rédiger une conclusion élégante.
+  \item Dire quels outils du programme ont été mobilisés.
+\end{enumerate}
+\end{difficile}
+
+% ============================================================
+\subsection{Physique-Chimie — 5 sujets de 4 heures}
+% ============================================================
+
+% ------------------------------------------------------------
+\hypertarget{PC-EXCELLENCE-01}{}
+\begin{difficile}[PC-EXCELLENCE-01 — Véhicule électrique : énergie, freinage régénératif et autonomie]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale.  
+\textbf{Thèmes :} énergie, puissance, rendement, mécanique, électricité.  
+\textbf{But du sujet :} établir un bilan énergétique complet et discuter la faisabilité d'un trajet.
+
+\medskip
+
+Une voiture électrique de masse $m=1450$ kg possède une batterie de capacité $55$ kWh. Elle roule à 90 km.h$^{-1}$ sur route horizontale, puis doit monter un col de dénivelé $h=900$ m.
+
+% -------------------------
+\subsubsection*{Problème 1 — Énergie cinétique et freinage}
+
+\textbf{Partie A — Énergie cinétique}
+\begin{enumerate}
+  \item Convertir 90 km.h$^{-1}$ en m.s$^{-1}$.
+  \item Calculer l'énergie cinétique du véhicule.
+  \item Convertir cette énergie en Wh.
+  \item Refaire le calcul à 130 km.h$^{-1}$.
+  \item Comparer les deux résultats.
+  \item Expliquer pourquoi la vitesse est un paramètre critique.
+\end{enumerate}
+
+\textbf{Partie B — Freinage régénératif}
+Le rendement global de récupération est de 62 \%.
+\begin{enumerate}
+  \item Calculer l'énergie récupérable lors d'un arrêt depuis 90 km.h$^{-1}$.
+  \item Calculer l'énergie perdue.
+  \item Comparer à la capacité de la batterie.
+  \item Expliquer pourquoi ce système est plus utile en ville que sur autoroute.
+  \item Citer deux pertes physiques.
+  \item Conclure sur l'intérêt du freinage régénératif.
+\end{enumerate}
+
+\textbf{Partie C — Puissance de freinage}
+Le freinage dure 4,0 s.
+\begin{enumerate}
+  \item Calculer la puissance moyenne associée à la variation d'énergie.
+  \item Comparer cette puissance à une puissance domestique de 3 kW.
+  \item Calculer l'accélération moyenne.
+  \item Estimer la distance de freinage.
+  \item Discuter les limites du modèle uniformément décéléré.
+  \item Interpréter physiquement les résultats.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Montée du col}
+
+\textbf{Partie A — Énergie potentielle}
+\begin{enumerate}
+  \item Calculer le gain d'énergie potentielle.
+  \item Convertir en kWh.
+  \item Comparer à l'énergie cinétique à 90 km.h$^{-1}$.
+  \item Ajouter un rendement moteur de 85 \%.
+  \item Estimer l'énergie prélevée sur la batterie.
+  \item Déterminer la fraction de batterie consommée.
+\end{enumerate}
+
+\textbf{Partie B — Puissance}
+La montée dure 35 min.
+\begin{enumerate}
+  \item Calculer la puissance mécanique moyenne minimale.
+  \item Calculer la puissance électrique moyenne.
+  \item Comparer à une puissance de 75 kW.
+  \item Expliquer pourquoi la puissance réelle est plus grande.
+  \item Citer les frottements à prendre en compte.
+  \item Conclure sur la faisabilité.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Autonomie et stratégie}
+
+\textbf{Partie A — Modèle global}
+\begin{enumerate}
+  \item Proposer un bilan énergétique global.
+  \item Ajouter une consommation horizontale de 16 kWh/100 km.
+  \item Estimer l'énergie totale pour 120 km dont le col.
+  \item Déterminer si la batterie suffit.
+  \item Ajouter une marge de sécurité de 15 \%.
+  \item Conclure.
+\end{enumerate}
+
+\textbf{Partie B — Recommandation}
+\begin{enumerate}
+  \item Identifier les paramètres les plus influents.
+  \item Expliquer l'effet de la température.
+  \item Expliquer l'effet de la vitesse.
+  \item Proposer une stratégie d'éco-conduite.
+  \item Rédiger une conclusion scientifique.
+  \item Rédiger une conclusion pour un conducteur.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{PC-EXCELLENCE-02}{}
+\begin{difficile}[PC-EXCELLENCE-02 — Eau potable : dosage redox, incertitudes et décision sanitaire]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale.  
+\textbf{Thèmes :} oxydoréduction, titrage, concentrations, incertitudes, décision.  
+\textbf{But du sujet :} exploiter un titrage redox complet et discuter la robustesse d'une conclusion sanitaire.
+
+\medskip
+
+Un laboratoire contrôle la concentration en ions fer(II) dans une eau. Un échantillon de volume $V=50{,}0$ mL est dosé par une solution de permanganate de potassium de concentration $C=2{,}00\times10^{-3}$ mol.L$^{-1}$. L'équivalence est obtenue pour $V_E=12{,}6$ mL. En milieu acide :
+\[
+\mathrm{MnO_4^-+5Fe^{2+}+8H^+\rightarrow Mn^{2+}+5Fe^{3+}+4H_2O}.
+\]
+
+% -------------------------
+\subsubsection*{Problème 1 — Compréhension chimique}
+
+\textbf{Partie A — Équation}
+\begin{enumerate}
+  \item Identifier l'oxydant.
+  \item Identifier le réducteur.
+  \item Vérifier la conservation des atomes.
+  \item Vérifier la conservation des charges.
+  \item Expliquer le rôle du milieu acide.
+  \item Justifier l'utilisation du permanganate comme réactif titrant.
+\end{enumerate}
+
+\textbf{Partie B — Équivalence}
+\begin{enumerate}
+  \item Définir l'équivalence.
+  \item Écrire la relation entre $n(\mathrm{MnO_4^-})$ et $n(\mathrm{Fe^{2+}})$ à l'équivalence.
+  \item Calculer la quantité de permanganate versée.
+  \item En déduire la quantité de fer(II).
+  \item Calculer la concentration en fer(II).
+  \item Convertir cette concentration en mg.L$^{-1}$ avec $M(\mathrm{Fe})=55{,}8$ g.mol$^{-1}$.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Incertitude et conformité}
+
+La limite sanitaire fictive est $0{,}30$ mg.L$^{-1}$.
+
+\textbf{Partie A — Comparaison directe}
+\begin{enumerate}
+  \item Comparer la concentration obtenue à la limite.
+  \item Dire si l'eau semble conforme.
+  \item Expliquer pourquoi une comparaison directe est insuffisante.
+  \item Identifier les grandeurs expérimentales influentes.
+  \item Donner deux sources d'erreur.
+  \item Proposer un premier avis.
+\end{enumerate}
+
+\textbf{Partie B — Incertitude relative}
+On donne :
+\[
+\frac{u(C)}{C}=1{,}0\%,\qquad
+\frac{u(V_E)}{V_E}=1{,}5\%,\qquad
+\frac{u(V)}{V}=0{,}5\%.
+\]
+\begin{enumerate}
+  \item Proposer une estimation simplifiée de l'incertitude relative totale.
+  \item Calculer l'incertitude absolue sur la concentration.
+  \item Donner un encadrement de la concentration.
+  \item Comparer cet encadrement à la limite.
+  \item La conclusion est-elle robuste ?
+  \item Rédiger une phrase de conclusion avec incertitude.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Erreur de dilution}
+
+On découvre que l'échantillon a peut-être été dilué accidentellement par un facteur $d$ compris entre 1,1 et 1,3.
+
+\textbf{Partie A — Effet de la dilution}
+\begin{enumerate}
+  \item Exprimer la concentration réelle en fonction de $d$.
+  \item Donner un encadrement de la concentration réelle.
+  \item Comparer à la limite sanitaire.
+  \item Expliquer le risque de fausse conformité.
+  \item Proposer un nouveau protocole.
+  \item Conclure.
+\end{enumerate}
+
+\textbf{Partie B — Note de laboratoire}
+\begin{enumerate}
+  \item Résumer le protocole.
+  \item Résumer le résultat.
+  \item Résumer les incertitudes.
+  \item Indiquer si la mesure doit être recommencée.
+  \item Rédiger une conclusion pour un chimiste.
+  \item Rédiger une conclusion pour une mairie.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{PC-EXCELLENCE-03}{}
+\begin{difficile}[PC-EXCELLENCE-03 — Capteur optique : diffraction, interférences et précision]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale.  
+\textbf{Thèmes :} ondes, diffraction, interférences, incertitudes, métrologie.  
+\textbf{But du sujet :} comprendre comment un montage optique peut devenir un instrument de mesure précis.
+
+\medskip
+
+Un laser de longueur d'onde $\lambda=650$ nm éclaire d'abord une fente de largeur $a$, puis un dispositif à deux fentes distantes de $b$. L'écran est placé à une distance $D$.
+
+% -------------------------
+\subsubsection*{Problème 1 — Diffraction}
+
+\textbf{Partie A — Modèle}
+\begin{enumerate}
+  \item Rappeler la relation entre l'angle caractéristique $\theta$, $\lambda$ et $a$.
+  \item Faire un schéma de la tache centrale.
+  \item Relier la largeur $L$ de la tache centrale à $D$ et $\theta$.
+  \item Justifier l'approximation des petits angles.
+  \item En déduire l'expression de $a$.
+  \item Vérifier l'homogénéité.
+\end{enumerate}
+
+\textbf{Partie B — Exploitation}
+On mesure $L=4{,}0$ cm pour $D=2{,}0$ m.
+\begin{enumerate}
+  \item Convertir toutes les données en unités SI.
+  \item Calculer $a$.
+  \item Donner le résultat en micromètres.
+  \item Vérifier l'ordre de grandeur.
+  \item Expliquer pourquoi un cheveu peut être étudié par diffraction.
+  \item Donner une limite expérimentale.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Interférences}
+
+On observe maintenant un interfrange $i=2{,}6$ mm avec deux fentes placées à $D=1{,}80$ m.
+
+\textbf{Partie A — Calcul}
+\begin{enumerate}
+  \item Rappeler la formule de l'interfrange.
+  \item Calculer $b$.
+  \item Comparer $b$ et $a$.
+  \item Expliquer la différence entre diffraction et interférences.
+  \item Citer deux conditions d'observation.
+  \item Conclure sur le montage.
+\end{enumerate}
+
+\textbf{Partie B — Sensibilité}
+\begin{enumerate}
+  \item Dire comment $i$ varie lorsque $b$ augmente.
+  \item Calculer la variation relative de $i$ si $b$ augmente de 1 \%.
+  \item Expliquer pourquoi ce montage peut servir de capteur.
+  \item Proposer une méthode d'étalonnage.
+  \item Identifier le paramètre le plus critique.
+  \item Conclure.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Incertitude et décision}
+
+\textbf{Partie A — Incertitude}
+\begin{enumerate}
+  \item Si $D$ est connu à 1 \%, quel est l'effet sur $a$ ?
+  \item Si $L$ est connu à 2 \%, quel est l'effet sur $a$ ?
+  \item Estimer une incertitude relative totale.
+  \item Donner un encadrement de $a$.
+  \item Proposer une amélioration de la mesure.
+  \item Discuter l'intérêt d'une mesure répétée.
+\end{enumerate}
+
+\textbf{Partie B — Synthèse}
+\begin{enumerate}
+  \item Résumer la méthode par diffraction.
+  \item Résumer la méthode par interférences.
+  \item Comparer leurs intérêts.
+  \item Comparer leurs limites.
+  \item Rédiger une conclusion type bac.
+  \item Rédiger une conclusion type concours.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{PC-EXCELLENCE-04}{}
+\begin{difficile}[PC-EXCELLENCE-04 — Réacteur chimique : cinétique, énergie et sécurité]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale.  
+\textbf{Thèmes :} cinétique, Beer-Lambert, énergie thermique, sécurité.  
+\textbf{But du sujet :} suivre une transformation chimique, en extraire un paramètre cinétique, puis discuter un risque thermique.
+
+\medskip
+
+Une réaction produit une espèce colorée $P$. Sa concentration suit approximativement
+\[
+[P](t)=C_\infty(1-e^{-kt}).
+\]
+La concentration est mesurée par absorbance avec la loi de Beer-Lambert.
+
+% -------------------------
+\subsubsection*{Problème 1 — Suivi spectrophotométrique}
+
+\textbf{Partie A — Loi de Beer-Lambert}
+\begin{enumerate}
+  \item Rappeler la loi de Beer-Lambert.
+  \item Préciser les unités des grandeurs.
+  \item Expliquer pourquoi l'absorbance permet de suivre la réaction.
+  \item Donner deux conditions de validité de la loi.
+  \item Expliquer le rôle du blanc.
+  \item Donner une limite expérimentale.
+\end{enumerate}
+
+\textbf{Partie B — Exploitation}
+On donne $A=\alpha [P]$ avec $\alpha=1500$ L.mol$^{-1}$.
+\begin{enumerate}
+  \item Exprimer $A(t)$.
+  \item Déterminer $A_\infty$.
+  \item Montrer que $A_\infty-A(t)=A_\infty e^{-kt}$.
+  \item Proposer une linéarisation.
+  \item Expliquer comment déterminer $k$ expérimentalement.
+  \item Définir le temps de demi-réaction.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Cinétique}
+
+\textbf{Partie A — Détermination de $k$}
+On mesure $t_{1/2}=12$ min.
+\begin{enumerate}
+  \item Exprimer $t_{1/2}$ en fonction de $k$.
+  \item Calculer $k$.
+  \item Donner son unité.
+  \item Calculer le temps nécessaire pour atteindre 90 \% de $C_\infty$.
+  \item Interpréter.
+  \item Comparer 50 \% et 90 \%.
+\end{enumerate}
+
+\textbf{Partie B — Température}
+\begin{enumerate}
+  \item Expliquer qualitativement l'effet d'une augmentation de température.
+  \item Dire si $k$ augmente ou diminue.
+  \item Expliquer l'effet sur $t_{1/2}$.
+  \item Donner un risque associé à une réaction trop rapide.
+  \item Proposer un contrôle expérimental.
+  \item Conclure.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Bilan thermique}
+
+La réaction libère $Q=18$ kJ par mole de produit formé. Le réacteur contient 0,20 mol de réactif pouvant former $P$.
+
+\textbf{Partie A — Énergie libérée}
+\begin{enumerate}
+  \item Calculer l'énergie totale libérable.
+  \item Si cette énergie chauffe 500 g d'eau, calculer l'élévation de température.
+  \item On donne $c_{\mathrm{eau}}=4180$ J.kg$^{-1}$.K$^{-1}$.
+  \item Vérifier les unités.
+  \item Discuter le risque thermique.
+  \item Proposer une mesure de sécurité.
+\end{enumerate}
+
+\textbf{Partie B — Synthèse}
+\begin{enumerate}
+  \item Relier cinétique et sécurité.
+  \item Relier concentration et absorbance.
+  \item Relier énergie et température.
+  \item Proposer une surveillance en temps réel.
+  \item Rédiger une conclusion de laboratoire.
+  \item Rédiger une conclusion pour un responsable sécurité.
+\end{enumerate}
+\end{difficile}
+
+% ------------------------------------------------------------
+\hypertarget{PC-EXCELLENCE-05}{}
+\begin{difficile}[PC-EXCELLENCE-05 — Mini-fusée expérimentale : propulsion, énergie et altitude]
+\textbf{Durée :} 4 h.  
+\textbf{Niveau :} très difficile Terminale / transition prépa.  
+\textbf{Thèmes :} mécanique, énergie, puissance, incertitudes, modélisation.  
+\textbf{But du sujet :} reconstruire un modèle de vol vertical et discuter la validité des hypothèses.
+
+\medskip
+
+Une mini-fusée de masse $m=0{,}80$ kg est lancée verticalement. Pendant une durée $\Delta t=1{,}8$ s, son moteur exerce une poussée supposée constante $F=18$ N. On néglige d'abord les frottements de l'air.
+
+% -------------------------
+\subsubsection*{Problème 1 — Phase propulsée}
+
+\textbf{Partie A — Dynamique}
+\begin{enumerate}
+  \item Définir le système.
+  \item Choisir un référentiel.
+  \item Faire le bilan des forces.
+  \item Écrire la deuxième loi de Newton.
+  \item Déterminer l'accélération pendant la propulsion.
+  \item Discuter la condition de décollage.
+\end{enumerate}
+
+\textbf{Partie B — Vitesse et altitude}
+\begin{enumerate}
+  \item Déterminer la vitesse à la fin de la propulsion.
+  \item Déterminer l'altitude atteinte à la fin de la propulsion.
+  \item Calculer les valeurs numériques.
+  \item Vérifier les unités.
+  \item Expliquer pourquoi la masse est un paramètre critique.
+  \item Donner une limite du modèle.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 2 — Phase balistique}
+
+Après extinction du moteur, la fusée poursuit sa montée sous l'effet du poids seul.
+
+\textbf{Partie A — Cinématique}
+\begin{enumerate}
+  \item Écrire l'accélération.
+  \item Déterminer le temps supplémentaire jusqu'au sommet.
+  \item Déterminer l'altitude supplémentaire.
+  \item Calculer l'altitude maximale.
+  \item Vérifier par une méthode énergétique.
+  \item Comparer les deux méthodes.
+\end{enumerate}
+
+\textbf{Partie B — Énergie}
+\begin{enumerate}
+  \item Calculer le travail de la poussée.
+  \item Calculer la variation d'énergie potentielle jusqu'au sommet.
+  \item Comparer les deux résultats.
+  \item Expliquer l'écart éventuel.
+  \item Calculer la puissance moyenne du moteur.
+  \item Interpréter.
+\end{enumerate}
+
+% -------------------------
+\subsubsection*{Problème 3 — Sécurité et frottements}
+
+La réglementation impose une altitude maximale de 120 m.
+
+\textbf{Partie A — Conformité}
+\begin{enumerate}
+  \item Comparer l'altitude maximale calculée à la limite.
+  \item Déterminer la poussée maximale autorisée dans ce modèle.
+  \item Discuter l'effet des frottements.
+  \item Dire si le modèle est majorant ou minorant.
+  \item Identifier les incertitudes importantes.
+  \item Proposer une marge de sécurité.
+\end{enumerate}
+
+\textbf{Partie B — Conclusion}
+\begin{enumerate}
+  \item Résumer les phases du vol.
+  \item Résumer les lois utilisées.
+  \item Résumer les limites du modèle.
+  \item Proposer un protocole de mesure d'altitude.
+  \item Rédiger une conclusion technique.
+  \item Rédiger une conclusion pour un club de lancement.
+\end{enumerate}
+\end{difficile}
+
+% ============================================================
+\section{Méthode de correction active}
+% ============================================================
+
+\begin{methode}[carnet d'erreurs]
+Après chaque sujet, remplir :
+\begin{enumerate}
+  \item Score brut.
+  \item Score après correction.
+  \item Erreurs de cours.
+  \item Erreurs de méthode.
+  \item Erreurs de calcul.
+  \item Erreurs de rédaction.
+  \item Questions abandonnées.
+  \item Questions qui auraient pu être réussies.
+  \item Chapitres à revoir.
+  \item Exercices à refaire dans 48 h.
+\end{enumerate}
+\end{methode}
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{|p{1.7cm}|p{2cm}|p{2.5cm}|p{2cm}|X|p{2cm}|}
+\hline
+Date & Matière & Sujet & Question & Erreur & Reprise\\
+\hline
+ & & & & & \\
+\hline
+ & & & & & \\
+\hline
+ & & & & & \\
+\hline
+ & & & & & \\
+\hline
+\end{tabularx}
+\normalsize
+\end{center}
+
+% ============================================================
+\section{Fiches méthodes indispensables}
+% ============================================================
+
+\begin{methode}[maths — étudier une fonction]
+\begin{enumerate}
+  \item Déterminer le domaine.
+  \item Calculer les limites aux bornes.
+  \item Calculer la dérivée.
+  \item Étudier le signe de la dérivée.
+  \item Dresser le tableau de variations.
+  \item Résoudre les équations demandées.
+  \item Interpréter.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[maths — rédiger une récurrence]
+\begin{enumerate}
+  \item Énoncer clairement $P(n)$.
+  \item Initialiser.
+  \item Supposer $P(n)$ vraie.
+  \item Démontrer $P(n+1)$.
+  \item Conclure par récurrence.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[physique — appliquer Newton]
+\begin{enumerate}
+  \item Définir le système.
+  \item Choisir le référentiel.
+  \item Faire le bilan des forces.
+  \item Écrire $\sum \vec F=m\vec a$.
+  \item Projeter.
+  \item Intégrer si nécessaire.
+  \item Vérifier unités et signes.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[chimie — exploiter un titrage]
+\begin{enumerate}
+  \item Identifier titré et titrant.
+  \item Écrire l'équation support.
+  \item Définir l'équivalence.
+  \item Utiliser les coefficients stœchiométriques.
+  \item Calculer la concentration.
+  \item Conclure avec unités.
+\end{enumerate}
+\end{methode}
+
+% ============================================================
+\section{Derniers jours}
+% ============================================================
+
+\begin{alerte}[ne pas faire]
+Dans les 48 h avant l'épreuve, ne plus lancer de nouveau sujet difficile. Relire les fiches, refaire les erreurs déjà corrigées, dormir correctement, préparer le matériel.
+\end{alerte}
+
+\begin{methode}[matin de l'épreuve]
+\begin{enumerate}
+  \item Relire uniquement les fiches courtes.
+  \item Ne pas apprendre un nouveau chapitre.
+  \item Arriver avec marge.
+  \item Lire tout le sujet.
+  \item Commencer par l'exercice rentable.
+  \item Garder un temps de relecture.
+\end{enumerate}
+\end{methode}
+
+\subsection*{Check-list}
+\begin{multicols}{2}
+\begin{itemize}
+  \item[\checkbox] Convocation.
+  \item[\checkbox] Pièce d'identité.
+  \item[\checkbox] Calculatrice chargée.
+  \item[\checkbox] Stylos.
+  \item[\checkbox] Règle.
+  \item[\checkbox] Crayons.
+  \item[\checkbox] Montre simple si autorisée.
+  \item[\checkbox] Eau.
+  \item[\checkbox] Fiches relues.
+  \item[\checkbox] Sommeil correct.
+\end{itemize}
+\end{multicols}
+
+\end{document}
