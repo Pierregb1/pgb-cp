@@ -40,6 +40,14 @@
   }
 ,
   {
+    "titre": "suite numerique",
+    "fichier": "docs/math premiere cours suite numerique.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
     "titre": "0",
     "fichier": "docs/math premiere ds 0.pdf",
     "matiere": "maths",
@@ -61,6 +69,22 @@
     "matiere": "maths",
     "niveau": "premiere",
     "type": "exercice"
+  }
+,
+  {
+    "titre": "suite numerique",
+    "fichier": "docs/math premiere td suite numerique.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "",
+    "fichier": "docs/math sixieme ds0.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "ds0"
   }
 ,
   {
@@ -648,6 +672,14 @@
   }
 ,
   {
+    "titre": "bac",
+    "fichier": "docs/math terminale revision bac.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "revision"
+  }
+,
+  {
     "titre": "0 math 3eme",
     "fichier": "docs/math troisieme DS 0 math 3eme.pdf",
     "matiere": "maths",
@@ -840,6 +872,22 @@
   }
 ,
   {
+    "titre": "intro meca solide",
+    "fichier": "docs/physique superieure cours intro meca solide.pdf",
+    "matiere": "physique",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "phénomènes naturels",
+    "fichier": "docs/physique superieure td phénomènes naturels.pdf",
+    "matiere": "physique",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
     "titre": "changement de base (méca)",
     "fichier": "docs/physique supérieure cours changement de base (méca).pdf",
     "matiere": "physique",
@@ -869,6 +917,14 @@
     "matiere": "physique",
     "niveau": "terminale",
     "type": "ds"
+  }
+,
+  {
+    "titre": "ds meca",
+    "fichier": "docs/physique terminale corrigé ds meca.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "corrigé"
   }
 ,
   {
