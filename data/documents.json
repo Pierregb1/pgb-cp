@@ -688,6 +688,14 @@
   }
 ,
   {
+    "titre": "calcul num fonctions",
+    "fichier": "docs/math troisieme cours calcul num fonctions.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "cours"
+  }
+,
+  {
     "titre": "calcul numerique",
     "fichier": "docs/math troisieme cours calcul numerique.pdf",
     "matiere": "maths",
