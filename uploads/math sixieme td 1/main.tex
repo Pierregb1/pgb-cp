@@ -1,0 +1,1730 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================
+% PRÉAMBULE
+%====================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{amsmath,amssymb}
+\usepackage{array,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\sisetup{locale=FR,detect-all}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{TD complet -- Mathématiques 6e+}}
+\rhead{\textbf{Nombres, grandeurs, géométrie, données}}
+\cfoot{\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+%====================================================
+% COULEURS ET BOÎTES
+%====================================================
+\definecolor{bleuprepa}{RGB}{25,70,140}
+\definecolor{vertprepa}{RGB}{20,120,70}
+\definecolor{rougeprepa}{RGB}{170,40,40}
+\definecolor{orangeprepa}{RGB}{210,125,30}
+\definecolor{violetprepa}{RGB}{100,60,150}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+\tcbset{
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.7pt,
+  colback=white,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{methodebox}{
+  colframe=bleuprepa,
+  colback=blue!3!white,
+  title=Méthode
+}
+
+\newtcolorbox{retenirbox}{
+  colframe=vertprepa,
+  colback=green!3!white,
+  title=À retenir
+}
+
+\newtcolorbox{erreurbox}{
+  colframe=rougeprepa,
+  colback=red!3!white,
+  title=Erreur classique
+}
+
+\newtcolorbox{vigilancebox}{
+  colframe=orangeprepa,
+  colback=orange!5!white,
+  title=Point de vigilance
+}
+
+\newtcolorbox{corrigebox}{
+  colframe=violetprepa,
+  colback=violet!3!white,
+  title=Corrigé
+}
+
+\newcounter{exo}
+
+\newenvironment{exercice}[3]{
+\refstepcounter{exo}
+\begin{tcolorbox}[
+colframe=bleuprepa,
+colback=grisclair,
+title={Exercice \theexo{} -- #1 \hfill #2}
+]
+\textbf{Thème :} #3
+
+\medskip
+}{
+\end{tcolorbox}
+}
+
+\newcommand{\diffA}{$\bigstar\ \star\ \star\ \star\ \star$}
+\newcommand{\diffB}{$\bigstar\ \bigstar\ \star\ \star\ \star$}
+\newcommand{\diffC}{$\bigstar\ \bigstar\ \bigstar\ \star\ \star$}
+\newcommand{\diffD}{$\bigstar\ \bigstar\ \bigstar\ \bigstar\ \star$}
+\newcommand{\diffE}{$\bigstar\ \bigstar\ \bigstar\ \bigstar\ \bigstar$}
+
+\newcommand{\corrige}[2]{
+\begin{corrigebox}
+\textbf{Exercice #1.}
+
+#2
+\end{corrigebox}
+}
+
+%====================================================
+% DOCUMENT
+%====================================================
+\begin{document}
+
+%====================================================
+% PAGE DE TITRE
+%====================================================
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+
+{\Huge \textbf{TD complet de mathématiques}}\\[0.4cm]
+{\Large \textbf{Niveau Sixième +}}\\[0.6cm]
+
+{\LARGE \textbf{Nombres, calculs, fractions, grandeurs, géométrie, données, probabilités et proportionnalité}}\\[1cm]
+
+\begin{tcolorbox}[colframe=bleuprepa,colback=blue!3!white,width=0.9\textwidth,title=Objectif général]
+Ce TD reprend les grandes méthodes du cours de sixième : numération décimale, opérations, fractions, pourcentages, grandeurs et mesures, géométrie plane, symétrie axiale, organisation de données, probabilités, proportionnalité et premiers raisonnements algébriques.
+
+Il est conçu pour être progressif : les premiers exercices vérifient les bases, puis les situations deviennent plus longues, plus originales et plus exigeantes.
+\end{tcolorbox}
+
+\vfill
+
+\begin{tabularx}{0.9\textwidth}{|>{\bfseries}l|X|}
+\hline
+Niveau & Sixième + \\
+\hline
+Durée indicative & Plusieurs séances : entraînement, approfondissement, devoir bilan \\
+\hline
+Compétences travaillées &
+Calculer, raisonner, modéliser, représenter, chercher, communiquer, justifier une réponse. \\
+\hline
+Matériel utile & Règle graduée, compas, équerre, rapporteur, calculatrice ponctuellement, papier quadrillé. \\
+\hline
+\end{tabularx}
+
+\vfill
+
+{\large Document prêt à compiler sur Overleaf.}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%====================================================
+\section{Rappels très courts de méthode}
+%====================================================
+
+\begin{retenirbox}
+\textbf{Nombres décimaux.}
+Dans un nombre décimal, chaque chiffre a une valeur qui dépend de son rang.
+Par exemple :
+\[
+47,306 = 4\times 10 + 7\times 1 + 3\times 0,1 + 0\times 0,01 + 6\times 0,001.
+\]
+On peut comparer deux décimaux en alignant les virgules ou en ajoutant des zéros inutiles :
+\[
+3,7 = 3,70.
+\]
+\end{retenirbox}
+
+\begin{methodebox}
+\textbf{Comparer deux nombres décimaux.}
+\begin{enumerate}[label=\arabic*)]
+\item Comparer d'abord les parties entières.
+\item Si elles sont égales, comparer les dixièmes.
+\item Si les dixièmes sont égaux, comparer les centièmes.
+\item Continuer si nécessaire.
+\end{enumerate}
+Exemple :
+\[
+12,405 < 12,45
+\]
+car
+\[
+12,405 = 12,405 \quad \text{et} \quad 12,45=12,450,
+\]
+or au rang des centièmes, $0<5$.
+\end{methodebox}
+
+\begin{retenirbox}
+\textbf{Fractions.}
+Pour deux entiers $a$ et $b$ avec $b\neq 0$,
+\[
+\frac{a}{b}
+\]
+désigne le quotient exact de $a$ par $b$ : c'est le nombre qui, multiplié par $b$, donne $a$.
+Ainsi :
+\[
+b\times \frac{a}{b}=a.
+\]
+\end{retenirbox}
+
+\begin{methodebox}
+\textbf{Calculer une fraction d'une quantité.}
+Pour calculer $\dfrac{a}{b}$ de $N$, on calcule :
+\[
+\dfrac{a}{b}\times N.
+\]
+Méthode pratique :
+\begin{enumerate}[label=\arabic*)]
+\item On divise $N$ par $b$.
+\item On multiplie le résultat par $a$.
+\end{enumerate}
+Exemple :
+\[
+\frac{3}{4}\text{ de } 28 = 3\times (28\div 4)=3\times 7=21.
+\]
+\end{methodebox}
+
+\begin{retenirbox}
+\textbf{Pourcentages.}
+\[
+a\% = \frac{a}{100}.
+\]
+Donc $25\%$ signifie $\dfrac{25}{100}$, c'est-à-dire un quart.
+\end{retenirbox}
+
+\begin{methodebox}
+\textbf{Proportionnalité.}
+Deux grandeurs sont proportionnelles lorsqu'on passe toujours de l'une à l'autre en multipliant par un même nombre non nul.
+
+Exemple : si $3$ kg de pommes coûtent $7,50$ euros, alors $1$ kg coûte :
+\[
+7,50\div 3 = 2,50 \text{ euros}.
+\]
+C'est le retour à l'unité.
+\end{methodebox}
+
+\begin{retenirbox}
+\textbf{Périmètres et aires.}
+\[
+P_{\text{rectangle}}=2\times(L+\ell),
+\qquad
+A_{\text{rectangle}}=L\times \ell.
+\]
+\[
+P_{\text{cercle}}=\pi\times D=2\times \pi\times R.
+\]
+\[
+A_{\text{carré}}=c\times c.
+\]
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Angles et triangles.}
+La somme des mesures des trois angles d'un triangle vaut :
+\[
+180^\circ.
+\]
+Dans un triangle équilatéral, les trois angles mesurent :
+\[
+60^\circ.
+\]
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Probabilités simples.}
+Dans une situation d'équiprobabilité :
+\[
+P(\text{événement})=\frac{\text{nombre de cas favorables}}{\text{nombre de cas possibles}}.
+\]
+Une probabilité est toujours comprise entre $0$ et $1$.
+\end{retenirbox}
+
+\begin{erreurbox}
+\begin{itemize}
+\item Multiplier ne veut pas toujours dire rendre plus grand : multiplier par $0,1$ revient à diviser par $10$.
+\item $3,9$ n'est pas plus petit que $3,12$ : on compare $3,90$ et $3,12$.
+\item Dans une aire, on utilise des unités carrées : $\text{cm}^2$, $\text{m}^2$, etc.
+\item Dans une probabilité, on ne met pas seulement le nombre de cas favorables : il faut le comparer au nombre de cas possibles.
+\end{itemize}
+\end{erreurbox}
+
+\newpage
+
+%====================================================
+\section{Exercices d'application directe}
+%====================================================
+
+\begin{exercice}{La fusée des décimaux}{\diffA}{Numération décimale}
+Une fusée d'exploration affiche l'altitude suivante :
+\[
+12\,407,536 \text{ km}.
+\]
+\begin{enumerate}[label=\arabic*)]
+\item Donner le chiffre des unités.
+\item Donner le chiffre des dixièmes.
+\item Donner le chiffre des millièmes.
+\item Donner le nombre de kilomètres entiers.
+\item Écrire ce nombre sous la forme :
+\[
+12\,000+400+\cdots
+\]
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Classement de dragons}{\diffA}{Comparer des nombres décimaux}
+Quatre dragons mesurent :
+\[
+7,8\text{ m},\quad 7,08\text{ m},\quad 7,805\text{ m},\quad 7,85\text{ m}.
+\]
+\begin{enumerate}[label=\arabic*)]
+\item Ranger ces longueurs dans l'ordre croissant.
+\item Quel dragon est le plus grand ?
+\item Quel dragon est le plus petit ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Tickets de fête foraine}{\diffA}{Addition et soustraction de décimaux}
+Lina achète :
+\begin{itemize}
+\item une barbe à papa à $2,40$ euros ;
+\item un tour de grande roue à $3,75$ euros ;
+\item un jeu d'adresse à $1,90$ euro.
+\end{itemize}
+Elle avait $10$ euros.
+\begin{enumerate}[label=\arabic*)]
+\item Combien dépense-t-elle ?
+\item Combien lui reste-t-il ?
+\item Vérifier le résultat par un ordre de grandeur.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Fractions-pizza}{\diffA}{Fractions simples}
+Une pizza est découpée en $8$ parts égales.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle fraction de la pizza représente une part ?
+\item Tom mange $3$ parts. Quelle fraction de la pizza a-t-il mangée ?
+\item Quelle fraction reste-t-il ?
+\item Écrire la fraction mangée sous forme décimale.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le goûter des robots}{\diffA}{Fraction d'une quantité}
+Un robot doit distribuer $36$ biscuits.
+Il en donne $\dfrac{2}{3}$ à une classe.
+\begin{enumerate}[label=\arabic*)]
+\item Combien de biscuits distribue-t-il ?
+\item Combien lui reste-t-il ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Conversions express}{\diffA}{Grandeurs et mesures}
+Convertir :
+\begin{enumerate}[label=\arabic*)]
+\item $3$ m en cm.
+\item $450$ cm en m.
+\item $2,5$ L en cL.
+\item $75$ min en h et min.
+\item $3,2$ m$^2$ en dm$^2$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le rectangle invisible}{\diffA}{Périmètre et aire}
+Un rectangle a une longueur de $8$ cm et une largeur de $5$ cm.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer son périmètre.
+\item Calculer son aire.
+\item Préciser les unités utilisées.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Dé truqué ou pas ?}{\diffA}{Probabilités simples}
+On lance un dé équilibré à six faces numérotées de $1$ à $6$.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle est la probabilité d'obtenir $4$ ?
+\item Quelle est la probabilité d'obtenir un nombre pair ?
+\item Quelle est la probabilité d'obtenir un nombre supérieur à $6$ ?
+\item Quelle est la probabilité d'obtenir un nombre inférieur ou égal à $6$ ?
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+%====================================================
+\section{Exercices de méthode et exercices standards}
+%====================================================
+
+\begin{exercice}{Les pièces du trésor}{\diffB}{Multiplication de décimaux}
+Un coffre contient $12$ sacs.
+Chaque sac contient $3,5$ kg de pièces.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer la masse totale des pièces.
+\item Expliquer pourquoi le résultat est cohérent avec l'ordre de grandeur $12\times 4$.
+\item Si chaque kilogramme de pièces vaut $18,60$ euros, calculer la valeur totale du trésor.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Potion magique dosée}{\diffB}{Division décimale}
+Une potion de $1,5$ L doit être versée équitablement dans $6$ fioles.
+\begin{enumerate}[label=\arabic*)]
+\item Convertir $1,5$ L en cL.
+\item Combien de cL contient chaque fiole ?
+\item Combien de mL contient chaque fiole ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Bus pour une sortie scolaire}{\diffB}{Division euclidienne}
+Un collège organise une sortie avec $286$ élèves.
+Un bus peut transporter $48$ élèves.
+\begin{enumerate}[label=\arabic*)]
+\item Effectuer la division euclidienne de $286$ par $48$.
+\item Combien de bus totalement remplis peut-on avoir ?
+\item Combien de bus faut-il prévoir au minimum ?
+\item Combien de places seront vides dans le dernier bus si tous les élèves partent ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le laboratoire des fractions}{\diffB}{Égalités de fractions}
+\begin{enumerate}[label=\arabic*)]
+\item Compléter :
+\[
+\frac{2}{3}=\frac{\cdots}{12}.
+\]
+\item Compléter :
+\[
+\frac{5}{7}=\frac{25}{\cdots}.
+\]
+\item Dire si les fractions suivantes sont égales :
+\[
+\frac{6}{8}\quad \text{et}\quad \frac{9}{12}.
+\]
+\item Simplifier :
+\[
+\frac{18}{24}.
+\]
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le gâteau des anniversaires}{\diffB}{Addition de fractions}
+Maya mange $\dfrac{1}{4}$ d'un gâteau.
+Noé mange $\dfrac{1}{3}$ du même gâteau.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle fraction du gâteau ont-ils mangée ensemble ?
+\item Quelle fraction reste-t-il ?
+\item Qui a mangé la plus grande part ? Justifier.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Soldes au magasin de potions}{\diffB}{Pourcentages}
+Une cape coûte $80$ euros.
+Elle est soldée à $25\%$.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le montant de la réduction.
+\item Calculer le nouveau prix.
+\item Expliquer pourquoi $25\%$ correspond à un quart.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le cercle du magicien}{\diffB}{Cercle et périmètre}
+Un magicien trace un cercle de rayon $4$ cm.
+On prendra $\pi\approx 3,14$.
+\begin{enumerate}[label=\arabic*)]
+\item Quel est le diamètre du cercle ?
+\item Calculer le périmètre du cercle.
+\item Donner un arrondi au dixième de centimètre.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Angles dans un triangle}{\diffB}{Somme des angles d'un triangle}
+Dans un triangle $ABC$, on sait que :
+\[
+\widehat{A}=42^\circ
+\quad\text{et}\quad
+\widehat{B}=68^\circ.
+\]
+\begin{enumerate}[label=\arabic*)]
+\item Calculer la mesure de l'angle $\widehat{C}$.
+\item Le triangle peut-il être rectangle ? Justifier.
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+%====================================================
+\section{Exercices intermédiaires}
+%====================================================
+
+\begin{exercice}{Le parc des pandas roux}{\diffC}{Tableaux, proportionnalité et pourcentages}
+Dans un parc animalier, on observe $40$ pandas roux.
+Parmi eux, $18$ sont des femelles, $22$ sont des mâles, et $10$ ont moins d'un an.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle fraction des pandas sont des femelles ?
+\item Exprimer cette proportion en pourcentage.
+\item Quelle fraction des pandas ont moins d'un an ?
+\item Le soigneur dit : « Un quart des pandas ont moins d'un an. » A-t-il raison ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le plan secret du château}{\diffC}{Échelles}
+Sur le plan d'un château, $1$ cm représente $5$ m dans la réalité.
+\begin{enumerate}[label=\arabic*)]
+\item Une salle mesure $3,4$ cm sur le plan. Quelle est sa longueur réelle ?
+\item Un couloir mesure $27,5$ m dans la réalité. Quelle longueur mesure-t-il sur le plan ?
+\item Une cour rectangulaire mesure $4$ cm par $2,5$ cm sur le plan. Calculer ses dimensions réelles.
+\item Calculer l'aire réelle de cette cour.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le robot peintre}{\diffC}{Aire, périmètre et coût}
+Un robot peint une fresque rectangulaire de longueur $6,5$ m et de largeur $2,4$ m.
+Un pot de peinture couvre $4$ m$^2$.
+Un pot coûte $13,80$ euros.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer l'aire de la fresque.
+\item Combien de pots sont nécessaires ?
+\item Calculer le prix total.
+\item Pourquoi ne peut-on pas acheter $3,9$ pots ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le triangle mystérieux}{\diffC}{Triangles particuliers}
+Un triangle $ABC$ est isocèle en $A$.
+On sait que :
+\[
+\widehat{A}=40^\circ.
+\]
+\begin{enumerate}[label=\arabic*)]
+\item Que peut-on dire des angles $\widehat{B}$ et $\widehat{C}$ ?
+\item Calculer $\widehat{B}$ et $\widehat{C}$.
+\item Ce triangle est-il équilatéral ? Justifier.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{La médiatrice du trésor}{\diffC}{Médiatrice}
+Deux pirates enterrent un trésor à égale distance de deux palmiers $A$ et $B$.
+La distance entre les palmiers est de $12$ m.
+\begin{enumerate}[label=\arabic*)]
+\item Sur quelle ligne doit se trouver le trésor ? Donner le nom mathématique.
+\item Expliquer pourquoi tous les points de cette ligne sont à égale distance de $A$ et $B$.
+\item Si le trésor est à $8$ m de $A$, quelle est sa distance à $B$ ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le sac de billes de l'alchimiste}{\diffC}{Probabilités}
+Un sac contient $5$ billes rouges, $3$ billes bleues et $2$ billes vertes.
+On tire une bille au hasard.
+\begin{enumerate}[label=\arabic*)]
+\item Combien y a-t-il de billes au total ?
+\item Quelle est la probabilité de tirer une bille rouge ?
+\item Quelle est la probabilité de tirer une bille bleue ou verte ?
+\item Exprimer cette dernière probabilité en pourcentage.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Programme de calcul du petit monstre}{\diffC}{Pensée algébrique}
+Un petit monstre choisit un nombre.
+Il applique le programme suivant :
+\begin{enumerate}[label=\arabic*)]
+\item Multiplier par $3$.
+\item Ajouter $7$.
+\item Doubler le résultat.
+\end{enumerate}
+\begin{enumerate}[label=\alph*)]
+\item Quel résultat obtient-il s'il choisit $4$ ?
+\item Quel résultat obtient-il s'il choisit $10$ ?
+\item Il obtient $50$. Quel nombre avait-il choisi au départ ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{La course des escargots turbo}{\diffC}{Proportionnalité}
+Un escargot turbo parcourt $18$ cm en $6$ minutes à vitesse constante.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle distance parcourt-il en $1$ minute ?
+\item Quelle distance parcourt-il en $15$ minutes ?
+\item Combien de temps met-il pour parcourir $45$ cm ?
+\item Expliquer pourquoi cette situation est proportionnelle.
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+%====================================================
+\section{Exercices difficiles}
+%====================================================
+
+\begin{exercice}{Le banquet des fractions}{\diffD}{Fractions, proportionnalité et raisonnement}
+Pour un banquet, on prépare $120$ tartelettes.
+\[
+\frac{1}{3}
+\]
+sont aux pommes,
+\[
+\frac{2}{5}
+\]
+sont au chocolat, et le reste est à la fraise.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le nombre de tartelettes aux pommes.
+\item Calculer le nombre de tartelettes au chocolat.
+\item Calculer le nombre de tartelettes à la fraise.
+\item Quelle fraction du total représentent les tartelettes à la fraise ?
+\item Vérifier que la somme des trois fractions vaut $1$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le mini-golf circulaire}{\diffD}{Périmètres composés}
+Un parcours de mini-golf est formé d'un rectangle de longueur $12$ m et de largeur $5$ m, prolongé à chaque extrémité par un demi-cercle de diamètre $5$ m.
+On prendra $\pi\approx 3,14$.
+\begin{enumerate}[label=\arabic*)]
+\item Faire un schéma à main levée.
+\item Expliquer pourquoi les deux demi-cercles forment ensemble un cercle complet.
+\item Calculer la longueur totale du contour.
+\item Donner un arrondi au centimètre.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le coffre codé}{\diffD}{Décimaux, fractions et logique}
+Pour ouvrir un coffre, il faut trouver un code à trois nombres.
+\begin{itemize}
+\item Le premier nombre est le résultat de $4,8\times 0,5$.
+\item Le deuxième nombre est égal à $\dfrac{3}{4}$ de $60$.
+\item Le troisième nombre est le plus petit nombre parmi :
+\[
+7,09;\quad 7,9;\quad 7,099;\quad 7,901.
+\]
+\end{itemize}
+\begin{enumerate}[label=\arabic*)]
+\item Trouver les trois nombres du code.
+\item Justifier chaque réponse.
+\item Ranger les quatre nombres proposés pour le troisième code dans l'ordre croissant.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Une enquête au collège}{\diffD}{Organisation de données et pourcentages}
+Dans un collège de $600$ élèves, une enquête est menée sur le moyen de transport principal.
+\[
+\begin{array}{|c|c|}
+\hline
+\text{Moyen de transport} & \text{Nombre d'élèves}\\
+\hline
+\text{Bus} & 240\\
+\hline
+\text{Voiture} & 150\\
+\hline
+\text{Vélo} & 90\\
+\hline
+\text{Marche} & 120\\
+\hline
+\end{array}
+\]
+\begin{enumerate}[label=\arabic*)]
+\item Vérifier que le total est cohérent.
+\item Calculer le pourcentage d'élèves venant en bus.
+\item Calculer le pourcentage d'élèves venant à vélo.
+\item Quel moyen de transport représente exactement un quart des élèves ?
+\item Présenter les résultats dans un tableau avec une colonne « pourcentage ».
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le jardin symétrique}{\diffD}{Symétrie axiale et aire}
+Un jardin rectangulaire mesure $10$ m sur $6$ m.
+Une allée droite partage le jardin en deux parties symétriques selon l'axe de symétrie passant par les milieux des deux grands côtés.
+\begin{enumerate}[label=\arabic*)]
+\item Faire un schéma.
+\item Calculer l'aire totale du jardin.
+\item Quelle est l'aire de chaque moitié ?
+\item Expliquer pourquoi les deux parties ont la même aire.
+\item Si on plante $4$ fleurs par m$^2$ dans une moitié, combien faut-il de fleurs ?
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+%====================================================
+\section{Exercices ambitieux, originaux et de synthèse}
+%====================================================
+
+\begin{exercice}{Mission sur Mars}{\diffE}{Synthèse : décimaux, proportionnalité, durées}
+Un petit robot martien avance à vitesse constante.
+Il parcourt $7,5$ m en $3$ minutes.
+Sa batterie lui permet de fonctionner pendant $48$ minutes.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle distance parcourt-il en $1$ minute ?
+\item Quelle distance peut-il parcourir avec une batterie pleine ?
+\item Le robot doit rejoindre une roche située à $125$ m. Peut-il l'atteindre avec une seule batterie ?
+\item Combien de minutes lui manque-t-il ou lui reste-t-il ?
+\item Proposer une phrase de conclusion comme dans une copie de contrôle.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le festival des formes}{\diffE}{Synthèse : géométrie, périmètre, aire, coût}
+Une scène de festival a la forme d'un rectangle de longueur $14$ m et de largeur $8$ m.
+On veut poser une barrière tout autour, sauf sur une ouverture de $3$ m.
+On veut aussi recouvrir le sol avec des dalles.
+Chaque dalle couvre $2$ m$^2$ et coûte $9,50$ euros.
+Un mètre de barrière coûte $6,20$ euros.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le périmètre complet de la scène.
+\item Calculer la longueur de barrière nécessaire.
+\item Calculer le prix de la barrière.
+\item Calculer l'aire de la scène.
+\item Calculer le nombre de dalles nécessaires.
+\item Calculer le prix total des dalles.
+\item Calculer le budget total.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Le grand laboratoire des probabilités}{\diffE}{Synthèse : probabilités, fractions, pourcentages}
+Un laboratoire teste des cristaux magiques.
+Une boîte contient :
+\[
+8 \text{ cristaux bleus},\quad 6 \text{ cristaux rouges},\quad 4 \text{ cristaux verts},\quad 2 \text{ cristaux dorés}.
+\]
+On tire un cristal au hasard.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le nombre total de cristaux.
+\item Calculer la probabilité de tirer un cristal doré.
+\item Calculer la probabilité de tirer un cristal bleu.
+\item Calculer la probabilité de ne pas tirer un cristal vert.
+\item Écrire chaque probabilité sous forme de fraction simplifiée, de nombre décimal et de pourcentage.
+\item Classer les événements du moins probable au plus probable :
+\[
+D=\text{« tirer doré »},\quad
+B=\text{« tirer bleu »},\quad
+N=\text{« ne pas tirer vert »}.
+\]
+\end{enumerate}
+\end{exercice}
+
+%====================================================
+\section{Deux grands exercices bilan}
+%====================================================
+
+\begin{exercice}{Bilan 1 -- La sortie au parc aquatique}{\diffD}{Synthèse complète}
+Une classe de $28$ élèves organise une sortie au parc aquatique.
+Le billet d'entrée coûte $12,50$ euros par élève.
+Le transport en bus coûte $180$ euros pour toute la classe.
+Le professeur achète aussi $28$ goûters à $2,40$ euros chacun.
+
+Le parc possède un bassin rectangulaire de longueur $25$ m et de largeur $12$ m.
+Une zone circulaire de jeux a un diamètre de $8$ m.
+On prendra $\pi\approx 3,14$.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le prix total des billets.
+\item Calculer le prix total des goûters.
+\item Calculer le coût total de la sortie.
+\item Calculer le coût moyen par élève.
+\item Calculer l'aire du bassin rectangulaire.
+\item Calculer le périmètre de la zone circulaire.
+\item Le responsable dit que la zone circulaire a un contour d'environ $25$ m. A-t-il raison ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}{Bilan 2 -- Le village médiéval}{\diffE}{Synthèse complète et raisonnement}
+Un village médiéval organise une fête.
+Il y a $360$ visiteurs.
+\[
+\frac{2}{5}
+\]
+des visiteurs participent au tir à l'arc.
+$30\%$ des visiteurs visitent le château.
+Les autres vont au marché.
+
+Le plan du marché est à l'échelle suivante :
+\[
+1\text{ cm sur le plan représente }4\text{ m dans la réalité}.
+\]
+Sur le plan, la place du marché est un rectangle de $6$ cm sur $3,5$ cm.
+\begin{enumerate}[label=\arabic*)]
+\item Calculer le nombre de visiteurs au tir à l'arc.
+\item Calculer le nombre de visiteurs au château.
+\item Calculer le nombre de visiteurs au marché.
+\item Calculer les dimensions réelles de la place du marché.
+\item Calculer l'aire réelle de la place du marché.
+\item On installe un stand pour $12$ m$^2$. Combien de stands peut-on installer au maximum ?
+\item Proposer une conclusion expliquant si la place est suffisante pour installer $25$ stands.
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+%====================================================
+\section{Corrigé complet et détaillé}
+%====================================================
+
+\corrige{1}{
+\begin{enumerate}[label=\arabic*)]
+\item Dans $12\,407,536$, le chiffre des unités est $7$.
+\item Le chiffre des dixièmes est le premier chiffre après la virgule : $5$.
+\item Le chiffre des millièmes est le troisième chiffre après la virgule : $6$.
+\item Le nombre de kilomètres entiers est $12\,407$.
+\item On décompose :
+\[
+12\,407,536=10\,000+2\,000+400+7+0,5+0,03+0,006.
+\]
+Chaque terme correspond à la valeur d'un chiffre selon son rang.
+\end{enumerate}
+}
+
+\corrige{2}{
+On compare les nombres en ajoutant des zéros :
+\[
+7,8=7,800,\quad 7,08=7,080,\quad 7,805=7,805,\quad 7,85=7,850.
+\]
+Donc :
+\[
+7,080<7,800<7,805<7,850.
+\]
+L'ordre croissant est :
+\[
+7,08<7,8<7,805<7,85.
+\]
+Le plus grand dragon mesure $7,85$ m.
+Le plus petit mesure $7,08$ m.
+}
+
+\corrige{3}{
+\begin{enumerate}[label=\arabic*)]
+\item La dépense totale est :
+\[
+2,40+3,75+1,90=8,05.
+\]
+Lina dépense donc $8,05$ euros.
+\item Il lui reste :
+\[
+10-8,05=1,95.
+\]
+Il lui reste $1,95$ euro.
+\item Ordre de grandeur :
+\[
+2,40\approx 2,\quad 3,75\approx 4,\quad 1,90\approx 2.
+\]
+Donc la dépense est proche de $2+4+2=8$ euros, ce qui est cohérent avec $8,05$ euros.
+\end{enumerate}
+}
+
+\corrige{4}{
+\begin{enumerate}[label=\arabic*)]
+\item Une part représente :
+\[
+\frac{1}{8}.
+\]
+\item Tom mange $3$ parts, donc :
+\[
+\frac{3}{8}.
+\]
+\item Il reste :
+\[
+\frac{8}{8}-\frac{3}{8}=\frac{5}{8}.
+\]
+\item Sous forme décimale :
+\[
+\frac{3}{8}=3\div 8=0,375.
+\]
+Tom a mangé $0,375$ pizza, c'est-à-dire $37,5\%$ de la pizza.
+\end{enumerate}
+}
+
+\corrige{5}{
+On cherche $\dfrac{2}{3}$ de $36$.
+\[
+\frac{2}{3}\times 36=2\times(36\div 3)=2\times 12=24.
+\]
+Le robot distribue $24$ biscuits.
+
+Il lui reste :
+\[
+36-24=12.
+\]
+Il reste donc $12$ biscuits.
+}
+
+\corrige{6}{
+\begin{enumerate}[label=\arabic*)]
+\item $1$ m $=100$ cm, donc :
+\[
+3\text{ m}=300\text{ cm}.
+\]
+\item $450$ cm $=4,5$ m.
+\item $1$ L $=100$ cL, donc :
+\[
+2,5\text{ L}=250\text{ cL}.
+\]
+\item $75$ min $=60$ min $+15$ min, donc :
+\[
+75\text{ min}=1\text{ h }15\text{ min}.
+\]
+\item $1$ m$^2=100$ dm$^2$, donc :
+\[
+3,2\text{ m}^2=320\text{ dm}^2.
+\]
+\end{enumerate}
+}
+
+\corrige{7}{
+\begin{enumerate}[label=\arabic*)]
+\item Le périmètre d'un rectangle est :
+\[
+P=2\times(L+\ell).
+\]
+Donc :
+\[
+P=2\times(8+5)=2\times 13=26.
+\]
+Le périmètre est $26$ cm.
+\item L'aire d'un rectangle est :
+\[
+A=L\times \ell.
+\]
+Donc :
+\[
+A=8\times 5=40.
+\]
+L'aire est $40$ cm$^2$.
+\item Le périmètre s'exprime en cm, l'aire en cm$^2$.
+\end{enumerate}
+}
+
+\corrige{8}{
+Le dé possède $6$ issues équiprobables.
+\begin{enumerate}[label=\arabic*)]
+\item Une seule face porte le numéro $4$, donc :
+\[
+P(4)=\frac{1}{6}.
+\]
+\item Les nombres pairs sont $2$, $4$, $6$, donc $3$ cas favorables :
+\[
+P(\text{pair})=\frac{3}{6}=\frac{1}{2}.
+\]
+\item Il est impossible d'obtenir un nombre supérieur à $6$ :
+\[
+P=0.
+\]
+\item Il est certain d'obtenir un nombre inférieur ou égal à $6$ :
+\[
+P=1.
+\]
+\end{enumerate}
+}
+
+\corrige{9}{
+\begin{enumerate}[label=\arabic*)]
+\item La masse totale est :
+\[
+12\times 3,5=42.
+\]
+Le coffre contient $42$ kg de pièces.
+\item Comme $3,5$ est proche de $4$, on peut estimer :
+\[
+12\times 4=48.
+\]
+Le résultat $42$ kg est proche de $48$ kg : il est cohérent.
+\item La valeur totale est :
+\[
+42\times 18,60=781,20.
+\]
+Le trésor vaut donc $781,20$ euros.
+\end{enumerate}
+}
+
+\corrige{10}{
+\begin{enumerate}[label=\arabic*)]
+\item $1$ L $=100$ cL, donc :
+\[
+1,5\text{ L}=150\text{ cL}.
+\]
+\item On partage $150$ cL en $6$ fioles :
+\[
+150\div 6=25.
+\]
+Chaque fiole contient $25$ cL.
+\item $1$ cL $=10$ mL, donc :
+\[
+25\text{ cL}=250\text{ mL}.
+\]
+Chaque fiole contient $250$ mL.
+\end{enumerate}
+}
+
+\corrige{11}{
+\begin{enumerate}[label=\arabic*)]
+\item Division euclidienne :
+\[
+286=48\times 5+46.
+\]
+\item On peut remplir totalement $5$ bus.
+\item Il reste $46$ élèves, donc il faut un bus supplémentaire.
+Il faut donc $6$ bus au minimum.
+\item Avec $6$ bus, il y a :
+\[
+6\times 48=288
+\]
+places.
+Il y aura :
+\[
+288-286=2
+\]
+places vides.
+\end{enumerate}
+}
+
+\corrige{12}{
+\begin{enumerate}[label=\arabic*)]
+\item Pour passer de $3$ à $12$, on multiplie par $4$, donc :
+\[
+\frac{2}{3}=\frac{8}{12}.
+\]
+\item Pour passer de $5$ à $25$, on multiplie par $5$, donc on multiplie aussi le dénominateur par $5$ :
+\[
+\frac{5}{7}=\frac{25}{35}.
+\]
+\item On simplifie :
+\[
+\frac{6}{8}=\frac{3}{4},
+\qquad
+\frac{9}{12}=\frac{3}{4}.
+\]
+Les deux fractions sont donc égales.
+\item
+\[
+\frac{18}{24}=\frac{3}{4}
+\]
+car on divise le numérateur et le dénominateur par $6$.
+\end{enumerate}
+}
+
+\corrige{13}{
+\begin{enumerate}[label=\arabic*)]
+\item On additionne :
+\[
+\frac{1}{4}+\frac{1}{3}.
+\]
+Un dénominateur commun est $12$ :
+\[
+\frac{1}{4}=\frac{3}{12},
+\qquad
+\frac{1}{3}=\frac{4}{12}.
+\]
+Donc :
+\[
+\frac{1}{4}+\frac{1}{3}=\frac{7}{12}.
+\]
+Ils ont mangé $\dfrac{7}{12}$ du gâteau.
+\item Il reste :
+\[
+\frac{12}{12}-\frac{7}{12}=\frac{5}{12}.
+\]
+\item On compare :
+\[
+\frac{1}{4}=\frac{3}{12},
+\qquad
+\frac{1}{3}=\frac{4}{12}.
+\]
+Comme $4>3$, Noé a mangé la plus grande part.
+\end{enumerate}
+}
+
+\corrige{14}{
+\begin{enumerate}[label=\arabic*)]
+\item $25\%=\dfrac{25}{100}=\dfrac{1}{4}$.
+La réduction vaut donc :
+\[
+80\div 4=20.
+\]
+La réduction est de $20$ euros.
+\item Le nouveau prix est :
+\[
+80-20=60.
+\]
+La cape coûte $60$ euros.
+\item $25\%=\dfrac{25}{100}$. En divisant par $25$ :
+\[
+\frac{25}{100}=\frac{1}{4}.
+\]
+Donc $25\%$ correspond à un quart.
+\end{enumerate}
+}
+
+\corrige{15}{
+\begin{enumerate}[label=\arabic*)]
+\item Le rayon est $4$ cm, donc le diamètre est :
+\[
+D=2\times 4=8.
+\]
+Le diamètre est $8$ cm.
+\item Le périmètre d'un cercle est :
+\[
+P=\pi\times D.
+\]
+Donc :
+\[
+P\approx 3,14\times 8=25,12.
+\]
+\item Arrondi au dixième :
+\[
+25,12\approx 25,1.
+\]
+Le périmètre est environ $25,1$ cm.
+\end{enumerate}
+}
+
+\corrige{16}{
+\begin{enumerate}[label=\arabic*)]
+\item Dans un triangle, la somme des angles vaut $180^\circ$.
+Donc :
+\[
+\widehat{C}=180^\circ-42^\circ-68^\circ=70^\circ.
+\]
+\item Aucun angle ne mesure $90^\circ$.
+Le triangle n'est donc pas rectangle.
+\end{enumerate}
+}
+
+\corrige{17}{
+\begin{enumerate}[label=\arabic*)]
+\item La fraction de femelles est :
+\[
+\frac{18}{40}.
+\]
+On peut simplifier :
+\[
+\frac{18}{40}=\frac{9}{20}.
+\]
+\item Pour l'exprimer en pourcentage :
+\[
+\frac{9}{20}=\frac{45}{100}=45\%.
+\]
+\item La fraction de pandas ayant moins d'un an est :
+\[
+\frac{10}{40}=\frac{1}{4}.
+\]
+\item Oui, le soigneur a raison car :
+\[
+\frac{1}{4}=25\%.
+\]
+\end{enumerate}
+}
+
+\corrige{18}{
+\begin{enumerate}[label=\arabic*)]
+\item $1$ cm représente $5$ m.
+Donc :
+\[
+3,4\times 5=17.
+\]
+La salle mesure $17$ m.
+\item On cherche combien de fois $5$ m contient $27,5$ m :
+\[
+27,5\div 5=5,5.
+\]
+Le couloir mesure $5,5$ cm sur le plan.
+\item Dimensions réelles :
+\[
+4\times 5=20\text{ m},
+\qquad
+2,5\times 5=12,5\text{ m}.
+\]
+\item Aire réelle :
+\[
+A=20\times 12,5=250.
+\]
+L'aire réelle de la cour est $250$ m$^2$.
+\end{enumerate}
+}
+
+\corrige{19}{
+\begin{enumerate}[label=\arabic*)]
+\item Aire :
+\[
+A=6,5\times 2,4=15,6.
+\]
+La fresque a une aire de $15,6$ m$^2$.
+\item Un pot couvre $4$ m$^2$ :
+\[
+15,6\div 4=3,9.
+\]
+Il faut donc acheter $4$ pots.
+\item Prix :
+\[
+4\times 13,80=55,20.
+\]
+Le prix total est $55,20$ euros.
+\item On ne peut pas acheter $3,9$ pots car les pots sont vendus entiers. Il faut arrondir au nombre entier supérieur.
+\end{enumerate}
+}
+
+\corrige{20}{
+\begin{enumerate}[label=\arabic*)]
+\item Dans un triangle isocèle en $A$, les côtés $AB$ et $AC$ sont égaux, donc les angles à la base sont égaux :
+\[
+\widehat{B}=\widehat{C}.
+\]
+\item La somme des angles vaut $180^\circ$ :
+\[
+\widehat{B}+\widehat{C}=180^\circ-40^\circ=140^\circ.
+\]
+Comme ils sont égaux :
+\[
+\widehat{B}=\widehat{C}=70^\circ.
+\]
+\item Un triangle équilatéral a trois angles de $60^\circ$.
+Ici les angles sont $40^\circ$, $70^\circ$, $70^\circ$.
+Il n'est donc pas équilatéral.
+\end{enumerate}
+}
+
+\corrige{21}{
+\begin{enumerate}[label=\arabic*)]
+\item Le trésor doit se trouver sur la médiatrice du segment $[AB]$.
+\item La médiatrice d'un segment est l'ensemble des points équidistants des extrémités de ce segment.
+Donc tout point de la médiatrice de $[AB]$ est à la même distance de $A$ et de $B$.
+\item Si le trésor est à $8$ m de $A$, alors il est aussi à $8$ m de $B$.
+\end{enumerate}
+}
+
+\corrige{22}{
+\begin{enumerate}[label=\arabic*)]
+\item Total :
+\[
+5+3+2=10.
+\]
+Il y a $10$ billes.
+\item Probabilité de rouge :
+\[
+P(R)=\frac{5}{10}=\frac{1}{2}.
+\]
+\item Billes bleues ou vertes :
+\[
+3+2=5.
+\]
+Donc :
+\[
+P(B\text{ ou }V)=\frac{5}{10}=\frac{1}{2}.
+\]
+\item
+\[
+\frac{1}{2}=0,5=50\%.
+\]
+\end{enumerate}
+}
+
+\corrige{23}{
+\begin{enumerate}[label=\alph*)]
+\item Avec $4$ :
+\[
+4\times 3=12,
+\quad
+12+7=19,
+\quad
+19\times 2=38.
+\]
+Le résultat est $38$.
+\item Avec $10$ :
+\[
+10\times 3=30,
+\quad
+30+7=37,
+\quad
+37\times 2=74.
+\]
+Le résultat est $74$.
+\item On remonte le programme à l'envers.
+Le dernier calcul était « doubler ». Donc avant de doubler, on avait :
+\[
+50\div 2=25.
+\]
+Avant d'ajouter $7$, on avait :
+\[
+25-7=18.
+\]
+Avant de multiplier par $3$, on avait :
+\[
+18\div 3=6.
+\]
+Le nombre choisi était $6$.
+\end{enumerate}
+}
+
+\corrige{24}{
+\begin{enumerate}[label=\arabic*)]
+\item En $6$ minutes, il parcourt $18$ cm.
+En $1$ minute :
+\[
+18\div 6=3.
+\]
+Il parcourt $3$ cm par minute.
+\item En $15$ minutes :
+\[
+15\times 3=45.
+\]
+Il parcourt $45$ cm.
+\item Pour parcourir $45$ cm :
+\[
+45\div 3=15.
+\]
+Il met $15$ minutes.
+\item La situation est proportionnelle car la distance parcourue est toujours obtenue en multipliant la durée par $3$.
+\end{enumerate}
+}
+
+\corrige{25}{
+\begin{enumerate}[label=\arabic*)]
+\item Tartelettes aux pommes :
+\[
+\frac{1}{3}\times 120=120\div 3=40.
+\]
+\item Tartelettes au chocolat :
+\[
+\frac{2}{5}\times 120=2\times(120\div 5)=2\times 24=48.
+\]
+\item Tartelettes à la fraise :
+\[
+120-40-48=32.
+\]
+\item Fraction à la fraise :
+\[
+\frac{32}{120}=\frac{4}{15}.
+\]
+\item Vérifions :
+\[
+\frac{1}{3}+\frac{2}{5}+\frac{4}{15}
+=
+\frac{5}{15}+\frac{6}{15}+\frac{4}{15}
+=
+\frac{15}{15}=1.
+\]
+La répartition est cohérente.
+\end{enumerate}
+}
+
+\corrige{26}{
+\begin{enumerate}[label=\arabic*)]
+\item Le schéma est un rectangle de longueur $12$ m avec deux demi-cercles aux extrémités.
+\item Deux demi-cercles de même diamètre forment un cercle complet.
+\item Le contour est composé de deux longueurs droites de $12$ m et du périmètre d'un cercle de diamètre $5$ m :
+\[
+P=12+12+\pi\times 5.
+\]
+Donc :
+\[
+P\approx 24+3,14\times 5=24+15,7=39,7.
+\]
+La longueur totale du contour est $39,7$ m.
+\item Au centimètre, cela donne $39,70$ m.
+\end{enumerate}
+}
+
+\corrige{27}{
+\begin{enumerate}[label=\arabic*)]
+\item Premier nombre :
+\[
+4,8\times 0,5=2,4.
+\]
+Deuxième nombre :
+\[
+\frac{3}{4}\times 60=3\times 15=45.
+\]
+Pour le troisième, on compare :
+\[
+7,09=7,090,\quad 7,9=7,900,\quad 7,099=7,099,\quad 7,901=7,901.
+\]
+Le plus petit est $7,09$.
+Le code est donc :
+\[
+2,4\ ;\ 45\ ;\ 7,09.
+\]
+\item Les justifications sont les calculs précédents.
+\item Ordre croissant :
+\[
+7,09<7,099<7,9<7,901.
+\]
+\end{enumerate}
+}
+
+\corrige{28}{
+\begin{enumerate}[label=\arabic*)]
+\item Total :
+\[
+240+150+90+120=600.
+\]
+Le total est cohérent.
+\item Pourcentage bus :
+\[
+\frac{240}{600}=\frac{40}{100}=40\%.
+\]
+\item Pourcentage vélo :
+\[
+\frac{90}{600}=\frac{15}{100}=15\%.
+\]
+\item Un quart de $600$ vaut :
+\[
+600\div 4=150.
+\]
+La voiture représente donc un quart des élèves.
+\item Tableau :
+\[
+\begin{array}{|c|c|c|}
+\hline
+\text{Moyen} & \text{Nombre} & \text{Pourcentage}\\
+\hline
+\text{Bus} & 240 & 40\%\\
+\hline
+\text{Voiture} & 150 & 25\%\\
+\hline
+\text{Vélo} & 90 & 15\%\\
+\hline
+\text{Marche} & 120 & 20\%\\
+\hline
+\end{array}
+\]
+La somme des pourcentages vaut $100\%$.
+\end{enumerate}
+}
+
+\corrige{29}{
+\begin{enumerate}[label=\arabic*)]
+\item Le schéma est un rectangle séparé en deux rectangles identiques par un axe passant par les milieux des deux grands côtés.
+\item Aire totale :
+\[
+A=10\times 6=60.
+\]
+L'aire totale est $60$ m$^2$.
+\item Chaque moitié a pour aire :
+\[
+60\div 2=30.
+\]
+Chaque partie mesure $30$ m$^2$.
+\item Les deux parties sont symétriques. La symétrie conserve les longueurs et les aires, donc les deux parties ont la même aire.
+\item Dans une moitié :
+\[
+30\times 4=120.
+\]
+Il faut $120$ fleurs.
+\end{enumerate}
+}
+
+\corrige{30}{
+\begin{enumerate}[label=\arabic*)]
+\item Distance en $1$ minute :
+\[
+7,5\div 3=2,5.
+\]
+Le robot parcourt $2,5$ m par minute.
+\item En $48$ minutes :
+\[
+48\times 2,5=120.
+\]
+Il peut parcourir $120$ m.
+\item La roche est à $125$ m. Comme $120<125$, il ne peut pas l'atteindre.
+\item Distance manquante :
+\[
+125-120=5.
+\]
+Comme il parcourt $2,5$ m par minute :
+\[
+5\div 2,5=2.
+\]
+Il lui manque $2$ minutes.
+\item Conclusion : avec une batterie pleine, le robot parcourt $120$ m en $48$ minutes. La roche étant située à $125$ m, il lui manque $5$ m, soit $2$ minutes de fonctionnement.
+\end{enumerate}
+}
+
+\corrige{31}{
+\begin{enumerate}[label=\arabic*)]
+\item Périmètre complet :
+\[
+P=2\times(14+8)=2\times 22=44.
+\]
+Le périmètre complet est $44$ m.
+\item On enlève une ouverture de $3$ m :
+\[
+44-3=41.
+\]
+Il faut $41$ m de barrière.
+\item Prix de la barrière :
+\[
+41\times 6,20=254,20.
+\]
+\item Aire :
+\[
+A=14\times 8=112.
+\]
+L'aire est $112$ m$^2$.
+\item Chaque dalle couvre $2$ m$^2$ :
+\[
+112\div 2=56.
+\]
+Il faut $56$ dalles.
+\item Prix des dalles :
+\[
+56\times 9,50=532.
+\]
+\item Budget total :
+\[
+254,20+532=786,20.
+\]
+Le budget total est $786,20$ euros.
+\end{enumerate}
+}
+
+\corrige{32}{
+\begin{enumerate}[label=\arabic*)]
+\item Total :
+\[
+8+6+4+2=20.
+\]
+Il y a $20$ cristaux.
+\item Doré :
+\[
+P(D)=\frac{2}{20}=\frac{1}{10}=0,1=10\%.
+\]
+\item Bleu :
+\[
+P(B)=\frac{8}{20}=\frac{2}{5}=0,4=40\%.
+\]
+\item Ne pas tirer vert : il y a $20-4=16$ cristaux non verts :
+\[
+P(N)=\frac{16}{20}=\frac{4}{5}=0,8=80\%.
+\]
+\item Les écritures ont été données :
+\[
+D:\frac{1}{10}=0,1=10\%,
+\quad
+B:\frac{2}{5}=0,4=40\%,
+\quad
+N:\frac{4}{5}=0,8=80\%.
+\]
+\item Ordre du moins probable au plus probable :
+\[
+D<B<N.
+\]
+\end{enumerate}
+}
+
+\corrige{33}{
+\begin{enumerate}[label=\arabic*)]
+\item Prix des billets :
+\[
+28\times 12,50=350.
+\]
+Les billets coûtent $350$ euros.
+\item Prix des goûters :
+\[
+28\times 2,40=67,20.
+\]
+\item Coût total :
+\[
+350+180+67,20=597,20.
+\]
+\item Coût moyen par élève :
+\[
+597,20\div 28=21,328\ldots
+\]
+Soit environ $21,33$ euros par élève.
+\item Aire du bassin :
+\[
+A=25\times 12=300.
+\]
+Le bassin a une aire de $300$ m$^2$.
+\item Périmètre de la zone circulaire :
+\[
+P=\pi\times D\approx 3,14\times 8=25,12.
+\]
+\item Oui, le responsable a raison : $25,12$ m est très proche de $25$ m.
+\end{enumerate}
+}
+
+\corrige{34}{
+\begin{enumerate}[label=\arabic*)]
+\item Tir à l'arc :
+\[
+\frac{2}{5}\times 360=2\times(360\div 5)=2\times 72=144.
+\]
+Il y a $144$ visiteurs au tir à l'arc.
+\item Château :
+\[
+30\%=\frac{30}{100}.
+\]
+Donc :
+\[
+\frac{30}{100}\times 360=108.
+\]
+Il y a $108$ visiteurs au château.
+\item Marché :
+\[
+360-144-108=108.
+\]
+Il y a $108$ visiteurs au marché.
+\item Dimensions réelles :
+\[
+6\times 4=24\text{ m},
+\qquad
+3,5\times 4=14\text{ m}.
+\]
+\item Aire réelle :
+\[
+A=24\times 14=336.
+\]
+La place a une aire de $336$ m$^2$.
+\item Chaque stand occupe $12$ m$^2$ :
+\[
+336\div 12=28.
+\]
+On peut installer au maximum $28$ stands.
+\item Comme $28\geq 25$, la place est suffisante pour installer $25$ stands.
+\end{enumerate}
+}
+
+\newpage
+
+%====================================================
+\section{Fiche méthode finale}
+%====================================================
+
+\begin{methodebox}
+\textbf{Méthode 1 -- Lire un nombre décimal.}
+\begin{enumerate}[label=\arabic*)]
+\item Identifier la partie entière.
+\item Identifier la partie décimale.
+\item Repérer les rangs : dixièmes, centièmes, millièmes.
+\item Pour comparer, ajouter des zéros si nécessaire.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Méthode 2 -- Calculer avec des fractions.}
+\begin{enumerate}[label=\arabic*)]
+\item Pour une fraction d'une quantité, diviser par le dénominateur puis multiplier par le numérateur.
+\item Pour additionner deux fractions, chercher un dénominateur commun.
+\item Pour comparer deux fractions, les mettre au même dénominateur si besoin.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Méthode 3 -- Résoudre un problème de proportionnalité.}
+\begin{enumerate}[label=\arabic*)]
+\item Vérifier que la situation est proportionnelle.
+\item Organiser les données dans un tableau.
+\item Utiliser le retour à l'unité ou un coefficient multiplicateur.
+\item Rédiger une phrase de conclusion avec l'unité.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Méthode 4 -- Résoudre un problème de géométrie.}
+\begin{enumerate}[label=\arabic*)]
+\item Faire une figure à main levée.
+\item Coder les informations connues.
+\item Choisir la bonne propriété : somme des angles, médiatrice, symétrie, périmètre, aire.
+\item Écrire les calculs proprement.
+\item Conclure par une phrase.
+\end{enumerate}
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Méthode 5 -- Calculer une probabilité simple.}
+\begin{enumerate}[label=\arabic*)]
+\item Compter le nombre total de cas possibles.
+\item Compter le nombre de cas favorables.
+\item Écrire :
+\[
+P=\frac{\text{cas favorables}}{\text{cas possibles}}.
+\]
+\item Simplifier la fraction si possible.
+\item Convertir en décimal ou en pourcentage si demandé.
+\end{enumerate}
+\end{methodebox}
+
+\begin{erreurbox}
+\textbf{Erreurs classiques à éviter.}
+\begin{itemize}
+\item Oublier l'unité dans une réponse.
+\item Confondre périmètre et aire.
+\item Comparer $7,9$ et $7,09$ sans écrire $7,90$.
+\item Écrire une probabilité supérieure à $1$.
+\item Acheter un nombre décimal d'objets indivisibles : on achète $4$ pots, pas $3,9$ pots.
+\item Additionner des fractions sans mettre au même dénominateur.
+\item Croire que toutes les situations avec deux grandeurs sont proportionnelles.
+\end{itemize}
+\end{erreurbox}
+
+\begin{retenirbox}
+\textbf{Formules importantes.}
+\[
+P_{\text{rectangle}}=2\times(L+\ell)
+\]
+\[
+A_{\text{rectangle}}=L\times \ell
+\]
+\[
+A_{\text{carré}}=c\times c
+\]
+\[
+P_{\text{cercle}}=\pi\times D=2\times \pi\times R
+\]
+\[
+a\%=\frac{a}{100}
+\]
+\[
+P(\text{événement})=\frac{\text{nombre de cas favorables}}{\text{nombre de cas possibles}}
+\]
+\[
+\widehat{A}+\widehat{B}+\widehat{C}=180^\circ
+\]
+\end{retenirbox}
+
+\begin{vigilancebox}
+\textbf{Stratégie générale en contrôle.}
+\begin{enumerate}[label=\arabic*)]
+\item Lire l'énoncé deux fois.
+\item Souligner les données utiles.
+\item Identifier le thème : fraction, aire, proportionnalité, probabilité, géométrie.
+\item Faire un schéma ou un tableau si nécessaire.
+\item Écrire les calculs avec les unités.
+\item Vérifier l'ordre de grandeur.
+\item Répondre par une phrase.
+\end{enumerate}
+\end{vigilancebox}
+
+\end{document}

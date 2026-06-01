@@ -1,0 +1,1020 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% COURS COMPLET DE MATHÉMATIQUES — SIXIÈME
+% Document prêt à compiler avec pdflatex
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array,tabularx}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\geometry{margin=2.1cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Mathématiques — Sixième}
+\rhead{Cours complet et progressif}
+\cfoot{\thepage}
+
+\definecolor{bleu}{RGB}{25,70,130}
+\definecolor{vert}{RGB}{20,115,70}
+\definecolor{rouge}{RGB}{170,45,45}
+\definecolor{orange}{RGB}{195,115,25}
+\definecolor{violet}{RGB}{100,60,150}
+\definecolor{gris}{RGB}{245,247,250}
+
+\titleformat{\section}{\Large\bfseries\color{bleu}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{vert}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\bfseries\color{orange}}{\thesubsubsection}{0.6em}{}
+
+\tcbset{enhanced,breakable,boxrule=0.8pt,arc=2mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+\newtcolorbox{definitionbox}{colback=blue!3!white,colframe=bleu,title=Définition,fonttitle=\bfseries}
+\newtcolorbox{proprbox}{colback=green!3!white,colframe=vert,title=Propriété,fonttitle=\bfseries}
+\newtcolorbox{theobox}{colback=violet!3!white,colframe=violet,title=Théorème / Résultat,fonttitle=\bfseries}
+\newtcolorbox{methodbox}{colback=orange!5!white,colframe=orange,title=Méthode,fonttitle=\bfseries}
+\newtcolorbox{retenirbox}{colback=yellow!12!white,colframe=orange,title=À retenir,fonttitle=\bfseries}
+\newtcolorbox{erreurbox}{colback=red!4!white,colframe=rouge,title=Erreur classique,fonttitle=\bfseries}
+\newtcolorbox{exemplebox}{colback=gris,colframe=black!50,title=Exemple corrigé,fonttitle=\bfseries}
+\newtcolorbox{preuvebox}{colback=white,colframe=black!60,title=Démonstration / Justification,fonttitle=\bfseries}
+\newtcolorbox{exobox}{colback=white,colframe=bleu,title=Exercice,fonttitle=\bfseries}
+\newtcolorbox{corrbox}{colback=green!2!white,colframe=vert,title=Correction détaillée,fonttitle=\bfseries}
+
+\newcounter{exo}
+\newcommand{\exercice}[1]{\refstepcounter{exo}\begin{exobox}\textbf{Exercice \theexo.} #1\end{exobox}}
+\newcommand{\correction}[1]{\begin{corrbox}\textbf{Correction de l'exercice \theexo.} #1\end{corrbox}}
+\newcommand{\N}{\mathbb{N}}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\Huge\bfseries Cours complet de mathématiques\\[0.2cm] Niveau Sixième}\par
+\vspace{0.4cm}
+{\Large Nombres, calculs, fractions, grandeurs, géométrie, données, probabilités, proportionnalité et pensée informatique}\par
+\vspace{1cm}
+\begin{tcolorbox}[colback=blue!3!white,colframe=bleu,width=0.9\textwidth]
+Ce polycopié est conçu pour un élève de sixième, avec une rédaction progressive, des définitions précises, des méthodes, des exemples entièrement rédigés, des exercices gradués, des corrections détaillées et un devoir bilan final. Il peut aussi servir de support professeur.
+\end{tcolorbox}
+\vfill
+{\large Document LaTeX prêt à compiler — version pédagogique longue}\par
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section*{Mode d'emploi du cours}
+\addcontentsline{toc}{section}{Mode d'emploi du cours}
+Ce cours regroupe les grands thèmes de mathématiques de sixième de manière cohérente. Les notions sont organisées pour éviter l'effet catalogue : les nombres permettent de calculer, les fractions permettent d'exprimer des parts et des quotients, la proportionnalité relie les grandeurs, la géométrie donne un langage précis pour raisonner sur les figures.
+
+\begin{retenirbox}
+Un bon apprentissage des mathématiques en sixième repose sur trois habitudes :
+\begin{enumerate}[label=\arabic*)]
+\item comprendre les définitions mot à mot ;
+\item justifier les calculs et les constructions ;
+\item contrôler les résultats par un ordre de grandeur ou par une propriété connue.
+\end{enumerate}
+\end{retenirbox}
+
+\section{Nombres entiers, nombres décimaux et calcul}
+
+\subsection{Numération décimale de position}
+
+\begin{definitionbox}
+Notre système de numération est un système \textbf{décimal} et \textbf{de position}. Décimal signifie qu'il fonctionne avec des groupements par 10. De position signifie que la valeur d'un chiffre dépend de sa place dans le nombre.
+\end{definitionbox}
+
+Par exemple, dans le nombre \(4\,582,37\), le chiffre 5 ne vaut pas 5 : il est au rang des centaines, donc il vaut \(500\). Le chiffre 3 est au rang des dixièmes, donc il vaut \(0,3\).
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+milliers & centaines & dizaines & unités & dixièmes & centièmes & millièmes \\\hline
+4 & 5 & 8 & 2 & 3 & 7 & \\\hline
+\end{tabular}
+\end{center}
+
+\begin{retenirbox}
+Chaque rang est dix fois plus grand que le rang situé juste à sa droite et dix fois plus petit que le rang situé juste à sa gauche.
+\end{retenirbox}
+
+\begin{exemplebox}
+Décomposer \(7\,304,056\).
+\[
+7\,304,056=7\,000+300+4+0,05+0,006.
+\]
+On peut aussi écrire :
+\[
+7\,304,056=7\times1000+3\times100+4\times1+5\times0,01+6\times0,001.
+\]
+\end{exemplebox}
+
+\begin{erreurbox}
+Dans \(2,58\), le chiffre 5 est le chiffre des dixièmes, mais le nombre de dixièmes contenus dans \(2,58\) est 25. En effet \(2,58=25\) dixièmes et 8 centièmes.
+\end{erreurbox}
+
+\subsection{Comparer, ranger, encadrer}
+
+\begin{methodbox}
+Pour comparer deux nombres décimaux :
+\begin{enumerate}[label=\arabic*)]
+\item comparer les parties entières ;
+\item si elles sont égales, comparer les dixièmes ;
+\item si nécessaire, comparer les centièmes, puis les millièmes ;
+\item ajouter des zéros à droite de la partie décimale ne change pas le nombre.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exemplebox}
+Comparer \(4,7\) et \(4,68\). On écrit \(4,7=4,70\). Comme \(70>68\), on a
+\[
+4,7>4,68.
+\]
+\end{exemplebox}
+
+\begin{theobox}
+Pour tout nombre décimal, on peut trouver deux entiers consécutifs entre lesquels il est situé. Par exemple :
+\[
+8<8,37<9.
+\]
+On dit que l'on a encadré \(8,37\) par deux entiers consécutifs.
+\end{theobox}
+
+\subsection{Arrondir un nombre décimal}
+
+\begin{definitionbox}
+Arrondir un nombre, c'est le remplacer par un nombre plus simple et proche. On peut arrondir à l'unité, au dixième ou au centième.
+\end{definitionbox}
+
+\begin{methodbox}
+Pour arrondir au dixième, on regarde le chiffre des centièmes. S'il est 0, 1, 2, 3 ou 4, le chiffre des dixièmes ne change pas. S'il est 5, 6, 7, 8 ou 9, on augmente le chiffre des dixièmes de 1.
+\end{methodbox}
+
+\begin{exemplebox}
+\(12,347\) arrondi au dixième vaut \(12,3\), car le chiffre des centièmes est 4.\newline
+\(12,367\) arrondi au dixième vaut \(12,4\), car le chiffre des centièmes est 6.
+\end{exemplebox}
+
+\subsection{Addition, soustraction et ordres de grandeur}
+
+\begin{methodbox}
+Pour poser une addition ou une soustraction de nombres décimaux, on aligne les virgules. On ajoute éventuellement des zéros à droite pour avoir autant de chiffres après la virgule.
+\end{methodbox}
+
+\begin{exemplebox}
+Calculer \(37,8-9,56\). On écrit \(37,8=37,80\). Donc :
+\[
+37,80-9,56=28,24.
+\]
+Contrôle : \(38-10=28\), donc \(28,24\) est cohérent.
+\end{exemplebox}
+
+\subsection{Multiplication de nombres décimaux}
+
+\begin{definitionbox}
+Multiplier deux nombres, c'est calculer un produit. Pour les nombres décimaux, le sens de la multiplication ne se limite pas à répéter une addition : on peut l'interpréter avec des aires, des prix, des conversions ou des proportions.
+\end{definitionbox}
+
+\begin{preuvebox}
+Justifions que \(0,4\times0,3=0,12\). On écrit
+\[
+0,4=4\times0,1 \quad \text{et} \quad 0,3=3\times0,1.
+\]
+Alors
+\[
+0,4\times0,3=(4\times0,1)(3\times0,1)=4\times3\times0,1\times0,1=12\times0,01=0,12.
+\]
+Cette justification explique pourquoi il y a deux chiffres après la virgule dans le résultat.
+\end{preuvebox}
+
+\begin{methodbox}
+Pour multiplier deux nombres décimaux :
+\begin{enumerate}[label=\arabic*)]
+\item calculer le produit en ignorant les virgules ;
+\item compter le nombre total de chiffres après la virgule dans les facteurs ;
+\item placer la virgule pour avoir autant de chiffres après la virgule dans le produit ;
+\item contrôler avec un ordre de grandeur.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exemplebox}
+Calculer \(3,7\times2,9\). On calcule \(37\times29=1073\). Il y a deux chiffres après la virgule au total, donc
+\[
+3,7\times2,9=10,73.
+\]
+Contrôle : \(3,7\approx4\) et \(2,9\approx3\), donc le produit doit être proche de \(12\). Le résultat \(10,73\) est cohérent.
+\end{exemplebox}
+
+\begin{erreurbox}
+Multiplier ne rend pas toujours plus grand. Par exemple \(50\times0,1=5\), car multiplier par \(0,1\), c'est prendre un dixième, donc diviser par 10.
+\end{erreurbox}
+
+\subsection{Division décimale et division euclidienne}
+
+\begin{definitionbox}
+Effectuer la division euclidienne d'un entier \(a\) par un entier non nul \(b\), c'est trouver deux entiers \(q\) et \(r\) tels que
+\[
+a=b\times q+r \quad \text{avec} \quad 0\leq r<b.
+\]
+Le nombre \(q\) est le quotient et le nombre \(r\) est le reste.
+\end{definitionbox}
+
+\begin{exemplebox}
+Effectuer la division euclidienne de 295 par 18.
+\[
+18\times16=288 \quad \text{et} \quad 295-288=7.
+\]
+Donc
+\[
+295=18\times16+7.
+\]
+Un fleuriste peut faire 16 bouquets de 18 roses et il reste 7 roses.
+\end{exemplebox}
+
+\begin{definitionbox}
+La division décimale de \(a\) par \(b\) cherche un nombre qui, multiplié par \(b\), redonne \(a\). Si \(b\neq0\), alors
+\[
+(a\div b)\times b=a.
+\]
+\end{definitionbox}
+
+\begin{exemplebox}
+On partage \(1,5\) L de jus en 8 verres égaux. Comme \(1,5\) L = \(150\) cL, chaque verre contient
+\[
+150\div8=18,75 \text{ cL}.
+\]
+La réponse est donc \(18,75\) cL par verre.
+\end{exemplebox}
+
+\exercice{Calculs et contrôles.
+\begin{enumerate}[label=\alph*)]
+\item Décomposer \(5\,082,407\).
+\item Ranger dans l'ordre croissant : \(3,07\), \(3,7\), \(3,007\), \(3,70\), \(3,077\).
+\item Calculer \(45,8+7,63\), puis \(80-17,45\).
+\item Calculer \(6,4\times0,8\) et contrôler par un ordre de grandeur.
+\item Effectuer la division euclidienne de 536 par 45 et interpréter le résultat pour des bus de 45 places.
+\end{enumerate}}
+
+\section{Fractions, quotients et pourcentages}
+
+\subsection{Le sens d'une fraction}
+
+\begin{definitionbox}
+Soient \(a\) un entier et \(b\) un entier non nul. La fraction \(\dfrac{a}{b}\) désigne le quotient de \(a\) par \(b\), c'est-à-dire le nombre qui, multiplié par \(b\), donne \(a\).
+\[
+b\times\frac{a}{b}=a.
+\]
+\end{definitionbox}
+
+\begin{exemplebox}
+La fraction \(\dfrac{3}{4}\) est le nombre qui, multiplié par 4, donne 3. Or \(0,75\times4=3\). Donc
+\[
+\frac{3}{4}=0,75.
+\]
+\end{exemplebox}
+
+\begin{retenirbox}
+Une fraction peut représenter :
+\begin{itemize}
+\item un entier : \(\dfrac{12}{4}=3\) ;
+\item un décimal non entier : \(\dfrac{3}{4}=0,75\) ;
+\item un nombre non décimal : \(\dfrac{1}{3}=0,333\ldots\).
+\end{itemize}
+\end{retenirbox}
+
+\subsection{Fractions égales}
+
+\begin{theobox}
+Le nombre représenté par une fraction ne change pas si l'on multiplie ou si l'on divise son numérateur et son dénominateur par un même nombre non nul.
+\[
+\frac{a}{b}=\frac{a\times k}{b\times k}\quad(k\neq0).
+\]
+\end{theobox}
+
+\begin{preuvebox}
+Justifions sur un exemple que \(\dfrac{7}{3}=\dfrac{14}{6}\). Le nombre \(\dfrac{7}{3}\) est celui qui, multiplié par 3, donne 7. Or si on prend \(\dfrac{14}{6}\), alors
+\[
+6\times\frac{14}{6}=14.
+\]
+Mais multiplier par 6, c'est multiplier par 3 puis par 2. Donc le nombre qui donne 14 avec 6 donne 7 avec 3. Les deux fractions désignent le même quotient.
+\end{preuvebox}
+
+\begin{methodbox}
+Pour simplifier une fraction, on cherche un nombre qui divise à la fois le numérateur et le dénominateur.
+\[
+\frac{35}{20}=\frac{35\div5}{20\div5}=\frac{7}{4}.
+\]
+\end{methodbox}
+
+\subsection{Comparer des fractions}
+
+\begin{proprbox}
+Si deux fractions ont le même dénominateur positif, la plus grande est celle qui a le plus grand numérateur.
+\[
+\frac{5}{9}<\frac{7}{9}.
+\]
+\end{proprbox}
+
+\begin{proprbox}
+Si deux fractions ont le même numérateur positif, la plus grande est celle qui a le plus petit dénominateur.
+\[
+\frac{3}{5}>\frac{3}{8},
+\]
+car partager en cinquièmes donne des parts plus grandes que partager en huitièmes.
+\end{proprbox}
+
+\begin{methodbox}
+Pour comparer une fraction à 1 :
+\begin{itemize}
+\item si le numérateur est plus petit que le dénominateur, la fraction est inférieure à 1 ;
+\item s'ils sont égaux, la fraction vaut 1 ;
+\item si le numérateur est plus grand que le dénominateur, la fraction est supérieure à 1.
+\end{itemize}
+\end{methodbox}
+
+\subsection{Additionner, soustraire et multiplier des fractions}
+
+\begin{proprbox}
+Pour additionner ou soustraire deux fractions de même dénominateur, on additionne ou on soustrait les numérateurs et on garde le dénominateur.
+\[
+\frac{a}{c}+\frac{b}{c}=\frac{a+b}{c}, \qquad \frac{a}{c}-\frac{b}{c}=\frac{a-b}{c}.
+\]
+\end{proprbox}
+
+\begin{exemplebox}
+\[
+\frac{7}{10}+\frac{4}{10}=\frac{11}{10}=1+\frac{1}{10}=1,1.
+\]
+\end{exemplebox}
+
+\begin{methodbox}
+Pour additionner \(\dfrac{5}{4}+\dfrac{2}{3}\), on transforme les fractions avec un dénominateur commun. Ici, \(12\) convient :
+\[
+\frac{5}{4}=\frac{15}{12}, \qquad \frac{2}{3}=\frac{8}{12}.
+\]
+Donc
+\[
+\frac{5}{4}+\frac{2}{3}=\frac{15}{12}+\frac{8}{12}=\frac{23}{12}=1+\frac{11}{12}.
+\]
+\end{methodbox}
+
+\begin{proprbox}
+Pour calculer une fraction d'un nombre, on multiplie la fraction par ce nombre.
+\[
+\frac{a}{b}\text{ de }c=\frac{a}{b}\times c.
+\]
+\end{proprbox}
+
+\begin{exemplebox}
+Calculer \(\dfrac{2}{5}\) de 60.
+\[
+\frac{2}{5}\times60=2\times\frac{60}{5}=2\times12=24.
+\]
+Donc \(\dfrac{2}{5}\) de 60 vaut 24.
+\end{exemplebox}
+
+\subsection{Pourcentages}
+
+\begin{definitionbox}
+Un pourcentage est une fraction de dénominateur 100. Pour tout entier \(a\),
+\[
+a\%=\frac{a}{100}.
+\]
+\end{definitionbox}
+
+\begin{exemplebox}
+\[
+25\%=\frac{25}{100}=0,25=\frac{1}{4}.
+\]
+Donc prendre \(25\%\) d'une quantité revient à en prendre le quart.
+\end{exemplebox}
+
+\begin{methodbox}
+Pour calculer \(a\%\) de \(c\), on calcule
+\[
+\frac{a}{100}\times c.
+\]
+Par exemple,
+\[
+20\%\text{ de }60=\frac{20}{100}\times60=12.
+\]
+\end{methodbox}
+
+\begin{erreurbox}
+Un pourcentage n'est pas toujours une augmentation. Il peut exprimer une proportion : si 30\% des élèves sont demi-pensionnaires, cela signifie 30 élèves sur 100, pas que le nombre d'élèves augmente de 30\%.
+\end{erreurbox}
+
+\exercice{Fractions et pourcentages.
+\begin{enumerate}[label=\alph*)]
+\item Simplifier \(\dfrac{42}{56}\).
+\item Comparer \(\dfrac{7}{8}\) et \(\dfrac{10}{9}\).
+\item Calculer \(\dfrac{5}{6}+\dfrac{1}{3}\).
+\item Calculer \(\dfrac{3}{4}\) de 28.
+\item Dans une classe de 25 élèves, 10 élèves viennent à vélo. Quelle proportion cela représente-t-il ? Écrire la réponse sous forme de fraction, de nombre décimal et de pourcentage.
+\end{enumerate}}
+
+\section{Proportionnalité, tableaux et problèmes}
+
+\begin{definitionbox}
+Deux grandeurs sont proportionnelles si l'on obtient les valeurs de l'une en multipliant les valeurs de l'autre par un même nombre non nul.
+\end{definitionbox}
+
+\begin{exemplebox}
+Si 2,5 kg de pommes de terre coûtent 5 euros, alors le prix est proportionnel à la masse si le prix au kilogramme est constant. Ici, le prix d'un kilogramme vaut
+\[
+5\div2,5=2.
+\]
+Donc le prix est 2 euros par kilogramme.
+\end{exemplebox}
+
+\begin{methodbox}
+Trois méthodes importantes :
+\begin{enumerate}[label=\arabic*)]
+\item \textbf{Retour à l'unité} : on calcule la valeur pour 1 unité.
+\item \textbf{Multiplication} : si une quantité est multipliée par 3, l'autre aussi.
+\item \textbf{Addition} : si on sait pour 2 kg et pour 5 kg, on sait pour 7 kg en additionnant.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exemplebox}
+Si 5 kg de pommes coûtent 10,50 euros, quel est le prix de 3,5 kg ?
+\[
+1\text{ kg coûte }10,50\div5=2,10\text{ euros}.
+\]
+Donc
+\[
+3,5\text{ kg coûtent }3,5\times2,10=7,35\text{ euros}.
+\]
+\end{exemplebox}
+
+\begin{erreurbox}
+Toutes les situations ne sont pas proportionnelles. Si un enfant mesure 1,20 m à 8 ans, il ne mesurera pas forcément 2,40 m à 16 ans. L'âge et la taille ne sont pas proportionnels.
+\end{erreurbox}
+
+\subsection{Échelles}
+
+\begin{definitionbox}
+Une échelle indique le lien entre une longueur sur un dessin, une carte ou un plan, et la longueur réelle. Par exemple, \(1\) cm sur le plan représente \(10\) m dans la réalité.
+\end{definitionbox}
+
+\begin{exemplebox}
+Sur un plan, \(1\) cm représente \(10\) m. Une salle mesure \(4,2\) cm sur le plan. Sa longueur réelle est
+\[
+4,2\times10=42\text{ m}.
+\]
+\end{exemplebox}
+
+\exercice{Proportionnalité.
+\begin{enumerate}[label=\alph*)]
+\item 10 cahiers coûtent 22 euros. Combien coûtent 15 cahiers identiques ?
+\item 3 kg de riz coûtent 7,20 euros. Combien coûtent 5 kg ?
+\item Sur une carte, 1 cm représente 2 km. Deux villes sont séparées de 7,5 cm sur la carte. Quelle est la distance réelle ?
+\item Une recette pour 4 personnes demande 300 g de farine. Quelle quantité faut-il pour 10 personnes ?
+\end{enumerate}}
+
+\section{Grandeurs et mesures}
+
+\subsection{Longueurs et périmètres}
+
+\begin{definitionbox}
+Le périmètre d'une figure plane est la longueur de son contour.
+\end{definitionbox}
+
+\begin{proprbox}
+Pour un rectangle de longueur \(L\) et de largeur \(\ell\),
+\[
+P=2\times L+2\times\ell=2(L+\ell).
+\]
+Pour un carré de côté \(c\),
+\[
+P=4c.
+\]
+\end{proprbox}
+
+\begin{definitionbox}
+Pour un disque, le rapport entre le périmètre et le diamètre est un nombre constant noté \(\pi\). On utilise souvent \(\pi\approx3,14\).
+\end{definitionbox}
+
+\begin{proprbox}
+Si \(D\) est le diamètre d'un cercle et \(R\) son rayon, alors son périmètre est
+\[
+P=\pi D=2\pi R.
+\]
+\end{proprbox}
+
+\begin{exemplebox}
+Un cercle a un rayon de 5 cm. Son périmètre vaut
+\[
+P=2\times\pi\times5=10\pi\approx31,4\text{ cm}.
+\]
+\end{exemplebox}
+
+\subsection{Aires}
+
+\begin{definitionbox}
+L'aire d'une figure est la mesure de la surface qu'elle occupe. L'unité usuelle est le mètre carré, noté \(m^2\), ou le centimètre carré, noté \(cm^2\).
+\end{definitionbox}
+
+\begin{proprbox}
+Pour un rectangle de longueur \(L\) et de largeur \(\ell\),
+\[
+A=L\times\ell.
+\]
+Pour un carré de côté \(c\),
+\[
+A=c\times c.
+\]
+\end{proprbox}
+
+\begin{preuvebox}
+Justification de la formule de l'aire du rectangle. Si un rectangle mesure 5 cm de long et 3 cm de large, on peut le découper en 3 rangées de 5 carrés de côté 1 cm. Il y a donc \(5\times3=15\) petits carrés de \(1\,cm^2\). Son aire est donc \(15\,cm^2\). Le même raisonnement donne la formule \(A=L\times\ell\).
+\end{preuvebox}
+
+\begin{erreurbox}
+Pour convertir les aires, on ne change pas d'un facteur 10 mais souvent d'un facteur 100. En effet, \(1\,dm=10\,cm\), donc
+\[
+1\,dm^2=10\,cm\times10\,cm=100\,cm^2.
+\]
+\end{erreurbox}
+
+\subsection{Volumes et durées}
+
+\begin{definitionbox}
+Le centimètre cube, noté \(cm^3\), est le volume d'un cube d'arête 1 cm.
+\end{definitionbox}
+
+Pour un assemblage de cubes de \(1\,cm^3\), le volume est le nombre de cubes utilisés.
+
+\begin{definitionbox}
+Une durée mesure le temps écoulé entre deux instants. On utilise les heures, minutes et secondes.
+\end{definitionbox}
+
+\begin{retenirbox}
+\[
+1\text{ h}=60\text{ min},\qquad 1\text{ min}=60\text{ s}.
+\]
+\[
+0,5\text{ h}=30\text{ min},\quad 0,25\text{ h}=15\text{ min},\quad 0,75\text{ h}=45\text{ min}.
+\]
+\end{retenirbox}
+
+\begin{exemplebox}
+Un film commence à 17 h 40 et dure 110 minutes. Or \(110\) min = 1 h 50 min. Donc il se termine à 19 h 30.
+\end{exemplebox}
+
+\exercice{Grandeurs et mesures.
+\begin{enumerate}[label=\alph*)]
+\item Calculer le périmètre d'un rectangle de longueur 8,5 cm et de largeur 4 cm.
+\item Calculer l'aire d'un rectangle de longueur 7,2 cm et de largeur 3 cm.
+\item Convertir \(3,7\,m^2\) en \(dm^2\).
+\item Calculer une valeur approchée du périmètre d'un cercle de diamètre 12 cm.
+\item Une activité commence à 14 h 35 et dure 2 h 47. À quelle heure se termine-t-elle ?
+\end{enumerate}}
+
+\section{Espace et géométrie plane}
+
+\subsection{Points, segments, distances}
+
+\begin{definitionbox}
+La distance entre deux points \(A\) et \(B\) est la longueur du segment \([AB]\). Elle se note \(AB\).
+\end{definitionbox}
+
+\begin{theobox}
+Le plus court chemin entre deux points est le segment qui les relie. Ainsi, pour tout point \(C\),
+\[
+AC+CB\geq AB.
+\]
+Si \(C\) est sur le segment \([AB]\), alors \(AC+CB=AB\).
+\end{theobox}
+
+\begin{definitionbox}
+Le milieu d'un segment \([AB]\) est le point \(M\) du segment qui vérifie
+\[
+AM=MB.
+\]
+\end{definitionbox}
+
+\subsection{Cercles et disques}
+
+\begin{definitionbox}
+Le cercle de centre \(O\) et de rayon \(r\) est l'ensemble des points situés exactement à la distance \(r\) du point \(O\).
+\end{definitionbox}
+
+\begin{definitionbox}
+Le disque de centre \(O\) et de rayon \(r\) est l'ensemble des points situés à une distance inférieure ou égale à \(r\) du point \(O\).
+\end{definitionbox}
+
+\begin{retenirbox}
+Si \(A\) est sur le cercle de centre \(O\) et de rayon 3 cm, alors \(OA=3\) cm. Si \(OA<3\) cm, alors \(A\) est dans le disque mais pas sur le cercle.
+\end{retenirbox}
+
+\subsection{Médiatrice}
+
+\begin{definitionbox}
+La médiatrice d'un segment est la droite perpendiculaire à ce segment et passant par son milieu.
+\end{definitionbox}
+
+\begin{theobox}
+La médiatrice d'un segment \([AB]\) est l'ensemble des points équidistants de \(A\) et de \(B\). Autrement dit, un point \(M\) appartient à la médiatrice de \([AB]\) si et seulement si
+\[
+MA=MB.
+\]
+\end{theobox}
+
+\begin{preuvebox}
+Idée de preuve accessible. Si on plie la feuille selon la médiatrice de \([AB]\), le point \(A\) se superpose au point \(B\). Tout point \(M\) situé sur le pli ne bouge pas pendant le pliage. La distance de \(M\) à \(A\) devient donc la distance de \(M\) à \(B\). Ainsi \(MA=MB\). Réciproquement, si \(MA=MB\), alors \(M\) est placé de manière symétrique par rapport à \(A\) et \(B\), donc il est sur l'axe de symétrie du segment, c'est-à-dire sur sa médiatrice.
+\end{preuvebox}
+
+\subsection{Angles et triangles}
+
+\begin{definitionbox}
+Un angle est formé par deux demi-droites de même origine. Cette origine est appelée le sommet de l'angle.
+\end{definitionbox}
+
+\begin{retenirbox}
+Un angle droit mesure \(90^\circ\), un angle plat mesure \(180^\circ\), un angle plein mesure \(360^\circ\). Un angle aigu mesure moins de \(90^\circ\). Un angle obtus mesure plus de \(90^\circ\) et moins de \(180^\circ\).
+\end{retenirbox}
+
+\begin{theobox}
+La somme des mesures des trois angles d'un triangle vaut \(180^\circ\).
+\end{theobox}
+
+\begin{preuvebox}
+Justification par découpage. On découpe les trois angles d'un triangle et on les place côte à côte autour d'un même point, en alignant leurs côtés extérieurs. On obtient un angle plat. Donc la somme des trois angles d'un triangle vaut \(180^\circ\). Cette manipulation donne une preuve visuelle que l'on transforme en phrase mathématique : les trois angles se recomposent en un angle plat.
+\end{preuvebox}
+
+\begin{proprbox}
+Dans un triangle équilatéral, les trois angles sont égaux. Comme leur somme vaut \(180^\circ\), chaque angle mesure
+\[
+180^\circ\div3=60^\circ.
+\]
+\end{proprbox}
+
+\begin{definitionbox}
+Un triangle isocèle est un triangle qui a deux côtés de même longueur. Dans un triangle isocèle, les angles à la base sont égaux.
+\end{definitionbox}
+
+\subsection{Symétrie axiale}
+
+\begin{definitionbox}
+Le symétrique d'un point \(M\) par rapport à une droite \((d)\) est le point \(M'\) tel que \((d)\) soit la médiatrice du segment \([MM']\). Si \(M\) appartient à \((d)\), alors son symétrique est lui-même.
+\end{definitionbox}
+
+\begin{proprbox}
+La symétrie axiale conserve les longueurs, les alignements, les angles et les cercles. Le symétrique d'un segment est un segment de même longueur.
+\end{proprbox}
+
+\begin{methodbox}
+Pour construire le symétrique d'un point \(M\) par rapport à une droite \((d)\) :
+\begin{enumerate}[label=\arabic*)]
+\item tracer la perpendiculaire à \((d)\) passant par \(M\) ;
+\item noter \(H\) le point d'intersection avec \((d)\) ;
+\item placer \(M'\) de l'autre côté de \((d)\) de sorte que \(HM'=HM\).
+\end{enumerate}
+\end{methodbox}
+
+\exercice{Géométrie.
+\begin{enumerate}[label=\alph*)]
+\item Tracer un segment \([AB]\) de 6 cm, puis construire son milieu.
+\item Construire le cercle de centre \(O\) et de rayon 4 cm. Placer un point \(A\) sur le cercle, un point \(B\) dans le disque et un point \(C\) à l'extérieur du disque.
+\item Dans un triangle \(ABC\), on sait que \(\widehat{A}=45^\circ\) et \(\widehat{B}=65^\circ\). Calculer \(\widehat{C}\).
+\item Un triangle isocèle a un angle au sommet de \(40^\circ\). Calculer ses deux autres angles.
+\item Expliquer pourquoi le centre d'un cercle passant par deux points \(A\) et \(B\) est situé sur la médiatrice de \([AB]\).
+\end{enumerate}}
+
+\section{Organisation de données et probabilités}
+
+\subsection{Lire et construire un tableau}
+
+\begin{definitionbox}
+Une donnée est une information recueillie. Un tableau permet d'organiser des données pour les lire, les comparer et les exploiter.
+\end{definitionbox}
+
+\begin{methodbox}
+Pour construire un tableau :
+\begin{enumerate}[label=\arabic*)]
+\item repérer les catégories d'informations ;
+\item choisir des titres de colonnes clairs ;
+\item placer chaque donnée dans la bonne case ;
+\item vérifier les unités.
+\end{enumerate}
+\end{methodbox}
+
+\begin{exemplebox}
+À 8 h, il fait 12°C et l'humidité est de 75\%. À 10 h, il fait 18°C et l'humidité est de 61\%.
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Heure & Température & Humidité \\\hline
+8 h & 12°C & 75\% \\\hline
+10 h & 18°C & 61\% \\\hline
+\end{tabular}
+\end{center}
+\end{exemplebox}
+
+\subsection{Probabilités simples}
+
+\begin{definitionbox}
+Une expérience aléatoire est une expérience dont on ne peut pas prévoir avec certitude le résultat. Un événement est une phrase qui peut être vraie ou fausse après l'expérience.
+\end{definitionbox}
+
+\begin{definitionbox}
+La probabilité d'un événement est un nombre compris entre 0 et 1. Un événement impossible a une probabilité égale à 0. Un événement certain a une probabilité égale à 1.
+\end{definitionbox}
+
+\begin{proprbox}
+Dans une situation d'équiprobabilité, si tous les résultats ont la même chance d'arriver, alors
+\[
+\text{probabilité}=\frac{\text{nombre de résultats favorables}}{\text{nombre total de résultats possibles}}.
+\]
+\end{proprbox}
+
+\begin{exemplebox}
+Une urne contient 3 boules noires et 7 boules blanches. Il y a 10 boules au total. La probabilité de tirer une boule noire est
+\[
+\frac{3}{10}=0,3=30\%.
+\]
+\end{exemplebox}
+
+\exercice{Données et probabilités.
+\begin{enumerate}[label=\alph*)]
+\item Dans un sac, il y a 2 billes rouges, 5 bleues et 3 vertes. Quelle est la probabilité de tirer une bille bleue ?
+\item Quelle est la probabilité d'obtenir 7 en lançant un dé équilibré à six faces numérotées de 1 à 6 ?
+\item Quelle est la probabilité d'obtenir un nombre pair avec ce dé ?
+\item Écrire cette dernière probabilité sous forme de fraction, de nombre décimal et de pourcentage.
+\end{enumerate}}
+
+\section{Initiation à la pensée informatique et aux programmes de calcul}
+
+\begin{definitionbox}
+Un algorithme est une suite d'instructions précises qui permet de résoudre un problème ou d'obtenir un résultat.
+\end{definitionbox}
+
+\begin{exemplebox}
+Programme de calcul :
+\begin{enumerate}[label=\arabic*)]
+\item Choisir un nombre.
+\item Multiplier par 2.
+\item Ajouter 1.
+\item Multiplier le résultat par 3.
+\end{enumerate}
+Si on choisit 5, on obtient : \(5\times2=10\), puis \(10+1=11\), puis \(11\times3=33\).
+\end{exemplebox}
+
+\begin{methodbox}
+Pour étudier un programme de calcul, on peut faire un tableau avec le nombre de départ et le résultat obtenu. Cela permet de repérer des régularités.
+\end{methodbox}
+
+\exercice{Programme de calcul.
+On considère le programme suivant : choisir un nombre, ajouter 4, multiplier par 2, soustraire 8.
+\begin{enumerate}[label=\alph*)]
+\item Appliquer le programme au nombre 3.
+\item Appliquer le programme au nombre 10.
+\item Que remarque-t-on ?
+\item Expliquer avec une phrase pourquoi le résultat est toujours le double du nombre choisi.
+\end{enumerate}}
+
+\newpage
+\section{Corrections détaillées des exercices}
+
+\setcounter{exo}{0}
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 1.}
+\begin{enumerate}[label=\alph*)]
+\item \(5\,082,407=5\,000+80+2+0,4+0,007\). Il n'y a pas de centième, donc le chiffre des centièmes est 0.
+\item On écrit avec trois chiffres après la virgule : \(3,070\), \(3,700\), \(3,007\), \(3,700\), \(3,077\). Donc
+\[
+3,007<3,07<3,077<3,7=3,70.
+\]
+\item \(45,8+7,63=45,80+7,63=53,43\). Puis \(80-17,45=80,00-17,45=62,55\).
+\item \(6,4\times0,8=64\times8\) avec deux chiffres après la virgule. Comme \(64\times8=512\), on obtient \(5,12\). Contrôle : \(6,4\approx6\) et \(0,8\approx1\), donc un résultat autour de 5 ou 6 est cohérent.
+\item \(45\times11=495\) et \(536-495=41\). Donc \(536=45\times11+41\). Il faut 12 bus, car 11 bus transportent 495 passagers et il reste 41 passagers.
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 2.}
+\begin{enumerate}[label=\alph*)]
+\item \(42\) et \(56\) sont divisibles par 14 :
+\[
+\frac{42}{56}=\frac{3}{4}.
+\]
+\item \(\frac78<1\) car \(7<8\), tandis que \(\frac{10}{9}>1\) car \(10>9\). Donc \(\frac78<\frac{10}{9}\).
+\item \(\frac13=\frac26\), donc
+\[
+\frac56+\frac13=\frac56+\frac26=\frac76=1+\frac16.
+\]
+\item \(\frac34\) de 28 vaut \(\frac34\times28=3\times7=21\).
+\item La proportion est \(\frac{10}{25}=\frac25\). Or \(\frac25=0,4=40\%\).
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 3.}
+\begin{enumerate}[label=\alph*)]
+\item 10 cahiers coûtent 22 euros, donc 5 cahiers coûtent 11 euros. Alors 15 cahiers coûtent \(22+11=33\) euros.
+\item 1 kg coûte \(7,20\div3=2,40\) euros. Donc 5 kg coûtent \(5\times2,40=12\) euros.
+\item \(7,5\times2=15\). La distance réelle est 15 km.
+\item Pour 1 personne, il faut \(300\div4=75\) g. Pour 10 personnes, il faut \(75\times10=750\) g.
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 4.}
+\begin{enumerate}[label=\alph*)]
+\item \(P=2\times8,5+2\times4=17+8=25\) cm.
+\item \(A=7,2\times3=21,6\,cm^2\).
+\item \(1\,m^2=100\,dm^2\), donc \(3,7\,m^2=370\,dm^2\).
+\item \(P=\pi D=12\pi\approx12\times3,14=37,68\) cm.
+\item 14 h 35 + 2 h = 16 h 35. Puis 16 h 35 + 47 min = 17 h 22. L'activité se termine à 17 h 22.
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 5.}
+\begin{enumerate}[label=\alph*)]
+\item Le milieu est le point du segment situé à 3 cm de A et à 3 cm de B.
+\item Le point sur le cercle est à 4 cm de O. Le point dans le disque est à une distance inférieure ou égale à 4 cm. Le point extérieur est à plus de 4 cm.
+\item \(\widehat C=180^\circ-45^\circ-65^\circ=70^\circ\).
+\item Dans un triangle isocèle, les deux angles à la base sont égaux. Leur somme vaut \(180^\circ-40^\circ=140^\circ\). Chaque angle vaut donc \(70^\circ\).
+\item Si un cercle passe par A et B et a pour centre O, alors \(OA=OB\), car ce sont deux rayons du même cercle. Donc O est équidistant de A et B. Par la propriété caractéristique de la médiatrice, O appartient à la médiatrice de \([AB]\).
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 6.}
+\begin{enumerate}[label=\alph*)]
+\item Il y a \(2+5+3=10\) billes. La probabilité de tirer une bille bleue est \(\frac5{10}=\frac12\).
+\item Obtenir 7 est impossible avec un dé à six faces numérotées de 1 à 6. La probabilité est 0.
+\item Les nombres pairs sont 2, 4 et 6 : il y a 3 résultats favorables sur 6. La probabilité est \(\frac36=\frac12\).
+\item \(\frac12=0,5=50\%\).
+\end{enumerate}
+\end{corrbox}
+
+\refstepcounter{exo}
+\begin{corrbox}
+\textbf{Correction de l'exercice 7.}
+\begin{enumerate}[label=\alph*)]
+\item Avec 3 : \(3+4=7\), \(7\times2=14\), \(14-8=6\).
+\item Avec 10 : \(10+4=14\), \(14\times2=28\), \(28-8=20\).
+\item On remarque que le résultat est le double du nombre choisi.
+\item En effet, ajouter 4 puis multiplier par 2 donne deux fois le nombre de départ plus 8. Ensuite, on soustrait 8. Il reste donc deux fois le nombre de départ.
+\end{enumerate}
+\end{corrbox}
+
+\newpage
+\section{Grand devoir bilan final}
+
+\begin{center}
+\Large\bfseries Devoir bilan — Durée conseillée : 1 h 30
+\end{center}
+
+\subsection*{Exercice 1 — Nombres et calculs}
+\begin{enumerate}[label=\arabic*)]
+\item Décomposer \(9\,405,078\).
+\item Ranger dans l'ordre croissant : \(7,09\), \(7,9\), \(7,009\), \(7,090\), \(7,099\).
+\item Calculer \(38,75+6,8-12,09\).
+\item Calculer \(4,6\times3,2\) et donner un ordre de grandeur.
+\item On doit transporter 728 élèves dans des bus de 54 places. Combien de bus faut-il prévoir ?
+\end{enumerate}
+
+\subsection*{Exercice 2 — Fractions et pourcentages}
+\begin{enumerate}[label=\arabic*)]
+\item Simplifier \(\dfrac{48}{60}\).
+\item Calculer \(\dfrac{7}{5}-\dfrac{3}{10}\).
+\item Calculer \(\dfrac{3}{8}\) de 64.
+\item Dans un collège de 600 élèves, 150 élèves sont inscrits à l'association sportive. Donner la proportion sous forme de fraction simplifiée, de décimal et de pourcentage.
+\end{enumerate}
+
+\subsection*{Exercice 3 — Proportionnalité et grandeurs}
+\begin{enumerate}[label=\arabic*)]
+\item 4 kg de pommes coûtent 9,60 euros. Quel est le prix de 7 kg ?
+\item Sur un plan, 1 cm représente 5 m. Une cour mesure 8,4 cm sur le plan. Quelle est sa longueur réelle ?
+\item Calculer le périmètre et l'aire d'un rectangle de longueur 12 cm et de largeur 7,5 cm.
+\item Un cercle a un diamètre de 20 cm. Calculer une valeur approchée de son périmètre.
+\end{enumerate}
+
+\subsection*{Exercice 4 — Géométrie}
+On considère un triangle \(ABC\) tel que \(AB=AC\), \(\widehat{A}=50^\circ\).
+\begin{enumerate}[label=\arabic*)]
+\item Quelle est la nature du triangle ?
+\item Calculer les deux autres angles.
+\item Expliquer pourquoi le point \(A\) appartient à la médiatrice de \([BC]\).
+\item Si un cercle de centre \(O\) passe par \(B\) et \(C\), que peut-on dire du point \(O\) ? Justifier.
+\end{enumerate}
+
+\subsection*{Exercice 5 — Données, probabilités et programme de calcul}
+Une boîte contient 4 jetons rouges, 6 jetons bleus et 10 jetons verts.
+\begin{enumerate}[label=\arabic*)]
+\item Quelle est la probabilité de tirer un jeton rouge ?
+\item Quelle est la probabilité de tirer un jeton qui n'est pas vert ?
+\item On choisit un nombre, on le multiplie par 5, puis on ajoute 10, puis on divise le résultat par 5. Appliquer ce programme à 8 puis à 13. Que remarque-t-on ?
+\end{enumerate}
+
+\newpage
+\section{Correction détaillée du devoir bilan final}
+
+\subsection*{Correction de l'exercice 1}
+\begin{enumerate}[label=\arabic*)]
+\item \(9\,405,078=9\,000+400+5+0,07+0,008\).
+\item On écrit : \(7,090\), \(7,900\), \(7,009\), \(7,090\), \(7,099\). Donc
+\[
+7,009<7,09=7,090<7,099<7,9.
+\]
+\item \(38,75+6,8=45,55\), puis \(45,55-12,09=33,46\).
+\item \(46\times32=1472\), avec deux chiffres après la virgule : \(4,6\times3,2=14,72\). Ordre de grandeur : \(5\times3=15\), cohérent.
+\item \(54\times13=702\), il reste \(728-702=26\). Il faut donc 14 bus.
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 2}
+\begin{enumerate}[label=\arabic*)]
+\item \(\dfrac{48}{60}=\dfrac{4}{5}\) en divisant par 12.
+\item \(\dfrac75=\dfrac{14}{10}\), donc \(\dfrac75-\dfrac3{10}=\dfrac{11}{10}=1,1\).
+\item \(\dfrac38\times64=3\times8=24\).
+\item \(\dfrac{150}{600}=\dfrac14=0,25=25\%\).
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 3}
+\begin{enumerate}[label=\arabic*)]
+\item 1 kg coûte \(9,60\div4=2,40\) euros. Donc 7 kg coûtent \(7\times2,40=16,80\) euros.
+\item \(8,4\times5=42\). La longueur réelle est 42 m.
+\item \(P=2\times12+2\times7,5=24+15=39\) cm. \(A=12\times7,5=90\,cm^2\).
+\item \(P=\pi D=20\pi\approx62,8\) cm.
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 4}
+\begin{enumerate}[label=\arabic*)]
+\item Comme \(AB=AC\), le triangle est isocèle en A.
+\item Les angles à la base sont égaux. Leur somme vaut \(180^\circ-50^\circ=130^\circ\). Chacun vaut \(65^\circ\).
+\item Comme \(AB=AC\), le point A est équidistant de B et C. Il appartient donc à la médiatrice de \([BC]\).
+\item Si le cercle de centre O passe par B et C, alors \(OB=OC\). Le point O est équidistant de B et C, donc il appartient à la médiatrice de \([BC]\).
+\end{enumerate}
+
+\subsection*{Correction de l'exercice 5}
+\begin{enumerate}[label=\arabic*)]
+\item Il y a \(4+6+10=20\) jetons. La probabilité de tirer un rouge est \(\frac4{20}=\frac15=0,2\).
+\item Ne pas tirer vert signifie tirer rouge ou bleu : \(4+6=10\) jetons favorables. Probabilité : \(\frac{10}{20}=\frac12\).
+\item Avec 8 : \(8\times5=40\), \(40+10=50\), \(50\div5=10\). Avec 13 : \(13\times5=65\), \(65+10=75\), \(75\div5=15\). On remarque que le résultat est toujours le nombre de départ augmenté de 2, car ajouter 10 avant de diviser par 5 revient à ajouter 2 après division.
+\end{enumerate}
+
+\newpage
+\section{Fiche de synthèse finale}
+
+\begin{retenirbox}
+\textbf{Nombres décimaux.} La valeur d'un chiffre dépend de son rang. Ajouter des zéros à droite de la partie décimale ne change pas le nombre : \(4,7=4,70\).
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Calcul.} On aligne les virgules pour additionner ou soustraire. Pour multiplier des décimaux, on contrôle toujours par un ordre de grandeur. Multiplier par \(0,1\), c'est diviser par 10.
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Fractions.} \(\dfrac{a}{b}\) est le quotient de \(a\) par \(b\), avec \(b\neq0\). On peut multiplier ou diviser le numérateur et le dénominateur par un même nombre non nul sans changer la valeur de la fraction.
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Pourcentages.} \(a\%=\dfrac{a}{100}\). Calculer \(a\%\) de \(c\), c'est calculer \(\dfrac{a}{100}\times c\).
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Proportionnalité.} Deux grandeurs sont proportionnelles si l'on passe de l'une à l'autre en multipliant toujours par le même nombre. Méthodes : retour à l'unité, multiplication, addition.
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Géométrie.} La médiatrice de \([AB]\) est l'ensemble des points équidistants de A et B. La somme des angles d'un triangle vaut \(180^\circ\). La symétrie axiale conserve les longueurs et les angles.
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Grandeurs.} Périmètre du rectangle : \(P=2L+2\ell\). Aire du rectangle : \(A=L\ell\). Périmètre du cercle : \(P=\pi D=2\pi R\). Attention : \(1\,dm^2=100\,cm^2\).
+\end{retenirbox}
+
+\begin{retenirbox}
+\textbf{Probabilités.} Une probabilité est entre 0 et 1. En équiprobabilité,
+\[
+P=\frac{\text{nombre de cas favorables}}{\text{nombre total de cas possibles}}.
+\]
+\end{retenirbox}
+
+\end{document}
