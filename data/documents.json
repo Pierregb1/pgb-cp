@@ -80,11 +80,35 @@
   }
 ,
   {
+    "titre": "1",
+    "fichier": "docs/math sixieme cours 1.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "1",
+    "fichier": "docs/math sixieme ds 1.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "ds"
+  }
+,
+  {
     "titre": "",
     "fichier": "docs/math sixieme ds0.pdf",
     "matiere": "maths",
     "niveau": "sixieme",
     "type": "ds0"
+  }
+,
+  {
+    "titre": "1",
+    "fichier": "docs/math sixieme td 1.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "exercice"
   }
 ,
   {
@@ -749,6 +773,14 @@
     "matiere": "maths",
     "niveau": "3eme",
     "type": "exercice"
+  }
+,
+  {
+    "titre": "brevet",
+    "fichier": "docs/math troisieme revision brevet.pdf",
+    "matiere": "maths",
+    "niveau": "3eme",
+    "type": "revision"
   }
 ,
   {
