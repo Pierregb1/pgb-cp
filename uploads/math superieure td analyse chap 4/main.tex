@@ -1,0 +1,5187 @@
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{array,booktabs}
+\usepackage{needspace}
+\geometry{margin=2.05cm,headheight=14pt}
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,100,20}
+\definecolor{grisclair}{RGB}{245,247,250}
+\hypersetup{colorlinks=true, linkcolor=bleuprepa, urlcolor=bleuprepa, citecolor=bleuprepa}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{MPSI--PCSI--MP}
+\chead{TD Analyse 4 -- Dérivation}
+\rhead{Pierre Garcia}
+\cfoot{\thepage/\pageref{LastPage}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlist[enumerate]{label=\textbf{\arabic*.}, leftmargin=1.1cm, itemsep=0.35em, topsep=0.35em}
+\setlist[itemize]{leftmargin=0.8cm, itemsep=0.25em, topsep=0.25em}
+\tcbset{enhanced,breakable,sharp corners,boxrule=0.7pt,colback=white,fonttitle=\bfseries}
+\newtcolorbox{objectifbox}{colframe=bleuprepa,colback=blue!3!white,title=Objectif}
+\newtcolorbox{methodebox}{colframe=vertprepa,colback=green!3!white,title=Méthode}
+\newtcolorbox{attentionbox}{colframe=rougeprepa,colback=red!3!white,title=Attention}
+\newtcolorbox{exobox}[2]{colframe=bleuprepa,colback=white,title={Exercice #1 -- #2}}
+\newtcolorbox{corrbox}[2]{colframe=vertprepa,colback=white,title={Correction #1 -- #2}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\sh}{\operatorname{sh}}
+\newcommand{\thh}{\operatorname{th}}
+\newcommand{\Arctan}{\operatorname{arctan}}
+\newcommand{\Arcsin}{\operatorname{arcsin}}
+\newcommand{\Arccos}{\operatorname{arccos}}
+\newcommand{\etoiles}[1]{\textbf{Difficulté :} #1}
+\newcommand{\intervalle}[2]{\left[#1,#2\right]}
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\Large\bfseries Classe préparatoire scientifique}\par
+\vspace{0.4cm}
+{\Huge\bfseries TD complet d'analyse}\par
+\vspace{0.25cm}
+{\LARGE\bfseries Chapitre 4 -- Dérivation, théorèmes fondamentaux et fonctions usuelles}\par
+\vspace{0.7cm}
+{\large Niveau MPSI / PCSI / MP}\par
+\vfill
+\begin{tcolorbox}[colframe=bleuprepa,colback=blue!3!white,width=0.86\textwidth,title=Programme travaillé]
+Dérivabilité en un point.
+Dérivées latérales.
+Approximation affine locale.
+Tangente.
+Opérations sur les dérivées.
+Dérivée d'une composée.
+Dérivée d'une réciproque.
+Extrema locaux.
+Théorème de Rolle.
+Théorème des accroissements finis.
+Inégalité des accroissements finis.
+Logarithme.
+Exponentielle.
+Puissances réelles.
+Fonctions trigonométriques et réciproques.
+Fonctions hyperboliques.
+\end{tcolorbox}
+\vfill
+{\large Document original de TD avec corrigé complet}\par
+{\large \today}\par
+\end{titlepage}
+\tableofcontents
+\newpage
+\section*{Avant-propos pédagogique}
+\addcontentsline{toc}{section}{Avant-propos pédagogique}
+Ce document constitue un TD complet de niveau classe préparatoire scientifique sur la dérivation des fonctions réelles d'une variable réelle.
+Il a été construit pour prolonger un cours de type Analyse 4 portant sur la dérivabilité, le théorème de Rolle, le théorème des accroissements finis, l'inégalité des accroissements finis et les fonctions usuelles.
+Les exercices sont originaux, progressifs, et rédigés pour entraîner à la fois le calcul, la preuve, la rédaction et les réflexes de concours.
+\begin{attentionbox}
+La ligne parfois recopiée dans des consignes, « applications linéaires, noyau, image, rang », relève de l'algèbre linéaire.
+Elle n'appartient pas au chapitre d'analyse sur la dérivation.
+Elle n'est donc pas utilisée dans ce TD afin de conserver une cohérence mathématique stricte.
+\end{attentionbox}
+\begin{methodebox}
+Dans une copie de concours, une dérivée ne se calcule jamais « hors sol ».
+On précise d'abord le domaine de définition et les intervalles de dérivabilité.
+On identifie ensuite la structure de la fonction : somme, produit, quotient, composée ou réciproque.
+Enfin, on exploite le signe de la dérivée avec le théorème des accroissements finis, et non par simple lecture graphique.
+\end{methodebox}
+\newpage
+
+\section{Rappels méthodologiques indispensables}
+\begin{methodebox}
+\textbf{Définition locale.} $f$ est dérivable en $a$ si $\lim_{h\to0}\frac{f(a+h)-f(a)}h$ existe et est finie.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Approximation affine.} $f(a+h)=f(a)+h f'(a)+o(h)$ lorsque $h\to0$.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Tangente.} La tangente en $a$ est $y=f(a)+f'(a)(x-a)$.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Produit.} $(fg)'=f'g+fg'$ sur les intervalles de dérivabilité.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Quotient.} $(f/g)'=(f'g-fg')/g^2$ lorsque $g$ ne s'annule pas.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Composée.} $(f\circ g)'=(f'\circ g)g'$.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Réciproque.} $(f^{-1})'(y)=1/f'(f^{-1}(y))$ lorsque $f'$ ne s'annule pas au point correspondant.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{Rolle.} Si $f(a)=f(b)$, avec continuité sur $[a,b]$ et dérivabilité sur $]a,b[$, alors une dérivée s'annule entre $a$ et $b$.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{TAF.} Une pente moyenne est une pente instantanée.
+\end{methodebox}
+
+\begin{methodebox}
+\textbf{IAF.} Une dérivée bornée donne une fonction lipschitzienne.
+\end{methodebox}
+
+\newpage
+\section{Énoncés des exercices}
+\subsection{Exercices d'application}
+
+\begin{exobox}{1}{Nombre dérivé par définition -- \etoiles{$\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $a\in\R$ et $f(x)=x^3$.
+
+\item Calculer le taux d'accroissement $\dfrac{f(a+h)-f(a)}{h}$ pour $h
+eq0$.
+
+\item En déduire que $f$ est dérivable en $a$ et donner $f'(a)$.
+
+\item Retrouver l'approximation affine de $f$ au voisinage de $a$.
+
+\item Écrire l'équation de la tangente au graphe en $a=2$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{2}{Dérivées latérales d'une valeur absolue décalée -- \etoiles{$\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On pose $f(x)=|x-1|$.
+
+\item Étudier la continuité de $f$ en $1$.
+
+\item Calculer les dérivées à gauche et à droite en $1$.
+
+\item Conclure sur la dérivabilité en $1$.
+
+\item Interpréter géométriquement le résultat.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{3}{Fonction avec raccord polynomial -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On définit $f$ par $f(x)=x^2$ si $x\leq1$ et $f(x)=ax+b$ si $x>1$.
+
+\item Trouver les conditions sur $a,b$ pour que $f$ soit continue en $1$.
+
+\item Trouver les conditions sur $a,b$ pour que $f$ soit dérivable en $1$.
+
+\item Donner alors l'expression complète de $f$.
+
+\item Vérifier le résultat à l'aide des taux d'accroissement latéraux.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{4}{Tangente et position locale -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=\sqrt{1+x}$ définie sur $]-1,+\infty[$.
+
+\item Calculer $f'(x)$ sur son domaine de dérivabilité.
+
+\item Donner la tangente en $0$.
+
+\item Étudier le signe de $f(x)-(1+x/2)$ pour $x>-1$ à l'aide d'une factorisation ou d'une inégalité simple.
+
+\item En déduire la position du graphe par rapport à sa tangente en $0$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{5}{Calcul élémentaire de dérivée -- \etoiles{$\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Déterminer le domaine de dérivabilité de $f(x)=\dfrac{x^2+3x+1}{x-2}$.
+
+\item Calculer $f'(x)$.
+
+\item Simplifier le numérateur de $f'(x)$.
+
+\item Résoudre $f'(x)=0$.
+
+\item Donner le signe de $f'$ sur les intervalles du domaine.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{6}{Composition logarithmique -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=\ln(2+x^2)$.
+
+\item Justifier que $f$ est définie et dérivable sur $\R$.
+
+\item Calculer $f'(x)$.
+
+\item Déterminer les variations de $f$.
+
+\item Identifier un minimum global.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{7}{Exponentielle composée -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=\exp(-x^2+4x)$.
+
+\item Calculer $f'(x)$.
+
+\item Déterminer le signe de $f'(x)$.
+
+\item Étudier les variations de $f$.
+
+\item Donner le maximum global de $f$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{8}{Dérivée de puissance réelle -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On fixe $\alpha\in\R$ et on pose $f(x)=x^\alpha\ln x$ sur $]0,+\infty[$.
+
+\item Justifier la dérivabilité sur $]0,+\infty[$.
+
+\item Calculer $f'(x)$.
+
+\item Factoriser la dérivée.
+
+\item Discuter rapidement le cas $\alpha=0$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{9}{Arctangente composée -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=\arctan\left(\dfrac{2x}{1-x^2}\right)$ sur un intervalle ne contenant pas $\pm1$.
+
+\item Calculer la dérivée de $u(x)=\dfrac{2x}{1-x^2}$.
+
+\item Calculer $1+u(x)^2$.
+
+\item En déduire $f'(x)$.
+
+\item Interpréter le résultat sur un intervalle où l'expression est définie.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{10}{Fonctions hyperboliques -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On pose $f(x)=\ln(\ch x)$.
+
+\item Justifier que $f$ est définie sur $\R$.
+
+\item Calculer $f'(x)$.
+
+\item Montrer que $f$ est paire.
+
+\item Déterminer ses variations sur $[0,+\infty[$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{11}{Dérivabilité d'une racine -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=\sqrt{|x|}$.
+
+\item Étudier la continuité en $0$.
+
+\item Calculer le taux $\dfrac{f(h)-f(0)}{h}$ pour $h>0$ et pour $h<0$.
+
+\item Décider si $f$ est dérivable en $0$.
+
+\item Comparer avec la fonction $x\mapsto |x|$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{12}{Dérivée d'une réciproque simple -- \etoiles{$\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f(x)=x+x^3$.
+
+\item Montrer que $f$ réalise une bijection de $\R$ sur $\R$.
+
+\item Justifier que $f^{-1}$ est dérivable sur $\R$.
+
+\item Donner une formule pour $(f^{-1})'(y)$.
+
+\item Calculer $(f^{-1})'(0)$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\subsection{Exercices de méthode}
+
+\begin{exobox}{13}{Étude complète d'un quotient -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\frac{x^2+1}{x^2-1}$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\frac{-4x}{(x^2-1)^2}$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{14}{Logarithme et variations -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=x\ln x-x$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\ln x$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{15}{Inégalité classique par étude de fonction -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\e^x-1-x$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\e^x-1$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{16}{Puissance et logarithme -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\frac{\ln x}{x}$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\frac{1-\ln x}{x^2}$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{17}{Tangente horizontale et extrema -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=x^3-3x+1$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=3x^2-3$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{18}{Trigonométrie composée -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\sin x+\cos(2x)$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\cos x-2\sin(2x)$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{19}{Arcsinus et domaine -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\arcsin(2x-1)$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\frac{1}{\sqrt{x(1-x)}}\text{ sur }]0,1[$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{20}{Arccosinus et monotonie -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\arccos\left(\frac{x}{\sqrt{1+x^2}}\right)$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=-\frac{1}{1+x^2}$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{21}{Exponentielle rationnelle -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\e^{x}/(1+\e^{x})$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\frac{\e^x}{(1+\e^x)^2}$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{22}{Fonction hyperbolique quotient -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=\thh x$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=\frac{1}{\ch^2x}$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{23}{Dérivée logarithmique -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=(x^2+1)^x$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=(x^2+1)^x\left(\ln(x^2+1)+\frac{2x^2}{x^2+1}\right)$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{24}{Optimisation élémentaire -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère la fonction $f(x)=x^a(1-x)^b$.
+
+\item Déterminer soigneusement le domaine de définition et les intervalles de dérivabilité.
+
+\item Calculer la dérivée et vérifier que l'expression attendue est $f'(x)=x^a(1-x)^b\left(\frac{a}{x}-\frac{b}{1-x}\right)$.
+
+\item Étudier le signe de la dérivée lorsque cela est possible sans méthode numérique.
+
+\item En déduire un tableau de variations ou une propriété qualitative précise.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\subsection{Exercices de démonstration}
+
+\begin{exobox}{25}{Dérivabilité implique continuité -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f:I\to\R$ dérivable en $a\in I$.
+
+\item Partir de la définition du nombre dérivé.
+
+\item Construire une fonction $\varepsilon(h)$ tendant vers $0$.
+
+\item Démontrer que $f(a+h)\to f(a)$.
+
+\item Expliquer pourquoi la réciproque est fausse.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{26}{Formule du produit par les taux -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soient $f$ et $g$ dérivables en $a$.
+
+\item Écrire $(fg)(a+h)-(fg)(a)$ en ajoutant et retranchant $f(a)g(a+h)$ ou $f(a+h)g(a)$.
+
+\item Diviser par $h$.
+
+\item Utiliser la continuité de $f$ ou de $g$.
+
+\item Conclure la formule $(fg)'(a)=f'(a)g(a)+f(a)g'(a)$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{27}{Formule de la composée -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soient $g$ dérivable en $a$ et $f$ dérivable en $g(a)$.
+
+\item Écrire le développement d'ordre $1$ de $f$ en $g(a)$.
+
+\item Poser $k=g(a+h)-g(a)$.
+
+\item Utiliser la dérivabilité de $g$ en $a$.
+
+\item Conclure $(f\circ g)'(a)=f'(g(a))g'(a)$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{28}{Dérivée de la réciproque -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f:I\to J$ une bijection continue strictement monotone, dérivable en $a$, avec $f'(a)
+e0$.
+
+\item Poser $b=f(a)$.
+
+\item Écrire le taux d'accroissement de $f^{-1}$ en $b$.
+
+\item Faire le changement de variable $y=f(x)$.
+
+\item Conclure la formule de dérivation de la réciproque.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{29}{Condition nécessaire d'extremum -- \etoiles{$\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f$ dérivable en un point intérieur $a$ d'un intervalle $I$.
+
+\item On suppose que $f$ admet un maximum local en $a$.
+
+\item Étudier les quotients pour $h>0$ et pour $h<0$.
+
+\item Passer à la limite.
+
+\item Conclure et traiter brièvement le cas du minimum.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{30}{Théorème de Rolle -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Énoncer précisément le théorème de Rolle.
+
+\item Démontrer le résultat à l'aide du théorème des bornes atteintes.
+
+\item Distinguer le cas où $f$ est constante.
+
+\item Dans le cas non constant, expliquer pourquoi un extremum est atteint à l'intérieur.
+
+\item Conclure par la condition nécessaire d'extremum local.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{31}{Théorème des accroissements finis -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f$ continue sur $[a,b]$ et dérivable sur $]a,b[$.
+
+\item Construire une fonction auxiliaire $g$ à laquelle appliquer Rolle.
+
+\item Vérifier $g(a)=g(b)$.
+
+\item Calculer $g'$.
+
+\item Conclure le théorème des accroissements finis.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{32}{Inégalité des accroissements finis -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f$ dérivable sur un intervalle $I$ et $|f'|\le K$ sur $I$.
+
+\item Prendre $x<y$ dans $I$.
+
+\item Appliquer le théorème des accroissements finis sur $[x,y]$.
+
+\item Majorer la valeur absolue obtenue.
+
+\item Conclure pour tous $x,y$.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{33}{Rolle et racines successives -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $P$ un polynôme réel ayant $n$ racines réelles distinctes.
+
+\item Montrer que $P'$ possède au moins $n-1$ racines réelles distinctes.
+
+\item Préciser où se trouvent ces racines.
+
+\item Appliquer le résultat à un polynôme de degré $n$ scindé à racines simples.
+
+\item Donner une conséquence qualitative.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{34}{Convexité sans nom par dérivée croissante -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Soit $f$ dérivable sur un intervalle $I$ et supposons $f'$ croissante.
+
+\item Pour $a<x<b$, appliquer le TAF à $[a,x]$ et $[x,b]$.
+
+\item Comparer les pentes moyennes.
+
+\item En déduire une inégalité reliant $f(x)$ à $f(a)$ et $f(b)$.
+
+\item Ne pas employer le vocabulaire de convexité si le cours ne l'a pas encore introduit.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\subsection{Exercices de réflexion et préparation concours}
+
+\begin{exobox}{35}{Inégalité $\ln x\le x-1$ et raffinements -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=x-1-\ln x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{36}{Encadrement de l'exponentielle -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=\e^x-1-x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{37}{Unicité pour une équation transcendante -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=x+\ln x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{38}{Point fixe de $\cos$ -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=\cos x-x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{39}{Étude de $x-\arctan x$ -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=x-\arctan x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{40}{Étude de $\sin x/x$ -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=\frac{\sin x}{x}$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{41}{Maximum d'une fonction avec paramètre -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F_a(x)=x^a\e^{-x}$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{42}{Réciproque de $x+\e^x$ -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=x+\e^x$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{43}{Comparaison logarithme-puissance -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F_\alpha(x)=\frac{\ln x}{x^\alpha}$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{44}{Hyperboliques et inégalités -- \etoiles{$\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item On considère $F(x)=\ch x-1-\frac{x^2}{2}$ sur son domaine naturel.
+
+\item Déterminer le domaine et les intervalles de dérivabilité.
+
+\item Calculer la dérivée première.
+
+\item Étudier le signe de la dérivée en justifiant chaque changement de signe.
+
+\item En déduire les variations et les extrema éventuels.
+
+\item Utiliser l'étude pour prouver une inégalité ou une unicité d'équation.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\subsection{Exercices type oraux Mines, Centrale, CCP}
+
+\begin{exobox}{45}{Problème CCP -- Rolle itéré et polynômes -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{46}{Problème Mines -- Inégalités par TAF -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{47}{Problème Centrale -- Réciproque et paramètre -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{48}{Problème oral -- Tangentes communes -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{49}{Problème oral -- Arctangente et logarithme -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\begin{exobox}{50}{Problème bilan -- Fonction définie par raccords -- \etoiles{$\star\star\star\star\star$}}
+
+\begin{objectifbox}
+Travailler un réflexe précis du chapitre : domaine, dérivabilité, calcul, théorème ou rédaction.
+\end{objectifbox}
+
+\begin{enumerate}
+
+\item Ce problème est conçu comme un enchaînement de questions de concours.
+
+\item On demande une rédaction complète et non une simple suite de calculs.
+
+\item Question A. Établir le domaine, la continuité et la dérivabilité sur les intervalles pertinents.
+
+\item Question B. Calculer la dérivée ou les dérivées utiles, puis factoriser le résultat.
+
+\item Question C. Appliquer Rolle, le TAF ou l'IAF pour obtenir une propriété globale.
+
+\item Question D. Résoudre une équation ou démontrer une inégalité précise.
+
+\item Question E. Conclure par une synthèse claire indiquant existence, unicité, variation ou borne optimale.
+
+\end{enumerate}
+
+\end{exobox}
+
+
+\newpage
+\section{Corrigé complet et détaillé}
+\begin{corrbox}{1}{Nombre dérivé par définition}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Pour $h
+eq0$, on calcule $(a+h)^3-a^3=3a^2h+3ah^2+h^3$.
+
+
+Ainsi le taux d'accroissement vaut $3a^2+3ah+h^2$.
+
+
+Lorsque $h\to0$, ce quotient tend vers $3a^2$.
+
+
+La fonction est donc dérivable en $a$ et $f'(a)=3a^2$.
+
+
+L'approximation affine est $f(a+h)=a^3+3a^2h+o(h)$.
+
+
+En $a=2$, on a $f(2)=8$ et $f'(2)=12$, donc la tangente est $y=8+12(x-2)$, c'est-à-dire $y=12x-16$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{2}{Dérivées latérales d'une valeur absolue décalée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction valeur absolue est continue sur $\R$, donc $f$ est continue en $1$.
+
+
+Pour $h>0$, $f(1+h)=h$, donc $\frac{f(1+h)-f(1)}{h}=1$.
+
+
+Pour $h<0$, $f(1+h)=|-h|=-h$, donc le quotient vaut $-1$.
+
+
+La dérivée à droite vaut $1$ et la dérivée à gauche vaut $-1$.
+
+
+Ces deux limites étant différentes, $f$ n'est pas dérivable en $1$.
+
+
+Le graphe présente un angle au point d'abscisse $1$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{3}{Fonction avec raccord polynomial}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La continuité en $1$ impose $\lim_{x\to1^-}x^2=f(1)=1$ et $\lim_{x\to1^+}(ax+b)=a+b$.
+
+
+Il faut donc $a+b=1$.
+
+
+La dérivée à gauche de $x^2$ en $1$ vaut $2$.
+
+
+La dérivée à droite de $ax+b$ vaut $a$.
+
+
+La dérivabilité impose donc $a=2$.
+
+
+Avec $a+b=1$, on obtient $b=-1$.
+
+
+La fonction dérivable est donc $f(x)=x^2$ si $x\le1$ et $f(x)=2x-1$ si $x>1$.
+
+
+Les deux quotients latéraux tendent bien vers $2$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{4}{Tangente et position locale}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On écrit $f(x)=(1+x)^{1/2}$.
+
+
+Par dérivation d'une puissance composée, $f'(x)=\frac1{2\sqrt{1+x}}$.
+
+
+En $0$, $f(0)=1$ et $f'(0)=\frac12$.
+
+
+La tangente est donc $y=1+\frac{x}{2}$.
+
+
+On compare $\sqrt{1+x}$ et $1+x/2$.
+
+
+Pour $x>-1$, l'inégalité $\sqrt{1+x}\le 1+x/2$ équivaut, lorsque le membre de droite est positif, à $1+x\le 1+x+x^2/4$.
+
+
+Cette dernière inégalité est vraie, avec égalité seulement pour $x=0$.
+
+
+Le graphe est donc en dessous de sa tangente en $0$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{5}{Calcul élémentaire de dérivée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie et dérivable sur $\R\setminus\{2\}$.
+
+
+On pose $u=x^2+3x+1$ et $v=x-2$.
+
+
+Alors $u'=2x+3$ et $v'=1$.
+
+
+La formule du quotient donne $f'=\frac{(2x+3)(x-2)-(x^2+3x+1)}{(x-2)^2}$.
+
+
+Le numérateur vaut $2x^2-x-6-x^2-3x-1=x^2-4x-7$.
+
+
+Donc $f'(x)=\frac{x^2-4x-7}{(x-2)^2}$.
+
+
+Les zéros sont $x=2\pm\sqrt{11}$.
+
+
+Le signe de $f'$ est celui du trinôme $x^2-4x-7$, car le dénominateur est strictement positif sur le domaine.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{6}{Composition logarithmique}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Pour tout $x\in\R$, $2+x^2>0$, donc le logarithme est bien défini.
+
+
+La fonction est composée de fonctions dérivables, donc dérivable sur $\R$.
+
+
+On pose $u(x)=2+x^2$, d'où $u'(x)=2x$.
+
+
+Ainsi $f'(x)=\frac{2x}{2+x^2}$.
+
+
+Le dénominateur est positif, donc le signe de $f'$ est celui de $x$.
+
+
+La fonction est décroissante sur $]-\infty,0]$ puis croissante sur $[0,+\infty[$.
+
+
+Elle admet un minimum global en $0$, de valeur $\ln2$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{7}{Exponentielle composée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On pose $u(x)=-x^2+4x$.
+
+
+Alors $u'(x)=-2x+4=2(2-x)$.
+
+
+La dérivée de $\e^{u(x)}$ est $u'(x)\e^{u(x)}$.
+
+
+Ainsi $f'(x)=2(2-x)\e^{-x^2+4x}$.
+
+
+L'exponentielle est strictement positive, donc le signe est celui de $2-x$.
+
+
+La fonction est croissante sur $]-\infty,2]$ puis décroissante sur $[2,+\infty[$.
+
+
+Le maximum global vaut $f(2)=\e^4$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{8}{Dérivée de puissance réelle}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Sur $]0,+\infty[$, $x^\alpha=\e^{\alpha\ln x}$ est dérivable.
+
+
+Le produit avec $\ln x$ est donc dérivable.
+
+
+On a $(x^\alpha)'=\alpha x^{\alpha-1}$ et $(\ln x)'=1/x$.
+
+
+Donc $f'(x)=\alpha x^{\alpha-1}\ln x+x^\alpha\frac1x$.
+
+
+On factorise : $f'(x)=x^{\alpha-1}(\alpha\ln x+1)$.
+
+
+Si $\alpha=0$, on retrouve $f(x)=\ln x$ et $f'(x)=1/x$, ce qui correspond à la formule.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{9}{Arctangente composée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On a $u(x)=\frac{2x}{1-x^2}$.
+
+
+La formule du quotient donne $u'(x)=\frac{2(1-x^2)+4x^2}{(1-x^2)^2}=\frac{2(1+x^2)}{(1-x^2)^2}$.
+
+
+De plus $1+u^2=1+\frac{4x^2}{(1-x^2)^2}=\frac{(1-x^2)^2+4x^2}{(1-x^2)^2}$.
+
+
+Le numérateur vaut $1+2x^2+x^4=(1+x^2)^2$.
+
+
+Donc $1+u^2=\frac{(1+x^2)^2}{(1-x^2)^2}$.
+
+
+Ainsi $f'(x)=\frac{u'}{1+u^2}=\frac{2}{1+x^2}$.
+
+
+La dérivée simple obtenue rappelle les formules d'angle double pour la tangente.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{10}{Fonctions hyperboliques}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Pour tout $x$, $\ch x=\frac{\e^x+\e^{-x}}2>0$, donc $\ln(\ch x)$ est définie.
+
+
+On a $(\ch x)'=\sh x$.
+
+
+Donc $f'(x)=\frac{\sh x}{\ch x}=\thh x$.
+
+
+Comme $\ch$ est paire, $\ln\circ\ch$ est paire.
+
+
+Sur $[0,+\infty[$, $\sh x\ge0$ et $\ch x>0$, donc $f'(x)\ge0$.
+
+
+La fonction est croissante sur $[0,+\infty[$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{11}{Dérivabilité d'une racine}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On a $\sqrt{|x|}\to0$ lorsque $x\to0$, donc $f$ est continue en $0$.
+
+
+Pour $h>0$, le quotient vaut $\frac{\sqrt h}{h}=\frac1{\sqrt h}$, qui tend vers $+\infty$.
+
+
+Pour $h<0$, le quotient vaut $\frac{\sqrt{-h}}{h}=-\frac1{\sqrt{-h}}$, qui tend vers $-\infty$.
+
+
+Il n'existe pas de limite finie du taux d'accroissement.
+
+
+La fonction n'est donc pas dérivable en $0$.
+
+
+Contrairement à $|x|$, le défaut n'est pas seulement un angle : la pente devient infinie.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{12}{Dérivée d'une réciproque simple}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est polynomiale donc continue sur $\R$.
+
+
+Sa dérivée est $f'(x)=1+3x^2>0$.
+
+
+Elle est donc strictement croissante.
+
+
+De plus $f(x)\to-\infty$ quand $x\to-\infty$ et $f(x)\to+\infty$ quand $x\to+\infty$.
+
+
+Par le théorème de la bijection continue, $f$ est une bijection de $\R$ sur $\R$.
+
+
+Comme $f'$ ne s'annule jamais, la réciproque est dérivable et $(f^{-1})'(y)=\frac1{1+3(f^{-1}(y))^2}$.
+
+
+Comme $f(0)=0$, on a $f^{-1}(0)=0$, donc $(f^{-1})'(0)=1$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{13}{Étude complète d'un quotient}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R\setminus\{-1,1\}$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\frac{-4x}{(x^2-1)^2}$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{14}{Logarithme et variations}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $]0,+\infty[$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\ln x$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{15}{Inégalité classique par étude de fonction}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\e^x-1$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{16}{Puissance et logarithme}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $]0,+\infty[$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\frac{1-\ln x}{x^2}$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{17}{Tangente horizontale et extrema}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=3x^2-3$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{18}{Trigonométrie composée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\cos x-2\sin(2x)$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{19}{Arcsinus et domaine}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $[0,1]$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\frac{1}{\sqrt{x(1-x)}}\text{ sur }]0,1[$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{20}{Arccosinus et monotonie}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=-\frac{1}{1+x^2}$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{21}{Exponentielle rationnelle}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\frac{\e^x}{(1+\e^x)^2}$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{22}{Fonction hyperbolique quotient}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=\frac{1}{\ch^2x}$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{23}{Dérivée logarithmique}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $\R$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=(x^2+1)^x\left(\ln(x^2+1)+\frac{2x^2}{x^2+1}\right)$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{24}{Optimisation élémentaire}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La fonction est définie sur $]0,1[$, sous réserve des restrictions évidentes imposées par les quotients, logarithmes ou réciproques trigonométriques.
+
+
+Sur chaque intervalle ouvert de son domaine, elle est combinaison ou composée de fonctions usuelles dérivables.
+
+
+Un calcul direct donne $f'(x)=x^a(1-x)^b\left(\frac{a}{x}-\frac{b}{1-x}\right)$.
+
+
+La justification essentielle consiste à identifier la structure : quotient, composée, logarithme ou dérivation logarithmique.
+
+
+Le signe de la dérivée se lit ensuite à partir des facteurs dont on connaît le signe.
+
+
+On conclut les variations sur chaque intervalle du domaine, sans franchir les points exclus du domaine.
+
+
+Cette dernière vérification évite l'erreur classique qui consiste à dresser un tableau de variations continu à travers une discontinuité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{25}{Dérivabilité implique continuité}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Comme $f$ est dérivable en $a$, le quotient $\frac{f(a+h)-f(a)}h$ tend vers $f'(a)$.
+
+
+Pour $h
+eq0$, on pose $\varepsilon(h)=\frac{f(a+h)-f(a)}h-f'(a)$.
+
+
+Alors $\varepsilon(h)\to0$.
+
+
+On obtient $f(a+h)-f(a)=h f'(a)+h\varepsilon(h)$.
+
+
+Le membre de droite tend vers $0$, donc $f(a+h)\to f(a)$.
+
+
+La fonction $x\mapsto |x|$ est continue en $0$ mais non dérivable en $0$, ce qui réfute la réciproque.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{26}{Formule du produit par les taux}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On écrit $f(a+h)g(a+h)-f(a)g(a)$ comme $(f(a+h)-f(a))g(a+h)+f(a)(g(a+h)-g(a))$.
+
+
+Après division par $h$, on obtient deux termes.
+
+
+Le premier tend vers $f'(a)g(a)$ car $g$ est continue en $a$.
+
+
+Le second tend vers $f(a)g'(a)$.
+
+
+La somme des limites donne la formule annoncée.
+
+
+La continuité de $g$ n'est pas une hypothèse supplémentaire : elle découle de sa dérivabilité.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{27}{Formule de la composée}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La dérivabilité de $f$ en $g(a)$ donne $f(g(a)+k)=f(g(a))+kf'(g(a))+k\varepsilon(k)$ avec $\varepsilon(k)\to0$.
+
+
+On pose $k=g(a+h)-g(a)$.
+
+
+Comme $g$ est dérivable, elle est continue, donc $k\to0$.
+
+
+On divise l'égalité obtenue par $h$.
+
+
+Le quotient $\frac{g(a+h)-g(a)}h$ tend vers $g'(a)$.
+
+
+Le terme avec $\varepsilon(k)$ tend vers $0$ car il est produit d'un quotient borné au voisinage de la limite et d'un terme tendant vers $0$.
+
+
+La formule de la composée est démontrée.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{28}{Dérivée de la réciproque}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On considère $\frac{f^{-1}(y)-f^{-1}(b)}{y-b}$.
+
+
+En posant $x=f^{-1}(y)$, on a $y=f(x)$ et $f^{-1}(b)=a$.
+
+
+Le quotient devient $\frac{x-a}{f(x)-f(a)}$.
+
+
+Lorsque $y\to b$, la continuité de $f^{-1}$ donne $x\to a$.
+
+
+Le quotient est donc l'inverse de $\frac{f(x)-f(a)}{x-a}$.
+
+
+Comme ce dernier tend vers $f'(a)
+e0$, la limite vaut $1/f'(a)$.
+
+
+Ainsi $(f^{-1})'(b)=\frac1{f'(a)}$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{29}{Condition nécessaire d'extremum}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Pour un maximum local, on a $f(a+h)\le f(a)$ pour $h$ assez petit.
+
+
+Si $h>0$, le quotient $\frac{f(a+h)-f(a)}h$ est négatif ou nul.
+
+
+En passant à la limite à droite, on obtient $f'_d(a)\le0$.
+
+
+Si $h<0$, le numérateur est encore négatif ou nul, mais la division par $h$ inverse le sens : le quotient est positif ou nul.
+
+
+La limite à gauche donne $f'_g(a)\ge0$.
+
+
+La dérivabilité impose l'égalité des deux dérivées latérales, donc $f'(a)=0$.
+
+
+Pour un minimum local, les inégalités sont inversées et la conclusion reste identique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{30}{Théorème de Rolle}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Soit $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ et telle que $f(a)=f(b)$.
+
+
+Par continuité sur un segment, $f$ atteint un minimum et un maximum.
+
+
+Si ces deux valeurs sont égales, $f$ est constante et n'importe quel point intérieur convient.
+
+
+Sinon, au moins l'un des extrema n'est pas égal à la valeur commune $f(a)=f(b)$.
+
+
+Cet extremum ne peut donc pas être atteint seulement aux deux extrémités.
+
+
+Il existe donc un point intérieur $c$ où $f$ admet un extremum local.
+
+
+Comme $f$ est dérivable en $c$, la condition nécessaire donne $f'(c)=0$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{31}{Théorème des accroissements finis}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On définit $g(x)=f(x)-\frac{f(b)-f(a)}{b-a}(x-a)$.
+
+
+La fonction $g$ est continue sur $[a,b]$ et dérivable sur $]a,b[$.
+
+
+On a $g(a)=f(a)$ et $g(b)=f(b)-(f(b)-f(a))=f(a)$.
+
+
+Par Rolle, il existe $c\in]a,b[$ tel que $g'(c)=0$.
+
+
+Or $g'(x)=f'(x)-\frac{f(b)-f(a)}{b-a}$.
+
+
+Donc $f'(c)=\frac{f(b)-f(a)}{b-a}$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{32}{Inégalité des accroissements finis}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Pour $x<y$, le segment $[x,y]$ est inclus dans $I$ car $I$ est un intervalle.
+
+
+Par le TAF, il existe $c\in]x,y[$ tel que $f(y)-f(x)=f'(c)(y-x)$.
+
+
+En valeur absolue, $|f(y)-f(x)|=|f'(c)|\,|y-x|$.
+
+
+La majoration $|f'(c)|\le K$ donne $|f(y)-f(x)|\le K|y-x|$.
+
+
+Le cas $x=y$ est immédiat, et le cas $y<x$ se déduit par symétrie.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{33}{Rolle et racines successives}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Notons $a_1<\cdots<a_n$ les racines distinctes de $P$.
+
+
+Sur chaque segment $[a_i,a_{i+1}]$, le polynôme est continu et dérivable.
+
+
+On a $P(a_i)=P(a_{i+1})=0$.
+
+
+Par Rolle, il existe $c_i\in]a_i,a_{i+1}[$ tel que $P'(c_i)=0$.
+
+
+Les intervalles étant disjoints, les $c_i$ sont distincts.
+
+
+Ainsi $P'$ possède au moins $n-1$ racines réelles distinctes.
+
+
+Les racines de la dérivée s'intercalent entre les racines de $P$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{34}{Convexité sans nom par dérivée croissante}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+Par le TAF sur $[a,x]$, il existe $u\in]a,x[$ tel que $\frac{f(x)-f(a)}{x-a}=f'(u)$.
+
+
+Par le TAF sur $[x,b]$, il existe $v\in]x,b[$ tel que $\frac{f(b)-f(x)}{b-x}=f'(v)$.
+
+
+Comme $u<v$ et $f'$ est croissante, on a $f'(u)\le f'(v)$.
+
+
+Donc $\frac{f(x)-f(a)}{x-a}\le \frac{f(b)-f(x)}{b-x}$.
+
+
+En multipliant par les quantités positives, on obtient $(b-x)(f(x)-f(a))\le(x-a)(f(b)-f(x))$.
+
+
+Après réarrangement, $f(x)\le \frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b)$.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{35}{Inégalité $\ln x\le x-1$ et raffinements}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{36}{Encadrement de l'exponentielle}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{37}{Unicité pour une équation transcendante}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{38}{Point fixe de $\cos$}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{39}{Étude de $x-\arctan x$}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{40}{Étude de $\sin x/x$}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{41}{Maximum d'une fonction avec paramètre}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{42}{Réciproque de $x+\e^x$}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{43}{Comparaison logarithme-puissance}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{44}{Hyperboliques et inégalités}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+On commence par identifier le domaine naturel de la fonction : logarithme strictement positif, quotient non nul, ou domaine des fonctions réciproques trigonométriques.
+
+
+Sur chaque intervalle admissible, les fonctions usuelles impliquées sont dérivables.
+
+
+Le calcul de la dérivée s'effectue par les règles de somme, produit, quotient ou composée.
+
+
+Le signe de la dérivée permet d'obtenir les variations par le théorème des accroissements finis.
+
+
+Un extremum global obtenu par le tableau de variations fournit l'inégalité demandée.
+
+
+Lorsqu'il s'agit d'une équation, la continuité donne l'existence par changement de signe ou limites aux bornes.
+
+
+La stricte monotonie donne l'unicité, car une fonction strictement monotone est injective.
+
+
+La conclusion est donc entièrement justifiée par les théorèmes du chapitre, sans argument graphique.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{45}{Problème CCP -- Rolle itéré et polynômes}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{46}{Problème Mines -- Inégalités par TAF}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{47}{Problème Centrale -- Réciproque et paramètre}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{48}{Problème oral -- Tangentes communes}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{49}{Problème oral -- Arctangente et logarithme}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\begin{corrbox}{50}{Problème bilan -- Fonction définie par raccords}
+
+\begin{methodebox}
+On rédige en vérifiant d'abord les hypothèses : domaine, continuité, dérivabilité, puis calcul ou théorème utilisé.
+\end{methodebox}
+
+La première étape consiste à isoler les intervalles où tous les objets sont bien définis.
+
+
+La continuité sur les segments et la dérivabilité sur les ouverts sont les hypothèses minimales permettant d'utiliser Rolle ou le TAF.
+
+
+Une fois ces hypothèses vérifiées, on calcule la dérivée et on cherche une factorisation exploitable.
+
+
+Dans un problème de concours, cette factorisation est souvent l'idée centrale : elle transforme un calcul long en signe lisible.
+
+
+Le théorème de Rolle sert à faire apparaître un point où la dérivée s'annule entre deux valeurs égales.
+
+
+Le théorème des accroissements finis relie une variation globale à une dérivée locale.
+
+
+L'inégalité des accroissements finis transforme une borne sur la dérivée en contrôle lipschitzien.
+
+
+La dernière question se conclut par une phrase complète : existence par continuité, unicité par monotonie, ou borne par extremum global.
+
+
+Toutes les hypothèses du théorème utilisé ont été vérifiées : c'est ce qui donne une rédaction de niveau concours.
+
+
+\begin{attentionbox}
+Vérification finale : la conclusion doit porter sur l'intervalle exact de travail et ne doit pas franchir un point exclu du domaine.
+\end{attentionbox}
+
+\end{corrbox}
+
+
+\newpage
+\section{Annexe -- Grilles de rédaction pour copies de concours}
+\subsection*{Grille 1 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 2 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 3 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 4 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 5 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 6 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 7 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 8 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 9 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 10 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 11 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 12 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 13 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 14 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 15 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 16 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 17 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 18 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 19 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 20 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 21 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 22 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 23 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 24 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 25 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 26 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 27 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 28 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 29 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 30 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 31 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 32 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 33 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 34 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 35 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 36 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 37 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 38 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 39 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 40 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 41 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 42 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 43 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 44 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 45 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 46 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 47 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 48 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 49 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 50 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 51 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 52 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 53 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 54 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 55 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 56 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 57 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 58 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 59 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 60 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 61 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 62 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 63 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 64 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 65 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 66 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 67 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 68 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 69 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 70 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 71 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 72 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 73 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 74 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 75 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 76 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 77 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 78 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 79 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\subsection*{Grille 80 -- réflexe de rédaction}
+
+\begin{methodebox}
+
+Avant de dériver, écrire le domaine de définition.
+
+Avant d'appliquer Rolle, vérifier la continuité sur le segment.
+
+Avant d'appliquer Rolle, vérifier la dérivabilité sur l'intervalle ouvert.
+
+Avant d'appliquer le TAF, vérifier que les deux bornes appartiennent au même intervalle.
+
+Avant d'utiliser une réciproque, vérifier la bijectivité par continuité et stricte monotonie.
+
+Avant d'utiliser la formule de la réciproque, vérifier que la dérivée ne s'annule pas.
+
+Pour une inégalité, construire une fonction auxiliaire dont on étudie le minimum.
+
+Pour une unicité, chercher une stricte monotonie ou une injectivité.
+
+Pour une existence, chercher un changement de signe ou une limite aux bornes.
+
+Pour une borne, chercher une majoration uniforme de la dérivée.
+
+\end{methodebox}
+
+\end{document}

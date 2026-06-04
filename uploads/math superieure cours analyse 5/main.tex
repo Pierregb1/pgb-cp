@@ -1,0 +1,2014 @@
+
+\documentclass[11pt,a4paper]{article}
+
+% ==========================================================
+% CHAPITRE 5 — DEVELOPPEMENTS LIMITES, EQUIVALENTS ET ASYMPTOTIQUES
+% Version approfondie, demonstratrice et reliee a l'integration et aux series
+% ==========================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array,tabularx,booktabs,longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{microtype}
+
+\geometry{margin=2.05cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\headheight}{14pt}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{CPGE scientifiques — Analyse}
+\rhead{Chapitre 5 — DL, équivalents et asymptotiques}
+\cfoot{\thepage}
+
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{190,105,25}
+\definecolor{violetprepa}{RGB}{90,45,130}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+\tcbset{enhanced,breakable,sharp corners,boxrule=0.7pt,colback=white,fonttitle=\bfseries,before skip=0.8em,after skip=0.8em}
+\newtcbtheorem[number within=section]{definitionbox}{Définition}{colframe=bleuprepa,colback=blue!3!white}{def}
+\newtcbtheorem[number within=section]{propositionbox}{Proposition}{colframe=vertprepa,colback=green!3!white}{prop}
+\newtcbtheorem[number within=section]{theorembox}{Théorème}{colframe=violetprepa,colback=violet!3!white}{thm}
+\newtcbtheorem[number within=section]{lemmabox}{Lemme}{colframe=violetprepa!70!black,colback=violet!2!white}{lem}
+\newtcbtheorem[number within=section]{examplebox}{Exemple corrigé}{colframe=orangeprepa,colback=orange!4!white}{ex}
+\newtcbtheorem[number within=section]{methodbox}{Méthode}{colframe=bleuprepa!80!black,colback=blue!2!white}{meth}
+\newtcbtheorem[number within=section]{warningbox}{Erreur classique}{colframe=rougeprepa,colback=red!3!white}{err}
+\newtcbtheorem[number within=section]{retenirbox}{À retenir}{colframe=black!70,colback=grisclair}{ret}
+\newtcbtheorem[number within=section]{remarkbox}{Remarque pédagogique}{colframe=black!45,colback=black!2!white}{rem}
+
+\newcounter{exercice}
+\newenvironment{exercice}[1][]{\refstepcounter{exercice}\begin{tcolorbox}[colframe=black!55,colback=white,title={Exercice \theexercice\ifx\relax#1\relax\else{} — #1\fi}]}{\end{tcolorbox}}
+\newenvironment{corrige}[1][]{\begin{tcolorbox}[colframe=vertprepa!70!black,colback=green!2!white,title={Correction \ifx\relax#1\relax\else{} — #1\fi}]}{\end{tcolorbox}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\dd}{\mathrm{d}}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\thh}{th}
+\newcommand{\vois}{\mathcal V}
+\newcommand{\eps}{\varepsilon}
+
+\title{\Huge\bfseries Chapitre 5\\[0.25em]
+Développements limités, équivalents et asymptotiques\\[0.4em]
+\Large Version approfondie : preuves, intégration, séries et méthodes}
+\author{Polycopié de cours — Classe préparatoire scientifique}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\begin{tcolorbox}[width=0.95\textwidth,colframe=bleuprepa,colback=blue!3!white]
+Ce chapitre relie quatre idées centrales de l'analyse : la dérivation donne l'approximation affine, Taylor généralise cette approximation à tout ordre, l'intégration contrôle les restes, et les séries entières expliquent l'origine des développements usuels. Les équivalents fournissent l'information dominante ; les développements limités donnent une information plus fine, exploitable pour les limites, les courbes, les asymptotes et les branches infinies.
+\end{tcolorbox}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% ==========================================================
+\section{Pourquoi les développements limités ?}
+% ==========================================================
+
+\subsection{De l'approximation affine à l'approximation polynomiale}
+
+Soit $f$ une fonction dérivable en $a$. La définition de la dérivabilité s'écrit
+\[
+  \frac{f(a+h)-f(a)}{h}\longrightarrow f'(a)\qquad(h\to0),
+\]
+c'est-à-dire
+\[
+  f(a+h)=f(a)+h f'(a)+h\eps(h),\qquad \eps(h)\to0.
+\]
+On écrit aussi
+\[
+  f(a+h)=f(a)+h f'(a)+o(h).
+\]
+La tangente n'est donc pas seulement un objet géométrique : elle est la meilleure approximation polynomiale de degré $1$ au voisinage de $a$, au sens où l'erreur est négligeable devant $h$.
+
+L'idée des développements limités est de pousser cette logique plus loin. Si $f$ est suffisamment régulière, on cherche un polynôme
+\[
+  P_n(h)=a_0+a_1h+\cdots+a_nh^n
+\]
+tel que
+\[
+  f(a+h)=P_n(h)+o(h^n).
+\]
+Le polynôme $P_n$ décrit les termes successifs du comportement local de $f$.
+
+\begin{retenirbox}{Idée directrice}{idee}
+Un développement limité est une approximation locale polynomiale. Un équivalent retient seulement le premier terme non nul. Une asymptote est une approximation locale à l'infini, souvent affine, dont on étudie ensuite le reste pour connaître la position relative de la courbe.
+\end{retenirbox}
+
+\subsection{Fil conducteur du chapitre}
+
+Le chapitre suit la chaîne logique suivante :
+\[
+\boxed{\text{dérivation}}
+\Longrightarrow
+\boxed{\text{Taylor-Young}}
+\Longrightarrow
+\boxed{\text{développements limités}}
+\Longrightarrow
+\boxed{\text{équivalents, limites, courbes}}
+\]
+mais aussi :
+\[
+\boxed{\text{intégration}}
+\Longrightarrow
+\boxed{\text{reste intégral}}
+\Longrightarrow
+\boxed{\text{contrôle quantitatif des erreurs}}
+\]
+et, en deuxième année ou selon le niveau :
+\[
+\boxed{\text{séries entières}}
+\Longrightarrow
+\boxed{\text{DL usuels comme tronquatures}}
+\Longrightarrow
+\boxed{\text{calculs asymptotiques rapides}}.
+\]
+
+% ==========================================================
+\section{Notations $o$ et $O$ : définition et calcul rigoureux}
+% ==========================================================
+
+Dans toute cette section, on travaille au voisinage d'un point $a$ qui peut être un réel, $+\infty$ ou $-\infty$. Les fonctions sont supposées définies au voisinage considéré, éventuellement privé du point $a$.
+
+\begin{definitionbox}{Notation $o$}{petito}
+Soient $f$ et $g$ deux fonctions, avec $g$ non nulle au voisinage de $a$ privé éventuellement de $a$. On dit que
+\[
+  f(x)=o(g(x))\qquad(x\to a)
+\]
+si
+\[
+  \frac{f(x)}{g(x)}\longrightarrow 0\qquad(x\to a).
+\]
+On dit alors que $f$ est négligeable devant $g$ au voisinage de $a$.
+\end{definitionbox}
+
+\begin{definitionbox}{Notation $O$}{grando}
+On dit que
+\[
+  f(x)=O(g(x))\qquad(x\to a)
+\]
+si la fonction $f/g$ est bornée au voisinage de $a$, c'est-à-dire s'il existe $M>0$ et un voisinage $V$ de $a$ tels que, pour tout $x\in V$ où les fonctions sont définies,
+\[
+  |f(x)|\le M|g(x)|.
+\]
+On dit alors que $f$ est dominée par $g$ au voisinage de $a$.
+\end{definitionbox}
+
+\begin{remarkbox}{Notation locale}{locale}
+Les notations $o$ et $O$ sont toujours locales. Écrire $\sin x=o(1)$ n'a de sens que si l'on précise par exemple $x\to0$. En effet, $\sin x\to0$ lorsque $x\to0$, mais $\sin x$ ne tend pas vers $0$ lorsque $x\to+\infty$.
+\end{remarkbox}
+
+\subsection{Propriétés de la notation $o$}
+
+\begin{propositionbox}{Somme de petits $o$}{sommeo}
+Si $f=o(g)$ et $h=o(g)$ lorsque $x\to a$, alors
+\[
+  f+h=o(g).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Par hypothèse,
+\[
+  \frac{f(x)}{g(x)}\to0,\qquad \frac{h(x)}{g(x)}\to0.
+\]
+Or
+\[
+  \frac{f(x)+h(x)}{g(x)}=\frac{f(x)}{g(x)}+\frac{h(x)}{g(x)}.
+\]
+La somme de deux fonctions tendant vers $0$ tend vers $0$. Donc
+\[
+  \frac{f(x)+h(x)}{g(x)}\to0,
+\]
+ce qui prouve $f+h=o(g)$.
+\hfill $\square$
+
+\begin{propositionbox}{Produit par une fonction bornée}{produitborne}
+Si $f=o(g)$ et si $u$ est bornée au voisinage de $a$, alors
+\[
+  uf=o(g).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Comme $u$ est bornée au voisinage de $a$, il existe $M>0$ et un voisinage $V$ de $a$ tels que $|u(x)|\le M$. Par ailleurs $f=o(g)$ signifie $f/g\to0$. Pour $x\in V$,
+\[
+  \left|\frac{u(x)f(x)}{g(x)}\right|\le M\left|\frac{f(x)}{g(x)}\right|.
+\]
+Le membre de droite tend vers $0$, donc par encadrement le membre de gauche tend vers $0$. Ainsi $uf=o(g)$.
+\hfill $\square$
+
+\begin{propositionbox}{Produit de deux petits $o$}{produito}
+Si $f=o(g)$ et $h=o(k)$ lorsque $x\to a$, alors
+\[
+  fh=o(gk).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} On écrit
+\[
+  \frac{f(x)h(x)}{g(x)k(x)}=\frac{f(x)}{g(x)}\frac{h(x)}{k(x)}.
+\]
+Les deux facteurs tendent vers $0$. Leur produit tend donc vers $0$, ce qui donne $fh=o(gk)$.
+\hfill $\square$
+
+\begin{propositionbox}{Changement d'échelle}{chelle}
+Si $f=o(g)$ et $g=O(h)$, alors
+\[
+  f=o(h).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} On a $f/g\to0$ et $g/h$ bornée. Alors
+\[
+  \frac{f}{h}=\frac{f}{g}\frac{g}{h}.
+\]
+Produit d'une fonction tendant vers $0$ par une fonction bornée, cette expression tend vers $0$. Donc $f=o(h)$.
+\hfill $\square$
+
+\begin{propositionbox}{Composition d'un petit $o$}{compositiono}
+Soient $r(t)=o(\varphi(t))$ lorsque $t\to b$. Soit $u(x)$ une fonction telle que $u(x)\to b$ lorsque $x\to a$, et telle que $\varphi(u(x))$ ne s'annule pas au voisinage considéré. Alors
+\[
+  r(u(x))=o(\varphi(u(x)))\qquad(x\to a).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Par définition, il existe une fonction $\eta(t)$ telle que $\eta(t)\to0$ lorsque $t\to b$ et
+\[
+  r(t)=\varphi(t)\eta(t).
+\]
+En composant par $u$, on obtient
+\[
+  r(u(x))=\varphi(u(x))\eta(u(x)).
+\]
+Comme $u(x)\to b$ et $\eta(t)\to0$ lorsque $t\to b$, on a $\eta(u(x))\to0$. Donc $r(u(x))=o(\varphi(u(x)))$.
+\hfill $\square$
+
+\begin{warningbox}{Attention au point de composition}{compositionpiege}
+Pour utiliser un DL de $\ln(1+t)$ en $t=0$ dans $\ln(1+u(x))$, il faut vérifier que $u(x)\to0$ et que $1+u(x)>0$ au voisinage étudié. Oublier le domaine est une erreur fréquente.
+\end{warningbox}
+
+\subsection{Propriétés de la notation $O$}
+
+\begin{propositionbox}{Calcul avec les grands $O$}{calculO}
+Au voisinage de $a$ :
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Si $f=O(g)$ et $h=O(g)$, alors $f+h=O(g)$.
+\item Si $f=O(g)$ et $h=O(k)$, alors $fh=O(gk)$.
+\item Si $f=o(g)$, alors $f=O(g)$.
+\item $f=O(g)$ si et seulement s'il existe une fonction bornée $u$ telle que $f=gu$.
+\end{enumerate}
+\end{propositionbox}
+
+\textbf{Démonstration.}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Si $|f|\le M|g|$ et $|h|\le N|g|$ au voisinage de $a$, alors
+\[
+  |f+h|\le |f|+|h|\le (M+N)|g|,
+\]
+donc $f+h=O(g)$.
+\item Si $|f|\le M|g|$ et $|h|\le N|k|$, alors
+\[
+  |fh|\le MN|gk|,
+\]
+donc $fh=O(gk)$.
+\item Si $f/g\to0$, alors $f/g$ est bornée au voisinage de $a$ ; donc $f=O(g)$.
+\item Si $f=O(g)$, poser $u=f/g$ là où $g\ne0$. Cette fonction est bornée et $f=gu$. Réciproquement, si $f=gu$ avec $u$ bornée, alors $|f|\le M|g|$ au voisinage de $a$, donc $f=O(g)$.
+\end{enumerate}
+\hfill $\square$
+
+\begin{retenirbox}{Hiérarchie}{hierarchie}
+La relation $f=o(g)$ est plus forte que $f=O(g)$. Négligeable signifie que le quotient tend vers $0$ ; dominée signifie seulement que le quotient reste borné.
+\end{retenirbox}
+
+% ==========================================================
+\section{Équivalents : information dominante et pièges}
+% ==========================================================
+
+\begin{definitionbox}{Équivalence}{equivdef}
+Soient $f$ et $g$ deux fonctions, avec $g$ non nulle au voisinage de $a$ privé éventuellement de $a$. On dit que $f$ est équivalente à $g$ lorsque $x\to a$, et l'on écrit
+\[
+  f(x)\sim g(x),
+\]
+si
+\[
+  \frac{f(x)}{g(x)}\longrightarrow 1.
+\]
+\end{definitionbox}
+
+\begin{propositionbox}{Lien entre équivalent et petit $o$}{lienequivo}
+Au voisinage de $a$,
+\[
+  f\sim g\quad\Longleftrightarrow\quad f=g+o(g).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Supposons d'abord $f\sim g$. Alors
+\[
+  \frac{f-g}{g}=\frac{f}{g}-1\longrightarrow0.
+\]
+Ainsi $f-g=o(g)$, donc $f=g+o(g)$.
+
+Réciproquement, supposons $f=g+o(g)$. Il existe alors une fonction $\eps(x)\to0$ telle que
+\[
+  f(x)=g(x)+g(x)\eps(x)=g(x)(1+\eps(x)).
+\]
+Donc
+\[
+  \frac{f(x)}{g(x)}=1+\eps(x)\longrightarrow1.
+\]
+Ainsi $f\sim g$.
+\hfill $\square$
+
+\begin{remarkbox}{Pourquoi cette écriture est robuste ?}{robuste}
+L'écriture $f=g+o(g)$ montre explicitement que $g$ est le terme principal et que l'erreur est négligeable devant lui. Elle évite souvent les quotients mal définis au point même où l'on étudie la limite.
+\end{remarkbox}
+
+\subsection{Propriétés élémentaires des équivalents}
+
+\begin{propositionbox}{Règles autorisées}{reglesequiv}
+Au voisinage de $a$ :
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Si $f\sim g$, alors $g\sim f$.
+\item Si $f\sim g$ et $g\sim h$, alors $f\sim h$.
+\item Si $f_1\sim g_1$ et $f_2\sim g_2$, alors $f_1f_2\sim g_1g_2$.
+\item Si $f_1\sim g_1$ et $f_2\sim g_2$, avec $f_2$ et $g_2$ non nulles au voisinage considéré, alors
+\[
+  \frac{f_1}{f_2}\sim \frac{g_1}{g_2}.
+\]
+\item Si $f\sim g$ et si $m\in\mathbb Z$, avec les non-annulations nécessaires lorsque $m<0$, alors $f^m\sim g^m$.
+\end{enumerate}
+\end{propositionbox}
+
+\textbf{Démonstration.}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Si $f/g\to1$, alors $g/f=1/(f/g)\to1$ car la fonction $u\mapsto1/u$ est continue en $1$.
+\item Si $f/g\to1$ et $g/h\to1$, alors $f/h=(f/g)(g/h)\to1$.
+\item On écrit
+\[
+  \frac{f_1f_2}{g_1g_2}=\frac{f_1}{g_1}\frac{f_2}{g_2}\to1\cdot1=1.
+\]
+\item Même raisonnement :
+\[
+  \frac{f_1/f_2}{g_1/g_2}=\frac{f_1}{g_1}\frac{g_2}{f_2}\to1\cdot1=1.
+\]
+\item Pour $m\ge0$, $(f/g)^m\to1$. Pour $m<0$, on utilise la non-annulation et la continuité de $u\mapsto u^m$ en $1$.
+\end{enumerate}
+\hfill $\square$
+
+\begin{warningbox}{Addition interdite en général}{additioninterdite}
+De $f\sim g$ et $h\sim k$, on ne peut pas conclure en général que $f+h\sim g+k$. La somme peut provoquer une compensation des termes dominants.
+\end{warningbox}
+
+\textbf{Contre-exemple détaillé.} Lorsque $x\to0$, posons
+\[
+  f(x)=x+x^2,
+  \qquad g(x)=x,
+  \qquad h(x)=-x+x^2,
+  \qquad k(x)=-x.
+\]
+Alors
+\[
+  \frac{f(x)}{g(x)}=1+x\to1,
+  \qquad
+  \frac{h(x)}{k(x)}=\frac{-x+x^2}{-x}=1-x\to1.
+\]
+Donc $f\sim g$ et $h\sim k$. Pourtant
+\[
+  f(x)+h(x)=2x^2,
+  \qquad g(x)+k(x)=0.
+\]
+La somme de droite est nulle : il n'y a pas d'équivalent non nul possible. Le terme dominant s'est annulé. C'est exactement ce qui se produit dans les limites de type $\infty-\infty$ ou $0-0$ : il faut un DL plus précis.
+
+\begin{methodbox}{Additionner correctement}{additioncorrecte}
+Pour additionner des expressions asymptotiques, il faut revenir à des développements avec restes. Si
+\[
+  f=a+o(a),\qquad h=b+o(b),
+\]
+et si $a+b$ ne subit pas d'annulation dominante, alors on peut souvent conclure. Mais si $a+b=0$ ou est d'ordre plus petit, il faut développer plus loin.
+\end{methodbox}
+
+% ==========================================================
+\section{Tableau des équivalents usuels : domaines et preuves}
+% ==========================================================
+
+\subsection{Tableau de référence}
+
+\renewcommand{\arraystretch}{1.18}
+{\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.45cm}>{\raggedright\arraybackslash}p{1.35cm}>{\raggedright\arraybackslash}p{2.65cm}>{\raggedright\arraybackslash}p{2.75cm}>{\raggedright\arraybackslash}p{2.25cm}>{\raggedright\arraybackslash}p{2.1cm}}
+\toprule
+\textbf{Fonction} & \textbf{Point} & \textbf{Équivalent} & \textbf{Conditions} & \textbf{Idée de preuve} & \textbf{Référence}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Fonction} & \textbf{Point} & \textbf{Équivalent} & \textbf{Conditions} & \textbf{Idée de preuve} & \textbf{Référence}\\
+\midrule
+\endhead
+$\sin x$ & $0$ & $\sin x\sim x$ & $x\in\R$ proche de $0$ & dérivée en $0$ ou Taylor & dérivation/Taylor\\
+$\tan x$ & $0$ & $\tan x\sim x$ & $\cos x\ne0$ près de $0$ & $\sin x/\cos x$ & algèbre\\
+$\arcsin x$ & $0$ & $\arcsin x\sim x$ & $|x|<1$ & dérivée en $0$ & dérivation\\
+$\arctan x$ & $0$ & $\arctan x\sim x$ & $x\in\R$ proche de $0$ & dérivée en $0$ ou intégrale & dérivation/intégration\\
+$1-\cos x$ & $0$ & $1-\cos x\sim x^2/2$ & $x\in\R$ proche de $0$ & Taylor ou $2\sin^2(x/2)$ & Taylor/algèbre\\
+$\e^x-1$ & $0$ & $\e^x-1\sim x$ & $x\in\R$ proche de $0$ & dérivée ou intégrale & Taylor/intégration\\
+$\ln(1+x)$ & $0$ & $\ln(1+x)\sim x$ & $x>-1$, $x\to0$ & Taylor ou intégrale & Taylor/intégration/série\\
+$(1+x)^\alpha-1$ & $0$ & $(1+x)^\alpha-1\sim \alpha x$ & $1+x>0$, $\alpha\ne0$ & dérivée en $1$ & dérivation\\
+$\sqrt{1+x}-1$ & $0$ & $\sqrt{1+x}-1\sim x/2$ & $x>-1$ & cas $\alpha=1/2$ & dérivation\\
+$\dfrac1{1+x}-1$ & $0$ & $\dfrac1{1+x}-1\sim -x$ & $x\ne-1$ près de $0$ & calcul exact & algèbre\\
+$\sh x$ & $0$ & $\sh x\sim x$ & $x\in\R$ proche de $0$ & Taylor ou définition & Taylor\\
+$\ch x-1$ & $0$ & $\ch x-1\sim x^2/2$ & $x\in\R$ proche de $0$ & Taylor & Taylor\\
+$\ln x$ & $1$ & $\ln x\sim x-1$ & $x>0$, $x\to1$ & poser $u=x-1$ & changement variable\\
+$\ln x$ vs $x^\alpha$ & $+\infty$ & $\ln x=o(x^\alpha)$ & $\alpha>0$ & poser $x=\e^t$ & croissance comparée\\
+$x^\alpha$ vs $\e^x$ & $+\infty$ & $x^\alpha=o(\e^x)$ & $\alpha>0$ & logarithme ou L'Hospital admis/non utilisé & croissance comparée\\
+$x^\alpha$ vs $\e^{\beta x}$ & $+\infty$ & $x^\alpha=o(\e^{\beta x})$ & $\alpha>0$, $\beta>0$ & ramener à $\beta=1$ & croissance comparée\\
+$a^x-1$ & $0$ & $a^x-1\sim x\ln a$ & $a>0$, $a\ne1$ & $a^x=\e^{x\ln a}$ & composition\\
+$\sqrt{x^2+x}-x$ & $+\infty$ & $\sim 1/2$ & $x>0$ grand & rationaliser & algèbre\\
+$\ln(x+1)$ & $+\infty$ & $\ln(x+1)\sim\ln x$ & $x>0$ grand & $\ln(x+1)=\ln x+\ln(1+1/x)$ & algèbre\\
+$(x+1)^\alpha$ & $+\infty$ & $(x+1)^\alpha\sim x^\alpha$ & $x>0$ grand & factoriser $x^\alpha$ & algèbre\\
+$\ln(1+u)$ & $u\to0$ & $\ln(1+u)\sim u$ & $u>-1$ près de $0$ & composition & Taylor\\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{Démonstrations détaillées des équivalents usuels}
+
+\begin{propositionbox}{Équivalent de $\sin x$}{eqsin}
+Lorsque $x\to0$,
+\[
+  \sin x\sim x.
+\]
+\end{propositionbox}
+
+\textbf{Preuve par dérivation.} La fonction sinus est dérivable en $0$ et $\sin'(0)=\cos0=1$. Par définition de la dérivée,
+\[
+  \frac{\sin x-\sin0}{x-0}\longrightarrow \sin'(0)=1.
+\]
+Comme $\sin0=0$, on obtient $\sin x/x\to1$, donc $\sin x\sim x$.
+
+\textbf{Preuve géométrique classique.} Pour $0<x<\pi/2$, l'encadrement géométrique dans le cercle trigonométrique donne
+\[
+  \sin x\le x\le \tan x.
+\]
+En divisant par $\sin x>0$,
+\[
+  1\le \frac{x}{\sin x}\le \frac{1}{\cos x}.
+\]
+Comme $1/\cos x\to1$, le théorème des gendarmes donne $x/\sin x\to1$, donc $\sin x/x\to1$. Le cas $x<0$ suit par imparité.
+
+\begin{propositionbox}{Équivalent de $\tan x$}{eqtan}
+Lorsque $x\to0$,
+\[
+  \tan x\sim x.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Au voisinage de $0$, $\cos x\to1$ et ne s'annule pas. On écrit
+\[
+  \frac{\tan x}{x}=\frac{\sin x}{x}\cdot\frac1{\cos x}.
+\]
+Le premier facteur tend vers $1$ par l'équivalent précédent, et le second tend vers $1$. Le produit tend donc vers $1$.
+\hfill $\square$
+
+\begin{propositionbox}{Équivalents de $\arcsin x$ et $\arctan x$}{eqarc}
+Lorsque $x\to0$,
+\[
+  \arcsin x\sim x,\qquad \arctan x\sim x.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Les fonctions $\arcsin$ et $\arctan$ sont dérivables en $0$. On a
+\[
+  (\arcsin)'(x)=\frac1{\sqrt{1-x^2}},\qquad (\arctan)'(x)=\frac1{1+x^2}.
+\]
+Donc $(\arcsin)'(0)=1$ et $(\arctan)'(0)=1$. Comme $\arcsin0=\arctan0=0$, la définition de la dérivée donne
+\[
+  \frac{\arcsin x}{x}\to1,
+  \qquad
+  \frac{\arctan x}{x}\to1.
+\]
+\hfill $\square$
+
+\begin{propositionbox}{Équivalent de $1-\cos x$}{eqcos}
+Lorsque $x\to0$,
+\[
+  1-\cos x\sim \frac{x^2}{2}.
+\]
+\end{propositionbox}
+
+\textbf{Preuve par identité trigonométrique.} On utilise
+\[
+  1-\cos x=2\sin^2\left(\frac{x}{2}\right).
+\]
+Comme $x/2\to0$, on a
+\[
+  \sin\left(\frac{x}{2}\right)\sim \frac{x}{2}.
+\]
+En élevant au carré, opération autorisée sur les équivalents non nuls localement hors du point,
+\[
+  \sin^2\left(\frac{x}{2}\right)\sim \frac{x^2}{4}.
+\]
+Donc
+\[
+  1-\cos x\sim 2\cdot\frac{x^2}{4}=\frac{x^2}{2}.
+\]
+
+\textbf{Preuve par Taylor.} Comme $\cos x=1-x^2/2+o(x^2)$, on obtient immédiatement $1-\cos x=x^2/2+o(x^2)$.
+
+\begin{propositionbox}{Équivalent de $\e^x-1$}{eqexp}
+Lorsque $x\to0$,
+\[
+  \e^x-1\sim x.
+\]
+\end{propositionbox}
+
+\textbf{Preuve par dérivation.} La fonction exponentielle est dérivable en $0$ et $(\e^x)'_{|x=0}=1$. Ainsi
+\[
+  \frac{\e^x-1}{x}\to1.
+\]
+
+\textbf{Preuve par intégration.} On écrit
+\[
+  \e^x-1=\int_0^x \e^t\,\dd t.
+\]
+Pour $x\ne0$,
+\[
+  \frac{\e^x-1}{x}=\frac1x\int_0^x \e^t\,\dd t.
+\]
+La quantité de droite est la moyenne de la fonction continue $t\mapsto\e^t$ entre $0$ et $x$. Lorsque $x\to0$, cette moyenne tend vers $\e^0=1$. Plus formellement,
+\[
+\left|\frac1x\int_0^x \e^t\,\dd t-1\right|
+\le \sup_{t\in[0,x]}|\e^t-1|\to0
+\]
+si $x>0$, et l'argument est analogue si $x<0$.
+
+\begin{propositionbox}{Équivalent de $\ln(1+x)$}{eqln}
+Lorsque $x\to0$ avec $x>-1$,
+\[
+  \ln(1+x)\sim x.
+\]
+\end{propositionbox}
+
+\textbf{Preuve par dérivation.} La fonction $u\mapsto\ln u$ est dérivable en $1$ et sa dérivée vaut $1/u$, donc vaut $1$ en $1$. En posant $u=1+x$, on obtient
+\[
+  \ln(1+x)-\ln1\sim 1\cdot x,
+\]
+donc $\ln(1+x)\sim x$.
+
+\textbf{Preuve par intégration.} Pour $x>-1$,
+\[
+  \ln(1+x)=\int_0^x \frac{\dd t}{1+t}.
+\]
+Alors
+\[
+  \frac{\ln(1+x)}{x}=\frac1x\int_0^x \frac{\dd t}{1+t}.
+\]
+L'intégrande $t\mapsto1/(1+t)$ est continue en $0$ et vaut $1$ en $0$. La moyenne intégrale tend donc vers $1$. En effet, pour $x>0$,
+\[
+\left|\frac1x\int_0^x \frac{\dd t}{1+t}-1\right|
+\le \sup_{t\in[0,x]}\left|\frac1{1+t}-1\right|\to0.
+\]
+Pour $x<0$, on raisonne de même sur $[x,0]$. Donc $\ln(1+x)/x\to1$.
+
+\textbf{Preuve par série.} Pour $|x|<1$,
+\[
+  \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots.
+\]
+Ainsi $\ln(1+x)=x+o(x)$, d'où l'équivalent.
+
+\begin{propositionbox}{Puissances : $(1+x)^\alpha-1$}{eqpuissance}
+Soit $\alpha\in\R\setminus\{0\}$. Lorsque $x\to0$ avec $1+x>0$,
+\[
+  (1+x)^\alpha-1\sim \alpha x.
+\]
+\end{propositionbox}
+
+\textbf{Preuve par dérivation.} La fonction $u\mapsto u^\alpha$ est dérivable sur $\R_+^*$ et sa dérivée vaut $\alpha u^{\alpha-1}$. En $u=1$, elle vaut $\alpha$. Donc
+\[
+  \frac{(1+x)^\alpha-1}{x}\to \alpha.
+\]
+Si $\alpha\ne0$, cela équivaut à $(1+x)^\alpha-1\sim \alpha x$.
+
+\textbf{Preuve par logarithme et exponentielle.} On peut aussi écrire
+\[
+  (1+x)^\alpha=\exp(\alpha\ln(1+x)).
+\]
+Comme $\ln(1+x)\sim x$, on a $\alpha\ln(1+x)\sim\alpha x$ et donc $\alpha\ln(1+x)\to0$. En utilisant $\e^u-1\sim u$ lorsque $u\to0$,
+\[
+  (1+x)^\alpha-1=\exp(\alpha\ln(1+x))-1\sim \alpha\ln(1+x)\sim \alpha x.
+\]
+
+\begin{propositionbox}{Cas particuliers : racine et inverse}{eqracineinverse}
+Lorsque $x\to0$,
+\[
+  \sqrt{1+x}-1\sim\frac{x}{2}\quad(x>-1),
+  \qquad
+  \frac1{1+x}-1\sim -x.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Le premier équivalent est le cas $\alpha=1/2$ de la proposition précédente. Pour le second, on calcule exactement :
+\[
+  \frac1{1+x}-1=\frac{1-(1+x)}{1+x}=-\frac{x}{1+x}.
+\]
+Comme $1/(1+x)\to1$, on obtient $-x/(1+x)\sim -x$.
+\hfill $\square$
+
+\begin{propositionbox}{Équivalents hyperboliques}{eqhyp}
+Lorsque $x\to0$,
+\[
+  \sh x\sim x,
+  \qquad
+  \ch x-1\sim\frac{x^2}{2}.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Par définition,
+\[
+  \sh x=\frac{\e^x-\e^{-x}}2,
+  \qquad
+  \ch x=\frac{\e^x+\e^{-x}}2.
+\]
+Avec $\e^x=1+x+x^2/2+o(x^2)$ et $\e^{-x}=1-x+x^2/2+o(x^2)$, on obtient
+\[
+  \sh x=x+o(x),
+  \qquad
+  \ch x=1+\frac{x^2}{2}+o(x^2).
+\]
+Les équivalents annoncés suivent.
+\hfill $\square$
+
+\begin{propositionbox}{Équivalent de $\ln x$ en $1$}{eqlnx1}
+Lorsque $x\to1$ avec $x>0$,
+\[
+  \ln x\sim x-1.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Posons $u=x-1$. Alors $u\to0$ et $x=1+u$. Donc
+\[
+  \ln x=\ln(1+u)\sim u=x-1.
+\]
+\hfill $\square$
+
+\begin{propositionbox}{Croissances comparées logarithme-puissance-exponentielle}{croissances}
+Soient $\alpha>0$ et $\beta>0$. Lorsque $x\to+\infty$,
+\[
+  \ln x=o(x^\alpha),
+  \qquad
+  x^\alpha=o(\e^{\beta x}).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration de $\ln x=o(x^\alpha)$.} Posons $x=\e^t$, avec $t\to+\infty$. Alors
+\[
+  \frac{\ln x}{x^\alpha}=\frac{t}{\e^{\alpha t}}.
+\]
+Il suffit donc de montrer que $t/\e^{\alpha t}\to0$. Pour $t\ge0$, la série de l'exponentielle ou Taylor avec reste positif donne
+\[
+  \e^{\alpha t}\ge \frac{(\alpha t)^2}{2}.
+\]
+Ainsi, pour $t>0$,
+\[
+  0\le \frac{t}{\e^{\alpha t}}\le \frac{2}{\alpha^2 t}\to0.
+\]
+Donc $\ln x=o(x^\alpha)$.
+
+\textbf{Démonstration de $x^\alpha=o(\e^{\beta x})$.} Il s'agit de montrer
+\[
+  \frac{x^\alpha}{\e^{\beta x}}\to0.
+\]
+Posons $y=\beta x/2$. Pour $x$ grand, Taylor avec reste positif donne $\e^{\beta x/2}\ge C x^{\alpha+1}$ pour une constante $C>0$ ; par exemple, si $m$ est un entier strictement supérieur à $\alpha$, alors
+\[
+  \e^{\beta x/2}\ge \frac{(\beta x/2)^m}{m!}.
+\]
+Donc
+\[
+  \frac{x^\alpha}{\e^{\beta x}}=\frac{x^\alpha}{\e^{\beta x/2}}\cdot\e^{-\beta x/2}
+\le C' x^{\alpha-m}\e^{-\beta x/2}\to0,
+\]
+car $\alpha-m<0$ et $\e^{-\beta x/2}\to0$. On peut même conclure plus simplement de $x^\alpha/\e^{\beta x/2}\to0$ par le choix de $m$.
+\hfill $\square$
+
+\begin{propositionbox}{Équivalent de $a^x-1$}{eqax}
+Soit $a>0$, $a\ne1$. Lorsque $x\to0$,
+\[
+  a^x-1\sim x\ln a.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} On écrit $a^x=\e^{x\ln a}$. Comme $x\ln a\to0$,
+\[
+  a^x-1=\e^{x\ln a}-1\sim x\ln a.
+\]
+Si $a=1$, $a^x-1=0$ pour tout $x$, donc il ne faut pas écrire un équivalent non nul.
+\hfill $\square$
+
+\begin{propositionbox}{Équivalents à l'infini}{eqinfini}
+Lorsque $x\to+\infty$,
+\[
+\sqrt{x^2+x}-x\sim\frac12,
+\qquad
+\ln(x+1)\sim\ln x,
+\qquad
+(x+1)^\alpha\sim x^\alpha.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Pour la racine, on rationalise :
+\[
+  \sqrt{x^2+x}-x=\frac{x}{\sqrt{x^2+x}+x}=\frac{1}{\sqrt{1+1/x}+1}\to\frac12.
+\]
+Comme l'équivalent d'une fonction tendant vers une constante non nulle $\ell$ est simplement $\ell$, on obtient le premier résultat.
+
+Pour le logarithme,
+\[
+  \ln(x+1)=\ln x+\ln\left(1+\frac1x\right).
+\]
+Ainsi
+\[
+  \frac{\ln(x+1)}{\ln x}=1+\frac{\ln(1+1/x)}{\ln x}.
+\]
+Or $\ln(1+1/x)\sim1/x$ et $(1/x)/\ln x\to0$, donc le quotient tend vers $1$.
+
+Enfin,
+\[
+  (x+1)^\alpha=x^\alpha\left(1+\frac1x\right)^\alpha,
+\]
+et le facteur $(1+1/x)^\alpha$ tend vers $1$.
+\hfill $\square$
+
+% ==========================================================
+\section{Développements limités : définition, unicité et premiers principes}
+% ==========================================================
+
+\begin{definitionbox}{Développement limité en un point}{dldef}
+Soit $n\in\N$. On dit que $f$ admet un développement limité à l'ordre $n$ en $a$ s'il existe des réels $c_0,\ldots,c_n$ tels que, lorsque $h\to0$,
+\[
+  f(a+h)=c_0+c_1h+\cdots+c_nh^n+o(h^n).
+\]
+Le polynôme $P(h)=c_0+c_1h+\cdots+c_nh^n$ est appelé partie régulière du DL.
+\end{definitionbox}
+
+\begin{remarkbox}{DL en $0$ et changement de variable}{changementvar}
+Un DL en $a$ se ramène à un DL en $0$ en posant $h=x-a$. Un DL à l'infini se ramène souvent à un DL en $0$ en posant $t=1/x$.
+\end{remarkbox}
+
+\begin{theorembox}{Unicité du développement limité}{unicite}
+Si $f$ admet un développement limité à l'ordre $n$ en $a$, alors les coefficients $c_0,\ldots,c_n$ sont uniques.
+\end{theorembox}
+
+\textbf{Démonstration complète.} Supposons que $f$ admette deux développements à l'ordre $n$ en $a$ :
+\[
+  f(a+h)=c_0+c_1h+\cdots+c_nh^n+o(h^n),
+\]
+\[
+  f(a+h)=d_0+d_1h+\cdots+d_nh^n+o(h^n).
+\]
+En soustrayant, on obtient
+\[
+  (c_0-d_0)+(c_1-d_1)h+\cdots+(c_n-d_n)h^n=o(h^n).
+\]
+Posons
+\[
+  Q(h)=\sum_{k=0}^n (c_k-d_k)h^k.
+\]
+Nous devons montrer que $Q$ est le polynôme nul.
+
+Supposons par l'absurde que $Q$ ne soit pas nul. Soit $p$ le plus petit indice tel que $c_p-d_p\ne0$. Alors
+\[
+  Q(h)=h^p\left((c_p-d_p)+(c_{p+1}-d_{p+1})h+\cdots+(c_n-d_n)h^{n-p}\right).
+\]
+Le facteur entre parenthèses tend vers $c_p-d_p\ne0$. Donc
+\[
+  Q(h)\sim (c_p-d_p)h^p.
+\]
+Mais on sait aussi que $Q(h)=o(h^n)$. Ainsi
+\[
+  \frac{Q(h)}{h^n}\to0.
+\]
+Or, d'après l'équivalent précédent,
+\[
+  \frac{Q(h)}{h^n}\sim (c_p-d_p)h^{p-n}.
+\]
+Si $p<n$, cette expression ne peut pas tendre vers $0$ ; elle diverge en valeur absolue. Si $p=n$, elle tend vers $c_n-d_n\ne0$. Dans les deux cas, contradiction. Donc aucun coefficient ne diffère : $c_k=d_k$ pour tout $k$.
+\hfill $\square$
+
+\begin{propositionbox}{Premier terme non nul et équivalent}{premierterme}
+Si
+\[
+  f(a+h)=c_p h^p+c_{p+1}h^{p+1}+\cdots+c_nh^n+o(h^n)
+\]
+avec $c_p\ne0$, alors
+\[
+  f(a+h)\sim c_p h^p.
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} On factorise $h^p$ :
+\[
+  f(a+h)=h^p\left(c_p+c_{p+1}h+\cdots+c_nh^{n-p}+o(h^{n-p})\right).
+\]
+Le facteur entre parenthèses tend vers $c_p\ne0$. Donc le quotient de $f(a+h)$ par $c_p h^p$ tend vers $1$.
+\hfill $\square$
+
+% ==========================================================
+\section{Taylor-Young : dérivation et approximation locale}
+% ==========================================================
+
+\begin{theorembox}{Formule de Taylor-Young}{taylor young}
+Soit $f$ une fonction de classe $C^n$ au voisinage de $a$. Alors, lorsque $x\to a$,
+\[
+  f(x)=\sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k+o((x-a)^n).
+\]
+\end{theorembox}
+
+\subsection{Preuve de Taylor-Young par récurrence et intégration locale}
+
+La démonstration suivante est particulièrement formatrice : elle montre que Taylor-Young n'est pas une formule magique, mais l'itération de l'approximation affine, contrôlée par l'intégration.
+
+\begin{lemmabox}{Intégration d'un petit $o$}{integrerpetito}
+Si $r(t)=o(t^m)$ lorsque $t\to0$ et $m\ge0$, alors
+\[
+  \int_0^h r(t)\,\dd t=o(h^{m+1})\qquad(h\to0).
+\]
+\end{lemmabox}
+
+\textbf{Démonstration.} Par définition de $r(t)=o(t^m)$, il existe une fonction $\eps(t)$ telle que $\eps(t)\to0$ et $r(t)=t^m\eps(t)$ pour $t\ne0$, avec une définition quelconque en $0$ si nécessaire. Pour $h>0$,
+\[
+  \left|\int_0^h r(t)\,\dd t\right|
+  \le \int_0^h t^m |\eps(t)|\,\dd t
+  \le \left(\sup_{0\le t\le h}|\eps(t)|\right)\frac{h^{m+1}}{m+1}.
+\]
+Comme $\eps(t)\to0$, le supremum sur $[0,h]$ tend vers $0$ lorsque $h\to0^+$, à condition de restreindre à $h$ assez petit. On obtient donc
+\[
+  \int_0^h r(t)\,\dd t=o(h^{m+1}).
+\]
+Pour $h<0$, on écrit l'intégrale de $0$ à $h$ comme l'opposé de l'intégrale de $h$ à $0$ et le même raisonnement s'applique avec $|h|$.
+\hfill $\square$
+
+\textbf{Démonstration de Taylor-Young.} On raisonne par récurrence sur $n$.
+
+Pour $n=0$, la formule affirme $f(x)=f(a)+o(1)$, ce qui résulte de la continuité de $f$ en $a$.
+
+Supposons la formule vraie à l'ordre $n-1$ pour toute fonction de classe $C^{n-1}$. Soit $f\in C^n$ au voisinage de $a$. Alors $f'$ est de classe $C^{n-1}$, donc, pour $t\to0$,
+\[
+  f'(a+t)=\sum_{k=0}^{n-1}\frac{f^{(k+1)}(a)}{k!}t^k+o(t^{n-1}).
+\]
+On intègre cette relation entre $0$ et $h=x-a$ :
+\[
+  f(a+h)-f(a)=\int_0^h f'(a+t)\,\dd t.
+\]
+Donc
+\[
+  f(a+h)-f(a)
+  =\sum_{k=0}^{n-1}\frac{f^{(k+1)}(a)}{k!}\frac{h^{k+1}}{k+1}
+  +\int_0^h o(t^{n-1})\,\dd t.
+\]
+Par le lemme, le dernier terme est $o(h^n)$. En posant $j=k+1$, on obtient
+\[
+  f(a+h)=f(a)+\sum_{j=1}^n\frac{f^{(j)}(a)}{j!}h^j+o(h^n),
+\]
+ce qui est exactement Taylor-Young à l'ordre $n$.
+\hfill $\square$
+
+\begin{remarkbox}{Rôle de la régularité $C^n$}{roleCn}
+La preuve montre pourquoi la continuité de $f^{(n)}$ intervient : elle garantit que l'on peut obtenir un reste négligeable à l'ordre voulu en intégrant successivement des restes de plus bas ordre.
+\end{remarkbox}
+
+% ==========================================================
+\section{Taylor avec reste intégral : lien direct avec l'intégration}
+% ==========================================================
+
+\begin{theorembox}{Formule de Taylor avec reste intégral}{resteintegral}
+Soit $f$ de classe $C^{n+1}$ sur un intervalle contenant $a$ et $x$. Alors
+\[
+  f(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k
+  +\int_a^x \frac{(x-t)^n}{n!}f^{(n+1)}(t)\,\dd t.
+\]
+\end{theorembox}
+
+\textbf{Démonstration par récurrence et intégration par parties.} Pour $n=0$, la formule devient
+\[
+  f(x)=f(a)+\int_a^x f'(t)\,\dd t,
+\]
+ce qui est le théorème fondamental de l'analyse.
+
+Supposons la formule vraie à l'ordre $n-1$ :
+\[
+  f(x)=\sum_{k=0}^{n-1}\frac{f^{(k)}(a)}{k!}(x-a)^k
+  +\int_a^x \frac{(x-t)^{n-1}}{(n-1)!}f^{(n)}(t)\,\dd t.
+\]
+On intègre par parties le reste avec
+\[
+  u=f^{(n)}(t),\qquad \dd v=\frac{(x-t)^{n-1}}{(n-1)!}\,\dd t.
+\]
+Une primitive de $\dd v$ par rapport à $t$ est
+\[
+  v=-\frac{(x-t)^n}{n!}.
+\]
+Alors
+\[
+\int_a^x \frac{(x-t)^{n-1}}{(n-1)!}f^{(n)}(t)\,\dd t
+=
+\left[-\frac{(x-t)^n}{n!}f^{(n)}(t)\right]_a^x
++\int_a^x \frac{(x-t)^n}{n!}f^{(n+1)}(t)\,\dd t.
+\]
+Le terme en $t=x$ est nul, et le terme en $t=a$ donne
+\[
+  \frac{(x-a)^n}{n!}f^{(n)}(a).
+\]
+En le réinjectant dans la formule à l'ordre $n-1$, on obtient la formule à l'ordre $n$.
+\hfill $\square$
+
+\begin{propositionbox}{Le reste intégral implique Taylor-Young}{TYdepuisRI}
+Si $f\in C^{n+1}$ au voisinage de $a$, alors la formule avec reste intégral donne
+\[
+  f(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k+O((x-a)^{n+1}),
+\]
+et donc, en particulier,
+\[
+  f(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k+o((x-a)^n).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} Comme $f^{(n+1)}$ est continue au voisinage de $a$, elle y est bornée : $|f^{(n+1)}(t)|\le M$. Alors
+\[
+\left|\int_a^x \frac{(x-t)^n}{n!}f^{(n+1)}(t)\,\dd t\right|
+\le \frac{M}{n!}\int_a^x |x-t|^n\,|\dd t|.
+\]
+Si $x>a$, cette intégrale vaut $(x-a)^{n+1}/(n+1)$. Si $x<a$, elle vaut $|x-a|^{n+1}/(n+1)$. Donc le reste est $O((x-a)^{n+1})$, et a fortiori $o((x-a)^n)$.
+\hfill $\square$
+
+% ==========================================================
+\section{Tableau des développements limités usuels avec domaines et preuves}
+% ==========================================================
+
+\subsection{Tableau des DL usuels en $0$}
+
+\renewcommand{\arraystretch}{1.18}
+{\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.25cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{6.15cm}>{\raggedright\arraybackslash}p{2.85cm}>{\raggedright\arraybackslash}p{1.75cm}}
+\toprule
+\textbf{Fonction} & \textbf{Point} & \textbf{Développement limité} & \textbf{Domaine local} & \textbf{Preuve}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Fonction} & \textbf{Point} & \textbf{Développement limité} & \textbf{Domaine local} & \textbf{Preuve}\\
+\midrule
+\endhead
+$\e^x$ & $0$ & $\displaystyle \e^x=\sum_{k=0}^n\frac{x^k}{k!}+o(x^n)$ & $x\in\R$ & Taylor/série\\
+$\sin x$ & $0$ & $\displaystyle \sin x=\sum_{k=0}^{p}(-1)^k\frac{x^{2k+1}}{(2k+1)!}+o(x^{2p+2})$ & $x\in\R$ & Taylor/série\\
+$\cos x$ & $0$ & $\displaystyle \cos x=\sum_{k=0}^{p}(-1)^k\frac{x^{2k}}{(2k)!}+o(x^{2p+1})$ & $x\in\R$ & Taylor/série\\
+$\tan x$ & $0$ & $\displaystyle \tan x=x+\frac{x^3}{3}+\frac{2x^5}{15}+o(x^5)$ & $|x|<\pi/2$ localement & quotient\\
+$\ln(1+x)$ & $0$ & $\displaystyle \ln(1+x)=\sum_{k=1}^{n}(-1)^{k+1}\frac{x^k}{k}+o(x^n)$ & $x>-1$ près de $0$ & intégration/série\\
+$\frac1{1-x}$ & $0$ & $\displaystyle \frac1{1-x}=1+x+\cdots+x^n+o(x^n)$ & $x\ne1$ près de $0$ ; série si $|x|<1$ & algèbre/série\\
+$\frac1{1+x}$ & $0$ & $\displaystyle \frac1{1+x}=1-x+x^2-\cdots+(-1)^n x^n+o(x^n)$ & $x\ne-1$ près de $0$ & algèbre/série\\
+$(1+x)^\alpha$ & $0$ & $\displaystyle (1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^2+\cdots+\binom\alpha n x^n+o(x^n)$ & $1+x>0$ si $\alpha\notin\N$ & Taylor/série\\
+$\sqrt{1+x}$ & $0$ & $\displaystyle 1+\frac{x}{2}-\frac{x^2}{8}+\frac{x^3}{16}+o(x^3)$ & $x>-1$ & puissance\\
+$\frac1{\sqrt{1+x}}$ & $0$ & $\displaystyle 1-\frac{x}{2}+\frac{3x^2}{8}-\frac{5x^3}{16}+o(x^3)$ & $x>-1$ & puissance\\
+$\arctan x$ & $0$ & $\displaystyle \arctan x=x-\frac{x^3}{3}+\frac{x^5}{5}+\cdots+(-1)^p\frac{x^{2p+1}}{2p+1}+o(x^{2p+2})$ & $x\in\R$ localement ; série $|x|<1$ & intégration\\
+$\arcsin x$ & $0$ & $\displaystyle \arcsin x=x+\frac{x^3}{6}+\frac{3x^5}{40}+o(x^5)$ & $|x|<1$ & intégration\\
+$\sh x$ & $0$ & $\displaystyle \sh x=x+\frac{x^3}{3!}+\frac{x^5}{5!}+o(x^5)$ & $x\in\R$ & Taylor\\
+$\ch x$ & $0$ & $\displaystyle \ch x=1+\frac{x^2}{2!}+\frac{x^4}{4!}+o(x^5)$ & $x\in\R$ & Taylor\\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{Preuves des principaux DL usuels}
+
+\begin{examplebox}{DL de l'exponentielle}{dlexp}
+Pour tout $n\in\N$,
+\[
+  \e^x=\sum_{k=0}^n\frac{x^k}{k!}+o(x^n).
+\]
+\end{examplebox}
+
+\textbf{Preuve.} La fonction exponentielle est de classe $C^\infty$ et toutes ses dérivées valent $\e^x$. En $0$, on a donc $f^{(k)}(0)=1$. Taylor-Young donne immédiatement
+\[
+  \e^x=\sum_{k=0}^n \frac{x^k}{k!}+o(x^n).
+\]
+Avec Taylor intégral, on obtient même le reste
+\[
+  R_n(x)=\int_0^x \frac{(x-t)^n}{n!}\e^t\,\dd t,
+\]
+qui est $O(x^{n+1})$ puisque $\e^t$ est bornée près de $0$.
+
+\begin{examplebox}{DL de $\ln(1+x)$ par intégration}{dlln}
+Pour $x\to0$, $x>-1$,
+\[
+  \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots+(-1)^{n+1}\frac{x^n}{n}+o(x^n).
+\]
+\end{examplebox}
+
+\textbf{Preuve.} On part de l'identité algébrique, valable pour $x\ne-1$,
+\[
+  \frac1{1+x}=1-x+x^2-\cdots+(-1)^{n-1}x^{n-1}+(-1)^n\frac{x^n}{1+x}.
+\]
+Le dernier terme est $O(x^n)$ au voisinage de $0$, donc
+\[
+  \frac1{1+x}=1-x+x^2-\cdots+(-1)^{n-1}x^{n-1}+O(x^n).
+\]
+En intégrant de $0$ à $x$,
+\[
+  \ln(1+x)=\int_0^x\frac{\dd t}{1+t}
+  =\sum_{k=0}^{n-1}(-1)^k\frac{x^{k+1}}{k+1}+\int_0^x O(t^n)\,\dd t.
+\]
+Or $\int_0^x O(t^n)\,\dd t=O(x^{n+1})=o(x^n)$. Donc le DL annoncé est établi.
+
+\begin{examplebox}{DL de $\arctan x$ par intégration}{dlarctan}
+Pour $x\to0$,
+\[
+  \arctan x=x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots+(-1)^p\frac{x^{2p+1}}{2p+1}+o(x^{2p+2}).
+\]
+\end{examplebox}
+
+\textbf{Preuve.} On sait que
+\[
+  \arctan x=\int_0^x \frac{\dd t}{1+t^2}.
+\]
+L'identité géométrique tronquée donne
+\[
+  \frac1{1+t^2}=1-t^2+t^4-\cdots+(-1)^p t^{2p}+O(t^{2p+2}).
+\]
+On intègre terme à terme :
+\[
+  \arctan x=x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots+(-1)^p\frac{x^{2p+1}}{2p+1}+O(x^{2p+3}).
+\]
+En particulier le reste est $o(x^{2p+2})$.
+
+\begin{examplebox}{DL de $\arcsin x$ par intégration}{dlarcsin}
+Lorsque $x\to0$,
+\[
+  \arcsin x=x+\frac{x^3}{6}+\frac{3x^5}{40}+o(x^5).
+\]
+\end{examplebox}
+
+\textbf{Preuve.} On utilise
+\[
+  (\arcsin x)'=\frac1{\sqrt{1-x^2}}=(1-x^2)^{-1/2}.
+\]
+Le DL de $(1+u)^\alpha$ avec $u=-x^2$ et $\alpha=-1/2$ donne
+\[
+  (1-x^2)^{-1/2}=1+\frac{x^2}{2}+\frac{3x^4}{8}+o(x^4).
+\]
+En intégrant de $0$ à $x$,
+\[
+  \arcsin x=x+\frac{x^3}{6}+\frac{3x^5}{40}+o(x^5).
+\]
+
+\begin{examplebox}{DL de $\tan x$ à l'ordre $5$}{dltan}
+Lorsque $x\to0$,
+\[
+  \tan x=x+\frac{x^3}{3}+\frac{2x^5}{15}+o(x^5).
+\]
+\end{examplebox}
+
+\textbf{Preuve.} Écrivons
+\[
+  \tan x=\frac{\sin x}{\cos x}.
+\]
+On a
+\[
+  \sin x=x-\frac{x^3}{6}+\frac{x^5}{120}+o(x^5),
+\]
+\[
+  \cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+o(x^5).
+\]
+Cherchons l'inverse de $\cos x$ sous la forme
+\[
+  \frac1{\cos x}=1+ax^2+bx^4+o(x^4).
+\]
+On impose
+\[
+  \left(1-\frac{x^2}{2}+\frac{x^4}{24}+o(x^4)\right)(1+ax^2+bx^4+o(x^4))=1+o(x^4).
+\]
+Les coefficients donnent
+\[
+  a-\frac12=0,
+  \qquad
+  b-\frac a2+\frac1{24}=0.
+\]
+Donc $a=1/2$ et $b=5/24$. Ainsi
+\[
+  \frac1{\cos x}=1+\frac{x^2}{2}+\frac{5x^4}{24}+o(x^4).
+\]
+On multiplie par le DL de $\sin x$ :
+\[
+\tan x=\left(x-\frac{x^3}{6}+\frac{x^5}{120}+o(x^5)\right)
+\left(1+\frac{x^2}{2}+\frac{5x^4}{24}+o(x^4)\right).
+\]
+Le coefficient de $x$ est $1$, celui de $x^3$ est $1/2-1/6=1/3$, et celui de $x^5$ vaut
+\[
+  \frac5{24}-\frac1{12}+\frac1{120}=\frac{25-10+1}{120}=\frac{16}{120}=\frac2{15}.
+\]
+D'où le résultat.
+
+% ==========================================================
+\section{Opérations sur les développements limités}
+% ==========================================================
+
+\begin{propositionbox}{Somme de DL}{sommedl}
+Si
+\[
+  f(a+h)=P(h)+o(h^n),\qquad g(a+h)=Q(h)+o(h^n),
+\]
+alors
+\[
+  f(a+h)+g(a+h)=P(h)+Q(h)+o(h^n).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration.} On additionne les deux égalités : la somme des deux restes $o(h^n)$ est encore un $o(h^n)$.
+\hfill $\square$
+
+\begin{propositionbox}{Produit de DL}{produitdl}
+Si
+\[
+  f(a+h)=P(h)+o(h^n),\qquad g(a+h)=Q(h)+o(h^n),
+\]
+et si $P,Q$ sont tronqués à l'ordre $n$, alors
+\[
+  f(a+h)g(a+h)=\big(P(h)Q(h)\big)_{\le n}+o(h^n),
+\]
+où $(\cdot)_{\le n}$ désigne la troncature aux puissances de degré au plus $n$.
+\end{propositionbox}
+
+\textbf{Démonstration.} Écrivons $f=P+r$ et $g=Q+s$, avec $r=o(h^n)$ et $s=o(h^n)$. Alors
+\[
+  fg=PQ+Ps+Qr+rs.
+\]
+Comme $P$ et $Q$ sont des polynômes, ils sont bornés au voisinage de $0$. Donc $Ps=o(h^n)$ et $Qr=o(h^n)$. De plus $rs=o(h^{2n})$, donc $rs=o(h^n)$. Ainsi
+\[
+  fg=PQ+o(h^n).
+\]
+Enfin, les termes de $PQ$ de degré strictement supérieur à $n$ sont $O(h^{n+1})$, donc $o(h^n)$. On peut les absorber dans le reste.
+\hfill $\square$
+
+\begin{propositionbox}{Inverse et quotient}{inversedl}
+Supposons
+\[
+  f(a+h)=c_0+c_1h+\cdots+c_nh^n+o(h^n)
+\]
+avec $c_0\ne0$. Alors $1/f$ admet un DL à l'ordre $n$, obtenu en cherchant un polynôme $Q$ tel que
+\[
+  (c_0+c_1h+\cdots+c_nh^n)Q(h)=1+o(h^n).
+\]
+En particulier, si $g$ admet un DL à l'ordre $n$, alors $g/f$ se calcule par produit du DL de $g$ et du DL de $1/f$.
+\end{propositionbox}
+
+\textbf{Démonstration.} Comme $c_0\ne0$, $f(a+h)\to c_0\ne0$, donc $f$ ne s'annule pas au voisinage de $a$. Écrivons
+\[
+  f(a+h)=c_0(1+u(h)),\qquad u(h)\to0.
+\]
+Alors
+\[
+  \frac1{f(a+h)}=\frac1{c_0}\frac1{1+u(h)}.
+\]
+On utilise le DL
+\[
+  \frac1{1+u}=1-u+u^2-\cdots+(-1)^n u^n+o(u^n),
+\]
+et l'on compose avec $u(h)=O(h)$ si le premier terme non constant est au moins d'ordre $1$. La méthode par coefficients indéterminés est souvent la plus sûre : elle impose que le produit vaille $1$ jusqu'à l'ordre $n$.
+\hfill $\square$
+
+\begin{propositionbox}{Composition de DL}{compositiondl}
+Supposons que
+\[
+  u(h)=\alpha_p h^p+O(h^{p+1}),\qquad p\ge1,
+\]
+donc $u(h)\to0$, et que
+\[
+  F(t)=A_0+A_1t+\cdots+A_m t^m+o(t^m)
+\]
+lorsque $t\to0$. Alors
+\[
+  F(u(h))=A_0+A_1u(h)+\cdots+A_m u(h)^m+o(u(h)^m).
+\]
+Pour obtenir un DL à l'ordre $n$ en $h$, on ne conserve que les puissances de $h$ de degré au plus $n$.
+\end{propositionbox}
+
+\textbf{Démonstration.} Le reste du DL de $F$ s'écrit $u(h)^m\eps(u(h))$, avec $\eps(t)\to0$. Comme $u(h)\to0$, on a $\eps(u(h))\to0$. Donc le reste composé est $o(u(h)^m)$. De plus $u(h)^m=O(h^{pm})$ ; on tronque ensuite selon l'ordre demandé en $h$.
+\hfill $\square$
+
+\begin{methodbox}{Choisir l'ordre utile}{choixordre}
+Avant de calculer, identifier la première puissance qui ne s'annule pas après les compensations. Si une limite contient une différence de deux fonctions ayant le même équivalent, un ordre supérieur est nécessaire. Dans un quotient par $x^n$, il faut généralement développer le numérateur jusqu'à l'ordre $n$ inclus.
+\end{methodbox}
+
+\begin{examplebox}{Une limite où l'ordre 1 ne suffit pas}{limiteordre}
+Calculer
+\[
+  \lim_{x\to0}\frac{\e^x-1-x}{x^2}.
+\]
+\end{examplebox}
+
+On sait seulement que $\e^x-1\sim x$, mais cela donne $\e^x-1-x=o(x)$, insuffisant pour diviser par $x^2$. Il faut développer à l'ordre $2$ :
+\[
+  \e^x=1+x+\frac{x^2}{2}+o(x^2).
+\]
+Donc
+\[
+  \e^x-1-x=\frac{x^2}{2}+o(x^2),
+\]
+et la limite vaut $1/2$.
+
+% ==========================================================
+\section{Développements limités et intégration}
+% ==========================================================
+
+\begin{theorembox}{Intégration terme à terme d'un DL}{integrationterme}
+Si, lorsque $x\to0$,
+\[
+  f(x)=a_0+a_1x+\cdots+a_nx^n+o(x^n),
+\]
+alors
+\[
+  \int_0^x f(t)\,\dd t
+  =a_0x+a_1\frac{x^2}{2}+\cdots+a_n\frac{x^{n+1}}{n+1}+o(x^{n+1}).
+\]
+\end{theorembox}
+
+\textbf{Démonstration.} On écrit
+\[
+  f(t)=a_0+a_1t+\cdots+a_nt^n+r(t),
+\]
+avec $r(t)=o(t^n)$. En intégrant de $0$ à $x$,
+\[
+  \int_0^x f(t)\,\dd t
+  =\sum_{k=0}^n a_k\int_0^x t^k\,\dd t+\int_0^x r(t)\,\dd t.
+\]
+Les intégrales des monômes donnent les termes annoncés. Par le lemme d'intégration d'un petit $o$,
+\[
+  \int_0^x r(t)\,\dd t=o(x^{n+1}).
+\]
+\hfill $\square$
+
+\begin{examplebox}{Primitive de $\e^{-t^2}$}{erf}
+Déterminer le DL à l'ordre $7$ de
+\[
+  F(x)=\int_0^x \e^{-t^2}\,\dd t.
+\]
+\end{examplebox}
+
+On développe l'intégrande jusqu'à l'ordre $6$ car l'intégration augmente les puissances de $1$ :
+\[
+  \e^{-t^2}=1-t^2+\frac{t^4}{2}-\frac{t^6}{6}+o(t^6).
+\]
+En intégrant terme à terme,
+\[
+  F(x)=x-\frac{x^3}{3}+\frac{x^5}{10}-\frac{x^7}{42}+o(x^7).
+\]
+
+\begin{examplebox}{DL sous le signe intégral}{sinint}
+Calculer le DL à l'ordre $6$ de
+\[
+  S(x)=\int_0^x \frac{\sin t}{t}\,\dd t.
+\]
+\end{examplebox}
+
+On prolonge l'intégrande par continuité en $0$ en posant sa valeur égale à $1$. Comme
+\[
+  \sin t=t-\frac{t^3}{6}+\frac{t^5}{120}-\frac{t^7}{5040}+o(t^7),
+\]
+on obtient
+\[
+  \frac{\sin t}{t}=1-\frac{t^2}{6}+\frac{t^4}{120}-\frac{t^6}{5040}+o(t^6).
+\]
+En intégrant,
+\[
+  S(x)=x-\frac{x^3}{18}+\frac{x^5}{600}-\frac{x^7}{35280}+o(x^7).
+\]
+À l'ordre $6$, on peut écrire
+\[
+  S(x)=x-\frac{x^3}{18}+\frac{x^5}{600}+o(x^6),
+\]
+mais le terme d'ordre $7$ est souvent plus naturel car l'intégrande est paire.
+
+\begin{propositionbox}{Équivalent d'une intégrale locale}{equivintegrale}
+Soient $f$ et $g$ continues sur un voisinage de $0$ privé éventuellement de $0$. On suppose que $f(t)\sim g(t)$ lorsque $t\to0^+$, que $g$ garde un signe constant près de $0^+$ et que $\int_0^x g(t)\,\dd t$ n'est pas nulle pour $x>0$ petit. Alors, sous une hypothèse de domination locale permettant le passage à l'intégrale, typiquement si $f/g\to1$ uniformément sur $(0,x)$ au sens usuel,
+\[
+  \int_0^x f(t)\,\dd t\sim \int_0^x g(t)\,\dd t\qquad(x\to0^+).
+\]
+\end{propositionbox}
+
+\textbf{Démonstration dans le cas standard.} Écrivons $f(t)=g(t)(1+\eps(t))$ avec $\eps(t)\to0$. Pour $x>0$ petit,
+\[
+  \int_0^x f(t)\,\dd t=\int_0^x g(t)\,\dd t+\int_0^x g(t)\eps(t)\,\dd t.
+\]
+Comme $g$ garde un signe constant, on a
+\[
+\left|\int_0^x g(t)\eps(t)\,\dd t\right|
+\le \sup_{0<t<x}|\eps(t)|\int_0^x |g(t)|\,\dd t
+=\sup_{0<t<x}|\eps(t)|\left|\int_0^x g(t)\,\dd t\right|.
+\]
+Le supremum tend vers $0$, donc le second terme est négligeable devant l'intégrale de $g$.
+\hfill $\square$
+
+\begin{warningbox}{Intégrer un équivalent demande des hypothèses}{intequivdanger}
+L'équivalence ponctuelle $f\sim g$ ne suffit pas toujours si l'intégration se fait sur un intervalle variable où le comportement n'est pas uniformément contrôlé. En prépa, les cas usuels sont sûrs lorsque le quotient tend vers $1$ uniformément sur le petit intervalle et que $g$ garde un signe constant.
+\end{warningbox}
+
+% ==========================================================
+\section{Développements limités et séries}
+% ==========================================================
+
+\subsection{DL, série entière, série asymptotique}
+
+\begin{definitionbox}{Trois niveaux d'information}{troisniveaux}
+\begin{itemize}[label=$\triangleright$]
+\item Un DL à l'ordre $n$ donne une approximation finie : $f(x)=P_n(x)+o(x^n)$.
+\item Une série entière donne une somme infinie sur un intervalle de convergence : $f(x)=\sum a_nx^n$ pour $|x|<R$.
+\item Une série asymptotique donne une suite d'approximations locales ; elle peut être utile même lorsque la série infinie ne converge pas.
+\end{itemize}
+\end{definitionbox}
+
+\begin{retenirbox}{Différence essentielle}{DLserie}
+Un DL ne signifie pas que la fonction est égale au polynôme. Il signifie que l'erreur est négligeable devant la dernière puissance conservée. Une série entière, elle, affirme une égalité avec une somme infinie dans un domaine de convergence.
+\end{retenirbox}
+
+\subsection{Séries entières usuelles et DL}
+
+Lorsque le chapitre de séries entières est connu, les développements usuels s'interprètent comme des tronquatures :
+\[
+  \e^x=\sum_{n=0}^{+\infty}\frac{x^n}{n!}\qquad(x\in\R),
+\]
+\[
+  \sin x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!},
+  \qquad
+  \cos x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n}}{(2n)!},
+\]
+\[
+  \frac1{1-x}=\sum_{n=0}^{+\infty}x^n\qquad(|x|<1),
+\]
+\[
+  \ln(1+x)=\sum_{n=1}^{+\infty}(-1)^{n+1}\frac{x^n}{n}\qquad(|x|<1),
+\]
+\[
+  \arctan x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{2n+1}\qquad(|x|<1),
+\]
+\[
+  (1+x)^\alpha=\sum_{n=0}^{+\infty}\binom\alpha n x^n\qquad(|x|<1,\ \alpha\in\R).
+\]
+
+\begin{warningbox}{Domaine de convergence}{domaineconv}
+La série de $\ln(1+x)$ n'est pas utilisable comme égalité pour tout $x>-1$ : son rayon de convergence est $1$. En revanche, le DL en $0$ est une affirmation locale valable lorsque $x\to0$ dans le domaine $x>-1$.
+\end{warningbox}
+
+\begin{examplebox}{Retrouver $\ln(1+x)$ par série géométrique}{seriegeomln}
+Pour $|x|<1$,
+\[
+  \frac1{1+x}=\sum_{n=0}^{+\infty}(-1)^n x^n.
+\]
+En intégrant terme à terme de $0$ à $x$, on obtient
+\[
+  \ln(1+x)=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{n+1}}{n+1}.
+\]
+La troncature à l'ordre $N$ redonne le DL usuel.
+\end{examplebox}
+
+% ==========================================================
+\section{Applications aux limites et aux équivalents}
+% ==========================================================
+
+\begin{methodbox}{Équivalent ou DL ?}{equivoudl}
+\begin{itemize}[label=$\triangleright$]
+\item Si l'expression est un produit, un quotient ou une puissance sans compensation dominante, un équivalent suffit souvent.
+\item Si l'expression est une somme ou une différence de termes équivalents, il faut un DL à un ordre plus élevé.
+\item Si le résultat attendu dépend d'un coefficient précis, un DL est nécessaire.
+\item Si la fonction est sous une intégrale, on développe l'intégrande à l'ordre adapté puis on intègre.
+\end{itemize}
+\end{methodbox}
+
+\begin{examplebox}{Forme $1^\infty$}{forme1inf}
+Calculer
+\[
+  \lim_{x\to0}(1+x)^{1/x}.
+\]
+\end{examplebox}
+
+On passe au logarithme :
+\[
+  \ln\left((1+x)^{1/x}\right)=\frac{\ln(1+x)}{x}.
+\]
+Comme $\ln(1+x)\sim x$, le quotient tend vers $1$. Par continuité de l'exponentielle,
+\[
+  (1+x)^{1/x}\to \e.
+\]
+
+\begin{examplebox}{Limite nécessitant une compensation d'ordre 3}{limcomp}
+Calculer
+\[
+  L=\lim_{x\to0}\frac{\sin x-x\cos x}{x^3}.
+\]
+\end{examplebox}
+
+On développe :
+\[
+  \sin x=x-\frac{x^3}{6}+o(x^3),
+  \qquad
+  x\cos x=x\left(1-\frac{x^2}{2}+o(x^2)\right)=x-\frac{x^3}{2}+o(x^3).
+\]
+Donc
+\[
+  \sin x-x\cos x=\left(x-\frac{x^3}{6}\right)-\left(x-\frac{x^3}{2}\right)+o(x^3)=\frac{x^3}{3}+o(x^3).
+\]
+Ainsi $L=1/3$.
+
+% ==========================================================
+\section{Étude locale d'une fonction : tangente, position, extremum}
+% ==========================================================
+
+\begin{propositionbox}{Lecture géométrique d'un DL}{lecturegeo}
+Supposons
+\[
+  f(a+h)=f(a)+f'(a)h+c_p h^p+o(h^p),
+\]
+avec $p\ge2$ et $c_p\ne0$. Alors la droite
+\[
+  y=f(a)+f'(a)(x-a)
+\]
+est la tangente à la courbe en $a$, et la position locale de la courbe par rapport à sa tangente est donnée par le signe de $c_p h^p$.
+\end{propositionbox}
+
+\textbf{Démonstration.} La différence entre la fonction et sa tangente vaut
+\[
+  f(a+h)-\big(f(a)+f'(a)h\big)=c_p h^p+o(h^p)\sim c_p h^p.
+\]
+Donc son signe est, pour $h$ assez petit et non nul, celui de $c_p h^p$. Si $p$ est pair, le signe est le même à gauche et à droite. Si $p$ est impair, le signe change : la courbe traverse sa tangente.
+\hfill $\square$
+
+\begin{examplebox}{Position par rapport à la tangente}{positiontangente}
+Étudier localement $f(x)=\ln(1+x)$ en $0$.
+\end{examplebox}
+
+On a
+\[
+  \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3).
+\]
+La tangente en $0$ est donc $y=x$. La différence vaut
+\[
+  \ln(1+x)-x=-\frac{x^2}{2}+o(x^2)\sim-\frac{x^2}{2}<0
+\]
+pour $x$ assez proche de $0$, $x\ne0$. La courbe est donc localement en dessous de sa tangente.
+
+% ==========================================================
+\section{Asymptotes et branches infinies}
+% ==========================================================
+
+\begin{definitionbox}{Asymptote oblique}{asymptote}
+La droite $y=\alpha x+\beta$ est une asymptote à la courbe de $f$ lorsque $x\to+\infty$ si
+\[
+  f(x)-\alpha x-\beta\longrightarrow0.
+\]
+On définit de même lorsque $x\to-\infty$.
+\end{definitionbox}
+
+\begin{methodbox}{Trouver une asymptote oblique}{trouverasymptote}
+Pour chercher une asymptote oblique en $+\infty$ :
+\begin{enumerate}[label=\arabic*)]
+\item Calculer $\alpha=\lim_{x\to+\infty}f(x)/x$ si cette limite existe et est finie.
+\item Calculer $\beta=\lim_{x\to+\infty}(f(x)-\alpha x)$ si cette limite existe et est finie.
+\item Étudier le signe de $f(x)-\alpha x-\beta$ pour la position relative.
+\end{enumerate}
+\end{methodbox}
+
+\begin{examplebox}{Asymptote par changement $t=1/x$}{asymptoteex}
+Étudier l'asymptote de
+\[
+  f(x)=\sqrt{x^2+x+1}
+\]
+lorsque $x\to+\infty$.
+\end{examplebox}
+
+On factorise $x$ :
+\[
+  f(x)=x\sqrt{1+\frac1x+\frac1{x^2}}.
+\]
+Posons $t=1/x$. Alors $t\to0^+$ et
+\[
+  \sqrt{1+t+t^2}=1+\frac{t+t^2}{2}-\frac{(t+t^2)^2}{8}+o(t^2).
+\]
+À l'ordre $2$,
+\[
+  \sqrt{1+t+t^2}=1+\frac t2+\frac{t^2}{2}-\frac{t^2}{8}+o(t^2)=1+\frac t2+\frac{3t^2}{8}+o(t^2).
+\]
+Donc
+\[
+  f(x)=x\left(1+\frac1{2x}+\frac{3}{8x^2}+o\left(\frac1{x^2}\right)\right)
+  =x+\frac12+\frac{3}{8x}+o\left(\frac1x\right).
+\]
+Ainsi l'asymptote est
+\[
+  y=x+\frac12.
+\]
+De plus,
+\[
+  f(x)-x-\frac12\sim \frac{3}{8x}>0,
+\]
+donc la courbe est au-dessus de l'asymptote pour $x$ grand.
+
+\begin{definitionbox}{Branche infinie}{branche}
+On parle de branche infinie lorsque la norme du point de la courbe tend vers l'infini. Une asymptote est un cas particulier de branche infinie où la courbe se rapproche d'une droite. Si $f(x)-\alpha x$ tend vers $\pm\infty$ mais reste négligeable devant $x$, on parle souvent de direction asymptotique sans asymptote affine.
+\end{definitionbox}
+
+% ==========================================================
+\section{Exercices progressifs}
+% ==========================================================
+
+\begin{exercice}[Comparaisons locales — \ensuremath{\star}]
+Lorsque $x\to0$, déterminer pour chaque couple si $f=o(g)$, $f=O(g)$, $f\sim g$, ou aucune de ces relations :
+\begin{enumerate}[label=\alph*)]
+\item $f(x)=x^3$, $g(x)=x^2$.
+\item $f(x)=\sin x$, $g(x)=x$.
+\item $f(x)=1-\cos x$, $g(x)=x$.
+\item $f(x)=\ln(1+x)-x$, $g(x)=x^2$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Sommes d'équivalents — \ensuremath{\star}\ensuremath{\star}]
+On pose, lorsque $x\to0$,
+\[
+  f(x)=\sqrt{1+x}-1,
+  \qquad
+  g(x)=\frac{x}{2}.
+\]
+\begin{enumerate}[label=\alph*)]
+\item Montrer que $f\sim g$.
+\item Peut-on en déduire directement $f-g\sim0$ ? Expliquer pourquoi cette écriture n'a pas de sens comme équivalent.
+\item Calculer un équivalent de $f-g$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[DL par quotient — \ensuremath{\star}\ensuremath{\star}]
+Calculer le DL à l'ordre $4$ en $0$ de
+\[
+  \frac{\ln(1+x)}{1+x}.
+\]
+\end{exercice}
+
+\begin{exercice}[Composition — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+Calculer le DL à l'ordre $4$ en $0$ de
+\[
+  \ln(1+\sin x).
+\]
+Préciser l'ordre auquel il faut développer $\sin x$.
+\end{exercice}
+
+\begin{exercice}[Limite difficile — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+Calculer
+\[
+  \lim_{x\to0}\frac{\ln(1+x)-x+\frac{x^2}{2}}{x^3}.
+\]
+\end{exercice}
+
+\begin{exercice}[Intégration d'un DL — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+Déterminer le DL à l'ordre $7$ en $0$ de
+\[
+  F(x)=\int_0^x \frac{\ln(1+t)}{t}\,\dd t,
+\]
+l'intégrande étant prolongé par continuité en $0$.
+\end{exercice}
+
+\begin{exercice}[Séries et DL — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+À partir de la série géométrique, retrouver le DL à l'ordre $5$ de $\arctan x$ en $0$.
+\end{exercice}
+
+\begin{exercice}[Tangente et position — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+Soit
+\[
+  f(x)=\e^x\cos x.
+\]
+Déterminer la tangente à la courbe en $0$ et la position locale de la courbe par rapport à cette tangente.
+\end{exercice}
+
+\begin{exercice}[Asymptote — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+Déterminer l'asymptote oblique en $+\infty$ de
+\[
+  f(x)=\sqrt{x^2+3x+2}
+\]
+et préciser la position relative de la courbe.
+\end{exercice}
+
+\begin{exercice}[Problème de synthèse — \ensuremath{\star}\ensuremath{\star}\ensuremath{\star}\ensuremath{\star}]
+On considère
+\[
+  f(x)=\frac{\e^x-1-x}{\ln(1+x)-x}
+\]
+pour $x$ proche de $0$, $x\ne0$.
+\begin{enumerate}[label=\alph*)]
+\item Donner les DL du numérateur et du dénominateur à l'ordre $3$.
+\item En déduire la limite de $f$ en $0$.
+\item Obtenir un développement limité de $f$ à l'ordre $1$.
+\end{enumerate}
+\end{exercice}
+
+\newpage
+% ==========================================================
+\section{Corrections détaillées des exercices}
+% ==========================================================
+
+\begin{corrige}[Exercice 1]
+\begin{enumerate}[label=\alph*)]
+\item $x^3/x^2=x\to0$, donc $x^3=o(x^2)$ ; en particulier $x^3=O(x^2)$, mais $x^3\not\sim x^2$.
+\item $\sin x/x\to1$, donc $\sin x\sim x$.
+\item $(1-\cos x)/x\sim (x^2/2)/x=x/2\to0$, donc $1-\cos x=o(x)$.
+\item $\ln(1+x)=x-x^2/2+o(x^2)$, donc $\ln(1+x)-x\sim -x^2/2$. Ainsi $\ln(1+x)-x\sim -\frac12 x^2$, donc cette fonction est $O(x^2)$ mais n'est pas équivalente à $x^2$ ; elle est équivalente à $-x^2/2$.
+\end{enumerate}
+\end{corrige}
+
+\begin{corrige}[Exercice 2]
+\begin{enumerate}[label=\alph*)]
+\item Par le DL de $\sqrt{1+x}$,
+\[
+  \sqrt{1+x}=1+\frac x2-\frac{x^2}{8}+o(x^2),
+\]
+donc $f(x)=x/2+o(x)$ et $f\sim x/2=g$.
+\item On n'écrit pas $f-g\sim0$ : un équivalent doit être une fonction non nulle au voisinage considéré. Dire qu'une fonction est équivalente à $0$ n'a pas de sens utile, car le quotient par $0$ n'est pas défini.
+\item D'après le DL précédent,
+\[
+  f-g=-\frac{x^2}{8}+o(x^2),
+\]
+donc
+\[
+  f-g\sim-\frac{x^2}{8}.
+\]
+\end{enumerate}
+\end{corrige}
+
+\begin{corrige}[Exercice 3]
+On utilise
+\[
+  \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+o(x^4),
+\]
+et
+\[
+  \frac1{1+x}=1-x+x^2-x^3+x^4+o(x^4).
+\]
+On multiplie et on tronque à l'ordre $4$ :
+\[
+\frac{\ln(1+x)}{1+x}
+=x-\frac{3x^2}{2}+\frac{11x^3}{6}-\frac{25x^4}{12}+o(x^4).
+\]
+Chaque coefficient s'obtient par convolution des coefficients : par exemple, pour $x^3$,
+\[
+  1\cdot1+\left(-\frac12\right)(-1)+\frac13=1+\frac12+\frac13=\frac{11}{6}.
+\]
+\end{corrige}
+
+\begin{corrige}[Exercice 4]
+On pose $u=\sin x$. Pour obtenir un DL à l'ordre $4$ de $\ln(1+u)$, il faut connaître $u$ au moins jusqu'à l'ordre $3$ car $u=x+O(x^3)$ et les puissances de $u$ produisent des termes jusqu'à $x^4$. On a
+\[
+  u=x-\frac{x^3}{6}+o(x^4).
+\]
+Puis
+\[
+  \ln(1+u)=u-\frac{u^2}{2}+\frac{u^3}{3}-\frac{u^4}{4}+o(u^4).
+\]
+On calcule :
+\[
+  u=x-\frac{x^3}{6}+o(x^4),
+\]
+\[
+  u^2=x^2-\frac{x^4}{3}+o(x^4),
+  \qquad
+  u^3=x^3+o(x^4),
+  \qquad
+  u^4=x^4+o(x^4).
+\]
+Donc
+\[
+\ln(1+\sin x)
+=x-\frac{x^2}{2}+\left(-\frac16+\frac13\right)x^3+
+\left(\frac16-\frac14\right)x^4+o(x^4),
+\]
+soit
+\[
+  \boxed{\ln(1+\sin x)=x-\frac{x^2}{2}+\frac{x^3}{6}-\frac{x^4}{12}+o(x^4).}
+\]
+\end{corrige}
+
+\begin{corrige}[Exercice 5]
+Le DL usuel donne
+\[
+  \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3).
+\]
+Donc
+\[
+  \ln(1+x)-x+\frac{x^2}{2}=\frac{x^3}{3}+o(x^3).
+\]
+En divisant par $x^3$, la limite vaut
+\[
+  \boxed{\frac13}.
+\]
+\end{corrige}
+
+\begin{corrige}[Exercice 6]
+On utilise
+\[
+  \ln(1+t)=t-\frac{t^2}{2}+\frac{t^3}{3}-\frac{t^4}{4}+\frac{t^5}{5}-\frac{t^6}{6}+\frac{t^7}{7}+o(t^7).
+\]
+Donc, après division par $t$ et prolongement par continuité,
+\[
+  \frac{\ln(1+t)}{t}=1-\frac t2+\frac{t^2}{3}-\frac{t^3}{4}+\frac{t^4}{5}-\frac{t^5}{6}+\frac{t^6}{7}+o(t^6).
+\]
+On intègre de $0$ à $x$ :
+\[
+  F(x)=x-\frac{x^2}{4}+\frac{x^3}{9}-\frac{x^4}{16}+\frac{x^5}{25}-\frac{x^6}{36}+\frac{x^7}{49}+o(x^7).
+\]
+\end{corrige}
+
+\begin{corrige}[Exercice 7]
+Pour $|x|<1$,
+\[
+  \frac1{1+x^2}=1-x^2+x^4+O(x^6).
+\]
+Comme $\arctan x=\int_0^x \frac{\dd t}{1+t^2}$, on intègre :
+\[
+  \arctan x=x-\frac{x^3}{3}+\frac{x^5}{5}+O(x^7).
+\]
+Donc le DL à l'ordre $5$ est
+\[
+  \boxed{\arctan x=x-\frac{x^3}{3}+\frac{x^5}{5}+o(x^5).}
+\]
+\end{corrige}
+
+\begin{corrige}[Exercice 8]
+On développe
+\[
+  \e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3),
+\]
+\[
+  \cos x=1-\frac{x^2}{2}+o(x^3).
+\]
+Alors
+\[
+  \e^x\cos x=(1+x+\frac{x^2}{2}+\frac{x^3}{6})(1-\frac{x^2}{2})+o(x^3)
+  =1+x+0\cdot x^2-\frac{x^3}{3}+o(x^3).
+\]
+La tangente en $0$ est donc $y=1+x$. La différence vaut
+\[
+  f(x)-(1+x)=-\frac{x^3}{3}+o(x^3)\sim-\frac{x^3}{3}.
+\]
+Elle est positive pour $x<0$ et négative pour $x>0$ : la courbe traverse sa tangente.
+\end{corrige}
+
+\begin{corrige}[Exercice 9]
+On écrit, pour $x\to+\infty$,
+\[
+  f(x)=x\sqrt{1+\frac3x+\frac2{x^2}}.
+\]
+Avec $t=1/x$,
+\[
+  \sqrt{1+3t+2t^2}=1+\frac{3t+2t^2}{2}-\frac{(3t)^2}{8}+o(t^2)
+  =1+\frac{3t}{2}+\left(1-\frac98\right)t^2+o(t^2).
+\]
+Donc
+\[
+  \sqrt{1+3t+2t^2}=1+\frac{3t}{2}-\frac{t^2}{8}+o(t^2).
+\]
+Ainsi
+\[
+  f(x)=x+\frac32-\frac{1}{8x}+o\left(\frac1x\right).
+\]
+L'asymptote est
+\[
+  \boxed{y=x+\frac32}.
+\]
+De plus $f(x)-x-3/2\sim -1/(8x)<0$ pour $x$ grand, donc la courbe est en dessous de son asymptote.
+\end{corrige}
+
+\begin{corrige}[Exercice 10]
+Le numérateur vaut
+\[
+  \e^x-1-x=\frac{x^2}{2}+\frac{x^3}{6}+o(x^3).
+\]
+Le dénominateur vaut
+\[
+  \ln(1+x)-x=-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3).
+\]
+Donc
+\[
+  f(x)=\frac{\frac12+\frac{x}{6}+o(x)}{-\frac12+\frac{x}{3}+o(x)}.
+\]
+La limite est $-1$.
+Pour le DL à l'ordre $1$, on écrit
+\[
+  f(x)=-\frac{1+x/3+o(x)}{1-2x/3+o(x)}.
+\]
+Or
+\[
+  \frac1{1-2x/3+o(x)}=1+\frac{2x}{3}+o(x).
+\]
+Donc
+\[
+  f(x)=-(1+x/3)(1+2x/3)+o(x)=-1-x+o(x).
+\]
+\end{corrige}
+
+% ==========================================================
+\section{Devoir bilan final}
+% ==========================================================
+
+\begin{tcolorbox}[colframe=bleuprepa,colback=blue!2!white,title={Devoir bilan — 3h — Barème indicatif sur 20}]
+\textbf{Exercice 1 — Questions de cours (4 pts).}
+\begin{enumerate}[label=\alph*)]
+\item Définir $f=o(g)$ et $f\sim g$ au voisinage de $a$.
+\item Démontrer que $f\sim g\Leftrightarrow f=g+o(g)$.
+\item Donner un contre-exemple montrant qu'on ne peut pas additionner des équivalents.
+\end{enumerate}
+
+\textbf{Exercice 2 — Calcul de DL (5 pts).} Calculer le DL à l'ordre $5$ en $0$ de
+\[
+  \e^{\sin x}.
+\]
+
+\textbf{Exercice 3 — Limite (4 pts).} Calculer
+\[
+  \lim_{x\to0}\frac{\tan x-x}{x^3}.
+\]
+
+\textbf{Exercice 4 — Intégrale (4 pts).} Déterminer un équivalent lorsque $x\to0^+$ de
+\[
+  I(x)=\int_0^x \frac{\ln(1+t)}{t}\,\dd t.
+\]
+Puis donner son DL à l'ordre $4$.
+
+\textbf{Exercice 5 — Asymptote (3 pts).} Étudier l'asymptote en $+\infty$ de
+\[
+  f(x)=\sqrt{x^2+2x}+\ln\left(1+\frac1x\right).
+\]
+\end{tcolorbox}
+
+\subsection*{Correction du devoir bilan}
+
+\textbf{Exercice 1.} Les définitions et la preuve ont été données dans le cours. Le contre-exemple standard est
+\[
+  x+x^2\sim x,
+  \qquad
+  -x+x^2\sim -x,
+\]
+mais leur somme vaut $2x^2$, tandis que $x+(-x)=0$.
+
+\textbf{Exercice 2.} On pose $u=\sin x=x-x^3/6+x^5/120+o(x^5)$. On utilise
+\[
+  \e^u=1+u+\frac{u^2}{2}+\frac{u^3}{6}+\frac{u^4}{24}+\frac{u^5}{120}+o(u^5).
+\]
+On calcule jusqu'à l'ordre $5$ :
+\[
+ u=x-\frac{x^3}{6}+\frac{x^5}{120}+o(x^5),
+\]
+\[
+ u^2=x^2-\frac{x^4}{3}+o(x^5),
+\quad
+ u^3=x^3-\frac{x^5}{2}+o(x^5),
+\quad
+ u^4=x^4+o(x^5),
+\quad
+ u^5=x^5+o(x^5).
+\]
+Donc
+\[
+\e^{\sin x}=1+x+\frac{x^2}{2}+\left(-\frac16+\frac16\right)x^3
++\left(-\frac16+\frac1{24}\right)x^4
++\left(\frac1{120}-\frac1{12}+\frac1{120}\right)x^5+o(x^5),
+\]
+soit
+\[
+  \boxed{\e^{\sin x}=1+x+\frac{x^2}{2}-\frac{x^4}{8}-\frac{x^5}{15}+o(x^5).}
+\]
+
+\textbf{Exercice 3.} Le DL usuel de $\tan x$ donne
+\[
+  \tan x=x+\frac{x^3}{3}+o(x^3),
+\]
+donc
+\[
+  \frac{\tan x-x}{x^3}\to\frac13.
+\]
+
+\textbf{Exercice 4.} Comme $\ln(1+t)/t\to1$, on a
+\[
+  I(x)\sim\int_0^x1\,\dd t=x.
+\]
+Pour le DL à l'ordre $4$,
+\[
+  \frac{\ln(1+t)}{t}=1-\frac t2+\frac{t^2}{3}-\frac{t^3}{4}+o(t^3).
+\]
+Donc
+\[
+  \boxed{I(x)=x-\frac{x^2}{4}+\frac{x^3}{9}-\frac{x^4}{16}+o(x^4).}
+\]
+
+\textbf{Exercice 5.} On écrit
+\[
+  \sqrt{x^2+2x}=x\sqrt{1+\frac2x}.
+\]
+Avec $t=1/x$,
+\[
+  \sqrt{1+2t}=1+t-\frac{t^2}{2}+o(t^2),
+\]
+donc
+\[
+  \sqrt{x^2+2x}=x+1-\frac1{2x}+o\left(\frac1x\right).
+\]
+De plus
+\[
+  \ln\left(1+\frac1x\right)=\frac1x+o\left(\frac1x\right).
+\]
+Ainsi
+\[
+  f(x)=x+1+\frac1{2x}+o\left(\frac1x\right).
+\]
+L'asymptote est $y=x+1$ et la courbe est au-dessus de l'asymptote pour $x$ grand.
+
+% ==========================================================
+\section{Fiche de synthèse finale}
+% ==========================================================
+
+\begin{tcolorbox}[colframe=black!70,colback=grisclair,title={Fiche de synthèse — DL, équivalents et asymptotiques}]
+\textbf{Notations.}
+\[
+  f=o(g)\iff f/g\to0,
+  \qquad
+  f=O(g)\iff f/g\text{ est bornée},
+  \qquad
+  f\sim g\iff f/g\to1.
+\]
+
+\textbf{Lien fondamental.}
+\[
+  f\sim g\iff f=g+o(g).
+\]
+
+\textbf{Équivalents usuels en $0$.}
+\[
+\sin x\sim x,
+\quad \tan x\sim x,
+\quad \arcsin x\sim x,
+\quad \arctan x\sim x,
+\]
+\[
+1-\cos x\sim\frac{x^2}{2},
+\quad \e^x-1\sim x,
+\quad \ln(1+x)\sim x,
+\quad (1+x)^\alpha-1\sim\alpha x.
+\]
+
+\textbf{DL usuels.}
+\[
+\e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6}+\cdots,
+\quad
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots,
+\]
+\[
+\sin x=x-\frac{x^3}{6}+\frac{x^5}{120}+\cdots,
+\quad
+\cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+\cdots.
+\]
+
+\textbf{Stratégie.}
+\begin{enumerate}[label=\arabic*)]
+\item Identifier le point limite.
+\item Choisir équivalent ou DL selon les compensations.
+\item Choisir l'ordre avant de calculer.
+\item Composer seulement avec une quantité qui tend vers $0$.
+\item Tronquer proprement et contrôler le reste.
+\item Pour une asymptote à l'infini, poser souvent $t=1/x$.
+\end{enumerate}
+
+\textbf{Erreurs classiques.}
+\begin{itemize}[label=$\triangleright$]
+\item Additionner des équivalents sans vérifier les compensations.
+\item Écrire un équivalent nul.
+\item Utiliser un DL en $0$ sans changement de variable.
+\item Oublier le domaine de $\ln(1+x)$ ou de $(1+x)^\alpha$.
+\item Tronquer trop tôt dans un quotient ou une composition.
+\item Confondre égalité globale, série entière et DL local.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}
