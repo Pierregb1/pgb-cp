@@ -232,6 +232,22 @@
   }
 ,
   {
+    "titre": "analyse 5",
+    "fichier": "docs/math superieure cours analyse 5.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "analyse fiche recap 1",
+    "fichier": "docs/math superieure cours analyse fiche recap 1.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "cours"
+  }
+,
+  {
     "titre": "bases logique et raisonnement",
     "fichier": "docs/math superieure cours bases logique et raisonnement.pdf",
     "matiere": "maths",
@@ -314,6 +330,30 @@
   {
     "titre": "analyse chap 2",
     "fichier": "docs/math superieure td analyse chap 2.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "analyse chap 3 bis",
+    "fichier": "docs/math superieure td analyse chap 3 bis.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "analyse chap 3",
+    "fichier": "docs/math superieure td analyse chap 3.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "exercice"
+  }
+,
+  {
+    "titre": "analyse chap 4",
+    "fichier": "docs/math superieure td analyse chap 4.pdf",
     "matiere": "maths",
     "niveau": "superieur",
     "type": "exercice"
