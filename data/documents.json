@@ -32,6 +32,14 @@
   }
 ,
   {
+    "titre": " revision epreuve spé math",
+    "fichier": "docs/math premiere cours  revision epreuve spé math.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
     "titre": "fonction exponentielle",
     "fichier": "docs/math premiere cours fonction exponentielle.pdf",
     "matiere": "maths",
@@ -696,6 +704,14 @@
   }
 ,
   {
+    "titre": "grand oral proba",
+    "fichier": "docs/math terminale cours grand oral proba.pdf",
+    "matiere": "maths",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
     "titre": "géométrie collège-  term",
     "fichier": "docs/math terminale cours géométrie collège-_ term.pdf",
     "matiere": "maths",
@@ -930,6 +946,14 @@
   {
     "titre": "transfo chimique",
     "fichier": "docs/physique premiere cours transfo chimique.pdf",
+    "matiere": "physique",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "transition terminale",
+    "fichier": "docs/physique premiere cours transition terminale.pdf",
     "matiere": "physique",
     "niveau": "premiere",
     "type": "cours"
