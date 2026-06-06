@@ -1,279 +1,723 @@
 [
   {
-    "title": "Nombre miroir",
-    "statement": "On prend un entier n, on inverse ses chiffres et on additionne les deux trouver des conditions pour qu'il soit un nombre palindrome",
-    "hint": "Écris n avec le système décimale décomposer.",
-    "solution": "n + miroir(n) = premier coeff*dernier coeff +... , si produit coeef > 10 alors pas palindrome sinon palimdrome ssi chaque produit de coeff <10 et si on répète l'opération?.",
-    "formula": "il y a une majorité de nombres qui à partir d'une certaine itération vont être palimdrome mais il existent certains qui ne le seront jamais cf : nombre de Lychrel"
+    "title": "La calculatrice",
+    "statement": "Une calculatrice démarre à 0 et n'autorise que quatre opérations avec 2003 : ajouter, soustraire, multiplier ou diviser par 2003. Déterminer le nombre minimal d'opérations pour afficher 2004.",
+    "hint": "Cherche d'abord à fabriquer le nombre 1, puis ajoute 2003.",
+    "solution": "On part de 0. En une opération on ne peut obtenir que 2003 ou -2003, ou rester à 0 par multiplication/division. En deux opérations, pour finir à 2004 il faudrait venir de 1 par +2003, de 4007 par -2003, de 2004/2003 par multiplication, ou de 2004×2003 par division. Or, depuis 0 en une opération, aucun de ces nombres n'est accessible sauf 2003 et -2003. Trois opérations suffisent : 0 + 2003 = 2003, puis 2003 / 2003 = 1, puis 1 + 2003 = 2004. Le minimum est donc 3 opérations.",
+    "formula": "0 → 2003 → 1 → 2004"
   },
- {
-"title": "Somme des impairs",
-"statement": "On additionne les n premiers nombres impairs trouver une expression simple de cette somme",
-"hint": "Regarde les premiers cas et dessine des carrés",
-"solution": "1+3+5+...+(2n-1)=n^2 on peut le voir géométriquement ou par récurrence",
-"formula": "ce résultat est lié aux nombres carrés et à la construction géométrique des entiers"
-},
-
-{
-"title": "Divisibilité par 9",
-"statement": "Trouver une condition simple pour savoir si un nombre est divisible par 9 à partir de ses chiffres",
-"hint": "Écris le nombre en base 10",
-"solution": "comme 10≡1 mod 9 alors un nombre est congru à la somme de ses chiffres modulo 9",
-"formula": "n ≡ somme des chiffres mod 9 propriété utilisée en arithmétique modulaire"
-},
-
-{
-"title": "Carrés modulo 4",
-"statement": "Quels sont les restes possibles d’un carré modulo 4",
-"hint": "Tester les cas n pair et n impair",
-"solution": "n pair donne 0 mod 4 et n impair donne 1 mod 4 donc un carré est toujours 0 ou 1 mod 4",
-"formula": "n^2 ≡ 0 ou 1 mod 4 utilisé en théorie des nombres"
-},
-
-{
-"title": "Produit de trois entiers",
-"statement": "Montrer que le produit de trois entiers consécutifs est toujours divisible par 6",
-"hint": "Parmi trois entiers consécutifs regarde la divisibilité par 2 et 3",
-"solution": "un est pair donc divisible par 2 et un est multiple de 3 donc produit divisible par 6",
-"formula": "n(n+1)(n+2) divisible par 6 propriété classique en arithmétique"
-},
-
-{
-"title": "Forme des nombres premiers",
-"statement": "Montrer que tout nombre premier supérieur à 3 est de la forme 6k±1",
-"hint": "Regarder les restes modulo 6",
-"solution": "les autres formes sont divisibles par 2 ou 3 donc seuls 6k±1 peuvent être premiers",
-"formula": "p=6k±1 propriété fondamentale en théorie des nombres"
-},
-
-{
-"title": "Somme des cubes",
-"statement": "Trouver une formule pour la somme des cubes des n premiers entiers",
-"hint": "Comparer avec la somme des entiers",
-"solution": "1^3+2^3+...+n^3=(n(n+1)/2)^2",
-"formula": "identité remarquable liant somme des cubes et nombres triangulaires"
-},
-
-{
-"title": "Suite de Syracuse",
-"statement": "On définit une suite en divisant par 2 si pair et en faisant 3n+1 si impair que peut-on conjecturer",
-"hint": "Tester plusieurs valeurs",
-"solution": "toutes les suites semblent atteindre 1 mais cela n’est toujours pas démontré",
-"formula": "problème ouvert célèbre appelé conjecture de Collatz"
-},
-
-{
-"title": "Nombre triangulaire carré",
-"statement": "Existe-t-il des nombres qui sont à la fois triangulaires et carrés",
-"hint": "Résoudre une équation",
-"solution": "il faut résoudre n(n+1)/2=m^2 ce qui donne une équation de Pell",
-"formula": "équation de Pell classique en théorie des nombres"
-},
-
-{
-"title": "Parité des puissances",
-"statement": "Étudier la parité de n^k",
-"hint": "Regarder n pair ou impair",
-"solution": "si n est pair alors n^k est pair sinon il est impair",
-"formula": "structure de Z/2Z en arithmétique modulaire"
-},
-
-{
-"title": "PGCD consécutif",
-"statement": "Quel est le PGCD de deux entiers consécutifs",
-"hint": "Utiliser Bézout",
-"solution": "pgcd(n,n+1)=1 car ils n’ont pas de diviseur commun",
-"formula": "théorème de Bézout en arithmétique"
-},
-
-{
-"title": "Carré parfait",
-"statement": "Quand un nombre est-il un carré parfait modulo 3",
-"hint": "Tester les cas",
-"solution": "un carré vaut 0 ou 1 modulo 3",
-"formula": "n^2 ≡ 0 ou 1 mod 3 utilisé dans les preuves d’irrationalité"
-},
-
-{
-"title": "Nombre parfait",
-"statement": "Trouver un exemple de nombre égal à la somme de ses diviseurs propres",
-"hint": "Tester 6",
-"solution": "6=1+2+3 donc c’est un nombre parfait",
-"formula": "liens avec les nombres parfaits étudiés depuis Euclide"
-},
-
-{
-"title": "Exponentielle complexe",
-"statement": "Montrer que e^{iπ}+1=0",
-"hint": "Utiliser la formule d’Euler",
-"solution": "e^{iπ}=-1 donc somme nulle",
-"formula": "identité d’Euler reliant analyse et nombres complexes"
-},
-
-{
-"title": "Suite géométrique",
-"statement": "Étudier la limite de q^n",
-"hint": "Comparer |q| à 1",
-"solution": "tend vers 0 si |q|<1 diverge sinon",
-"formula": "analyse des suites géométriques"
-},
-{
-"title": "Suite de Conway (look-and-say)",
-"statement": "On part de 1 et on décrit les chiffres du terme précédent combien de temps la suite peut-elle croître",
-"hint": "1 → 11 → 21 → 1211 → ...",
-"solution": "la suite converge vers une structure stable et croît exponentiellement avec une constante universelle",
-"formula": "constante de Conway ≈ 1.303577 liée à la théorie des mots"
-},
-
-{
-"title": "Théorème des anniversaires",
-"statement": "Combien de personnes faut-il pour avoir une probabilité > 50% que deux aient le même anniversaire",
-"hint": "raisonner par complémentaire",
-"solution": "23 personnes suffisent ce qui est contre-intuitif",
-"formula": "problème de probabilité classique appelé birthday paradox"
-},
-
-{
-"title": "Nombre de partitions",
-"statement": "De combien de façons peut-on écrire un entier comme somme d’entiers",
-"hint": "tester pour n=4 ou 5",
-"solution": "croissance très rapide sans formule simple explicite",
-"formula": "fonction de partition étudiée par Hardy et Ramanujan"
-},
-
-{
-"title": "Constante de Kaprekar",
-"statement": "Prendre un nombre à 4 chiffres réarranger ses chiffres et soustraire combien d’itérations pour atteindre un point fixe",
-"hint": "tester avec 6174",
-"solution": "tous les nombres convergent vers 6174 en quelques étapes",
-"formula": "processus de Kaprekar fascinant en arithmétique"
-},
-
-{
-"title": "Suite de Golomb",
-"statement": "Suite où chaque entier apparaît un nombre de fois égal à sa valeur quelle est sa croissance",
-"hint": "regarder les premiers termes",
-"solution": "croissance lente et structure auto-référente",
-"formula": "suite définie par g(n)=1+g(n−g(g(n−1)))"
-},
-
-{
-"title": "Paradoxe de Banach-Tarski",
-"statement": "Peut-on découper une boule et la reconstituer en deux boules identiques",
-"hint": "utiliser des ensembles non mesurables",
-"solution": "oui en théorie mais nécessite l’axiome du choix",
-"formula": "résultat fondamental en théorie des ensembles"
-},
-
-{
-"title": "Problème du cavalier",
-"statement": "Peut-on parcourir un échiquier en passant une seule fois par chaque case avec un cavalier",
-"hint": "chercher un cycle hamiltonien",
-"solution": "oui il existe des solutions mais elles sont complexes",
-"formula": "problème classique en théorie des graphes"
-},
-
-{
-"title": "Constante de Feigenbaum",
-"statement": "Dans les bifurcations chaotiques existe-t-il une constante universelle",
-"hint": "regarder les systèmes dynamiques",
-"solution": "oui environ 4.669 et apparaît dans de nombreux systèmes",
-"formula": "constante universelle du chaos"
-},
-
-{
-"title": "Paradoxe de Monty Hall",
-"statement": "Faut-il changer de porte dans le jeu des 3 portes",
-"hint": "calculer les probabilités",
-"solution": "oui la probabilité passe de 1/3 à 2/3",
-"formula": "problème célèbre de probabilité conditionnelle"
-},
-
-{
-"title": "Suite de Recamán",
-"statement": "Suite définie par soustraction puis addition si négatif quelle est sa structure",
-"hint": "dessiner les arcs",
-"solution": "suite non périodique avec structure complexe",
-"formula": "suite a(n)=a(n−1)−n si possible sinon +n"
-},
-
-{
-"title": "Problème des ponts de Königsberg",
-"statement": "Peut-on traverser chaque pont une seule fois",
-"hint": "modéliser par un graphe",
-"solution": "non car trop de sommets de degré impair",
-"formula": "naissance de la théorie des graphes avec Euler"
-},
-
-{
-"title": "Nombre de Catalan",
-"statement": "Combien de façons d’associer des parenthèses correctement",
-"hint": "petits cas",
-"solution": "nombre donné par une formule combinatoire",
-"formula": "C_n=(2n)!/(n!(n+1)!)"
-},
-
-{
-"title": "Suite logistique",
-"statement": "Étudier la dynamique de x_{n+1}=rx_n(1−x_n)",
-"hint": "faire varier r",
-"solution": "comportement chaotique pour certaines valeurs",
-"formula": "modèle fondamental du chaos"
-},
-
-{
-"title": "Problème des 100 prisonniers",
-"statement": "100 prisonniers doivent trouver leur numéro stratégie optimale",
-"hint": "utiliser des cycles",
-"solution": "probabilité de survie ≈ 31%",
-"formula": "problème célèbre de stratégie et permutations"
-},
-
-{
-"title": "Constante de Champernowne",
-"statement": "Construire un nombre en concaténant les entiers est-il normal",
-"hint": "écrire 0.123456...",
-"solution": "oui il est normal en base 10",
-"formula": "nombre normal introduit par Champernowne"
-},
-
-{
-"title": "Suite de Collatz accélérée",
-"statement": "Peut-on simplifier la suite de Syracuse",
-"hint": "regrouper les étapes",
-"solution": "on peut étudier uniquement les impairs",
-"formula": "forme optimisée de la conjecture de Collatz"
-},
-
-{
-"title": "Problème du carré magique",
-"statement": "Remplir une grille avec des nombres pour avoir des sommes égales",
-"hint": "tester 3x3",
-"solution": "il existe une structure unique à symétrie près",
-"formula": "liens avec algèbre et combinatoire"
-},
-
-{
-"title": "Nombre de Graham",
-"statement": "Quel est le plus grand nombre utilisé en mathématiques",
-"hint": "penser aux puissances itérées",
-"solution": "nombre immense utilisé en combinatoire",
-"formula": "lié à la théorie de Ramsey"
-},
-
-{
-"title": "Paradoxe du menteur",
-"statement": "Cette phrase est fausse vrai ou faux",
-"hint": "raisonner logiquement",
-"solution": "contradiction logique",
-"formula": "problème fondamental en logique"
-},
-
-{
-"title": "Suite de Thue-Morse",
-"statement": "Suite binaire construite par inversion quelle est sa structure",
-"hint": "0→01→0110...",
-"solution": "suite sans répétition triviale",
-"formula": "liens avec combinatoire et fractales"
-}
+  {
+    "title": "Les routes de Numland",
+    "statement": "Énoncé reformulé d'après le titre public : dans un pays imaginaire, les villes ou points sont reliés par des routes obéissant à une règle numérique. Il faut déterminer un trajet, une impossibilité ou un nombre minimal de déplacements.",
+    "hint": "Modélise la situation par un graphe : les lieux sont des sommets et les routes des arêtes.",
+    "solution": "La méthode consiste à traduire le dessin ou les règles en graphe. On regarde ensuite les invariants : parité des degrés, connexité, distances minimales ou coloriage des sommets. Si une route doit être prise une seule fois, on applique le critère d'Euler : un parcours eulérien existe seulement s'il y a 0 ou 2 sommets de degré impair. Si l'objectif est le plus court chemin, on effectue une exploration en largeur. Sans la figure originale, cette entrée donne la résolution-type et non la solution numérique officielle.",
+    "formula": "G=(V,E), distance minimale par BFS ou critère eulérien"
+  },
+  {
+    "title": "Le puzzle homothétique",
+    "statement": "Énoncé reformulé d'après le titre public : on dispose de pièces géométriques semblables ou agrandies par homothétie et il faut reconstituer une figure en respectant les proportions.",
+    "hint": "Repère le rapport d'homothétie et compare les aires, pas seulement les longueurs.",
+    "solution": "Dans un puzzle homothétique, les longueurs sont multipliées par un rapport k, tandis que les aires sont multipliées par k². La résolution consiste donc à identifier les pièces correspondantes, à imposer l'égalité des angles et la proportionnalité des côtés, puis à vérifier que la somme des aires des pièces reconstitue exactement l'aire de la figure cible. L'erreur classique est de confondre rapport de longueur et rapport d'aire.",
+    "formula": "longueurs × k ; aires × k^2"
+  },
+  {
+    "title": "Les lois d’héritage",
+    "statement": "Énoncé reformulé d'après le titre public : un partage d'héritage impose des contraintes arithmétiques ou proportionnelles entre plusieurs héritiers. Il faut trouver une répartition entière possible.",
+    "hint": "Écris chaque part sous forme d'inconnue et transforme les phrases en équations.",
+    "solution": "On note les parts x_1, x_2, ..., x_n. Les contraintes de l'énoncé donnent un système d'équations linéaires ou de congruences. On commence par résoudre dans les rationnels, puis on impose que les parts soient entières et positives. S'il y a des fractions du total, on cherche un multiple commun des dénominateurs ; s'il y a des restes, on utilise les congruences modulo les diviseurs imposés.",
+    "formula": "système linéaire + contraintes d'intégralité"
+  },
+  {
+    "title": "La raison des raisins",
+    "statement": "Énoncé reformulé d'après le titre public : une énigme à faire avec un partenaire autour d'une quantité de raisins, probablement fondée sur une astuce de comptage, de partage ou d'information cachée.",
+    "hint": "Distingue ce que chaque joueur sait, ce qu'il annonce, et ce qui peut être déduit.",
+    "solution": "La résolution-type est celle d'un problème d'information : on liste les configurations possibles au départ, puis chaque réponse du partenaire élimine des cas. Lorsque le nombre de configurations restantes tombe à un seul, la quantité cherchée est déterminée. Le cœur mathématique est donc un raisonnement par élimination successive.",
+    "formula": "ensemble des cas possibles puis filtrage logique"
+  },
+  {
+    "title": "Le carré narcissique",
+    "statement": "Énoncé reformulé d'après le titre public : trouver ou étudier un carré possédant une propriété d'auto-référence liée à ses chiffres ou à sa construction géométrique.",
+    "hint": "Teste les petits cas et cherche une propriété conservée par symétrie ou par écriture décimale.",
+    "solution": "Pour résoudre ce type d'énigme, on suppose que le nombre ou la figure vérifie la propriété annoncée, puis on traduit cette propriété en contraintes. En arithmétique décimale, on écrit le nombre chiffre par chiffre ; en géométrie, on impose l'égalité des côtés et des angles droits. Les contraintes réduisent rapidement les possibilités, que l'on vérifie ensuite une par une.",
+    "formula": "écriture décimale ou contraintes du carré"
+  },
+  {
+    "title": "La randonnée",
+    "statement": "Énoncé reformulé d'après le titre public : une randonnée impose des distances, des vitesses ou des dénivelés ; il faut retrouver une durée, une distance ou un itinéraire.",
+    "hint": "Ne moyenne pas directement les vitesses : reviens à distance = vitesse × temps.",
+    "solution": "On introduit les variables distance d, vitesse v et temps t. La relation fondamentale est d = vt. Si l'aller et le retour ont des vitesses différentes, la vitesse moyenne n'est pas la moyenne arithmétique des vitesses mais distance totale divisée par temps total. On additionne donc les temps de chaque portion, puis on simplifie.",
+    "formula": "d=vt ; v_moy = D_total/T_total"
+  },
+  {
+    "title": "Les échecs du tourfou",
+    "statement": "Énoncé reformulé d'après le titre public : une pièce hybride d'échecs, probablement entre tour et fou, se déplace sur un échiquier. Il faut déterminer des cases atteignables ou une stratégie.",
+    "hint": "Colorie l'échiquier et étudie les invariants de déplacement.",
+    "solution": "On modélise les cases comme des couples (i,j). Une tour conserve soit i soit j ; un fou conserve la couleur de la case, c'est-à-dire la parité de i+j. Une pièce hybride peut briser certains invariants mais pas forcément tous. La solution consiste à caractériser les cases accessibles par les règles autorisées, puis à conclure par connexité du graphe des déplacements.",
+    "formula": "cases (i,j), parité de i+j"
+  },
+  {
+    "title": "Le bar à logique",
+    "statement": "Énoncé reformulé d'après le titre public : des personnages dans un bar font des affirmations vraies ou fausses ; il faut déterminer qui dit vrai et quelle conclusion est possible.",
+    "hint": "Traduis chaque phrase par une proposition logique.",
+    "solution": "On note chaque affirmation P_i. Si un personnage ment toujours, son affirmation est fausse ; s'il dit toujours vrai, elle est vraie. On teste les distributions possibles de vérité et on élimine celles qui créent contradiction. La solution est la seule attribution cohérente avec toutes les phrases.",
+    "formula": "P_i ∈ {vrai,faux}, recherche de cohérence"
+  },
+  {
+    "title": "Quatre qui touchent",
+    "statement": "Énoncé reformulé d'après le titre public : quatre objets ou figures doivent se toucher selon certaines règles ; il faut trouver une configuration ou prouver qu'elle est impossible.",
+    "hint": "Représente les contacts par un graphe : un sommet par objet, une arête par contact.",
+    "solution": "La question se ramène souvent à savoir si un graphe de contacts est réalisable géométriquement. On vérifie d'abord les contraintes combinatoires : combien de contacts chaque objet doit-il avoir ? Puis on vérifie les contraintes géométriques : planéité, angles, distances ou impossibilités de croisement. Si toutes les contraintes sont compatibles, on construit une configuration ; sinon un invariant de graphe donne l'impossibilité.",
+    "formula": "graphe de contact, planéité"
+  },
+  {
+    "title": "L’âge du capitaine",
+    "statement": "Énoncé reformulé d'après le titre public : retrouver un âge à partir d'informations indirectes ou volontairement ambiguës.",
+    "hint": "Pose l'âge comme une inconnue entière et utilise les bornes réalistes.",
+    "solution": "On note a l'âge cherché. Les données de l'énoncé donnent des équations, des inégalités ou des congruences. Comme un âge est un entier positif dans un intervalle raisonnable, on résout d'abord symboliquement puis on filtre les valeurs possibles. La bonne réponse est celle qui satisfait toutes les contraintes simultanément.",
+    "formula": "a ∈ ℕ, contraintes + filtrage"
+  },
+  {
+    "title": "Le trésor",
+    "statement": "Énoncé reformulé d'après le titre public : une chasse au trésor donne des indications de distance, de direction ou de position. Il faut localiser le trésor.",
+    "hint": "Transforme les indications en lieux géométriques : droite, cercle, médiatrice, intersection.",
+    "solution": "Chaque indice définit un ensemble de positions possibles. Une distance fixe donne un cercle ; une égalité de distances donne une médiatrice ; une direction donne une droite ou une demi-droite. Le trésor se trouve à l'intersection des lieux géométriques compatibles. La solution complète consiste à construire ces lieux puis à vérifier l'unicité.",
+    "formula": "intersection de lieux géométriques"
+  },
+  {
+    "title": "Les moutons jordaniens",
+    "statement": "Énoncé reformulé d'après le titre public : un problème de troupeaux et de partage, probablement à base de fractions ou d'entiers.",
+    "hint": "Évite les fractions trop tôt : cherche un multiple commun.",
+    "solution": "On note N le nombre total de moutons. Les partages en fractions imposent que N soit multiple de certains dénominateurs. On écrit les parts, on impose que leur somme vaille N, puis on cherche le plus petit entier positif ou l'unique entier compatible avec les contraintes supplémentaires. Les problèmes classiques de troupeaux se résolvent ainsi par arithmétique élémentaire.",
+    "formula": "N multiple du PPCM des dénominateurs"
+  },
+  {
+    "title": "L’arpenteuse du moindre effort",
+    "statement": "Énoncé reformulé d'après le titre public : une arpenteuse cherche un trajet ou une mesure minimale sur un terrain.",
+    "hint": "Cherche une symétrie : beaucoup de plus courts chemins se redressent par réflexion.",
+    "solution": "Lorsqu'un trajet doit toucher une ligne ou contourner un obstacle, on utilise souvent la réflexion : on remplace un chemin brisé par une droite dans une figure symétrisée. Le plus court chemin devient alors le segment entre le point initial et l'image du point final. On revient ensuite à la figure originale pour obtenir le point de passage optimal.",
+    "formula": "principe de réflexion, inégalité triangulaire"
+  },
+  {
+    "title": "Les menteurs",
+    "statement": "Énoncé reformulé d'après le titre public : plusieurs personnes mentent ou disent la vérité ; il faut identifier les menteurs.",
+    "hint": "Teste les cas extrêmes : tous disent vrai, tous mentent, puis exactement k menteurs.",
+    "solution": "On représente chaque déclaration par une proposition. Si l'énoncé précise un nombre de menteurs, on teste les valeurs possibles de k et on vérifie quelles déclarations seraient vraies. Une solution est valide si le nombre de déclarations fausses coïncide avec le nombre de menteurs supposé. C'est un problème de point fixe logique.",
+    "formula": "k = nombre de propositions fausses"
+  },
+  {
+    "title": "Le phare",
+    "statement": "Énoncé reformulé d'après le titre public : une situation avec un phare met en jeu angles, distances ou visibilité.",
+    "hint": "Dessine un triangle rectangle et repère l'angle d'élévation ou de balayage.",
+    "solution": "La résolution-type utilise la trigonométrie. Si h est la hauteur du phare et d la distance horizontale, alors tan(theta)=h/d. Si le phare tourne, une durée peut aussi être convertie en angle par proportionnalité sur 360 degrés. On combine les relations pour isoler la grandeur inconnue.",
+    "formula": "tan(θ)=h/d"
+  },
+  {
+    "title": "Les dominos",
+    "statement": "Énoncé reformulé d'après le titre public : placer des dominos sur une grille ou compter des configurations.",
+    "hint": "Colorie la grille en damier : chaque domino couvre une case noire et une case blanche.",
+    "solution": "Un domino couvre toujours deux cases adjacentes de couleurs opposées dans un coloriage en damier. Donc, si une région contient un nombre différent de cases noires et blanches, elle ne peut pas être pavée par des dominos. Si les nombres sont égaux, ce n'est pas toujours suffisant, mais c'est la première condition à vérifier ; ensuite on construit ou on utilise un argument de couplage.",
+    "formula": "condition nécessaire : #noires = #blanches"
+  },
+  {
+    "title": "La taupe au logis",
+    "statement": "Énoncé reformulé d'après le titre public : une taupe se déplace dans un réseau de galeries ou sur une grille ; il faut prévoir sa position ou l'attraper.",
+    "hint": "Modélise les déplacements par des sommets et des arêtes.",
+    "solution": "On représente chaque emplacement possible par un sommet. Après n déplacements, l'ensemble des positions possibles est obtenu en prenant les voisins des positions possibles au temps n-1. Si une stratégie d'interception est demandée, on cherche une case qui appartient nécessairement à cet ensemble, ou on montre qu'aucune case n'est forcée.",
+    "formula": "positions possibles S_{n+1}=Vois(S_n)"
+  },
+  {
+    "title": "Le bus",
+    "statement": "Énoncé reformulé d'après le titre public : un problème de bus avec arrêts, passagers, horaires ou numéros.",
+    "hint": "Fais un tableau chronologique des montées, descentes ou horaires.",
+    "solution": "On résout en suivant l'évolution étape par étape. Pour des passagers, on met à jour effectif_final = effectif_initial + montées - descentes. Pour des horaires, on convertit tout en minutes. Pour une fréquence de bus, on utilise les congruences modulo l'intervalle de passage. Le tableau évite les pièges de narration.",
+    "formula": "N_{k+1}=N_k + M_k - D_k"
+  },
+  {
+    "title": "Les six pièces",
+    "statement": "Énoncé reformulé d'après le titre public : six pièces de monnaie doivent être disposées, retournées ou distinguées selon une contrainte logique.",
+    "hint": "Cherche un invariant : parité du nombre de faces visibles, somme des valeurs ou symétrie.",
+    "solution": "Les énigmes de pièces reposent souvent sur des états binaires. On code pile par 0 et face par 1. Retourner une pièce change un bit ; retourner plusieurs pièces change la parité selon le nombre retourné. On suit alors un invariant modulo 2 ou on explore les 2^6 états possibles pour trouver la stratégie minimale.",
+    "formula": "états dans {0,1}^6, invariant modulo 2"
+  },
+  {
+    "title": "Le dernier couvert",
+    "statement": "Énoncé reformulé d'après le titre public : des couverts sont placés, retirés ou partagés autour d'une table ; il faut déterminer celui qui reste ou manque.",
+    "hint": "Numérote les places et travaille modulo le nombre de places.",
+    "solution": "On numérote les places de 0 à n-1. Une action répétée autour d'une table se traduit par une progression modulo n. La position finale est obtenue en ajoutant le pas à chaque étape et en réduisant modulo n. Si des objets sont retirés, on met à jour la liste circulaire comme dans le problème de Josephus.",
+    "formula": "position finale modulo n"
+  },
+  {
+    "title": "La quadrature du cube",
+    "statement": "Énoncé reformulé d'après le titre public : transformer ou découper un cube pour obtenir une figure carrée ou comparer surfaces et volumes.",
+    "hint": "Sépare clairement aire et volume : un cube a une surface en unités carrées et un volume en unités cubes.",
+    "solution": "La résolution utilise les invariants géométriques. Si l'on découpe et réassemble sans perte, le volume total est conservé. Si l'on observe des faces, l'aire peut changer selon les découpes exposées. On écrit donc les volumes des pièces et les aires des faces concernées, puis on cherche une configuration qui respecte ces égalités.",
+    "formula": "volume conservé ; aire à recalculer"
+  },
+  {
+    "title": "L’ordre alphabétique des nombres",
+    "statement": "Énoncé reformulé d'après le titre public : classer des nombres écrits en toutes lettres selon l'ordre alphabétique et non selon l'ordre numérique.",
+    "hint": "Écris les nombres en lettres sans te laisser influencer par leur valeur.",
+    "solution": "La résolution consiste à choisir une convention d'écriture, puis à comparer les mots lettre par lettre. Par exemple, « deux » vient avant « dix » ou après selon la première lettre puis les suivantes. L'ordre alphabétique n'est pas compatible avec l'ordre usuel des entiers ; on doit donc raisonner comme dans un dictionnaire.",
+    "formula": "ordre lexicographique sur les écritures en lettres"
+  },
+  {
+    "title": "Le zigzag",
+    "statement": "Énoncé reformulé d'après le titre public : trouver ou compter un chemin en zigzag soumis à des contraintes.",
+    "hint": "Code chaque virage par gauche/droite ou haut/bas.",
+    "solution": "Un zigzag peut être codé par une suite de directions. On interdit généralement deux mouvements identiques consécutifs ou on impose une alternance. La résolution revient alors à compter les suites admissibles ou à chercher un chemin dans un graphe d'états dont l'état contient la dernière direction prise.",
+    "formula": "comptage de suites alternées"
+  },
+  {
+    "title": "Les deux vases",
+    "statement": "Énoncé reformulé d'après le titre public : deux vases ou récipients permettent de mesurer une quantité par remplissages et transvasements.",
+    "hint": "Utilise le PGCD des contenances.",
+    "solution": "Avec deux vases de contenances a et b, les quantités mesurables exactement sont des multiples de pgcd(a,b), tant qu'elles ne dépassent pas la capacité utile. Une stratégie consiste à remplir un vase, verser dans l'autre jusqu'à ce qu'il soit plein, vider, puis recommencer. C'est l'algorithme d'Euclide sous forme concrète.",
+    "formula": "quantités mesurables multiples de pgcd(a,b)"
+  },
+  {
+    "title": "Les déménageurs",
+    "statement": "Énoncé reformulé d'après le titre public : organiser des déménagements ou transports sous contraintes de poids, volume ou trajets.",
+    "hint": "Cherche une borne inférieure avant de construire une solution.",
+    "solution": "On commence par calculer une borne minimale : total à transporter divisé par capacité maximale, ou nombre minimal de trajets imposé par l'objet le plus contraignant. Ensuite on construit un planning qui atteint cette borne. Si on y arrive, il est optimal ; sinon on améliore la borne avec une contrainte supplémentaire.",
+    "formula": "minimum ≥ plafond(total/capacité)"
+  },
+  {
+    "title": "Le trisablier",
+    "statement": "Énoncé reformulé d'après le titre public : mesurer un temps avec trois sabliers ou trois durées imposées.",
+    "hint": "Les instants utiles sont les sommes et différences des durées de sabliers.",
+    "solution": "On note les durées a, b, c. En retournant un sablier à certains instants, on crée des événements aux temps obtenus par addition et soustraction de ces durées. La résolution consiste à construire une ligne du temps et à chercher la durée cible comme combinaison entière de a, b et c, tout en respectant que les sabliers ne peuvent être retournés qu'aux instants observables.",
+    "formula": "t = m a + n b + p c avec contraintes pratiques"
+  },
+  {
+    "title": "Antiproportionnellement",
+    "statement": "Un orchestre de 70 musiciens joue une symphonie en 70 minutes. Que se passe-t-il si l'on double le nombre de musiciens ? Puis, dans le même esprit, résoudre des problèmes où plusieurs robinets remplissent ensemble un bassin.",
+    "hint": "La durée d'une symphonie ne dépend pas du nombre de musiciens ; pour les robinets, additionne les débits, pas les temps.",
+    "solution": "La réponse humoristique pour l'orchestre est 70 minutes : deux fois plus de musiciens ne jouent pas deux fois plus vite. Pour les robinets, si un robinet remplit en a heures et un autre en b heures, leurs débits sont 1/a et 1/b bassin par heure. Ensemble, le débit vaut 1/a+1/b, donc le temps est 1/(1/a+1/b)=ab/(a+b). La règle générale est d'additionner les vitesses de travail, jamais les durées.",
+    "formula": "T = 1/(1/a+1/b) = ab/(a+b)"
+  },
+  {
+    "title": "La forêt de Bachmakov",
+    "statement": "Énoncé reformulé d'après le titre public : une forêt ou un réseau d'arbres cache un problème de chemins, de visibilité ou de dénombrement.",
+    "hint": "Cherche si le mot 'forêt' désigne aussi un graphe sans cycle.",
+    "solution": "En théorie des graphes, une forêt est un graphe sans cycle. Si l'énigme joue sur cette idée, on utilise la propriété : une forêt à n sommets et c composantes possède n-c arêtes. Pour prouver l'impossibilité d'un trajet cyclique, on montre qu'un cycle devrait exister alors que la structure est acyclique.",
+    "formula": "forêt : |E|=|V|-c"
+  },
+  {
+    "title": "Les noyaux",
+    "statement": "Énoncé reformulé d'après le titre public : des noyaux sont comptés, distribués ou disposés selon une règle arithmétique.",
+    "hint": "Cherche une relation de récurrence ou une conservation du total.",
+    "solution": "On note n_k le nombre de noyaux à l'étape k. Si l'on en ajoute ou retire selon une règle fixe, on obtient une suite arithmétique ou géométrique. Si les noyaux sont répartis entre récipients, on écrit une conservation du total et des congruences pour les restes. La solution vient du système ainsi obtenu.",
+    "formula": "n_{k+1}=f(n_k) ou conservation du total"
+  },
+  {
+    "title": "Les citrouilles",
+    "statement": "Énoncé reformulé d'après le titre public : une énigme de citrouilles, probablement autour d'Halloween, avec comptage, tailles ou partages.",
+    "hint": "Classe les citrouilles par catégorie et fais un tableau.",
+    "solution": "La résolution-type consiste à poser une variable par catégorie puis à utiliser les contraintes de somme, de différence ou de proportion. Si les citrouilles sont arrangées en grille, on ajoute des contraintes de lignes et colonnes. Les solutions entières se trouvent ensuite par élimination.",
+    "formula": "système d'équations entières"
+  },
+  {
+    "title": "Le puzzudochec",
+    "statement": "Énoncé reformulé d'après le titre public : mélange d'échecs, de sudoku et de puzzle ; il faut remplir ou placer des pièces sous contraintes croisées.",
+    "hint": "Sépare les règles : contraintes de ligne/colonne, contraintes de bloc, contraintes d'attaque aux échecs.",
+    "solution": "On résout comme un problème de satisfaction de contraintes. Chaque case a un domaine de valeurs possibles. Les règles de sudoku éliminent les doublons sur lignes, colonnes et régions ; les règles d'échecs ajoutent des interdictions d'attaque. À chaque étape, on choisit la case la plus contrainte, on élimine, puis on revient en arrière si contradiction.",
+    "formula": "CSP : domaines + contraintes + backtracking"
+  },
+  {
+    "title": "Les sapins du Ladies’ Diary",
+    "statement": "Énoncé reformulé d'après le titre public : problème ancien de géométrie ou d'arithmétique autour de sapins, issu du Ladies’ Diary du XVIIIe siècle.",
+    "hint": "Les vieux problèmes cachent souvent une équation de distances ou de partage.",
+    "solution": "On traduit la situation en équations. Si les sapins sont des points, on utilise les distances, Pythagore ou les aires. Si c'est un partage, on impose des proportions. La résolution complète consiste à réduire le problème à une équation polynomiale ou diophantienne, puis à retenir la solution positive compatible avec le contexte.",
+    "formula": "Pythagore ou équation diophantienne"
+  },
+  {
+    "title": "La vérité est-elle Venn ?",
+    "statement": "Énoncé reformulé d'après le titre public : déterminer la vérité d'affirmations à l'aide de diagrammes de Venn.",
+    "hint": "Dessine les ensembles et place d'abord les informations certaines.",
+    "solution": "Les propositions du type 'tous', 'certains', 'aucun' se traduisent en inclusions, intersections non vides ou intersections vides. Un diagramme de Venn permet de visualiser ces contraintes. La solution consiste à remplir les régions forcées, à barrer les régions impossibles, puis à vérifier quelle conclusion est imposée dans tous les diagrammes compatibles.",
+    "formula": "A⊂B, A∩B=∅, A∩B≠∅"
+  },
+  {
+    "title": "Les tonneaux d’Ozanam",
+    "statement": "Énoncé reformulé d'après le titre public : récréation mathématique avec des tonneaux, du vin et du chocolat ; il faut probablement mesurer ou partager sans balance parfaite.",
+    "hint": "Note les contenances et les quantités ; cherche une conservation.",
+    "solution": "Les problèmes d'Ozanam sont souvent des problèmes de transvasement ou de partage équitable. On écrit la quantité totale conservée, puis on cherche une suite d'opérations qui atteint la répartition voulue. L'existence dépend généralement des multiples du PGCD des contenances disponibles.",
+    "formula": "transvasements, conservation, PGCD"
+  },
+  {
+    "title": "Les trois chemins",
+    "statement": "Énoncé reformulé d'après le titre public : parmi trois chemins caractérisés par des couleurs ou règles différentes, trouver celui qui satisfait les contraintes.",
+    "hint": "Compare les chemins par invariant : longueur, parité, couleur ou nombre de virages.",
+    "solution": "On encode chaque chemin par une suite de cases ou d'arêtes. Les contraintes de couleur imposent des transitions autorisées. On élimine les chemins qui violent une contrainte locale, puis on compare ceux qui restent avec les contraintes globales : arrivée, longueur minimale, absence de croisement ou nombre de passages.",
+    "formula": "chemin admissible dans un graphe coloré"
+  },
+  {
+    "title": "Le calendrier de l’Avent",
+    "statement": "Énoncé reformulé d'après le titre public : un jeu de saute-mouton jusqu'à Noël ; il faut organiser ou prédire des sauts dans un calendrier.",
+    "hint": "Numérote les cases du calendrier et travaille modulo le nombre de cases restantes.",
+    "solution": "Un jeu de sauts répétés se modélise par une suite d'indices. À chaque étape, on avance d'un pas fixé ou variable et on réduit modulo le nombre de cases disponibles. Si une case est retirée, la structure devient celle du problème de Josephus. On suit donc la liste circulaire jusqu'à la date demandée.",
+    "formula": "récurrence modulaire / Josephus"
+  },
+  {
+    "title": "Vingt-cinq à quarrer",
+    "statement": "Énoncé reformulé d'après le titre public : tracer des carrés autour ou à partir de 25 points en respectant des contraintes.",
+    "hint": "Cherche une grille 5×5 ou des coordonnées entières.",
+    "solution": "On place les 25 points dans un repère. Un carré est déterminé par un côté ou par deux sommets opposés ; ses autres sommets se calculent par rotation de 90 degrés. On compte ou construit les carrés qui respectent les contraintes en vérifiant que tous les sommets nécessaires appartiennent à l'ensemble de points.",
+    "formula": "rotation de 90° : (x,y) → (-y,x)"
+  },
+  {
+    "title": "Des oseilles et des sous",
+    "statement": "Énoncé reformulé d'après le titre public : un système monétaire étrange impose de payer certaines sommes avec des pièces ou billets inhabituels.",
+    "hint": "Cherche les montants représentables par combinaisons entières.",
+    "solution": "Si les valeurs des pièces sont a_1,...,a_n, les sommes payables sont les combinaisons m_1a_1+...+m_na_n avec m_i entiers naturels. Si l'on peut rendre la monnaie, on autorise des coefficients entiers relatifs. Le PGCD des valeurs donne une condition nécessaire : toute somme représentable est multiple de ce PGCD.",
+    "formula": "somme = ∑ m_i a_i ; condition PGCD"
+  },
+  {
+    "title": "Les dernières olives",
+    "statement": "Énoncé reformulé d'après le titre public : jeu de prise d'olives pendant un repas ; il faut déterminer une stratégie gagnante.",
+    "hint": "Travaille à rebours depuis les positions perdantes.",
+    "solution": "Dans un jeu impartial fini, on classe les positions en perdantes et gagnantes. Une position est gagnante s'il existe un coup vers une position perdante ; elle est perdante si tous les coups mènent à des positions gagnantes. En partant de 0 olive ou de la position finale, on remonte jusqu'au nombre initial pour trouver la stratégie optimale.",
+    "formula": "positions P/N en théorie des jeux"
+  },
+  {
+    "title": "2025 au carré",
+    "statement": "Énoncé reformulé d'après le titre public : l'année 2025 possède une propriété de carré mêlant calendrier, géométrie et arithmétique.",
+    "hint": "Remarque que 2025 = 45².",
+    "solution": "Le point de départ arithmétique est 2025 = 45². Toute résolution utilise cette identité pour transformer un problème de calendrier ou de construction en carré parfait. On exploite ensuite les facteurs de 2025 : 2025 = 3^4 × 5^2 = 45², ce qui donne plusieurs découpages rectangulaires possibles.",
+    "formula": "2025=45^2=3^4×5^2"
+  },
+  {
+    "title": "Poly et la chocolaterie",
+    "statement": "Énoncé reformulé d'après le titre public : ranger des barres chocolatées dans une boîte sans les croquer, sous contraintes de dimensions.",
+    "hint": "Compare les volumes, puis les dimensions une par une.",
+    "solution": "Un rangement est possible seulement si le volume total des barres ne dépasse pas celui de la boîte, mais cette condition n'est pas suffisante. Il faut ensuite vérifier les dimensions : orientation des barres, couches possibles, largeur et hauteur restantes. On procède par essais structurés et élimination des orientations impossibles.",
+    "formula": "volume nécessaire ≤ volume disponible"
+  },
+  {
+    "title": "L’échiquier parfait",
+    "statement": "Énoncé reformulé d'après le titre public : une règle nouvelle sur un échiquier de 64 cases demande une configuration parfaite.",
+    "hint": "Cherche un coloriage ou une symétrie de l'échiquier.",
+    "solution": "Sur un échiquier, les invariants naturels sont la couleur des cases, les lignes, colonnes, diagonales et symétries. On encode une case par (i,j). Les contraintes d'attaque, de distance ou de couverture deviennent des relations sur i et j. La solution consiste à construire une configuration qui couvre toutes les cases exactement comme demandé, ou à prouver l'impossibilité par comptage.",
+    "formula": "échiquier : coordonnées (i,j), couleur i+j mod 2"
+  },
+  {
+    "title": "Un nouveau jeu",
+    "statement": "Énoncé reformulé d'après l'accroche publique : deux joueurs déplacent des pions noirs et blancs sur un échiquier spécial. Les déplacements suivent des chemins de cases de même couleur ou alternées, sans sauter les pions, et il faut capturer le dernier pion adverse.",
+    "hint": "Construis le graphe des déplacements légaux depuis la position finale.",
+    "solution": "La résolution se fait en théorie des jeux sur graphe. À partir de la position donnée, on liste les coups légaux des noirs. Un coup est gagnant s'il amène dans une position où le pion blanc ne peut plus éviter la capture. On élimine donc les coups qui laissent une fuite, puis on retient celui qui contrôle toutes les réponses adverses. Sans la figure B de l'article, la stratégie exacte ne peut pas être reconstituée de façon certaine.",
+    "formula": "graphe des coups, stratégie gagnante"
+  },
+  {
+    "title": "Grebsginok",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Les chevaux de Troyes",
+    "statement": "Énoncé reformulé d'après le titre public : un problème met en scène des animaux pour cacher une question de comptage, de tri ou de contraintes entières.",
+    "hint": "Remplace chaque catégorie par une variable entière.",
+    "solution": "On pose une variable pour chaque type d'animal ou chaque groupe. Les phrases de l'énoncé deviennent des équations linéaires, des inégalités ou des contraintes de divisibilité. On résout le système, puis on élimine les solutions non entières ou négatives. Dans les problèmes de classement, on ajoute les contraintes d'ordre.",
+    "formula": "système d'équations en entiers naturels"
+  },
+  {
+    "title": "Le tissu carré",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Le démon des multiples",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Les monstres des lochs",
+    "statement": "Énoncé reformulé d'après le titre public : un problème met en scène des animaux pour cacher une question de comptage, de tri ou de contraintes entières.",
+    "hint": "Remplace chaque catégorie par une variable entière.",
+    "solution": "On pose une variable pour chaque type d'animal ou chaque groupe. Les phrases de l'énoncé deviennent des équations linéaires, des inégalités ou des contraintes de divisibilité. On résout le système, puis on élimine les solutions non entières ou négatives. Dans les problèmes de classement, on ajoute les contraintes d'ordre.",
+    "formula": "système d'équations en entiers naturels"
+  },
+  {
+    "title": "Les carrés latins",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Les bottes de 7 lieues",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les dés collés",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Le carré triangulé",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "La douane des animaux",
+    "statement": "Énoncé reformulé d'après le titre public : un problème met en scène des animaux pour cacher une question de comptage, de tri ou de contraintes entières.",
+    "hint": "Remplace chaque catégorie par une variable entière.",
+    "solution": "On pose une variable pour chaque type d'animal ou chaque groupe. Les phrases de l'énoncé deviennent des équations linéaires, des inégalités ou des contraintes de divisibilité. On résout le système, puis on élimine les solutions non entières ou négatives. Dans les problèmes de classement, on ajoute les contraintes d'ordre.",
+    "formula": "système d'équations en entiers naturels"
+  },
+  {
+    "title": "La puce multiplicative",
+    "statement": "Énoncé reformulé d'après l'accroche publique : une puce se déplace sur une grille de table de multiplication jusqu'à 10. Elle effectue une boucle de cases voisines ; les différences entre valeurs des cases successives doivent être toutes distinctes et former une suite d'entiers consécutifs à partir de 0. Trouver si une boucle plus longue que l'exemple donné est possible.",
+    "hint": "Code la grille par les valeurs ij et cherche les différences possibles entre cases voisines.",
+    "solution": "On transforme la grille en graphe : chaque case (i,j) porte la valeur ij et deux cases voisines sont reliées si elles se touchent horizontalement, verticalement ou diagonalement. Un bond reçoit comme étiquette la différence absolue des deux valeurs. On cherche alors un cycle dont les étiquettes sont exactement 0,1,...,m. La méthode complète consiste à énumérer les cycles simples possibles et à éliminer ceux où une différence se répète. Sans la figure et les données exactes de l'article, on ne peut pas garantir la longueur maximale officielle ; le fichier donne ici la modélisation correcte.",
+    "formula": "case (i,j) -> ij ; étiquette |ij-kl|"
+  },
+  {
+    "title": "Le code secret",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Les trois dames",
+    "statement": "Énoncé reformulé d'après le titre public : placer ou déplacer des pièces sur un échiquier afin d'atteindre une configuration imposée ou de prouver qu'elle est impossible.",
+    "hint": "Utilise les coordonnées des cases et les invariants de couleur, de diagonale ou de ligne.",
+    "solution": "On code chaque case par un couple (i,j). Les contraintes de ligne, colonne ou diagonale deviennent des égalités ou différences constantes : même ligne si i constant, même colonne si j constant, même diagonale si i+j ou i-j constant. On liste les cases contrôlées par chaque pièce, puis on cherche une configuration couvrant exactement les cases demandées. L'impossibilité se prouve souvent par coloriage ou par comptage.",
+    "formula": "case (i,j), diagonales i+j et i-j"
+  },
+  {
+    "title": "La nuée d’étourneaux",
+    "statement": "Énoncé reformulé d'après le titre public : un problème met en scène des animaux pour cacher une question de comptage, de tri ou de contraintes entières.",
+    "hint": "Remplace chaque catégorie par une variable entière.",
+    "solution": "On pose une variable pour chaque type d'animal ou chaque groupe. Les phrases de l'énoncé deviennent des équations linéaires, des inégalités ou des contraintes de divisibilité. On résout le système, puis on élimine les solutions non entières ou négatives. Dans les problèmes de classement, on ajoute les contraintes d'ordre.",
+    "formula": "système d'équations en entiers naturels"
+  },
+  {
+    "title": "Nombres triés",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Le facteur modulo",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Le carré fantastique",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Associativité",
+    "statement": "Énoncé reformulé d'après le titre public : une règle portant sur les mots, les lettres, la vérité ou les parenthèses demande un raisonnement logique ou combinatoire.",
+    "hint": "Formalise la règle avant de calculer.",
+    "solution": "On remplace les phrases par des objets mathématiques : propositions logiques, mots, permutations ou parenthésages. La résolution consiste à appliquer exactement la règle, sans importer l'intuition usuelle. Pour l'associativité, par exemple, on compare (a*b)*c et a*(b*c). Pour les lettres, on travaille avec l'ordre lexicographique ou un graphe de connexions.",
+    "formula": "logique propositionnelle, ordre lexicographique, parenthésage"
+  },
+  {
+    "title": "Un triangle double face",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Le tri",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "L’alphabet mélangé",
+    "statement": "Énoncé reformulé d'après le titre public : une règle portant sur les mots, les lettres, la vérité ou les parenthèses demande un raisonnement logique ou combinatoire.",
+    "hint": "Formalise la règle avant de calculer.",
+    "solution": "On remplace les phrases par des objets mathématiques : propositions logiques, mots, permutations ou parenthésages. La résolution consiste à appliquer exactement la règle, sans importer l'intuition usuelle. Pour l'associativité, par exemple, on compare (a*b)*c et a*(b*c). Pour les lettres, on travaille avec l'ordre lexicographique ou un graphe de connexions.",
+    "formula": "logique propositionnelle, ordre lexicographique, parenthésage"
+  },
+  {
+    "title": "Les chiffres ou les lettres",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Les étiquettes",
+    "statement": "Énoncé reformulé d'après l'accroche publique : dix joueurs portent chacun une étiquette invisible pour eux mais visible par les autres, contenant un nombre entre 1 et 10, avec répétitions possibles. Tous écrivent simultanément une prédiction pour leur propre nombre. L'équipe gagne si au moins un joueur devine juste. Trouver une stratégie collective meilleure que le hasard.",
+    "hint": "Travaille modulo 10 sur la somme des dix nombres.",
+    "solution": "La stratégie classique consiste à attribuer à l'avance à chaque joueur une classe de reste modulo 10. Le joueur i, voyant les neuf autres nombres, calcule leur somme S_i. Il annonce le nombre x entre 1 et 10 tel que S_i+x ait le reste qui lui a été attribué. Quelle que soit la somme totale réelle T, il existe exactement un reste attribué égal à T modulo 10. Le joueur correspondant annonce alors exactement son nombre. La stratégie garantit donc au moins une bonne réponse, au lieu de dépendre du hasard.",
+    "formula": "choisir x tel que S_i+x ≡ r_i (mod 10)"
+  },
+  {
+    "title": "Le quatre-quarts",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Les deux livres",
+    "statement": "Énoncé reformulé d'après le titre public : une règle portant sur les mots, les lettres, la vérité ou les parenthèses demande un raisonnement logique ou combinatoire.",
+    "hint": "Formalise la règle avant de calculer.",
+    "solution": "On remplace les phrases par des objets mathématiques : propositions logiques, mots, permutations ou parenthésages. La résolution consiste à appliquer exactement la règle, sans importer l'intuition usuelle. Pour l'associativité, par exemple, on compare (a*b)*c et a*(b*c). Pour les lettres, on travaille avec l'ordre lexicographique ou un graphe de connexions.",
+    "formula": "logique propositionnelle, ordre lexicographique, parenthésage"
+  },
+  {
+    "title": "La symétrie est dans le pré",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Consonnes connectées",
+    "statement": "Énoncé reformulé d'après le titre public : une règle portant sur les mots, les lettres, la vérité ou les parenthèses demande un raisonnement logique ou combinatoire.",
+    "hint": "Formalise la règle avant de calculer.",
+    "solution": "On remplace les phrases par des objets mathématiques : propositions logiques, mots, permutations ou parenthésages. La résolution consiste à appliquer exactement la règle, sans importer l'intuition usuelle. Pour l'associativité, par exemple, on compare (a*b)*c et a*(b*c). Pour les lettres, on travaille avec l'ordre lexicographique ou un graphe de connexions.",
+    "formula": "logique propositionnelle, ordre lexicographique, parenthésage"
+  },
+  {
+    "title": "Le code",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "Les dominos étoilés",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Le prix d’un café",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Chicken Run",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les six piles",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Les six suspects",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "L’ascension du mont Notone",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les seize chevaux",
+    "statement": "Énoncé reformulé d'après le titre public : un problème met en scène des animaux pour cacher une question de comptage, de tri ou de contraintes entières.",
+    "hint": "Remplace chaque catégorie par une variable entière.",
+    "solution": "On pose une variable pour chaque type d'animal ou chaque groupe. Les phrases de l'énoncé deviennent des équations linéaires, des inégalités ou des contraintes de divisibilité. On résout le système, puis on élimine les solutions non entières ou négatives. Dans les problèmes de classement, on ajoute les contraintes d'ordre.",
+    "formula": "système d'équations en entiers naturels"
+  },
+  {
+    "title": "La boucle à boucler",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les tulipes d’or et d’argent",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "La règle saint-exupérienne",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "L’allumeur de réverbères",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "D’une génération à l’autre",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Les gâteaux équilatéraux",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "Les neuf pièces",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Chemins anticinétosiques",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Giratoire",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "La jungle rhombique",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les trois cadeaux",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Les consécutifs",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "L’étape à vélo",
+    "statement": "Énoncé reformulé d'après le titre public : trouver un trajet, un chemin ou une boucle optimale dans un réseau, une grille ou un paysage.",
+    "hint": "Transforme le dessin en graphe, puis cherche distance, cycle ou invariant.",
+    "solution": "On modélise les lieux par des sommets et les déplacements autorisés par des arêtes. Un chemin optimal se cherche par exploration en largeur si toutes les arêtes se valent, ou par Dijkstra si elles ont des poids. Une boucle imposée correspond à un cycle. Les impossibilités viennent souvent d'un argument de parité, de degré des sommets ou de coloriage.",
+    "formula": "graphe G=(V,E), distance, cycle, parité"
+  },
+  {
+    "title": "Les chaussettes d’Archie du Shess",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Les sept régions",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "La chasse aux œufs",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Affichage sept segments",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Nombres kangourous",
+    "statement": "Énoncé reformulé d'après le titre public : résoudre une contrainte arithmétique portant sur des nombres, des chiffres, un code ou des restes.",
+    "hint": "Passe en congruences et travaille modulo le bon entier.",
+    "solution": "On écrit les inconnues comme des entiers et on traduit chaque contrainte en équation ou congruence. Les restes modulo m permettent de réduire fortement les cas. Pour un code à chiffres, on note le nombre sous la forme 1000a+100b+10c+d, puis on applique les conditions. La solution finale est obtenue en combinant les congruences et en vérifiant les candidats restants.",
+    "formula": "N=∑ a_k10^k ; congruences modulo m"
+  },
+  {
+    "title": "L’hexagone magique",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "La bille de stochastite",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "La centième",
+    "statement": "Énoncé reformulé d'après le titre et l'accroche publics : résoudre le casse-tête mathématique correspondant en identifiant les contraintes cachées.",
+    "hint": "Pose les inconnues et cherche l'invariant qui ne change pas.",
+    "solution": "La résolution générale consiste à traduire le texte en variables, équations, congruences, graphe ou figure. On cherche ensuite un invariant : parité, somme, aire, distance, ordre ou nombre de possibilités. Cet invariant permet soit de construire la solution, soit de prouver que certaines configurations sont impossibles. Cette entrée est une reformulation pédagogique et non une reproduction intégrale de l'article.",
+    "formula": "variables + invariant adapté"
+  },
+  {
+    "title": "Un dé trois pièces",
+    "statement": "Énoncé reformulé d'après le titre public : une situation de hasard, de pièces, de dés, de piles ou de choix demande une probabilité ou une stratégie optimale.",
+    "hint": "Raisonne par cas équiprobables ou par complémentaire.",
+    "solution": "On définit l'univers des issues possibles, puis on compte les issues favorables. Si les événements ne sont pas équiprobables, on utilise les probabilités conditionnelles. Pour une stratégie, on compare l'espérance de gain ou la probabilité de succès de chaque option. La bonne décision est celle qui maximise cette quantité, en évitant l'intuition trompeuse.",
+    "formula": "P(A)=nombre favorable/nombre total ; E(X)=∑ xp_x"
+  },
+  {
+    "title": "Les pentaminos",
+    "statement": "Énoncé reformulé d'après le titre public : construire, découper ou paver une figure géométrique en respectant des contraintes de forme, de symétrie ou d'aire.",
+    "hint": "Commence par les invariants : aire, périmètre, angles, parité des cases.",
+    "solution": "On compare d'abord les aires : un pavage ou découpage sans perte conserve l'aire totale. Puis on étudie les contraintes locales : alignements, angles, contacts et couleurs dans un éventuel damier. Si la construction existe, on la produit en respectant ces contraintes ; sinon, on montre qu'un invariant serait violé, par exemple une différence entre cases noires et blanches dans un pavage par dominos ou pentaminos.",
+    "formula": "aire conservée ; coloriage invariant"
+  },
+  {
+    "title": "La tour de cubes",
+    "statement": "Énoncé reformulé : construire une tour de cubes par étages rectangulaires pleins, chaque étage étant strictement plus petit que celui du dessous. Vue d'en haut, les cubes visibles peuvent apparaître entiers, à moitié visibles ou aux trois quarts visibles, et certains cubes sont cachés. On veut autant de cubes dans les quatre catégories.",
+    "hint": "Si chaque catégorie contient N cubes, calcule l'aire vue du dessus.",
+    "solution": "Supposons qu'il y ait N cubes cachés, N cubes vus entiers, N vus à moitié et N vus aux trois quarts. L'aire visible au sol vaut donc N + N/2 + 3N/4 = 9N/4. Cette aire doit être un entier, donc N est multiple de 4. Le plus petit cas est N=4 : la tour possède 16 cubes et l'aire au sol vaut 9, donc le premier étage est un carré 3×3. Pour respecter les contraintes, le deuxième étage doit être un rectangle 2×2 posé au centre ; il reste ensuite trois cubes à placer sur les étages supérieurs de façon forcée à symétrie près. On obtient ainsi 4 cubes dans chaque catégorie.",
+    "formula": "N+N/2+3N/4=9N/4 ; N=4 ; total=16"
+  }
 ]

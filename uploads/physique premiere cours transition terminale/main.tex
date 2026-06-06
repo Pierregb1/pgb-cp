@@ -1,0 +1,1602 @@
+
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% COURS PASSERELLE PHYSIQUE-CHIMIE
+% DE LA PREMIÈRE SPÉCIALITÉ À LA TERMINALE SPÉCIALITÉ
+% Version rigoureuse, structurée, prête à compiler
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1.65cm}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{pifont}
+\usepackage{tikz}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Cours passerelle Physique-Chimie}
+\rhead{Première $\rightarrow$ Terminale}
+\cfoot{\thepage}
+
+\setlist[itemize]{leftmargin=1.25em}
+\setlist[enumerate]{leftmargin=1.55em}
+
+\definecolor{bleuprepa}{RGB}{20,55,110}
+\definecolor{vertprepa}{RGB}{20,105,70}
+\definecolor{rougeprepa}{RGB}{160,35,35}
+\definecolor{orangeprepa}{RGB}{180,95,20}
+\definecolor{violetprepa}{RGB}{95,45,130}
+\definecolor{grisclair}{RGB}{245,247,250}
+
+\newcommand{\casevide}{\ding{113}}
+\newcommand{\important}[1]{\textbf{\textcolor{rougeprepa}{#1}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\sisetup{
+  locale = FR,
+  detect-all,
+  per-mode=symbol
+}
+
+\tcbset{
+  enhanced,
+  breakable,
+  sharp corners=downhill,
+  boxrule=0.7pt,
+  colback=white,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{objectif}[1][]{
+  colframe=bleuprepa,
+  colback=blue!2!white,
+  title={Objectif #1}
+}
+
+\newtcolorbox{definition}[1][]{
+  colframe=bleuprepa,
+  colback=cyan!2!white,
+  title={Définition #1}
+}
+
+\newtcolorbox{propriete}[1][]{
+  colframe=vertprepa,
+  colback=green!2!white,
+  title={Propriété #1}
+}
+
+\newtcolorbox{methode}[1][]{
+  colframe=violetprepa,
+  colback=violet!3!white,
+  title={Méthode #1}
+}
+
+\newtcolorbox{alerte}[1][]{
+  colframe=rougeprepa,
+  colback=red!2!white,
+  title={Alerte #1}
+}
+
+\newtcolorbox{exemple}[1][]{
+  colframe=orangeprepa,
+  colback=orange!3!white,
+  title={Exemple #1}
+}
+
+\newtcolorbox{transition}[1][]{
+  colframe=black!70,
+  colback=grisclair,
+  title={Passage première $\rightarrow$ terminale #1}
+}
+
+\newtcolorbox{exercice}[1][]{
+  colframe=bleuprepa,
+  colback=white,
+  title={Exercice guidé #1}
+}
+
+\title{
+  \Huge\textbf{Cours passerelle de Physique-Chimie}\\[2mm]
+  \Large De la première spécialité à la terminale spécialité\\[1mm]
+  \large Cours rigoureux, méthodes, démonstrations, exercices guidés
+}
+\author{Document professeur — Lycée général}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Introduction : ce qui change entre la première et la terminale}
+% ============================================================
+
+\begin{objectif}
+En première, on apprend à reconnaître des lois et à les appliquer.  
+En terminale, on apprend davantage à \important{modéliser}, \important{interpréter}, \important{résoudre} et \important{critiquer} un modèle.
+\end{objectif}
+
+\subsection{Les quatre grands thèmes}
+
+La physique-chimie de spécialité s'organise autour de quatre domaines :
+
+\begin{enumerate}
+  \item \textbf{Constitution et transformations de la matière} : transformations chimiques, quantités de matière, dosages, acides-bases, oxydoréduction, cinétique.
+  \item \textbf{Mouvement et interactions} : forces, mouvement, lois de Newton, champs, dynamique.
+  \item \textbf{L'énergie : conversions et transferts} : énergie mécanique, puissance, bilans énergétiques, transferts thermiques, électricité.
+  \item \textbf{Ondes et signaux} : ondes mécaniques, lumière, diffraction, interférences, signaux électriques.
+\end{enumerate}
+
+\begin{transition}
+Le passage en terminale consiste à transformer les connaissances de première en outils plus généraux :
+\[
+\text{loi simple} \quad \longrightarrow \quad \text{modèle mathématique}.
+\]
+Par exemple :
+\[
+v=\frac{d}{\Delta t}
+\quad \longrightarrow \quad
+\vec v(t)=\frac{\dd \vec{OM}}{\dd t}.
+\]
+Ou encore :
+\[
+n=\frac{m}{M}
+\quad \longrightarrow \quad
+\text{tableau d'avancement et réactif limitant}.
+\]
+\end{transition}
+
+\subsection{Les compétences à acquérir}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item Identifier le système étudié.
+  \item Choisir un modèle.
+  \item Écrire une loi physique.
+  \item Vérifier l'homogénéité.
+  \item Utiliser les unités SI.
+  \item Exploiter un graphe.
+  \item Linéariser une relation.
+  \item Résoudre une équation simple.
+  \item Interpréter un résultat.
+  \item Critiquer un modèle.
+  \item Rédiger une conclusion scientifique.
+  \item Passer d'une mesure à une grandeur.
+\end{itemize}
+\end{multicols}
+
+% ============================================================
+\section{Outils fondamentaux : grandeurs, unités et dimensions}
+% ============================================================
+
+\subsection{Grandeur physique}
+
+\begin{definition}
+Une \textbf{grandeur physique} est une propriété mesurable d'un système. Elle s'exprime par :
+\[
+\text{valeur numérique} \times \text{unité}.
+\]
+Par exemple :
+\[
+m=\SI{2.5}{kg}, \qquad v=\SI{12}{m.s^{-1}}, \qquad E=\SI{150}{J}.
+\]
+\end{definition}
+
+\begin{alerte}
+Une valeur sans unité est généralement inutilisable en physique.  
+Écrire seulement
+\[
+v=12
+\]
+ne signifie rien si l'on ne précise pas :
+\[
+v=\SI{12}{m.s^{-1}}
+\quad \text{ou} \quad
+v=\SI{12}{km.h^{-1}}.
+\]
+\end{alerte}
+
+\subsection{Unités du Système international}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|}
+\hline
+\textbf{Grandeur} & \textbf{Symbole} & \textbf{Unité SI} \\
+\hline
+Longueur & $L$ & mètre, \si{m} \\
+\hline
+Masse & $m$ & kilogramme, \si{kg} \\
+\hline
+Temps & $t$ & seconde, \si{s} \\
+\hline
+Température & $T$ & kelvin, \si{K} \\
+\hline
+Quantité de matière & $n$ & mole, \si{mol} \\
+\hline
+Intensité électrique & $I$ & ampère, \si{A} \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Analyse dimensionnelle}
+
+\begin{definition}
+La \textbf{dimension} d'une grandeur indique sa nature physique indépendamment de l'unité choisie.  
+On note par exemple :
+\[
+[v]=L\,T^{-1},
+\]
+ce qui signifie qu'une vitesse est une longueur divisée par un temps.
+\end{definition}
+
+\begin{exemple}[énergie cinétique]
+L'énergie cinétique est :
+\[
+E_c=\frac12mv^2.
+\]
+Dimensions :
+\[
+[E_c]=[m][v]^2=M(LT^{-1})^2=ML^2T^{-2}.
+\]
+L'unité correspondante est :
+\[
+\si{kg.m^2.s^{-2}}=\si{J}.
+\]
+\end{exemple}
+
+\begin{methode}[vérifier l'homogénéité]
+Une formule physique correcte doit être homogène :
+\[
+\text{dimension du membre gauche}=\text{dimension du membre droit}.
+\]
+Exemple :
+\[
+d=vt.
+\]
+On vérifie :
+\[
+[d]=L,
+\qquad
+[vt]=LT^{-1}\times T=L.
+\]
+La formule est homogène.
+\end{methode}
+
+\begin{alerte}
+Une formule homogène n'est pas forcément vraie.  
+Mais une formule non homogène est forcément fausse.
+\end{alerte}
+
+% ============================================================
+\section{Chimie I : de la quantité de matière au tableau d'avancement}
+% ============================================================
+
+\subsection{Quantité de matière}
+
+\begin{definition}
+La quantité de matière $n$ mesure le nombre d'entités chimiques contenues dans un échantillon.  
+Elle s'exprime en mole :
+\[
+n=\frac{N}{N_A},
+\]
+où $N$ est le nombre d'entités et $N_A$ la constante d'Avogadro :
+\[
+N_A \approx \SI{6.02e23}{mol^{-1}}.
+\]
+\end{definition}
+
+\begin{propriete}
+Pour un échantillon de masse $m$ et de masse molaire $M$ :
+\[
+n=\frac{m}{M}.
+\]
+Avec :
+\[
+m \text{ en g}, \qquad M \text{ en g.mol}^{-1}, \qquad n \text{ en mol}.
+\]
+\end{propriete}
+
+\begin{propriete}
+Pour une solution de concentration molaire $C$ et de volume $V$ :
+\[
+n=CV.
+\]
+Attention :
+\[
+C \text{ en mol.L}^{-1}, \qquad V \text{ en L}.
+\]
+\end{propriete}
+
+\begin{alerte}[conversion des volumes]
+En chimie au lycée, on utilise souvent :
+\[
+\SI{1}{mL}=\SI{1e-3}{L}.
+\]
+Ainsi :
+\[
+\SI{25.0}{mL}=\SI{2.50e-2}{L}.
+\]
+\end{alerte}
+
+\subsection{Transformation chimique}
+
+\begin{definition}
+Une \textbf{transformation chimique} est une évolution au cours de laquelle des espèces chimiques sont consommées et d'autres formées.
+\end{definition}
+
+Une transformation chimique est modélisée par une équation de réaction :
+\[
+aA+bB \longrightarrow cC+dD.
+\]
+
+Les nombres $a,b,c,d$ sont les coefficients stœchiométriques.
+
+\begin{alerte}
+Une équation chimique doit respecter :
+\begin{itemize}
+  \item la conservation des éléments chimiques ;
+  \item la conservation de la charge électrique.
+\end{itemize}
+\end{alerte}
+
+\subsection{Avancement}
+
+\begin{definition}
+L'\textbf{avancement} $x$ d'une réaction est une grandeur exprimée en mole qui mesure la progression d'une transformation chimique.
+\end{definition}
+
+Pour la réaction :
+\[
+aA+bB \longrightarrow cC+dD,
+\]
+si l'avancement est $x$, alors les quantités de matière évoluent ainsi :
+
+\[
+n_A=n_{A,0}-ax,
+\]
+\[
+n_B=n_{B,0}-bx,
+\]
+\[
+n_C=n_{C,0}+cx,
+\]
+\[
+n_D=n_{D,0}+dx.
+\]
+
+\begin{methode}[tableau d'avancement]
+Pour construire un tableau d'avancement :
+\begin{enumerate}
+  \item écrire l'équation équilibrée ;
+  \item écrire les quantités initiales ;
+  \item introduire l'avancement $x$ ;
+  \item exprimer les quantités finales ;
+  \item imposer que les quantités de matière restent positives.
+\end{enumerate}
+\end{methode}
+
+\begin{exemple}[réaction entre dihydrogène et dioxygène]
+On considère :
+\[
+2H_2+O_2\longrightarrow 2H_2O.
+\]
+
+\[
+\begin{array}{c|ccc}
+ & H_2 & O_2 & H_2O \\
+\hline
+\text{Initial} & n_{H_2,0} & n_{O_2,0} & 0 \\
+\text{Évolution} & -2x & -x & +2x \\
+\text{Final} & n_{H_2,0}-2x & n_{O_2,0}-x & 2x \\
+\end{array}
+\]
+\end{exemple}
+
+\subsection{Réactif limitant}
+
+\begin{definition}
+Le \textbf{réactif limitant} est le réactif totalement consommé en premier. Il impose l'avancement maximal $x_{\max}$.
+\end{definition}
+
+Pour la réaction :
+\[
+aA+bB\longrightarrow cC+dD,
+\]
+on a :
+\[
+x\leq \frac{n_{A,0}}{a},
+\qquad
+x\leq \frac{n_{B,0}}{b}.
+\]
+Donc :
+\[
+x_{\max}=\min\left(\frac{n_{A,0}}{a},\frac{n_{B,0}}{b}\right).
+\]
+
+\begin{transition}
+En première, on apprend à calculer un réactif limitant.  
+En terminale, cette idée devient centrale pour :
+\begin{itemize}
+  \item les dosages ;
+  \item les transformations non totales ;
+  \item les équilibres chimiques ;
+  \item les rendements de synthèse ;
+  \item la cinétique.
+\end{itemize}
+\end{transition}
+
+% ============================================================
+\section{Chimie II : des dosages aux titrages}
+% ============================================================
+
+\subsection{Dosage}
+
+\begin{definition}
+Un \textbf{dosage} consiste à déterminer la concentration d'une espèce chimique dans une solution.
+\end{definition}
+
+Il existe plusieurs types de dosages :
+\begin{itemize}
+  \item dosage par étalonnage ;
+  \item titrage direct ;
+  \item titrage pH-métrique ;
+  \item titrage conductimétrique ;
+  \item titrage colorimétrique.
+\end{itemize}
+
+\subsection{Titrage}
+
+\begin{definition}
+Un \textbf{titrage} est un dosage reposant sur une réaction chimique entre :
+\begin{itemize}
+  \item l'espèce titrée, de concentration inconnue ;
+  \item l'espèce titrante, de concentration connue.
+\end{itemize}
+\end{definition}
+
+\subsection{Équivalence}
+
+\begin{definition}
+L'\textbf{équivalence} d'un titrage est l'instant où les réactifs titré et titrant ont été introduits dans les proportions stœchiométriques.
+\end{definition}
+
+Pour une réaction :
+\[
+aA+bB\longrightarrow \text{produits},
+\]
+si $A$ est titré et $B$ est titrant, alors à l'équivalence :
+\[
+\frac{n_A}{a}=\frac{n_B}{b}.
+\]
+
+\begin{methode}[exploiter un titrage]
+\begin{enumerate}
+  \item Identifier l'espèce titrée et l'espèce titrante.
+  \item Écrire l'équation support du titrage.
+  \item Repérer l'équivalence.
+  \item Utiliser la relation stœchiométrique.
+  \item Remplacer par $n=CV$.
+  \item Isoler la concentration inconnue.
+  \item Vérifier les unités.
+\end{enumerate}
+\end{methode}
+
+\begin{exemple}[titrage acide-base simple]
+On dose un acide $AH$ par une base $HO^-$.  
+Réaction :
+\[
+AH+HO^- \longrightarrow A^-+H_2O.
+\]
+Les coefficients sont tous égaux à 1.  
+À l'équivalence :
+\[
+n(AH)=n(HO^-).
+\]
+Donc :
+\[
+C_A V_A=C_B V_E.
+\]
+Ainsi :
+\[
+C_A=\frac{C_BV_E}{V_A}.
+\]
+\end{exemple}
+
+\begin{alerte}
+Les volumes doivent être dans la même unité.  
+Si $V_A$ est en L et $V_E$ en mL, la formule devient numériquement fausse.
+\end{alerte}
+
+\subsection{Passage vers la terminale}
+
+\begin{transition}
+En première, le titrage est souvent vu comme une application de $n=CV$.  
+En terminale, il faut aussi comprendre :
+\begin{itemize}
+  \item pourquoi l'équivalence se repère par un saut de pH ou une rupture de pente ;
+  \item comment choisir un indicateur coloré ;
+  \item comment exploiter une courbe expérimentale ;
+  \item comment discuter les incertitudes.
+\end{itemize}
+\end{transition}
+
+% ============================================================
+\section{Chimie III : acides, bases et pH}
+% ============================================================
+
+\subsection{Définition de Brønsted}
+
+\begin{definition}
+Un \textbf{acide} au sens de Brønsted est une espèce capable de céder un proton $H^+$.  
+Une \textbf{base} au sens de Brønsted est une espèce capable de capter un proton $H^+$.
+\end{definition}
+
+Exemple :
+\[
+AH \rightleftharpoons A^-+H^+.
+\]
+Ici :
+\[
+AH/A^-
+\]
+est un couple acide-base.
+
+\subsection{pH}
+
+\begin{definition}
+Le pH d'une solution aqueuse est défini par :
+\[
+pH=-\log[H_3O^+].
+\]
+La concentration $[H_3O^+]$ est exprimée en \si{mol.L^{-1}}.
+\end{definition}
+
+On en déduit :
+\[
+[H_3O^+]=10^{-pH}.
+\]
+
+\begin{exemple}
+Si :
+\[
+pH=3,
+\]
+alors :
+\[
+[H_3O^+]=10^{-3}\ \si{mol.L^{-1}}.
+\]
+\end{exemple}
+
+\begin{alerte}
+Le pH est une grandeur logarithmique.  
+Une baisse d'une unité de pH signifie que la concentration en ions oxonium est multipliée par 10.
+\end{alerte}
+
+\subsection{Acide fort et acide faible}
+
+\begin{definition}
+Un acide fort réagit totalement avec l'eau.  
+Un acide faible réagit partiellement avec l'eau.
+\end{definition}
+
+Acide fort :
+\[
+AH+H_2O \longrightarrow A^-+H_3O^+.
+\]
+
+Acide faible :
+\[
+AH+H_2O \rightleftharpoons A^-+H_3O^+.
+\]
+
+\begin{transition}
+En première, on manipule surtout des réactions considérées comme totales.  
+En terminale, on rencontre des réactions non totales et des équilibres chimiques. Le symbole :
+\[
+\rightleftharpoons
+\]
+devient fondamental.
+\end{transition}
+
+% ============================================================
+\section{Chimie IV : oxydoréduction}
+% ============================================================
+
+\subsection{Oxydant et réducteur}
+
+\begin{definition}
+Un \textbf{oxydant} est une espèce capable de capter des électrons.  
+Un \textbf{réducteur} est une espèce capable de céder des électrons.
+\end{definition}
+
+Un couple oxydant/réducteur s'écrit :
+\[
+Ox/Red.
+\]
+
+La demi-équation associée est :
+\[
+Ox+ne^- \rightleftharpoons Red.
+\]
+
+\subsection{Équilibrer une demi-équation}
+
+\begin{methode}[milieu acide]
+Pour équilibrer une demi-équation en milieu acide :
+\begin{enumerate}
+  \item équilibrer les atomes autres que $O$ et $H$ ;
+  \item équilibrer les atomes d'oxygène avec $H_2O$ ;
+  \item équilibrer les atomes d'hydrogène avec $H^+$ ;
+  \item équilibrer les charges avec $e^-$ ;
+  \item vérifier la conservation des charges et des atomes.
+\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+Pour le couple :
+\[
+MnO_4^-/Mn^{2+},
+\]
+en milieu acide :
+\[
+MnO_4^-+8H^++5e^- \longrightarrow Mn^{2+}+4H_2O.
+\]
+\end{exemple}
+
+\subsection{Réaction d'oxydoréduction}
+
+Une réaction d'oxydoréduction est un transfert d'électrons entre un oxydant et un réducteur.
+
+\begin{exemple}
+Avec les couples :
+\[
+Cu^{2+}/Cu
+\qquad \text{et} \qquad
+Zn^{2+}/Zn,
+\]
+on peut écrire :
+\[
+Cu^{2+}+2e^- \longrightarrow Cu,
+\]
+\[
+Zn \longrightarrow Zn^{2+}+2e^-.
+\]
+En additionnant :
+\[
+Cu^{2+}+Zn \longrightarrow Cu+Zn^{2+}.
+\]
+\end{exemple}
+
+\begin{transition}
+En terminale, l'oxydoréduction intervient dans :
+\begin{itemize}
+  \item les piles ;
+  \item les électrolyses ;
+  \item les titrages redox ;
+  \item les transferts d'énergie chimique vers énergie électrique.
+\end{itemize}
+\end{transition}
+
+% ============================================================
+\section{Mécanique I : mouvement, vitesse et accélération}
+% ============================================================
+
+\subsection{Système et référentiel}
+
+\begin{definition}
+Le \textbf{système} est l'objet ou l'ensemble d'objets que l'on étudie.
+\end{definition}
+
+\begin{definition}
+Un \textbf{référentiel} est un solide de référence par rapport auquel on décrit le mouvement.
+\end{definition}
+
+\begin{alerte}
+Avant toute application d'une loi de mécanique, il faut écrire :
+\[
+\text{Système étudié : ...}
+\]
+\[
+\text{Référentiel choisi : ...}
+\]
+\]
+Sans cela, la rédaction est incomplète.
+\end{alerte}
+
+\subsection{Position}
+
+Dans un repère, la position d'un point matériel $M$ est donnée par son vecteur position :
+\[
+\vec{OM}(t).
+\]
+
+En coordonnées cartésiennes :
+\[
+\vec{OM}(t)=x(t)\vec i+y(t)\vec j+z(t)\vec k.
+\]
+
+\subsection{Vitesse}
+
+\begin{definition}
+Le vecteur vitesse est la dérivée temporelle du vecteur position :
+\[
+\vec v(t)=\frac{\dd \vec{OM}}{\dd t}.
+\]
+\end{definition}
+
+En coordonnées :
+\[
+\vec v(t)=x'(t)\vec i+y'(t)\vec j+z'(t)\vec k.
+\]
+
+\subsection{Accélération}
+
+\begin{definition}
+Le vecteur accélération est la dérivée temporelle du vecteur vitesse :
+\[
+\vec a(t)=\frac{\dd \vec v}{\dd t}.
+\]
+\end{definition}
+
+Donc :
+\[
+\vec a(t)=\frac{\dd^2\vec{OM}}{\dd t^2}.
+\]
+
+En coordonnées :
+\[
+\vec a(t)=x''(t)\vec i+y''(t)\vec j+z''(t)\vec k.
+\]
+
+\begin{transition}
+En première, on calcule souvent une vitesse moyenne :
+\[
+v=\frac{d}{\Delta t}.
+\]
+En terminale, on utilise des grandeurs instantanées :
+\[
+\vec v(t)=\frac{\dd \vec{OM}}{\dd t},
+\qquad
+\vec a(t)=\frac{\dd \vec v}{\dd t}.
+\]
+\end{transition}
+
+% ============================================================
+\section{Mécanique II : forces et lois de Newton}
+% ============================================================
+
+\subsection{Force}
+
+\begin{definition}
+Une force modélise une action mécanique exercée par un objet sur un autre.  
+Elle est représentée par un vecteur :
+\[
+\vec F.
+\]
+Son unité est le newton :
+\[
+\si{N}.
+\]
+\end{definition}
+
+\subsection{Poids}
+
+\begin{definition}
+Le poids d'un objet de masse $m$ au voisinage de la Terre est :
+\[
+\vec P=m\vec g.
+\]
+\end{definition}
+
+Avec :
+\[
+g\simeq \SI{9.81}{m.s^{-2}}.
+\]
+
+\subsection{Deuxième loi de Newton}
+
+\begin{propriete}
+Dans un référentiel galiléen, pour un système de masse constante :
+\[
+\sum \vec F_{\text{ext}}=m\vec a.
+\]
+\end{propriete}
+
+\begin{methode}[appliquer la deuxième loi de Newton]
+\begin{enumerate}
+  \item Définir le système.
+  \item Choisir un référentiel supposé galiléen.
+  \item Faire le bilan des forces extérieures.
+  \item Écrire :
+  \[
+  \sum \vec F_{\text{ext}}=m\vec a.
+  \]
+  \item Choisir un repère.
+  \item Projeter l'équation vectorielle.
+  \item Résoudre.
+  \item Interpréter.
+\end{enumerate}
+\end{methode}
+
+\subsection{Chute libre verticale}
+
+On considère un objet lancé verticalement sans frottement.  
+Le système est l'objet.  
+La seule force est le poids :
+\[
+\vec P=m\vec g.
+\]
+
+Deuxième loi de Newton :
+\[
+m\vec a=m\vec g.
+\]
+Donc :
+\[
+\vec a=\vec g.
+\]
+
+Si l'axe vertical est orienté vers le haut :
+\[
+a_y=-g.
+\]
+
+On intègre :
+\[
+v_y(t)=v_0-gt.
+\]
+
+Puis :
+\[
+y(t)=y_0+v_0t-\frac12gt^2.
+\]
+
+\begin{transition}
+En première, on utilise parfois directement des formules de mouvement.  
+En terminale, il faut savoir les retrouver à partir de Newton.
+\end{transition}
+
+% ============================================================
+\section{Énergie mécanique}
+% ============================================================
+
+\subsection{Énergie cinétique}
+
+\begin{definition}
+L'énergie cinétique d'un point matériel de masse $m$ et de vitesse $v$ est :
+\[
+E_c=\frac12mv^2.
+\]
+\end{definition}
+
+\subsection{Énergie potentielle de pesanteur}
+
+\begin{definition}
+Dans un champ de pesanteur uniforme, l'énergie potentielle de pesanteur peut s'écrire :
+\[
+E_p=mgz+C.
+\]
+En choisissant une origine des énergies, on prend souvent :
+\[
+E_p=mgz.
+\]
+\end{definition}
+
+\subsection{Énergie mécanique}
+
+\begin{definition}
+L'énergie mécanique est :
+\[
+E_m=E_c+E_p.
+\]
+\end{definition}
+
+\subsection{Conservation de l'énergie mécanique}
+
+\begin{propriete}
+Si seules des forces conservatives travaillent, alors l'énergie mécanique se conserve :
+\[
+E_m=\text{constante}.
+\]
+\end{propriete}
+
+\begin{exemple}[chute libre sans frottement]
+Si un objet tombe sans frottement :
+\[
+E_c+E_p=\text{constante}.
+\]
+Donc :
+\[
+\frac12mv^2+mgz=\text{constante}.
+\]
+\end{exemple}
+
+\subsection{Travail d'une force}
+
+\begin{definition}
+Pour une force constante $\vec F$ appliquée sur un déplacement $\vec{AB}$ :
+\[
+W_{A\to B}(\vec F)=\vec F\cdot \vec{AB}.
+\]
+\end{definition}
+
+Donc :
+\[
+W_{A\to B}(\vec F)=F\cdot AB\cdot \cos(\theta).
+\]
+
+\begin{alerte}
+Le travail est positif si la force favorise le mouvement.  
+Il est négatif si elle s'oppose au mouvement.
+\end{alerte}
+
+\subsection{Théorème de l'énergie cinétique}
+
+\begin{propriete}
+La variation d'énergie cinétique d'un système est égale à la somme des travaux des forces extérieures :
+\[
+\Delta E_c=\sum W(\vec F_{\text{ext}}).
+\]
+\end{propriete}
+
+\begin{transition}
+En première, on calcule l'énergie cinétique et potentielle.  
+En terminale, on choisit entre :
+\[
+\sum \vec F=m\vec a
+\]
+et
+\[
+\Delta E_c=\sum W.
+\]
+Le choix dépend du problème :
+\begin{itemize}
+  \item Newton donne le mouvement ;
+  \item l'énergie donne souvent plus vite les vitesses ou les hauteurs.
+\end{itemize}
+\end{transition}
+
+% ============================================================
+\section{Électricité : de la loi d'Ohm au circuit RC}
+% ============================================================
+
+\subsection{Intensité, tension, résistance}
+
+\begin{definition}
+L'intensité électrique $I$ est un débit de charge :
+\[
+I=\frac{\Delta q}{\Delta t}.
+\]
+Son unité est l'ampère :
+\[
+\si{A}.
+\]
+\end{definition}
+
+\begin{definition}
+La tension électrique $U$ entre deux points est une différence de potentiel électrique.  
+Son unité est le volt :
+\[
+\si{V}.
+\]
+\end{definition}
+
+\begin{propriete}[loi d'Ohm]
+Pour un conducteur ohmique :
+\[
+U=RI.
+\]
+\end{propriete}
+
+\subsection{Puissance électrique}
+
+\begin{propriete}
+La puissance électrique reçue par un dipôle est :
+\[
+P=UI.
+\]
+Pour un conducteur ohmique :
+\[
+P=RI^2=\frac{U^2}{R}.
+\]
+\end{propriete}
+
+\subsection{Énergie électrique}
+
+Si une puissance $P$ est reçue pendant une durée $\Delta t$, l'énergie reçue est :
+\[
+E=P\Delta t.
+\]
+
+\begin{alerte}
+En physique :
+\[
+\SI{1}{W}=\SI{1}{J.s^{-1}}.
+\]
+Donc :
+\[
+E=P\Delta t
+\]
+est en joule si $P$ est en watt et $\Delta t$ en seconde.
+\end{alerte}
+
+\subsection{Condensateur}
+
+\begin{definition}
+Un condensateur est un dipôle capable de stocker de l'énergie électrique.  
+La charge $q$ d'un condensateur est liée à sa tension $u_C$ par :
+\[
+q=Cu_C.
+\]
+\end{definition}
+
+$C$ est la capacité du condensateur, en farad :
+\[
+\si{F}.
+\]
+
+\subsection{Circuit RC}
+
+Dans un circuit série composé d'un générateur de tension $E$, d'une résistance $R$ et d'un condensateur $C$, la loi des mailles donne :
+\[
+E=u_R+u_C.
+\]
+
+Or :
+\[
+u_R=Ri,
+\]
+et :
+\[
+i=\frac{\dd q}{\dd t}=C\frac{\dd u_C}{\dd t}.
+\]
+
+Donc :
+\[
+E=RC\frac{\dd u_C}{\dd t}+u_C.
+\]
+
+On obtient l'équation différentielle :
+\[
+\frac{\dd u_C}{\dd t}+\frac{1}{RC}u_C=\frac{E}{RC}.
+\]
+
+\begin{definition}
+La constante de temps du circuit est :
+\[
+\tau=RC.
+\]
+\end{definition}
+
+La solution de charge, si $u_C(0)=0$, est :
+\[
+u_C(t)=E\left(1-\e^{-t/\tau}\right).
+\]
+
+\begin{transition}
+En première, on utilise la loi d'Ohm et la puissance électrique.  
+En terminale, les circuits deviennent dynamiques : les grandeurs dépendent du temps et vérifient des équations différentielles.
+\end{transition}
+
+% ============================================================
+\section{Ondes : de la propagation à la diffraction}
+% ============================================================
+
+\subsection{Onde mécanique}
+
+\begin{definition}
+Une onde mécanique est la propagation d'une perturbation dans un milieu matériel, sans transport global de matière.
+\end{definition}
+
+Exemples :
+\begin{itemize}
+  \item onde sonore ;
+  \item vague à la surface de l'eau ;
+  \item onde sur une corde.
+\end{itemize}
+
+\subsection{Grandeurs associées à une onde périodique}
+
+\begin{definition}
+La période $T$ est la durée d'un motif temporel.  
+La fréquence $f$ est :
+\[
+f=\frac{1}{T}.
+\]
+\end{definition}
+
+\begin{definition}
+La longueur d'onde $\lambda$ est la distance parcourue par l'onde pendant une période.
+\end{definition}
+
+Si l'onde se propage à la célérité $v$, alors :
+\[
+v=\lambda f.
+\]
+Ou encore :
+\[
+v=\frac{\lambda}{T}.
+\]
+
+\subsection{Diffraction}
+
+\begin{definition}
+La diffraction est l'étalement d'une onde lorsqu'elle rencontre une ouverture ou un obstacle de dimension comparable à sa longueur d'onde.
+\end{definition}
+
+Pour une fente de largeur $a$, l'angle caractéristique de diffraction vérifie approximativement :
+\[
+\theta\simeq \frac{\lambda}{a}.
+\]
+
+\begin{alerte}
+La diffraction est d'autant plus marquée que :
+\[
+a
+\]
+est petit devant ou comparable à :
+\[
+\lambda.
+\]
+\end{alerte}
+
+\subsection{Interférences}
+
+\begin{definition}
+Les interférences résultent de la superposition de deux ondes cohérentes.
+\end{definition}
+
+Pour deux sources cohérentes séparées par une distance $a$, sur un écran à distance $D$, l'interfrange vaut :
+\[
+i=\frac{\lambda D}{a}.
+\]
+
+\begin{transition}
+En première, on étudie les ondes mécaniques et les signaux.  
+En terminale, on approfondit les phénomènes ondulatoires :
+\begin{itemize}
+  \item diffraction ;
+  \item interférences ;
+  \item mesure de longueurs d'onde ;
+  \item exploitation quantitative de figures optiques.
+\end{itemize}
+\end{transition}
+
+% ============================================================
+\section{Mesures, incertitudes et exploitation de données}
+% ============================================================
+
+\subsection{Mesure}
+
+\begin{definition}
+Une mesure est une estimation expérimentale d'une grandeur.  
+Elle n'est jamais parfaitement exacte.
+\end{definition}
+
+Une mesure doit être donnée avec :
+\[
+\text{valeur mesurée} \quad + \quad \text{unité}.
+\]
+
+\subsection{Incertitude}
+
+\begin{definition}
+L'incertitude mesure la dispersion possible autour d'une valeur mesurée.
+\end{definition}
+
+On écrit souvent :
+\[
+x=x_{\text{mesuré}}\pm u(x).
+\]
+
+\begin{exemple}
+\[
+L=(12{,}4\pm0{,}1)\ \si{cm}.
+\]
+Cela signifie que la valeur réelle est probablement proche de :
+\[
+\SI{12.4}{cm}.
+\]
+\end{exemple}
+
+\subsection{Écart relatif}
+
+\begin{definition}
+L'écart relatif entre une valeur expérimentale $x_{\text{exp}}$ et une valeur de référence $x_{\text{ref}}$ est :
+\[
+\varepsilon=\frac{|x_{\text{exp}}-x_{\text{ref}}|}{x_{\text{ref}}}.
+\]
+\end{definition}
+
+En pourcentage :
+\[
+\varepsilon_{\%}=100\times \frac{|x_{\text{exp}}-x_{\text{ref}}|}{x_{\text{ref}}}.
+\]
+
+\subsection{Exploitation graphique}
+
+\begin{methode}[exploiter une droite]
+Si une relation est de la forme :
+\[
+y=ax+b,
+\]
+alors :
+\begin{itemize}
+  \item $a$ est le coefficient directeur ;
+  \item $b$ est l'ordonnée à l'origine.
+\end{itemize}
+\end{methode}
+
+\begin{exemple}[loi de Beer-Lambert]
+La loi de Beer-Lambert s'écrit :
+\[
+A=kC.
+\]
+Si l'on trace $A$ en fonction de $C$, on obtient une droite passant par l'origine.  
+Le coefficient directeur vaut :
+\[
+k.
+\]
+\end{exemple}
+
+% ============================================================
+\section{Méthodes transversales de rédaction}
+% ============================================================
+
+\begin{methode}[rédiger une question de mécanique]
+\begin{enumerate}
+  \item Système : préciser l'objet étudié.
+  \item Référentiel : préciser le référentiel.
+  \item Forces : faire le bilan.
+  \item Loi : écrire la loi de Newton ou l'énergie.
+  \item Projection : si nécessaire.
+  \item Calcul : avec unités.
+  \item Conclusion : phrase physique.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[rédiger une question de chimie]
+\begin{enumerate}
+  \item Identifier les espèces chimiques.
+  \item Écrire l'équation équilibrée.
+  \item Calculer les quantités de matière.
+  \item Utiliser la stœchiométrie.
+  \item Calculer la grandeur demandée.
+  \item Vérifier les unités.
+  \item Interpréter.
+\end{enumerate}
+\end{methode}
+
+\begin{methode}[rédiger une question d'électricité]
+\begin{enumerate}
+  \item Identifier les dipôles.
+  \item Choisir les conventions.
+  \item Écrire la loi des mailles ou des nœuds.
+  \item Utiliser les lois des dipôles.
+  \item Résoudre l'équation.
+  \item Vérifier l'homogénéité.
+  \item Interpréter la limite ou le régime permanent.
+\end{enumerate}
+\end{methode}
+
+% ============================================================
+\section{Exercices guidés de transition}
+% ============================================================
+
+\begin{exercice}[1 — Tableau d'avancement et réactif limitant]
+On introduit $n_0(H_2)=\SI{0.30}{mol}$ et $n_0(O_2)=\SI{0.10}{mol}$.  
+La réaction est :
+\[
+2H_2+O_2\longrightarrow 2H_2O.
+\]
+
+\begin{enumerate}
+  \item Construire le tableau d'avancement.
+  \item Déterminer $x_{\max}$.
+  \item Identifier le réactif limitant.
+  \item Calculer la quantité d'eau formée.
+\end{enumerate}
+
+\begin{methode}[Correction]
+On a :
+\[
+x\leq \frac{0{,}30}{2}=0{,}15,
+\qquad
+x\leq \frac{0{,}10}{1}=0{,}10.
+\]
+Donc :
+\[
+x_{\max}=0{,}10\ \si{mol}.
+\]
+Le dioxygène est limitant.  
+La quantité d'eau formée vaut :
+\[
+n(H_2O)=2x_{\max}=0{,}20\ \si{mol}.
+\]
+\end{methode}
+\end{exercice}
+
+\begin{exercice}[2 — Titrage acide-base]
+On dose $V_A=\SI{20.0}{mL}$ d'une solution d'acide chlorhydrique par une solution de soude de concentration :
+\[
+C_B=\SI{0.100}{mol.L^{-1}}.
+\]
+L'équivalence est obtenue pour :
+\[
+V_E=\SI{14.6}{mL}.
+\]
+
+\begin{enumerate}
+  \item Écrire l'équation de réaction.
+  \item Écrire la relation à l'équivalence.
+  \item Déterminer la concentration $C_A$.
+\end{enumerate}
+
+\begin{methode}[Correction]
+Réaction :
+\[
+H_3O^+ + HO^- \longrightarrow 2H_2O.
+\]
+À l'équivalence :
+\[
+n(H_3O^+)=n(HO^-).
+\]
+Donc :
+\[
+C_AV_A=C_BV_E.
+\]
+Ainsi :
+\[
+C_A=\frac{C_BV_E}{V_A}.
+\]
+Avec les volumes dans la même unité :
+\[
+C_A=\frac{0{,}100\times14{,}6}{20{,}0}
+=0{,}0730\ \si{mol.L^{-1}}.
+\]
+\end{methode}
+\end{exercice}
+
+\begin{exercice}[3 — Chute verticale sans frottement]
+Une balle est lâchée sans vitesse initiale depuis une hauteur :
+\[
+h=\SI{20}{m}.
+\]
+On néglige les frottements.
+
+\begin{enumerate}
+  \item Déterminer l'accélération.
+  \item Écrire l'équation horaire de la hauteur.
+  \item Déterminer la durée de chute.
+  \item Déterminer la vitesse juste avant l'impact.
+\end{enumerate}
+
+\begin{methode}[Correction]
+Système : balle.  
+Référentiel : terrestre supposé galiléen.  
+Force : poids.
+
+Deuxième loi de Newton :
+\[
+m\vec a=m\vec g.
+\]
+Donc :
+\[
+\vec a=\vec g.
+\]
+
+Si l'axe est orienté vers le haut :
+\[
+z(t)=h-\frac12gt^2.
+\]
+L'impact a lieu quand $z(t)=0$ :
+\[
+h-\frac12gt^2=0.
+\]
+Donc :
+\[
+t=\sqrt{\frac{2h}{g}}.
+\]
+Numériquement :
+\[
+t\simeq \sqrt{\frac{40}{9{,}81}}\simeq \SI{2.02}{s}.
+\]
+La vitesse vaut :
+\[
+v(t)=-gt.
+\]
+Donc :
+\[
+|v|\simeq 9{,}81\times2{,}02\simeq \SI{19.8}{m.s^{-1}}.
+\]
+\end{methode}
+\end{exercice}
+
+\begin{exercice}[4 — Circuit RC]
+Un condensateur de capacité :
+\[
+C=\SI{100}{\micro F}
+\]
+est chargé à travers une résistance :
+\[
+R=\SI{10}{k\ohm}.
+\]
+
+\begin{enumerate}
+  \item Calculer la constante de temps $\tau$.
+  \item Écrire l'expression de $u_C(t)$ lors de la charge sous une tension $E$.
+  \item Calculer la tension au bout d'une constante de temps.
+\end{enumerate}
+
+\begin{methode}[Correction]
+\[
+\tau=RC.
+\]
+Avec :
+\[
+R=\SI{1.0e4}{\ohm},
+\qquad
+C=\SI{1.0e-4}{F}.
+\]
+Donc :
+\[
+\tau=1{,}0\ \si{s}.
+\]
+Lors de la charge :
+\[
+u_C(t)=E(1-\e^{-t/\tau}).
+\]
+Pour $t=\tau$ :
+\[
+u_C(\tau)=E(1-\e^{-1})\approx0{,}63E.
+\]
+\end{methode}
+\end{exercice}
+
+\begin{exercice}[5 — Diffraction]
+Un laser de longueur d'onde :
+\[
+\lambda=\SI{650}{nm}
+\]
+éclaire une fente de largeur $a$.  
+On observe une tache centrale de largeur :
+\[
+L=\SI{4.0}{cm}
+\]
+sur un écran situé à :
+\[
+D=\SI{2.0}{m}.
+\]
+
+\begin{enumerate}
+  \item Relier $\theta$, $L$ et $D$.
+  \item Utiliser $\theta\simeq \lambda/a$.
+  \item Déterminer $a$.
+\end{enumerate}
+
+\begin{methode}[Correction]
+Pour petits angles :
+\[
+\theta\simeq \frac{L/2}{D}=\frac{L}{2D}.
+\]
+Or :
+\[
+\theta\simeq \frac{\lambda}{a}.
+\]
+Donc :
+\[
+a\simeq \frac{2D\lambda}{L}.
+\]
+Conversions :
+\[
+\lambda=\SI{650e-9}{m},
+\qquad
+L=\SI{4.0e-2}{m}.
+\]
+Donc :
+\[
+a=\frac{2\times2{,}0\times650\times10^{-9}}{4{,}0\times10^{-2}}
+=6{,}5\times10^{-5}\ \si{m}.
+\]
+Ainsi :
+\[
+a=\SI{65}{\micro m}.
+\]
+\end{methode}
+\end{exercice}
+
+% ============================================================
+\section{Checklist de passage en terminale}
+% ============================================================
+
+\begin{objectif}
+Avant d'entrer sereinement en terminale spécialité physique-chimie, il faut savoir faire les points suivants sans hésitation.
+\end{objectif}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item[\casevide] Convertir les unités.
+  \item[\casevide] Vérifier l'homogénéité d'une formule.
+  \item[\casevide] Calculer une quantité de matière.
+  \item[\casevide] Construire un tableau d'avancement.
+  \item[\casevide] Identifier un réactif limitant.
+  \item[\casevide] Exploiter un titrage.
+  \item[\casevide] Définir un acide et une base.
+  \item[\casevide] Calculer un pH simple.
+  \item[\casevide] Équilibrer une demi-équation redox.
+  \item[\casevide] Définir système et référentiel.
+  \item[\casevide] Faire un bilan des forces.
+  \item[\casevide] Appliquer la deuxième loi de Newton.
+  \item[\casevide] Utiliser l'énergie cinétique.
+  \item[\casevide] Utiliser l'énergie potentielle.
+  \item[\casevide] Exploiter un circuit électrique simple.
+  \item[\casevide] Comprendre un circuit RC.
+  \item[\casevide] Utiliser $v=\lambda f$.
+  \item[\casevide] Utiliser une formule de diffraction.
+  \item[\casevide] Exploiter un graphique.
+  \item[\casevide] Rédiger une conclusion physique.
+\end{itemize}
+\end{multicols}
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+\begin{alerte}[Idée essentielle]
+La terminale ne demande pas seulement plus de formules.  
+Elle demande surtout une meilleure capacité à passer :
+\[
+\text{situation réelle}
+\quad \longrightarrow \quad
+\text{modèle}
+\quad \longrightarrow \quad
+\text{équation}
+\quad \longrightarrow \quad
+\text{résultat}
+\quad \longrightarrow \quad
+\text{interprétation}.
+\]
+\end{alerte}
+
+\begin{center}
+\Large
+\textbf{La rigueur en physique-chimie repose sur trois piliers :}\\[1mm]
+\textbf{les lois, les unités, et l'interprétation.}
+\end{center}
+
+\end{document}
+```
+
+[1]: https://eduscol.education.gouv.fr/5829/programmes-et-ressources-en-physique-chimie-voie-gt?utm_source=chatgpt.com "Programmes et ressources en physique-chimie - voie GT"
