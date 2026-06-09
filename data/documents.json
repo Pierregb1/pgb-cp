@@ -1088,6 +1088,14 @@
   }
 ,
   {
+    "titre": "grand oral tennis pistes",
+    "fichier": "docs/physique terminale cours grand oral tennis pistes.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "cours"
+  }
+,
+  {
     "titre": "meca",
     "fichier": "docs/physique terminale cours meca.pdf",
     "matiere": "physique",
