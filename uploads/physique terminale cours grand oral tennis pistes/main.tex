@@ -13,9 +13,10 @@
 \usepackage{mathtools}
 \usepackage{physics}
 \usepackage{siunitx}
+\sisetup{locale = FR, per-mode = symbol}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -34,6 +35,7 @@
 }
 
 \pagestyle{fancy}
+\setlength{\headheight}{14pt}
 \fancyhf{}
 \lhead{\textsc{Grand Oral -- Balle de tennis}}
 \rhead{\textsc{Approfondissement physique}}
@@ -45,7 +47,8 @@
 
 \tcbset{
     arc=2mm,
-    boxrule=0.7pt
+    boxrule=0.7pt,
+    breakable
 }
 
 \newtcolorbox{idee}[1]{
@@ -66,7 +69,7 @@
     colframe=purple!60!black
 }
 
-\newtcolorbox{equation}[1]{
+\newtcolorbox{equationbox}[1]{
     title=\textbf{Mise en équation : #1},
     colback=yellow!6,
     colframe=orange!80!black
@@ -207,7 +210,7 @@ On néglige les frottements de l'air. La seule force extérieure est le poids :
 
 \subsection{Mise en équation}
 
-\begin{equation}{deuxième loi de Newton}
+\begin{equationbox}{deuxième loi de Newton}
 D'après la deuxième loi de Newton :
 
 \[
@@ -233,7 +236,7 @@ a_x=0,
 \qquad
 a_y=-g.
 \]
-\end{equation}
+\end{equationbox}
 
 \subsection{Résolution}
 
@@ -371,7 +374,7 @@ Avec :
 
 \subsection{Mise en équation}
 
-\begin{equation}{ralentissement horizontal}
+\begin{equationbox}{ralentissement horizontal}
 La deuxième loi de Newton donne :
 
 \[
@@ -383,7 +386,7 @@ Donc :
 \[
 \frac{dv}{dt}=-\frac{k}{m}v^2.
 \]
-\end{equation}
+\end{equationbox}
 
 \subsection{Résolution accessible}
 
@@ -551,7 +554,7 @@ On néglige ici la traînée verticale pour garder un modèle accessible.
 
 \subsection{Mise en équation}
 
-\begin{equation}{accélération verticale effective}
+\begin{equationbox}{accélération verticale effective}
 D'après la deuxième loi de Newton :
 
 \[
@@ -575,7 +578,7 @@ Alors :
 \[
 a_y=-g_{\text{eff}}.
 \]
-\end{equation}
+\end{equationbox}
 
 \subsection{Résolution}
 
@@ -689,7 +692,7 @@ Donc :
 
 \subsection{Mise en équation}
 
-\begin{equation}{accélération verticale réduite}
+\begin{equationbox}{accélération verticale réduite}
 On applique la deuxième loi de Newton :
 
 \[
@@ -715,7 +718,7 @@ g_{\text{eff}}=g-\frac{k_M}{m}v^2.
 \]
 
 Si la force de Magnus vers le haut est importante, $g_{\text{eff}}$ diminue.
-\end{equation}
+\end{equationbox}
 
 \subsection{Résolution}
 
