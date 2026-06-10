@@ -1,0 +1,1318 @@
+
+\documentclass[11pt,a4paper]{article}
+
+% =========================================================
+% POLYCOPIE COMPLET - MATHEMATIQUES PREMIERE GENERALE
+% Specialite + preparation a l'epreuve anticipee de mathematiques
+% =========================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1.7cm}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array,tabularx,longtable,booktabs,multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!60!black}
+\usepackage{lastpage}
+
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.2em}
+\setlist[enumerate]{leftmargin=1.5em,itemsep=0.35em}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Premiere generale -- Mathematiques}
+\rhead{Cours complet et preparation a l'epreuve}
+\cfoot{\thepage/\pageref{LastPage}}
+
+\definecolor{mainblue}{RGB}{18,68,119}
+\definecolor{softblue}{RGB}{232,243,255}
+\definecolor{softgreen}{RGB}{232,248,239}
+\definecolor{softred}{RGB}{255,238,238}
+\definecolor{softyellow}{RGB}{255,248,220}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{darkgreen}{RGB}{0,100,70}
+\definecolor{darkred}{RGB}{150,20,20}
+
+\newcounter{exercice}
+\newcounter{corrige}
+
+\newtcolorbox{boitecours}[1]{enhanced,breakable,colback=softblue,colframe=mainblue,title=\textbf{#1},fonttitle=\bfseries,arc=2mm,boxrule=0.8pt}
+\newtcolorbox{boitemethode}[1]{enhanced,breakable,colback=softgreen,colframe=darkgreen,title=\textbf{Methode -- #1},fonttitle=\bfseries,arc=2mm,boxrule=0.8pt}
+\newtcolorbox{boiteattention}[1]{enhanced,breakable,colback=softred,colframe=darkred,title=\textbf{Erreur classique -- #1},fonttitle=\bfseries,arc=2mm,boxrule=0.8pt}
+\newtcolorbox{boiteretenir}[1]{enhanced,breakable,colback=softyellow,colframe=orange!80!black,title=\textbf{A retenir -- #1},fonttitle=\bfseries,arc=2mm,boxrule=0.8pt}
+\newtcolorbox{boitepreuve}[1]{enhanced,breakable,colback=white,colframe=black!70,title=\textbf{Demonstration -- #1},fonttitle=\bfseries,arc=1mm,boxrule=0.6pt}
+\newtcolorbox{boiteexemple}[1]{enhanced,breakable,colback=softgray,colframe=black!45,title=\textbf{Exemple corrige -- #1},fonttitle=\bfseries,arc=1mm,boxrule=0.5pt}
+\newtcolorbox{exobox}[1]{enhanced,breakable,colback=white,colframe=mainblue,title=\stepcounter{exercice}\textbf{Exercice \theexercice{} -- #1},fonttitle=\bfseries,arc=1mm,boxrule=0.6pt}
+\newtcolorbox{corrbox}[1]{enhanced,breakable,colback=white,colframe=darkgreen,title=\stepcounter{corrige}\textbf{Correction \thecorrige{} -- #1},fonttitle=\bfseries,arc=1mm,boxrule=0.6pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\ie}{\emph{i.e.}}
+
+\title{\Huge \textbf{Cours complet de mathematiques -- Premiere generale}\\[2mm]
+\Large Specialite mathematiques et preparation a l'epreuve anticipee\\[1mm]
+\large Cours, methodes, demonstrations, exercices, corrections et devoir bilan}
+\author{Support professeur -- version pedagogique exigeante}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\begin{tcolorbox}[width=0.92\linewidth,colback=softblue,colframe=mainblue,arc=2mm]
+Ce polycopie est concu comme un vrai support de cours pour une classe de premiere generale. Il couvre les themes structurants du programme : automatismes, logique, algorithmique, suites, second degre, derivation, exponentielle, trigonometrie, geometrie vectorielle et reperee, probabilites conditionnelles, variables aleatoires et statistiques. Il insiste sur la redaction, le passage de l'observation a la preuve, les methodes et les erreurs classiques.
+\end{tcolorbox}
+\end{center}
+
+\tableofcontents
+\newpage
+
+\section*{Mode d'emploi du polycopie}
+\addcontentsline{toc}{section}{Mode d'emploi du polycopie}
+\begin{itemize}
+  \item Les encadres \textbf{Cours} donnent les definitions, proprietes et theoremes.
+  \item Les encadres \textbf{Demonstration} donnent des preuves redigees, souvent plus completes que ce qui est exige des eleves, afin de fournir un support professeur solide.
+  \item Les encadres \textbf{Methode} donnent des procedures utilisables en exercice et en evaluation.
+  \item Les encadres \textbf{Erreur classique} ciblent les confusions frequentes.
+  \item Les exercices de chaque chapitre sont corriges dans la derniere partie.
+\end{itemize}
+
+\begin{boiteretenir}{Objectif d'une bonne copie de premiere}
+Une copie de mathematiques ne doit pas seulement donner des resultats. Elle doit expliquer les choix effectues, citer les proprietes utilisees, distinguer calcul et raisonnement, puis conclure clairement dans le contexte de la question.
+\end{boiteretenir}
+
+\section{Automatismes, calcul et raisonnement numerique}
+
+\subsection{Fractions, puissances, pourcentages}
+\begin{boitecours}{Fractions et ecritures equivalentes}
+Pour tous reels $a,b,c,d$ avec $b\ne0$ et $d\ne0$, on a
+\[
+\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd},\qquad
+\frac{a}{b}\times\frac{c}{d}=\frac{ac}{bd},\qquad
+\frac{a}{b}\div\frac{c}{d}=\frac{a}{b}\times\frac{d}{c}\quad(c\ne0).
+\]
+Une proportion $p$ peut s'ecrire sous forme fractionnaire, decimale ou en pourcentage. Par exemple $25\%=0,25=\frac14$.
+\end{boitecours}
+
+\begin{boitemethode}{Comparer deux nombres}
+Pour comparer deux nombres $A$ et $B$, on peut :
+\begin{enumerate}
+  \item calculer $A-B$ : si $A-B>0$, alors $A>B$ ;
+  \item si $A>0$ et $B>0$, calculer $\frac AB$ : si $\frac AB>1$, alors $A>B$ ;
+  \item transformer les deux nombres dans une meme ecriture : fractions de meme denominateur, decimales, puissances de meme base.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteattention}{Le pourcentage n'est pas une quantite absolue}
+Dire qu'une quantite augmente de $20\%$ signifie qu'elle est multipliee par $1,20$. Dire qu'elle diminue de $20\%$ signifie qu'elle est multipliee par $0,80$. Une augmentation de $20\%$ suivie d'une diminution de $20\%$ multiplie par $1,20\times0,80=0,96$ : on ne revient pas au depart.
+\end{boiteattention}
+
+\begin{boitecours}{Taux d'evolution}
+Si une grandeur passe de $V_i$ a $V_f$, son taux d'evolution est
+\[
+t=\frac{V_f-V_i}{V_i}.
+\]
+On a donc $V_f=(1+t)V_i$. Le nombre $1+t$ est appele coefficient multiplicateur.
+Pour plusieurs evolutions successives de taux $t_1,t_2,\dots,t_n$, le coefficient multiplicateur global est
+\[
+(1+t_1)(1+t_2)\cdots(1+t_n).
+\]
+Le taux reciproque d'une evolution de coefficient $C$ est le taux $t'$ tel que $(1+t')C=1$, donc $t'=\frac1C-1$.
+\end{boitecours}
+
+\begin{boitepreuve}{Formule du taux d'evolution}
+Par definition, le taux d'evolution mesure la variation relative, c'est-a-dire la variation rapportee a la valeur initiale :
+\[
+t=\frac{V_f-V_i}{V_i}.
+\]
+En multipliant par $V_i$, on obtient $tV_i=V_f-V_i$, donc $V_f=V_i+tV_i=(1+t)V_i$.
+Reciproquement, si $V_f=(1+t)V_i$, alors $V_f-V_i=tV_i$, donc $\frac{V_f-V_i}{V_i}=t$.
+\end{boitepreuve}
+
+\begin{boiteexemple}{Evolution successive}
+Un prix de $80$ euros augmente de $15\%$, puis diminue de $10\%$.
+Le coefficient global est $1,15\times0,90=1,035$. Le prix final est donc
+\[
+80\times1,035=82,80.
+\]
+Le taux global est $1,035-1=0,035$, soit $3,5\%$.
+\end{boiteexemple}
+
+\begin{exobox}{Automatismes fondamentaux}
+Sans calculatrice, repondre en justifiant brievement.
+\begin{enumerate}
+  \item Calculer $25\%$ de $480$.
+  \item Un prix augmente de $10\%$ puis encore de $10\%$. Quel est le taux global ?
+  \item Une quantite diminue de $2,3\%$. Par quel nombre est-elle multipliee ?
+  \item Comparer $\frac15$, $\frac{19}{100}$ et $0,21$.
+  \item Isoler $h$ dans la formule $V=\pi r^2h$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Evolution et modele discret}
+Une population vaut $1200$ individus. Elle baisse de $4\%$ par an.
+\begin{enumerate}
+  \item Donner la population au bout d'un an.
+  \item Ecrire une relation entre $P_{n+1}$ et $P_n$.
+  \item Exprimer $P_n$ en fonction de $n$.
+  \item Determiner a partir de quel entier $n$ la population devient inferieure a $900$ en testant successivement des valeurs.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Vocabulaire ensembliste, logique et redaction}
+
+\subsection{Ensembles et operations}
+\begin{boitecours}{Ensembles}
+Un ensemble est une collection d'objets appeles elements. On note $x\in E$ pour dire que $x$ appartient a $E$. On note $A\subset E$ pour dire que tout element de $A$ est aussi element de $E$.
+\begin{itemize}
+  \item $A\cap B$ est l'intersection : elements appartenant a $A$ et a $B$.
+  \item $A\cup B$ est la reunion : elements appartenant a $A$ ou a $B$.
+  \item $\overline A$ ou $E\setminus A$ est le complementaire de $A$ dans $E$.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitecours}{Implication, reciproque, contraposee}
+Une implication $P\Rightarrow Q$ signifie : si $P$ est vraie, alors $Q$ est vraie.
+\begin{itemize}
+  \item Sa reciproque est $Q\Rightarrow P$.
+  \item Sa contraposee est $\neg Q\Rightarrow \neg P$.
+  \item Une implication et sa contraposee sont equivalentes.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitepreuve}{Contraposee}
+Montrer $P\Rightarrow Q$ revient a montrer qu'il est impossible d'avoir $P$ vraie et $Q$ fausse. Or dire que $Q$ est fausse revient a dire $\neg Q$. Donc si l'on prouve que $\neg Q$ entraine $\neg P$, on montre bien qu'aucune situation ne peut verifier a la fois $P$ et $\neg Q$.
+\end{boitepreuve}
+
+\begin{boitemethode}{Prouver une affirmation universelle}
+Pour prouver une phrase du type : ``pour tout $x$ de $E$, $P(x)$ est vraie'', on commence par :
+\[
+\text{Soit }x\in E.
+\]
+On raisonne ensuite sans choisir une valeur particuliere de $x$. La lettre $x$ est fixee mais quelconque.
+\end{boitemethode}
+
+\begin{boiteattention}{Exemple et preuve}
+Verifier une formule sur $x=0$, $x=1$ et $x=2$ ne prouve pas qu'elle est vraie pour tout reel $x$. Un exemple peut illustrer, mais une preuve doit traiter le cas general.
+\end{boiteattention}
+
+\begin{boiteexemple}{Demontrer une implication}
+Montrer que si $n$ est un entier pair, alors $n^2$ est pair.
+\smallskip
+Si $n$ est pair, il existe un entier $k$ tel que $n=2k$. Alors
+\[
+n^2=(2k)^2=4k^2=2(2k^2).
+\]
+Comme $2k^2$ est un entier, $n^2$ est pair.
+\end{boiteexemple}
+
+\begin{exobox}{Logique et contre-exemples}
+\begin{enumerate}
+  \item Donner la reciproque de : ``si $x=2$, alors $x^2=4$''. Est-elle vraie ?
+  \item Donner la contraposee de : ``si un produit est nul, alors au moins un facteur est nul''.
+  \item Refuter par un contre-exemple : ``si $x^2>4$, alors $x>2$''.
+  \item Prouver : pour tous reels $a,b$, si $a<b$, alors $a+3<b+3$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Algorithmique, programmation et listes}
+
+\begin{boitecours}{Variables, affectation et fonctions}
+Un algorithme manipule des variables. L'affectation $x\leftarrow 3$ signifie que la variable $x$ recoit la valeur $3$. En Python, on ecrit \texttt{x = 3}. Une fonction permet d'organiser un calcul reutilisable.
+\end{boitecours}
+
+\begin{boitecours}{Listes}
+Une liste est une collection ordonnee d'objets. En Python, les indices commencent a $0$. Si \texttt{L=[4,7,9]}, alors \texttt{L[0]} vaut $4$ et \texttt{L[2]} vaut $9$.
+\end{boitecours}
+
+\begin{boitemethode}{Calculer un seuil par boucle}
+Pour determiner le premier rang $n$ tel que $u_n$ depasse une valeur $S$, on initialise $n$ et $u$, puis on repete tant que $u<S$ :
+\begin{verbatim}
+n = 0
+u = u0
+while u < S:
+    n = n + 1
+    u = expression_du_terme_suivant
+\end{verbatim}
+A la fin, $n$ est le premier rang atteint si la suite est croissante dans le contexte considere.
+\end{boitemethode}
+
+\begin{boiteexemple}{Suite geometrique et seuil}
+Une population vaut $100$ et augmente de $8\%$ par periode. On veut depasser $200$.
+\begin{verbatim}
+n = 0
+u = 100
+while u < 200:
+    n = n + 1
+    u = 1.08*u
+print(n,u)
+\end{verbatim}
+Le programme traduit exactement la recurrence $u_{n+1}=1,08u_n$.
+\end{boiteexemple}
+
+\begin{exobox}{Lire et corriger un algorithme}
+On considere la suite $u_0=5$ et $u_{n+1}=2u_n+1$.
+\begin{enumerate}
+  \item Calculer $u_1,u_2,u_3$ a la main.
+  \item Ecrire une fonction Python \texttt{terme(n)} qui renvoie $u_n$.
+  \item Ecrire une fonction \texttt{liste(N)} qui renvoie $[u_0,u_1,\dots,u_N]$.
+  \item Proposer un algorithme donnant le premier rang pour lequel $u_n>1000$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Suites numeriques et modeles discrets}
+
+\subsection{Definitions et premiers exemples}
+\begin{boitecours}{Suite numerique}
+Une suite numerique est une fonction definie sur tout ou partie de $\N$ et a valeurs reelles. On note generalement $u_n$ l'image de l'entier $n$. Une suite peut etre definie :
+\begin{itemize}
+  \item par une formule explicite : $u_n=f(n)$ ;
+  \item par recurrence : un premier terme est donne, puis $u_{n+1}$ est exprime en fonction de $u_n$ ;
+  \item par un motif, un algorithme ou une situation concrete.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitecours}{Suite arithmetique}
+Une suite $(u_n)$ est arithmetique de raison $r$ lorsque, pour tout $n$,
+\[
+u_{n+1}=u_n+r.
+\]
+Si $u_0$ est connu, alors
+\[
+u_n=u_0+nr.
+\]
+Si $u_p$ est connu, alors $u_n=u_p+(n-p)r$.
+\end{boitecours}
+
+\begin{boitepreuve}{Terme general d'une suite arithmetique}
+On part de $u_{n+1}=u_n+r$. Alors
+\[
+u_1=u_0+r,\quad u_2=u_1+r=u_0+2r,\quad u_3=u_0+3r.
+\]
+Apres $n$ passages d'un terme au suivant, on a ajoute $r$ exactement $n$ fois. Donc $u_n=u_0+nr$. Cette idee peut etre formalisee par recurrence.
+\end{boitepreuve}
+
+\begin{boitecours}{Suite geometrique}
+Une suite $(u_n)$ est geometrique de raison $q$ lorsque, pour tout $n$,
+\[
+u_{n+1}=q u_n.
+\]
+Si $u_0$ est connu, alors
+\[
+u_n=u_0q^n.
+\]
+Si $u_p$ est connu, alors $u_n=u_pq^{n-p}$.
+\end{boitecours}
+
+\begin{boitepreuve}{Terme general d'une suite geometrique}
+On part de $u_{n+1}=qu_n$. Alors
+\[
+u_1=qu_0,\quad u_2=q u_1=q^2u_0,\quad u_3=q^3u_0.
+\]
+Apres $n$ passages, on a multiplie par $q$ exactement $n$ fois. Donc $u_n=u_0q^n$.
+\end{boitepreuve}
+
+\begin{boitecours}{Sommes classiques}
+Pour tout entier $n\ge1$,
+\[
+1+2+\cdots+n=\frac{n(n+1)}2.
+\]
+Pour tout reel $q\ne1$ et tout entier $n\ge0$,
+\[
+1+q+q^2+\cdots+q^n=\frac{1-q^{n+1}}{1-q}.
+\]
+Si $q=1$, la somme vaut $n+1$.
+\end{boitecours}
+
+\begin{boitepreuve}{Somme des entiers de $1$ a $n$}
+On pose $S=1+2+\cdots+n$. En ecrivant la somme dans l'autre sens,
+\[
+S=n+(n-1)+\cdots+1.
+\]
+En additionnant terme a terme,
+\[
+2S=(n+1)+(n+1)+\cdots+(n+1).
+\]
+Il y a $n$ termes, donc $2S=n(n+1)$, puis $S=\frac{n(n+1)}2$.
+\end{boitepreuve}
+
+\begin{boitepreuve}{Somme geometrique}
+Soit $S=1+q+q^2+\cdots+q^n$. Alors
+\[
+qS=q+q^2+\cdots+q^{n+1}.
+\]
+En soustrayant, $S-qS=1-q^{n+1}$. Donc $(1-q)S=1-q^{n+1}$. Si $q\ne1$, on divise par $1-q$ et on obtient la formule.
+\end{boitepreuve}
+
+\begin{boitemethode}{Choisir entre arithmetique et geometrique}
+\begin{itemize}
+  \item Si on ajoute chaque periode la meme quantite : modele arithmetique.
+  \item Si on applique chaque periode le meme taux : modele geometrique.
+  \item Le test utile est : difference constante pour arithmetique, quotient constant pour geometrique.
+\end{itemize}
+\end{boitemethode}
+
+\begin{boiteattention}{Croissance lineaire ou exponentielle discrete}
+Ajouter $40$ chaque semaine et augmenter de $20\%$ chaque semaine sont deux modeles differents. Dans le premier cas $u_{n+1}=u_n+40$. Dans le second $u_{n+1}=1,20u_n$.
+\end{boiteattention}
+
+\begin{boiteexemple}{Nenupars}
+Une surface initiale de $200$ m$^2$ augmente de $20\%$ par semaine. Alors $u_0=200$ et $u_{n+1}=1,2u_n$. C'est une suite geometrique de raison $1,2$, donc $u_n=200\times1,2^n$.
+Pour savoir quand elle depasse $2000$, on teste : $200\times1,2^n\ge2000$, soit $1,2^n\ge10$. D'apres une table, $1,2^{12}\approx8,92$ et $1,2^{13}\approx10,70$. La surface depasse $2000$ a partir de $13$ semaines.
+\end{boiteexemple}
+
+\begin{exobox}{Suites arithmetiques}
+Une salle contient $80$ chaises. Chaque semaine, on ajoute $12$ chaises.
+\begin{enumerate}
+  \item Definir une suite modelisant la situation.
+  \item Donner sa nature et sa raison.
+  \item Exprimer $u_n$ en fonction de $n$.
+  \item Determiner la premiere semaine ou il y aura au moins $200$ chaises.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Suites geometriques}
+Un capital de $1500$ euros est place a interets composes au taux annuel de $3\%$.
+\begin{enumerate}
+  \item Definir la suite $C_n$ donnant le capital apres $n$ ans.
+  \item Donner la nature de la suite.
+  \item Calculer $C_5$.
+  \item Determiner par essais le premier rang ou le capital depasse $1800$ euros.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Somme et interpretation}
+On economise $20$ euros le premier mois, puis chaque mois $5$ euros de plus que le mois precedent.
+\begin{enumerate}
+  \item Donner la somme economisee le $n$-ieme mois, en numerotant le premier mois par $n=1$.
+  \item Calculer la somme totale economisee pendant $12$ mois.
+  \item Expliquer pourquoi il s'agit d'une somme de termes d'une suite arithmetique.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Equations et fonctions polynomes du second degre}
+
+\subsection{Formes d'un trinome}
+\begin{boitecours}{Fonction polynome du second degre}
+Une fonction polynome du second degre est une fonction de la forme
+\[
+f(x)=ax^2+bx+c,
+\]
+ou $a,b,c$ sont reels et $a\ne0$. Sa courbe representative est une parabole.
+\end{boitecours}
+
+\begin{boitecours}{Trois formes utiles}
+\begin{itemize}
+  \item Forme developpee : $ax^2+bx+c$, utile pour calculer $f(0)$ ou deriver.
+  \item Forme factorisee : $a(x-x_1)(x-x_2)$, utile pour les racines et le signe.
+  \item Forme canonique : $a(x-\alpha)^2+\beta$, utile pour les variations et l'extremum.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitecours}{Discriminant et racines}
+Pour $ax^2+bx+c=0$ avec $a\ne0$, on pose
+\[
+\Delta=b^2-4ac.
+\]
+\begin{itemize}
+  \item Si $\Delta>0$, il y a deux racines reelles distinctes : $x_1=\frac{-b-\sqrt\Delta}{2a}$ et $x_2=\frac{-b+\sqrt\Delta}{2a}$.
+  \item Si $\Delta=0$, il y a une racine double : $x_0=\frac{-b}{2a}$.
+  \item Si $\Delta<0$, il n'y a pas de racine reelle.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitepreuve}{Resolution de l'equation du second degre}
+Soit $a\ne0$. On part de
+\[
+ax^2+bx+c=0.
+\]
+On divise par $a$ :
+\[
+x^2+\frac ba x+\frac ca=0.
+\]
+On complete le carre :
+\[
+x^2+\frac ba x=\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}.
+\]
+Ainsi
+\[
+\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}+\frac ca=0,
+\]
+donc
+\[
+\left(x+\frac b{2a}\right)^2=\frac{b^2-4ac}{4a^2}=\frac{\Delta}{4a^2}.
+\]
+Si $\Delta<0$, impossible dans $\R$. Si $\Delta=0$, on obtient $x=-\frac b{2a}$. Si $\Delta>0$, on obtient
+\[
+x+\frac b{2a}=\pm\frac{\sqrt\Delta}{2a},
+\]
+d'ou les deux formules.
+\end{boitepreuve}
+
+\begin{boitecours}{Signe d'un trinome}
+Si $a\ne0$ et si le trinome admet deux racines distinctes $x_1<x_2$, alors $ax^2+bx+c$ est du signe de $a$ a l'exterieur des racines et du signe oppose entre les racines. S'il n'a pas de racine reelle, il garde le signe de $a$ sur $\R$.
+\end{boitecours}
+
+\begin{boitemethode}{Resoudre une inequation du second degre}
+\begin{enumerate}
+  \item Mettre tout dans un seul membre.
+  \item Factoriser si possible, sinon calculer $\Delta$.
+  \item Faire un tableau de signe.
+  \item Lire l'ensemble solution en respectant strictement les symboles $<$, $\le$, $>$, $\ge$.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteexemple}{Equation et signe}
+Resoudre $2x^2-5x+3\le0$.
+On calcule $\Delta=(-5)^2-4\times2\times3=25-24=1$. Les racines sont
+\[
+x_1=\frac{5-1}{4}=1,\qquad x_2=\frac{5+1}{4}=\frac32.
+\]
+Comme $a=2>0$, le trinome est negatif ou nul entre les racines. Donc
+\[
+S=\left[1,\frac32\right].
+\]
+\end{boiteexemple}
+
+\begin{boiteattention}{Ne pas confondre racine et ordonnee a l'origine}
+Une racine est une valeur de $x$ telle que $f(x)=0$. L'ordonnee a l'origine est $f(0)=c$. Ce sont deux notions differentes.
+\end{boiteattention}
+
+\begin{exobox}{Second degre -- calculs essentiels}
+Pour chaque trinome, determiner les racines reelles, une factorisation eventuelle et le signe.
+\begin{enumerate}
+  \item $f(x)=x^2-5x+6$.
+  \item $g(x)=-2x^2+3x+2$.
+  \item $h(x)=4x^2+4x+1$.
+  \item $k(x)=x^2+x+1$.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Choisir la bonne forme}
+On considere $f(x)=-2(x-3)^2+8$.
+\begin{enumerate}
+  \item Donner le maximum de $f$ et la valeur de $x$ ou il est atteint.
+  \item Developper $f(x)$.
+  \item Resoudre $f(x)=0$.
+  \item Faire le tableau de variations de $f$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Derivation et variations}
+
+\subsection{Nombre derive : point de vue local}
+\begin{boitecours}{Taux de variation et nombre derive}
+Soit $f$ une fonction definie autour d'un reel $a$. Le taux de variation entre $a$ et $a+h$ est
+\[
+\frac{f(a+h)-f(a)}{h}\quad(h\ne0).
+\]
+Lorsque ce taux se rapproche d'un nombre lorsque $h$ devient tres proche de $0$, ce nombre est appele nombre derive de $f$ en $a$ et se note $f'(a)$.
+Geometriquement, $f'(a)$ est le coefficient directeur de la tangente a la courbe de $f$ au point d'abscisse $a$.
+\end{boitecours}
+
+\begin{boitecours}{Tangente}
+Si $f$ est derivable en $a$, l'equation de la tangente a la courbe de $f$ au point d'abscisse $a$ est
+\[
+y=f'(a)(x-a)+f(a).
+\]
+\end{boitecours}
+
+\begin{boitepreuve}{Tangente comme approximation affine}
+La tangente en $a$ est la droite qui passe par le point $A(a,f(a))$ et dont le coefficient directeur est $f'(a)$. Une droite de coefficient directeur $m$ passant par $(a,f(a))$ a pour equation $y=m(x-a)+f(a)$. En prenant $m=f'(a)$, on obtient l'equation annoncee.
+\end{boitepreuve}
+
+\begin{boitecours}{Fonctions derivees usuelles}
+\begin{center}
+\begin{tabularx}{0.9\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+\toprule
+Fonction $f(x)$ & Derivee $f'(x)$\\
+\midrule
+$c$ & $0$\\
+$x$ & $1$\\
+$x^2$ & $2x$\\
+$x^n$ & $nx^{n-1}$ pour $n\in\N^*$\\
+$\frac1x$ sur $\R^*$ & $-\frac1{x^2}$\\
+$\sqrt{x}$ sur $]0,+\infty[$ & $\frac1{2\sqrt{x}}$\\
+$e^x$ & $e^x$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\end{boitecours}
+
+\begin{boitecours}{Operations sur les derivees}
+Si $u$ et $v$ sont derivables, alors :
+\[
+(u+v)'=u'+v',\qquad (ku)'=ku',\qquad (uv)'=u'v+uv',
+\]
+\[
+\left(\frac uv\right)'=\frac{u'v-uv'}{v^2}\quad\text{la ou }v\ne0.
+\]
+Si $f(x)=g(ax+b)$, alors $f'(x)=a g'(ax+b)$.
+\end{boitecours}
+
+\begin{boitepreuve}{Derivee de $x^2$}
+Soit $f(x)=x^2$. Pour $h\ne0$,
+\[
+\frac{f(a+h)-f(a)}{h}=\frac{(a+h)^2-a^2}{h}=\frac{2ah+h^2}{h}=2a+h.
+\]
+Lorsque $h$ devient proche de $0$, $2a+h$ devient proche de $2a$. Donc $f'(a)=2a$.
+\end{boitepreuve}
+
+\begin{boitecours}{Derivee et variations}
+Soit $f$ derivable sur un intervalle $I$.
+\begin{itemize}
+  \item Si $f'(x)\ge0$ pour tout $x\in I$, alors $f$ est croissante sur $I$.
+  \item Si $f'(x)\le0$ pour tout $x\in I$, alors $f$ est decroissante sur $I$.
+  \item Si $f'$ change de signe de $+$ vers $-$ en $a$, alors $f$ admet un maximum local en $a$.
+  \item Si $f'$ change de signe de $-$ vers $+$ en $a$, alors $f$ admet un minimum local en $a$.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitemethode}{Etudier les variations d'une fonction}
+\begin{enumerate}
+  \item Preciser l'ensemble de definition.
+  \item Calculer $f'(x)$.
+  \item Etudier le signe de $f'(x)$.
+  \item Construire le tableau de variations.
+  \item Conclure dans le contexte : maximum, minimum, solution d'une inequation, optimisation.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteexemple}{Optimisation}
+On considere $f(x)=-x^2+6x+1$. Alors $f'(x)=-2x+6$. On resout $f'(x)=0$, soit $x=3$. Le signe de $-2x+6$ est positif pour $x<3$ et negatif pour $x>3$. Donc $f$ est croissante puis decroissante et admet un maximum en $x=3$. Ce maximum vaut $f(3)=10$.
+\end{boiteexemple}
+
+\begin{boiteattention}{Une derivee n'est pas une equation}
+Calculer $f'(x)$ ne suffit pas. Pour les variations, on doit etudier le signe de $f'(x)$, pas seulement chercher ses zeros.
+\end{boiteattention}
+
+\begin{exobox}{Tangente et nombre derive}
+Soit $f(x)=x^2-3x+2$.
+\begin{enumerate}
+  \item Calculer $f'(x)$.
+  \item Calculer $f'(2)$ et $f(2)$.
+  \item Donner l'equation de la tangente a la courbe de $f$ au point d'abscisse $2$.
+  \item Interpreter le coefficient directeur obtenu.
+\end{enumerate}
+\end{exobox}
+
+\begin{exobox}{Variations}
+Etudier les variations de $f(x)=x^3-3x^2-9x+1$ sur $\R$.
+\end{exobox}
+
+
+\section{Fonction exponentielle}
+
+\begin{boitecours}{Definition caracteristique}
+La fonction exponentielle, notee $\exp$ ou $x\mapsto e^x$, est l'unique fonction derivable sur $\R$ telle que
+\[
+\exp'(x)=\exp(x)\quad\text{pour tout }x\in\R,
+\qquad \exp(0)=1.
+\]
+On note $e=\exp(1)$.
+\end{boitecours}
+
+\begin{boitecours}{Proprietes algebriques}
+Pour tous reels $x$ et $y$,
+\[
+e^{x+y}=e^xe^y,
+\qquad e^{-x}=\frac1{e^x},
+\qquad e^{x-y}=\frac{e^x}{e^y},
+\qquad (e^x)^n=e^{nx}.
+\]
+De plus $e^x>0$ pour tout reel $x$.
+\end{boitecours}
+
+\begin{boitecours}{Variations}
+Comme $(e^x)'=e^x$ et que $e^x>0$ pour tout $x$, la fonction exponentielle est strictement croissante sur $\R$.
+\end{boitecours}
+
+\begin{boitepreuve}{Croissance de l'exponentielle}
+La derivee de $x\mapsto e^x$ est $x\mapsto e^x$. Or une valeur exponentielle est toujours strictement positive. Donc la derivee est strictement positive sur $\R$. Par le lien entre signe de la derivee et variations, l'exponentielle est strictement croissante.
+\end{boitepreuve}
+
+\begin{boitemethode}{Resoudre une equation exponentielle simple}
+Pour resoudre $e^{u(x)}=e^{v(x)}$, on utilise la stricte croissance de l'exponentielle :
+\[
+e^{u(x)}=e^{v(x)}\quad\Longleftrightarrow\quad u(x)=v(x).
+\]
+Pour une inequation $e^{u(x)}\le e^{v(x)}$, on obtient $u(x)\le v(x)$.
+\end{boitemethode}
+
+\begin{boiteexemple}{Equation et inequation}
+Resoudre $e^{2x-1}=e^{x+3}$. Comme l'exponentielle est injective, $2x-1=x+3$, donc $x=4$.
+\smallskip
+Resoudre $e^{3x}\le e^{x+2}$. Comme l'exponentielle est croissante, $3x\le x+2$, donc $x\le1$.
+\end{boiteexemple}
+
+\begin{boiteattention}{Ne pas developper $e^{a+b}$ comme une somme}
+On a $e^{a+b}=e^ae^b$, jamais $e^a+e^b$. Par exemple $e^{0+0}=1$ alors que $e^0+e^0=2$.
+\end{boiteattention}
+
+\begin{exobox}{Exponentielle}
+\begin{enumerate}
+  \item Simplifier $A=e^{2x+1}e^{-x}$.
+  \item Resoudre $e^{x^2}=e^{4}$.
+  \item Etudier les variations de $f(x)=e^x-x$ sur $\R$.
+  \item Montrer que $e^x>0$ permet de resoudre le signe de $g'(x)=e^x(x-2)$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Trigonometrie}
+
+\begin{boitecours}{Cercle trigonometrique}
+Dans un repere orthonorme, le cercle trigonometrique est le cercle de centre $O$ et de rayon $1$. A un reel $x$, on associe un point $M$ du cercle obtenu en parcourant une longueur orientee $x$ depuis le point $(1,0)$. On definit
+\[
+M(\cos x,\sin x).
+\]
+\end{boitecours}
+
+\begin{boitecours}{Identites fondamentales}
+Pour tout reel $x$,
+\[
+\cos^2 x+\sin^2 x=1.
+\]
+Les fonctions cosinus et sinus sont $2\pi$-periodiques :
+\[
+\cos(x+2\pi)=\cos x,
+\qquad \sin(x+2\pi)=\sin x.
+\]
+De plus,
+\[
+\cos(-x)=\cos x,
+\qquad \sin(-x)=-\sin x.
+\]
+\end{boitecours}
+
+\begin{boitepreuve}{Identite $\cos^2x+\sin^2x=1$}
+Le point $M(\cos x,\sin x)$ appartient au cercle de centre $O$ et de rayon $1$. Son equation est $X^2+Y^2=1$. En remplacant $X$ par $\cos x$ et $Y$ par $\sin x$, on obtient $\cos^2x+\sin^2x=1$.
+\end{boitepreuve}
+
+\begin{boitemethode}{Resoudre une equation trigonometrique simple}
+On place les solutions sur le cercle trigonometrique, puis on ajoute la periodicite. Par exemple,
+\[
+\cos x=\frac12 \Longleftrightarrow x=\frac\pi3+2k\pi \text{ ou }x=-\frac\pi3+2k\pi,
+\quad k\in\mathbb Z.
+\]
+\end{boitemethode}
+
+\begin{boiteexemple}{Equation sur un intervalle}
+Resoudre $\sin x=\frac{\sqrt3}{2}$ sur $[0,2\pi]$. Sur le cercle, le sinus vaut $\frac{\sqrt3}{2}$ pour les angles $\frac\pi3$ et $\frac{2\pi}3$. Donc l'ensemble solution est $\left\{\frac\pi3,\frac{2\pi}3\right\}$.
+\end{boiteexemple}
+
+\begin{exobox}{Cercle trigonometrique}
+\begin{enumerate}
+  \item Donner les valeurs exactes de $\cos\frac\pi3$, $\sin\frac\pi3$, $\cos\frac\pi4$, $\sin\frac\pi4$.
+  \item Resoudre sur $[0,2\pi]$ : $\cos x=-\frac12$.
+  \item Resoudre sur $\R$ : $\sin x=0$.
+  \item Montrer que $1-\cos^2x=\sin^2x$ et expliquer pourquoi cela ne donne pas toujours $\sin x=1-\cos x$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Geometrie vectorielle, produit scalaire et geometrie reperee}
+
+\subsection{Vecteurs}
+\begin{boitecours}{Coordonnees et operations}
+Dans un repere, si $A(x_A,y_A)$ et $B(x_B,y_B)$, alors
+\[
+\vect{AB}(x_B-x_A,\ y_B-y_A).
+\]
+Si $\vec u(x,y)$ et $\vec v(x',y')$, alors
+\[
+\vec u+\vec v=(x+x',y+y'),\qquad k\vec u=(kx,ky).
+\]
+\end{boitecours}
+
+\begin{boitecours}{Produit scalaire}
+Pour deux vecteurs $\vec u(x,y)$ et $\vec v(x',y')$ dans un repere orthonorme,
+\[
+\vec u\cdot\vec v=xx'+yy'.
+\]
+On a aussi
+\[
+\vec u\cdot\vec v=\|\vec u\|\,\|\vec v\|\cos\theta,
+\]
+ou $\theta$ est l'angle entre les deux vecteurs non nuls.
+Deux vecteurs non nuls sont orthogonaux si et seulement si leur produit scalaire est nul.
+\end{boitecours}
+
+\begin{boitepreuve}{Orthogonalite et produit scalaire}
+Si $\theta=\frac\pi2$, alors $\cos\theta=0$, donc $\vec u\cdot\vec v=0$. Reciproquement, si $\vec u$ et $\vec v$ sont non nuls et si $\vec u\cdot\vec v=0$, alors $\|\vec u\|\|\vec v\|\cos\theta=0$. Les normes etant strictement positives, $\cos\theta=0$, donc $\theta=\frac\pi2$ dans le cadre geometrique usuel.
+\end{boitepreuve}
+
+\begin{boitecours}{Droite avec vecteur normal}
+Dans un repere orthonorme, la droite d'equation
+\[
+ax+by+c=0
+\]
+admet $\vec n(a,b)$ comme vecteur normal.
+Si une droite passe par $A(x_A,y_A)$ et a pour vecteur normal $\vec n(a,b)$, alors une equation est
+\[
+a(x-x_A)+b(y-y_A)=0.
+\]
+\end{boitecours}
+
+\begin{boitepreuve}{Equation avec vecteur normal}
+Un point $M(x,y)$ appartient a la droite passant par $A$ et normale a $\vec n$ si et seulement si $\vect{AM}$ est orthogonal a $\vec n$. Donc
+\[
+\vec n\cdot\vect{AM}=0.
+\]
+Or $\vect{AM}(x-x_A,y-y_A)$ et $\vec n(a,b)$, donc
+\[
+a(x-x_A)+b(y-y_A)=0.
+\]
+\end{boitepreuve}
+
+\begin{boitecours}{Cercle}
+Le cercle de centre $\Omega(a,b)$ et de rayon $R>0$ a pour equation
+\[
+(x-a)^2+(y-b)^2=R^2.
+\]
+\end{boitecours}
+
+\begin{boitepreuve}{Equation du cercle}
+Un point $M(x,y)$ appartient au cercle de centre $\Omega(a,b)$ et de rayon $R$ si et seulement si $\Omega M=R$. Or, d'apres la distance dans un repere orthonorme,
+\[
+\Omega M^2=(x-a)^2+(y-b)^2.
+\]
+Ainsi $\Omega M=R$ equivaut a $(x-a)^2+(y-b)^2=R^2$.
+\end{boitepreuve}
+
+\begin{boitemethode}{Projection orthogonale sur une droite}
+Pour projeter $A$ sur une droite $d$ :
+\begin{enumerate}
+  \item determiner un vecteur normal $\vec n$ a $d$ ;
+  \item la droite perpendiculaire a $d$ passant par $A$ a pour direction $\vec n$ ;
+  \item resoudre le systeme forme par les equations des deux droites.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteexemple}{Equation de droite}
+Trouver une equation de la droite passant par $A(2,-1)$ et de vecteur normal $\vec n(3,4)$.
+On ecrit
+\[
+3(x-2)+4(y+1)=0.
+\]
+Donc $3x-6+4y+4=0$, soit $3x+4y-2=0$.
+\end{boiteexemple}
+
+\begin{exobox}{Produit scalaire et cercle}
+Dans un repere orthonorme, on donne $A(1,2)$, $B(5,4)$ et $C(3,-2)$.
+\begin{enumerate}
+  \item Calculer $\vect{AB}\cdot\vect{AC}$.
+  \item Les droites $(AB)$ et $(AC)$ sont-elles perpendiculaires ?
+  \item Donner une equation du cercle de centre $A$ passant par $B$.
+  \item Donner une equation de la droite passant par $C$ et perpendiculaire a $(AB)$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Probabilites conditionnelles, independance et arbres}
+
+\begin{boitecours}{Univers et evenements}
+Une experience aleatoire est une experience dont on ne peut pas prevoir avec certitude l'issue. L'ensemble des issues possibles est l'univers $\Omega$. Un evenement est une partie de $\Omega$.
+\end{boitecours}
+
+\begin{boitecours}{Probabilite conditionnelle}
+Si $A$ et $B$ sont deux evenements avec $\Pp(A)>0$, la probabilite de $B$ sachant $A$ est
+\[
+\Pp_A(B)=\frac{\Pp(A\cap B)}{\Pp(A)}.
+\]
+Ainsi
+\[
+\Pp(A\cap B)=\Pp(A)\Pp_A(B).
+\]
+\end{boitecours}
+
+\begin{boitecours}{Formule des probabilites totales}
+Si $A$ et $\overline A$ forment une partition de l'univers, alors
+\[
+\Pp(B)=\Pp(A\cap B)+\Pp(\overline A\cap B)
+=\Pp(A)\Pp_A(B)+\Pp(\overline A)\Pp_{\overline A}(B).
+\]
+\end{boitecours}
+
+\begin{boitecours}{Independance}
+Deux evenements $A$ et $B$ sont independants lorsque
+\[
+\Pp(A\cap B)=\Pp(A)\Pp(B).
+\]
+Si $\Pp(A)>0$, cela equivaut a $\Pp_A(B)=\Pp(B)$.
+\end{boitecours}
+
+\begin{boiteattention}{Confusion entre $\Pp(A\cap B)$ et $\Pp_A(B)$}
+$\Pp(A\cap B)$ signifie : probabilite que $A$ et $B$ se realisent ensemble. $\Pp_A(B)$ signifie : probabilite de $B$ une fois que l'on sait que $A$ est realise. Ce ne sont pas les memes objets.
+\end{boiteattention}
+
+\begin{boitemethode}{Construire un arbre pondere}
+\begin{enumerate}
+  \item Choisir le premier niveau selon une information disponible : $A$ puis $\overline A$.
+  \item Sur chaque branche, placer les probabilites conditionnelles.
+  \item Multiplier le long d'un chemin pour obtenir une intersection.
+  \item Additionner plusieurs chemins pour obtenir une probabilite totale.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteexemple}{Club sportif}
+$90\%$ des participants font une randonnee ; parmi eux, $5\%$ sont licencies. $10\%$ font un cross ; parmi eux, $40\%$ sont licencies. Alors
+\[
+\Pp(R)=0,90,\quad \Pp(C)=0,10,\quad \Pp_R(L)=0,05,\quad \Pp_C(L)=0,40.
+\]
+Donc $\Pp(C\cap L)=0,10\times0,40=0,04$ et
+\[
+\Pp(L)=0,90\times0,05+0,10\times0,40=0,045+0,04=0,085.
+\]
+Ainsi
+\[
+\Pp_L(C)=\frac{\Pp(C\cap L)}{\Pp(L)}=\frac{0,04}{0,085}\approx0,471.
+\]
+Malgre les $40\%$ chez les coureurs, parmi les licencies la proportion de coureurs est inferieure a $50\%$.
+\end{boiteexemple}
+
+\begin{exobox}{Probabilites conditionnelles}
+Dans une classe, $60\%$ des eleves sont des filles. Parmi les filles, $70\%$ ont choisi anglais LV1. Parmi les garcons, $80\%$ ont choisi anglais LV1.
+\begin{enumerate}
+  \item Construire un arbre pondere.
+  \item Calculer la probabilite qu'un eleve soit une fille et ait choisi anglais.
+  \item Calculer la probabilite qu'un eleve ait choisi anglais.
+  \item Sachant que l'eleve a choisi anglais, calculer la probabilite que ce soit une fille.
+  \item Les evenements ``etre une fille'' et ``avoir choisi anglais'' sont-ils independants ?
+\end{enumerate}
+\end{exobox}
+
+
+\section{Variables aleatoires, esperance, variance et ecart type}
+
+\begin{boitecours}{Variable aleatoire reelle}
+Une variable aleatoire reelle $X$ associe a chaque issue d'une experience aleatoire un nombre reel. La loi de $X$ donne les valeurs possibles $x_i$ et les probabilites $p_i=\Pp(X=x_i)$.
+\end{boitecours}
+
+\begin{boitecours}{Esperance}
+Si $X$ prend les valeurs $x_1,\dots,x_n$ avec les probabilites $p_1,\dots,p_n$, alors
+\[
+\E(X)=x_1p_1+x_2p_2+\cdots+x_np_n.
+\]
+L'esperance est la moyenne theorique de $X$ sur un grand nombre de repetitions.
+\end{boitecours}
+
+\begin{boitecours}{Variance et ecart type}
+La variance est
+\[
+\V(X)=\sum_{i=1}^n p_i(x_i-\E(X))^2.
+\]
+On peut aussi utiliser la formule de Koenig-Huygens :
+\[
+\V(X)=\E(X^2)-\E(X)^2.
+\]
+L'ecart type est $\sigma(X)=\sqrt{\V(X)}$.
+\end{boitecours}
+
+\begin{boitepreuve}{Formule de Koenig-Huygens}
+On developpe :
+\[
+\V(X)=\sum p_i(x_i-\E(X))^2=\sum p_i(x_i^2-2x_i\E(X)+\E(X)^2).
+\]
+Donc
+\[
+\V(X)=\sum p_ix_i^2-2\E(X)\sum p_ix_i+\E(X)^2\sum p_i.
+\]
+Or $\sum p_ix_i=\E(X)$ et $\sum p_i=1$. Ainsi
+\[
+\V(X)=\E(X^2)-2\E(X)^2+\E(X)^2=\E(X^2)-\E(X)^2.
+\]
+\end{boitepreuve}
+
+\begin{boiteexemple}{Jeu aleatoire}
+On lance une piece equilibree. Si pile sort, on gagne $3$ euros ; si face sort, on perd $1$ euro. Alors $X$ prend les valeurs $3$ et $-1$ avec probabilites $\frac12$ et $\frac12$.
+\[
+\E(X)=3\times\frac12+(-1)\times\frac12=1.
+\]
+Sur un grand nombre de parties, le gain moyen est donc $1$ euro par partie.
+\end{boiteexemple}
+
+\begin{boiteattention}{Esperance positive ne veut pas dire gain certain}
+Une esperance positive signifie un gain moyen theorique favorable sur un grand nombre de repetitions. Une seule partie peut toujours etre perdue.
+\end{boiteattention}
+
+\begin{exobox}{Loi, esperance et variance}
+Une variable aleatoire $X$ a la loi suivante :
+\[
+\begin{array}{c|cccc}
+x_i&-2&0&1&5\\\hline
+\Pp(X=x_i)&0,1&0,3&0,4&0,2
+\end{array}
+\]
+\begin{enumerate}
+  \item Verifier que c'est bien une loi de probabilite.
+  \item Calculer $\E(X)$.
+  \item Calculer $\E(X^2)$.
+  \item En deduire $\V(X)$ et $\sigma(X)$.
+\end{enumerate}
+\end{exobox}
+
+
+\section{Statistiques descriptives et lecture de donnees}
+
+\begin{boitecours}{Moyenne, mediane, quartiles}
+Pour une serie statistique numerique :
+\begin{itemize}
+  \item la moyenne mesure un centre de gravite numerique ;
+  \item la mediane partage la serie ordonnee en deux groupes de meme effectif autant que possible ;
+  \item les quartiles donnent des seuils de repartition ;
+  \item l'ecart type mesure une dispersion autour de la moyenne.
+\end{itemize}
+\end{boitecours}
+
+\begin{boitemethode}{Lire un graphique statistique}
+Avant tout calcul :
+\begin{enumerate}
+  \item identifier la population et le caractere etudie ;
+  \item lire les unites, l'echelle et l'origine du repere ;
+  \item distinguer effectifs, frequences et pourcentages ;
+  \item verifier la coherence des ordres de grandeur.
+\end{enumerate}
+\end{boitemethode}
+
+\begin{boiteattention}{Diagrammes tronques}
+Un axe vertical qui ne commence pas a $0$ peut amplifier visuellement une difference. Il faut toujours lire l'echelle avant d'interpreter.
+\end{boiteattention}
+
+\begin{boiteexemple}{Comparer deux series}
+Series $A: 9,10,10,11$ et $B: 7,10,10,13$. Les deux moyennes valent $10$. Mais $B$ est plus dispersee, car ses valeurs extremes sont plus eloignees de $10$. On peut confirmer par les ecarts a la moyenne : pour $A$, $1,0,0,1$ ; pour $B$, $3,0,0,3$.
+\end{boiteexemple}
+
+\begin{exobox}{Statistiques}
+On donne la serie : $4,5,5,7,8,8,8,10,12$.
+\begin{enumerate}
+  \item Calculer la moyenne.
+  \item Determiner la mediane.
+  \item Determiner les quartiles selon la convention usuelle du lycee.
+  \item Interpreter ces indicateurs.
+\end{enumerate}
+\end{exobox}
+
+\section{Grand devoir bilan final}
+
+\begin{center}
+\begin{tcolorbox}[width=0.9\linewidth,colback=softyellow,colframe=orange!80!black]
+\textbf{Duree conseillee : 2 h 30. Calculatrice autorisee sauf premiere partie.} Le sujet melange automatismes, raisonnement, modelisation, analyse, geometrie et probabilites.
+\end{tcolorbox}
+\end{center}
+
+\subsection*{Partie I -- Automatismes}
+\begin{enumerate}
+  \item Calculer $\frac34-\frac25$.
+  \item Un prix de $250$ euros baisse de $12\%$. Calculer le prix final.
+  \item Une quantite est multipliee par $0,82$. Donner le taux d'evolution.
+  \item Isoler $r$ dans $A=\pi r^2$ avec $r\ge0$.
+  \item Developper $(x-4)(x+7)$.
+  \item Determiner le coefficient directeur de la droite passant par $A(2,5)$ et $B(6,13)$.
+\end{enumerate}
+
+\subsection*{Partie II -- Suites et modelisation}
+Un laboratoire etudie une culture de bacteries. Au depart, il y a $500$ bacteries. Toutes les heures, la population augmente de $18\%$.
+\begin{enumerate}
+  \item Definir une suite $u_n$ modelisant la population apres $n$ heures.
+  \item Donner la nature de la suite et exprimer $u_n$ en fonction de $n$.
+  \item Calculer $u_5$ a l'unite pres.
+  \item Determiner par essais le premier entier $n$ tel que $u_n>2000$.
+  \item Un second modele propose $v_n=500+120n$. Comparer les deux modeles a long terme et expliquer la difference de nature.
+\end{enumerate}
+
+\subsection*{Partie III -- Second degre et optimisation}
+On considere la fonction $f$ definie sur $\R$ par
+\[
+f(x)=-2x^2+12x-10.
+\]
+\begin{enumerate}
+  \item Calculer $f'(x)$.
+  \item Etudier les variations de $f$.
+  \item Determiner le maximum de $f$.
+  \item Resoudre $f(x)=0$.
+  \item Resoudre $f(x)\ge0$.
+\end{enumerate}
+
+\subsection*{Partie IV -- Geometrie}
+Dans un repere orthonorme, on donne $A(1,1)$, $B(5,3)$ et $C(2,7)$.
+\begin{enumerate}
+  \item Calculer $\vect{AB}$ et $\vect{AC}$.
+  \item Calculer $\vect{AB}\cdot\vect{AC}$. L'angle $\widehat{BAC}$ est-il droit ?
+  \item Donner une equation du cercle de centre $A$ passant par $B$.
+  \item Donner une equation de la droite passant par $C$ et perpendiculaire a $(AB)$.
+\end{enumerate}
+
+\subsection*{Partie V -- Probabilites}
+Dans une population, $55\%$ des personnes pratiquent un sport. Parmi les sportifs, $30\%$ participent a une competition. Parmi les non-sportifs, $4\%$ participent a une competition associative ponctuelle.
+On note $S$ : ``la personne est sportive'' et $C$ : ``la personne participe a une competition''.
+\begin{enumerate}
+  \item Construire un arbre pondere.
+  \item Calculer $\Pp(S\cap C)$.
+  \item Calculer $\Pp(C)$.
+  \item Sachant qu'une personne participe a une competition, calculer la probabilite qu'elle soit sportive.
+  \item Les evenements $S$ et $C$ sont-ils independants ?
+\end{enumerate}
+
+\newpage
+\section{Corrections detaillees des exercices}
+
+\setcounter{corrige}{0}
+
+\begin{corrbox}{Automatismes fondamentaux}
+\begin{enumerate}
+  \item $25\%=\frac14$, donc $25\%$ de $480$ vaut $120$.
+  \item Deux augmentations de $10\%$ donnent le coefficient $1,1^2=1,21$, soit $21\%$ d'augmentation.
+  \item Diminuer de $2,3\%$ revient a multiplier par $1-0,023=0,977$.
+  \item $\frac15=0,20$, $\frac{19}{100}=0,19$, donc $\frac{19}{100}<\frac15<0,21$.
+  \item $V=\pi r^2h$, donc $h=\frac{V}{\pi r^2}$ si $r\ne0$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Evolution et modele discret}
+\begin{enumerate}
+  \item $P_1=1200\times0,96=1152$.
+  \item $P_{n+1}=0,96P_n$.
+  \item La suite est geometrique : $P_n=1200\times0,96^n$.
+  \item On teste : $P_7\approx902$, $P_8\approx866$. Le premier rang est $n=8$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Logique et contre-exemples}
+\begin{enumerate}
+  \item La reciproque est : si $x^2=4$, alors $x=2$. Elle est fausse car $x=-2$ verifie $x^2=4$.
+  \item Si aucun facteur n'est nul, alors le produit n'est pas nul.
+  \item $x=-3$ donne $x^2=9>4$ mais $x>2$ est faux.
+  \item Soient $a,b\in\R$ avec $a<b$. En ajoutant $3$ aux deux membres d'une inegalite, le sens est conserve : $a+3<b+3$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Lire et corriger un algorithme}
+\begin{enumerate}
+  \item $u_1=11$, $u_2=23$, $u_3=47$.
+  \item \texttt{def terme(n):}\newline
+\texttt{    u=5}\newline
+\texttt{    for k in range(n):}\newline
+\texttt{        u=2*u+1}\newline
+\texttt{    return u}
+  \item On ajoute les valeurs successives dans une liste.
+  \item On utilise une boucle \texttt{while u <= 1000}. Le premier rang obtenu est celui cherche, car la suite est croissante a partir de $u_0=5$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Suites arithmetiques}
+\begin{enumerate}
+  \item $u_n$ : nombre de chaises apres $n$ semaines, $u_0=80$.
+  \item $u_{n+1}=u_n+12$, suite arithmetique de raison $12$.
+  \item $u_n=80+12n$.
+  \item $80+12n\ge200 \Longleftrightarrow 12n\ge120 \Longleftrightarrow n\ge10$. Premiere semaine : $10$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Suites geometriques}
+\begin{enumerate}
+  \item $C_0=1500$ et $C_{n+1}=1,03C_n$.
+  \item Suite geometrique de raison $1,03$.
+  \item $C_5=1500\times1,03^5\approx1739$ euros.
+  \item On cherche $1500\times1,03^n>1800$. Par essais, $n=7$ donne environ $1845$. Le premier rang est $7$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Somme et interpretation}
+Le montant du $n$-ieme mois est $u_n=20+5(n-1)$ pour $n\ge1$. Sur $12$ mois, on additionne une suite arithmetique de premier terme $20$ et de dernier terme $75$. La somme vaut
+\[
+12\times\frac{20+75}{2}=570.
+\]
+\end{corrbox}
+
+\begin{corrbox}{Second degre -- calculs essentiels}
+\begin{enumerate}
+  \item $x^2-5x+6=(x-2)(x-3)$ ; signe positif hors $[2,3]$, negatif entre.
+  \item $-2x^2+3x+2=-(2x+1)(x-2)$ ; racines $-\frac12$ et $2$.
+  \item $4x^2+4x+1=(2x+1)^2$ ; racine double $-\frac12$, signe positif ou nul.
+  \item $\Delta=1-4=-3<0$ et $a>0$, donc pas de racine et signe positif.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Choisir la bonne forme}
+$f(x)=-2(x-3)^2+8$. Comme $-2(x-3)^2\le0$, le maximum est $8$, atteint en $x=3$. Developpement : $f(x)=-2x^2+12x-10$. Equation : $-2(x-3)^2+8=0$, donc $(x-3)^2=4$, soit $x=1$ ou $x=5$. La fonction est croissante sur $]-\infty,3]$ puis decroissante sur $[3,+\infty[$.
+\end{corrbox}
+
+\begin{corrbox}{Tangente et nombre derive}
+$f'(x)=2x-3$. On a $f'(2)=1$ et $f(2)=0$. La tangente est donc $y=1(x-2)+0=x-2$. Le coefficient directeur $1$ signifie qu'au voisinage de $x=2$, une augmentation de $x$ d'une petite unite produit environ la meme augmentation de $f(x)$.
+\end{corrbox}
+
+\begin{corrbox}{Variations}
+$f'(x)=3x^2-6x-9=3(x^2-2x-3)=3(x-3)(x+1)$. Le signe de $f'$ est positif sur $]-\infty,-1]$, negatif sur $[-1,3]$, positif sur $[3,+\infty[$. Donc $f$ est croissante, puis decroissante, puis croissante. On calcule $f(-1)=6$ et $f(3)=-26$.
+\end{corrbox}
+
+\begin{corrbox}{Exponentielle}
+\begin{enumerate}
+  \item $A=e^{2x+1-x}=e^{x+1}$.
+  \item $e^{x^2}=e^4 \Longleftrightarrow x^2=4$, donc $x=-2$ ou $x=2$.
+  \item $f'(x)=e^x-1$. Elle est negative pour $x<0$, nulle en $0$, positive pour $x>0$. Donc $f$ admet un minimum en $0$, egal a $1$.
+  \item Comme $e^x>0$, le signe de $g'(x)=e^x(x-2)$ est celui de $x-2$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Cercle trigonometrique}
+\begin{enumerate}
+  \item $\cos\frac\pi3=\frac12$, $\sin\frac\pi3=\frac{\sqrt3}{2}$, $\cos\frac\pi4=\sin\frac\pi4=\frac{\sqrt2}{2}$.
+  \item $\cos x=-\frac12$ sur $[0,2\pi]$ donne $x=\frac{2\pi}3$ ou $x=\frac{4\pi}3$.
+  \item $\sin x=0$ sur $\R$ donne $x=k\pi$, $k\in\mathbb Z$.
+  \item $1-\cos^2x=\sin^2x$ vient de $\cos^2x+\sin^2x=1$. On ne peut pas prendre la racine en ecrivant $\sin x=1-\cos x$ : la racine de $\sin^2x$ est $|\sin x|$, pas toujours $\sin x$.
+\end{enumerate}
+\end{corrbox}
+
+\begin{corrbox}{Produit scalaire et cercle}
+$\vect{AB}=(4,2)$ et $\vect{AC}=(2,-4)$. Produit scalaire : $4\times2+2\times(-4)=0$. Les droites sont donc perpendiculaires. Le rayon du cercle de centre $A$ passant par $B$ verifie $AB^2=4^2+2^2=20$, donc equation $(x-1)^2+(y-2)^2=20$. Une droite perpendiculaire a $(AB)$ a un vecteur normal colineaire a un vecteur directeur de $(AB)$, donc $\vec n=(4,2)$. Passant par $C(3,-2)$ : $4(x-3)+2(y+2)=0$, soit $2x+y-4=0$.
+\end{corrbox}
+
+\begin{corrbox}{Probabilites conditionnelles}
+On a $\Pp(F)=0,6$, $\Pp(G)=0,4$, $\Pp_F(A)=0,7$, $\Pp_G(A)=0,8$. Donc $\Pp(F\cap A)=0,42$ et $\Pp(A)=0,42+0,4\times0,8=0,74$. Ainsi $\Pp_A(F)=\frac{0,42}{0,74}=\frac{42}{74}=\frac{21}{37}$. Les evenements ne sont pas independants car $\Pp_F(A)=0,7\ne0,74=\Pp(A)$.
+\end{corrbox}
+
+\begin{corrbox}{Loi, esperance et variance}
+La somme des probabilites vaut $0,1+0,3+0,4+0,2=1$. L'esperance vaut
+\[
+\E(X)=-2\times0,1+0\times0,3+1\times0,4+5\times0,2=1,2.
+\]
+Ensuite
+\[
+\E(X^2)=4\times0,1+0+1\times0,4+25\times0,2=5,8.
+\]
+Donc $\V(X)=5,8-1,2^2=4,36$, et $\sigma(X)=\sqrt{4,36}\approx2,09$.
+\end{corrbox}
+
+\begin{corrbox}{Statistiques}
+La somme vaut $67$, l'effectif vaut $9$, donc la moyenne est $\frac{67}{9}\approx7,44$. La mediane est la cinquieme valeur de la serie ordonnee : $8$. Les quartiles usuels sont $Q_1=5$ et $Q_3=10$ si l'on prend les rangs $\lceil n/4\rceil=3$ et $\lceil3n/4\rceil=7$. Cela signifie qu'au moins un quart des valeurs sont inferieures ou egales a $5$ et au moins trois quarts inferieures ou egales a $10$.
+\end{corrbox}
+
+\newpage
+\section{Correction du grand devoir bilan}
+
+\subsection*{Partie I}
+\begin{enumerate}
+  \item $\frac34-\frac25=\frac{15}{20}-\frac{8}{20}=\frac7{20}$.
+  \item Baisser de $12\%$ revient a multiplier par $0,88$, donc prix final $250\times0,88=220$ euros.
+  \item Multiplier par $0,82$ correspond a une baisse de $18\%$.
+  \item $A=\pi r^2$, donc $r^2=\frac A\pi$, puis $r=\sqrt{\frac A\pi}$ car $r\ge0$.
+  \item $(x-4)(x+7)=x^2+3x-28$.
+  \item $m=\frac{13-5}{6-2}=2$.
+\end{enumerate}
+
+\subsection*{Partie II}
+$u_0=500$ et $u_{n+1}=1,18u_n$. La suite est geometrique de raison $1,18$, donc $u_n=500\times1,18^n$. On a $u_5\approx500\times2,287\approx1144$. Par essais : $u_8\approx1879$ et $u_9\approx2217$, donc le premier rang est $9$. Le modele $v_n=500+120n$ est lineaire : il ajoute toujours $120$. Le modele $u_n$ est geometrique : il ajoute une quantite qui augmente avec la population. A long terme, le modele geometrique depasse largement le modele lineaire.
+
+\subsection*{Partie III}
+$f'(x)=-4x+12$. La derivee est positive si $x<3$ et negative si $x>3$. Donc $f$ est croissante sur $]-\infty,3]$ puis decroissante sur $[3,+\infty[$. Le maximum est $f(3)=-18+36-10=8$. Pour $f(x)=0$, on resout $-2x^2+12x-10=0$, soit $x^2-6x+5=0$, donc $(x-1)(x-5)=0$. Les racines sont $1$ et $5$. Comme le coefficient dominant de $f$ est negatif, $f(x)\ge0$ entre les racines : $S=[1,5]$.
+
+\subsection*{Partie IV}
+$\vect{AB}=(4,2)$ et $\vect{AC}=(1,6)$. Produit scalaire : $4\times1+2\times6=16$, donc l'angle n'est pas droit. $AB^2=4^2+2^2=20$, donc le cercle de centre $A$ passant par $B$ a pour equation $(x-1)^2+(y-1)^2=20$. Une droite perpendiculaire a $(AB)$ a pour vecteur normal $(4,2)$. Passant par $C(2,7)$, elle a pour equation $4(x-2)+2(y-7)=0$, soit $2x+y-11=0$.
+
+\subsection*{Partie V}
+On a $\Pp(S)=0,55$, $\Pp(\overline S)=0,45$, $\Pp_S(C)=0,30$ et $\Pp_{\overline S}(C)=0,04$. Alors
+\[
+\Pp(S\cap C)=0,55\times0,30=0,165.
+\]
+Puis
+\[
+\Pp(C)=0,55\times0,30+0,45\times0,04=0,165+0,018=0,183.
+\]
+Ainsi
+\[
+\Pp_C(S)=\frac{0,165}{0,183}\approx0,902.
+\]
+Les evenements ne sont pas independants car $\Pp_S(C)=0,30\ne0,183=\Pp(C)$.
+
+\newpage
+\section{Fiche de synthese finale}
+
+\begin{boiteretenir}{Calcul et automatismes}
+\begin{itemize}
+  \item Augmenter de $t\%$ revient a multiplier par $1+\frac t{100}$.
+  \item Diminuer de $t\%$ revient a multiplier par $1-\frac t{100}$.
+  \item Plusieurs evolutions successives se composent en multipliant les coefficients multiplicateurs.
+  \item Pour comparer deux nombres, penser a la difference, au quotient positif ou a une meme ecriture.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Suites}
+\begin{itemize}
+  \item Arithmetique : $u_{n+1}=u_n+r$, donc $u_n=u_0+nr$.
+  \item Geometrique : $u_{n+1}=qu_n$, donc $u_n=u_0q^n$.
+  \item Accroissement constant : suite arithmetique. Taux constant : suite geometrique.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Second degre}
+\begin{itemize}
+  \item $\Delta=b^2-4ac$.
+  \item Si $\Delta>0$, deux racines ; si $\Delta=0$, une racine double ; si $\Delta<0$, aucune racine reelle.
+  \item Signe : signe de $a$ a l'exterieur des racines, signe oppose entre les racines.
+  \item Forme canonique pour optimiser, forme factorisee pour resoudre, forme developpee pour calculer et deriver.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Derivation}
+\begin{itemize}
+  \item $f'(a)$ est le coefficient directeur de la tangente en $a$.
+  \item Tangente : $y=f'(a)(x-a)+f(a)$.
+  \item Le signe de $f'$ donne les variations de $f$.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Exponentielle et trigonometrie}
+\begin{itemize}
+  \item $(e^x)'=e^x$ et $e^x>0$ : l'exponentielle est strictement croissante.
+  \item $e^{x+y}=e^xe^y$.
+  \item $\cos^2x+\sin^2x=1$.
+  \item Toujours tenir compte de la periodicite des fonctions trigonometriques.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Geometrie}
+\begin{itemize}
+  \item $\vect{AB}=(x_B-x_A,y_B-y_A)$.
+  \item $\vec u\cdot\vec v=xx'+yy'$.
+  \item Orthogonalite : produit scalaire nul.
+  \item Cercle de centre $(a,b)$ et rayon $R$ : $(x-a)^2+(y-b)^2=R^2$.
+  \item Droite de vecteur normal $(a,b)$ : $ax+by+c=0$.
+\end{itemize}
+\end{boiteretenir}
+
+\begin{boiteretenir}{Probabilites et statistiques}
+\begin{itemize}
+  \item $\Pp_A(B)=\frac{\Pp(A\cap B)}{\Pp(A)}$ si $\Pp(A)>0$.
+  \item Independance : $\Pp(A\cap B)=\Pp(A)\Pp(B)$.
+  \item Esperance : moyenne theorique $\E(X)=\sum x_ip_i$.
+  \item Variance : $\V(X)=\E(X^2)-\E(X)^2$.
+\end{itemize}
+\end{boiteretenir}
+
+\end{document}
