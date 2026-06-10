@@ -56,6 +56,14 @@
   }
 ,
   {
+    "titre": "tronc commun",
+    "fichier": "docs/math premiere cours tronc commun.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
     "titre": "0",
     "fichier": "docs/math premiere ds 0.pdf",
     "matiere": "maths",
@@ -69,6 +77,14 @@
     "matiere": "maths",
     "niveau": "premiere",
     "type": "ds"
+  }
+,
+  {
+    "titre": "tronc commun",
+    "fichier": "docs/math premiere exercice tronc commun.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "exercice"
   }
 ,
   {
@@ -1133,6 +1149,14 @@
     "matiere": "physique",
     "niveau": "terminale",
     "type": "ds"
+  }
+,
+  {
+    "titre": "chimie thermo mecafluide",
+    "fichier": "docs/physique terminale exercice chimie thermo mecafluide.pdf",
+    "matiere": "physique",
+    "niveau": "terminale",
+    "type": "exercice"
   }
 ,
   {
