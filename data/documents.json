@@ -904,6 +904,22 @@
   }
 ,
   {
+    "titre": "tronc commun",
+    "fichier": "docs/maths premiere cours tronc commun.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "cours"
+  }
+,
+  {
+    "titre": "tronc commun",
+    "fichier": "docs/maths premiere exercice tronc commun.pdf",
+    "matiere": "maths",
+    "niveau": "premiere",
+    "type": "exercice"
+  }
+,
+  {
     "titre": "",
     "fichier": "docs/op.pdf",
     "matiere": "op",
