@@ -216,6 +216,14 @@
   }
 ,
   {
+    "titre": "ds analyse 1",
+    "fichier": "docs/math superieure corrigé ds analyse 1.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "corrigé"
+  }
+,
+  {
     "titre": "algèbre lin chap 11 valeurs propres vecteurs propres",
     "fichier": "docs/math superieure cours Algèbre lin chap 11 valeurs propres vecteurs propres.pdf",
     "matiere": "maths",
@@ -346,6 +354,14 @@
   {
     "titre": "algebre linéaire 2",
     "fichier": "docs/math superieure ds algebre linéaire 2.pdf",
+    "matiere": "maths",
+    "niveau": "superieur",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "analyse 1",
+    "fichier": "docs/math superieure ds analyse 1.pdf",
     "matiere": "maths",
     "niveau": "superieur",
     "type": "ds"
