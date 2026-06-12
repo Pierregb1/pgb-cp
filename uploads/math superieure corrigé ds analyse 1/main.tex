@@ -1,0 +1,2902 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% CORRIGE DS ANALYSE PCSI -- SUITES, CONTINUITE, DERIVATION
+% Niveau solide PCSI / début CCP-INP
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=1.7cm}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black
+}
+
+% ============================================================
+% COULEURS
+% ============================================================
+
+\definecolor{mainblue}{RGB}{30,70,130}
+\definecolor{darkred}{RGB}{140,30,30}
+\definecolor{darkgreen}{RGB}{20,110,70}
+\definecolor{lightblue}{RGB}{235,242,252}
+\definecolor{lightred}{RGB}{252,238,238}
+\definecolor{lightgreen}{RGB}{238,250,244}
+\definecolor{lightgray}{RGB}{245,245,245}
+
+% ============================================================
+% EN-TETES
+% ============================================================
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textsc{PCSI -- Analyse}}
+\chead{\textsc{Corrigé DS : Suites, continuité, dérivation}}
+\rhead{Page \thepage/\pageref{LastPage}}
+\cfoot{}
+
+\titleformat{\section}
+{\Large\bfseries\color{mainblue}}
+{\thesection}{0.8em}{}
+
+\titleformat{\subsection}
+{\large\bfseries\color{darkred}}
+{\thesubsection}{0.8em}{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries\color{darkgreen}}
+{\thesubsubsection}{0.8em}{}
+
+% ============================================================
+% ENVIRONNEMENTS
+% ============================================================
+
+\newtcolorbox{methodebox}{
+    colback=lightblue,
+    colframe=mainblue,
+    title=\textbf{Méthode},
+    fonttitle=\bfseries,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\newtcolorbox{remarquebox}{
+    colback=lightgreen,
+    colframe=darkgreen,
+    title=\textbf{Remarque},
+    fonttitle=\bfseries,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\newtcolorbox{attentionbox}{
+    colback=lightred,
+    colframe=darkred,
+    title=\textbf{Point de vigilance},
+    fonttitle=\bfseries,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\newtcolorbox{resultatbox}{
+    colback=lightgray,
+    colframe=black!65,
+    title=\textbf{Résultat obtenu},
+    fonttitle=\bfseries,
+    arc=2mm,
+    boxrule=0.8pt
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\eps}{\varepsilon}
+
+\setlist[itemize]{label=\(\triangleright\), leftmargin=1.2cm}
+\setlist[enumerate]{leftmargin=1cm}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+
+\begin{document}
+
+\begin{center}
+    {\Huge \bfseries Corrigé détaillé}\\[0.3cm]
+    {\Large \bfseries Devoir surveillé d'analyse}\\[0.2cm]
+    {\large Suites, continuité, dérivation}\\[0.4cm]
+    \rule{0.85\linewidth}{0.5pt}\\[0.2cm]
+    {\large Niveau PCSI -- esprit CCP-INP}\\[0.2cm]
+    \rule{0.85\linewidth}{0.5pt}
+\end{center}
+
+\vspace{0.4cm}
+
+
+
+\newpage
+
+% ============================================================
+% PROBLEME I
+% ============================================================
+
+\section*{Problème I -- La racine de \(2\) comme objet d'ordre, puis comme limite d'un algorithme}
+
+On pose
+\[
+A=\{x\in\R_+ \mid x^2\leq 2\}.
+\]
+
+Le but est d'abord de construire rigoureusement \(\sqrt2\) comme borne supérieure d'un ensemble, puis d'étudier la suite de Héron.
+
+% ------------------------------------------------------------
+
+\subsection*{Partie A -- Construction par borne supérieure}
+
+\subsubsection*{1. Montrer que \(A\) est non vide et majoré}
+
+On remarque que
+\[
+0\in\R_+
+\qquad\text{et}\qquad
+0^2=0\leq 2.
+\]
+Donc
+\[
+0\in A.
+\]
+Ainsi, \(A\) est non vide.
+
+Montrons maintenant que \(A\) est majoré. Soit \(x\in A\). Alors
+\[
+x\geq 0
+\qquad\text{et}\qquad
+x^2\leq 2.
+\]
+Si \(x>2\), alors, comme \(x\geq 0\),
+\[
+x^2>4>2,
+\]
+ce qui contredit \(x^2\leq 2\). Donc nécessairement
+\[
+x\leq 2.
+\]
+Ainsi,
+\[
+\forall x\in A,\qquad x\leq 2.
+\]
+Donc \(2\) est un majorant de \(A\).
+
+\begin{resultatbox}
+L'ensemble \(A\) est non vide et majoré.
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{2. Montrer que \(1\leq r\leq 2\)}
+
+On a défini
+\[
+r=\sup A.
+\]
+
+D'abord,
+\[
+1\in\R_+
+\qquad\text{et}\qquad
+1^2=1\leq 2,
+\]
+donc
+\[
+1\in A.
+\]
+Comme \(r\) est un majorant de \(A\), tout élément de \(A\) est inférieur ou égal à \(r\). En particulier,
+\[
+1\leq r.
+\]
+
+D'autre part, on a montré à la question précédente que \(2\) est un majorant de \(A\). Or \(r=\sup A\) est le plus petit des majorants de \(A\). Donc
+\[
+r\leq 2.
+\]
+
+\begin{resultatbox}
+On a bien
+\[
+1\leq r\leq 2.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{3. Montrer que l'on ne peut pas avoir \(r^2<2\)}
+
+On raisonne par l'absurde.
+
+Supposons que
+\[
+r^2<2.
+\]
+Alors
+\[
+2-r^2>0.
+\]
+On souhaite construire un réel strictement plus grand que \(r\), encore dans \(A\). Pour cela, on choisit un réel \(\eta>0\) assez petit pour que
+\[
+(r+\eta)^2<2.
+\]
+
+On développe :
+\[
+(r+\eta)^2=r^2+2r\eta+\eta^2.
+\]
+Comme \(1\leq r\leq 2\), on a en particulier \(r\leq 2\). Prenons par exemple
+\[
+0<\eta\leq 1.
+\]
+Alors
+\[
+2r\eta+\eta^2\leq 4\eta+\eta=5\eta.
+\]
+Il suffit donc d'imposer
+\[
+5\eta<2-r^2.
+\]
+On peut choisir
+\[
+0<\eta<\min\left(1,\frac{2-r^2}{5}\right).
+\]
+Alors
+\[
+(r+\eta)^2
+=
+r^2+2r\eta+\eta^2
+\leq r^2+5\eta
+<r^2+(2-r^2)=2.
+\]
+Donc
+\[
+r+\eta\in A.
+\]
+Mais
+\[
+r+\eta>r.
+\]
+Cela contredit le fait que \(r\) est un majorant de \(A\).
+
+Donc l'hypothèse \(r^2<2\) est impossible.
+
+\begin{resultatbox}
+On ne peut pas avoir \(r^2<2\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{4. Montrer que l'on ne peut pas avoir \(r^2>2\)}
+
+On raisonne encore par l'absurde.
+
+Supposons que
+\[
+r^2>2.
+\]
+Alors
+\[
+r^2-2>0.
+\]
+On veut montrer qu'un réel strictement plus petit que \(r\) serait encore un majorant de \(A\), ce qui contredirait la minimalité de \(r=\sup A\).
+
+Comme \(r\geq 1\), on peut choisir \(\eta>0\) tel que
+\[
+0<\eta<r
+\]
+et
+\[
+(r-\eta)^2>2.
+\]
+En effet,
+\[
+(r-\eta)^2=r^2-2r\eta+\eta^2.
+\]
+Comme \(\eta^2\geq 0\), on a
+\[
+(r-\eta)^2\geq r^2-2r\eta.
+\]
+Il suffit donc de choisir \(\eta\) tel que
+\[
+r^2-2r\eta>2.
+\]
+Cela équivaut à
+\[
+2r\eta<r^2-2.
+\]
+On peut donc prendre
+\[
+0<\eta<\min\left(r,\frac{r^2-2}{2r}\right).
+\]
+Alors
+\[
+(r-\eta)^2>2.
+\]
+
+Montrons que \(r-\eta\) est un majorant de \(A\). Soit \(x\in A\). Alors
+\[
+x\geq 0
+\qquad\text{et}\qquad
+x^2\leq 2.
+\]
+Si l'on avait
+\[
+x>r-\eta,
+\]
+comme \(x\geq 0\) et \(r-\eta>0\), on aurait
+\[
+x^2>(r-\eta)^2>2,
+\]
+ce qui contredit \(x^2\leq 2\). Donc
+\[
+x\leq r-\eta.
+\]
+Ainsi
+\[
+\forall x\in A,\qquad x\leq r-\eta.
+\]
+Donc \(r-\eta\) est un majorant de \(A\).
+
+Mais
+\[
+r-\eta<r.
+\]
+Cela contredit le fait que \(r\) est le plus petit majorant de \(A\).
+
+\begin{resultatbox}
+On ne peut pas avoir \(r^2>2\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{5. Conclure que \(r^2=2\)}
+
+D'après les deux questions précédentes,
+\[
+r^2<2
+\]
+est impossible, et
+\[
+r^2>2
+\]
+est impossible.
+
+Comme \(r^2\) et \(2\) sont deux réels comparables, il reste nécessairement
+\[
+r^2=2.
+\]
+
+\begin{resultatbox}
+On a
+\[
+r^2=2.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{6. Montrer que \(r\) est l'unique réel positif vérifiant \(x^2=2\)}
+
+On sait déjà que
+\[
+r\geq 0
+\qquad\text{et}\qquad
+r^2=2.
+\]
+
+Soit \(x\in\R_+\) tel que
+\[
+x^2=2.
+\]
+Alors
+\[
+x^2-r^2=0.
+\]
+Donc
+\[
+(x-r)(x+r)=0.
+\]
+Or \(x\geq 0\) et \(r\geq 0\), donc
+\[
+x+r\geq 0.
+\]
+De plus, \(r^2=2\), donc \(r>0\), et \(x^2=2\), donc \(x>0\). Ainsi
+\[
+x+r>0.
+\]
+Par conséquent,
+\[
+x-r=0.
+\]
+Donc
+\[
+x=r.
+\]
+
+\begin{resultatbox}
+Le réel \(r\) est l'unique réel positif dont le carré vaut \(2\). On le note
+\[
+r=\sqrt2.
+\]
+\end{resultatbox}
+
+% ============================================================
+
+\subsection*{Partie B -- Une fonction itérative}
+
+On définit
+\[
+\varphi(x)=\frac12\left(x+\frac2x\right)
+\]
+sur \(]0,+\infty[\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{7. Montrer que \(\varphi\) est bien définie et continue sur \(]0,+\infty[\)}
+
+Pour \(x>0\), on a \(x\neq 0\). Donc l'expression
+\[
+\frac2x
+\]
+est bien définie.
+
+De plus,
+\[
+x\mapsto x
+\]
+est continue sur \(]0,+\infty[\), et
+\[
+x\mapsto \frac2x
+\]
+est continue sur \(]0,+\infty[\). Par somme et multiplication par une constante, la fonction
+\[
+\varphi:x\mapsto \frac12\left(x+\frac2x\right)
+\]
+est continue sur \(]0,+\infty[\).
+
+Enfin, si \(x>0\), alors
+\[
+x>0
+\qquad\text{et}\qquad
+\frac2x>0.
+\]
+Donc
+\[
+\varphi(x)>0.
+\]
+Ainsi \(\varphi\) envoie bien \(]0,+\infty[\) dans \(]0,+\infty[\).
+
+\begin{resultatbox}
+La fonction \(\varphi\) est bien définie et continue sur \(]0,+\infty[\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{8. Montrer l'identité fondamentale}
+
+On veut montrer que, pour tout \(x>0\),
+\[
+\varphi(x)-\sqrt2
+=
+\frac{(x-\sqrt2)^2}{2x}.
+\]
+
+Calculons :
+\[
+\varphi(x)-\sqrt2
+=
+\frac12\left(x+\frac2x\right)-\sqrt2.
+\]
+On met au même dénominateur :
+\[
+\varphi(x)-\sqrt2
+=
+\frac{x}{2}+\frac1x-\sqrt2
+=
+\frac{x^2+2-2\sqrt2 x}{2x}.
+\]
+Or
+\[
+x^2-2\sqrt2 x+2=(x-\sqrt2)^2.
+\]
+Donc
+\[
+\varphi(x)-\sqrt2
+=
+\frac{(x-\sqrt2)^2}{2x}.
+\]
+
+\begin{resultatbox}
+Pour tout \(x>0\),
+\[
+\varphi(x)-\sqrt2
+=
+\frac{(x-\sqrt2)^2}{2x}.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{9. En déduire que \(\varphi(x)\geq\sqrt2\)}
+
+Pour \(x>0\), on a
+\[
+2x>0
+\]
+et
+\[
+(x-\sqrt2)^2\geq 0.
+\]
+Donc
+\[
+\frac{(x-\sqrt2)^2}{2x}\geq 0.
+\]
+D'après l'identité précédente,
+\[
+\varphi(x)-\sqrt2\geq 0.
+\]
+Ainsi
+\[
+\varphi(x)\geq \sqrt2.
+\]
+
+\begin{resultatbox}
+Pour tout \(x>0\),
+\[
+\varphi(x)\geq \sqrt2.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{10. Montrer que \(\varphi(x)\leq x\) pour \(x\geq\sqrt2\)}
+
+Soit \(x\geq\sqrt2\). Comme \(x>0\),
+\[
+\varphi(x)-x
+=
+\frac12\left(x+\frac2x\right)-x
+=
+\frac{2-x^2}{2x}.
+\]
+Or \(x\geq\sqrt2\), donc
+\[
+x^2\geq 2.
+\]
+Ainsi
+\[
+2-x^2\leq 0.
+\]
+Comme
+\[
+2x>0,
+\]
+on obtient
+\[
+\frac{2-x^2}{2x}\leq 0.
+\]
+Donc
+\[
+\varphi(x)-x\leq 0.
+\]
+Autrement dit,
+\[
+\varphi(x)\leq x.
+\]
+
+\begin{resultatbox}
+Pour tout \(x\geq\sqrt2\),
+\[
+\varphi(x)\leq x.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{11. Stabilité de \([\sqrt2,+\infty[\)}
+
+Soit
+\[
+x\in[\sqrt2,+\infty[.
+\]
+Alors \(x>0\). D'après la question 9,
+\[
+\varphi(x)\geq\sqrt2.
+\]
+Donc
+\[
+\varphi(x)\in[\sqrt2,+\infty[.
+\]
+
+\begin{resultatbox}
+L'intervalle \([\sqrt2,+\infty[\) est stable par \(\varphi\).
+\end{resultatbox}
+
+% ============================================================
+
+\subsection*{Partie C -- Convergence de la suite de Héron}
+
+On définit
+\[
+u_0=2,
+\qquad
+u_{n+1}=\varphi(u_n).
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{12. Montrer que \(u_n\geq\sqrt2\)}
+
+On procède par récurrence.
+
+Pour \(n=0\),
+\[
+u_0=2.
+\]
+Or
+\[
+2\geq\sqrt2,
+\]
+donc la propriété est vraie au rang \(0\).
+
+Supposons maintenant que, pour un certain \(n\in\N\),
+\[
+u_n\geq\sqrt2.
+\]
+Alors
+\[
+u_n\in[\sqrt2,+\infty[.
+\]
+Comme cet intervalle est stable par \(\varphi\), on obtient
+\[
+u_{n+1}=\varphi(u_n)\in[\sqrt2,+\infty[.
+\]
+Donc
+\[
+u_{n+1}\geq\sqrt2.
+\]
+
+Par récurrence,
+\[
+\forall n\in\N,\qquad u_n\geq\sqrt2.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{13. Montrer que \((u_n)\) est décroissante}
+
+D'après la question précédente,
+\[
+u_n\geq\sqrt2
+\]
+pour tout \(n\in\N\). D'après la question 10, pour tout \(x\geq\sqrt2\),
+\[
+\varphi(x)\leq x.
+\]
+En appliquant cela à \(x=u_n\), on obtient
+\[
+u_{n+1}=\varphi(u_n)\leq u_n.
+\]
+Donc
+\[
+\forall n\in\N,\qquad u_{n+1}\leq u_n.
+\]
+
+\begin{resultatbox}
+La suite \((u_n)\) est décroissante.
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{14. En déduire que \((u_n)\) converge}
+
+La suite \((u_n)\) est décroissante et minorée par \(\sqrt2\). En effet,
+\[
+\forall n\in\N,\qquad u_n\geq\sqrt2.
+\]
+D'après le théorème de convergence des suites monotones, toute suite décroissante et minorée converge.
+
+Donc il existe un réel \(\ell\) tel que
+\[
+u_n\longrightarrow \ell.
+\]
+De plus, comme \(u_n\geq\sqrt2\) pour tout \(n\), le passage à la limite dans les inégalités donne
+\[
+\ell\geq\sqrt2>0.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{15. Montrer que \(\ell=\sqrt2\)}
+
+On sait que
+\[
+u_{n+1}=\varphi(u_n).
+\]
+Comme
+\[
+u_n\longrightarrow \ell
+\]
+et que \(\varphi\) est continue sur \(]0,+\infty[\), avec \(\ell>0\), on a
+\[
+\varphi(u_n)\longrightarrow \varphi(\ell).
+\]
+Or
+\[
+u_{n+1}\longrightarrow \ell
+\]
+puisque \((u_n)\) et sa suite décalée ont la même limite.
+
+Ainsi, en passant à la limite dans
+\[
+u_{n+1}=\varphi(u_n),
+\]
+on obtient
+\[
+\ell=\varphi(\ell).
+\]
+Donc
+\[
+\ell=\frac12\left(\ell+\frac2\ell\right).
+\]
+Comme \(\ell>0\), on peut multiplier par \(2\ell\) :
+\[
+2\ell^2=\ell^2+2.
+\]
+Donc
+\[
+\ell^2=2.
+\]
+Comme \(\ell>0\), par unicité du réel positif de carré \(2\),
+\[
+\ell=\sqrt2.
+\]
+
+\begin{resultatbox}
+La suite \((u_n)\) converge vers \(\sqrt2\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{16. Inégalité d'erreur}
+
+D'après l'identité de la question 8,
+\[
+u_{n+1}-\sqrt2
+=
+\frac{(u_n-\sqrt2)^2}{2u_n}.
+\]
+Comme \(u_n\geq\sqrt2>0\), on a
+\[
+2u_n\geq 2\sqrt2.
+\]
+En particulier,
+\[
+2u_n\geq 2.
+\]
+Donc
+\[
+\frac1{2u_n}\leq \frac12.
+\]
+Ainsi
+\[
+u_{n+1}-\sqrt2
+=
+\frac{(u_n-\sqrt2)^2}{2u_n}
+\leq
+\frac12 (u_n-\sqrt2)^2.
+\]
+De plus,
+\[
+u_{n+1}\geq \sqrt2,
+\]
+donc
+\[
+u_{n+1}-\sqrt2\geq 0.
+\]
+
+\begin{resultatbox}
+Pour tout \(n\in\N\),
+\[
+0\leq u_{n+1}-\sqrt2
+\leq
+\frac12 (u_n-\sqrt2)^2.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{17. Interprétation qualitative}
+
+L'inégalité
+\[
+0\leq u_{n+1}-\sqrt2
+\leq
+\frac12 (u_n-\sqrt2)^2
+\]
+montre que l'erreur au rang \(n+1\) est contrôlée par le carré de l'erreur au rang \(n\).
+
+Cela signifie que lorsque l'erreur devient petite, son carré devient beaucoup plus petit. Par exemple, si
+\[
+u_n-\sqrt2\approx 10^{-2},
+\]
+alors
+\[
+u_{n+1}-\sqrt2
+\]
+est majorée par une quantité de l'ordre de
+\[
+10^{-4}.
+\]
+Cela rend plausible la rapidité de convergence de la méthode.
+
+\begin{remarquebox}
+On ne parle pas ici de convergence quadratique au sens avancé du terme, car cette notion n'est pas nécessaire au programme. On se contente d'une interprétation qualitative à partir de l'inégalité obtenue.
+\end{remarquebox}
+
+% ============================================================
+
+\subsection*{Partie D -- Deux suites adjacentes cachées}
+
+On pose
+\[
+v_n=\frac2{u_n}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{18. Montrer que \(0<v_n\leq\sqrt2\leq u_n\)}
+
+On sait que
+\[
+u_n\geq\sqrt2>0.
+\]
+Donc
+\[
+v_n=\frac2{u_n}>0.
+\]
+De plus, comme \(u_n\geq\sqrt2>0\), en prenant les inverses, on obtient
+\[
+\frac1{u_n}\leq \frac1{\sqrt2}.
+\]
+Donc
+\[
+\frac2{u_n}\leq \frac2{\sqrt2}.
+\]
+Or
+\[
+\frac2{\sqrt2}=\sqrt2.
+\]
+Ainsi
+\[
+v_n\leq\sqrt2.
+\]
+On a déjà
+\[
+u_n\geq\sqrt2.
+\]
+Donc
+\[
+0<v_n\leq\sqrt2\leq u_n.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{19. Montrer que \((v_n)\) est croissante}
+
+On sait que \((u_n)\) est décroissante et que
+\[
+u_n>0
+\]
+pour tout \(n\). Donc
+\[
+u_{n+1}\leq u_n.
+\]
+En prenant les inverses, puisque les deux termes sont strictement positifs,
+\[
+\frac1{u_{n+1}}\geq \frac1{u_n}.
+\]
+En multipliant par \(2>0\), on obtient
+\[
+\frac2{u_{n+1}}\geq \frac2{u_n}.
+\]
+Donc
+\[
+v_{n+1}\geq v_n.
+\]
+Ainsi, \((v_n)\) est croissante.
+
+% ------------------------------------------------------------
+
+\subsubsection*{20. Montrer que \(u_n-v_n\to 0\)}
+
+On a
+\[
+u_n\longrightarrow \sqrt2.
+\]
+Comme la fonction
+\[
+x\mapsto \frac2x
+\]
+est continue en \(\sqrt2>0\), on obtient
+\[
+v_n=\frac2{u_n}\longrightarrow \frac2{\sqrt2}=\sqrt2.
+\]
+Donc
+\[
+u_n-v_n\longrightarrow \sqrt2-\sqrt2=0.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{21. \((u_n)\) et \((v_n)\) même limite?}
+
+On rappelle que deux suites \((a_n)\) et \((b_n)\) sont adjacentes si l'une est croissante, l'autre décroissante, et si leur différence tend vers \(0\).
+
+Ici :
+\[
+(v_n)\ \text{est croissante},
+\]
+\[
+(u_n)\ \text{est décroissante},
+\]
+et
+\[
+u_n-v_n\longrightarrow 0.
+\]
+De plus,
+\[
+v_n\leq u_n.
+\]
+Donc les suites \((v_n)\) et \((u_n)\) sont adjacentes. elles ont donc une même limite
+
+% ------------------------------------------------------------
+
+\subsubsection*{22. Limite commune}
+
+Deux suites adjacentes convergent vers la même limite. D'après la question précédente, \((u_n)\) et \((v_n)\) sont adjacentes, donc elles ont une limite commune.
+
+On sait déjà que
+\[
+u_n\longrightarrow \sqrt2.
+\]
+Donc
+\[
+v_n\longrightarrow \sqrt2.
+\]
+
+\begin{resultatbox}
+Les deux suites \((u_n)\) et \((v_n)\) convergent vers \(\sqrt2\).
+\end{resultatbox}
+
+\newpage
+
+% ============================================================
+% PROBLEME II
+% ============================================================
+
+\section*{Problème II -- Une fonction prolongée, une bijection et des inégalités par accroissements finis}
+
+On considère la fonction \(f\) définie sur \(]-1,+\infty[\) par
+\[
+f(x)=
+\begin{cases}
+\dfrac{\sqrt{1+x}-1}{x} & \text{si } x\neq 0,\\[1.2em]
+\dfrac12 & \text{si } x=0.
+\end{cases}
+\]
+
+% ============================================================
+
+\subsection*{Partie A -- Prolongement et premières propriétés}
+
+\subsubsection*{1. Rationalisation}
+
+Pour \(x\neq 0\), on a
+\[
+f(x)=\frac{\sqrt{1+x}-1}{x}.
+\]
+On multiplie le numérateur et le dénominateur par la quantité conjuguée
+\[
+\sqrt{1+x}+1.
+\]
+Alors
+\[
+f(x)
+=
+\frac{(\sqrt{1+x}-1)(\sqrt{1+x}+1)}{x(\sqrt{1+x}+1)}.
+\]
+Or
+\[
+(\sqrt{1+x}-1)(\sqrt{1+x}+1)
+=
+(1+x)-1=x.
+\]
+Donc
+\[
+f(x)=\frac{x}{x(\sqrt{1+x}+1)}.
+\]
+Comme \(x\neq 0\),
+\[
+f(x)=\frac1{\sqrt{1+x}+1}.
+\]
+
+\begin{resultatbox}
+Pour tout \(x\in]-1,+\infty[\setminus\{0\}\),
+\[
+f(x)=\frac1{\sqrt{1+x}+1}.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{2. Continuité en \(0\)}
+
+Pour \(x\neq 0\),
+\[
+f(x)=\frac1{\sqrt{1+x}+1}.
+\]
+Lorsque \(x\to 0\),
+\[
+\sqrt{1+x}\to 1.
+\]
+Donc
+\[
+\sqrt{1+x}+1\to 2,
+\]
+et par quotient,
+\[
+f(x)\to \frac12.
+\]
+Or
+\[
+f(0)=\frac12.
+\]
+Donc
+\[
+\lim_{x\to 0}f(x)=f(0).
+\]
+
+\begin{resultatbox}
+La fonction \(f\) est continue en \(0\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{3. Continuité sur \(]-1,+\infty[\)}
+
+Sur \(]-1,+\infty[\setminus\{0\}\), la fonction
+\[
+x\mapsto \frac1{\sqrt{1+x}+1}
+\]
+est continue car elle est obtenue par composition, somme et quotient de fonctions continues, et le dénominateur ne s'annule jamais.
+
+On vient de montrer que \(f\) est continue en \(0\). Donc \(f\) est continue en tout point de \(]-1,+\infty[\).
+
+\begin{resultatbox}
+La fonction \(f\) est continue sur \(]-1,+\infty[\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{4. Limites aux bornes}
+
+Pour tout \(x\in]-1,+\infty[\),
+\[
+f(x)=\frac1{\sqrt{1+x}+1},
+\]
+cette formule étant valable aussi en \(0\).
+
+Lorsque
+\[
+x\to -1^+,
+\]
+on a
+\[
+1+x\to 0^+
+\]
+donc
+\[
+\sqrt{1+x}\to 0.
+\]
+Ainsi
+\[
+f(x)\to \frac1{0+1}=1.
+\]
+Donc
+\[
+\lim_{x\to -1^+}f(x)=1.
+\]
+
+Lorsque
+\[
+x\to+\infty,
+\]
+on a
+\[
+\sqrt{1+x}\to+\infty,
+\]
+donc
+\[
+\sqrt{1+x}+1\to+\infty.
+\]
+Ainsi
+\[
+f(x)=\frac1{\sqrt{1+x}+1}\to 0.
+\]
+Donc
+\[
+\lim_{x\to+\infty}f(x)=0.
+\]
+
+\begin{resultatbox}
+On a
+\[
+\lim_{x\to -1^+}f(x)=1,
+\qquad
+\lim_{x\to+\infty}f(x)=0.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{5. Montrer que \(0<f(x)<1\)}
+
+Soit \(x\in]-1,+\infty[\). Alors
+\[
+1+x>0,
+\]
+donc
+\[
+\sqrt{1+x}>0.
+\]
+Ainsi
+\[
+\sqrt{1+x}+1>1.
+\]
+Par conséquent,
+\[
+0<\frac1{\sqrt{1+x}+1}<1.
+\]
+Donc
+\[
+0<f(x)<1.
+\]
+
+% ============================================================
+
+\subsection*{Partie B -- Dérivabilité et variations}
+
+\subsubsection*{6. Dérivabilité et calcul de \(f'(x)\)}
+
+Grâce à la formule rationalisée, on peut écrire pour tout \(x\in]-1,+\infty[\),
+\[
+f(x)=\frac1{\sqrt{1+x}+1}.
+\]
+Cette expression est dérivable sur \(]-1,+\infty[\), car \(x\mapsto \sqrt{1+x}\) est dérivable sur cet intervalle.
+
+Posons
+\[
+u(x)=\sqrt{1+x}+1.
+\]
+Alors
+\[
+f(x)=\frac1{u(x)}.
+\]
+On a
+\[
+u'(x)=\frac1{2\sqrt{1+x}}.
+\]
+Donc
+\[
+f'(x)=-\frac{u'(x)}{u(x)^2}.
+\]
+Ainsi
+\[
+f'(x)
+=
+-\frac{1}{2\sqrt{1+x}(\sqrt{1+x}+1)^2}.
+\]
+
+\begin{resultatbox}
+Pour tout \(x>-1\),
+\[
+f'(x)
+=
+-\frac{1}{2\sqrt{1+x}(\sqrt{1+x}+1)^2}.
+\]
+\end{resultatbox}
+
+\begin{remarquebox}
+Cette formule est valable en particulier en \(0\). On a donc évité un calcul direct du taux d'accroissement en \(0\) en utilisant le prolongement rationalisé.
+\end{remarquebox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{7. Montrer que \(f\) est strictement décroissante}
+
+Pour tout \(x>-1\),
+\[
+\sqrt{1+x}>0
+\]
+et
+\[
+(\sqrt{1+x}+1)^2>0.
+\]
+Donc
+\[
+2\sqrt{1+x}(\sqrt{1+x}+1)^2>0.
+\]
+Par conséquent,
+\[
+f'(x)<0.
+\]
+Ainsi \(f\) est strictement décroissante sur \(]-1,+\infty[\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{8. Retrouver la stricte décroissance par Rolle}
+
+On veut prouver la stricte décroissance sans se contenter de dire que \(f'<0\).
+
+Soient \(x_1,x_2\in]-1,+\infty[\) tels que
+\[
+x_1<x_2.
+\]
+On veut montrer
+\[
+f(x_1)>f(x_2).
+\]
+
+Supposons par l'absurde que
+\[
+f(x_1)\leq f(x_2).
+\]
+Comme \(f'(x)<0\) pour tout \(x\), la fonction \(f\) ne peut pas avoir deux valeurs égales en deux points distincts. Justifions-le par Rolle.
+
+Si l'on avait
+\[
+f(x_1)=f(x_2),
+\]
+alors \(f\) serait continue sur \([x_1,x_2]\), dérivable sur \(]x_1,x_2[\), et le théorème de Rolle donnerait un réel \(c\in]x_1,x_2[\) tel que
+\[
+f'(c)=0.
+\]
+C'est impossible puisque
+\[
+f'(c)<0.
+\]
+Donc \(f\) est injective.
+
+Pour obtenir la décroissance stricte, on peut aussi utiliser le théorème des accroissements finis. Il existe \(c\in]x_1,x_2[\) tel que
+\[
+f(x_2)-f(x_1)=f'(c)(x_2-x_1).
+\]
+Comme
+\[
+f'(c)<0
+\]
+et
+\[
+x_2-x_1>0,
+\]
+on obtient
+\[
+f(x_2)-f(x_1)<0.
+\]
+Donc
+\[
+f(x_2)<f(x_1).
+\]
+
+\begin{resultatbox}
+La fonction \(f\) est strictement décroissante sur \(]-1,+\infty[\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{9. Bijection de \(]-1,+\infty[\) sur \(]0,1[\)}
+
+On sait que \(f\) est continue et strictement décroissante sur l'intervalle \(]-1,+\infty[\).
+
+De plus,
+\[
+\lim_{x\to -1^+}f(x)=1
+\]
+et
+\[
+\lim_{x\to+\infty}f(x)=0.
+\]
+Comme \(f\) est continue et strictement monotone, elle réalise une bijection de \(]-1,+\infty[\) sur son image.
+
+Son image est l'intervalle ouvert formé par les valeurs strictement comprises entre les limites aux bornes :
+\[
+f(]-1,+\infty[)=]0,1[.
+\]
+
+\begin{resultatbox}
+La fonction \(f\) réalise une bijection de \(]-1,+\infty[\) sur \(]0,1[\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{10. Déterminer \(f^{-1}\)}
+
+Soit
+\[
+y\in]0,1[.
+\]
+On cherche \(x>-1\) tel que
+\[
+y=f(x).
+\]
+D'après la forme rationalisée,
+\[
+y=\frac1{\sqrt{1+x}+1}.
+\]
+Comme \(y>0\),
+\[
+\sqrt{1+x}+1=\frac1y.
+\]
+Donc
+\[
+\sqrt{1+x}=\frac1y-1.
+\]
+Comme \(y\in]0,1[\), on a
+\[
+\frac1y>1,
+\]
+donc
+\[
+\frac1y-1>0.
+\]
+On peut donc élever au carré :
+\[
+1+x=\left(\frac1y-1\right)^2.
+\]
+Ainsi
+\[
+x=\left(\frac1y-1\right)^2-1.
+\]
+
+\begin{resultatbox}
+Pour tout \(y\in]0,1[\),
+\[
+f^{-1}(y)=\left(\frac1y-1\right)^2-1.
+\]
+\end{resultatbox}
+
+% ============================================================
+
+\subsection*{Partie C -- Contrôle de la réciproque}
+
+On note
+\[
+g=f^{-1}.
+\]
+Donc
+\[
+g(y)=\left(\frac1y-1\right)^2-1
+\]
+sur \(]0,1[\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{11. Domaine et expression de \(g\)}
+
+D'après la question précédente,
+\[
+g: ]0,1[\longrightarrow ]-1,+\infty[
+\]
+est définie par
+\[
+g(y)=\left(\frac1y-1\right)^2-1.
+\]
+On peut simplifier :
+\[
+\frac1y-1=\frac{1-y}{y}.
+\]
+Donc
+\[
+g(y)=\frac{(1-y)^2}{y^2}-1.
+\]
+En développant,
+\[
+g(y)=\frac{1-2y+y^2-y^2}{y^2}
+=
+\frac{1-2y}{y^2}.
+\]
+Ainsi
+\[
+g(y)=\frac1{y^2}-\frac2y.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{12. Dérivabilité et calcul de \(g'(y)\)}
+
+La fonction \(g\) est dérivable sur \(]0,1[\), car elle est une combinaison de puissances de \(y\) avec \(y\neq0\).
+
+Avec
+\[
+g(y)=y^{-2}-2y^{-1},
+\]
+on obtient
+\[
+g'(y)=-2y^{-3}+2y^{-2}.
+\]
+Donc
+\[
+g'(y)=\frac{-2}{y^3}+\frac2{y^2}
+=
+\frac{2y-2}{y^3}
+=
+\frac{2(y-1)}{y^3}.
+\]
+
+\begin{resultatbox}
+Pour tout \(y\in]0,1[\),
+\[
+g'(y)=\frac{2(y-1)}{y^3}.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{13. Contrôle sur \([a,b]\)}
+
+Soient
+\[
+0<a<b<1.
+\]
+La fonction \(g\) est dérivable sur \(]0,1[\), donc elle est continue sur \([a,b]\) et dérivable sur \(]a,b[\).
+
+La fonction \(g'\) est continue sur \([a,b]\), donc elle est bornée sur \([a,b]\). Il existe donc
+\[
+M_{a,b}>0
+\]
+tel que
+\[
+\forall t\in[a,b],
+\qquad
+|g'(t)|\leq M_{a,b}.
+\]
+
+Soient \(y,z\in[a,b]\). Si \(y=z\), l'inégalité est évidente.
+
+Si \(y\neq z\), le théorème des accroissements finis appliqué à \(g\) entre \(y\) et \(z\) donne un réel \(c\) compris entre \(y\) et \(z\), donc \(c\in[a,b]\), tel que
+\[
+g(y)-g(z)=g'(c)(y-z).
+\]
+En prenant les valeurs absolues,
+\[
+|g(y)-g(z)|
+=
+|g'(c)|\,|y-z|
+\leq
+M_{a,b}|y-z|.
+\]
+
+\begin{resultatbox}
+Il existe bien \(M_{a,b}>0\) tel que
+\[
+\forall y,z\in[a,b],
+\qquad
+|g(y)-g(z)|\leq M_{a,b}|y-z|.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{14. Donner une valeur possible de \(M_{a,b}\)}
+
+On a
+\[
+g'(y)=\frac{2(y-1)}{y^3}.
+\]
+Sur \(]0,1[\),
+\[
+y-1<0,
+\]
+donc
+\[
+|g'(y)|=\frac{2(1-y)}{y^3}.
+\]
+Si \(y\in[a,b]\), alors
+\[
+1-y\leq 1-a
+\]
+et
+\[
+y^3\geq a^3.
+\]
+Donc
+\[
+|g'(y)|
+=
+\frac{2(1-y)}{y^3}
+\leq
+\frac{2(1-a)}{a^3}.
+\]
+On peut donc prendre
+\[
+M_{a,b}=\frac{2(1-a)}{a^3}.
+\]
+
+\begin{remarquebox}
+Cette constante n'est pas forcément optimale, mais elle est suffisante. Le but est de montrer l'existence d'une constante de contrôle.
+\end{remarquebox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{15. Impossibilité d'une constante globale sur \(]0,1[\)}
+
+Supposons qu'il existe \(M>0\) tel que
+\[
+\forall y,z\in]0,1[,
+\qquad
+|g(y)-g(z)|\leq M|y-z|.
+\]
+Alors, fixons \(z=\frac12\) par exemple, ou raisonnons directement avec la dérivée.
+
+Une telle inégalité impliquerait que tous les taux d'accroissement de \(g\) sont bornés par \(M\). En particulier, pour tout \(y\in]0,1[\), si \(g\) est dérivable en \(y\), on aurait
+\[
+|g'(y)|\leq M.
+\]
+Or
+\[
+|g'(y)|=\frac{2(1-y)}{y^3}.
+\]
+Quand
+\[
+y\to0^+,
+\]
+on a
+\[
+1-y\to1
+\]
+et
+\[
+y^3\to0^+.
+\]
+Donc
+\[
+|g'(y)|\to+\infty.
+\]
+Il est donc impossible que
+\[
+|g'(y)|\leq M
+\]
+pour tout \(y\in]0,1[\).
+
+\begin{resultatbox}
+Il n'existe pas de constante globale \(M\) valable sur tout \(]0,1[\).
+\end{resultatbox}
+
+% ============================================================
+
+\subsection*{Partie D -- Une inégalité fine sans développement limité}
+
+\subsubsection*{16. Expression de \(f'\)}
+
+Déjà obtenue à la question 6 :
+\[
+f'(x)
+=
+-\frac{1}{2\sqrt{1+x}(\sqrt{1+x}+1)^2}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{17. Montrer que \(0\leq \frac12-f(x)\leq \frac{x}{8}\) pour \(x\geq0\)}
+
+Soit \(x\geq0\).
+
+Comme \(f\) est décroissante sur \(]-1,+\infty[\), on a pour \(x\geq0\),
+\[
+f(x)\leq f(0)=\frac12.
+\]
+Donc
+\[
+0\leq \frac12-f(x).
+\]
+
+Montrons maintenant la majoration. Sur \([0,x]\), on a pour tout \(t\in[0,x]\),
+\[
+t\geq0.
+\]
+Donc
+\[
+\sqrt{1+t}\geq1.
+\]
+Ainsi
+\[
+2\sqrt{1+t}(\sqrt{1+t}+1)^2
+\geq
+2\cdot1\cdot(1+1)^2
+=
+8.
+\]
+Donc
+\[
+|f'(t)|
+=
+\frac1{2\sqrt{1+t}(\sqrt{1+t}+1)^2}
+\leq
+\frac18.
+\]
+Par l'inégalité des accroissements finis sur \([0,x]\),
+\[
+|f(x)-f(0)|\leq \frac18 |x-0|.
+\]
+Donc
+\[
+\left|f(x)-\frac12\right|\leq \frac{x}{8}.
+\]
+Comme \(f(x)\leq1/2\), cela devient
+\[
+0\leq \frac12-f(x)\leq \frac{x}{8}.
+\]
+
+\begin{resultatbox}
+Pour tout \(x\geq0\),
+\[
+0\leq \frac12-f(x)\leq \frac{x}{8}.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{18. Reformulation}
+
+Pour \(x>0\),
+\[
+f(x)=\frac{\sqrt{1+x}-1}{x}.
+\]
+Donc l'inégalité précédente devient
+\[
+0\leq \frac12-\frac{\sqrt{1+x}-1}{x}\leq \frac{x}{8}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{19. Approximation contrôlée de \(\sqrt{1+x}\)}
+
+Pour \(x>0\), on part de
+\[
+0\leq \frac12-\frac{\sqrt{1+x}-1}{x}\leq \frac{x}{8}.
+\]
+Comme \(x>0\), on peut multiplier toute l'inégalité par \(x\) :
+\[
+0\leq \frac{x}{2}-(\sqrt{1+x}-1)\leq \frac{x^2}{8}.
+\]
+Or
+\[
+\frac{x}{2}-(\sqrt{1+x}-1)
+=
+1+\frac{x}{2}-\sqrt{1+x}.
+\]
+Donc
+\[
+0\leq 1+\frac{x}{2}-\sqrt{1+x}\leq \frac{x^2}{8}.
+\]
+
+\begin{resultatbox}
+Pour tout \(x>0\),
+\[
+0\leq 1+\frac{x}{2}-\sqrt{1+x}\leq \frac{x^2}{8}.
+\]
+\end{resultatbox}
+
+Cela signifie que
+\[
+\sqrt{1+x}
+\]
+est approchée par
+\[
+1+\frac{x}{2}
+\]
+avec une erreur comprise entre \(0\) et \(x^2/8\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{20. Dérivabilité en \(0\) par définition}
+
+On considère
+\[
+q(x)=\sqrt{1+x}.
+\]
+On sait que
+\[
+q(0)=1.
+\]
+Pour \(x\neq0\),
+\[
+\frac{q(x)-q(0)}{x}
+=
+\frac{\sqrt{1+x}-1}{x}.
+\]
+En rationalisant,
+\[
+\frac{\sqrt{1+x}-1}{x}
+=
+\frac1{\sqrt{1+x}+1}.
+\]
+Quand
+\[
+x\to0,
+\]
+on obtient
+\[
+\frac1{\sqrt{1+x}+1}\to\frac12.
+\]
+Donc \(q\) est dérivable en \(0\), et
+\[
+q'(0)=\frac12.
+\]
+Par la caractérisation locale de la dérivabilité,
+\[
+q(0+x)=q(0)+xq'(0)+x\eps(x),
+\]
+avec
+\[
+\eps(x)\to0
+\quad\text{quand }x\to0.
+\]
+Donc
+\[
+\sqrt{1+x}=1+\frac{x}{2}+x\eps(x),
+\]
+avec
+\[
+\eps(x)\to0.
+\]
+
+\begin{remarquebox}
+La question 19 donne une information plus précise pour \(x>0\) :
+\[
+0\leq 1+\frac{x}{2}-\sqrt{1+x}\leq\frac{x^2}{8}.
+\]
+Elle contrôle donc le signe et la taille de l'erreur.  
+La dérivabilité donne seulement une erreur de la forme \(x\eps(x)\), avec \(\eps(x)\to0\).
+\end{remarquebox}
+
+\newpage
+
+% ============================================================
+% PROBLEME III
+% ============================================================
+
+\section*{Problème III -- Dichotomie, théorème des valeurs intermédiaires et approximation certifiée d'une racine}
+
+On étudie la procédure de dichotomie.
+
+Soit \(h\) une fonction continue sur \([a,b]\), telle que
+\[
+h(a)\leq0\leq h(b).
+\]
+On définit deux suites \((a_n)\) et \((b_n)\) par
+\[
+a_0=a,\qquad b_0=b.
+\]
+Pour tout \(n\in\N\), on pose
+\[
+m_n=\frac{a_n+b_n}{2}.
+\]
+Si
+\[
+h(m_n)\leq0,
+\]
+on pose
+\[
+a_{n+1}=m_n,\qquad b_{n+1}=b_n.
+\]
+Sinon,
+\[
+a_{n+1}=a_n,\qquad b_{n+1}=m_n.
+\]
+
+% ============================================================
+
+\subsection*{Partie A -- Une preuve constructive du TVI}
+
+\subsubsection*{1. Montrer que \(a_n\leq b_n\)}
+
+On procède par récurrence.
+
+Au rang \(0\),
+\[
+a_0=a,\qquad b_0=b.
+\]
+Comme \(h\) est définie sur \([a,b]\), on suppose bien
+\[
+a\leq b.
+\]
+Donc
+\[
+a_0\leq b_0.
+\]
+
+Supposons maintenant
+\[
+a_n\leq b_n.
+\]
+Alors
+\[
+m_n=\frac{a_n+b_n}{2}
+\]
+vérifie
+\[
+a_n\leq m_n\leq b_n.
+\]
+Deux cas sont possibles.
+
+Premier cas :
+\[
+h(m_n)\leq0.
+\]
+Alors
+\[
+a_{n+1}=m_n,\qquad b_{n+1}=b_n.
+\]
+Comme \(m_n\leq b_n\), on obtient
+\[
+a_{n+1}\leq b_{n+1}.
+\]
+
+Deuxième cas :
+\[
+h(m_n)>0.
+\]
+Alors
+\[
+a_{n+1}=a_n,\qquad b_{n+1}=m_n.
+\]
+Comme \(a_n\leq m_n\), on obtient encore
+\[
+a_{n+1}\leq b_{n+1}.
+\]
+
+Par récurrence,
+\[
+\forall n\in\N,\qquad a_n\leq b_n.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{2. Conservation de l'encadrement de signe}
+
+On montre par récurrence que
+\[
+h(a_n)\leq0\leq h(b_n).
+\]
+
+Au rang \(0\),
+\[
+a_0=a,\qquad b_0=b.
+\]
+L'hypothèse donne
+\[
+h(a)\leq0\leq h(b),
+\]
+donc
+\[
+h(a_0)\leq0\leq h(b_0).
+\]
+
+Supposons maintenant que
+\[
+h(a_n)\leq0\leq h(b_n).
+\]
+On pose
+\[
+m_n=\frac{a_n+b_n}{2}.
+\]
+
+Si
+\[
+h(m_n)\leq0,
+\]
+alors
+\[
+a_{n+1}=m_n,\qquad b_{n+1}=b_n.
+\]
+Donc
+\[
+h(a_{n+1})=h(m_n)\leq0
+\]
+et
+\[
+h(b_{n+1})=h(b_n)\geq0.
+\]
+Ainsi
+\[
+h(a_{n+1})\leq0\leq h(b_{n+1}).
+\]
+
+Si
+\[
+h(m_n)>0,
+\]
+alors
+\[
+a_{n+1}=a_n,\qquad b_{n+1}=m_n.
+\]
+Donc
+\[
+h(a_{n+1})=h(a_n)\leq0
+\]
+et
+\[
+h(b_{n+1})=h(m_n)>0.
+\]
+Donc
+\[
+h(a_{n+1})\leq0\leq h(b_{n+1}).
+\]
+
+Par récurrence,
+\[
+\forall n\in\N,\qquad h(a_n)\leq0\leq h(b_n).
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{3. Monotonie de \((a_n)\) et \((b_n)\)}
+
+À chaque étape, on a
+\[
+a_n\leq m_n\leq b_n.
+\]
+
+Si
+\[
+h(m_n)\leq0,
+\]
+alors
+\[
+a_{n+1}=m_n\geq a_n
+\]
+et
+\[
+b_{n+1}=b_n.
+\]
+
+Si
+\[
+h(m_n)>0,
+\]
+alors
+\[
+a_{n+1}=a_n
+\]
+et
+\[
+b_{n+1}=m_n\leq b_n.
+\]
+
+Dans tous les cas,
+\[
+a_{n+1}\geq a_n
+\]
+et
+\[
+b_{n+1}\leq b_n.
+\]
+
+\begin{resultatbox}
+La suite \((a_n)\) est croissante et la suite \((b_n)\) est décroissante.
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{4. Relation sur la longueur des intervalles}
+
+On montre que
+\[
+b_{n+1}-a_{n+1}=\frac12(b_n-a_n).
+\]
+
+Si
+\[
+h(m_n)\leq0,
+\]
+alors
+\[
+a_{n+1}=m_n,\qquad b_{n+1}=b_n.
+\]
+Donc
+\[
+b_{n+1}-a_{n+1}
+=
+b_n-m_n.
+\]
+Or
+\[
+m_n=\frac{a_n+b_n}{2}.
+\]
+Ainsi
+\[
+b_n-m_n
+=
+b_n-\frac{a_n+b_n}{2}
+=
+\frac{b_n-a_n}{2}.
+\]
+
+Si
+\[
+h(m_n)>0,
+\]
+alors
+\[
+a_{n+1}=a_n,\qquad b_{n+1}=m_n.
+\]
+Donc
+\[
+b_{n+1}-a_{n+1}
+=
+m_n-a_n
+=
+\frac{a_n+b_n}{2}-a_n
+=
+\frac{b_n-a_n}{2}.
+\]
+
+Dans tous les cas,
+\[
+b_{n+1}-a_{n+1}=\frac12(b_n-a_n).
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{5. Formule explicite de la longueur}
+
+On a
+\[
+b_{n+1}-a_{n+1}=\frac12(b_n-a_n).
+\]
+La suite
+\[
+\ell_n=b_n-a_n
+\]
+est donc géométrique de raison \(1/2\), avec
+\[
+\ell_0=b_0-a_0=b-a.
+\]
+Ainsi
+\[
+\ell_n=\frac{b-a}{2^n}.
+\]
+Donc
+\[
+b_n-a_n=\frac{b-a}{2^n}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{6. Montrer que \((a_n)\) et \((b_n)\) sont adjacentes}
+
+On a montré que :
+\[
+(a_n)\ \text{est croissante},
+\]
+\[
+(b_n)\ \text{est décroissante},
+\]
+et
+\[
+b_n-a_n=\frac{b-a}{2^n}.
+\]
+Comme
+\[
+2^n\to+\infty,
+\]
+on a
+\[
+\frac{b-a}{2^n}\to0.
+\]
+Donc
+\[
+b_n-a_n\to0.
+\]
+Les suites \((a_n)\) et \((b_n)\) sont donc adjacentes.
+
+\begin{resultatbox}
+Les suites \((a_n)\) et \((b_n)\) sont adjacentes.
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{7. Localisation de la limite commune}
+
+Puisque \((a_n)\) et \((b_n)\) sont adjacentes, elles convergent vers une même limite. Notons-la
+\[
+\alpha.
+\]
+Comme
+\[
+a_0=a\leq a_n\leq b_n\leq b_0=b
+\]
+pour tout \(n\), en passant à la limite, on obtient
+\[
+a\leq\alpha\leq b.
+\]
+Donc
+\[
+\alpha\in[a,b].
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{8. Montrer que \(h(\alpha)=0\)}
+
+Pour tout \(n\),
+\[
+h(a_n)\leq0\leq h(b_n).
+\]
+Comme
+\[
+a_n\to\alpha
+\qquad\text{et}\qquad
+b_n\to\alpha,
+\]
+et comme \(h\) est continue sur \([a,b]\), on a
+\[
+h(a_n)\to h(\alpha)
+\qquad\text{et}\qquad
+h(b_n)\to h(\alpha).
+\]
+
+À partir de
+\[
+h(a_n)\leq0,
+\]
+le passage à la limite donne
+\[
+h(\alpha)\leq0.
+\]
+À partir de
+\[
+0\leq h(b_n),
+\]
+le passage à la limite donne
+\[
+0\leq h(\alpha).
+\]
+Donc
+\[
+h(\alpha)\leq0\leq h(\alpha).
+\]
+Ainsi
+\[
+h(\alpha)=0.
+\]
+
+\begin{resultatbox}
+La limite commune \(\alpha\) des deux suites vérifie
+\[
+h(\alpha)=0.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{9. Interprétation constructive du TVI}
+
+Le théorème des valeurs intermédiaires affirme qu'une fonction continue qui prend des valeurs de signes opposés sur un segment possède au moins un zéro.
+
+La procédure de dichotomie ne se contente pas d'affirmer l'existence du zéro : elle construit une suite d'intervalles emboîtés
+\[
+[a_n,b_n]
+\]
+dont les longueurs tendent vers \(0\), et dans chacun desquels un changement de signe est conservé.
+
+La limite commune des bornes est alors un zéro de \(h\). La preuve donne donc non seulement l'existence, mais aussi une méthode d'approximation du zéro.
+
+% ============================================================
+
+\subsection*{Partie B -- Cas d'une racine unique}
+
+On suppose maintenant que l'équation
+\[
+h(x)=0
+\]
+admet une unique solution dans \([a,b]\). On la note \(\alpha\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{10. Montrer que \(a_n\leq\alpha\leq b_n\)}
+
+D'après la partie A, pour chaque \(n\),
+\[
+h(a_n)\leq0\leq h(b_n).
+\]
+La fonction \(h\) est continue sur \([a_n,b_n]\), car \([a_n,b_n]\subset[a,b]\).
+
+Par le théorème des valeurs intermédiaires, il existe un zéro de \(h\) dans \([a_n,b_n]\).
+
+Mais par hypothèse, le zéro de \(h\) dans \([a,b]\) est unique : c'est \(\alpha\). Donc
+\[
+\alpha\in[a_n,b_n].
+\]
+Autrement dit,
+\[
+a_n\leq\alpha\leq b_n.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{11. Estimation de l'erreur du milieu}
+
+On définit
+\[
+c_n=\frac{a_n+b_n}{2}.
+\]
+Comme
+\[
+\alpha\in[a_n,b_n],
+\]
+le point \(c_n\) est le milieu de l'intervalle contenant \(\alpha\). La distance maximale entre le milieu d'un intervalle et un point de cet intervalle est la demi-longueur de l'intervalle.
+
+Donc
+\[
+|c_n-\alpha|\leq \frac{b_n-a_n}{2}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{12. Estimation explicite}
+
+On sait que
+\[
+b_n-a_n=\frac{b-a}{2^n}.
+\]
+Donc
+\[
+|c_n-\alpha|\leq \frac{b_n-a_n}{2}
+=
+\frac{b-a}{2^{n+1}}.
+\]
+
+\begin{resultatbox}
+Pour tout \(n\in\N\),
+\[
+|c_n-\alpha|\leq \frac{b-a}{2^{n+1}}.
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{13. Montrer que \(c_n\to\alpha\)}
+
+On a
+\[
+0\leq |c_n-\alpha|\leq \frac{b-a}{2^{n+1}}.
+\]
+Or
+\[
+\frac{b-a}{2^{n+1}}\to0.
+\]
+Par le théorème des gendarmes,
+\[
+|c_n-\alpha|\to0.
+\]
+Donc
+\[
+c_n\to\alpha.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{14. Précision \(\varepsilon\)}
+
+Soit
+\[
+\varepsilon>0.
+\]
+Comme
+\[
+\frac{b-a}{2^{n+1}}\to0,
+\]
+il existe un rang \(N\in\N\) tel que, pour tout \(n\geq N\),
+\[
+\frac{b-a}{2^{n+1}}\leq \varepsilon.
+\]
+D'après l'estimation précédente,
+\[
+|c_n-\alpha|\leq \frac{b-a}{2^{n+1}}.
+\]
+Donc, pour tout \(n\geq N\),
+\[
+|c_n-\alpha|\leq\varepsilon.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{15. Approximation certifiée}
+
+La dichotomie fournit une approximation certifiée car, à chaque rang \(n\), on connaît un intervalle explicite
+\[
+[a_n,b_n]
+\]
+qui contient la racine \(\alpha\). En choisissant le milieu
+\[
+c_n=\frac{a_n+b_n}{2},
+\]
+on sait rigoureusement que l'erreur est au plus
+\[
+\frac{b_n-a_n}{2}.
+\]
+On ne donne donc pas seulement une valeur approchée : on donne aussi une borne garantie de l'erreur.
+
+% ============================================================
+
+\subsection*{Partie C -- Application : la racine plastique}
+
+On considère
+\[
+p(x)=x^3-x-1
+\]
+sur \([1,2]\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{16. Continuité de \(p\)}
+
+La fonction \(p\) est une fonction polynomiale. Elle est donc continue sur \(\R\), en particulier sur \([1,2]\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{17. Existence d'une solution}
+
+On calcule :
+\[
+p(1)=1^3-1-1=-1.
+\]
+Donc
+\[
+p(1)<0.
+\]
+Puis
+\[
+p(2)=2^3-2-1=8-3=5.
+\]
+Donc
+\[
+p(2)>0.
+\]
+
+La fonction \(p\) est continue sur \([1,2]\), et
+\[
+p(1)\leq0\leq p(2).
+\]
+Par le théorème des valeurs intermédiaires, il existe au moins un réel
+\[
+\rho\in[1,2]
+\]
+tel que
+\[
+p(\rho)=0.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{18. Montrer que \(p\) est strictement croissante sur \([1,2]\)}
+
+La fonction \(p\) est dérivable sur \([1,2]\), et
+\[
+p'(x)=3x^2-1.
+\]
+Pour \(x\in[1,2]\),
+\[
+x^2\geq1,
+\]
+donc
+\[
+3x^2-1\geq2>0.
+\]
+Ainsi
+\[
+p'(x)>0
+\]
+sur \([1,2]\).
+
+Donc \(p\) est strictement croissante sur \([1,2]\).
+
+% ------------------------------------------------------------
+
+\subsubsection*{19. Unicité de la racine}
+
+On sait qu'il existe au moins une racine de \(p\) dans \([1,2]\).
+
+Comme \(p\) est strictement croissante sur \([1,2]\), elle est injective sur \([1,2]\). Elle ne peut donc pas prendre la valeur \(0\) en deux points distincts.
+
+Donc l'équation
+\[
+p(x)=0
+\]
+admet une unique solution dans \([1,2]\). On la note
+\[
+\rho.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{20. Trois premiers intervalles de dichotomie}
+
+On applique la dichotomie à \(p\) sur \([1,2]\).
+
+On a
+\[
+[a_0,b_0]=[1,2].
+\]
+
+Premier milieu :
+\[
+m_0=\frac{1+2}{2}=\frac32.
+\]
+Calculons
+\[
+p\left(\frac32\right)
+=
+\left(\frac32\right)^3-\frac32-1
+=
+\frac{27}{8}-\frac{12}{8}-\frac{8}{8}
+=
+\frac7{8}>0.
+\]
+Comme \(p(m_0)>0\), on garde la moitié gauche :
+\[
+[a_1,b_1]=\left[1,\frac32\right].
+\]
+
+Deuxième milieu :
+\[
+m_1=\frac{1+\frac32}{2}
+=
+\frac{\frac52}{2}
+=
+\frac54.
+\]
+Calculons
+\[
+p\left(\frac54\right)
+=
+\left(\frac54\right)^3-\frac54-1
+=
+\frac{125}{64}-\frac{80}{64}-\frac{64}{64}
+=
+-\frac{19}{64}<0.
+\]
+Donc on garde la moitié droite :
+\[
+[a_2,b_2]=\left[\frac54,\frac32\right].
+\]
+
+Troisième milieu :
+\[
+m_2=\frac{\frac54+\frac32}{2}
+=
+\frac{\frac{10}{8}+\frac{12}{8}}{2}
+=
+\frac{\frac{22}{8}}{2}
+=
+\frac{11}{8}.
+\]
+Calculons
+\[
+p\left(\frac{11}{8}\right)
+=
+\left(\frac{11}{8}\right)^3-\frac{11}{8}-1.
+\]
+On met au dénominateur \(512\) :
+\[
+\left(\frac{11}{8}\right)^3=\frac{1331}{512},
+\]
+\[
+\frac{11}{8}=\frac{704}{512},
+\qquad
+1=\frac{512}{512}.
+\]
+Donc
+\[
+p\left(\frac{11}{8}\right)
+=
+\frac{1331-704-512}{512}
+=
+\frac{115}{512}>0.
+\]
+Donc on garde la moitié gauche :
+\[
+[a_3,b_3]=\left[\frac54,\frac{11}{8}\right].
+\]
+
+\begin{resultatbox}
+Les premiers intervalles sont
+\[
+[a_0,b_0]=[1,2],
+\]
+\[
+[a_1,b_1]=\left[1,\frac32\right],
+\]
+\[
+[a_2,b_2]=\left[\frac54,\frac32\right],
+\]
+\[
+[a_3,b_3]=\left[\frac54,\frac{11}{8}\right].
+\]
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{21. Vérifier que \(\frac54\leq\rho\leq\frac{11}{8}\)}
+
+D'après la question précédente,
+\[
+[a_3,b_3]=\left[\frac54,\frac{11}{8}\right].
+\]
+La racine unique \(\rho\) appartient à chaque intervalle de localisation. Donc
+\[
+\frac54\leq\rho\leq\frac{11}{8}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{22. Étape supplémentaire}
+
+On part de
+\[
+[a_3,b_3]=\left[\frac54,\frac{11}{8}\right].
+\]
+Le milieu est
+\[
+m_3=
+\frac{\frac54+\frac{11}{8}}{2}
+=
+\frac{\frac{10}{8}+\frac{11}{8}}{2}
+=
+\frac{\frac{21}{8}}{2}
+=
+\frac{21}{16}.
+\]
+Calculons
+\[
+p\left(\frac{21}{16}\right)
+=
+\left(\frac{21}{16}\right)^3-\frac{21}{16}-1.
+\]
+On met au dénominateur \(4096\) :
+\[
+\left(\frac{21}{16}\right)^3=\frac{9261}{4096},
+\]
+\[
+\frac{21}{16}=\frac{5376}{4096},
+\qquad
+1=\frac{4096}{4096}.
+\]
+Donc
+\[
+p\left(\frac{21}{16}\right)
+=
+\frac{9261-5376-4096}{4096}
+=
+-\frac{211}{4096}<0.
+\]
+Comme
+\[
+p\left(\frac{21}{16}\right)<0
+\]
+et
+\[
+p\left(\frac{11}{8}\right)>0,
+\]
+on obtient le nouvel intervalle
+\[
+\left[\frac{21}{16},\frac{11}{8}\right].
+\]
+Donc
+\[
+\frac{21}{16}\leq\rho\leq\frac{11}{8}.
+\]
+
+% ------------------------------------------------------------
+
+\subsubsection*{23. Encadrement par un intervalle de longueur inférieure ou égale à \(1/16\)}
+
+L'intervalle obtenu à la question précédente est
+\[
+\left[\frac{21}{16},\frac{11}{8}\right].
+\]
+Sa longueur vaut
+\[
+\frac{11}{8}-\frac{21}{16}
+=
+\frac{22}{16}-\frac{21}{16}
+=
+\frac1{16}.
+\]
+Donc il s'agit bien d'un encadrement de \(\rho\) par un intervalle de longueur inférieure ou égale à \(1/16\).
+
+\begin{resultatbox}
+On a
+\[
+\rho\in\left[\frac{21}{16},\frac{11}{8}\right],
+\]
+et cet intervalle est de longueur \(1/16\).
+\end{resultatbox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{24. Nombre d'étapes pour garantir une approximation à \(10^{-3}\)}
+
+Ici,
+\[
+a=1,\qquad b=2,
+\]
+donc
+\[
+b-a=1.
+\]
+L'erreur commise en prenant le milieu \(c_n\) de l'intervalle \([a_n,b_n]\) est majorée par
+\[
+|c_n-\rho|\leq \frac{b-a}{2^{n+1}}
+=
+\frac1{2^{n+1}}.
+\]
+On veut
+\[
+\frac1{2^{n+1}}\leq 10^{-3}.
+\]
+Cela équivaut à
+\[
+2^{n+1}\geq 1000.
+\]
+On sait que
+\[
+2^{10}=1024\geq1000.
+\]
+Il suffit donc de prendre
+\[
+n+1=10,
+\]
+c'est-à-dire
+\[
+n=9.
+\]
+
+\begin{resultatbox}
+Après \(9\) étapes, le milieu de l'intervalle donne une approximation de \(\rho\) à \(10^{-3}\) près.
+\end{resultatbox}
+
+\begin{remarquebox}
+Selon la convention utilisée pour compter les étapes, on peut dire : après avoir construit l'intervalle \([a_9,b_9]\), son milieu est à distance au plus \(10^{-3}\) de \(\rho\).
+\end{remarquebox}
+
+% ------------------------------------------------------------
+
+\subsubsection*{25. Montrer que \(c_n\to\rho\)}
+
+La question 13, appliquée ici, donne directement
+\[
+|c_n-\rho|\leq\frac1{2^{n+1}}.
+\]
+Comme
+\[
+\frac1{2^{n+1}}\to0,
+\]
+le théorème des gendarmes donne
+\[
+|c_n-\rho|\to0.
+\]
+Donc
+\[
+c_n\to\rho.
+\]
+
+% ============================================================
+
+\subsection*{Partie D -- Existence, unicité et algorithme}
+
+\subsubsection*{26. L'unicité était-elle nécessaire dans la partie A ?}
+
+Non. Dans la partie A, on n'a jamais supposé que le zéro de \(h\) était unique.
+
+On a seulement utilisé :
+\[
+h(a)\leq0\leq h(b),
+\]
+la continuité de \(h\), et la construction par dichotomie. Cela suffit pour construire deux suites adjacentes dont la limite commune est un zéro de \(h\).
+
+L'unicité n'est donc pas nécessaire pour démontrer l'existence d'au moins un zéro.
+
+% ------------------------------------------------------------
+
+\subsubsection*{27. Où l'unicité est-elle utilisée dans la partie B ?}
+
+L'unicité est utilisée pour affirmer que la racine \(\alpha\) donnée au départ appartient à tous les intervalles \([a_n,b_n]\).
+
+Sans unicité, le théorème des valeurs intermédiaires montrerait seulement que chaque intervalle \([a_n,b_n]\) contient au moins un zéro de \(h\). Mais il ne garantirait pas qu'il contient un zéro particulier choisi à l'avance.
+
+Ainsi, l'unicité permet d'écrire
+\[
+a_n\leq\alpha\leq b_n
+\]
+pour la même racine \(\alpha\) à tous les rangs.
+
+% ------------------------------------------------------------
+
+\subsubsection*{28. Exemple avec plusieurs zéros}
+
+On peut prendre
+\[
+h(x)=x(x-1)
+\]
+sur
+\[
+[0,1].
+\]
+Alors
+\[
+h(0)=0
+\qquad\text{et}\qquad
+h(1)=0.
+\]
+La condition
+\[
+h(0)\leq0\leq h(1)
+\]
+est vérifiée.
+
+La fonction \(h\) possède plusieurs zéros dans \([0,1]\), à savoir
+\[
+0
+\quad\text{et}\quad
+1.
+\]
+
+Un autre exemple plus riche est
+\[
+h(x)=x^2-\frac14
+\]
+sur \([-1,1]\). Alors
+\[
+h(-1)>0,
+\qquad
+h(0)<0,
+\qquad
+h(1)>0,
+\]
+et les zéros sont
+\[
+-\frac12
+\quad\text{et}\quad
+\frac12.
+\]
+Mais l'exemple \(x(x-1)\) suffit.
+
+% ------------------------------------------------------------
+
+\subsubsection*{29. Dans ce cas, la dichotomie converge-t-elle forcément vers un zéro ?}
+
+Oui, avec la procédure telle qu'elle a été définie, la dichotomie converge toujours vers un zéro de \(h\), même si \(h\) possède plusieurs zéros.
+
+En effet, la preuve de la partie A n'utilise pas l'unicité du zéro. Elle montre que les suites \((a_n)\) et \((b_n)\) sont adjacentes et ont une limite commune \(\alpha\). Elle montre ensuite, grâce à la continuité de \(h\), que
+\[
+h(\alpha)=0.
+\]
+Donc la limite construite est forcément un zéro.
+
+En revanche, si plusieurs zéros existent, la procédure ne permet pas nécessairement de choisir à l'avance lequel elle va approcher. Le zéro obtenu dépend des signes rencontrés aux milieux successifs et donc des choix imposés par la règle de dichotomie.
+
+% ------------------------------------------------------------
+
+\subsubsection*{30. Pourquoi la dichotomie est-elle robuste ?}
+
+La dichotomie est robuste parce qu'elle repose uniquement sur trois idées simples :
+
+\begin{itemize}
+    \item la continuité de la fonction ;
+    \item un changement de signe ;
+    \item le découpage successif d'un intervalle en deux.
+\end{itemize}
+
+Elle ne demande pas de résoudre explicitement l'équation
+\[
+h(x)=0.
+\]
+Elle ne demande pas non plus de deviner une formule exacte pour la racine.
+
+À chaque étape, on obtient un intervalle qui contient une racine, avec une longueur connue. Ainsi, on contrôle rigoureusement l'erreur.
+
+\begin{resultatbox}
+La dichotomie transforme une preuve d'existence en méthode d'approximation certifiée.
+\end{resultatbox}
+
+\newpage
+
+% ============================================================
+% SYNTHESE
+% ============================================================
+
+\section*{Synthèse finale du corrigé}
+
+\subsection*{Méthodes majeures utilisées}
+
+\begin{itemize}
+    \item La borne supérieure permet de construire un réel dont l'existence n'est pas donnée explicitement.
+    \item Une suite récurrente \(u_{n+1}=f(u_n)\) s'étudie souvent par stabilité d'un intervalle, monotonie et passage à la limite.
+    \item Le théorème des accroissements finis et l'inégalité des accroissements finis permettent d'obtenir des inégalités sans développement limité.
+    \item Le théorème de Rolle peut servir à montrer qu'une fonction ne prend pas deux fois la même valeur.
+    \item Le théorème de la bijection continue permet de justifier proprement l'existence d'une fonction réciproque.
+    \item La dichotomie donne une version constructive du théorème des valeurs intermédiaires.
+\end{itemize}
+
+\subsection*{Résultats principaux}
+
+\[
+\sup\{x\in\R_+ \mid x^2\leq2\}=\sqrt2.
+\]
+
+La suite de Héron
+\[
+u_{n+1}=\frac12\left(u_n+\frac2{u_n}\right),
+\qquad u_0=2,
+\]
+converge vers
+\[
+\sqrt2.
+\]
+
+La fonction
+\[
+f(x)=\frac{\sqrt{1+x}-1}{x}
+\]
+prolongée par
+\[
+f(0)=\frac12
+\]
+est continue et dérivable sur \(]-1,+\infty[\), strictement décroissante, et réalise une bijection de \(]-1,+\infty[\) sur \(]0,1[\).
+
+Sa réciproque est
+\[
+f^{-1}(y)=\left(\frac1y-1\right)^2-1.
+\]
+
+Pour \(x>0\),
+\[
+0\leq 1+\frac{x}{2}-\sqrt{1+x}\leq \frac{x^2}{8}.
+\]
+
+La procédure de dichotomie construit des suites adjacentes \((a_n)\) et \((b_n)\), avec
+\[
+b_n-a_n=\frac{b-a}{2^n},
+\]
+et leur limite commune est un zéro de la fonction continue considérée.
+
+\end{document}
