@@ -112,8 +112,24 @@
   }
 ,
   {
+    "titre": "fiche méthode symmétries",
+    "fichier": "docs/math sixieme cours fiche méthode symmétries.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "cours"
+  }
+,
+  {
     "titre": "1",
     "fichier": "docs/math sixieme ds 1.pdf",
+    "matiere": "maths",
+    "niveau": "sixieme",
+    "type": "ds"
+  }
+,
+  {
+    "titre": "symmétries et géométrie (tracés)",
+    "fichier": "docs/math sixieme ds symmétries et géométrie (tracés).pdf",
     "matiere": "maths",
     "niveau": "sixieme",
     "type": "ds"
