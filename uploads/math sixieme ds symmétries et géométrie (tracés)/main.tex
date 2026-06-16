@@ -1,0 +1,415 @@
+\documentclass[11pt,a4paper]{article}
+
+% =========================
+% PACKAGES
+% =========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1.6cm}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+
+% =========================
+% STYLE
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Mathématiques -- Sixième}}
+\rhead{\textbf{DS -- Symétrie axiale}}
+\cfoot{\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\definecolor{bleu}{RGB}{30,80,160}
+\definecolor{grisclair}{RGB}{245,245,245}
+
+\newcommand{\points}[1]{\hfill \textbf{(#1 points)}}
+
+\newtcolorbox{consignes}{
+  colback=grisclair,
+  colframe=bleu,
+  title=\textbf{Consignes},
+  fonttitle=\bfseries
+}
+
+\begin{document}
+
+% =========================
+% TITRE
+% =========================
+\begin{center}
+    {\Large \textbf{Devoir surveillé de mathématiques}}\\[0.2cm]
+    {\large \textbf{Chapitre : Symétrie axiale}}\\[0.2cm]
+    Niveau sixième
+\end{center}
+
+\vspace{0.2cm}
+
+\begin{tabular}{|p{0.45\linewidth}|p{0.45\linewidth}|}
+\hline
+Nom : & Prénom : \\
+\hline
+Classe : & Date : \\
+\hline
+\end{tabular}
+
+\vspace{0.4cm}
+
+% =========================
+% TITRE
+% =========================
+\begin{center}
+    {\Large \textbf{Devoir maison de mathématiques}}\\[0.2cm]
+    {\large \textbf{Chapitre : Symétrie axiale}}\\[0.2cm]
+    Niveau sixième
+\end{center}
+
+\vspace{0.2cm}
+
+\begin{tabular}{|p{0.45\linewidth}|p{0.45\linewidth}|}
+\hline
+Nom : & Prénom : \\
+\hline
+Classe : & Date : \\
+\hline
+\end{tabular}
+
+\vspace{0.4cm}
+
+\begin{consignes}
+\begin{itemize}[label=\textbullet]
+    \item Le devoir est à faire proprement, au crayon à papier pour les constructions.
+    \item Les traits de construction doivent rester visibles.
+    \item On utilisera la règle graduée, l'équerre et le compas si nécessaire.
+    \item Toute réponse doit être justifiée lorsque cela est demandé.
+    \item pour ce DM vous pouvez répondre sur le sujet comme j'ai laissé la place.
+    \item les exercices à faire en priorités sont les exercices 1,3, 4
+\end{itemize}
+\end{consignes}
+
+\vspace{0.3cm}
+
+\begin{center}
+\textbf{Barème : 31 points}
+\end{center}
+
+% ============================================================
+\section*{Exercice 1 -- Vocabulaire et reconnaissance \points{4}}
+
+On rappelle qu'une figure possède un axe de symétrie si, lorsqu'on la plie suivant cet axe, les deux parties se superposent exactement.
+
+\medskip
+
+\textbf{1.} Pour chaque figure ci-dessous, dire si la droite en pointillés est un axe de symétrie.  
+Écrire \textbf{oui} ou \textbf{non} sous chaque figure. \points{2}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% Figure A : rectangle avec axe vertical
+\draw[thick] (0,0) rectangle (2,1.4);
+\draw[dashed, thick] (1,-0.3)--(1,1.7);
+\node at (1,-0.7) {Figure A : \dotfill};
+
+% Figure B : triangle quelconque avec faux axe
+\draw[thick] (4,0)--(6,0)--(5.4,1.5)--cycle;
+\draw[dashed, thick] (5,-0.3)--(5,1.8);
+\node at (5,-0.7) {Figure B : \dotfill};
+
+% Figure C : cercle avec axe
+\draw[thick] (9,0.7) circle (0.8);
+\draw[dashed, thick] (8.2,0.7)--(9.8,0.7);
+\node at (9,-0.7) {Figure C : \dotfill};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.4cm}
+
+\textbf{2.} Compléter les phrases suivantes avec les mots :  
+\textbf{perpendiculaire}, \textbf{même distance}, \textbf{milieu}. \points{2}
+
+\begin{enumerate}[label=\alph*)]
+    \item Si deux points $A$ et $A'$ sont symétriques par rapport à une droite $(d)$, alors $A$ et $A'$ sont à la ........................................ de la droite $(d)$.
+    \item La droite $(d)$ est \dotfill au segment $[AA']$.
+    \item La droite $(d)$ passe par le \dotfill du segment $[AA']$.
+\end{enumerate}
+
+% ============================================================
+\section*{Exercice 2 -- Construire le symétrique de points \points{5}}
+
+Dans la figure ci-dessous, construire les points $A'$, $B'$, $C'$ et $D'$, symétriques respectifs des points $A$, $B$, $C$ et $D$ par rapport à la droite $(d)$.
+
+\medskip
+
+\textbf{Attention :} on laissera visibles les traits de construction.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+
+% grille
+\draw[step=1cm, gray!35, very thin] (-5,-3) grid (5,5);
+
+% axe
+\draw[very thick, bleu] (0,-3)--(0,5);
+\node[bleu, above] at (0,5) {$(d)$};
+
+% points
+\filldraw (-3,4) circle (2pt) node[above left] {$A$};
+\filldraw (-2,1) circle (2pt) node[above left] {$B$};
+\filldraw (-4,-1) circle (2pt) node[below left] {$C$};
+\filldraw (-1,-2) circle (2pt) node[below left] {$D$};
+
+% graduations invisibles? non
+\end{tikzpicture}
+\end{center}
+
+\textbf{Questions :}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Construire $A'$, $B'$, $C'$ et $D'$. \points{4}
+    \item Que peut-on dire de la droite $(d)$ par rapport aux segments $[AA']$, $[BB']$, $[CC']$ et $[DD']$ ? \points{1}
+\end{enumerate}
+
+\vspace{1cm}
+
+Réponse à la question 2 :
+
+\dotfill
+
+\dotfill
+
+% ============================================================
+\section*{Exercice 3 -- Construire le symétrique d'une figure \points{6}}
+
+On a tracé une figure composée de plusieurs segments.  
+Construire son symétrique par rapport à la droite $(d)$.
+
+\medskip
+
+\textbf{Méthode conseillée :}
+\begin{enumerate}[label=\textbullet]
+    \item Construire d'abord les symétriques de tous les sommets.
+    \item Relier ensuite les points obtenus dans le même ordre.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+
+% grille
+\draw[step=1cm, gray!35, very thin] (-6,-4) grid (6,5);
+
+% axe de symétrie horizontal
+\draw[very thick, bleu] (-6,0)--(6,0);
+\node[bleu, right] at (6,0) {$(d)$};
+
+% figure initiale
+\draw[very thick] (-5,2)--(-3,4)--(-1,3)--(-2,1)--(-4,1)--cycle;
+
+% points
+\filldraw (-5,2) circle (2pt) node[above left] {$A$};
+\filldraw (-3,4) circle (2pt) node[above] {$B$};
+\filldraw (-1,3) circle (2pt) node[above right] {$C$};
+\filldraw (-2,1) circle (2pt) node[below right] {$D$};
+\filldraw (-4,1) circle (2pt) node[below left] {$E$};
+
+\end{tikzpicture}
+\end{center}
+
+\textbf{Questions :}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Construire les points $A'$, $B'$, $C'$, $D'$ et $E'$. \points{3}
+    \item Relier les points $A'$, $B'$, $C'$, $D'$ et $E'$ pour obtenir la figure symétrique. \points{2}
+    \item La figure symétrique a-t-elle la même forme et les mêmes dimensions que la figure de départ ? Justifier. \points{1}
+\end{enumerate}
+
+\vspace{0.8cm}
+
+Justification :
+
+\dotfill
+
+\dotfill
+
+\dotfill
+
+% ============================================================
+\section*{Exercice 4 -- Construction avec le compas seul \points{5}}
+
+Dans cet exercice, la droite $(d)$ est l'axe de symétrie de la figure complète.
+
+\medskip
+
+\textbf{Instrument imposé : compas seul.}
+
+\medskip
+
+On a placé deux points $M$ et $N$ sur l'axe de symétrie $(d)$.  
+Tu dois construire les symétriques des points $A$, $B$ et $C$ en utilisant seulement le compas.
+
+\medskip
+
+\textbf{Indication :} si $A'$ est le symétrique de $A$ par rapport à $(d)$, alors
+\[
+MA = MA'
+\qquad \text{et} \qquad
+NA = NA'.
+\]
+Donc $A'$ est à l'intersection de deux arcs de cercle : l'un de centre $M$, l'autre de centre $N$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% axe oblique
+\draw[very thick, bleu] (-5,-2)--(5,3);
+\node[bleu, right] at (5,3) {$(d)$};
+
+% points sur l'axe
+\filldraw[bleu] (-2,-0.5) circle (2pt) node[below left] {$M$};
+\filldraw[bleu] (2,1.5) circle (2pt) node[above right] {$N$};
+
+% triangle
+\draw[very thick] (-4,2)--(-1,3)--(-0.5,0.8)--cycle;
+\filldraw (-4,2) circle (2pt) node[above left] {$A$};
+\filldraw (-1,3) circle (2pt) node[above] {$B$};
+\filldraw (-0.5,0.8) circle (2pt) node[right] {$C$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Construire au compas seulement les points $A'$, $B'$ et $C'$. \points{3}
+    \item Relier les points $A'$, $B'$ et $C'$ pour compléter la figure. \points{1}
+    \item Pourquoi les points $M$ et $N$ ne changent-ils pas par symétrie par rapport à $(d)$ ? \points{1}
+\end{enumerate}
+
+\vspace{0.8cm}
+
+Réponse :
+
+\dotfill
+
+\dotfill
+
+\dotfill
+\section*{Exercice 5 -- Compléter une figure par symétrie \points{5}}
+
+La droite $(d)$ est un axe de symétrie de la figure complète.  
+On a tracé seulement une moitié de la figure.
+
+\medskip
+
+\textbf{Compléter la figure pour qu'elle soit symétrique par rapport à la droite $(d)$.}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+
+% grille
+\draw[step=1cm, gray!35, very thin] (-6,-4) grid (6,4);
+
+% axe
+\draw[very thick, bleu] (0,-4)--(0,4);
+\node[bleu, above] at (0,4) {$(d)$};
+
+% demi-figure côté gauche
+\draw[very thick] (0,3)--(-2,2)--(-4,0)--(-3,-2)--(-1,-3)--(0,-2);
+
+% points
+\filldraw (0,3) circle (2pt) node[right] {$A$};
+\filldraw (-2,2) circle (2pt) node[above left] {$B$};
+\filldraw (-4,0) circle (2pt) node[left] {$C$};
+\filldraw (-3,-2) circle (2pt) node[below left] {$D$};
+\filldraw (-1,-3) circle (2pt) node[below] {$E$};
+\filldraw (0,-2) circle (2pt) node[right] {$F$};
+
+\end{tikzpicture}
+\end{center}
+
+\textbf{Questions :}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Construire les symétriques des points $B$, $C$, $D$ et $E$. \points{3}
+    \item Compléter la figure en reliant correctement les points. \points{1}
+    \item Les points $A$ et $F$ ont-ils besoin d'être déplacés pour obtenir leurs symétriques ? Expliquer. \points{1}
+\end{enumerate}
+
+\vspace{0.8cm}
+
+Réponse à la question 3 :
+
+\dotfill
+
+\dotfill
+
+\dotfill
+
+
+% ============================================================
+\section*{Exercice 6 -- Construction avec règle et compas \points{6}}
+
+On veut construire le symétrique du triangle $ABC$ par rapport à la droite $(d)$.
+
+\medskip
+
+\textbf{Instrument imposé : règle non graduée et compas.}
+
+\medskip
+
+\textbf{Méthode attendue :}
+\begin{enumerate}[label=\textbullet]
+    \item Pour construire le symétrique d'un point, on utilise des arcs de cercle centrés sur deux points de la droite $(d)$.
+    \item On ne mesure pas les distances avec la règle graduée.
+    \item On relie ensuite les points obtenus.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+
+% cadre/grille légère
+\draw[step=1cm, gray!20, very thin] (-6,-3) grid (6,5);
+
+% axe oblique
+\draw[very thick, bleu] (-5,-2)--(5,4);
+\node[bleu, right] at (5,4) {$(d)$};
+
+% deux points sur l'axe pour aider
+\filldraw[bleu] (-2,-0.2) circle (2pt) node[below right] {$M$};
+\filldraw[bleu] (2,2.2) circle (2pt) node[above left] {$N$};
+
+% triangle
+\draw[very thick] (-4,3)--(-2,4)--(-1,1)--cycle;
+\filldraw (-4,3) circle (2pt) node[above left] {$A$};
+\filldraw (-2,4) circle (2pt) node[above] {$B$};
+\filldraw (-1,1) circle (2pt) node[below right] {$C$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\arabic*)]
+    \item Construire les points $A'$, $B'$ et $C'$, symétriques des points $A$, $B$ et $C$ par rapport à $(d)$. \points{4}
+    \item Tracer le triangle $A'B'C'$. \points{1}
+    \item Expliquer pourquoi $ABC$ et $A'B'C'$ ont les mêmes dimensions (c'est à dire chaque cotés du triangle à les mêmes longueurs). \points{1}
+\end{enumerate}
+
+\vspace{0.6cm}
+
+Explication :
+
+\dotfill
+
+\dotfill
+
+\dotfill
+
+\end{document}

@@ -1,0 +1,726 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1.6cm}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+
+% ============================================================
+% STYLE
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Mathématiques -- Sixième}}
+\rhead{\textbf{Fiche méthode -- Symétrie axiale}}
+\cfoot{\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\definecolor{bleu}{RGB}{30,80,160}
+\definecolor{rouge}{RGB}{180,40,40}
+\definecolor{vert}{RGB}{20,130,70}
+\definecolor{grisclair}{RGB}{245,245,245}
+\definecolor{orange}{RGB}{220,120,20}
+
+\newcommand{\important}[1]{\textcolor{rouge}{\textbf{#1}}}
+\newcommand{\methode}[1]{\textcolor{bleu}{\textbf{#1}}}
+
+\newtcolorbox{boite}[1]{
+  colback=grisclair,
+  colframe=bleu,
+  title=\textbf{#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{attention}{
+  colback=red!5,
+  colframe=rouge,
+  title=\textbf{Attention},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{retenir}{
+  colback=green!5,
+  colframe=vert,
+  title=\textbf{À retenir},
+  fonttitle=\bfseries
+}
+
+\begin{document}
+
+% ============================================================
+% TITRE
+% ============================================================
+\begin{center}
+    {\Large \textbf{Fiche méthode}}\\[0.15cm]
+    {\LARGE \textbf{Tracer le symétrique d'un point ou d'une figure}}\\[0.15cm]
+    {\large Niveau sixième -- Symétrie axiale}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{boite}{Objectif de la fiche}
+Cette fiche explique les différentes méthodes pour construire le symétrique d'un point ou d'une figure par rapport à une droite appelée \textbf{axe de symétrie}.  
+
+On verra les constructions avec :
+\begin{itemize}[label=\textbullet]
+    \item la règle graduée et l'équerre ;
+    \item la règle non graduée et l'équerre ;
+    \item la règle et le compas ;
+    \item le compas seul ;
+    \item les cas particuliers : point sur l'axe, figure qui coupe l'axe, figure complète à compléter.
+\end{itemize}
+\end{boite}
+
+% ============================================================
+\section*{1. Définition : symétrique d'un point}
+
+Soit une droite $(d)$ et un point $A$.  
+Le point $A'$ est le symétrique de $A$ par rapport à la droite $(d)$ lorsque la droite $(d)$ est la \textbf{médiatrice} du segment $[AA']$.
+
+\begin{retenir}
+Dire que $(d)$ est la médiatrice de $[AA']$ signifie deux choses :
+\begin{enumerate}[label=\arabic*)]
+    \item $(d)$ est \important{perpendiculaire} au segment $[AA']$ ;
+    \item $(d)$ passe par le \important{milieu} du segment $[AA']$.
+\end{enumerate}
+\end{retenir}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+% axe
+\draw[very thick, bleu] (0,-2) -- (0,2);
+\node[bleu, above] at (0,2) {$(d)$};
+
+% points
+\filldraw (-2,0.8) circle (2pt) node[left] {$A$};
+\filldraw (2,0.8) circle (2pt) node[right] {$A'$};
+
+% segment
+\draw[thick, dashed] (-2,0.8)--(2,0.8);
+
+% angle droit
+\draw (0,0.8) ++(0,0) rectangle ++(0.25,0.25);
+
+% milieu
+\filldraw (0,0.8) circle (1.5pt) node[below right] {$I$};
+
+% égalités
+\draw[<->] (-2,0.45)--(0,0.45);
+\draw[<->] (0,0.45)--(2,0.45);
+\node at (-1,0.25) {$AI$};
+\node at (1,0.25) {$IA'$};
+\node at (0,-1.7) {$(d)$ est perpendiculaire à $[AA']$ et passe par son milieu.};
+
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\section*{2. Méthode 1 : avec règle graduée et équerre}
+
+\begin{boite}{Situation}
+On veut construire le symétrique d'un point $A$ par rapport à une droite $(d)$ en utilisant une \textbf{règle graduée} et une \textbf{équerre}.
+\end{boite}
+
+\subsection*{Étapes}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Placer l'équerre pour tracer la droite perpendiculaire à $(d)$ passant par $A$.
+    \item Cette perpendiculaire coupe $(d)$ en un point $I$.
+    \item Mesurer la longueur $AI$ avec la règle graduée.
+    \item De l'autre côté de $(d)$, placer le point $A'$ sur la même droite, de façon que :
+    \[
+    IA'=IA.
+    \]
+    \item Le point $A'$ est le symétrique de $A$ par rapport à $(d)$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+% axe
+\draw[very thick, bleu] (0,-2) -- (0,2);
+\node[bleu, above] at (0,2) {$(d)$};
+
+% point A
+\filldraw (-2,1) circle (2pt) node[left] {$A$};
+
+% perpendiculaire
+\draw[dashed, thick, rouge] (-2,1)--(2.2,1);
+
+% intersection
+\filldraw (0,1) circle (1.5pt) node[below right] {$I$};
+
+% point A'
+\filldraw (2,1) circle (2pt) node[right] {$A'$};
+
+% angle droit
+\draw (0,1) rectangle +(0.25,0.25);
+
+% flèches distances
+\draw[<->, vert, thick] (-2,0.65)--(0,0.65);
+\draw[<->, vert, thick] (0,0.65)--(2,0.65);
+\node[vert] at (-1,0.45) {$AI$};
+\node[vert] at (1,0.45) {$IA'$};
+
+\node at (0,-1.6) {On trace la perpendiculaire puis on reporte la même distance.};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{retenir}
+Avec la règle graduée et l'équerre, on utilise directement la propriété :
+\[
+(d) \perp [AA']
+\quad \text{et} \quad
+AI=IA'.
+\]
+\end{retenir}
+
+% ============================================================
+\section*{3. Méthode 2 : avec règle non graduée et équerre}
+
+\begin{boite}{Situation}
+On veut construire le symétrique d'un point $A$ par rapport à une droite $(d)$ avec une \textbf{règle non graduée} et une \textbf{équerre}.  
+La règle sert seulement à tracer des droites, pas à mesurer.
+\end{boite}
+
+\subsection*{Étapes}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Avec l'équerre, tracer la perpendiculaire à $(d)$ passant par $A$.
+    \item Elle coupe $(d)$ en un point $I$.
+    \item Pour placer $A'$, on doit reporter la distance $AI$ sans utiliser les graduations.
+    \item On peut utiliser un compas pour reporter la distance, ou utiliser une construction déjà imposée par l'enseignant.
+\end{enumerate}
+
+\begin{attention}
+Avec une règle non graduée et une équerre seulement, on peut tracer la perpendiculaire, mais on ne peut pas mesurer précisément la distance $AI$.  
+Pour une construction exacte, il faut souvent ajouter le compas.
+\end{attention}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+% axe oblique
+\draw[very thick, bleu] (-2,-1.4)--(2,1.4);
+\node[bleu, right] at (2,1.4) {$(d)$};
+
+% point A
+\filldraw (-2,1.3) circle (2pt) node[left] {$A$};
+
+% projection approx
+\coordinate (I) at (-0.5,0);
+\coordinate (Ap) at (1,-1.3);
+
+% ligne perpendiculaire
+\draw[dashed, thick, rouge] (-2,1.3)--(1,-1.3);
+
+% points
+\filldraw (I) circle (1.5pt) node[below right] {$I$};
+\filldraw (Ap) circle (2pt) node[right] {$A'$};
+
+\node at (0,-2.2) {L'équerre sert à tracer la perpendiculaire à l'axe.};
+
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\section*{4. Méthode 3 : avec règle et compas}
+
+\begin{boite}{Situation}
+On veut construire le symétrique de $A$ par rapport à $(d)$ sans mesurer avec une règle graduée.  
+On utilise une \textbf{règle non graduée} et un \textbf{compas}.
+\end{boite}
+
+\subsection*{Idée importante}
+
+On choisit deux points $M$ et $N$ sur l'axe de symétrie $(d)$.  
+Si $A'$ est le symétrique de $A$, alors :
+\[
+MA=MA'
+\qquad \text{et} \qquad
+NA=NA'.
+\]
+
+Ainsi, $A'$ est à l'intersection :
+\begin{itemize}[label=\textbullet]
+    \item du cercle de centre $M$ passant par $A$ ;
+    \item du cercle de centre $N$ passant par $A$.
+\end{itemize}
+
+\subsection*{Étapes}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Choisir deux points $M$ et $N$ sur la droite $(d)$.
+    \item Ouvrir le compas avec l'écartement $MA$.
+    \item Tracer un arc de cercle de centre $M$ passant par $A$.
+    \item Ouvrir le compas avec l'écartement $NA$.
+    \item Tracer un arc de cercle de centre $N$ passant par $A$.
+    \item Les deux arcs se coupent en $A$ et en un autre point : ce deuxième point est $A'$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+
+% axe
+\draw[very thick, bleu] (-4,0)--(4,0);
+\node[bleu, right] at (4,0) {$(d)$};
+
+% points M N
+\filldraw[bleu] (-2,0) circle (2pt) node[below] {$M$};
+\filldraw[bleu] (2,0) circle (2pt) node[below] {$N$};
+
+% A and A'
+\filldraw (0,2) circle (2pt) node[above] {$A$};
+\filldraw (0,-2) circle (2pt) node[below] {$A'$};
+
+% arcs/circles
+\draw[orange, thick] (-2,0) circle ({sqrt(8)});
+\draw[vert, thick] (2,0) circle ({sqrt(8)});
+
+% dashed vertical
+\draw[dashed, rouge] (0,2)--(0,-2);
+
+\node[orange] at (-3.4,2.1) {cercle de centre $M$};
+\node[vert] at (3.2,2.1) {cercle de centre $N$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{retenir}
+Cette méthode est très utile lorsque l'axe est oblique, car elle évite de mesurer avec une règle graduée.
+\end{retenir}
+
+% ============================================================
+\section*{5. Méthode 4 : avec le compas seul}
+
+\begin{boite}{Situation}
+On veut construire le symétrique d'un point $A$ par rapport à une droite $(d)$ en utilisant \textbf{seulement le compas}.  
+On suppose que deux points $M$ et $N$ de l'axe $(d)$ sont déjà donnés.
+\end{boite}
+
+\subsection*{Principe}
+
+On ne trace pas forcément la droite, on utilise seulement les distances.
+
+Si $A'$ est le symétrique de $A$ par rapport à $(d)$, alors :
+\[
+MA=MA'
+\qquad \text{et} \qquad
+NA=NA'.
+\]
+
+Donc $A'$ est l'autre intersection des deux cercles :
+\[
+\mathcal{C}(M,MA)
+\qquad \text{et} \qquad
+\mathcal{C}(N,NA).
+\]
+
+\subsection*{Étapes}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Piquer le compas en $M$ et prendre l'écartement $MA$.
+    \item Tracer un arc de cercle passant par $A$.
+    \item Piquer le compas en $N$ et prendre l'écartement $NA$.
+    \item Tracer un second arc de cercle passant par $A$.
+    \item Les deux arcs se coupent en $A$ et en un autre point $A'$.
+    \item Le point $A'$ est le symétrique de $A$ par rapport à la droite $(MN)$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+% axe oblique
+\draw[very thick, bleu] (-3,-1)--(3,1);
+\node[bleu, right] at (3,1) {$(d)$};
+
+% points M N on axis
+\filldraw[bleu] (-1.5,-0.5) circle (2pt) node[below left] {$M$};
+\filldraw[bleu] (1.5,0.5) circle (2pt) node[above right] {$N$};
+
+% point A and approximate reflected A'
+\filldraw (-2,2) circle (2pt) node[above left] {$A$};
+\filldraw (-0.9,-1.3) circle (2pt) node[below] {$A'$};
+
+% arcs approximate using circles
+\draw[orange, thick] (-1.5,-0.5) circle (2.55);
+\draw[vert, thick] (1.5,0.5) circle (3.82);
+
+\node[orange] at (-3.7,0.2) {rayon $MA$};
+\node[vert] at (3.7,-0.9) {rayon $NA$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{attention}
+Avec le compas seul, il faut deux points $M$ et $N$ sur l'axe.  
+Sans ces deux points, on ne peut pas utiliser cette méthode directement.
+\end{attention}
+
+% ============================================================
+\section*{6. Tracer le symétrique d'un segment}
+
+\begin{boite}{Situation}
+On veut construire le symétrique du segment $[AB]$ par rapport à une droite $(d)$.
+\end{boite}
+
+\subsection*{Méthode}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Construire le symétrique $A'$ du point $A$.
+    \item Construire le symétrique $B'$ du point $B$.
+    \item Tracer le segment $[A'B']$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% axis
+\draw[very thick, bleu] (0,-2.5)--(0,2.5);
+\node[bleu, above] at (0,2.5) {$(d)$};
+
+% original segment
+\filldraw (-3,1.5) circle (2pt) node[left] {$A$};
+\filldraw (-2,-1) circle (2pt) node[left] {$B$};
+\draw[very thick] (-3,1.5)--(-2,-1);
+
+% reflected segment
+\filldraw (3,1.5) circle (2pt) node[right] {$A'$};
+\filldraw (2,-1) circle (2pt) node[right] {$B'$};
+\draw[very thick, rouge] (3,1.5)--(2,-1);
+
+% construction lines
+\draw[dashed] (-3,1.5)--(3,1.5);
+\draw[dashed] (-2,-1)--(2,-1);
+
+\end{tikzpicture}
+\end{center}
+
+\begin{retenir}
+Le symétrique d'un segment est un segment de même longueur.
+\[
+AB=A'B'.
+\]
+\end{retenir}
+
+% ============================================================
+\section*{7. Tracer le symétrique d'un triangle}
+
+\begin{boite}{Situation}
+On veut construire le symétrique d'un triangle $ABC$ par rapport à une droite $(d)$.
+\end{boite}
+
+\subsection*{Méthode}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Construire le symétrique $A'$ du sommet $A$.
+    \item Construire le symétrique $B'$ du sommet $B$.
+    \item Construire le symétrique $C'$ du sommet $C$.
+    \item Relier $A'$, $B'$ et $C'$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% axis oblique
+\draw[very thick, bleu] (-1,-2.5)--(1,2.5);
+\node[bleu, above] at (1,2.5) {$(d)$};
+
+% original triangle
+\coordinate (A) at (-4,1.8);
+\coordinate (B) at (-2,2.2);
+\coordinate (C) at (-3,-0.8);
+
+\draw[very thick] (A)--(B)--(C)--cycle;
+\filldraw (A) circle (2pt) node[left] {$A$};
+\filldraw (B) circle (2pt) node[above] {$B$};
+\filldraw (C) circle (2pt) node[left] {$C$};
+
+% approximate reflected triangle
+\coordinate (Ap) at (3.1,0.1);
+\coordinate (Bp) at (2.2,-1.7);
+\coordinate (Cp) at (0.5,0.2);
+
+\draw[very thick, rouge] (Ap)--(Bp)--(Cp)--cycle;
+\filldraw[rouge] (Ap) circle (2pt) node[right] {$A'$};
+\filldraw[rouge] (Bp) circle (2pt) node[right] {$B'$};
+\filldraw[rouge] (Cp) circle (2pt) node[right] {$C'$};
+
+\node at (0,-3) {On construit l'image de chaque sommet, puis on relie.};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{retenir}
+La symétrie axiale conserve :
+\begin{itemize}[label=\textbullet]
+    \item les longueurs ;
+    \item les angles ;
+    \item les formes ;
+    \item les alignements.
+\end{itemize}
+\end{retenir}
+
+% ============================================================
+\section*{8. Tracer le symétrique d'un polygone}
+
+\begin{boite}{Situation}
+On veut construire le symétrique d'un polygone $ABCDE$ par rapport à une droite $(d)$.
+\end{boite}
+
+\subsection*{Méthode}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Construire le symétrique de chaque sommet :
+    \[
+    A',B',C',D',E'.
+    \]
+    \item Relier les points dans le même ordre que dans la figure de départ.
+    \item Ne pas oublier de fermer la figure.
+\end{enumerate}
+
+\begin{attention}
+Il faut relier les points dans le même ordre.  
+Si la figure de départ est $A-B-C-D-E$, alors la figure symétrique est $A'-B'-C'-D'-E'$.
+\end{attention}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+
+% axis
+\draw[very thick, bleu] (0,-2.5)--(0,3);
+\node[bleu, above] at (0,3) {$(d)$};
+
+% original polygon
+\coordinate (A) at (-4,2);
+\coordinate (B) at (-2.5,2.5);
+\coordinate (C) at (-1.7,0.8);
+\coordinate (D) at (-2.5,-1.4);
+\coordinate (E) at (-4,-0.6);
+
+\draw[very thick] (A)--(B)--(C)--(D)--(E)--cycle;
+\foreach \p/\name in {A/A,B/B,C/C,D/D,E/E}{
+  \filldraw (\p) circle (2pt) node[left] {$\name$};
+}
+
+% reflected polygon
+\coordinate (Ap) at (4,2);
+\coordinate (Bp) at (2.5,2.5);
+\coordinate (Cp) at (1.7,0.8);
+\coordinate (Dp) at (2.5,-1.4);
+\coordinate (Ep) at (4,-0.6);
+
+\draw[very thick, rouge] (Ap)--(Bp)--(Cp)--(Dp)--(Ep)--cycle;
+\foreach \p/\name in {Ap/A',Bp/B',Cp/C',Dp/D',Ep/E'}{
+  \filldraw[rouge] (\p) circle (2pt) node[right] {$\name$};
+}
+
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\section*{9. Cas particulier : un point est sur l'axe}
+
+\begin{boite}{Situation}
+Le point $A$ appartient à l'axe de symétrie $(d)$.
+\end{boite}
+
+Dans ce cas, le symétrique de $A$ est $A$ lui-même.
+
+\[
+A'=A.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+% axis
+\draw[very thick, bleu] (-3,0)--(3,0);
+\node[bleu, right] at (3,0) {$(d)$};
+
+% point on axis
+\filldraw (0,0) circle (2pt) node[above] {$A=A'$};
+
+\node at (0,-1) {Un point placé sur l'axe ne bouge pas.};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{retenir}
+Tout point situé sur l'axe de symétrie est son propre symétrique.
+\end{retenir}
+
+% ============================================================
+\section*{10. Cas particulier : la figure coupe l'axe}
+
+\begin{boite}{Situation}
+Une figure coupe l'axe de symétrie. Certains points sont donc sur l'axe.
+\end{boite}
+
+\subsection*{Méthode}
+
+\begin{itemize}[label=\textbullet]
+    \item Les points situés sur l'axe ne bougent pas.
+    \item Les autres points sont construits normalement.
+    \item On relie ensuite les points dans le bon ordre.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% axis
+\draw[very thick, bleu] (0,-2.5)--(0,2.5);
+\node[bleu, above] at (0,2.5) {$(d)$};
+
+% original half figure
+\coordinate (A) at (0,2);
+\coordinate (B) at (-2,1);
+\coordinate (C) at (-1,-1);
+\coordinate (D) at (0,-2);
+
+\draw[very thick] (A)--(B)--(C)--(D);
+\filldraw (A) circle (2pt) node[right] {$A=A'$};
+\filldraw (B) circle (2pt) node[left] {$B$};
+\filldraw (C) circle (2pt) node[left] {$C$};
+\filldraw (D) circle (2pt) node[right] {$D=D'$};
+
+% reflected
+\coordinate (Bp) at (2,1);
+\coordinate (Cp) at (1,-1);
+
+\draw[very thick, rouge] (A)--(Bp)--(Cp)--(D);
+\filldraw[rouge] (Bp) circle (2pt) node[right] {$B'$};
+\filldraw[rouge] (Cp) circle (2pt) node[right] {$C'$};
+
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\section*{11. Compléter une figure par symétrie}
+
+\begin{boite}{Situation}
+On te donne une moitié de figure et un axe de symétrie.  
+Il faut compléter l'autre moitié.
+\end{boite}
+
+\subsection*{Méthode}
+
+\begin{enumerate}[label=\textbf{Étape \arabic* :}]
+    \item Repérer tous les points importants de la figure.
+    \item Pour chaque point qui n'est pas sur l'axe, construire son symétrique.
+    \item Les points situés sur l'axe restent fixes.
+    \item Relier les points obtenus en suivant la même forme que la figure de départ.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% axis
+\draw[very thick, bleu] (0,-2.8)--(0,2.8);
+\node[bleu, above] at (0,2.8) {$(d)$};
+
+% left half
+\draw[very thick] (0,2)--(-2,1)--(-2,-1)--(0,-2);
+\filldraw (0,2) circle (2pt) node[right] {$A$};
+\filldraw (-2,1) circle (2pt) node[left] {$B$};
+\filldraw (-2,-1) circle (2pt) node[left] {$C$};
+\filldraw (0,-2) circle (2pt) node[right] {$D$};
+
+% right half
+\draw[very thick, rouge] (0,2)--(2,1)--(2,-1)--(0,-2);
+\filldraw[rouge] (2,1) circle (2pt) node[right] {$B'$};
+\filldraw[rouge] (2,-1) circle (2pt) node[right] {$C'$};
+
+\node at (0,-3.4) {Les points sur l'axe restent en place.};
+
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\section*{12. Choisir la bonne méthode selon les instruments}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{0.28\linewidth}|p{0.36\linewidth}|p{0.28\linewidth}|}
+\hline
+\textbf{Instruments autorisés} & \textbf{Méthode} & \textbf{Idée principale} \\
+\hline
+Règle graduée + équerre 
+& Tracer la perpendiculaire, mesurer, reporter 
+& Utiliser le milieu et la perpendicularité \\
+\hline
+Règle non graduée + équerre 
+& Tracer la perpendiculaire 
+& Utile pour obtenir la direction du segment $[AA']$ \\
+\hline
+Règle + compas 
+& Utiliser deux points $M$ et $N$ sur l'axe 
+& Le symétrique conserve les distances à $M$ et $N$ \\
+\hline
+Compas seul 
+& Tracer deux arcs de cercle de centres $M$ et $N$ 
+& $A'$ est l'autre intersection des deux arcs \\
+\hline
+Papier quadrillé 
+& Compter les carreaux perpendiculairement à l'axe 
+& Reporter le même nombre de carreaux de l'autre côté \\
+\hline
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{13. Erreurs classiques à éviter}
+
+\begin{attention}
+\begin{enumerate}[label=\arabic*)]
+    \item Ne pas placer le point symétrique au hasard de l'autre côté de l'axe.
+    \item Ne pas oublier que le segment $[AA']$ doit être perpendiculaire à l'axe.
+    \item Ne pas oublier que l'axe doit passer par le milieu de $[AA']$.
+    \item Ne pas déplacer les points qui sont déjà sur l'axe.
+    \item Ne pas relier les sommets dans le mauvais ordre.
+    \item Ne pas effacer tous les traits de construction : ils permettent de vérifier la méthode.
+\end{enumerate}
+\end{attention}
+
+% ============================================================
+\section*{14. Résumé général}
+
+\begin{retenir}
+Pour construire le symétrique d'une figure par rapport à une droite :
+\begin{enumerate}[label=\arabic*)]
+    \item On construit le symétrique de chaque point important.
+    \item On vérifie que l'axe est la médiatrice entre chaque point et son image.
+    \item On relie les points obtenus dans le même ordre.
+\end{enumerate}
+\end{retenir}
+
+\[
+\boxed{
+\text{La symétrie axiale conserve les longueurs, les angles, les formes et les alignements.}
+}
+\]
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{Fin de la fiche méthode}
+\end{center}
+
+\end{document}
